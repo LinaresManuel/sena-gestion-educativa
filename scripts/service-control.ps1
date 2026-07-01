@@ -1,10 +1,13 @@
 param(
     [string]$ServiceName = "SenaSchedule",
-    [string]$Action = "status"
+    [string]$Action = "status",
+    [string]$NssmPath = ""
 )
 
 $ErrorActionPreference = "Stop"
-$nssmPath = "C:\tools\nssm\nssm.exe"
+
+. (Join-Path $PSScriptRoot "_nssm-helper.ps1")
+$NssmPath = Resolve-Nssm -GivenPath $NssmPath
 
 $existing = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
 if (-not $existing) {
@@ -16,19 +19,19 @@ if (-not $existing) {
 switch ($Action.ToLower()) {
     "start" {
         Write-Host "Iniciando '$ServiceName'..."
-        & $nssmPath start $ServiceName
+        & $NssmPath start $ServiceName
         Start-Sleep -Seconds 3
     }
     "stop" {
         Write-Host "Deteniendo '$ServiceName'..."
-        & $nssmPath stop $ServiceName
+        & $NssmPath stop $ServiceName
         Start-Sleep -Seconds 3
     }
     "restart" {
         Write-Host "Reiniciando '$ServiceName'..."
-        & $nssmPath stop $ServiceName
+        & $NssmPath stop $ServiceName
         Start-Sleep -Seconds 3
-        & $nssmPath start $ServiceName
+        & $NssmPath start $ServiceName
         Start-Sleep -Seconds 3
     }
     "status" {

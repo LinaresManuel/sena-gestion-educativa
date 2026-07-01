@@ -1,5 +1,6 @@
 param(
-    [string]$ServiceName = "SenaSchedule"
+    [string]$ServiceName = "SenaSchedule",
+    [string]$NssmPath = ""
 )
 
 $ErrorActionPreference = "Stop"
@@ -14,19 +15,20 @@ if (-not (Test-Administrator)) {
     exit 1
 }
 
+. (Join-Path $PSScriptRoot "_nssm-helper.ps1")
+$NssmPath = Resolve-Nssm -GivenPath $NssmPath
+
 $existing = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
 if (-not $existing) {
     Write-Host "[INFO] El servicio '$ServiceName' no esta instalado."
     exit 0
 }
 
-$nssmPath = "C:\tools\nssm\nssm.exe"
-
 Write-Host "Deteniendo servicio '$ServiceName'..."
-& $nssmPath stop $ServiceName 2>$null | Out-Null
+& $NssmPath stop $ServiceName 2>$null | Out-Null
 Start-Sleep -Seconds 3
 
 Write-Host "Eliminando servicio '$ServiceName'..."
-& $nssmPath remove $ServiceName confirm 2>$null | Out-Null
+& $NssmPath remove $ServiceName confirm 2>$null | Out-Null
 
 Write-Host "[OK] Servicio desinstalado."
