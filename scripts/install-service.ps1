@@ -2,8 +2,8 @@ param(
     [string]$ServiceName = "SenaSchedule",
     [string]$DisplayName = "SENA Gestion Educativa",
     [string]$Description = "Sistema de gestion educativa SENA - servidor LAN",
-    [string]$ProjectPath = (Get-Location).Path,
-    [string]$NssmPath = "C:\tools\nssm\nssm.exe",
+    [string]$ProjectPath = "",
+    [string]$NssmPath = "",
     [string]$NodeExe = "node"
 )
 
@@ -14,14 +14,47 @@ function Test-Administrator {
     return $current.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+function Find-Nssm {
+    $candidates = @(
+        "C:\tools\nssm\nssm.exe",
+        "C:\tools\nssm\win64\nssm.exe",
+        "C:\tools\nssm\win32\nssm.exe"
+    )
+    foreach ($c in $candidates) {
+        if (Test-Path -LiteralPath $c) { return $c }
+    }
+    # Buscar nssm.exe bajo C:\tools
+    $found = Get-ChildItem -Path "C:\tools" -Filter "nssm.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
+    if ($found) { return $found.FullName }
+    return $null
+}
+
+function Find-ProjectPath {
+    param([string]$StartDir)
+    $current = Resolve-Path $StartDir
+    while ($true) {
+        if (Test-Path -LiteralPath (Join-Path $current "package.json")) { return $current }
+        $parent = Split-Path -Parent $current
+        if ($parent -eq $current) { return $null }
+        $current = $parent
+    }
+}
+
 if (-not (Test-Administrator)) {
     Write-Error "Este script debe ejecutarse como Administrador."
     exit 1
 }
 
-if (-not (Test-Path -LiteralPath $NssmPath)) {
-    Write-Error "NSSM no encontrado en: $NssmPath`nDescarga desde https://nssm.cc/download y extrae nssm.exe a esa ruta."
-    exit 1
+# Detectar ruta del proyecto
+if (-not $ProjectPath) {
+    $detected = Find-ProjectPath -StartDir (Get-Location).Path
+    if ($detected) {
+        $ProjectPath = $detected
+        Write-Host "[INFO] Proyecto detectado en: $ProjectPath"
+    } else {
+        Write-Error "No se encontro package.json. Especifica -ProjectPath 'C:\ruta\al\proyecto'."
+        exit 1
+    }
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $ProjectPath "package.json"))) {
@@ -29,8 +62,28 @@ if (-not (Test-Path -LiteralPath (Join-Path $ProjectPath "package.json"))) {
     exit 1
 }
 
+# Detectar NSSM
+if (-not $NssmPath) {
+    $NssmPath = Find-Nssm
+}
+if (-not $NssmPath) {
+    Write-Error "NSSM no encontrado. Descargalo de https://nssm.cc/download y extrae nssm.exe (ej: C:\tools\nssm\win64\nssm.exe)"
+    exit 1
+}
+Write-Host "[INFO] NSSM: $NssmPath"
+
 if (-not (Test-Path -LiteralPath (Join-Path $ProjectPath "dist\server.cjs"))) {
-    Write-Error "No se encontro dist\server.cjs. Ejecuta primero 'npm run build'."
+    Write-Host "[WARN] No se encontro dist\server.cjs. Se compilara ahora..."
+    Push-Location $ProjectPath
+    try {
+        & npm run build
+        if ($LASTEXITCODE -ne 0) { throw "npm run build fallo" }
+    } finally {
+        Pop-Location
+    }
+}
+if (-not (Test-Path -LiteralPath (Join-Path $ProjectPath "dist\server.cjs"))) {
+    Write-Error "Sigue sin existir dist\server.cjs tras el build."
     exit 1
 }
 
