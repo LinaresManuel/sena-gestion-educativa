@@ -1,0 +1,6 @@
+{
+  "name": "Class Schedule Manager",
+  "description": "Sistema complejo de programación de horarios de instructores con validación de horas y cruces. Gestiona ambientes, programas curriculares y calendario.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}
