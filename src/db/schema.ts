@@ -114,3 +114,15 @@ export const programacionInstructores = sqliteTable('programacion_instructores',
   resultadosIds: text('resultados_ids', { mode: 'json' }).notNull(),
   eventos: text('eventos', { mode: 'json' }), // { [isoDate]: { [hora]: resultadoId } }
 });
+
+export const usuarios = sqliteTable('usuarios', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  username: text('username').notNull().unique(),
+  passwordHash: text('password_hash').notNull(),
+  nombre: text('nombre').notNull(),
+  rol: text('rol').notNull().default('editor'),
+  debeCambiarPassword: integer('debe_cambiar_password', { mode: 'boolean' }).notNull().default(false),
+  activo: integer('activo', { mode: 'boolean' }).notNull().default(true),
+  ultimoLoginAt: text('ultimo_login_at'),
+  createdAt: text('created_at').notNull().default("datetime('now')"),
+});

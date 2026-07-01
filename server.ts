@@ -5,6 +5,11 @@ import { db } from './src/db/index.ts';
 import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, fichas, programacionInstructores } from './src/db/schema.ts';
 import { eq } from 'drizzle-orm';
 import { config } from './src/config.ts';
+import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import authRouter, { seedAdminIfMissing } from './src/routes/auth.ts';
+import { requireAuth, type AuthRequest } from './src/middleware/auth.ts';
 
 
 function handleDbError(e: any, res: any) {
@@ -25,8 +30,36 @@ async function startServer() {
   const app = express();
   const PORT = config.PORT;
 
+  // Security headers
+  app.use(helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false,
+  }));
+
   app.use(express.json({ limit: '2mb' }));
   app.use(express.urlencoded({ limit: '2mb', extended: true }));
+  app.use(cookieParser());
+
+  // Rate limit on auth endpoints
+  const authLimiter = rateLimit({
+    windowMs: 60 * 1000,
+    max: 10,
+    standardHeaders: true,
+    legacyHeaders: false,
+    message: { error: 'Demasiados intentos. Intenta en un minuto.' },
+  });
+  app.use('/api/auth', authLimiter, authRouter);
+
+  // Health check (public)
+  app.get('/api/health', (_req, res) => {
+    res.json({ status: 'ok', uptime: process.uptime(), version: '1.0.0', env: config.NODE_ENV });
+  });
+
+  // Protect all other /api/* routes
+  app.use('/api', (req, res, next) => {
+    if (req.path === '/health' || req.path.startsWith('/auth')) return next();
+    return requireAuth(req as AuthRequest, res, next);
+  });
 
   // API Routes for Regionales
   app.get('/api/regionales', async (req, res) => {
@@ -616,4 +649,6 @@ async function startServer() {
   });
 }
 
-startServer();
+startServer().then(() => {
+  seedAdminIfMissing().catch((err) => console.error('Error creando admin inicial:', err));
+});

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import { BookOpen, Users, Building, Home, LayoutDashboard, MapPin, Calendar } from "lucide-react";
+import { BrowserRouter, Routes, Route, Link, Navigate, useLocation, useNavigate } from "react-router-dom";
+import { BookOpen, Users, Building, Home, LayoutDashboard, MapPin, Calendar, LogOut } from "lucide-react";
 
 import RegionalesView from "./components/RegionalesView";
 import CentrosView from "./components/CentrosView";
@@ -10,14 +10,26 @@ import ProgramasView from "./components/ProgramasView";
 import InstructoresView from "./components/InstructoresView";
 import FichasView from "./components/FichasView";
 import ProgramacionInstructoresView from "./components/ProgramacionInstructoresView";
+import Login from "./Login";
+import ChangePassword from "./ChangePassword";
 
-function Dashboard() {
+interface AuthUser {
+  id: number;
+  username: string;
+  nombre: string;
+  rol: string;
+  debeCambiarPassword: boolean;
+}
+
+function Dashboard({ user }: { user: AuthUser }) {
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard de Programación</h1>
-      <p className="text-gray-500">
-        Bienvenido al sistema de programación de horarios. Selecciona un módulo en el menú lateral para comenzar a gestionar los recursos.
-      </p>
+      <div>
+        <h1 className="text-3xl font-bold tracking-tight text-gray-900">Dashboard de Programación</h1>
+        <p className="text-gray-500 mt-1">
+          Bienvenido, <span className="font-medium">{user.nombre}</span>. Selecciona un módulo para comenzar.
+        </p>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mt-8">
         <Link to="/regionales" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
           <MapPin className="w-10 h-10 text-amber-600 mb-4" />
@@ -59,64 +71,141 @@ function Dashboard() {
   );
 }
 
+function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout: () => void; children: React.ReactNode }) {
+  return (
+    <div className="flex h-screen bg-gray-50">
+      <aside className="w-64 bg-white border-r flex flex-col">
+        <div className="p-6 flex-1">
+          <div className="flex items-center gap-2 mb-8">
+            <BookOpen className="w-8 h-8 text-blue-600" />
+            <span className="text-xl font-bold tracking-tight">SenaSchedule</span>
+          </div>
+          <nav className="space-y-1">
+            <Link to="/" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <LayoutDashboard className="w-5 h-5 text-gray-500" /> Dashboard
+            </Link>
+            <Link to="/regionales" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <MapPin className="w-5 h-5 text-gray-500" /> Regionales
+            </Link>
+            <Link to="/centros" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Building className="w-5 h-5 text-gray-500" /> Centros
+            </Link>
+            <Link to="/ambientes" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Home className="w-5 h-5 text-gray-500" /> Ambientes
+            </Link>
+            <Link to="/tipos-ambiente" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Home className="w-5 h-5 text-gray-400 ml-1" /> Tipos de Ambientes
+            </Link>
+            <Link to="/programas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <BookOpen className="w-5 h-5 text-gray-500" /> Programas
+            </Link>
+            <Link to="/instructores" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Users className="w-5 h-5 text-gray-500" /> Instructores
+            </Link>
+            <Link to="/fichas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <BookOpen className="w-5 h-5 text-emerald-600" /> Fichas
+            </Link>
+            <Link to="/programacion" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Calendar className="w-5 h-5 text-indigo-500" /> Programación
+            </Link>
+          </nav>
+        </div>
+        <div className="p-6 border-t">
+          <div className="text-sm mb-3">
+            <div className="font-medium text-gray-900">{user.nombre}</div>
+            <div className="text-gray-500 text-xs">{user.username} · {user.rol}</div>
+          </div>
+          <button
+            onClick={onLogout}
+            className="w-full flex items-center justify-center gap-2 text-sm text-red-600 hover:bg-red-50 py-2 rounded-md transition"
+          >
+            <LogOut className="w-4 h-4" /> Cerrar sesión
+          </button>
+        </div>
+      </aside>
+      <main className="flex-1 overflow-auto p-8">{children}</main>
+    </div>
+  );
+}
+
+function RequireAuth({ user, children }: { user: AuthUser | null; children: React.ReactNode }) {
+  const location = useLocation();
+  if (!user) {
+    return <Navigate to="/login" state={{ from: location.pathname }} replace />;
+  }
+  return <>{children}</>;
+}
+
+function AppRoutes({ user, setUser, onLogout }: { user: AuthUser | null; setUser: (u: AuthUser | null) => void; onLogout: () => void }) {
+  const navigate = useNavigate();
+
+  function handleLogout() {
+    fetch("/api/auth/logout", { method: "POST", credentials: "include" })
+      .finally(() => {
+        onLogout();
+        navigate("/login", { replace: true });
+      });
+  }
+
+  if (!user) {
+    return (
+      <Routes>
+        <Route path="/login" element={<Login onLogin={setUser} />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
+      </Routes>
+    );
+  }
+
+  return (
+    <PrivateLayout user={user} onLogout={handleLogout}>
+      <Routes>
+        <Route path="/" element={<Dashboard user={user} />} />
+        <Route path="/regionales" element={<RegionalesView />} />
+        <Route path="/centros" element={<CentrosView />} />
+        <Route path="/ambientes" element={<AmbientesView />} />
+        <Route path="/tipos-ambiente" element={<TiposAmbienteView />} />
+        <Route path="/programas" element={<ProgramasView />} />
+        <Route path="/instructores" element={<InstructoresView />} />
+        <Route path="/fichas" element={<FichasView />} />
+        <Route path="/programacion" element={<ProgramacionInstructoresView />} />
+        <Route path="/cambiar-password" element={<ChangePassword />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </PrivateLayout>
+  );
+}
+
 export default function App() {
+  const [user, setUser] = useState<AuthUser | null>(null);
+  const [bootstrapping, setBootstrapping] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/auth/me", { credentials: "include" })
+      .then(async (r) => {
+        if (r.ok) {
+          const data = await r.json();
+          setUser(data);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setBootstrapping(false));
+  }, []);
+
+  function handleLogout() {
+    setUser(null);
+  }
+
+  if (bootstrapping) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-gray-500">Cargando...</div>
+      </div>
+    );
+  }
+
   return (
     <BrowserRouter>
-      <div className="flex h-screen bg-gray-50">
-        {/* Sidebar */}
-        <aside className="w-64 bg-white border-r">
-          <div className="p-6">
-            <div className="flex items-center gap-2 mb-8">
-              <BookOpen className="w-8 h-8 text-blue-600" />
-              <span className="text-xl font-bold tracking-tight">SenaSchedule</span>
-            </div>
-            <nav className="space-y-1">
-              <Link to="/" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <LayoutDashboard className="w-5 h-5 text-gray-500" /> Dashboard
-              </Link>
-              <Link to="/regionales" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <MapPin className="w-5 h-5 text-gray-500" /> Regionales
-              </Link>
-              <Link to="/centros" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Building className="w-5 h-5 text-gray-500" /> Centros
-              </Link>
-              <Link to="/ambientes" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Home className="w-5 h-5 text-gray-500" /> Ambientes
-              </Link>
-              <Link to="/tipos-ambiente" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Home className="w-5 h-5 text-gray-400 ml-1" /> Tipos de Ambientes
-              </Link>
-              <Link to="/programas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <BookOpen className="w-5 h-5 text-gray-500" /> Programas
-              </Link>
-              <Link to="/instructores" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Users className="w-5 h-5 text-gray-500" /> Instructores
-              </Link>
-              <Link to="/fichas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <BookOpen className="w-5 h-5 text-emerald-600" /> Fichas
-              </Link>
-              <Link to="/programacion" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Calendar className="w-5 h-5 text-indigo-500" /> Programación
-              </Link>
-            </nav>
-          </div>
-        </aside>
-
-        {/* Main content */}
-        <main className="flex-1 overflow-auto p-8">
-          <Routes>
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/regionales" element={<RegionalesView />} />
-            <Route path="/centros" element={<CentrosView />} />
-            <Route path="/ambientes" element={<AmbientesView />} />
-            <Route path="/tipos-ambiente" element={<TiposAmbienteView />} />
-            <Route path="/programas" element={<ProgramasView />} />
-            <Route path="/instructores" element={<InstructoresView />} />
-            <Route path="/fichas" element={<FichasView />} />
-            <Route path="/programacion" element={<ProgramacionInstructoresView />} />
-          </Routes>
-        </main>
-      </div>
+      <AppRoutes user={user} setUser={setUser} onLogout={handleLogout} />
     </BrowserRouter>
   );
 }

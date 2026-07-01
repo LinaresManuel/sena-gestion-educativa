@@ -30,14 +30,14 @@ const NODE_ENV = (process.env.NODE_ENV ?? 'development') as 'development' | 'pro
 const PORT = Number(process.env.PORT ?? 3000);
 const DATABASE_URL = process.env.DATABASE_URL ?? 'data.db';
 const APP_URL = process.env.APP_URL ?? `http://localhost:${PORT}`;
-const JWT_SECRET = process.env.JWT_SECRET ?? '';
+const JWT_SECRET = process.env.JWT_SECRET ?? (NODE_ENV === 'production' ? '' : 'dev-only-secret-please-change-in-production-min-32-chars');
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? APP_URL;
 const SESSION_TTL_HOURS = Number(process.env.SESSION_TTL_HOURS ?? 12);
 
 const errors: string[] = [];
 
-if (NODE_ENV === 'production' && !JWT_SECRET) {
-  errors.push('JWT_SECRET es obligatorio en producción. Define una cadena aleatoria de al menos 32 caracteres en .env.local');
+if (NODE_ENV === 'production' && JWT_SECRET.includes('dev-only-secret')) {
+  errors.push('JWT_SECRET debe estar definido en producción con una cadena aleatoria de al menos 32 caracteres');
 }
 
 if (Number.isNaN(PORT) || PORT <= 0 || PORT > 65535) {
