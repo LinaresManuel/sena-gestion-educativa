@@ -39,9 +39,9 @@ switch ($Action.ToLower()) {
         Write-Host "Servicio:    $($svc.Name)"
         Write-Host "DisplayName: $($svc.DisplayName)"
         Write-Host "Estado:      $($svc.Status)"
-        $pid = (Get-WmiObject Win32_Service -Filter "Name='$ServiceName'").ProcessId
-        if ($pid -gt 0) {
-            Write-Host "PID:         $pid"
+        $servicePid = (Get-WmiObject Win32_Service -Filter "Name='$ServiceName'").ProcessId
+        if ($servicePid -gt 0) {
+            Write-Host "PID:         $servicePid"
         }
     }
     default {
