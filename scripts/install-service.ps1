@@ -23,21 +23,9 @@ function Find-Nssm {
     foreach ($c in $candidates) {
         if (Test-Path -LiteralPath $c) { return $c }
     }
-    # Buscar nssm.exe bajo C:\tools
     $found = Get-ChildItem -Path "C:\tools" -Filter "nssm.exe" -Recurse -ErrorAction SilentlyContinue | Select-Object -First 1
     if ($found) { return $found.FullName }
     return $null
-}
-
-function Find-ProjectPath {
-    param([string]$StartDir)
-    $current = Resolve-Path $StartDir
-    while ($true) {
-        if (Test-Path -LiteralPath (Join-Path $current "package.json")) { return $current }
-        $parent = Split-Path -Parent $current
-        if ($parent -eq $current) { return $null }
-        $current = $parent
-    }
 }
 
 if (-not (Test-Administrator)) {
@@ -45,49 +33,77 @@ if (-not (Test-Administrator)) {
     exit 1
 }
 
-# Detectar ruta del proyecto
+# Detectar ruta del proyecto.
+# Prioridad: parametro explicito > carpeta padre del script > busqueda desde CWD.
 if (-not $ProjectPath) {
-    $detected = Find-ProjectPath -StartDir (Get-Location).Path
-    if ($detected) {
-        $ProjectPath = $detected
-        Write-Host "[INFO] Proyecto detectado en: $ProjectPath"
+    $scriptDir = if ($PSScriptRoot) { $PSScriptRoot } else { Split-Path -Parent $MyInvocation.MyCommand.Path }
+    $candidate = Split-Path -Parent $scriptDir
+    if (Test-Path -LiteralPath (Join-Path $candidate "package.json")) {
+        $ProjectPath = $candidate
+        Write-Host "[INFO] Proyecto detectado (carpeta del script): $ProjectPath"
     } else {
-        Write-Error "No se encontro package.json. Especifica -ProjectPath 'C:\ruta\al\proyecto'."
-        exit 1
+        $current = (Get-Location).Path
+        while ($true) {
+            if (Test-Path -LiteralPath (Join-Path $current "package.json")) {
+                $ProjectPath = $current
+                Write-Host "[INFO] Proyecto detectado (desde cwd): $ProjectPath"
+                break
+            }
+            $parent = Split-Path -Parent $current
+            if ($parent -eq $current) { break }
+            $current = $parent
+        }
     }
+}
+
+if (-not $ProjectPath) {
+    Write-Error "No se detecto el proyecto. Especifica -ProjectPath 'C:\ruta\al\proyecto'."
+    exit 1
 }
 
 if (-not (Test-Path -LiteralPath (Join-Path $ProjectPath "package.json"))) {
     Write-Error "No se encontro package.json en: $ProjectPath"
+    Write-Error "  Pwd actual: $(Get-Location)"
+    Write-Error "  Script dir: $PSScriptRoot"
     exit 1
 }
+
+Write-Host "[OK] Proyecto: $ProjectPath"
 
 # Detectar NSSM
 if (-not $NssmPath) {
     $NssmPath = Find-Nssm
 }
 if (-not $NssmPath) {
-    Write-Error "NSSM no encontrado. Descargalo de https://nssm.cc/download y extrae nssm.exe (ej: C:\tools\nssm\win64\nssm.exe)"
+    Write-Error "NSSM no encontrado. Descargalo de https://nssm.cc/download (ej: C:\tools\nssm\win64\nssm.exe)"
     exit 1
 }
-Write-Host "[INFO] NSSM: $NssmPath"
+Write-Host "[OK] NSSM: $NssmPath"
 
-if (-not (Test-Path -LiteralPath (Join-Path $ProjectPath "dist\server.cjs"))) {
-    Write-Host "[WARN] No se encontro dist\server.cjs. Se compilara ahora..."
+# Verificar build
+$serverPath = Join-Path $ProjectPath "dist\server.cjs"
+if (-not (Test-Path -LiteralPath $serverPath)) {
+    Write-Host "[INFO] dist\server.cjs no existe. Compilando..."
     Push-Location $ProjectPath
     try {
         & npm run build
-        if ($LASTEXITCODE -ne 0) { throw "npm run build fallo" }
+        if ($LASTEXITCODE -ne 0) { throw "npm run build fallo con codigo $LASTEXITCODE" }
     } finally {
         Pop-Location
     }
 }
-if (-not (Test-Path -LiteralPath (Join-Path $ProjectPath "dist\server.cjs"))) {
+if (-not (Test-Path -LiteralPath $serverPath)) {
     Write-Error "Sigue sin existir dist\server.cjs tras el build."
     exit 1
 }
 
-# Stop if already installed
+# Verificar .env.local
+$envPath = Join-Path $ProjectPath ".env.local"
+if (-not (Test-Path -LiteralPath $envPath)) {
+    Write-Warning "No existe .env.local en el proyecto. Crealo antes de iniciar el servicio."
+}
+
+# Detener si ya existe
 $existing = Get-Service -Name $ServiceName -ErrorAction SilentlyContinue
 if ($existing) {
     Write-Host "[INFO] El servicio '$ServiceName' ya existe. Reinstalando..."
@@ -102,6 +118,7 @@ if (-not (Test-Path -LiteralPath $logsDir)) {
     New-Item -ItemType Directory -Path $logsDir -Force | Out-Null
 }
 
+Write-Host ""
 Write-Host "Instalando servicio '$ServiceName'..."
 Write-Host "  Proyecto:  $ProjectPath"
 Write-Host "  Node:      $NodeExe"
@@ -126,11 +143,10 @@ Write-Host "  Logs:      $logsDir\service.out.log"
 & $NssmPath set $ServiceName AppStderrCreationDisposition 4 | Out-Null
 
 Write-Host ""
-Write-Host "[OK] Servicio instalado."
+Write-Host "[OK] Servicio instalado correctamente."
 Write-Host ""
-Write-Host "Para iniciar:"
-Write-Host "  Start-Service -Name $ServiceName"
-Write-Host "  O:    & '$NssmPath' start $ServiceName"
-Write-Host ""
-Write-Host "Para desinstalar:"
-Write-Host "  .\scripts\uninstall-service.ps1"
+Write-Host "Comandos utiles:"
+Write-Host "  Iniciar:    Start-Service -Name $ServiceName"
+Write-Host "  Detener:    Stop-Service -Name $ServiceName"
+Write-Host "  Estado:     Get-Service -Name $ServiceName"
+Write-Host "  Desinstalar: .\scripts\uninstall-service.ps1"
