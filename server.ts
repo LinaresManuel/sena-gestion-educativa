@@ -4,6 +4,7 @@ import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/index.ts';
 import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, fichas, programacionInstructores } from './src/db/schema.ts';
 import { eq } from 'drizzle-orm';
+import { config } from './src/config.ts';
 
 
 function handleDbError(e: any, res: any) {
@@ -22,10 +23,10 @@ function handleDbError(e: any, res: any) {
 
 async function startServer() {
   const app = express();
-  const PORT = 3000;
+  const PORT = config.PORT;
 
-  app.use(express.json({ limit: '50mb' }));
-  app.use(express.urlencoded({ limit: '50mb', extended: true }));
+  app.use(express.json({ limit: '2mb' }));
+  app.use(express.urlencoded({ limit: '2mb', extended: true }));
 
   // API Routes for Regionales
   app.get('/api/regionales', async (req, res) => {
@@ -590,8 +591,13 @@ async function startServer() {
     }
   });
 
+  // Health check
+  app.get('/api/health', (_req, res) => {
+    res.json({ status: 'ok', uptime: process.uptime(), version: '1.0.0', env: config.NODE_ENV });
+  });
+
   // Vite middleware for development
-  if (process.env.NODE_ENV !== "production") {
+  if (config.NODE_ENV !== "production") {
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",
@@ -606,7 +612,7 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT} (env=${config.NODE_ENV}, db=${config.DATABASE_URL})`);
   });
 }
 

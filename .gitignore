@@ -4,5 +4,21 @@ dist/
 coverage/
 .DS_Store
 *.log
-.env*
+
+# Local database (generated at runtime, must not be in version control)
+data.db
+data.db.backup
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Runtime data and logs
+data/
+logs/
+uploads/
+
+# Environment
+.env
+.env.local
+.env.*.local
 !.env.example
