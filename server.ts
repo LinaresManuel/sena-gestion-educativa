@@ -10,6 +10,10 @@ import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import authRouter, { seedAdminIfMissing } from './src/routes/auth.ts';
 import { requireAuth, type AuthRequest } from './src/middleware/auth.ts';
+import { requestLogger } from './src/middleware/request-logger.ts';
+import { auditLogger } from './src/middleware/audit.ts';
+import { errorHandler, notFoundHandler } from './src/middleware/error-handler.ts';
+import { logger } from './src/lib/logger.ts';
 
 
 function handleDbError(e: any, res: any) {
@@ -29,6 +33,8 @@ function handleDbError(e: any, res: any) {
 async function startServer() {
   const app = express();
   const PORT = config.PORT;
+
+  app.use(requestLogger);
 
   // Security headers
   app.use(helmet({
@@ -60,6 +66,9 @@ async function startServer() {
     if (req.path === '/health' || req.path.startsWith('/auth')) return next();
     return requireAuth(req as AuthRequest, res, next);
   });
+
+  // Audit mutations (after auth so user is available)
+  app.use('/api', auditLogger);
 
   // API Routes for Regionales
   app.get('/api/regionales', async (req, res) => {
@@ -644,8 +653,12 @@ async function startServer() {
     });
   }
 
+  // 404 + error handlers (must be last)
+  app.use(notFoundHandler);
+  app.use(errorHandler);
+
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT} (env=${config.NODE_ENV}, db=${config.DATABASE_URL})`);
+    logger.info({ port: PORT, env: config.NODE_ENV, db: config.DATABASE_URL }, 'server_started');
   });
 }
 
