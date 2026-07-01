@@ -33,6 +33,7 @@ const APP_URL = process.env.APP_URL ?? `http://localhost:${PORT}`;
 const JWT_SECRET = process.env.JWT_SECRET ?? (NODE_ENV === 'production' ? '' : 'dev-only-secret-please-change-in-production-min-32-chars');
 const CORS_ORIGIN = process.env.CORS_ORIGIN ?? APP_URL;
 const SESSION_TTL_HOURS = Number(process.env.SESSION_TTL_HOURS ?? 12);
+const COOKIE_SECURE = (process.env.COOKIE_SECURE ?? 'false') === 'true';
 
 const errors: string[] = [];
 
@@ -62,4 +63,5 @@ export const config = {
   JWT_SECRET,
   CORS_ORIGIN,
   SESSION_TTL_HOURS,
+  COOKIE_SECURE,
 } as const;
