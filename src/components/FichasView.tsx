@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, X, Calendar, Clock, MapPin, Search } from "lucide-react";
+import { useCanEdit } from "../lib/auth-context";
 
 interface Ficha {
   id: number;
@@ -23,6 +24,7 @@ const HORAS = Array.from({ length: 16 }, (_, i) => {
 });
 
 export default function FichasView() {
+  const canEdit = useCanEdit();
   const [fichas, setFichas] = useState<Ficha[]>([]);
   const [centros, setCentros] = useState<any[]>([]);
   const [programas, setProgramas] = useState<any[]>([]);
@@ -188,125 +190,127 @@ export default function FichasView() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-1">
-          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
-            <h2 className="text-lg font-medium mb-4">Nueva Ficha</h2>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Número de Ficha</label>
-              <input required value={numeroFicha} onChange={e => setNumeroFicha(e.target.value)} type="text" className="w-full px-3 py-2 border rounded-md" placeholder="Ej: 2686861" />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Programa de Formación</label>
-              <select required value={programaId} onChange={e => setProgramaId(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
-                <option value="">Seleccione un programa...</option>
-                {programas.map(p => (
-                  <option key={p.id} value={p.id}>{p.denominacion} ({p.codigo} - v{p.version})</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Modalidad</label>
-              <select value={modalidad} onChange={e => setModalidad(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
-                <option value="PRESENCIAL">Presencial</option>
-                <option value="VIRTUAL">Virtual</option>
-                <option value="MIXTA">Mixta</option>
-              </select>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Inicio</label>
-                <input required value={fechaInicio} onChange={e => setFechaInicio(e.target.value)} type="date" className="w-full px-3 py-2 border rounded-md text-sm" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Fin (Lectiva)</label>
-                <input required value={fechaFinLectiva} onChange={e => setFechaFinLectiva(e.target.value)} type="date" className="w-full px-3 py-2 border rounded-md text-sm" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Fin (Ficha)</label>
-                <input required value={fechaFin} onChange={e => setFechaFin(e.target.value)} type="date" className="w-full px-3 py-2 border rounded-md text-sm" />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
-              <select required value={centroFormacionId} onChange={e => setCentroFormacionId(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
-                <option value="">Seleccione un centro...</option>
-                {centros.map(c => (
-                  <option key={c.id} value={c.id}>{c.nombre}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Ambiente de Formación</label>
-              <select required value={ambienteId} onChange={e => setAmbientesId(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
-                <option value="">Seleccione un ambiente...</option>
-                {ambientes.map(a => (
-                  <option key={a.id} value={a.id}>{a.nombre} ({a.codigo})</option>
-                ))}
-              </select>
-              <p className="text-xs text-gray-500 mt-1">El sistema verificará la disponibilidad del ambiente en las fechas y horarios seleccionados.</p>
-            </div>
-
-            <div className="border-t pt-4 mt-6">
-              <label className="block text-sm font-bold text-gray-800 mb-2">Horario de Formación</label>
+        {canEdit && (
+          <div className="lg:col-span-1">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
+              <h2 className="text-lg font-medium mb-4">Nueva Ficha</h2>
               
-              <div className="space-y-4">
-                <div>
-                  <p className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">1. Seleccione los días</p>
-                  <div className="flex flex-wrap gap-2">
-                    {DIAS_SEMANA.map(dia => (
-                      <button
-                        key={dia}
-                        type="button"
-                        onClick={() => toggleDay(dia)}
-                        className={`px-3 py-1 text-xs rounded-full border transition-colors ${horario[dia] !== undefined ? 'bg-purple-100 border-purple-300 text-purple-800' : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'}`}
-                      >
-                        {dia.slice(0, 3)}
-                      </button>
-                    ))}
-                  </div>
-                </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Número de Ficha</label>
+                <input required value={numeroFicha} onChange={e => setNumeroFicha(e.target.value)} type="text" className="w-full px-3 py-2 border rounded-md" placeholder="Ej: 2686861" />
+              </div>
 
-                {Object.keys(horario).length > 0 && (
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Programa de Formación</label>
+                <select required value={programaId} onChange={e => setProgramaId(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
+                  <option value="">Seleccione un programa...</option>
+                  {programas.map(p => (
+                    <option key={p.id} value={p.id}>{p.denominacion} ({p.codigo} - v{p.version})</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Modalidad</label>
+                <select value={modalidad} onChange={e => setModalidad(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
+                  <option value="PRESENCIAL">Presencial</option>
+                  <option value="VIRTUAL">Virtual</option>
+                  <option value="MIXTA">Mixta</option>
+                </select>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Inicio</label>
+                  <input required value={fechaInicio} onChange={e => setFechaInicio(e.target.value)} type="date" className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Fin (Lectiva)</label>
+                  <input required value={fechaFinLectiva} onChange={e => setFechaFinLectiva(e.target.value)} type="date" className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Fin (Ficha)</label>
+                  <input required value={fechaFin} onChange={e => setFechaFin(e.target.value)} type="date" className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
+                <select required value={centroFormacionId} onChange={e => setCentroFormacionId(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
+                  <option value="">Seleccione un centro...</option>
+                  {centros.map(c => (
+                    <option key={c.id} value={c.id}>{c.nombre}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Ambiente de Formación</label>
+                <select required value={ambienteId} onChange={e => setAmbientesId(e.target.value)} className="w-full px-3 py-2 border rounded-md bg-white">
+                  <option value="">Seleccione un ambiente...</option>
+                  {ambientes.map(a => (
+                    <option key={a.id} value={a.id}>{a.nombre} ({a.codigo})</option>
+                  ))}
+                </select>
+                <p className="text-xs text-gray-500 mt-1">El sistema verificará la disponibilidad del ambiente en las fechas y horarios seleccionados.</p>
+              </div>
+
+              <div className="border-t pt-4 mt-6">
+                <label className="block text-sm font-bold text-gray-800 mb-2">Horario de Formación</label>
+                
+                <div className="space-y-4">
                   <div>
-                    <p className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">2. Seleccione las horas por día</p>
-                    <div className="space-y-3">
-                      {DIAS_SEMANA.filter(dia => horario[dia] !== undefined).map(dia => (
-                        <div key={dia} className="bg-gray-50 p-3 rounded-lg border border-gray-100">
-                          <p className="text-xs font-medium text-gray-700 mb-2">{dia}</p>
-                          <div className="grid grid-cols-3 gap-2">
-                            {HORAS.map(hora => (
-                              <label key={hora} className="flex items-center gap-1.5 cursor-pointer">
-                                <input
-                                  type="checkbox"
-                                  className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
-                                  checked={horario[dia].includes(hora)}
-                                  onChange={() => toggleHour(dia, hora)}
-                                />
-                                <span className="text-[10px] text-gray-600">{hora}</span>
-                              </label>
-                            ))}
-                          </div>
-                        </div>
+                    <p className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">1. Seleccione los días</p>
+                    <div className="flex flex-wrap gap-2">
+                      {DIAS_SEMANA.map(dia => (
+                        <button
+                          key={dia}
+                          type="button"
+                          onClick={() => toggleDay(dia)}
+                          className={`px-3 py-1 text-xs rounded-full border transition-colors ${horario[dia] !== undefined ? 'bg-purple-100 border-purple-300 text-purple-800' : 'bg-gray-50 border-gray-200 text-gray-600 hover:bg-gray-100'}`}
+                        >
+                          {dia.slice(0, 3)}
+                        </button>
                       ))}
                     </div>
                   </div>
-                )}
-              </div>
-            </div>
-            
-            <button type="submit" className="w-full mt-6 bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 flex items-center justify-center gap-2">
-              <Plus className="w-4 h-4" /> Registrar Ficha
-            </button>
-          </form>
-        </div>
 
-        <div className="lg:col-span-2">
+                  {Object.keys(horario).length > 0 && (
+                    <div>
+                      <p className="text-xs font-semibold text-gray-600 mb-2 uppercase tracking-wider">2. Seleccione las horas por día</p>
+                      <div className="space-y-3">
+                        {DIAS_SEMANA.filter(dia => horario[dia] !== undefined).map(dia => (
+                          <div key={dia} className="bg-gray-50 p-3 rounded-lg border border-gray-100">
+                            <p className="text-xs font-medium text-gray-700 mb-2">{dia}</p>
+                            <div className="grid grid-cols-3 gap-2">
+                              {HORAS.map(hora => (
+                                <label key={hora} className="flex items-center gap-1.5 cursor-pointer">
+                                  <input
+                                    type="checkbox"
+                                    className="rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+                                    checked={horario[dia].includes(hora)}
+                                    onChange={() => toggleHour(dia, hora)}
+                                  />
+                                  <span className="text-[10px] text-gray-600">{hora}</span>
+                                </label>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+              
+              <button type="submit" className="w-full mt-6 bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 flex items-center justify-center gap-2">
+                <Plus className="w-4 h-4" /> Registrar Ficha
+              </button>
+            </form>
+          </div>
+        )}
+
+        <div className={canEdit ? "lg:col-span-2" : "lg:col-span-3"}>
           {loading ? (
             <div className="bg-white p-12 rounded-xl border flex justify-center items-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
@@ -326,11 +330,13 @@ export default function FichasView() {
 
                   return (
                     <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-5 relative overflow-hidden group">
-                      <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
-                        <button onClick={() => handleDelete(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
+                      {canEdit && (
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
+                          <button onClick={() => handleDelete(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
+                      )}
 
                       <div className="flex items-start justify-between mb-3">
                         <div>

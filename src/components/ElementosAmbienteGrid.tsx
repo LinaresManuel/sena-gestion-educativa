@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
+import { useCanEdit } from "../lib/auth-context";
 
 export interface ElementoAmbiente {
   id: number;
@@ -18,6 +19,7 @@ interface Props {
 }
 
 export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onClose }: Props) {
+  const canEdit = useCanEdit();
   const [elementos, setElementos] = useState<ElementoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -150,54 +152,56 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
         )}
         
         <div className="p-6 overflow-auto flex-1 gap-6 grid grid-cols-1 md:grid-cols-3">
-          <div className="md:col-span-1">
-            <form onSubmit={handleSubmit} className="border rounded-lg p-4 bg-gray-50 space-y-4">
-              <h3 className="font-medium">{editingId ? "Editar Elemento" : "Nuevo Elemento"}</h3>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Nº Placa</label>
-                <input required type="text" value={placa} onChange={e=>setPlaca(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Nombre del Bien</label>
-                <input required type="text" value={nombre} onChange={e=>setNombre(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Detalle</label>
-                <textarea value={detalle} onChange={e=>setDetalle(e.target.value)} rows={2} className="w-full px-3 py-2 border rounded-md text-sm"></textarea>
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Estado</label>
-                <select value={estado} onChange={e=>setEstado(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
-                  <option value="BUENO">BUENO</option>
-                  <option value="REGULAR">REGULAR</option>
-                  <option value="MALO">MALO</option>
-                  <option value="DE BAJA">DE BAJA</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Foto del Bien</label>
-                <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full text-xs" />
-                {imagen && (
-                  <div className="mt-2 relative">
-                    <img src={imagen} alt="Preview" className="h-20 w-20 object-cover rounded-md border" />
-                    <button type="button" onClick={() => setImagen("")} className="absolute -top-2 -right-2 bg-red-100 text-red-600 rounded-full p-1 hover:bg-red-200">
-                      <X className="w-3 h-3" />
-                    </button>
-                  </div>
-                )}
-              </div>
-              <div className="flex gap-2 pt-2">
-                <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 flex items-center justify-center gap-2 text-sm">
-                  {editingId ? "Actualizar" : <><Plus className="w-4 h-4"/> Agregar</>}
-                </button>
-                {editingId && (
-                  <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-300 text-gray-800 py-2 rounded-md hover:bg-gray-400 text-sm">Cancel</button>
-                )}
-              </div>
-            </form>
-          </div>
+          {canEdit && (
+            <div className="md:col-span-1">
+              <form onSubmit={handleSubmit} className="border rounded-lg p-4 bg-gray-50 space-y-4">
+                <h3 className="font-medium">{editingId ? "Editar Elemento" : "Nuevo Elemento"}</h3>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Nº Placa</label>
+                  <input required type="text" value={placa} onChange={e=>setPlaca(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Nombre del Bien</label>
+                  <input required type="text" value={nombre} onChange={e=>setNombre(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Detalle</label>
+                  <textarea value={detalle} onChange={e=>setDetalle(e.target.value)} rows={2} className="w-full px-3 py-2 border rounded-md text-sm"></textarea>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Estado</label>
+                  <select value={estado} onChange={e=>setEstado(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                    <option value="BUENO">BUENO</option>
+                    <option value="REGULAR">REGULAR</option>
+                    <option value="MALO">MALO</option>
+                    <option value="DE BAJA">DE BAJA</option>
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Foto del Bien</label>
+                  <input type="file" accept="image/*" onChange={handleImageUpload} className="w-full text-xs" />
+                  {imagen && (
+                    <div className="mt-2 relative">
+                      <img src={imagen} alt="Preview" className="h-20 w-20 object-cover rounded-md border" />
+                      <button type="button" onClick={() => setImagen("")} className="absolute -top-2 -right-2 bg-red-100 text-red-600 rounded-full p-1 hover:bg-red-200">
+                        <X className="w-3 h-3" />
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <div className="flex gap-2 pt-2">
+                  <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 flex items-center justify-center gap-2 text-sm">
+                    {editingId ? "Actualizar" : <><Plus className="w-4 h-4"/> Agregar</>}
+                  </button>
+                  {editingId && (
+                    <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-300 text-gray-800 py-2 rounded-md hover:bg-gray-400 text-sm">Cancel</button>
+                  )}
+                </div>
+              </form>
+            </div>
+          )}
           
-          <div className="md:col-span-2">
+          <div className={canEdit ? "md:col-span-2" : "md:col-span-3"}>
             <div className="border rounded-lg overflow-hidden bg-white">
               <table className="w-full text-left text-sm">
                 <thead className="bg-gray-100 border-b">
@@ -206,14 +210,14 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
                     <th className="px-4 py-3 font-medium text-gray-500">Placa</th>
                     <th className="px-4 py-3 font-medium text-gray-500">Bien / Detalle</th>
                     <th className="px-4 py-3 font-medium text-gray-500">Estado</th>
-                    <th className="px-4 py-3 font-medium text-gray-500 text-right">Acciones</th>
+                    {canEdit && <th className="px-4 py-3 font-medium text-gray-500 text-right">Acciones</th>}
                   </tr>
                 </thead>
                 <tbody className="divide-y">
                   {loading ? (
-                    <tr><td colSpan={5} className="px-4 py-4 text-center text-gray-500">Cargando...</td></tr>
+                    <tr><td colSpan={canEdit ? 5 : 4} className="px-4 py-4 text-center text-gray-500">Cargando...</td></tr>
                   ) : elementos.length === 0 ? (
-                    <tr><td colSpan={5} className="px-4 py-4 text-center text-gray-500">No hay elementos registrados en este ambiente.</td></tr>
+                    <tr><td colSpan={canEdit ? 5 : 4} className="px-4 py-4 text-center text-gray-500">No hay elementos registrados en este ambiente.</td></tr>
                   ) : (
                     elementos.map(el => (
                       <tr key={el.id} className="hover:bg-gray-50">
@@ -239,14 +243,16 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
                             {el.estado}
                           </span>
                         </td>
-                        <td className="px-4 py-3 text-right space-x-1">
-                          <button onClick={() => handleEdit(el)} className="text-gray-400 hover:text-blue-600 transition p-1">
-                            <Pencil className="w-4 h-4"/>
-                          </button>
-                          <button onClick={() => handleDelete(el.id)} className="text-gray-400 hover:text-red-600 transition p-1">
-                            <Trash2 className="w-4 h-4"/>
-                          </button>
-                        </td>
+                        {canEdit && (
+                          <td className="px-4 py-3 text-right space-x-1">
+                            <button onClick={() => handleEdit(el)} className="text-gray-400 hover:text-blue-600 transition p-1">
+                              <Pencil className="w-4 h-4"/>
+                            </button>
+                            <button onClick={() => handleDelete(el.id)} className="text-gray-400 hover:text-red-600 transition p-1">
+                              <Trash2 className="w-4 h-4"/>
+                            </button>
+                          </td>
+                        )}
                       </tr>
                     ))
                   )}

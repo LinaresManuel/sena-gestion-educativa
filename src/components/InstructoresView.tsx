@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, X, Pencil } from "lucide-react";
+import { useCanEdit } from "../lib/auth-context";
 
 interface Instructor {
   id: number;
@@ -12,6 +13,7 @@ interface Instructor {
 }
 
 export default function InstructoresView() {
+  const canEdit = useCanEdit();
   const [instructores, setInstructores] = useState<Instructor[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -162,74 +164,76 @@ export default function InstructoresView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-1">
-          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
-            <div className="flex items-center justify-between mb-2">
-              <h2 className="text-lg font-medium">{editingId ? "Editar Instructor" : "Nuevo Instructor"}</h2>
-              {editingId && (
-                <button type="button" onClick={cancelEdit} className="text-sm text-gray-500 hover:text-gray-700">Cancel</button>
-              )}
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Documento</label>
-              <input type="text" required value={documento} onChange={e => setDocumento(e.target.value)} className="w-full px-3 py-2 border rounded-md" />
-            </div>
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nombres</label>
-                <input type="text" required value={nombres} onChange={e => setNombres(e.target.value)} className="w-full px-3 py-2 border rounded-md" />
+        {canEdit && (
+          <div className="md:col-span-1">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
+              <div className="flex items-center justify-between mb-2">
+                <h2 className="text-lg font-medium">{editingId ? "Editar Instructor" : "Nuevo Instructor"}</h2>
+                {editingId && (
+                  <button type="button" onClick={cancelEdit} className="text-sm text-gray-500 hover:text-gray-700">Cancel</button>
+                )}
               </div>
+              
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Apellidos</label>
-                <input type="text" required value={apellidos} onChange={e => setApellidos(e.target.value)} className="w-full px-3 py-2 border rounded-md" />
+                <label className="block text-sm font-medium text-gray-700 mb-1">Documento</label>
+                <input type="text" required value={documento} onChange={e => setDocumento(e.target.value)} className="w-full px-3 py-2 border rounded-md" />
               </div>
-            </div>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Tipo de Vinculación</label>
-              <select required value={tipoVinculacion} onChange={e => setTipoVinculacion(e.target.value)} className="w-full px-3 py-2 border rounded-md">
-                <option value="PLANTA">PLANTA</option>
-                <option value="CONTRATISTA">CONTRATISTA</option>
-              </select>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Perfiles Académicos</label>
-              {availablePerfiles.length === 0 ? (
-                <div className="text-sm text-gray-500 py-2">No hay perfiles registrados. Cree un perfil en la sección de Currículos primero.</div>
-              ) : (
-                <div className="max-h-48 overflow-y-auto border rounded-md p-3 space-y-2 bg-gray-50">
-                  {availablePerfiles.map((p, i) => (
-                    <label key={i} className="flex items-start gap-2 cursor-pointer">
-                      <input 
-                        type="checkbox" 
-                        className="mt-1"
-                        checked={selectedPerfiles.includes(p.nombre)}
-                        onChange={() => togglePerfil(p.nombre)}
-                      />
-                      <span className="text-sm text-gray-700">{p.nombre} <span className="text-gray-400 text-xs text-nowrap">({p.codigo})</span></span>
-                    </label>
-                  ))}
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombres</label>
+                  <input type="text" required value={nombres} onChange={e => setNombres(e.target.value)} className="w-full px-3 py-2 border rounded-md" />
                 </div>
-              )}
-            </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Apellidos</label>
+                  <input type="text" required value={apellidos} onChange={e => setApellidos(e.target.value)} className="w-full px-3 py-2 border rounded-md" />
+                </div>
+              </div>
+              
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Tipo de Vinculación</label>
+                <select required value={tipoVinculacion} onChange={e => setTipoVinculacion(e.target.value)} className="w-full px-3 py-2 border rounded-md">
+                  <option value="PLANTA">PLANTA</option>
+                  <option value="CONTRATISTA">CONTRATISTA</option>
+                </select>
+              </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
-              <select required value={estado} onChange={e => setEstado(e.target.value)} className="w-full px-3 py-2 border rounded-md">
-                <option value="ACTIVO">ACTIVO</option>
-                <option value="INACTIVO">INACTIVO</option>
-              </select>
-            </div>
-            
-            <button type="submit" className="w-full mt-4 bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 flex items-center justify-center gap-2">
-              {editingId ? "Actualizar Instructor" : <><Plus className="w-4 h-4" /> Registrar Instructor</>}
-            </button>
-          </form>
-        </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Perfiles Académicos</label>
+                {availablePerfiles.length === 0 ? (
+                  <div className="text-sm text-gray-500 py-2">No hay perfiles registrados. Cree un perfil en la sección de Currículos primero.</div>
+                ) : (
+                  <div className="max-h-48 overflow-y-auto border rounded-md p-3 space-y-2 bg-gray-50">
+                    {availablePerfiles.map((p, i) => (
+                      <label key={i} className="flex items-start gap-2 cursor-pointer">
+                        <input 
+                          type="checkbox" 
+                          className="mt-1"
+                          checked={selectedPerfiles.includes(p.nombre)}
+                          onChange={() => togglePerfil(p.nombre)}
+                        />
+                        <span className="text-sm text-gray-700">{p.nombre} <span className="text-gray-400 text-xs text-nowrap">({p.codigo})</span></span>
+                      </label>
+                    ))}
+                  </div>
+                )}
+              </div>
 
-        <div className="md:col-span-2">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+                <select required value={estado} onChange={e => setEstado(e.target.value)} className="w-full px-3 py-2 border rounded-md">
+                  <option value="ACTIVO">ACTIVO</option>
+                  <option value="INACTIVO">INACTIVO</option>
+                </select>
+              </div>
+              
+              <button type="submit" className="w-full mt-4 bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 flex items-center justify-center gap-2">
+                {editingId ? "Actualizar Instructor" : <><Plus className="w-4 h-4" /> Registrar Instructor</>}
+              </button>
+            </form>
+          </div>
+        )}
+
+        <div className={canEdit ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">
@@ -238,14 +242,14 @@ export default function InstructoresView() {
                   <th className="px-6 py-3 font-medium text-gray-500">Nombre Completo</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Vinculación</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Perfiles</th>
-                  <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>
+                  {canEdit && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {loading ? (
-                  <tr><td colSpan={5} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
+                  <tr><td colSpan={canEdit ? 5 : 4} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
                 ) : instructores.length === 0 ? (
-                  <tr><td colSpan={5} className="px-6 py-4 text-center text-gray-500">No hay instructores registrados.</td></tr>
+                  <tr><td colSpan={canEdit ? 5 : 4} className="px-6 py-4 text-center text-gray-500">No hay instructores registrados.</td></tr>
                 ) : (
                   instructores.map(a => (
                     <tr key={a.id} className="hover:bg-gray-50">
@@ -261,16 +265,18 @@ export default function InstructoresView() {
                           ))}
                         </div>
                       </td>
-                      <td className="px-6 py-4 text-right">
-                        <div className="flex items-center justify-end gap-2">
-                          <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-purple-600 transition p-1">
-                            <Pencil className="w-4 h-4" />
-                          </button>
-                          <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </td>
+                      {canEdit && (
+                        <td className="px-6 py-4 text-right">
+                          <div className="flex items-center justify-end gap-2">
+                            <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-purple-600 transition p-1">
+                              <Pencil className="w-4 h-4" />
+                            </button>
+                            <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          </div>
+                        </td>
+                      )}
                     </tr>
                   ))
                 )}

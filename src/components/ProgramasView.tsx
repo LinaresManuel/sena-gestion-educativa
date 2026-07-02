@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, FileText, Download, List, X } from "lucide-react";
 import CurriculoModal from "./CurriculoModal";
+import { useCanEdit } from "../lib/auth-context";
 
 export interface Programa {
   id: number;
@@ -14,6 +15,7 @@ export interface Programa {
 }
 
 export default function ProgramasView() {
+  const canEdit = useCanEdit();
   const [programas, setProgramas] = useState<Programa[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -153,65 +155,67 @@ export default function ProgramasView() {
       )}
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        <div className="xl:col-span-1 border rounded-xl bg-white shadow-sm overflow-hidden flex flex-col max-h-[85vh]">
-          <div className="p-4 border-b bg-gray-50 shrink-0">
-            <h2 className="text-lg font-medium">{editingId ? "Editar Programa" : "Nuevo Programa"}</h2>
-          </div>
-          <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-4">
-            
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">Denominación del Programa</label>
-              <input type="text" required value={denominacion} onChange={e => setDenominacion(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+        {canEdit && (
+          <div className="xl:col-span-1 border rounded-xl bg-white shadow-sm overflow-hidden flex flex-col max-h-[85vh]">
+            <div className="p-4 border-b bg-gray-50 shrink-0">
+              <h2 className="text-lg font-medium">{editingId ? "Editar Programa" : "Nuevo Programa"}</h2>
             </div>
-
-            <div className="grid grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="p-6 overflow-y-auto space-y-4">
+              
               <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Código</label>
-                <input type="text" required value={codigo} onChange={e => setCodigo(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+                <label className="block text-xs font-medium text-gray-700 mb-1">Denominación del Programa</label>
+                <input type="text" required value={denominacion} onChange={e => setDenominacion(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
               </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Versión</label>
-                <input type="text" required value={version} onChange={e => setVersion(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
-              </div>
-            </div>
 
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Horas Etapa Lectiva</label>
-                <input type="number" required value={horasLectiva} onChange={e => setHorasLectiva(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Código</label>
+                  <input type="text" required value={codigo} onChange={e => setCodigo(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Versión</label>
+                  <input type="text" required value={version} onChange={e => setVersion(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
               </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Horas Etapa Productiva</label>
-                <input type="number" required value={horasProductiva} onChange={e => setHorasProductiva(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Horas Etapa Lectiva</label>
+                  <input type="number" required value={horasLectiva} onChange={e => setHorasLectiva(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
+                <div>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">Horas Etapa Productiva</label>
+                  <input type="number" required value={horasProductiva} onChange={e => setHorasProductiva(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" />
+                </div>
               </div>
-            </div>
 
-            <div>
-              <label className="block text-xs font-medium text-gray-700 mb-1">Tipo de Programa</label>
-              <select required value={tipoPrograma} onChange={e => setTipoPrograma(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
-                <option value="Técnico">Técnico</option>
-                <option value="Tecnólogo">Tecnólogo</option>
-                <option value="Especialización Tecnológica">Especialización Tecnológica</option>
-                <option value="Operario">Operario</option>
-                <option value="Auxiliar">Auxiliar</option>
-                <option value="Curso Especial">Curso Especial</option>
-              </select>
-            </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-1">Tipo de Programa</label>
+                <select required value={tipoPrograma} onChange={e => setTipoPrograma(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                  <option value="Técnico">Técnico</option>
+                  <option value="Tecnólogo">Tecnólogo</option>
+                  <option value="Especialización Tecnológica">Especialización Tecnológica</option>
+                  <option value="Operario">Operario</option>
+                  <option value="Auxiliar">Auxiliar</option>
+                  <option value="Curso Especial">Curso Especial</option>
+                </select>
+              </div>
 
-            <div className="flex gap-2 pt-4 sticky bottom-0 bg-white border-t mt-4">
-              <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 flex items-center justify-center gap-2 text-sm font-medium">
-                {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
-              </button>
-              {editingId && (
-                <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200 text-sm font-medium">
-                  Cancelar
+              <div className="flex gap-2 pt-4 sticky bottom-0 bg-white border-t mt-4">
+                <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 flex items-center justify-center gap-2 text-sm font-medium">
+                  {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
                 </button>
-              )}
-            </div>
-          </form>
-        </div>
+                {editingId && (
+                  <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200 text-sm font-medium">
+                    Cancelar
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+        )}
 
-        <div className="xl:col-span-2">
+        <div className={canEdit ? "xl:col-span-2" : "xl:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">
@@ -256,12 +260,16 @@ export default function ProgramasView() {
                           <button onClick={() => setActiveProgramaCurriculo(p)} className="text-gray-400 hover:text-green-600 transition p-1" title="Contenidos Curriculares">
                             <List className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleEdit(p)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                            <Pencil className="w-4 h-4" />
-                          </button>
-                          <button onClick={() => handleDelete(p.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
+                          {canEdit && (
+                            <>
+                              <button onClick={() => handleEdit(p)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                                <Pencil className="w-4 h-4" />
+                              </button>
+                              <button onClick={() => handleDelete(p.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </>
+                          )}
                         </td>
                       </tr>
                     ))

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, List, X } from "lucide-react";
 import { TipoAmbiente } from "./TiposAmbienteView";
 import ElementosAmbienteGrid from "./ElementosAmbienteGrid";
+import { useCanEdit } from "../lib/auth-context";
 
 interface Ambiente {
   id: number;
@@ -20,6 +21,7 @@ interface Centro {
 }
 
 export default function AmbientesView() {
+  const canEdit = useCanEdit();
   const [ambientes, setAmbientes] = useState<Ambiente[]>([]);
   const [centros, setCentros] = useState<Centro[]>([]);
   const [tiposAmbiente, setTiposAmbiente] = useState<TipoAmbiente[]>([]);
@@ -164,73 +166,75 @@ export default function AmbientesView() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        <div className="lg:col-span-1">
-          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
-            <h2 className="text-lg font-medium mb-2">{editingId ? "Editar Ambiente" : "Nuevo Ambiente"}</h2>
-            
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
-              <select required value={centroId} onChange={e => setCentroId(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
-                <option value="">Seleccione...</option>
-                {centros.map(c => <option key={c.id} value={c.id}>{c.nombre}</option>)}
-              </select>
-            </div>
-            
-            <div className="grid grid-cols-2 gap-4">
+        {canEdit && (
+          <div className="lg:col-span-1">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
+              <h2 className="text-lg font-medium mb-2">{editingId ? "Editar Ambiente" : "Nuevo Ambiente"}</h2>
+              
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Código</label>
-                <input type="text" required value={codigo} onChange={e => setCodigo(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Ej: A-101" />
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Capacidad</label>
-                <input type="number" required value={capacidad} onChange={e => setCapacidad(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="30" />
-              </div>
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-              <input type="text" required value={nombre} onChange={e => setNombre(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Sala de Sistemas 1" />
-            </div>
-
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
-                <select required value={tipoAmbienteId} onChange={e => setTipoAmbienteId(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
+                <select required value={centroId} onChange={e => setCentroId(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
                   <option value="">Seleccione...</option>
-                  {tiposAmbiente.map(t => (
-                    <option key={t.id} value={t.id}>{t.nombre}</option>
-                  ))}
+                  {centros.map(c => <option key={c.id} value={c.id}>{c.nombre}</option>)}
                 </select>
               </div>
+              
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Código</label>
+                  <input type="text" required value={codigo} onChange={e => setCodigo(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Ej: A-101" />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Capacidad</label>
+                  <input type="number" required value={capacidad} onChange={e => setCapacidad(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="30" />
+                </div>
+              </div>
+
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
-                <select required value={estado} onChange={e => setEstado(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
-                  <option value="ACTIVO">ACTIVO</option>
-                  <option value="INACTIVO">INACTIVO</option>
-                  <option value="MANTENIMIENTO">MANTENIMIENTO</option>
-                </select>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                <input type="text" required value={nombre} onChange={e => setNombre(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Sala de Sistemas 1" />
               </div>
-            </div>
 
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Ubicación / Geolocalización</label>
-              <input type="text" value={ubicacion} onChange={e => setUbicacion(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Lat, Lng o URL de Maps" />
-            </div>
-            
-            <div className="flex gap-2 mt-6">
-              <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 flex items-center justify-center gap-2">
-                {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
-              </button>
-              {editingId && (
-                <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200">
-                  Cancelar
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
+                  <select required value={tipoAmbienteId} onChange={e => setTipoAmbienteId(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                    <option value="">Seleccione...</option>
+                    {tiposAmbiente.map(t => (
+                      <option key={t.id} value={t.id}>{t.nombre}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+                  <select required value={estado} onChange={e => setEstado(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                    <option value="ACTIVO">ACTIVO</option>
+                    <option value="INACTIVO">INACTIVO</option>
+                    <option value="MANTENIMIENTO">MANTENIMIENTO</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Ubicación / Geolocalización</label>
+                <input type="text" value={ubicacion} onChange={e => setUbicacion(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Lat, Lng o URL de Maps" />
+              </div>
+              
+              <div className="flex gap-2 mt-6">
+                <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 flex items-center justify-center gap-2">
+                  {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
                 </button>
-              )}
-            </div>
-          </form>
-        </div>
+                {editingId && (
+                  <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200">
+                    Cancelar
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+        )}
 
-        <div className="lg:col-span-2">
+        <div className={canEdit ? "lg:col-span-2" : "lg:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">
@@ -268,12 +272,16 @@ export default function AmbientesView() {
                           <button onClick={() => setSelectedAmbienteForElements(a)} className="text-gray-400 hover:text-indigo-600 transition p-1" title="Elementos">
                             <List className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                            <Pencil className="w-4 h-4" />
-                          </button>
-                          <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
+                          {canEdit && (
+                            <>
+                              <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                                <Pencil className="w-4 h-4" />
+                              </button>
+                              <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            </>
+                          )}
                         </td>
                       </tr>
                     ))

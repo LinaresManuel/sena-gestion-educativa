@@ -23,11 +23,30 @@ Lista de implementaciones identificadas como necesarias o recomendables para com
 ## 🔴 Prioridad ALTA — Seguridad y bloqueantes operacionales
 
 ### A. Mitigación temporal de la brecha de guards (cubierto por Y)
+**✅ Implementado como mitigación temporal.**
+
 Cualquier usuario logueado (incluso `lector`) puede acceder a `/regionales`, `/programacion`, etc., y ver/editar datos.
 
-**Tarea (mitigación temporal hasta implementar Y):** Añadir `requireRole` en `src/App.tsx` y ocultar botones de creación/edición para `lector`. Solo cubre el caso binario "lector = sin acceso". La solución definitiva es el sistema granular de permisos (ver Y).
+**Mitigación implementada:**
+- Se creó `src/lib/auth-context.ts` con `AuthContext` y hook `useCanEdit()` que retorna `true` solo para roles `admin` y `editor`.
+- Se envolvió `PrivateLayout` con `AuthContext.Provider` para exponer el usuario a todos los componentes hijos.
+- Se añadió componente `RequireRole` en `App.tsx` para proteger rutas específicas (actualmente `/programacion` solo permite `admin` y `editor`).
+- Se ocultó el enlace "Programación" en el sidebar y Dashboard para usuarios `lector`.
+- Se ocultaron formularios de creación/edición y botones de acción (editar/eliminar) en todos los componentes principales:
+  - `RegionalesView.tsx`
+  - `CentrosView.tsx`
+  - `AmbientesView.tsx`
+  - `TiposAmbienteView.tsx`
+  - `ProgramasView.tsx`
+  - `InstructoresView.tsx`
+  - `FichasView.tsx`
+  - `ElementosAmbienteGrid.tsx`
 
-**Estimación:** 1–2 h
+**Limitaciones:**
+- `CurriculoModal.tsx` aún no tiene guards (pendiente).
+- La solución definitiva es el sistema granular de permisos (tarea Y).
+
+**Estimación:** 1–2 h (mitigación) → **Completado**
 
 ---
 

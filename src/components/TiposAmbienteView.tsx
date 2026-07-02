@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
+import { useCanEdit } from "../lib/auth-context";
 
 export interface TipoAmbiente {
   id: number;
@@ -8,6 +9,7 @@ export interface TipoAmbiente {
 }
 
 export default function TiposAmbienteView() {
+  const canEdit = useCanEdit();
   const [tipos, setTipos] = useState<TipoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -112,79 +114,83 @@ export default function TiposAmbienteView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-1">
-          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
-            <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Tipo" : "Nuevo Tipo"}</h2>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                <input
-                  type="text"
-                  required
-                  value={nombre}
-                  onChange={e => setNombre(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-md text-sm"
-                  placeholder="Ej: Aula, Laboratorio"
-                />
+        {canEdit && (
+          <div className="md:col-span-1">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
+              <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Tipo" : "Nuevo Tipo"}</h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                  <input
+                    type="text"
+                    required
+                    value={nombre}
+                    onChange={e => setNombre(e.target.value)}
+                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    placeholder="Ej: Aula, Laboratorio"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+                  <textarea
+                    value={descripcion}
+                    onChange={e => setDescripcion(e.target.value)}
+                    className="w-full px-3 py-2 border rounded-md text-sm"
+                    placeholder="Detalle opcional..."
+                    rows={3}
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
-                <textarea
-                  value={descripcion}
-                  onChange={e => setDescripcion(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-md text-sm"
-                  placeholder="Detalle opcional..."
-                  rows={3}
-                />
-              </div>
-            </div>
-            
-            <div className="flex gap-2 mt-6">
-              <button type="submit" className="flex-1 bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 flex items-center justify-center gap-2 text-sm">
-                {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
-              </button>
-              {editingId && (
-                <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200 text-sm">
-                  Cancelar
+              
+              <div className="flex gap-2 mt-6">
+                <button type="submit" className="flex-1 bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 flex items-center justify-center gap-2 text-sm">
+                  {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
                 </button>
-              )}
-            </div>
-          </form>
-        </div>
+                {editingId && (
+                  <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200 text-sm">
+                    Cancelar
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+        )}
 
-        <div className="md:col-span-2">
+        <div className={canEdit ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">
                 <tr>
                   <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Descripción</th>
-                  <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>
+                  {canEdit && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {loading ? (
                   <tr>
-                    <td colSpan={3} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
+                    <td colSpan={canEdit ? 3 : 2} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
                   </tr>
                 ) : tipos.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className="px-6 py-4 text-center text-gray-500">No hay tipos registrados.</td>
+                    <td colSpan={canEdit ? 3 : 2} className="px-6 py-4 text-center text-gray-500">No hay tipos registrados.</td>
                   </tr>
                 ) : (
                   tipos.map(t => (
                     <tr key={t.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 font-medium text-gray-900">{t.nombre}</td>
                       <td className="px-6 py-4 text-gray-600">{t.descripcion}</td>
-                      <td className="px-6 py-4 text-right space-x-2">
-                        <button onClick={() => handleEdit(t)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                          <Pencil className="w-4 h-4" />
-                        </button>
-                        <button onClick={() => handleDelete(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </td>
+                      {canEdit && (
+                        <td className="px-6 py-4 text-right space-x-2">
+                          <button onClick={() => handleEdit(t)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                            <Pencil className="w-4 h-4" />
+                          </button>
+                          <button onClick={() => handleDelete(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </td>
+                      )}
                     </tr>
                   ))
                 )}

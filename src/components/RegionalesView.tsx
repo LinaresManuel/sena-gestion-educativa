@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
+import { useCanEdit } from "../lib/auth-context";
 
 interface Regional {
   id: number;
@@ -8,6 +9,7 @@ interface Regional {
 }
 
 export default function RegionalesView() {
+  const canEdit = useCanEdit();
   const [regionales, setRegionales] = useState<Regional[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -112,80 +114,84 @@ export default function RegionalesView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="md:col-span-1">
-          <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
-            <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Regional" : "Nueva Regional"}</h2>
-            
-            <div className="space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Código</label>
-                <input
-                  type="text"
-                  required
-                  value={codigo}
-                  onChange={e => setCodigo(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-md"
-                  placeholder="Ej: 11"
-                />
+        {canEdit && (
+          <div className="md:col-span-1">
+            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
+              <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Regional" : "Nueva Regional"}</h2>
+              
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Código</label>
+                  <input
+                    type="text"
+                    required
+                    value={codigo}
+                    onChange={e => setCodigo(e.target.value)}
+                    className="w-full px-3 py-2 border rounded-md"
+                    placeholder="Ej: 11"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                  <input
+                    type="text"
+                    required
+                    value={nombre}
+                    onChange={e => setNombre(e.target.value)}
+                    className="w-full px-3 py-2 border rounded-md"
+                    placeholder="Ej: Distrito Capital"
+                  />
+                </div>
               </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                <input
-                  type="text"
-                  required
-                  value={nombre}
-                  onChange={e => setNombre(e.target.value)}
-                  className="w-full px-3 py-2 border rounded-md"
-                  placeholder="Ej: Distrito Capital"
-                />
-              </div>
-            </div>
-            
-            <div className="flex gap-2 mt-6">
-              <button type="submit" className="flex-1 bg-amber-600 text-white py-2 rounded-md hover:bg-amber-700 flex items-center justify-center gap-2">
-                {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
-              </button>
-              {editingId && (
-                <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200">
-                  Cancelar
+              
+              <div className="flex gap-2 mt-6">
+                <button type="submit" className="flex-1 bg-amber-600 text-white py-2 rounded-md hover:bg-amber-700 flex items-center justify-center gap-2">
+                  {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
                 </button>
-              )}
-            </div>
-          </form>
-        </div>
+                {editingId && (
+                  <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200">
+                    Cancelar
+                  </button>
+                )}
+              </div>
+            </form>
+          </div>
+        )}
 
-        <div className="md:col-span-2">
+        <div className={canEdit ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">
                 <tr>
                   <th className="px-6 py-3 font-medium text-gray-500">Código</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
-                  <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>
+                  {canEdit && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {loading ? (
                   <tr>
-                    <td colSpan={3} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
+                    <td colSpan={canEdit ? 3 : 2} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
                   </tr>
                 ) : regionales.length === 0 ? (
                   <tr>
-                    <td colSpan={3} className="px-6 py-4 text-center text-gray-500">No hay regionales registradas.</td>
+                    <td colSpan={canEdit ? 3 : 2} className="px-6 py-4 text-center text-gray-500">No hay regionales registradas.</td>
                   </tr>
                 ) : (
                   regionales.map(r => (
                     <tr key={r.id} className="hover:bg-gray-50">
                       <td className="px-6 py-4 font-mono text-gray-600">{r.codigo}</td>
                       <td className="px-6 py-4 font-medium">{r.nombre}</td>
-                      <td className="px-6 py-4 text-right space-x-2">
-                        <button onClick={() => handleEdit(r)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                          <Pencil className="w-4 h-4" />
-                        </button>
-                        <button onClick={() => handleDelete(r.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </td>
+                      {canEdit && (
+                        <td className="px-6 py-4 text-right space-x-2">
+                          <button onClick={() => handleEdit(r)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                            <Pencil className="w-4 h-4" />
+                          </button>
+                          <button onClick={() => handleDelete(r.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </td>
+                      )}
                     </tr>
                   ))
                 )}

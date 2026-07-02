@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Programa } from "./ProgramasView";
 import { X, Plus, Trash2, ChevronDown, ChevronRight, AlertCircle, CheckCircle2, Pencil } from "lucide-react";
+import { useCanEdit } from "../lib/auth-context";
 
 interface Competencia {
   id: number;
@@ -33,6 +34,7 @@ interface CurriculoModalProps {
 }
 
 export default function CurriculoModal({ programa, onClose }: CurriculoModalProps) {
+  const canEdit = useCanEdit();
   const [competencias, setCompetencias] = useState<Competencia[]>([]);
   const [resultados, setResultados] = useState<Record<number, ResultadoAprendizaje[]>>({});
   const [perfiles, setPerfiles] = useState<Record<number, PerfilInstructor[]>>({});

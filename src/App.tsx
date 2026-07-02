@@ -12,6 +12,7 @@ import FichasView from "./components/FichasView";
 import ProgramacionInstructoresView from "./components/ProgramacionInstructoresView";
 import Login from "./Login";
 import ChangePassword from "./ChangePassword";
+import { AuthContext } from "./lib/auth-context";
 
 interface AuthUser {
   id: number;
@@ -61,11 +62,13 @@ function Dashboard({ user }: { user: AuthUser }) {
           <h2 className="text-xl font-semibold mb-2">Fichas / Cursos</h2>
           <p className="text-sm text-gray-600">Registra fichas con sus ambientes y horarios asignados.</p>
         </Link>
-        <Link to="/programacion" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
-          <Calendar className="w-10 h-10 text-indigo-500 mb-4" />
-          <h2 className="text-xl font-semibold mb-2">Programación</h2>
-          <p className="text-sm text-gray-600">Asigna instructores a resultados de aprendizaje.</p>
-        </Link>
+        {(user.rol === "admin" || user.rol === "editor") && (
+          <Link to="/programacion" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
+            <Calendar className="w-10 h-10 text-indigo-500 mb-4" />
+            <h2 className="text-xl font-semibold mb-2">Programación</h2>
+            <p className="text-sm text-gray-600">Asigna instructores a resultados de aprendizaje.</p>
+          </Link>
+        )}
       </div>
     </div>
   );
@@ -105,9 +108,11 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
             <Link to="/fichas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <BookOpen className="w-5 h-5 text-emerald-600" /> Fichas
             </Link>
-            <Link to="/programacion" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <Calendar className="w-5 h-5 text-indigo-500" /> Programación
-            </Link>
+            {(user.rol === "admin" || user.rol === "editor") && (
+              <Link to="/programacion" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+                <Calendar className="w-5 h-5 text-indigo-500" /> Programación
+              </Link>
+            )}
           </nav>
         </div>
         <div className="p-6 border-t">
@@ -136,6 +141,13 @@ function RequireAuth({ user, children }: { user: AuthUser | null; children: Reac
   return <>{children}</>;
 }
 
+function RequireRole({ user, roles, children }: { user: AuthUser | null; roles: string[]; children: React.ReactNode }) {
+  if (!user || !roles.includes(user.rol)) {
+    return <Navigate to="/" replace />;
+  }
+  return <>{children}</>;
+}
+
 function AppRoutes({ user, setUser, onLogout }: { user: AuthUser | null; setUser: (u: AuthUser | null) => void; onLogout: () => void }) {
   const navigate = useNavigate();
 
@@ -157,21 +169,27 @@ function AppRoutes({ user, setUser, onLogout }: { user: AuthUser | null; setUser
   }
 
   return (
-    <PrivateLayout user={user} onLogout={handleLogout}>
-      <Routes>
-        <Route path="/" element={<Dashboard user={user} />} />
-        <Route path="/regionales" element={<RegionalesView />} />
-        <Route path="/centros" element={<CentrosView />} />
-        <Route path="/ambientes" element={<AmbientesView />} />
-        <Route path="/tipos-ambiente" element={<TiposAmbienteView />} />
-        <Route path="/programas" element={<ProgramasView />} />
-        <Route path="/instructores" element={<InstructoresView />} />
-        <Route path="/fichas" element={<FichasView />} />
-        <Route path="/programacion" element={<ProgramacionInstructoresView />} />
-        <Route path="/cambiar-password" element={<ChangePassword />} />
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </PrivateLayout>
+    <AuthContext.Provider value={user}>
+      <PrivateLayout user={user} onLogout={handleLogout}>
+        <Routes>
+          <Route path="/" element={<Dashboard user={user} />} />
+          <Route path="/regionales" element={<RegionalesView />} />
+          <Route path="/centros" element={<CentrosView />} />
+          <Route path="/ambientes" element={<AmbientesView />} />
+          <Route path="/tipos-ambiente" element={<TiposAmbienteView />} />
+          <Route path="/programas" element={<ProgramasView />} />
+          <Route path="/instructores" element={<InstructoresView />} />
+          <Route path="/fichas" element={<FichasView />} />
+          <Route path="/programacion" element={
+            <RequireRole user={user} roles={["admin", "editor"]}>
+              <ProgramacionInstructoresView />
+            </RequireRole>
+          } />
+          <Route path="/cambiar-password" element={<ChangePassword />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </PrivateLayout>
+    </AuthContext.Provider>
   );
 }
 
