@@ -19,20 +19,35 @@
 
 ## Roles Disponibles
 
-El sistema implementa tres roles con diferentes niveles de permisos:
+El sistema implementa cinco roles con diferentes niveles de permisos:
 
-| Rol | Permisos |
-|-----|----------|
-| **admin** | Acceso completo: crear, editar, eliminar y ver todos los módulos |
-| **editor** | Puede crear, editar y ver, pero no eliminar recursos críticos |
-| **lector** | Solo puede ver información, no puede crear ni modificar |
+| Rol | Permisos | Descripción |
+|-----|----------|-------------|
+| **admin** | 30 permisos (todos) | Acceso completo a todo el sistema |
+| **editor** | 22 permisos | Puede crear, editar y ver la mayoría de módulos |
+| **instructor** | 9 permisos | Puede ver programación, registrar notas y asistencia |
+| **lector** | 8 permisos | Solo puede ver información, no puede modificar |
+| **aprendiz** | 5 permisos | Puede ver inicio, comunicación, notas y asistencia |
 
-### Módulos Protegidos
+### Permisos por Módulo
 
-Los siguientes módulos requieren rol `admin` o `editor`:
-- Programación de instructores
-- Todos los formularios de creación/edición
-- Botones de eliminar en tablas
+| Módulo | Permisos Disponibles |
+|--------|---------------------|
+| **inicio** | ver, reportes |
+| **programacion** | ver, crear, editar, eliminar |
+| **comunicacion** | ver, enviar, responder, eliminar |
+| **inventario** | ver, crear, editar, eliminar |
+| **cursos** | ver, crear, editar, eliminar |
+| **salones** | ver, crear, editar, eliminar |
+| **notas** | ver, registrar, editar, eliminar |
+| **asistencia** | ver, registrar, editar, eliminar |
+
+### Gestión de Permisos
+
+Los permisos se gestionan desde el panel de administración (`/admin`):
+- **Roles:** Asignar permisos a roles específicos
+- **Usuarios:** Asignar roles a usuarios
+- **Estadísticas:** Ver resumen del sistema
 
 ---
 
@@ -212,11 +227,16 @@ npx tsx list-users.ts
 
 ### El usuario no tiene permisos para editar
 
-1. Verifica el rol del usuario:
+1. Verifica el rol del usuario en la BD:
    ```bash
    sqlite3 C:\sena-data\db\data.db "SELECT username, rol FROM usuarios WHERE username = 'tu_usuario';"
    ```
-2. Si el rol es `lector`, cámbialo a `editor` o `admin`
+2. Verifica los permisos del rol en `roles_permisos`:
+   ```bash
+   sqlite3 C:\sena-data\db\data.db "SELECT rp.rol, p.codigo FROM roles_permisos rp JOIN permisos p ON rp.permiso_id = p.id WHERE rp.rol = 'rol_usuario';"
+   ```
+3. Si el rol no tiene los permisos necesarios, asígnalos desde el panel de administración (`/admin`)
+4. El usuario debe cerrar sesión y volver a iniciar para que los cambios surtan efecto
 
 ### El servicio no inicia después de modificar la BD
 
@@ -231,8 +251,8 @@ npx tsx list-users.ts
 
 ## Próximas Mejoras
 
-- [ ] Interfaz web para gestión de usuarios (requiere tarea Y)
-- [ ] Sistema de permisos granulares por módulo
+- [x] Sistema de permisos granulares por módulo ✅
+- [x] Interfaz web para gestión de usuarios (panel de administración) ✅
 - [ ] Autenticación de dos factores (2FA)
 - [ ] Política de expiración de contraseñas
 - [ ] Registro de auditoría de cambios en usuarios

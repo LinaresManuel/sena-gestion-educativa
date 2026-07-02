@@ -87,7 +87,14 @@ Verificar con `GET /api/health`: el campo `uptime` debe estar cerca de 0 segundo
 - Cookie: `sena_session`, `httpOnly`, `sameSite: 'lax'`, `secure: config.COOKIE_SECURE`
 - Login: `POST /api/auth/login` (rate-limited a 10 req/min por IP)
 - `requireAuth` en `server.ts` bloquea todo `/api/*` excepto `/health` y `/auth/*`
-- 3 roles: `admin`, `editor`, `lector`. Helpers en `src/middleware/auth.ts`: `requireAuth`, `requireRole(...)`
+- **Sistema de permisos granular** (Tarea Y implementada):
+  - 5 roles: `admin`, `editor`, `instructor`, `lector`, `aprendiz`
+  - 30 permisos en 8 módulos (inicio, programacion, comunicacion, inventario, cursos, salones, notas, asistencia)
+  - Tablas: `permisos`, `roles_permisos`, `usuarios_roles`
+  - JWT incluye array `permisos` con códigos como `programacion.editar`
+  - Middlewares: `requirePermission(...)`, `requireAnyPermission(...)`, `requireAllPermissions(...)`
+  - Hooks React: `useHasPermission(...)`, `useHasAnyPermission(...)`, `useIsAdmin()`
+  - Admin endpoints: `/api/admin/roles`, `/api/admin/permisos`, `/api/admin/usuarios`
 - Usuario admin auto-creado en el primer arranque: `admin` / `Admin123!` (forzar cambio)
 
 ## Frontend: wrapper global de fetch
@@ -97,7 +104,8 @@ Verificar con `GET /api/health`: el campo `uptime` debe estar cerca de 0 segundo
 ## Base de datos
 
 - `better-sqlite3` + Drizzle. `journal_mode = WAL`, `foreign_keys = ON`, `synchronous = NORMAL`
-- 12 tablas, esquema en `src/db/schema.ts` (incluye `usuarios` para auth)
+- 15 tablas, esquema en `src/db/schema.ts` (incluye `usuarios` para auth + 3 tablas de permisos)
+- Tablas de permisos: `permisos`, `roles_permisos`, `usuarios_roles`
 - Path: `config.DATABASE_URL`, **relativo a `process.cwd()`** — esto importa para `npm run seed` (correr desde la raíz del proyecto) y para el servicio (su `AppDirectory` es la raíz, OK)
 - Backup: `scripts\backup.ps1` usa `sqlite3 .backup` (necesita `sqlite3.exe` en PATH)
 
@@ -114,6 +122,9 @@ Verificar con `GET /api/health`: el campo `uptime` debe estar cerca de 0 segundo
 | `backup.ps1` | Backup manual bajo demanda | No |
 | `show-network.ps1` | Mostrar IPs LAN y URL de acceso | No |
 | `_nssm-helper.ps1` | Auto-detección de ruta de `nssm.exe` | N/A (helper) |
+| `migrate-to-permissions.ts` | Migrar datos al sistema de permisos | No |
+| `verify-permissions.ts` | Verificar permisos en BD | No |
+| `test-permissions.ts` | Probar endpoints de permisos | No |
 
 Los scripts usan `$PSScriptRoot` (no `Get-Location`) para detectar el proyecto, así que funcionan desde cualquier cwd.
 

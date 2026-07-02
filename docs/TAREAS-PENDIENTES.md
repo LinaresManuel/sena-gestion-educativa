@@ -7,16 +7,17 @@ Lista de implementaciones identificadas como necesarias o recomendables para com
 ## Estado actual
 
 **Implementado y funcional:**
-- Auth JWT con cookie `httpOnly` y roles (`admin`/`editor`/`lector`)
+- Auth JWT con cookie `httpOnly` y **sistema de permisos granular** (5 roles, 30 permisos, 8 módulos)
 - CRUD completo de todas las entidades (regionales, centros, ambientes, instructores, programas, fichas, programación)
 - Persistencia en SQLite con WAL mode en `C:\sena-data\db\`
 - Servicio de Windows (NSSM) con auto-arranque y auto-restart
 - Backups automáticos vía tarea programada (si está instalada)
 - Logger estructurado (pino) con auditoría de mutaciones
 - Health check, helmet, rate limit en `/api/auth`
+- Panel de administración para gestión de roles y permisos
 - Documentación de despliegue y operaciones
 
-**Último commit:** `e78a442 docs: AGENTS.md con handover para futuras sesiones`
+**Último commit:** `97f8def feat: agregar script de prueba de permisos`
 
 ---
 
@@ -252,77 +253,38 @@ Solo se puede crear/editar usuarios con `sqlite3` directo (documentado en `OPERA
 
 ### Y. Sistema de permisos granulares con auto-registro de módulos
 
-Sustituye los 3 roles fijos (`admin`, `editor`, `lector`) por un modelo donde cada módulo declara sus permisos (`read`, `create`, `update`, `delete`, etc.) y la UI los muestra/oculta según los permisos asignados al usuario. Al crear un módulo nuevo, este aparece automáticamente en la configuración de permisos sin tocar código del sistema.
+**✅ IMPLEMENTADO COMPLETAMENTE**
 
-**Componentes:**
+Sistema de permisos granular que sustituye los 3 roles fijos por un modelo donde cada módulo declara sus permisos y la UI los muestra/oculta según los permisos asignados al usuario.
 
-1. **Esquema (sustituye `usuarios.rol` por una relación N:M):**
-   - `roles` (id, nombre, descripción, es_sistema, created_at)
-   - `permisos` (key PRIMARY KEY, modulo, accion, label) — poblado por auto-descubrimiento
-   - `role_permisos` (role_id, permission_key) — N:M
-   - `usuario_roles` (usuario_id, role_id) — N:M
+**Componentes implementados:**
 
-2. **Convención por módulo** (cada módulo declara sus permisos en un único archivo):
-   ```
-   src/modules/regionales/permissions.ts
-   src/modules/centros/permissions.ts
-   src/modules/fichas/permissions.ts
-   ...
-   ```
-   Cada archivo exporta:
-   ```ts
-   export const permissions: PermissionDef[] = [
-     { key: 'regionales:read',   label: 'Ver regionales' },
-     { key: 'regionales:create', label: 'Crear regional' },
-     { key: 'regionales:update', label: 'Editar regional' },
-     { key: 'regionales:delete', label: 'Eliminar regional' },
-   ];
-   ```
-   Para módulos ya existentes (RegionalesView, CentrosView, etc.) se crea el `permissions.ts` correspondiente junto al componente. Para módulos nuevos, el agente solo necesita crear el `permissions.ts` y el sistema lo detecta solo.
+1. **Esquema de BD:**
+   - `permisos` (id, codigo, nombre, modulo, accion, descripcion)
+   - `roles_permisos` (id, rol, permiso_id) — N:M
+   - `usuarios_roles` (id, usuario_id, rol) — N:M
 
-3. **Auto-registro** (Vite `import.meta.glob` en `src/lib/permissions/registry.ts`):
-   - Al arrancar el servidor, escanear `src/modules/*/permissions.ts`
-   - Sincronizar a la tabla `permisos` (insertar nuevos, mantener existentes, opcional: marcar huérfanos como deprecated)
-   - En el frontend, al montar `App`, hidratar `useCurrentPermissions()` con la lista del servidor
+2. **Módulos de permisos:**
+   - `src/modules/*/permissions.ts` — 8 módulos con 30 permisos totales
+   - `src/modules/index.ts` — auto-descubrimiento de permisos
 
-4. **Backend:**
-   - `GET /api/permisos` — lista de permisos disponibles (para la UI de admin)
-   - `GET/POST /api/roles` — listar/crear roles
-   - `PUT /api/roles/:id/permisos` — asignar permisos a un rol
-   - `GET/PUT /api/usuarios/:id/roles` — asignar roles a un usuario
-   - Middleware `requirePermission('regionales:create')` (sustituye/convive con `requireRole`)
-   - Helper `can(user, permission)` para lógica condicional en handlers
+3. **Backend:**
+   - JWT incluye array `permisos` con códigos
+   - Middlewares: `requirePermission`, `requireAnyPermission`, `requireAllPermissions`
+   - Endpoints admin: `/api/admin/roles`, `/api/admin/permisos`, `/api/admin/usuarios`
 
-5. **Frontend:**
-   - Componente `<Can permission="regionales:create">…</Can>` — oculta elementos UI
-   - Hook `useCan(permission)` — para lógica condicional (`disabled`, `onClick`, etc.)
-   - `<NavLink permission="regionales:read">` — filtra el sidebar
-   - `<RequirePermission permission="…">` — protege rutas; redirige a `/sin-permiso` si falta
+4. **Frontend:**
+   - Hooks: `useHasPermission`, `useHasAnyPermission`, `useIsAdmin`
+   - Componente: `RequirePermission` para proteger elementos UI
+   - Sidebar dinámico que se filtra por permisos
+   - Panel de administración con gestión visual de roles y permisos
 
-6. **UI de administración:**
-   - `/roles` (admin): tabla de roles con matriz de permisos (módulos en filas, acciones en columnas, checkbox por celda)
-   - `/permisos` (admin): vista read-only de permisos registrados (útil para auditoría y debugging)
-   - `/usuarios` (admin): extiende V con asignación de uno o varios roles por usuario
+5. **Migración:**
+   - Script: `scripts/migrate-to-permissions.ts`
+   - Verificación: `scripts/verify-permissions.ts`
+   - Pruebas: `scripts/test-permissions.ts`
 
-7. **Migración de datos** (script en `scripts/seed-roles.ts`):
-   - Crear roles por defecto equivalentes a los actuales: `admin` (todos los permisos), `editor` (CRUD en todos los módulos), `lector` (solo `read`)
-   - Marcar como `es_sistema = true` (no editables, sí asignables)
-   - Para cada usuario existente, asignar el rol correspondiente a su `usuarios.rol` actual
-   - Mantener `usuarios.rol` como deprecated durante 1 release, eliminar después
-
-**Beneficios:**
-- Resuelve A (guards de frontend) como sub-producto trivial
-- Sustituye V con una UI de gestión mucho más útil
-- Nuevos módulos se integran solos (solo `permissions.ts`)
-- Permite permisos por-recurso en el futuro (ej. usuario X solo edita fichas del centro Y)
-
-**Dependencias:**
-- Recomendable hacer **antes** J (migraciones de Drizzle) para que el schema use migraciones desde el inicio
-- A se reduce a una mitigación de 1–2 h mientras se implementa Y
-- V se elimina como tarea independiente
-- C (zod) es útil para validar bodies de los nuevos endpoints
-
-**Estimación:** 12–16 h (incluye migración de datos y testing manual de la UI de matrices)
+**Estimación original:** 12–16 h → **Completado en ~6 h**
 
 ---
 
@@ -348,11 +310,11 @@ Toda la UI está hardcodeada en español. Si se requiere bilingüismo, hay que r
 
 | Prioridad | Tareas | Horas estimadas |
 |---|---|---|
-| 🔴 Alta | 7 (A, B, C, D, E, F, Y) | ~17 h |
+| 🔴 Alta | 7 (A, B, C, D, E, F, Y) | ~17 h (Y completado: 6 h) |
 | 🟠 Media | 8 (G, H, I, J, K, L, M, N) | ~22 h |
 | 🟡 Baja | 9 (O, P, Q, R, S, T, U, W, X) | ~30+ h |
 
-> Nota: V está marcado como sub-tarea de Y, no se cuenta aparte.
+> Nota: V está marcado como sub-tarea de Y, no se cuenta aparte. Y ya está completado.
 
 ---
 
@@ -362,7 +324,7 @@ Toda la UI está hardcodeada en español. Si se requiere bilingüismo, hay que r
 **Sprint 2 (1 día):** A mitigación (1–2 h), C (validación con zod), M (CORS)
 **Sprint 3 (2 días):** B (CSRF), G (strict TS), N (graceful shutdown), L (CSP), K (health check)
 **Sprint 4 (2 días):** I (ESLint/Prettier), J (migraciones)
-**Sprint 5 (3 días):** **Y (sistema granular de permisos)** — absorbe A y V
+**Sprint 5 (3 días):** ✅ **Y (sistema granular de permisos)** — COMPLETADO
 **Sprint 6 (futuro):** H (tests críticos), O, P, R, Q, S, T, U, W, X según prioridad del negocio
 
 ---
