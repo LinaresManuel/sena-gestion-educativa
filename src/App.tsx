@@ -10,6 +10,7 @@ import ProgramasView from "./components/ProgramasView";
 import InstructoresView from "./components/InstructoresView";
 import FichasView from "./components/FichasView";
 import ProgramacionInstructoresView from "./components/ProgramacionInstructoresView";
+import AdminPanel from "./components/AdminPanel";
 import Login from "./Login";
 import ChangePassword from "./ChangePassword";
 import { AuthContext, useHasPermission, useHasAnyPermission, useIsAdmin } from "./lib/auth-context";

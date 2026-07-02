@@ -36,7 +36,7 @@ export function signToken(user: AuthUser): string {
 export function verifyToken(token: string): AuthUser | null {
   if (!config.JWT_SECRET) return null;
   try {
-    const payload = jwt.verify(token, config.JWT_SECRET, { algorithms: ['HS256'] }) as JwtPayload;
+    const payload = jwt.verify(token, config.JWT_SECRET, { algorithms: ['HS256'] }) as unknown as JwtPayload;
     return { id: payload.sub, username: payload.username, rol: payload.rol, permisos: payload.permisos };
   } catch {
     return null;

@@ -1,11 +1,11 @@
-import React from 'react';
-import { useHasPermission, useHasAnyPermission } from '../lib/auth-context';
+import type { ReactNode } from 'react';
+import { useHasPermission, useHasAnyPermission, useAuth } from '../lib/auth-context';
 
 interface RequirePermissionProps {
   permission?: string;
   anyPermission?: string[];
-  children: React.ReactNode;
-  fallback?: React.ReactNode;
+  children: ReactNode;
+  fallback?: ReactNode;
 }
 
 /**
@@ -48,23 +48,16 @@ export function RequirePermission({
  * Componente que oculta elementos si el usuario no tiene permiso de edición
  * Útil para proteger formularios y botones de acción
  */
-export function EditGuard({ children, fallback = null }: { children: React.ReactNode; fallback?: React.ReactNode }) {
-  // Obtener permisos del usuario
-  const { rol, permisos } = useAuthForGuard();
+export function EditGuard({ children, fallback = null }: { children: ReactNode; fallback?: ReactNode }) {
+  const user = useAuth();
   
   // Admin siempre puede editar
-  if (rol === 'admin') return <>{children}</>;
+  if (user.rol === 'admin') return <>{children}</>;
   
   // Verificar si tiene algún permiso de edición
-  const canEdit = permisos?.some(p => p.includes('.editar') || p.includes('.crear')) ?? false;
+  const canEdit = user.permisos?.some(p => p.includes('.editar') || p.includes('.crear')) ?? false;
   
   return canEdit ? <>{children}</> : <>{fallback}</>;
-}
-
-// Helper hook para el guard (evita usar useAuth directamente)
-function useAuthForGuard() {
-  const { useAuth } = require('../lib/auth-context');
-  return useAuth();
 }
 
 export default RequirePermission;
