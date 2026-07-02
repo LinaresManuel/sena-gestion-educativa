@@ -120,9 +120,38 @@ export const usuarios = sqliteTable('usuarios', {
   username: text('username').notNull().unique(),
   passwordHash: text('password_hash').notNull(),
   nombre: text('nombre').notNull(),
-  rol: text('rol').notNull().default('editor'),
+  rol: text('rol').notNull().default('editor'), // Deprecated: usar usuarios_roles con la nueva tabla roles
   debeCambiarPassword: integer('debe_cambiar_password', { mode: 'boolean' }).notNull().default(false),
   activo: integer('activo', { mode: 'boolean' }).notNull().default(true),
   ultimoLoginAt: text('ultimo_login_at'),
   createdAt: text('created_at').notNull().default("datetime('now')"),
 });
+
+// ==========================================
+// SISTEMA DE PERMISOS GRANULARES (TAREA Y)
+// ==========================================
+
+export const permisos = sqliteTable('permisos', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  codigo: text('codigo').notNull().unique(), // Ej: 'programacion.ver', 'inventario.editar'
+  nombre: text('nombre').notNull(),
+  descripcion: text('descripcion'),
+  modulo: text('modulo').notNull(), // Ej: 'programacion', 'inventario', 'notas'
+  accion: text('accion').notNull(), // Ej: 'ver', 'editar', 'crear', 'eliminar'
+});
+
+export const rolesPermisos = sqliteTable('roles_permisos', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  rol: text('rol').notNull(), // 'admin', 'editor', 'lector', 'instructor', 'aprendiz'
+  permisoId: integer('permiso_id').notNull().references(() => permisos.id, { onDelete: 'cascade' }),
+}, (t) => ({
+  unq: unique().on(t.rol, t.permisoId),
+}));
+
+export const usuariosRoles = sqliteTable('usuarios_roles', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  usuarioId: integer('usuario_id').notNull().references(() => usuarios.id, { onDelete: 'cascade' }),
+  rol: text('rol').notNull(), // 'admin', 'editor', 'lector', 'instructor', 'aprendiz'
+}, (t) => ({
+  unq: unique().on(t.usuarioId, t.rol),
+}));
