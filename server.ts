@@ -47,15 +47,16 @@ async function startServer() {
   app.use(express.urlencoded({ limit: '2mb', extended: true }));
   app.use(cookieParser());
 
-  // Rate limit on auth endpoints
-  const authLimiter = rateLimit({
-    windowMs: 60 * 1000,
-    max: 10,
-    standardHeaders: true,
-    legacyHeaders: false,
-    message: { error: 'Demasiados intentos. Intenta en un minuto.' },
-  });
-  app.use('/api/auth', authLimiter, authRouter);
+  // Rate limit on auth endpoints (TEMPORALMENTE DESHABILITADO)
+  // const authLimiter = rateLimit({
+  //   windowMs: 60 * 1000,
+  //   max: 10,
+  //   standardHeaders: true,
+  //   legacyHeaders: false,
+  //   message: { error: 'Demasiados intentos. Intenta en un minuto.' },
+  // });
+  // app.use('/api/auth', authLimiter, authRouter);
+  app.use('/api/auth', authRouter);
 
   // Admin routes (require auth + admin permission)
   app.use('/api/admin', requireAuth as any, adminRouter);
