@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../lib/auth-context';
-import { Shield, Users, Key, BarChart3, Plus, Trash2, Save, RefreshCw } from 'lucide-react';
+import { Shield, Users, Key, BarChart3, Plus, Trash2, Pencil, Copy, RefreshCw, X } from 'lucide-react';
 
 interface Permiso {
   id: number;
@@ -22,6 +22,215 @@ interface Usuario {
   nombre: string;
   activo: boolean;
   roles: string[];
+  debeCambiarPassword: boolean;
+  ultimoLoginAt: string | null;
+}
+
+const AVAILABLE_ROLES = ['admin', 'editor', 'instructor', 'lector', 'aprendiz'];
+
+function UserFormModal({
+  isOpen,
+  onClose,
+  onSave,
+  usuario,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onSave: (data: any) => Promise<void>;
+  usuario?: Usuario | null;
+}) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [roles, setRoles] = useState<string[]>([]);
+  const [activo, setActivo] = useState(true);
+  const [saving, setSaving] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+  const isEdit = !!usuario;
+
+  useEffect(() => {
+    if (usuario) {
+      setUsername(usuario.username);
+      setNombre(usuario.nombre);
+      setRoles(usuario.roles);
+      setActivo(usuario.activo);
+      setPassword('');
+    } else {
+      setUsername('');
+      setPassword('');
+      setNombre('');
+      setRoles([]);
+      setActivo(true);
+    }
+  }, [usuario, isOpen]);
+
+  if (!isOpen) return null;
+
+  function toggleRole(rol: string) {
+    setRoles(prev => prev.includes(rol) ? prev.filter(r => r !== rol) : [...prev, rol]);
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      if (isEdit) {
+        await onSave({ nombre, activo, roles });
+      } else {
+        await onSave({ username, password, nombre, roles });
+      }
+      onClose();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-md" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between p-4 border-b">
+          <h3 className="text-lg font-medium">{isEdit ? 'Editar Usuario' : 'Nuevo Usuario'}</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>
+        </div>
+        <form onSubmit={handleSubmit} className="p-4 space-y-4">
+          {!isEdit && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+              <input type="text" value={username} onChange={e => setUsername(e.target.value)}
+                className="w-full border rounded-lg px-3 py-2 text-sm" required minLength={3} />
+            </div>
+          )}
+          {!isEdit && (
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+              <div className="relative">
+                <input type={showPassword ? 'text' : 'password'} value={password} onChange={e => setPassword(e.target.value)}
+                  className="w-full border rounded-lg px-3 py-2 text-sm pr-16" required minLength={8} />
+                <button type="button" onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-blue-600 hover:text-blue-800">
+                  {showPassword ? 'Ocultar' : 'Mostrar'}
+                </button>
+              </div>
+            </div>
+          )}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Nombre completo</label>
+            <input type="text" value={nombre} onChange={e => setNombre(e.target.value)}
+              className="w-full border rounded-lg px-3 py-2 text-sm" required />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Roles</label>
+            <div className="flex flex-wrap gap-2">
+              {AVAILABLE_ROLES.map(rol => (
+                <button key={rol} type="button" onClick={() => toggleRole(rol)}
+                  className={`px-3 py-1 text-sm rounded-full border transition ${
+                    roles.includes(rol) ? 'bg-blue-500 text-white border-blue-500' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
+                  }`}>
+                  {rol}
+                </button>
+              ))}
+            </div>
+            {roles.length === 0 && <p className="text-xs text-red-500 mt-1">Selecciona al menos un rol</p>}
+          </div>
+          {isEdit && (
+            <div className="flex items-center">
+              <input type="checkbox" id="activo" checked={activo} onChange={e => setActivo(e.target.checked)}
+                className="rounded border-gray-300 text-blue-600" />
+              <label htmlFor="activo" className="ml-2 text-sm text-gray-700">Activo</label>
+            </div>
+          )}
+          <div className="flex justify-end gap-2 pt-2">
+            <button type="button" onClick={onClose} className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
+            <button type="submit" disabled={saving || roles.length === 0}
+              className="px-4 py-2 text-sm text-white bg-blue-500 hover:bg-blue-600 rounded-lg disabled:opacity-50">
+              {saving ? 'Guardando...' : 'Guardar'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
+function ConfirmDialog({
+  isOpen,
+  onClose,
+  onConfirm,
+  title,
+  message,
+  saving,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onConfirm: () => void;
+  title: string;
+  message: string;
+  saving?: boolean;
+}) {
+  if (!isOpen) return null;
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-sm p-6" onClick={e => e.stopPropagation()}>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">{title}</h3>
+        <p className="text-sm text-gray-500 mb-6">{message}</p>
+        <div className="flex justify-end gap-2">
+          <button onClick={onClose} className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
+          <button onClick={onConfirm} disabled={saving}
+            className="px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 rounded-lg disabled:opacity-50">
+            {saving ? 'Eliminando...' : 'Eliminar'}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function PasswordDisplayModal({
+  isOpen,
+  onClose,
+  username,
+  password,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  username: string;
+  password: string;
+}) {
+  const [copied, setCopied] = useState(false);
+
+  if (!isOpen) return null;
+
+  function copyToClipboard() {
+    navigator.clipboard.writeText(password);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-md p-6" onClick={e => e.stopPropagation()}>
+        <h3 className="text-lg font-medium text-gray-900 mb-2">Contraseña generada</h3>
+        <p className="text-sm text-gray-500 mb-4">
+          Contraseña temporal para <strong>{username}</strong>. Esta contraseña solo se muestra una vez.
+        </p>
+        <div className="bg-gray-50 border rounded-lg p-3 flex items-center justify-between mb-4">
+          <code className="text-sm font-mono select-all">{password}</code>
+          <button onClick={copyToClipboard} className="ml-2 p-1 text-gray-500 hover:text-blue-600" title="Copiar">
+            <Copy className="w-4 h-4" />
+          </button>
+        </div>
+        {copied && <p className="text-xs text-green-600 mb-2">Copiado al portapapeles</p>}
+        <p className="text-xs text-amber-600 mb-4">
+          El usuario deberá cambiar esta contraseña en el próximo inicio de sesión.
+        </p>
+        <div className="flex justify-end">
+          <button onClick={onClose} className="px-4 py-2 text-sm text-white bg-blue-500 hover:bg-blue-600 rounded-lg">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  );
 }
 
 export default function AdminPanel() {
@@ -35,9 +244,15 @@ export default function AdminPanel() {
   const [rolePermisos, setRolePermisos] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  const [showUserForm, setShowUserForm] = useState(false);
+  const [editingUser, setEditingUser] = useState<Usuario | null>(null);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
+  const [deletingUser, setDeletingUser] = useState<Usuario | null>(null);
+  const [showPasswordModal, setShowPasswordModal] = useState(false);
+  const [generatedPassword, setGeneratedPassword] = useState('');
+  const [resetUsername, setResetUsername] = useState('');
+
+  useEffect(() => { loadData(); }, []);
 
   async function loadData() {
     try {
@@ -46,7 +261,6 @@ export default function AdminPanel() {
         fetch('/api/admin/usuarios', { credentials: 'include' }),
         fetch('/api/admin/permisos', { credentials: 'include' }),
       ]);
-
       if (rolesRes.ok) setRoles(await rolesRes.json());
       if (usuariosRes.ok) setUsuarios(await usuariosRes.json());
       if (permisosRes.ok) setPermisos(await permisosRes.json());
@@ -80,11 +294,7 @@ export default function AdminPanel() {
         credentials: 'include',
         body: JSON.stringify({ permisos: rolePermisos }),
       });
-
-      if (res.ok) {
-        await loadData();
-        alert('Permisos guardados correctamente');
-      }
+      if (res.ok) { await loadData(); alert('Permisos guardados correctamente'); }
     } catch (error) {
       console.error('Error saving role permisos:', error);
     } finally {
@@ -92,20 +302,73 @@ export default function AdminPanel() {
     }
   }
 
+  async function handleSaveUser(data: any) {
+    if (editingUser) {
+      const res = await fetch(`/api/admin/usuarios/${editingUser.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error);
+      }
+    } else {
+      const res = await fetch('/api/admin/usuarios', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        const err = await res.json();
+        throw new Error(err.error);
+      }
+    }
+    await loadData();
+  }
+
+  async function handleDeleteUser() {
+    if (!deletingUser) return;
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/admin/usuarios/${deletingUser.id}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+      if (res.ok) {
+        await loadData();
+        setShowDeleteConfirm(false);
+        setDeletingUser(null);
+      }
+    } catch (error) {
+      console.error('Error deleting user:', error);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleResetPassword(usuario: Usuario) {
+    try {
+      const res = await fetch(`/api/admin/usuarios/${usuario.id}/reset-password`, {
+        method: 'POST',
+        credentials: 'include',
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setGeneratedPassword(data.temporaryPassword);
+        setResetUsername(usuario.username);
+        setShowPasswordModal(true);
+        await loadData();
+      }
+    } catch (error) {
+      console.error('Error resetting password:', error);
+    }
+  }
+
   function togglePermiso(codigo: string) {
-    setRolePermisos(prev => 
-      prev.includes(codigo) 
-        ? prev.filter(p => p !== codigo)
-        : [...prev, codigo]
-    );
-  }
-
-  function selectAllPermisos() {
-    setRolePermisos(permisos.map(p => p.codigo));
-  }
-
-  function clearAllPermisos() {
-    setRolePermisos([]);
+    setRolePermisos(prev => prev.includes(codigo) ? prev.filter(p => p !== codigo) : [...prev, codigo]);
   }
 
   if (loading) {
@@ -120,51 +383,24 @@ export default function AdminPanel() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Administración</h1>
-        <p className="text-gray-500 mt-1">
-          Gestiona usuarios, roles y permisos del sistema.
-        </p>
+        <p className="text-gray-500 mt-1">Gestiona usuarios, roles y permisos del sistema.</p>
       </div>
 
-      {/* Tabs */}
       <div className="border-b border-gray-200">
         <nav className="-mb-px flex space-x-8">
-          <button
-            onClick={() => setActiveTab('stats')}
-            className={`py-2 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'stats'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-            }`}
-          >
-            <BarChart3 className="w-4 h-4 inline mr-2" />
-            Estadísticas
-          </button>
-          <button
-            onClick={() => setActiveTab('roles')}
-            className={`py-2 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'roles'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-            }`}
-          >
-            <Shield className="w-4 h-4 inline mr-2" />
-            Roles y Permisos
-          </button>
-          <button
-            onClick={() => setActiveTab('usuarios')}
-            className={`py-2 px-1 border-b-2 font-medium text-sm ${
-              activeTab === 'usuarios'
-                ? 'border-blue-500 text-blue-600'
-                : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-            }`}
-          >
-            <Users className="w-4 h-4 inline mr-2" />
-            Usuarios
-          </button>
+          {[
+            { key: 'stats' as const, icon: BarChart3, label: 'Estadísticas' },
+            { key: 'roles' as const, icon: Shield, label: 'Roles y Permisos' },
+            { key: 'usuarios' as const, icon: Users, label: 'Usuarios' },
+          ].map(({ key, icon: Icon, label }) => (
+            <button key={key} onClick={() => setActiveTab(key)}
+              className={`py-2 px-1 border-b-2 font-medium text-sm ${activeTab === key ? 'border-blue-500 text-blue-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'}`}>
+              <Icon className="w-4 h-4 inline mr-2" />{label}
+            </button>
+          ))}
         </nav>
       </div>
 
-      {/* Stats Tab */}
       {activeTab === 'stats' && (
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-lg shadow">
@@ -197,23 +433,14 @@ export default function AdminPanel() {
         </div>
       )}
 
-      {/* Roles Tab */}
       {activeTab === 'roles' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          {/* Lista de roles */}
           <div className="bg-white p-6 rounded-lg shadow">
             <h3 className="text-lg font-medium text-gray-900 mb-4">Roles</h3>
             <div className="space-y-2">
               {roles.map(role => (
-                <div
-                  key={role.rol}
-                  onClick={() => loadRolePermisos(role.rol)}
-                  className={`p-3 rounded-lg cursor-pointer transition ${
-                    selectedRole === role.rol
-                      ? 'bg-blue-50 border-2 border-blue-200'
-                      : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent'
-                  }`}
-                >
+                <div key={role.rol} onClick={() => loadRolePermisos(role.rol)}
+                  className={`p-3 rounded-lg cursor-pointer transition ${selectedRole === role.rol ? 'bg-blue-50 border-2 border-blue-200' : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent'}`}>
                   <div className="flex items-center justify-between">
                     <span className="font-medium text-gray-900">{role.rol}</span>
                     <span className="text-sm text-gray-500">{role.totalPermisos} permisos</span>
@@ -222,59 +449,35 @@ export default function AdminPanel() {
               ))}
             </div>
           </div>
-
-          {/* Permisos del rol seleccionado */}
           <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow">
             {selectedRole ? (
               <>
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-lg font-medium text-gray-900">
-                    Permisos de: {selectedRole}
-                  </h3>
+                  <h3 className="text-lg font-medium text-gray-900">Permisos de: {selectedRole}</h3>
                   <div className="flex space-x-2">
-                    <button
-                      onClick={selectAllPermisos}
-                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded"
-                    >
-                      Seleccionar todos
-                    </button>
-                    <button
-                      onClick={clearAllPermisos}
-                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded"
-                    >
-                      Limpiar
-                    </button>
-                    <button
-                      onClick={saveRolePermisos}
-                      disabled={saving}
-                      className="px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded disabled:opacity-50"
-                    >
-                      <Save className="w-4 h-4 inline mr-1" />
+                    <button onClick={() => setRolePermisos(permisos.map(p => p.codigo))}
+                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded">Seleccionar todos</button>
+                    <button onClick={() => setRolePermisos([])}
+                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded">Limpiar</button>
+                    <button onClick={saveRolePermisos} disabled={saving}
+                      className="px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded disabled:opacity-50">
+                      <RefreshCw className={`w-4 h-4 inline mr-1 ${saving ? 'animate-spin' : ''}`} />
                       {saving ? 'Guardando...' : 'Guardar'}
                     </button>
                   </div>
                 </div>
-
                 <div className="space-y-4">
-                  {['inicio', 'programacion', 'comunicacion', 'inventario', 'cursos', 'salones', 'notas', 'asistencia'].map(modulo => {
+                  {[...new Set(permisos.map(p => p.modulo))].map(modulo => {
                     const permisosModulo = permisos.filter(p => p.modulo === modulo);
-                    if (permisosModulo.length === 0) return null;
-                    
                     return (
                       <div key={modulo} className="border rounded-lg p-4">
                         <h4 className="font-medium text-gray-900 mb-2 capitalize">{modulo}</h4>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                           {permisosModulo.map(permiso => (
-                            <label
-                              key={permiso.codigo}
-                              className="flex items-center space-x-2 text-sm"
-                            >
-                              <input
-                                type="checkbox"
-                                checked={rolePermisos.includes(permiso.codigo)}
+                            <label key={permiso.codigo} className="flex items-center space-x-2 text-sm">
+                              <input type="checkbox" checked={rolePermisos.includes(permiso.codigo)}
                                 onChange={() => togglePermiso(permiso.codigo)}
-                                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                              />
+                                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
                               <span>{permiso.nombre}</span>
                             </label>
                           ))}
@@ -285,72 +488,80 @@ export default function AdminPanel() {
                 </div>
               </>
             ) : (
-              <div className="text-center text-gray-500 py-12">
-                Selecciona un rol para ver sus permisos
-              </div>
+              <div className="text-center text-gray-500 py-12">Selecciona un rol para ver sus permisos</div>
             )}
           </div>
         </div>
       )}
 
-      {/* Usuarios Tab */}
       {activeTab === 'usuarios' && (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
-          <table className="min-w-full divide-y divide-gray-200">
-            <thead className="bg-gray-50">
-              <tr>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Usuario
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Nombre
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Roles
-                </th>
-                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                  Estado
-                </th>
-              </tr>
-            </thead>
-            <tbody className="bg-white divide-y divide-gray-200">
-              {usuarios.map(usuario => (
-                <tr key={usuario.id}>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm font-medium text-gray-900">{usuario.username}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="text-sm text-gray-900">{usuario.nombre}</div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <div className="flex space-x-1">
-                      {usuario.roles.map(rol => (
-                        <span
-                          key={rol}
-                          className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded"
-                        >
-                          {rol}
-                        </span>
-                      ))}
-                    </div>
-                  </td>
-                  <td className="px-6 py-4 whitespace-nowrap">
-                    <span
-                      className={`px-2 py-1 text-xs rounded ${
-                        usuario.activo
-                          ? 'bg-green-100 text-green-800'
-                          : 'bg-red-100 text-red-800'
-                      }`}
-                    >
-                      {usuario.activo ? 'Activo' : 'Inactivo'}
-                    </span>
-                  </td>
+        <>
+          <div className="flex justify-end">
+            <button onClick={() => { setEditingUser(null); setShowUserForm(true); }}
+              className="flex items-center gap-2 px-4 py-2 text-sm text-white bg-blue-500 hover:bg-blue-600 rounded-lg">
+              <Plus className="w-4 h-4" /> Nuevo Usuario
+            </button>
+          </div>
+          <div className="bg-white rounded-lg shadow overflow-hidden">
+            <table className="min-w-full divide-y divide-gray-200">
+              <thead className="bg-gray-50">
+                <tr>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Usuario</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Nombre</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Roles</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Estado</th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+              </thead>
+              <tbody className="bg-white divide-y divide-gray-200">
+                {usuarios.map(usuario => (
+                  <tr key={usuario.id}>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{usuario.username}</td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{usuario.nombre}</td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <div className="flex flex-wrap gap-1">
+                        {usuario.roles.map(rol => (
+                          <span key={rol} className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded">{rol}</span>
+                        ))}
+                      </div>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap">
+                      <span className={`px-2 py-1 text-xs rounded ${usuario.activo ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}`}>
+                        {usuario.activo ? 'Activo' : 'Inactivo'}
+                      </span>
+                    </td>
+                    <td className="px-6 py-4 whitespace-nowrap text-sm">
+                      <div className="flex space-x-2">
+                        <button onClick={() => { setEditingUser(usuario); setShowUserForm(true); }}
+                          className="text-blue-500 hover:text-blue-700" title="Editar">
+                          <Pencil className="w-4 h-4" />
+                        </button>
+                        <button onClick={() => handleResetPassword(usuario)}
+                          className="text-amber-500 hover:text-amber-700" title="Resetear contraseña">
+                          <Key className="w-4 h-4" />
+                        </button>
+                        <button onClick={() => { setDeletingUser(usuario); setShowDeleteConfirm(true); }}
+                          className="text-red-500 hover:text-red-700" title="Eliminar">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </>
       )}
+
+      <UserFormModal isOpen={showUserForm} onClose={() => { setShowUserForm(false); setEditingUser(null); }}
+        onSave={handleSaveUser} usuario={editingUser} />
+      <ConfirmDialog isOpen={showDeleteConfirm} onClose={() => { setShowDeleteConfirm(false); setDeletingUser(null); }}
+        onConfirm={handleDeleteUser} title="Eliminar usuario"
+        message={`¿Estás seguro de eliminar al usuario "${deletingUser?.username}"? Esta acción no se puede deshacer.`}
+        saving={saving} />
+      <PasswordDisplayModal isOpen={showPasswordModal} onClose={() => setShowPasswordModal(false)}
+        username={resetUsername} password={generatedPassword} />
     </div>
   );
 }

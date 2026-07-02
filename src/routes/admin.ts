@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import { eq } from 'drizzle-orm';
+import crypto from 'crypto';
+import bcrypt from 'bcryptjs';
 import { db } from '../db/index.ts';
 import { usuarios, usuariosRoles, rolesPermisos, permisos } from '../db/schema.ts';
 import { requireAuth, type AuthRequest } from '../middleware/auth.ts';
@@ -7,6 +9,12 @@ import { requirePermission } from '../middleware/permissions.ts';
 import { ALL_MODULE_PERMISSIONS } from '../modules/index.ts';
 
 const router = Router();
+
+function generateRandomPassword(length = 12): string {
+  const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const bytes = crypto.randomBytes(length);
+  return Array.from(bytes).map(b => chars[b % chars.length]).join('');
+}
 
 // ==========================================
 // ENDPOINTS DE ADMINISTRACIÓN DE PERMISOS
@@ -214,6 +222,93 @@ router.delete('/usuarios/:id/roles/:rol', requireAuth, requirePermission('admin.
 // ENDPOINTS DE USUARIOS (para gestión admin)
 // ==========================================
 
+// POST /api/admin/usuarios - Crear usuario
+router.post('/usuarios', requireAuth, requirePermission('admin.crear'), async (req, res) => {
+  try {
+    const { username, password, nombre, roles } = req.body;
+
+    if (typeof username !== 'string' || !username.trim()) {
+      return res.status(400).json({ error: 'Username es obligatorio' });
+    }
+    if (typeof password !== 'string' || password.length < 8) {
+      return res.status(400).json({ error: 'La contraseña debe tener al menos 8 caracteres' });
+    }
+    if (typeof nombre !== 'string' || !nombre.trim()) {
+      return res.status(400).json({ error: 'Nombre es obligatorio' });
+    }
+    if (!Array.isArray(roles) || roles.length === 0) {
+      return res.status(400).json({ error: 'Debe asignar al menos un rol' });
+    }
+
+    const passwordHash = await bcrypt.hash(password, 10);
+    const [newUser] = await db.insert(usuarios).values({
+      username: username.trim(),
+      passwordHash,
+      nombre: nombre.trim(),
+      rol: roles[0],
+      debeCambiarPassword: false,
+      activo: true,
+    }).returning();
+
+    for (const rol of roles) {
+      await db.insert(usuariosRoles).values({ usuarioId: newUser.id, rol });
+    }
+
+    res.json({ ...newUser, passwordHash: undefined, roles });
+  } catch (error: any) {
+    if (error.message?.includes('UNIQUE constraint failed')) {
+      return res.status(409).json({ error: 'El username ya existe' });
+    }
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// DELETE /api/admin/usuarios/:id - Eliminar usuario
+router.delete('/usuarios/:id', requireAuth, requirePermission('admin.eliminar'), async (req, res) => {
+  try {
+    const usuarioId = Number(req.params.id);
+
+    if (req.user?.id === usuarioId) {
+      return res.status(400).json({ error: 'No puedes eliminarte a ti mismo' });
+    }
+
+    const [user] = await db.select().from(usuarios).where(eq(usuarios.id, usuarioId)).limit(1);
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    await db.delete(usuariosRoles).where(eq(usuariosRoles.usuarioId, usuarioId));
+    await db.delete(usuarios).where(eq(usuarios.id, usuarioId));
+
+    res.json({ ok: true, message: `Usuario ${user.username} eliminado` });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/admin/usuarios/:id/reset-password - Resetear contraseña
+router.post('/usuarios/:id/reset-password', requireAuth, requirePermission('admin.editar'), async (req, res) => {
+  try {
+    const usuarioId = Number(req.params.id);
+
+    const [user] = await db.select().from(usuarios).where(eq(usuarios.id, usuarioId)).limit(1);
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+
+    const temporaryPassword = generateRandomPassword();
+    const passwordHash = await bcrypt.hash(temporaryPassword, 10);
+
+    await db.update(usuarios)
+      .set({ passwordHash, debeCambiarPassword: true })
+      .where(eq(usuarios.id, usuarioId));
+
+    res.json({ ok: true, temporaryPassword });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
 // GET /api/admin/usuarios - Listar todos los usuarios
 router.get('/usuarios', requireAuth, requirePermission('admin.ver'), async (req, res) => {
   try {
@@ -241,26 +336,35 @@ router.get('/usuarios', requireAuth, requirePermission('admin.ver'), async (req,
 router.put('/usuarios/:id', requireAuth, requirePermission('admin.editar'), async (req, res) => {
   try {
     const usuarioId = Number(req.params.id);
-    const { nombre, activo, debeCambiarPassword } = req.body;
-    
+    const { nombre, activo, debeCambiarPassword, roles } = req.body;
+
     const updates: any = {};
     if (nombre !== undefined) updates.nombre = nombre;
     if (activo !== undefined) updates.activo = activo;
     if (debeCambiarPassword !== undefined) updates.debeCambiarPassword = debeCambiarPassword;
-    
-    if (Object.keys(updates).length === 0) {
+    if (Array.isArray(roles) && roles.length > 0) updates.rol = roles[0];
+
+    if (Object.keys(updates).length === 0 && !Array.isArray(roles)) {
       return res.status(400).json({ error: 'No hay campos para actualizar' });
     }
-    
-    const [updated] = await db.update(usuarios)
-      .set(updates)
-      .where(eq(usuarios.id, usuarioId))
-      .returning();
-    
-    if (!updated) {
+
+    const [existing] = await db.select().from(usuarios).where(eq(usuarios.id, usuarioId)).limit(1);
+    if (!existing) {
       return res.status(404).json({ error: 'Usuario no encontrado' });
     }
-    
+
+    if (Object.keys(updates).length > 0) {
+      await db.update(usuarios).set(updates).where(eq(usuarios.id, usuarioId));
+    }
+
+    if (Array.isArray(roles)) {
+      await db.delete(usuariosRoles).where(eq(usuariosRoles.usuarioId, usuarioId));
+      for (const rol of roles) {
+        await db.insert(usuariosRoles).values({ usuarioId, rol });
+      }
+    }
+
+    const [updated] = await db.select().from(usuarios).where(eq(usuarios.id, usuarioId)).limit(1);
     res.json({ ...updated, passwordHash: undefined });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
