@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
 import authRouter, { seedAdminIfMissing } from './src/routes/auth.ts';
+import adminRouter from './src/routes/admin.ts';
 import { requireAuth, type AuthRequest } from './src/middleware/auth.ts';
 import { requestLogger } from './src/middleware/request-logger.ts';
 import { auditLogger } from './src/middleware/audit.ts';
@@ -55,6 +56,9 @@ async function startServer() {
     message: { error: 'Demasiados intentos. Intenta en un minuto.' },
   });
   app.use('/api/auth', authLimiter, authRouter);
+
+  // Admin routes (require auth + admin permission)
+  app.use('/api/admin', requireAuth as any, adminRouter);
 
   // Health check (public)
   app.get('/api/health', (_req, res) => {

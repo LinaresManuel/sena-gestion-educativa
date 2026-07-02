@@ -2,12 +2,13 @@ import type { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 import { config } from '../config.ts';
 
-export type UserRole = 'admin' | 'editor' | 'lector';
+export type UserRole = 'admin' | 'editor' | 'lector' | 'instructor' | 'aprendiz';
 
 export interface AuthUser {
   id: number;
   username: string;
   rol: UserRole;
+  permisos?: string[]; // Códigos de permisos del nuevo sistema granular
 }
 
 export interface AuthRequest extends Request {
@@ -18,6 +19,7 @@ interface JwtPayload {
   sub: number;
   username: string;
   rol: UserRole;
+  permisos?: string[];
 }
 
 export function signToken(user: AuthUser): string {
@@ -25,7 +27,7 @@ export function signToken(user: AuthUser): string {
     throw new Error('JWT_SECRET no configurado');
   }
   return jwt.sign(
-    { sub: user.id, username: user.username, rol: user.rol } satisfies JwtPayload,
+    { sub: user.id, username: user.username, rol: user.rol, permisos: user.permisos } satisfies JwtPayload,
     config.JWT_SECRET,
     { expiresIn: `${config.SESSION_TTL_HOURS}h`, algorithm: 'HS256' },
   );
@@ -35,7 +37,7 @@ export function verifyToken(token: string): AuthUser | null {
   if (!config.JWT_SECRET) return null;
   try {
     const payload = jwt.verify(token, config.JWT_SECRET, { algorithms: ['HS256'] }) as JwtPayload;
-    return { id: payload.sub, username: payload.username, rol: payload.rol };
+    return { id: payload.sub, username: payload.username, rol: payload.rol, permisos: payload.permisos };
   } catch {
     return null;
   }

@@ -2,7 +2,7 @@ import { Router } from 'express';
 import bcrypt from 'bcryptjs';
 import { eq } from 'drizzle-orm';
 import { db } from '../db/index.ts';
-import { usuarios } from '../db/schema.ts';
+import { usuarios, usuariosRoles, rolesPermisos, permisos } from '../db/schema.ts';
 import {
   signToken,
   setAuthCookie,
@@ -37,7 +37,34 @@ router.post('/login', async (req, res) => {
   const now = new Date().toISOString();
   await db.update(usuarios).set({ ultimoLoginAt: now }).where(eq(usuarios.id, user.id));
 
-  const token = signToken({ id: user.id, username: user.username, rol: user.rol as 'admin' | 'editor' | 'lector' });
+  // Obtener permisos del usuario desde el nuevo sistema granular
+  const userRoles = await db.select().from(usuariosRoles).where(eq(usuariosRoles.usuarioId, user.id));
+  const roles = userRoles.map(r => r.rol);
+  
+  // Si no tiene roles asignados, usar el rol legacy
+  if (roles.length === 0 && user.rol) {
+    roles.push(user.rol);
+  }
+  
+  // Obtener todos los permisos de los roles del usuario
+  let userPermissions: string[] = [];
+  for (const rol of roles) {
+    const rolePerms = await db.select({ codigo: permisos.codigo })
+      .from(rolesPermisos)
+      .innerJoin(permisos, eq(rolesPermisos.permisoId, permisos.id))
+      .where(eq(rolesPermisos.rol, rol));
+    userPermissions = [...userPermissions, ...rolePerms.map(p => p.codigo)];
+  }
+  
+  // Eliminar duplicados
+  userPermissions = [...new Set(userPermissions)];
+
+  const token = signToken({ 
+    id: user.id, 
+    username: user.username, 
+    rol: user.rol as 'admin' | 'editor' | 'lector' | 'instructor' | 'aprendiz',
+    permisos: userPermissions 
+  });
   setAuthCookie(res, token);
 
   res.json({
@@ -46,6 +73,7 @@ router.post('/login', async (req, res) => {
       username: user.username,
       nombre: user.nombre,
       rol: user.rol,
+      permisos: userPermissions,
       debeCambiarPassword: user.debeCambiarPassword,
     },
   });
@@ -61,11 +89,16 @@ router.get('/me', requireAuth, async (req: AuthRequest, res) => {
   const found = await db.select().from(usuarios).where(eq(usuarios.id, req.user.id)).limit(1);
   if (found.length === 0) return res.status(404).json({ error: 'Usuario no encontrado' });
   const u = found[0];
+  
+  // Obtener permisos del JWT (ya incluidos al hacer login)
+  const permisos = req.user.permisos || [];
+  
   res.json({
     id: u.id,
     username: u.username,
     nombre: u.nombre,
     rol: u.rol,
+    permisos,
     debeCambiarPassword: u.debeCambiarPassword,
     ultimoLoginAt: u.ultimoLoginAt,
   });
