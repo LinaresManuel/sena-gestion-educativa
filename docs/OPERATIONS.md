@@ -4,6 +4,14 @@ Esta guía cubre la operación diaria del sistema **SENA Gestión Educativa** un
 
 ---
 
+## Gestión de Usuarios
+
+Para información sobre credenciales, roles, y procedimientos para crear/modificar usuarios, consulta:
+
+👉 **[USERS.md](USERS.md)** - Guía completa de gestión de usuarios
+
+---
+
 ## 1. Control del servicio
 
 El servidor corre como servicio de Windows llamado `SenaSchedule`.

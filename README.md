@@ -51,3 +51,4 @@ La aplicación quedará disponible en `http://localhost:3000`.
 - [Análisis del proyecto](docs/analisis-proyecto.md)
 - [Guía de despliegue](docs/DEPLOYMENT.md) — instalar en un PC servidor LAN
 - [Guía de operaciones](docs/OPERATIONS.md) — operación diaria, respaldos, logs
+- [Gestión de usuarios](docs/USERS.md) — credenciales, roles, procedimientos
