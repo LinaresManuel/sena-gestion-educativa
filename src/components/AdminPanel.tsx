@@ -36,16 +36,14 @@ function UserFormModal({
 }: {
   isOpen: boolean;
   onClose: () => void;
-  onSave: (data: any) => Promise<void>;
+  onSave: (data: any) => Promise<any>;
   usuario?: Usuario | null;
 }) {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [nombre, setNombre] = useState('');
   const [roles, setRoles] = useState<string[]>([]);
   const [activo, setActivo] = useState(true);
   const [saving, setSaving] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const isEdit = !!usuario;
 
   useEffect(() => {
@@ -54,10 +52,8 @@ function UserFormModal({
       setNombre(usuario.nombre);
       setRoles(usuario.roles);
       setActivo(usuario.activo);
-      setPassword('');
     } else {
       setUsername('');
-      setPassword('');
       setNombre('');
       setRoles([]);
       setActivo(true);
@@ -77,7 +73,7 @@ function UserFormModal({
       if (isEdit) {
         await onSave({ nombre, activo, roles });
       } else {
-        await onSave({ username, password, nombre, roles });
+        await onSave({ username, nombre, roles });
       }
       onClose();
     } catch (err) {
@@ -103,16 +99,10 @@ function UserFormModal({
             </div>
           )}
           {!isEdit && (
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
-              <div className="relative">
-                <input type={showPassword ? 'text' : 'password'} value={password} onChange={e => setPassword(e.target.value)}
-                  className="w-full border rounded-lg px-3 py-2 text-sm pr-16" required minLength={8} />
-                <button type="button" onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 text-xs text-blue-600 hover:text-blue-800">
-                  {showPassword ? 'Ocultar' : 'Mostrar'}
-                </button>
-              </div>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+              <p className="text-sm text-blue-800">
+                <strong>Contraseña auto-generada:</strong> Se creará una contraseña temporal que el usuario deberá cambiar en su primer inicio de sesión.
+              </p>
             </div>
           )}
           <div>
@@ -154,20 +144,115 @@ function UserFormModal({
   );
 }
 
+function RoleFormModal({
+  isOpen,
+  onClose,
+  onSave,
+  permisos,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+  onSave: (data: any) => Promise<void>;
+  permisos: Permiso[];
+}) {
+  const [nombre, setNombre] = useState('');
+  const [selectedPermisos, setSelectedPermisos] = useState<string[]>([]);
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    if (!isOpen) {
+      setNombre('');
+      setSelectedPermisos([]);
+    }
+  }, [isOpen]);
+
+  if (!isOpen) return null;
+
+  function togglePermiso(codigo: string) {
+    setSelectedPermisos(prev => prev.includes(codigo) ? prev.filter(p => p !== codigo) : [...prev, codigo]);
+  }
+
+  async function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    setSaving(true);
+    try {
+      await onSave({ nombre, permisos: selectedPermisos });
+      onClose();
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  return (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" onClick={onClose}>
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-lg max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+        <div className="flex items-center justify-between p-4 border-b">
+          <h3 className="text-lg font-medium">Nuevo Rol</h3>
+          <button onClick={onClose} className="text-gray-400 hover:text-gray-600"><X className="w-5 h-5" /></button>
+        </div>
+        <form onSubmit={handleSubmit} className="p-4 space-y-4 overflow-y-auto max-h-[60vh]">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Nombre del rol</label>
+            <input type="text" value={nombre} onChange={e => setNombre(e.target.value)}
+              className="w-full border rounded-lg px-3 py-2 text-sm" required minLength={2}
+              placeholder="ej: coordinador" />
+          </div>
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-2">Permisos</label>
+            <div className="space-y-3">
+              {[...new Set(permisos.map(p => p.modulo))].map(modulo => {
+                const permisosModulo = permisos.filter(p => p.modulo === modulo);
+                return (
+                  <div key={modulo} className="border rounded-lg p-3">
+                    <h4 className="font-medium text-gray-900 mb-2 capitalize text-sm">{modulo}</h4>
+                    <div className="grid grid-cols-2 gap-2">
+                      {permisosModulo.map(permiso => (
+                        <label key={permiso.codigo} className="flex items-center space-x-2 text-sm">
+                          <input type="checkbox" checked={selectedPermisos.includes(permiso.codigo)}
+                            onChange={() => togglePermiso(permiso.codigo)}
+                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
+                          <span>{permiso.nombre}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+          <div className="flex justify-end gap-2 pt-2">
+            <button type="button" onClick={onClose} className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
+            <button type="submit" disabled={saving || !nombre.trim()}
+              className="px-4 py-2 text-sm text-white bg-blue-500 hover:bg-blue-600 rounded-lg disabled:opacity-50">
+              {saving ? 'Creando...' : 'Crear Rol'}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  );
+}
+
 function ConfirmDialog({
   isOpen,
   onClose,
   onConfirm,
   title,
   message,
+  confirmText,
   saving,
+  danger,
 }: {
   isOpen: boolean;
   onClose: () => void;
   onConfirm: () => void;
   title: string;
   message: string;
+  confirmText?: string;
   saving?: boolean;
+  danger?: boolean;
 }) {
   if (!isOpen) return null;
   return (
@@ -178,8 +263,10 @@ function ConfirmDialog({
         <div className="flex justify-end gap-2">
           <button onClick={onClose} className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
           <button onClick={onConfirm} disabled={saving}
-            className="px-4 py-2 text-sm text-white bg-red-500 hover:bg-red-600 rounded-lg disabled:opacity-50">
-            {saving ? 'Eliminando...' : 'Eliminar'}
+            className={`px-4 py-2 text-sm text-white rounded-lg disabled:opacity-50 ${
+              danger ? 'bg-red-500 hover:bg-red-600' : 'bg-blue-500 hover:bg-blue-600'
+            }`}>
+            {saving ? 'Procesando...' : (confirmText || 'Confirmar')}
           </button>
         </div>
       </div>
@@ -251,6 +338,12 @@ export default function AdminPanel() {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [generatedPassword, setGeneratedPassword] = useState('');
   const [resetUsername, setResetUsername] = useState('');
+
+  const [showRoleForm, setShowRoleForm] = useState(false);
+  const [showDeleteRoleConfirm, setShowDeleteRoleConfirm] = useState(false);
+  const [deletingRole, setDeletingRole] = useState<string | null>(null);
+  const [showResetConfirm, setShowResetConfirm] = useState(false);
+  const [resettingUser, setResettingUser] = useState<Usuario | null>(null);
 
   useEffect(() => { loadData(); }, []);
 
@@ -325,6 +418,10 @@ export default function AdminPanel() {
         const err = await res.json();
         throw new Error(err.error);
       }
+      const result = await res.json();
+      setGeneratedPassword(result.temporaryPassword);
+      setResetUsername(result.username);
+      setShowPasswordModal(true);
     }
     await loadData();
   }
@@ -349,21 +446,65 @@ export default function AdminPanel() {
     }
   }
 
-  async function handleResetPassword(usuario: Usuario) {
+  async function handleResetPassword() {
+    if (!resettingUser) return;
+    setSaving(true);
     try {
-      const res = await fetch(`/api/admin/usuarios/${usuario.id}/reset-password`, {
+      const res = await fetch(`/api/admin/usuarios/${resettingUser.id}/reset-password`, {
         method: 'POST',
         credentials: 'include',
       });
       if (res.ok) {
         const data = await res.json();
         setGeneratedPassword(data.temporaryPassword);
-        setResetUsername(usuario.username);
+        setResetUsername(resettingUser.username);
         setShowPasswordModal(true);
+        setShowResetConfirm(false);
+        setResettingUser(null);
         await loadData();
       }
     } catch (error) {
       console.error('Error resetting password:', error);
+    } finally {
+      setSaving(false);
+    }
+  }
+
+  async function handleCreateRole(data: any) {
+    const res = await fetch('/api/admin/roles', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify(data),
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.error);
+    }
+    await loadData();
+  }
+
+  async function handleDeleteRole() {
+    if (!deletingRole) return;
+    setSaving(true);
+    try {
+      const res = await fetch(`/api/admin/roles/${deletingRole}`, {
+        method: 'DELETE',
+        credentials: 'include',
+      });
+      if (res.ok) {
+        await loadData();
+        setShowDeleteRoleConfirm(false);
+        setDeletingRole(null);
+        if (selectedRole === deletingRole) {
+          setSelectedRole(null);
+          setRolePermisos([]);
+        }
+      }
+    } catch (error) {
+      console.error('Error deleting role:', error);
+    } finally {
+      setSaving(false);
     }
   }
 
@@ -436,14 +577,28 @@ export default function AdminPanel() {
       {activeTab === 'roles' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="bg-white p-6 rounded-lg shadow">
-            <h3 className="text-lg font-medium text-gray-900 mb-4">Roles</h3>
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-lg font-medium text-gray-900">Roles</h3>
+              <button onClick={() => setShowRoleForm(true)}
+                className="flex items-center gap-1 px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
+                <Plus className="w-4 h-4" /> Nuevo
+              </button>
+            </div>
             <div className="space-y-2">
               {roles.map(role => (
                 <div key={role.rol} onClick={() => loadRolePermisos(role.rol)}
                   className={`p-3 rounded-lg cursor-pointer transition ${selectedRole === role.rol ? 'bg-blue-50 border-2 border-blue-200' : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent'}`}>
                   <div className="flex items-center justify-between">
                     <span className="font-medium text-gray-900">{role.rol}</span>
-                    <span className="text-sm text-gray-500">{role.totalPermisos} permisos</span>
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm text-gray-500">{role.totalPermisos} permisos</span>
+                      {!AVAILABLE_ROLES.includes(role.rol) && (
+                        <button onClick={(e) => { e.stopPropagation(); setDeletingRole(role.rol); setShowDeleteRoleConfirm(true); }}
+                          className="text-red-400 hover:text-red-600" title="Eliminar rol">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -536,7 +691,7 @@ export default function AdminPanel() {
                           className="text-blue-500 hover:text-blue-700" title="Editar">
                           <Pencil className="w-4 h-4" />
                         </button>
-                        <button onClick={() => handleResetPassword(usuario)}
+                        <button onClick={() => { setResettingUser(usuario); setShowResetConfirm(true); }}
                           className="text-amber-500 hover:text-amber-700" title="Resetear contraseña">
                           <Key className="w-4 h-4" />
                         </button>
@@ -556,10 +711,20 @@ export default function AdminPanel() {
 
       <UserFormModal isOpen={showUserForm} onClose={() => { setShowUserForm(false); setEditingUser(null); }}
         onSave={handleSaveUser} usuario={editingUser} />
+      <RoleFormModal isOpen={showRoleForm} onClose={() => setShowRoleForm(false)}
+        onSave={handleCreateRole} permisos={permisos} />
       <ConfirmDialog isOpen={showDeleteConfirm} onClose={() => { setShowDeleteConfirm(false); setDeletingUser(null); }}
         onConfirm={handleDeleteUser} title="Eliminar usuario"
         message={`¿Estás seguro de eliminar al usuario "${deletingUser?.username}"? Esta acción no se puede deshacer.`}
-        saving={saving} />
+        confirmText="Eliminar" danger saving={saving} />
+      <ConfirmDialog isOpen={showDeleteRoleConfirm} onClose={() => { setShowDeleteRoleConfirm(false); setDeletingRole(null); }}
+        onConfirm={handleDeleteRole} title="Eliminar rol"
+        message={`¿Estás seguro de eliminar el rol "${deletingRole}"? No tiene usuarios asignados.`}
+        confirmText="Eliminar" danger saving={saving} />
+      <ConfirmDialog isOpen={showResetConfirm} onClose={() => { setShowResetConfirm(false); setResettingUser(null); }}
+        onConfirm={handleResetPassword} title="Resetear contraseña"
+        message={`¿Generar una nueva contraseña temporal para "${resettingUser?.username}"? El usuario deberá cambiarla en su próximo inicio de sesión.`}
+        confirmText="Generar contraseña" saving={saving} />
       <PasswordDisplayModal isOpen={showPasswordModal} onClose={() => setShowPasswordModal(false)}
         username={resetUsername} password={generatedPassword} />
     </div>

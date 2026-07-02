@@ -97,19 +97,57 @@ router.get('/roles/:rol', requireAuth, requirePermission('admin.ver'), async (re
 });
 
 // POST /api/admin/roles/:rol/permisos - Asignar permisos a un rol
-router.post('/roles/:rol/permisos', requireAuth, requirePermission('admin.editar'), async (req, res) => {
+// POST /api/admin/roles - Crear nuevo rol
+router.post('/roles', requireAuth, requirePermission('admin.roles'), async (req, res) => {
   try {
-    const { rol } = req.params;
-    const { permisos: permisosCodigos } = req.body;
-    
+    const { nombre, permisos: permisosCodigos } = req.body;
+
+    if (typeof nombre !== 'string' || !nombre.trim()) {
+      return res.status(400).json({ error: 'Nombre del rol es obligatorio' });
+    }
+
+    const existing = await db.selectDistinct({ rol: rolesPermisos.rol })
+      .from(rolesPermisos)
+      .where(eq(rolesPermisos.rol, nombre.trim()));
+
+    if (existing.length > 0) {
+      return res.status(409).json({ error: 'Ya existe un rol con ese nombre' });
+    }
+
     if (!Array.isArray(permisosCodigos)) {
       return res.status(400).json({ error: 'permisos debe ser un array de códigos' });
     }
-    
-    // Eliminar permisos existentes del rol
+
+    let asignacionesCreadas = 0;
+    for (const codigo of permisosCodigos) {
+      const [permiso] = await db.select().from(permisos).where(eq(permisos.codigo, codigo));
+      if (permiso) {
+        await db.insert(rolesPermisos).values({
+          rol: nombre.trim(),
+          permisoId: permiso.id,
+        });
+        asignacionesCreadas++;
+      }
+    }
+
+    res.json({ ok: true, rol: nombre.trim(), totalPermisos: asignacionesCreadas });
+  } catch (error: any) {
+    res.status(500).json({ error: error.message });
+  }
+});
+
+// POST /api/admin/roles/:rol/permisos - Actualizar permisos de un rol
+router.post('/roles/:rol/permisos', requireAuth, requirePermission('admin.roles'), async (req, res) => {
+  try {
+    const { rol } = req.params;
+    const { permisos: permisosCodigos } = req.body;
+
+    if (!Array.isArray(permisosCodigos)) {
+      return res.status(400).json({ error: 'permisos debe ser un array de códigos' });
+    }
+
     await db.delete(rolesPermisos).where(eq(rolesPermisos.rol, rol));
-    
-    // Obtener IDs de permisos
+
     let asignacionesCreadas = 0;
     for (const codigo of permisosCodigos) {
       const [permiso] = await db.select().from(permisos).where(eq(permisos.codigo, codigo));
@@ -121,11 +159,11 @@ router.post('/roles/:rol/permisos', requireAuth, requirePermission('admin.editar
         asignacionesCreadas++;
       }
     }
-    
-    res.json({ 
-      ok: true, 
+
+    res.json({
+      ok: true,
       message: `Permisos actualizados para el rol ${rol}`,
-      total: asignacionesCreadas 
+      total: asignacionesCreadas
     });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
@@ -133,22 +171,27 @@ router.post('/roles/:rol/permisos', requireAuth, requirePermission('admin.editar
 });
 
 // DELETE /api/admin/roles/:rol - Eliminar un rol
-router.delete('/roles/:rol', requireAuth, requirePermission('admin.eliminar'), async (req, res) => {
+router.delete('/roles/:rol', requireAuth, requirePermission('admin.roles'), async (req, res) => {
   try {
     const { rol } = req.params;
-    
-    // No permitir eliminar roles del sistema
-    const rolesSistema = ['admin', 'editor', 'lector'];
+
+    const rolesSistema = ['admin', 'editor', 'instructor', 'lector', 'aprendiz'];
     if (rolesSistema.includes(rol)) {
       return res.status(400).json({ error: 'No se pueden eliminar roles del sistema' });
     }
-    
-    // Eliminar permisos del rol
+
+    const usuariosConRol = await db.select()
+      .from(usuariosRoles)
+      .where(eq(usuariosRoles.rol, rol))
+      .limit(1);
+
+    if (usuariosConRol.length > 0) {
+      return res.status(400).json({ error: 'No se puede eliminar un rol que tiene usuarios asignados' });
+    }
+
     await db.delete(rolesPermisos).where(eq(rolesPermisos.rol, rol));
-    
-    // Eliminar asignaciones de usuarios
     await db.delete(usuariosRoles).where(eq(usuariosRoles.rol, rol));
-    
+
     res.json({ ok: true, message: `Rol ${rol} eliminado` });
   } catch (error: any) {
     res.status(500).json({ error: error.message });
@@ -222,16 +265,13 @@ router.delete('/usuarios/:id/roles/:rol', requireAuth, requirePermission('admin.
 // ENDPOINTS DE USUARIOS (para gestión admin)
 // ==========================================
 
-// POST /api/admin/usuarios - Crear usuario
+// POST /api/admin/usuarios - Crear usuario (contraseña auto-generada)
 router.post('/usuarios', requireAuth, requirePermission('admin.crear'), async (req, res) => {
   try {
-    const { username, password, nombre, roles } = req.body;
+    const { username, nombre, roles } = req.body;
 
     if (typeof username !== 'string' || !username.trim()) {
       return res.status(400).json({ error: 'Username es obligatorio' });
-    }
-    if (typeof password !== 'string' || password.length < 8) {
-      return res.status(400).json({ error: 'La contraseña debe tener al menos 8 caracteres' });
     }
     if (typeof nombre !== 'string' || !nombre.trim()) {
       return res.status(400).json({ error: 'Nombre es obligatorio' });
@@ -240,13 +280,15 @@ router.post('/usuarios', requireAuth, requirePermission('admin.crear'), async (r
       return res.status(400).json({ error: 'Debe asignar al menos un rol' });
     }
 
-    const passwordHash = await bcrypt.hash(password, 10);
+    const temporaryPassword = generateRandomPassword();
+    const passwordHash = await bcrypt.hash(temporaryPassword, 10);
+
     const [newUser] = await db.insert(usuarios).values({
       username: username.trim(),
       passwordHash,
       nombre: nombre.trim(),
       rol: roles[0],
-      debeCambiarPassword: false,
+      debeCambiarPassword: true,
       activo: true,
     }).returning();
 
@@ -254,7 +296,7 @@ router.post('/usuarios', requireAuth, requirePermission('admin.crear'), async (r
       await db.insert(usuariosRoles).values({ usuarioId: newUser.id, rol });
     }
 
-    res.json({ ...newUser, passwordHash: undefined, roles });
+    res.json({ ...newUser, passwordHash: undefined, roles, temporaryPassword });
   } catch (error: any) {
     if (error.message?.includes('UNIQUE constraint failed')) {
       return res.status(409).json({ error: 'El username ya existe' });

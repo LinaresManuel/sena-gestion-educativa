@@ -107,10 +107,8 @@ router.get('/me', requireAuth, async (req: AuthRequest, res) => {
 router.post('/change-password', requireAuth, async (req: AuthRequest, res) => {
   if (!req.user) return res.status(401).json({ error: 'No autenticado' });
   const { currentPassword, newPassword } = req.body ?? {};
-  if (typeof currentPassword !== 'string' || typeof newPassword !== 'string') {
-    return res.status(400).json({ error: 'Datos inválidos' });
-  }
-  if (newPassword.length < 8) {
+
+  if (typeof newPassword !== 'string' || newPassword.length < 8) {
     return res.status(400).json({ error: 'La nueva contraseña debe tener al menos 8 caracteres' });
   }
 
@@ -118,8 +116,15 @@ router.post('/change-password', requireAuth, async (req: AuthRequest, res) => {
   if (found.length === 0) return res.status(404).json({ error: 'Usuario no encontrado' });
   const u = found[0];
 
-  const ok = await bcrypt.compare(currentPassword, u.passwordHash);
-  if (!ok) return res.status(401).json({ error: 'Contraseña actual incorrecta' });
+  const isFirstChange = u.debeCambiarPassword;
+
+  if (!isFirstChange) {
+    if (typeof currentPassword !== 'string') {
+      return res.status(400).json({ error: 'Contraseña actual requerida' });
+    }
+    const ok = await bcrypt.compare(currentPassword, u.passwordHash);
+    if (!ok) return res.status(401).json({ error: 'Contraseña actual incorrecta' });
+  }
 
   const newHash = await bcrypt.hash(newPassword, 10);
   await db.update(usuarios)

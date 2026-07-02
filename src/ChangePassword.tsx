@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { KeyRound } from "lucide-react";
 
@@ -9,10 +9,25 @@ export default function ChangePassword() {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [isFirstChange, setIsFirstChange] = useState(false);
+  const [checking, setChecking] = useState(true);
+
+  useEffect(() => {
+    fetch("/api/auth/me", { credentials: "include" })
+      .then(r => r.json())
+      .then(data => {
+        if (data.debeCambiarPassword) {
+          setIsFirstChange(true);
+        }
+      })
+      .catch(() => {})
+      .finally(() => setChecking(false));
+  }, []);
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
+
     if (next.length < 8) {
       setError("La nueva contraseña debe tener al menos 8 caracteres");
       return;
@@ -21,13 +36,19 @@ export default function ChangePassword() {
       setError("La confirmación no coincide");
       return;
     }
+
     setLoading(true);
     try {
+      const body: any = { newPassword: next };
+      if (!isFirstChange) {
+        body.currentPassword = current;
+      }
+
       const resp = await fetch("/api/auth/change-password", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
-        body: JSON.stringify({ currentPassword: current, newPassword: next }),
+        body: JSON.stringify(body),
       });
       const data = await resp.json();
       if (!resp.ok) {
@@ -43,6 +64,14 @@ export default function ChangePassword() {
     }
   }
 
+  if (checking) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="text-gray-500">Cargando...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <form onSubmit={handleSubmit} className="w-full max-w-md bg-white rounded-2xl shadow p-8 space-y-5">
@@ -52,7 +81,10 @@ export default function ChangePassword() {
         </div>
 
         <p className="text-sm text-gray-600">
-          Por seguridad, cambia la contraseña temporal antes de continuar.
+          {isFirstChange
+            ? "Tu contraseña temporal ha expirado. Crea una nueva contraseña para continuar."
+            : "Por seguridad, cambia la contraseña antes de continuar."
+          }
         </p>
 
         {error && (
@@ -61,16 +93,18 @@ export default function ChangePassword() {
           </div>
         )}
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña actual</label>
-          <input
-            type="password"
-            value={current}
-            onChange={(e) => setCurrent(e.target.value)}
-            required
-            className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-          />
-        </div>
+        {!isFirstChange && (
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña actual</label>
+            <input
+              type="password"
+              value={current}
+              onChange={(e) => setCurrent(e.target.value)}
+              required
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+        )}
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Nueva contraseña</label>
