@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { eq } from 'drizzle-orm';
+import { eq, and } from 'drizzle-orm';
 import crypto from 'crypto';
 import bcrypt from 'bcryptjs';
 import { db } from '../db/index.ts';
@@ -265,7 +265,7 @@ router.delete('/usuarios/:id/roles/:rol', requireAuth, requirePermission('admin.
     const { rol } = req.params;
     
     await db.delete(usuariosRoles)
-      .where(eq(usuariosRoles.usuarioId, usuarioId) && eq(usuariosRoles.rol, rol));
+      .where(and(eq(usuariosRoles.usuarioId, usuarioId), eq(usuariosRoles.rol, rol)));
     
     res.json({ ok: true, message: `Rol ${rol} eliminado del usuario` });
   } catch (error: any) {

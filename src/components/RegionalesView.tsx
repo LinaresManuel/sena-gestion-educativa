@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
-import { useCanEdit } from "../lib/auth-context";
+import { useHasAnyPermission } from "../lib/auth-context";
 
 interface Regional {
   id: number;
@@ -9,7 +9,7 @@ interface Regional {
 }
 
 export default function RegionalesView() {
-  const canEdit = useCanEdit();
+  const canEdit = useHasAnyPermission('config.editar', 'config.crear');
   const [regionales, setRegionales] = useState<Regional[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

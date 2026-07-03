@@ -7,6 +7,7 @@ import { SALONES_PERMISSIONS } from './salones/permissions';
 import { NOTAS_PERMISSIONS } from './notas/permissions';
 import { ASISTENCIA_PERMISSIONS } from './asistencia/permissions';
 import { ADMIN_PERMISSIONS } from './admin/permissions';
+import { CONFIG_PERMISSIONS } from './config/permissions';
 
 // Auto-discovery: importar todos los permisos de módulos
 export const ALL_MODULE_PERMISSIONS = [
@@ -19,6 +20,7 @@ export const ALL_MODULE_PERMISSIONS = [
   ...NOTAS_PERMISSIONS,
   ...ASISTENCIA_PERMISSIONS,
   ...ADMIN_PERMISSIONS,
+  ...CONFIG_PERMISSIONS,
 ];
 
 // Agrupar por módulo
@@ -32,6 +34,7 @@ export const PERMISSIONS_BY_MODULE = {
   notas: NOTAS_PERMISSIONS,
   asistencia: ASISTENCIA_PERMISSIONS,
   admin: ADMIN_PERMISSIONS,
+  config: CONFIG_PERMISSIONS,
 };
 
 // Todos los módulos disponibles

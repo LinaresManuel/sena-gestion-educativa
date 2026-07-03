@@ -18,6 +18,7 @@ const ROLE_PERMISSIONS: Record<string, string[]> = {
   admin: ALL_MODULE_PERMISSIONS.map(p => p.codigo), // Admin tiene todo
   editor: [
     'inicio.ver',
+    'config.ver', 'config.crear', 'config.editar',
     'programacion.ver', 'programacion.crear', 'programacion.editar',
     'comunicacion.ver', 'comunicacion.enviar', 'comunicacion.responder',
     'inventario.ver', 'inventario.crear', 'inventario.editar',
@@ -28,6 +29,7 @@ const ROLE_PERMISSIONS: Record<string, string[]> = {
   ],
   instructor: [
     'inicio.ver',
+    'config.ver',
     'programacion.ver',
     'comunicacion.ver', 'comunicacion.enviar', 'comunicacion.responder',
     'notas.ver', 'notas.registrar',
@@ -35,6 +37,7 @@ const ROLE_PERMISSIONS: Record<string, string[]> = {
   ],
   lector: [
     'inicio.ver',
+    'config.ver',
     'programacion.ver',
     'comunicacion.ver',
     'inventario.ver',
@@ -45,6 +48,7 @@ const ROLE_PERMISSIONS: Record<string, string[]> = {
   ],
   aprendiz: [
     'inicio.ver',
+    'config.ver',
     'comunicacion.ver', 'comunicacion.enviar',
     'notas.ver',
     'asistencia.ver',
