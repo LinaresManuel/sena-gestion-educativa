@@ -33,4 +33,5 @@ Write-Host "=========================================" -ForegroundColor Green
 Write-Host " ¡Proceso completado con éxito!          " -ForegroundColor Green
 Write-Host "=========================================" -ForegroundColor Green
 
-Read-Host "`nPresiona Enter para salir"
+Write-Host ""
+Read-Host "Presiona Enter para salir"
