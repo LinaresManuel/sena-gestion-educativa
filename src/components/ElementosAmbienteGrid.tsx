@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onClose }: Props) {
-  const canEdit = useHasAnyPermission('inventario.editar', 'inventario.crear');
+  const canEdit = useHasAnyPermission('ambientes.editar', 'ambientes.crear');
   const [elementos, setElementos] = useState<ElementoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

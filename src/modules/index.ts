@@ -1,43 +1,43 @@
 import { INICIO_PERMISSIONS } from './inicio/permissions';
+import { REGIONALES_PERMISSIONS } from './regionales/permissions';
+import { CENTROS_PERMISSIONS } from './centros/permissions';
+import { AMBIENTES_PERMISSIONS } from './ambientes/permissions';
+import { TIPOS_AMBIENTE_PERMISSIONS } from './tipos_ambiente/permissions';
+import { PROGRAMAS_PERMISSIONS } from './programas/permissions';
+import { INSTRUCTORES_PERMISSIONS } from './instructores/permissions';
+import { FICHAS_PERMISSIONS } from './fichas/permissions';
 import { PROGRAMACION_PERMISSIONS } from './programacion/permissions';
-import { COMUNICACION_PERMISSIONS } from './comunicacion/permissions';
-import { INVENTARIO_PERMISSIONS } from './inventario/permissions';
-import { CURSOS_PERMISSIONS } from './cursos/permissions';
-import { SALONES_PERMISSIONS } from './salones/permissions';
-import { NOTAS_PERMISSIONS } from './notas/permissions';
-import { ASISTENCIA_PERMISSIONS } from './asistencia/permissions';
 import { ADMIN_PERMISSIONS } from './admin/permissions';
-import { CONFIG_PERMISSIONS } from './config/permissions';
 
 // Auto-discovery: importar todos los permisos de módulos
 export const ALL_MODULE_PERMISSIONS = [
   ...INICIO_PERMISSIONS,
+  ...REGIONALES_PERMISSIONS,
+  ...CENTROS_PERMISSIONS,
+  ...AMBIENTES_PERMISSIONS,
+  ...TIPOS_AMBIENTE_PERMISSIONS,
+  ...PROGRAMAS_PERMISSIONS,
+  ...INSTRUCTORES_PERMISSIONS,
+  ...FICHAS_PERMISSIONS,
   ...PROGRAMACION_PERMISSIONS,
-  ...COMUNICACION_PERMISSIONS,
-  ...INVENTARIO_PERMISSIONS,
-  ...CURSOS_PERMISSIONS,
-  ...SALONES_PERMISSIONS,
-  ...NOTAS_PERMISSIONS,
-  ...ASISTENCIA_PERMISSIONS,
   ...ADMIN_PERMISSIONS,
-  ...CONFIG_PERMISSIONS,
 ];
 
-// Agrupar por módulo
+// Agrupar por módulo (en orden del sidebar)
 export const PERMISSIONS_BY_MODULE = {
   inicio: INICIO_PERMISSIONS,
+  regionales: REGIONALES_PERMISSIONS,
+  centros: CENTROS_PERMISSIONS,
+  ambientes: AMBIENTES_PERMISSIONS,
+  tipos_ambiente: TIPOS_AMBIENTE_PERMISSIONS,
+  programas: PROGRAMAS_PERMISSIONS,
+  instructores: INSTRUCTORES_PERMISSIONS,
+  fichas: FICHAS_PERMISSIONS,
   programacion: PROGRAMACION_PERMISSIONS,
-  comunicacion: COMUNICACION_PERMISSIONS,
-  inventario: INVENTARIO_PERMISSIONS,
-  cursos: CURSOS_PERMISSIONS,
-  salones: SALONES_PERMISSIONS,
-  notas: NOTAS_PERMISSIONS,
-  asistencia: ASISTENCIA_PERMISSIONS,
   admin: ADMIN_PERMISSIONS,
-  config: CONFIG_PERMISSIONS,
 };
 
-// Todos los módulos disponibles
+// Todos los módulos disponibles (en orden del sidebar)
 export const AVAILABLE_MODULES = Object.keys(PERMISSIONS_BY_MODULE);
 
 // Obtener permisos de un módulo específico

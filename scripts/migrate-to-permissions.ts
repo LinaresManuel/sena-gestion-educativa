@@ -13,45 +13,46 @@ import { permisos, rolesPermisos, usuariosRoles, usuarios } from '../src/db/sche
 import { ALL_MODULE_PERMISSIONS } from '../src/modules';
 import { eq } from 'drizzle-orm';
 
-// Permisos por rol (basado en el plan)
+// Permisos por rol (alineados con los 10 módulos del sidebar)
 const ROLE_PERMISSIONS: Record<string, string[]> = {
   admin: ALL_MODULE_PERMISSIONS.map(p => p.codigo), // Admin tiene todo
   editor: [
     'inicio.ver',
-    'config.ver', 'config.crear', 'config.editar',
+    'regionales.ver', 'regionales.crear', 'regionales.editar',
+    'centros.ver', 'centros.crear', 'centros.editar',
+    'ambientes.ver', 'ambientes.crear', 'ambientes.editar',
+    'tipos_ambiente.ver', 'tipos_ambiente.crear', 'tipos_ambiente.editar',
+    'programas.ver', 'programas.crear', 'programas.editar',
+    'instructores.ver', 'instructores.crear', 'instructores.editar',
+    'fichas.ver', 'fichas.crear', 'fichas.editar',
     'programacion.ver', 'programacion.crear', 'programacion.editar',
-    'comunicacion.ver', 'comunicacion.enviar', 'comunicacion.responder',
-    'inventario.ver', 'inventario.crear', 'inventario.editar',
-    'cursos.ver', 'cursos.crear', 'cursos.editar',
-    'salones.ver', 'salones.crear', 'salones.editar',
-    'notas.ver', 'notas.registrar', 'notas.editar',
-    'asistencia.ver', 'asistencia.registrar', 'asistencia.editar',
   ],
   instructor: [
     'inicio.ver',
-    'config.ver',
+    'regionales.ver',
+    'centros.ver',
+    'ambientes.ver',
+    'tipos_ambiente.ver',
+    'programas.ver',
+    'instructores.ver',
+    'fichas.ver',
     'programacion.ver',
-    'comunicacion.ver', 'comunicacion.enviar', 'comunicacion.responder',
-    'notas.ver', 'notas.registrar',
-    'asistencia.ver', 'asistencia.registrar',
   ],
   lector: [
     'inicio.ver',
-    'config.ver',
+    'regionales.ver',
+    'centros.ver',
+    'ambientes.ver',
+    'tipos_ambiente.ver',
+    'programas.ver',
+    'instructores.ver',
+    'fichas.ver',
     'programacion.ver',
-    'comunicacion.ver',
-    'inventario.ver',
-    'cursos.ver',
-    'salones.ver',
-    'notas.ver',
-    'asistencia.ver',
   ],
   aprendiz: [
     'inicio.ver',
-    'config.ver',
-    'comunicacion.ver', 'comunicacion.enviar',
-    'notas.ver',
-    'asistencia.ver',
+    'programas.ver',
+    'fichas.ver',
   ],
 };
 

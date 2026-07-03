@@ -9,7 +9,7 @@ export interface TipoAmbiente {
 }
 
 export default function TiposAmbienteView() {
-  const canEdit = useHasAnyPermission('config.editar', 'config.crear');
+  const canEdit = useHasAnyPermission('tipos_ambiente.editar', 'tipos_ambiente.crear');
   const [tipos, setTipos] = useState<TipoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

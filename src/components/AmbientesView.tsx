@@ -21,7 +21,7 @@ interface Centro {
 }
 
 export default function AmbientesView() {
-  const canEdit = useHasAnyPermission('salones.editar', 'salones.crear');
+  const canEdit = useHasAnyPermission('ambientes.editar', 'ambientes.crear');
   const [ambientes, setAmbientes] = useState<Ambiente[]>([]);
   const [centros, setCentros] = useState<Centro[]>([]);
   const [tiposAmbiente, setTiposAmbiente] = useState<TipoAmbiente[]>([]);

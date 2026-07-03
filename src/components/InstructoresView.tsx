@@ -13,7 +13,7 @@ interface Instructor {
 }
 
 export default function InstructoresView() {
-  const canEdit = useHasAnyPermission('cursos.editar', 'cursos.crear');
+  const canEdit = useHasAnyPermission('instructores.editar', 'instructores.crear');
   const [instructores, setInstructores] = useState<Instructor[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

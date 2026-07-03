@@ -15,7 +15,7 @@ interface Regional {
 }
 
 export default function CentrosView() {
-  const canEdit = useHasAnyPermission('config.editar', 'config.crear');
+  const canEdit = useHasAnyPermission('centros.editar', 'centros.crear');
   const [centros, setCentros] = useState<Centro[]>([]);
   const [regionales, setRegionales] = useState<Regional[]>([]);
   const [loading, setLoading] = useState(true);

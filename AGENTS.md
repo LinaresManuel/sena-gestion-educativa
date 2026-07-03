@@ -95,7 +95,7 @@ Verificar con `GET /api/health`: el campo `uptime` debe estar cerca de 0 segundo
   - Middlewares: `requirePermission(...)`, `requireAnyPermission(...)`, `requireAllPermissions(...)`
   - Hooks React: `useHasPermission(...)`, `useHasAnyPermission(...)`, `useIsAdmin()`
   - Admin endpoints: `/api/admin/roles`, `/api/admin/permisos`, `/api/admin/usuarios`
-- Usuario admin auto-creado en el primer arranque: `admin` / `Admin123!` (forzar cambio)
+- **Cada módulo del proyecto (sidebar) debe tener su propio archivo `permissions.ts` en `src/modules/<modulo>/` con permisos CRUD (`ver`, `crear`, `editar`, `eliminar`).** Si se crea un nuevo módulo UI, hay que crear su carpeta de permisos, registrarlo en `src/modules/index.ts`, insertar los permisos en BD, y asignarlos a los roles existentes. También verificar que el backend tenga un endpoint `requirePermission` para las operaciones CRUD de ese módulo.
 
 ## Frontend: wrapper global de fetch
 

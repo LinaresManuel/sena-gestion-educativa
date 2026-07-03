@@ -9,7 +9,7 @@ interface Regional {
 }
 
 export default function RegionalesView() {
-  const canEdit = useHasAnyPermission('config.editar', 'config.crear');
+  const canEdit = useHasAnyPermission('regionales.editar', 'regionales.crear');
   const [regionales, setRegionales] = useState<Regional[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

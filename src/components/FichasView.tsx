@@ -24,7 +24,7 @@ const HORAS = Array.from({ length: 16 }, (_, i) => {
 });
 
 export default function FichasView() {
-  const canEdit = useHasAnyPermission('cursos.editar', 'cursos.crear');
+  const canEdit = useHasAnyPermission('fichas.editar', 'fichas.crear');
   const [fichas, setFichas] = useState<Ficha[]>([]);
   const [centros, setCentros] = useState<any[]>([]);
   const [programas, setProgramas] = useState<any[]>([]);

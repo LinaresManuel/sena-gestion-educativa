@@ -34,7 +34,7 @@ interface CurriculoModalProps {
 }
 
 export default function CurriculoModal({ programa, onClose }: CurriculoModalProps) {
-  const canEdit = useHasAnyPermission('cursos.editar', 'cursos.crear');
+  const canEdit = useHasAnyPermission('programas.editar', 'programas.crear');
   const [competencias, setCompetencias] = useState<Competencia[]>([]);
   const [resultados, setResultados] = useState<Record<number, ResultadoAprendizaje[]>>({});
   const [perfiles, setPerfiles] = useState<Record<number, PerfilInstructor[]>>({});

@@ -15,7 +15,7 @@ export interface Programa {
 }
 
 export default function ProgramasView() {
-  const canEdit = useHasAnyPermission('cursos.editar', 'cursos.crear');
+  const canEdit = useHasAnyPermission('programas.editar', 'programas.crear');
   const [programas, setProgramas] = useState<Programa[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
