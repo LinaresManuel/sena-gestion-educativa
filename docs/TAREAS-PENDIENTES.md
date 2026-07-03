@@ -307,20 +307,16 @@ Toda la UI está hardcodeada en español. Si se requiere bilingüismo, hay que r
 ---
 
 ### Z. Roles personalizados no se visualizan en la UI
-Los roles creados desde el panel de administración no aparecen en la pestaña de "Roles y Permisos" al asignar permisos, ni en el formulario de creación/edición de usuarios.
+**✅ IMPLEMENTADO**
 
-**Problema:** `AdminPanel.tsx` usa `AVAILABLE_ROLES = ['admin', 'editor', 'instructor', 'lector', 'aprendiz']` hardcodeado para:
-- Los botones de selección de roles en `UserFormModal`
-- La lista de roles en la pestaña "Roles y Permisos"
+Los roles creados desde el panel de administración ahora aparecen en la pestaña de "Roles y Permisos" al asignar permisos, y en el formulario de creación/edición de usuarios.
 
-Los roles personalizados (creados vía `POST /api/admin/roles`) existen en la BD pero no se cargan dinámicamente en el frontend.
+**Solución:**
+- `AVAILABLE_ROLES` hardcodeado reemplazado por `SYSTEM_ROLES` (solo para protección de eliminación)
+- `UserFormModal` ahora recibe `rolesDisponibles` desde la API (`/api/admin/roles`)
+- La pestaña Roles y Permisos carga roles dinámicamente desde la API
 
-**Tarea:** 
-1. Cargar roles desde `/api/admin/roles` en vez de usar array hardcodeado
-2. Usar los roles obtenidos de la API en `UserFormModal` para los botones de selección
-3. Asegurar que los roles personalizados aparezcan en la lista de la pestaña Roles y Permisos
-
-**Estimación:** 30 min
+**Estimación:** 30 min → **Completado**
 
 ---
 
