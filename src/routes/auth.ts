@@ -89,16 +89,37 @@ router.get('/me', requireAuth, async (req: AuthRequest, res) => {
   const found = await db.select().from(usuarios).where(eq(usuarios.id, req.user.id)).limit(1);
   if (found.length === 0) return res.status(404).json({ error: 'Usuario no encontrado' });
   const u = found[0];
-  
-  // Obtener permisos del JWT (ya incluidos al hacer login)
-  const permisos = req.user.permisos || [];
-  
+
+  // Recalcular permisos desde BD (misma lógica que login)
+  const userRoles = await db.select().from(usuariosRoles).where(eq(usuariosRoles.usuarioId, u.id));
+  const roles = userRoles.map(r => r.rol);
+  if (roles.length === 0 && u.rol) roles.push(u.rol);
+
+  let userPermissions: string[] = [];
+  for (const rol of roles) {
+    const rolePerms = await db.select({ codigo: permisos.codigo })
+      .from(rolesPermisos)
+      .innerJoin(permisos, eq(rolesPermisos.permisoId, permisos.id))
+      .where(eq(rolesPermisos.rol, rol));
+    userPermissions = [...userPermissions, ...rolePerms.map(p => p.codigo)];
+  }
+  userPermissions = [...new Set(userPermissions)];
+
+  // Emitir nuevo JWT con permisos actualizados
+  const token = signToken({
+    id: u.id,
+    username: u.username,
+    rol: u.rol as any,
+    permisos: userPermissions,
+  });
+  setAuthCookie(res, token);
+
   res.json({
     id: u.id,
     username: u.username,
     nombre: u.nombre,
     rol: u.rol,
-    permisos,
+    permisos: userPermissions,
     debeCambiarPassword: u.debeCambiarPassword,
     ultimoLoginAt: u.ultimoLoginAt,
   });

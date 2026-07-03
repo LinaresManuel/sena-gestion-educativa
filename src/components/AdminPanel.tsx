@@ -361,6 +361,10 @@ export default function AdminPanel() {
   const [showResetConfirm, setShowResetConfirm] = useState(false);
   const [resettingUser, setResettingUser] = useState<Usuario | null>(null);
 
+  const [toast, setToast] = useState<string | null>(null);
+
+  useEffect(() => { if (toast) { const t = setTimeout(() => setToast(null), 4000); return () => clearTimeout(t); } }, [toast]);
+
   useEffect(() => { loadData(); }, []);
 
   async function loadData() {
@@ -403,7 +407,7 @@ export default function AdminPanel() {
         credentials: 'include',
         body: JSON.stringify({ permisos: rolePermisos }),
       });
-      if (res.ok) { await loadData(); alert('Permisos guardados correctamente'); }
+      if (res.ok) { await loadData(); setToast('Permisos del rol guardados. Los usuarios afectados verán los cambios al recargar la pagina.'); }
     } catch (error) {
       console.error('Error saving role permisos:', error);
     } finally {
@@ -440,6 +444,7 @@ export default function AdminPanel() {
       setShowPasswordModal(true);
     }
     await loadData();
+    if (editingUser) setToast('Roles del usuario actualizados. El usuario verá los cambios al recargar la pagina.');
   }
 
   async function handleDeleteUser() {
@@ -498,6 +503,7 @@ export default function AdminPanel() {
       throw new Error(err.error);
     }
     await loadData();
+    setToast('Rol creado. Los usuarios con este rol veran los cambios al recargar la pagina.');
   }
 
   async function handleDeleteRole() {
@@ -542,6 +548,12 @@ export default function AdminPanel() {
 
   return (
     <div className="space-y-6">
+      {toast && (
+        <div className="bg-blue-50 border border-blue-200 text-blue-800 px-4 py-3 rounded-lg text-sm flex items-center justify-between">
+          <span>{toast}</span>
+          <button onClick={() => setToast(null)} className="ml-2 text-blue-500 hover:text-blue-700"><X className="w-4 h-4" /></button>
+        </div>
+      )}
       <div>
         <h1 className="text-3xl font-bold tracking-tight text-gray-900">Administración</h1>
         <p className="text-gray-500 mt-1">Gestiona usuarios, roles y permisos del sistema.</p>
