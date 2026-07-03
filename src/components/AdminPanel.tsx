@@ -294,9 +294,21 @@ function PasswordDisplayModal({
   if (!isOpen) return null;
 
   function copyToClipboard() {
-    navigator.clipboard.writeText(password);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    const textarea = document.createElement('textarea');
+    textarea.value = password;
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
+    document.body.appendChild(textarea);
+    textarea.select();
+    try {
+      document.execCommand('copy');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      alert('No se pudo copiar la contraseña. Cópiala manualmente.');
+    } finally {
+      document.body.removeChild(textarea);
+    }
   }
 
   return (
