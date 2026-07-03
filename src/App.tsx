@@ -214,7 +214,13 @@ function RequirePermission({ user, permission, children }: { user: AuthUser | nu
   return <>{children}</>;
 }
 
-function AppRoutes({ user, setUser, onLogout }: { user: AuthUser | null; setUser: (u: AuthUser | null) => void; onLogout: () => void }) {
+function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNotification }: {
+  user: AuthUser | null;
+  setUser: (u: AuthUser | null) => void;
+  onLogout: () => void;
+  permisoNotification: boolean;
+  setPermisoNotification: (v: boolean) => void;
+}) {
   const navigate = useNavigate();
 
   function handleLogout() {
@@ -236,6 +242,22 @@ function AppRoutes({ user, setUser, onLogout }: { user: AuthUser | null; setUser
 
   return (
     <AuthContext.Provider value={user}>
+      {permisoNotification && (
+        <div className="fixed top-4 right-4 z-50 bg-blue-600 text-white px-6 py-4 rounded-xl shadow-xl max-w-sm">
+          <p className="font-medium">Permisos actualizados</p>
+          <p className="text-sm mt-1">Tus permisos han cambiado. Recarga la pagina para aplicar los cambios.</p>
+          <div className="flex gap-2 mt-3">
+            <button onClick={() => window.location.reload()}
+              className="bg-white text-blue-600 px-4 py-1 rounded-lg text-sm font-medium">
+              Recargar ahora
+            </button>
+            <button onClick={() => setPermisoNotification(false)}
+              className="bg-blue-500 text-white px-4 py-1 rounded-lg text-sm">
+              Despues
+            </button>
+          </div>
+        </div>
+      )}
       <PrivateLayout user={user} onLogout={handleLogout}>
         <Routes>
           <Route path="/" element={<Dashboard user={user} />} />
@@ -267,6 +289,7 @@ function AppRoutes({ user, setUser, onLogout }: { user: AuthUser | null; setUser
 export default function App() {
   const [user, setUser] = useState<AuthUser | null>(null);
   const [bootstrapping, setBootstrapping] = useState(true);
+  const [permisoNotification, setPermisoNotification] = useState(false);
 
   useEffect(() => {
     fetch("/api/auth/me", { credentials: "include" })
@@ -279,6 +302,25 @@ export default function App() {
       .catch(() => {})
       .finally(() => setBootstrapping(false));
   }, []);
+
+  // Polling cada 60s para detectar cambios en permisos
+  useEffect(() => {
+    if (!user) return;
+    const interval = setInterval(async () => {
+      try {
+        const res = await fetch('/api/auth/me');
+        if (!res.ok) return;
+        const data = await res.json();
+        const oldPerms = user.permisos?.sort().join(',') || '';
+        const newPerms = (data.permisos || []).sort().join(',');
+        if (oldPerms !== newPerms) {
+          setPermisoNotification(true);
+          setUser(data);
+        }
+      } catch {}
+    }, 60000);
+    return () => clearInterval(interval);
+  }, [user?.id]);
 
   function handleLogout() {
     setUser(null);
@@ -294,7 +336,8 @@ export default function App() {
 
   return (
     <BrowserRouter>
-      <AppRoutes user={user} setUser={setUser} onLogout={handleLogout} />
+      <AppRoutes user={user} setUser={setUser} onLogout={handleLogout}
+        permisoNotification={permisoNotification} setPermisoNotification={setPermisoNotification} />
     </BrowserRouter>
   );
 }
