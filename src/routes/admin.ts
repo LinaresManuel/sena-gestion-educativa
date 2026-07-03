@@ -48,8 +48,8 @@ router.get('/permisos/modulo/:modulo', requireAuth, requirePermission('admin.ver
 // GET /api/admin/roles - Listar roles con sus permisos
 router.get('/roles', requireAuth, requirePermission('admin.ver'), async (req, res) => {
   try {
-    // Obtener roles únicos de la tabla usuarios_roles
-    const uniqueRoles = await db.selectDistinct({ rol: usuariosRoles.rol }).from(usuariosRoles);
+    // Obtener roles únicos de roles_permisos (incluye roles personalizados sin usuarios asignados)
+    const uniqueRoles = await db.selectDistinct({ rol: rolesPermisos.rol }).from(rolesPermisos);
     
     // Obtener permisos para cada rol
     const rolesWithPermisos = await Promise.all(
@@ -119,15 +119,22 @@ router.post('/roles', requireAuth, requirePermission('admin.roles'), async (req,
     }
 
     let asignacionesCreadas = 0;
-    for (const codigo of permisosCodigos) {
-      const [permiso] = await db.select().from(permisos).where(eq(permisos.codigo, codigo));
-      if (permiso) {
-        await db.insert(rolesPermisos).values({
-          rol: nombre.trim(),
-          permisoId: permiso.id,
-        });
-        asignacionesCreadas++;
+    try {
+      for (const codigo of permisosCodigos) {
+        const [permiso] = await db.select().from(permisos).where(eq(permisos.codigo, codigo));
+        if (permiso) {
+          await db.insert(rolesPermisos).values({
+            rol: nombre.trim(),
+            permisoId: permiso.id,
+          });
+          asignacionesCreadas++;
+        }
       }
+    } catch (insertErr: any) {
+      if (insertErr.message?.includes('UNIQUE constraint failed')) {
+        return res.status(409).json({ error: 'Ya existe un permiso asignado a este rol' });
+      }
+      throw insertErr;
     }
 
     res.json({ ok: true, rol: nombre.trim(), totalPermisos: asignacionesCreadas });

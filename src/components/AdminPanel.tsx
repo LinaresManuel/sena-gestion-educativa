@@ -160,11 +160,13 @@ function RoleFormModal({
   const [nombre, setNombre] = useState('');
   const [selectedPermisos, setSelectedPermisos] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
     if (!isOpen) {
       setNombre('');
       setSelectedPermisos([]);
+      setError('');
     }
   }, [isOpen]);
 
@@ -177,11 +179,12 @@ function RoleFormModal({
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setSaving(true);
+    setError('');
     try {
       await onSave({ nombre, permisos: selectedPermisos });
       onClose();
-    } catch (err) {
-      console.error(err);
+    } catch (err: any) {
+      setError(err.message || 'Error al crear el rol');
     } finally {
       setSaving(false);
     }
@@ -224,6 +227,7 @@ function RoleFormModal({
               })}
             </div>
           </div>
+          {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
           <div className="flex justify-end gap-2 pt-2">
             <button type="button" onClick={onClose} className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
             <button type="submit" disabled={saving || !nombre.trim()}
@@ -502,9 +506,13 @@ export default function AdminPanel() {
           setSelectedRole(null);
           setRolePermisos([]);
         }
+        alert(`Rol "${deletingRole}" eliminado correctamente`);
+      } else {
+        const err = await res.json();
+        alert(err.error || 'Error al eliminar el rol');
       }
-    } catch (error) {
-      console.error('Error deleting role:', error);
+    } catch (error: any) {
+      alert('Error al eliminar el rol: ' + (error.message || 'Error de red'));
     } finally {
       setSaving(false);
     }
@@ -727,7 +735,7 @@ export default function AdminPanel() {
         onConfirm={handleResetPassword} title="Resetear contraseña"
         message={`¿Generar una nueva contraseña temporal para "${resettingUser?.username}"? El usuario deberá cambiarla en su próximo inicio de sesión.`}
         confirmText="Generar contraseña" saving={saving} />
-      <PasswordDisplayModal isOpen={showPasswordModal} onClose={() => setShowPasswordModal(false)}
+      <PasswordDisplayModal isOpen={showPasswordModal} onClose={() => { setShowPasswordModal(false); setGeneratedPassword(''); setResetUsername(''); }}
         username={resetUsername} password={generatedPassword} />
     </div>
   );
