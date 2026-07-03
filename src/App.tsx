@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { BrowserRouter, Routes, Route, Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { BookOpen, Users, Building, Home, LayoutDashboard, MapPin, Calendar, LogOut, Shield, Settings, UserCheck } from "lucide-react";
 
@@ -303,22 +303,24 @@ export default function App() {
       .finally(() => setBootstrapping(false));
   }, []);
 
-  // Polling cada 60s para detectar cambios en permisos
+  // Polling cada 15s para detectar cambios en permisos
+  const permisosRef = useRef('');
   useEffect(() => {
     if (!user) return;
+    permisosRef.current = (user.permisos || []).slice().sort().join(',');
     const interval = setInterval(async () => {
       try {
         const res = await fetch('/api/auth/me');
         if (!res.ok) return;
         const data = await res.json();
-        const oldPerms = user.permisos?.sort().join(',') || '';
-        const newPerms = (data.permisos || []).sort().join(',');
-        if (oldPerms !== newPerms) {
+        const newPerms = (data.permisos || []).slice().sort().join(',');
+        if (permisosRef.current !== newPerms) {
+          permisosRef.current = newPerms;
           setPermisoNotification(true);
           setUser(data);
         }
       } catch {}
-    }, 60000);
+    }, 15000);
     return () => clearInterval(interval);
   }, [user?.id]);
 
