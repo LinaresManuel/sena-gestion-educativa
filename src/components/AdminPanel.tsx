@@ -26,18 +26,20 @@ interface Usuario {
   ultimoLoginAt: string | null;
 }
 
-const AVAILABLE_ROLES = ['admin', 'editor', 'instructor', 'lector', 'aprendiz'];
+const SYSTEM_ROLES = ['admin', 'editor', 'instructor', 'lector', 'aprendiz'];
 
 function UserFormModal({
   isOpen,
   onClose,
   onSave,
   usuario,
+  rolesDisponibles,
 }: {
   isOpen: boolean;
   onClose: () => void;
   onSave: (data: any) => Promise<any>;
   usuario?: Usuario | null;
+  rolesDisponibles: Role[];
 }) {
   const [username, setUsername] = useState('');
   const [nombre, setNombre] = useState('');
@@ -113,12 +115,12 @@ function UserFormModal({
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-1">Roles</label>
             <div className="flex flex-wrap gap-2">
-              {AVAILABLE_ROLES.map(rol => (
-                <button key={rol} type="button" onClick={() => toggleRole(rol)}
+              {rolesDisponibles.map(role => (
+                <button key={role.rol} type="button" onClick={() => toggleRole(role.rol)}
                   className={`px-3 py-1 text-sm rounded-full border transition ${
-                    roles.includes(rol) ? 'bg-blue-500 text-white border-blue-500' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
+                    roles.includes(role.rol) ? 'bg-blue-500 text-white border-blue-500' : 'bg-gray-100 text-gray-700 border-gray-300 hover:bg-gray-200'
                   }`}>
-                  {rol}
+                  {role.rol}
                 </button>
               ))}
             </div>
@@ -592,7 +594,7 @@ export default function AdminPanel() {
                     <span className="font-medium text-gray-900">{role.rol}</span>
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-gray-500">{role.totalPermisos} permisos</span>
-                      {!AVAILABLE_ROLES.includes(role.rol) && (
+                      {!SYSTEM_ROLES.includes(role.rol) && (
                         <button onClick={(e) => { e.stopPropagation(); setDeletingRole(role.rol); setShowDeleteRoleConfirm(true); }}
                           className="text-red-400 hover:text-red-600" title="Eliminar rol">
                           <Trash2 className="w-4 h-4" />
@@ -710,7 +712,7 @@ export default function AdminPanel() {
       )}
 
       <UserFormModal isOpen={showUserForm} onClose={() => { setShowUserForm(false); setEditingUser(null); }}
-        onSave={handleSaveUser} usuario={editingUser} />
+        onSave={handleSaveUser} usuario={editingUser} rolesDisponibles={roles} />
       <RoleFormModal isOpen={showRoleForm} onClose={() => setShowRoleForm(false)}
         onSave={handleCreateRole} permisos={permisos} />
       <ConfirmDialog isOpen={showDeleteConfirm} onClose={() => { setShowDeleteConfirm(false); setDeletingUser(null); }}
