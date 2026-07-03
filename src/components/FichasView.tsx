@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, X, Calendar, Clock, MapPin, Search } from "lucide-react";
-import { useCanEdit } from "../lib/auth-context";
+import { useHasAnyPermission } from "../lib/auth-context";
 
 interface Ficha {
   id: number;
@@ -24,7 +24,7 @@ const HORAS = Array.from({ length: 16 }, (_, i) => {
 });
 
 export default function FichasView() {
-  const canEdit = useCanEdit();
+  const canEdit = useHasAnyPermission('cursos.editar', 'cursos.crear');
   const [fichas, setFichas] = useState<Ficha[]>([]);
   const [centros, setCentros] = useState<any[]>([]);
   const [programas, setProgramas] = useState<any[]>([]);

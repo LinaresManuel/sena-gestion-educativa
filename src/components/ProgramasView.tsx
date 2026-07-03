@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, FileText, Download, List, X } from "lucide-react";
 import CurriculoModal from "./CurriculoModal";
-import { useCanEdit } from "../lib/auth-context";
+import { useHasAnyPermission } from "../lib/auth-context";
 
 export interface Programa {
   id: number;
@@ -15,7 +15,7 @@ export interface Programa {
 }
 
 export default function ProgramasView() {
-  const canEdit = useCanEdit();
+  const canEdit = useHasAnyPermission('cursos.editar', 'cursos.crear');
   const [programas, setProgramas] = useState<Programa[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

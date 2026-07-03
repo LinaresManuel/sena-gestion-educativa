@@ -182,11 +182,6 @@ router.delete('/roles/:rol', requireAuth, requirePermission('admin.roles'), asyn
   try {
     const { rol } = req.params;
 
-    const rolesSistema = ['admin', 'editor', 'instructor', 'lector', 'aprendiz'];
-    if (rolesSistema.includes(rol)) {
-      return res.status(400).json({ error: 'No se pueden eliminar roles del sistema' });
-    }
-
     const usuariosConRol = await db.select()
       .from(usuariosRoles)
       .where(eq(usuariosRoles.rol, rol))
@@ -194,6 +189,16 @@ router.delete('/roles/:rol', requireAuth, requirePermission('admin.roles'), asyn
 
     if (usuariosConRol.length > 0) {
       return res.status(400).json({ error: 'No se puede eliminar un rol que tiene usuarios asignados' });
+    }
+
+    // Protección: evitar eliminar 'admin' si es el último
+    if (rol === 'admin') {
+      const adminsRestantes = await db.select()
+        .from(usuariosRoles)
+        .where(eq(usuariosRoles.rol, 'admin'));
+      if (adminsRestantes.length <= 1) {
+        return res.status(400).json({ error: 'No se puede eliminar el rol admin porque es el único administrador del sistema' });
+      }
     }
 
     await db.delete(rolesPermisos).where(eq(rolesPermisos.rol, rol));

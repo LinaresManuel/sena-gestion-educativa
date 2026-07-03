@@ -26,8 +26,6 @@ interface Usuario {
   ultimoLoginAt: string | null;
 }
 
-const SYSTEM_ROLES = ['admin', 'editor', 'instructor', 'lector', 'aprendiz'];
-
 function UserFormModal({
   isOpen,
   onClose,
@@ -602,12 +600,10 @@ export default function AdminPanel() {
                     <span className="font-medium text-gray-900">{role.rol}</span>
                     <div className="flex items-center gap-2">
                       <span className="text-sm text-gray-500">{role.totalPermisos} permisos</span>
-                      {!SYSTEM_ROLES.includes(role.rol) && (
                         <button onClick={(e) => { e.stopPropagation(); setDeletingRole(role.rol); setShowDeleteRoleConfirm(true); }}
                           className="text-red-400 hover:text-red-600" title="Eliminar rol">
                           <Trash2 className="w-4 h-4" />
                         </button>
-                      )}
                     </div>
                   </div>
                 </div>
@@ -729,7 +725,7 @@ export default function AdminPanel() {
         confirmText="Eliminar" danger saving={saving} />
       <ConfirmDialog isOpen={showDeleteRoleConfirm} onClose={() => { setShowDeleteRoleConfirm(false); setDeletingRole(null); }}
         onConfirm={handleDeleteRole} title="Eliminar rol"
-        message={`¿Estás seguro de eliminar el rol "${deletingRole}"? No tiene usuarios asignados.`}
+        message={`¿Estás seguro de eliminar el rol "${deletingRole}"? Esta acción eliminará todos los permisos asociados.`}
         confirmText="Eliminar" danger saving={saving} />
       <ConfirmDialog isOpen={showResetConfirm} onClose={() => { setShowResetConfirm(false); setResettingUser(null); }}
         onConfirm={handleResetPassword} title="Resetear contraseña"

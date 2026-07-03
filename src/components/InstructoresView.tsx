@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, X, Pencil } from "lucide-react";
-import { useCanEdit } from "../lib/auth-context";
+import { useHasAnyPermission } from "../lib/auth-context";
 
 interface Instructor {
   id: number;
@@ -13,7 +13,7 @@ interface Instructor {
 }
 
 export default function InstructoresView() {
-  const canEdit = useCanEdit();
+  const canEdit = useHasAnyPermission('cursos.editar', 'cursos.crear');
   const [instructores, setInstructores] = useState<Instructor[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

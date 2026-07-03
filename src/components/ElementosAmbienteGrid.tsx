@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
-import { useCanEdit } from "../lib/auth-context";
+import { useHasAnyPermission } from "../lib/auth-context";
 
 export interface ElementoAmbiente {
   id: number;
@@ -19,7 +19,7 @@ interface Props {
 }
 
 export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onClose }: Props) {
-  const canEdit = useCanEdit();
+  const canEdit = useHasAnyPermission('inventario.editar', 'inventario.crear');
   const [elementos, setElementos] = useState<ElementoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);

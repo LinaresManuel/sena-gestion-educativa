@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, List, X } from "lucide-react";
 import { TipoAmbiente } from "./TiposAmbienteView";
 import ElementosAmbienteGrid from "./ElementosAmbienteGrid";
-import { useCanEdit } from "../lib/auth-context";
+import { useHasAnyPermission } from "../lib/auth-context";
 
 interface Ambiente {
   id: number;
@@ -21,7 +21,7 @@ interface Centro {
 }
 
 export default function AmbientesView() {
-  const canEdit = useCanEdit();
+  const canEdit = useHasAnyPermission('salones.editar', 'salones.crear');
   const [ambientes, setAmbientes] = useState<Ambiente[]>([]);
   const [centros, setCentros] = useState<Centro[]>([]);
   const [tiposAmbiente, setTiposAmbiente] = useState<TipoAmbiente[]>([]);
