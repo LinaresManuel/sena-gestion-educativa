@@ -7,6 +7,7 @@ import { usuarios, usuariosRoles, rolesPermisos, permisos } from '../db/schema.t
 import { requireAuth, type AuthRequest } from '../middleware/auth.ts';
 import { requirePermission } from '../middleware/permissions.ts';
 import { ALL_MODULE_PERMISSIONS } from '../modules/index.ts';
+import { notificarCambioPermisos, notificarCambioPermisosATodos } from '../lib/sse.ts';
 
 const router = Router();
 
@@ -172,6 +173,11 @@ router.post('/roles/:rol/permisos', requireAuth, requirePermission('admin.roles'
       message: `Permisos actualizados para el rol ${rol}`,
       total: asignacionesCreadas
     });
+
+    // Notificar a todos los usuarios con este rol
+    const usuariosConRol = await db.select({ usuarioId: usuariosRoles.usuarioId })
+      .from(usuariosRoles).where(eq(usuariosRoles.rol, rol));
+    for (const u of usuariosConRol) notificarCambioPermisos(u.usuarioId);
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
@@ -253,6 +259,8 @@ router.post('/usuarios/:id/roles', requireAuth, requirePermission('admin.editar'
       message: 'Roles actualizados',
       total: rolesAsignados 
     });
+
+    notificarCambioPermisos(usuarioId);
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }
@@ -420,6 +428,8 @@ router.put('/usuarios/:id', requireAuth, requirePermission('admin.editar'), asyn
 
     const [updated] = await db.select().from(usuarios).where(eq(usuarios.id, usuarioId)).limit(1);
     res.json({ ...updated, passwordHash: undefined });
+
+    if (Array.isArray(roles)) notificarCambioPermisos(usuarioId);
   } catch (error: any) {
     res.status(500).json({ error: error.message });
   }

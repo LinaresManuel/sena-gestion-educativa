@@ -13,6 +13,7 @@ import adminRouter from './src/routes/admin.ts';
 import { requireAuth, type AuthRequest } from './src/middleware/auth.ts';
 import { requestLogger } from './src/middleware/request-logger.ts';
 import { auditLogger } from './src/middleware/audit.ts';
+import { addSseClient } from './src/lib/sse.ts';
 import { errorHandler, notFoundHandler } from './src/middleware/error-handler.ts';
 import { logger } from './src/lib/logger.ts';
 
@@ -60,6 +61,17 @@ async function startServer() {
 
   // Admin routes (require auth + admin permission)
   app.use('/api/admin', requireAuth as any, adminRouter);
+
+  // SSE para notificaciones en tiempo real de cambios de permisos
+  app.get('/api/auth/sse', requireAuth, (req: AuthRequest, res) => {
+    res.writeHead(200, {
+      'Content-Type': 'text/event-stream',
+      'Cache-Control': 'no-cache',
+      Connection: 'keep-alive',
+    });
+    res.write('event: connected\ndata: {}\n\n');
+    if (req.user) addSseClient(req.user.id, res);
+  });
 
   // Health check (public)
   app.get('/api/health', (_req, res) => {
