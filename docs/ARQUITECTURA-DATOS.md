@@ -2,7 +2,7 @@
 
 ## 1. Resumen
 
-SPA React 19 + Express + SQLite (Drizzle ORM). 15 tablas, sistema de permisos granulares (35 permisos en 9 módulos), auth con JWT en cookie httpOnly.
+SPA React 19 + Express + SQLite (Drizzle ORM). 15 tablas, sistema de permisos granulares (39 permisos en 10 módulos), auth con JWT en cookie httpOnly.
 
 ---
 
@@ -168,33 +168,30 @@ usuarios_roles — N:M entre usuarios y roles
 
 ## 4. Sistema de Módulos y Permisos
 
-### 4.1 Los 9 módulos (35 permisos)
+### 4.1 Los 10 módulos (39 permisos)
 
 | Módulo | Permisos | Total |
 |---|---|---|
 | inicio | ver, reportes | 2 |
+| regionales | ver, crear, editar, eliminar | 4 |
+| centros | ver, crear, editar, eliminar | 4 |
+| ambientes | ver, crear, editar, eliminar | 4 |
+| tipos_ambiente | ver, crear, editar, eliminar | 4 |
+| programas | ver, crear, editar, eliminar | 4 |
+| instructores | ver, crear, editar, eliminar | 4 |
+| fichas | ver, crear, editar, eliminar | 4 |
 | programacion | ver, crear, editar, eliminar | 4 |
-| comunicacion | ver, enviar, responder, eliminar | 4 |
-| inventario | ver, crear, editar, eliminar | 4 |
-| cursos | ver, crear, editar, eliminar | 4 |
-| salones | ver, crear, editar, eliminar | 4 |
-| notas | ver, registrar, editar, eliminar | 4 |
-| asistencia | ver, registrar, editar, eliminar | 4 |
 | admin | ver, crear, editar, eliminar, roles | 5 |
 
-Total: 35 permisos
+Total: 39 permisos
 
-### 4.2 Roles del sistema (5)
+### 4.2 Roles del sistema
 
-| Rol | Permisos | Descripción |
-|---|---|---|
-| admin | 35 (todos) | Acceso completo |
-| editor | 25 | CRUD en programación, inventario, cursos, salones |
-| instructor | 10 | Ver + registrar notas/asistencia |
-| lector | 9 | Solo lectura en todos los módulos |
-| aprendiz | 5 | Dashboard, comunicaciones, notas, asistencia |
+Los roles son **dinámicos**, creados desde `AdminPanel` y almacenan en `usuarios_roles`. Pueden eliminarse excepto `admin`.
 
-Los roles se definen en `scripts/migrate-to-permissions.ts` (`ROLE_PERMISSIONS`).
+| Rol | Descripción |
+|---|---|
+| admin | Acceso completo — no se puede eliminar |
 
 ---
 
@@ -229,10 +226,12 @@ Backend: Middleware chain
   requireAllPermissions(...) → verifica todos
 
 Frontend: Hooks (vía AuthContext)
-  useHasPermission('codigo') → admin=true, sino incluye('codigo')
-  useHasAnyPermission(...) → admin=true, sino some(incluye)
+  useHasPermission('codigo') → admin=true, si no resolveEffectivePermissions incluye('codigo')
+  useHasAnyPermission(...) → admin=true, sino some(resolveEffectivePermissions incluye)
   useCanEdit() → admin=true, sino some(p.includes('.editar')||'.crear')
   useIsAdmin() → user.rol === 'admin'
+
+  resolveEffectivePermissions(): Si el usuario tiene cualquier acción CRUD en un módulo, se agrega automáticamente `module.ver`.
 ```
 
 ### 5.3 JWT
@@ -257,14 +256,14 @@ Cookie: sena_session, httpOnly, sameSite='lax', secure=config.COOKIE_SECURE
 | Ruta | Componente | Permiso (sidebar) | Permiso (edición) |
 |---|---|---|---|
 | / | Dashboard | — | — |
-| /regionales | RegionalesView | config.ver | config.editar/crear |
-| /centros | CentrosView | config.ver | config.editar/crear |
-| /ambientes | AmbientesView | salones.ver | salones.editar/crear |
-| /tipos-ambiente | TiposAmbienteView | config.ver | config.editar/crear |
-| /programas | ProgramasView | cursos.ver | cursos.editar/crear |
-| /instructores | InstructoresView | cursos.ver | cursos.editar/crear |
-| /fichas | FichasView | cursos.ver | cursos.editar/crear |
-| /programacion | ProgramacionInstructoresView | programacion.ver | (backend valida) |
+| /regionales | RegionalesView | regionales.ver | regionales.crear/editar/eliminar |
+| /centros | CentrosView | centros.ver | centros.crear/editar/eliminar |
+| /ambientes | AmbientesView | ambientes.ver | ambientes.crear/editar/eliminar |
+| /tipos-ambiente | TiposAmbienteView | tipos_ambiente.ver | tipos_ambiente.crear/editar/eliminar |
+| /programas | ProgramasView | programas.ver | programas.crear/editar/eliminar |
+| /instructores | InstructoresView | instructores.ver | instructores.crear/editar/eliminar |
+| /fichas | FichasView | fichas.ver | fichas.crear/editar/eliminar |
+| /programacion | ProgramacionInstructoresView | programacion.ver | programacion.crear/editar/eliminar |
 | /admin | AdminPanel | admin.ver | (backend valida) |
 
 ---
@@ -275,14 +274,15 @@ Cookie: sena_session, httpOnly, sameSite='lax', secure=config.COOKIE_SECURE
 |---|---|---|---|
 | 1 | `usuarios.rol` deprecated pero aún usado como fallback | Datos duplicados y posible inconsistencia | schema.ts:123, auth.ts:45-47 |
 | 2 | No existe tabla `roles` — roles son strings sueltos | Sin metadatos, sin FK, sin protección de integridad referencial | schema.ts:145,154 |
-| 3 | GET /api/admin/stats usa `usuarios_roles` para contar roles | Inconsistente con GET /api/admin/roles | admin.ts:432 |
-| 4 | Permisos cacheados en JWT — no hay refresh sin re-login | Cambios de permisos no toman efecto hasta nuevo inicio de sesión | auth.ts:62-67 |
-| 5 | **3 componentes sin módulo de permiso específico** (regionales, centros, tipos-ambiente) | `useCanEdit()` es muy permisivo | RegionalesView, CentrosView, TiposAmbienteView |
+| 3 | ~~GET /api/admin/stats usa `usuarios_roles` para contar roles~~ | ~~Inconsistente con GET /api/admin/roles~~ → CORREGIDO | admin.ts:432 |
+| 4 | ~~Permisos cacheados en JWT — no hay refresh sin re-login~~ | ~~Cambios de permisos no toman efecto hasta nuevo inicio de sesión~~ → RESUELTO con `resolveEffectivePermissions()` en frontend y `GET /api/auth/me` recalcula permisos | auth.ts:62-67 |
+| 5 | ~~**3 componentes sin módulo de permiso específico**~~ (regionales, centros, tipos-ambiente) | ~~`useCanEdit()` es muy permisivo~~ → CORREGIDO: 10 módulos con permisos CRUD individuales | RegionalesView, CentrosView, TiposAmbienteView |
 | 6 | Rate limit en `/api/auth` deshabilitado | Sin protección contra fuerza bruta | server.ts:50-58 |
 | 7 | Sin auditoría de cambios de permisos | No se puede rastrear quién cambió qué rol | (no existe) |
-| 8 | `UserRole` type fijo a 5 roles | Roles personalizados no encajan en el tipo TypeScript | auth.ts:5 |
+| 8 | ~~`UserRole` type fijo a 5 roles~~ | ~~Roles personalizados no encajan en el tipo TypeScript~~ → Roles dinámicos desde BD | auth.ts:5 |
 | 9 | Sin validación Zod en request bodies | Errores de tipo llegan a Drizzle sin filtrar | server.ts (todo inline) |
-| 10 | `DELETE usuarios/:id/roles/:rol` con `&&` mal usado en where clause | No filtra correctamente | admin.ts:267-268 |
+| 10 | ~~`DELETE usuarios/:id/roles/:rol` con `&&` mal usado en where clause~~ | ~~No filtra correctamente~~ → CORREGIDO con `and()` de drizzle-orm | admin.ts:267-268 |
+| 11 | ~~ConfirmDialog compartido no extraído a componente~~ | ~~Código duplicado~~ → CORREGIDO: `src/components/ConfirmDialog.tsx` | ConfirmDialog.tsx |
 
 ---
 
@@ -296,13 +296,13 @@ Crear tabla dedicada para roles, migrar `rolesPermisos.rol` y `usuariosRoles.rol
 
 ### Mejora 2 — Nuevo módulo `config` (ALTA)
 
-Agregar módulo para regionales, centros, tipos-ambiente con 3 permisos: `config.ver`, `config.crear`, `config.editar`.
+~~Agregar módulo para regionales, centros, tipos-ambiente con 3 permisos: `config.ver`, `config.crear`, `config.editar`.~~ → Implementado: regionales, centros, tipos_ambiente como módulos separados con permisos CRUD individuales.
 
 **Beneficio:** Cobertura completa de permisos en UI, eliminar uso de `useCanEdit()`.
 
 ### Mejora 3 — Refresh de permisos JWT (ALTA)
 
-Endpoint `POST /api/auth/refresh-permisos` que recalcula permisos desde DB y actualiza JWT/cookie.
+~~Endpoint `POST /api/auth/refresh-permisos` que recalcula permisos desde DB y actualiza JWT/cookie.~~ → Implementado: `GET /api/auth/me` recalcula permisos desde DB.
 
 **Beneficio:** Cambios de permisos efectivos sin cerrar sesión.
 
@@ -324,7 +324,11 @@ Restaurar rate limit en `/api/auth` con configuración por entorno.
 
 ### Mejora 7 — Corregir `&&` en where clause (CRÍTICA)
 
-Reemplazar `&&` por `and()` de drizzle-orm en `DELETE /api/admin/usuarios/:id/roles/:rol`.
+~~Reemplazar `&&` por `and()` de drizzle-orm en `DELETE /api/admin/usuarios/:id/roles/:rol`.~~ → Implementado con `and()` de drizzle-orm.
+
+### Mejora 8 — Permission Inheritance
+
+`resolveEffectivePermissions()` agrega `module.ver` automáticamente si el usuario tiene cualquier acción CRUD en un módulo.
 
 ---
 
@@ -332,8 +336,9 @@ Reemplazar `&&` por `and()` de drizzle-orm en `DELETE /api/admin/usuarios/:id/ro
 
 | Fase | Mejoras | Esfuerzo |
 |---|---|---|
-| **Fase 1** | Mejora 7 (fix &&), Mejora 2 (módulo config) | 1 h |
-| **Fase 2** | Mejora 1 (tabla roles + migración) | 3 h |
-| **Fase 3** | Mejora 3 (refresh permisos) | 2 h |
+| ~~**Fase 1**~~ | ~~Mejora 7 (fix &&), Mejora 2 (módulo config)~~ | ~~1 h~~ |
+| ~~**Fase 2**~~ | ~~Mejora 1 (tabla roles + migración)~~ | ~~3 h~~ |
+| ~~**Fase 3**~~ | ~~Mejora 3 (refresh permisos)~~ | ~~2 h~~ |
 | **Fase 4** | Mejora 4 (auditoría), Mejora 5 (Zod) | 3 h |
 | **Fase 5** | Mejora 6 (rate limit), limpieza `usuarios.rol` | 1 h |
+| **Fase 6** | Mejora 8 (Permission Inheritance), ConfirmDialog compartido | 1 h |

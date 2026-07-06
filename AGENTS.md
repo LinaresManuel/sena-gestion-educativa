@@ -25,7 +25,7 @@ git pull workspace main
 
 ## Arquitectura
 
-`server.ts` (667 líneas) levanta una app Express que sirve **API + frontend** en el mismo puerto:
+`server.ts` (612 líneas) levanta una app Express que sirve **API + frontend** en el mismo puerto:
 - `dist/` (build) o Vite middleware (dev) sirven la SPA
 - Todo el CRUD está inline en `server.ts`, **no en archivos de rutas** (excepto `/api/auth/*` en `src/routes/auth.ts`)
 - Middlewares en `src/middleware/`: `auth`, `request-logger`, `audit`, `error-handler`
@@ -88,13 +88,22 @@ Verificar con `GET /api/health`: el campo `uptime` debe estar cerca de 0 segundo
 - Login: `POST /api/auth/login` (rate-limited a 10 req/min por IP)
 - `requireAuth` en `server.ts` bloquea todo `/api/*` excepto `/health` y `/auth/*`
 - **Sistema de permisos granular** (Tarea Y implementada):
-  - 5 roles: `admin`, `editor`, `instructor`, `lector`, `aprendiz`
-  - 30 permisos en 8 módulos (inicio, programacion, comunicacion, inventario, cursos, salones, notas, asistencia)
+  - 5 roles por defecto: `admin`, `editor`, `instructor`, `lector`, `aprendiz` (roles dinámicos desde BD, se pueden crear/editar/eliminar desde AdminPanel)
+  - 39 permisos en 10 módulos (inicio, regionales, centros, ambientes, tipos_ambiente, programas, instructores, fichas, programacion, admin)
   - Tablas: `permisos`, `roles_permisos`, `usuarios_roles`
   - JWT incluye array `permisos` con códigos como `programacion.editar`
+  - **Permission Inheritance**: `resolveEffectivePermissions()` en `auth-context.ts` agrega automáticamente `module.ver` si el usuario tiene cualquier acción CRUD en ese módulo
   - Middlewares: `requirePermission(...)`, `requireAnyPermission(...)`, `requireAllPermissions(...)`
   - Hooks React: `useHasPermission(...)`, `useHasAnyPermission(...)`, `useIsAdmin()`
+  - `ConfirmDialog` compartido en `src/components/ConfirmDialog.tsx` — usado en todos los módulos para confirmar eliminaciones
   - Admin endpoints: `/api/admin/roles`, `/api/admin/permisos`, `/api/admin/usuarios`
+- **Patrón de permisos por vista**: Cada vista CRUD usa:
+  - `mayCrear = useHasPermission('modulo.crear')` — controla formulario de creación
+  - `mayEditar = useHasPermission('modulo.editar')` — controla botón editar
+  - `mayEliminar = useHasPermission('modulo.eliminar')` — controla botón eliminar
+  - `hayAcciones = mayCrear || mayEditar || mayEliminar` — controla columna de acciones en tabla
+  - Formulario se muestra con `(mayCrear || mayEditar)`, NO con `hayAcciones`
+  - Cada eliminación pasa por `ConfirmDialog` antes de ejecutar `handleDelete`
 - **Cada módulo del proyecto (sidebar) debe tener su propio archivo `permissions.ts` en `src/modules/<modulo>/` con permisos CRUD (`ver`, `crear`, `editar`, `eliminar`).** Si se crea un nuevo módulo UI, hay que crear su carpeta de permisos, registrarlo en `src/modules/index.ts`, insertar los permisos en BD, y asignarlos a los roles existentes. También verificar que el backend tenga un endpoint `requirePermission` para las operaciones CRUD de ese módulo.
 
 ## Frontend: wrapper global de fetch
@@ -122,6 +131,7 @@ Verificar con `GET /api/health`: el campo `uptime` debe estar cerca de 0 segundo
 | `backup.ps1` | Backup manual bajo demanda | No |
 | `show-network.ps1` | Mostrar IPs LAN y URL de acceso | No |
 | `_nssm-helper.ps1` | Auto-detección de ruta de `nssm.exe` | N/A (helper) |
+| `deploy.ps1` | Build + restart del servicio (requiere admin) | Sí |
 | `migrate-to-permissions.ts` | Migrar datos al sistema de permisos | No |
 | `verify-permissions.ts` | Verificar permisos en BD | No |
 | `test-permissions.ts` | Probar endpoints de permisos | No |
@@ -134,6 +144,8 @@ Los scripts usan `$PSScriptRoot` (no `Get-Location`) para detectar el proyecto, 
 - `docs/analisis-proyecto.md` — análisis inicial del proyecto
 - `docs/DEPLOYMENT.md` — guía paso a paso de despliegue
 - `docs/OPERATIONS.md` — operación diaria, logs, respaldos, gestión de usuarios
+- `docs/ARQUITECTURA-DATOS.md` — esquema de BD, módulos, permisos, flujo de datos
+- `docs/PENDIENTES-PERMISOS-MODULOS.md` — referencia de permisos por módulo (completado)
 
 ## Gotchas frecuentes
 
@@ -145,3 +157,4 @@ Los scripts usan `$PSScriptRoot` (no `Get-Location`) para detectar el proyecto, 
 6. **No hay tests** — si el usuario pide "corre los tests", no busques framework; no existen.
 7. **El `lint` solo es typecheck** — no esperes que encuentre code smells, solo errores de tipos.
 8. **NSSM no se reinicia solo desde una shell sin admin.** Si el build cambió y el servicio sigue con código viejo, el usuario debe ejecutar `Restart-Service -Name SenaSchedule` como admin (o desde un PowerShell elevado).
+9. **Permisos CRUD heredan `ver`**: Si un usuario tiene `regionales.crear`, automáticamente puede ver el módulo regionales (sidebar, dashboard). Esto es intencional — `resolveEffectivePermissions()` lo resuelve en el frontend.

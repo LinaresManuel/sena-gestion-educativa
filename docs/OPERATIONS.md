@@ -151,7 +151,16 @@ Get-ScheduledTaskInfo -TaskName "SenaSchedule-Backup"
 
 ## 4. Gestión de usuarios
 
-### Crear un usuario nuevo (consola de sqlite)
+### Panel de Administración (recomendado)
+
+La gestión de usuarios, roles y permisos se realiza desde el panel de administración:
+
+1. Navegar a `/admin` (solo usuarios con rol `admin`)
+2. Pestaña **Usuarios**: crear, editar, eliminar usuarios, asignar roles, resetear contraseñas
+3. Pestaña **Roles y Permisos**: crear roles, asignar permisos por módulo
+4. Pestaña **Estadísticas**: métricas del sistema
+
+### Crear un usuario nuevo (consola de sqlite — solo si AdminPanel no está disponible)
 
 ```powershell
 # Generar hash bcrypt de la contraseña
@@ -159,13 +168,17 @@ $password = "NuevaPass123"
 $hash = node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 10))" $password
 
 # Insertar en la BD
-sqlite3 C:\sena-data\db\data.db "INSERT INTO usuarios (username, password_hash, nombre, rol, debe_cambiar_password, activo) VALUES ('jperez', '$hash', 'Juan Pérez', 'editor', 1, 1);"
+sqlite3 C:\sena-data\db\data.db "INSERT INTO usuarios (username, password_hash, nombre, debe_cambiar_password, activo) VALUES ('jperez', '$hash', 'Juan Pérez', 1, 1);"
+
+# Asignar un rol (ejemplo: editor)
+sqlite3 C:\sena-data\db\data.db "INSERT INTO usuarios_roles (usuario_id, rol) VALUES ((SELECT id FROM usuarios WHERE username='jperez'), 'editor');"
 ```
 
-Roles disponibles: `admin`, `editor`, `lector`.
+### Cambiar la contraseña de un usuario
 
-### Cambiar la contraseña de un usuario (consola de sqlite)
+Desde AdminPanel: pestaña Usuarios → botón de reset de contraseña.
 
+O manualmente:
 ```powershell
 $newHash = node -e "console.log(require('bcryptjs').hashSync(process.argv[1], 10))" "NuevaPass123"
 sqlite3 C:\sena-data\db\data.db "UPDATE usuarios SET password_hash = '$newHash', debe_cambiar_password = 0 WHERE username = 'admin';"
@@ -173,6 +186,9 @@ sqlite3 C:\sena-data\db\data.db "UPDATE usuarios SET password_hash = '$newHash',
 
 ### Desactivar un usuario
 
+Desde AdminPanel: pestaña Usuarios → editar → desactivar.
+
+O manualmente:
 ```powershell
 sqlite3 C:\sena-data\db\data.db "UPDATE usuarios SET activo = 0 WHERE username = 'jperez';"
 ```
@@ -180,8 +196,16 @@ sqlite3 C:\sena-data\db\data.db "UPDATE usuarios SET activo = 0 WHERE username =
 ### Listar usuarios
 
 ```powershell
-sqlite3 C:\sena-data\db\data.db "SELECT id, username, nombre, rol, activo, ultimo_login_at FROM usuarios;"
+sqlite3 C:\sena-data\db\data.db "SELECT u.id, u.username, u.nombre, u.activo, u.ultimo_login_at, GROUP_CONCAT(ur.rol) as roles FROM usuarios u LEFT JOIN usuarios_roles ur ON u.id = ur.usuario_id GROUP BY u.id;"
 ```
+
+### Gestionar permisos de un rol
+
+Desde AdminPanel: pestaña Roles y Permisos → seleccionar rol → marcar/desmarcar permisos.
+
+Los permisos se organizan por módulo (10 módulos, 39 permisos totales). Cada módulo tiene: ver, crear, editar, eliminar.
+
+**Permission Inheritance**: Si un usuario tiene cualquier permiso CRUD en un módulo (ej: `regionales.crear`), automáticamente puede ver ese módulo en el sidebar y dashboard. Esto es intencional.
 
 ---
 
@@ -245,6 +269,15 @@ npm run db:push
 Start-Service -Name SenaSchedule
 ```
 
+### Actualizar con deploy automatizado (recomendado)
+
+```powershell
+# Requiere PowerShell como Administrador
+powershell -ExecutionPolicy Bypass -File scripts\deploy.ps1
+```
+
+Este script ejecuta: detener servicio → build → iniciar servicio → verificar health check.
+
 ### Actualizar Node.js
 
 1. Descargar la nueva versión LTS de https://nodejs.org
@@ -307,6 +340,9 @@ Stop-Service SenaSchedule -Force
 
 # Iniciar (post-mantenimiento)
 Start-Service SenaSchedule
+
+# Deploy automatizado (requiere admin)
+powershell -ExecutionPolicy Bypass -File scripts\deploy.ps1
 ```
 
 ---

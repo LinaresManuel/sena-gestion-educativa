@@ -38,7 +38,7 @@ Aplicación web para la **gestión educativa del SENA** (Servicio Nacional de Ap
 
 ## 3. Modelo de datos — SQL (SQLite)
 
-Se utiliza **Drizzle ORM** sobre **better-sqlite3** con un único archivo local `data.db` (ubicado en la raíz del proyecto).
+Se utiliza **Drizzle ORM** sobre **better-sqlite3** con base de datos en `C:\sena-data\db\data.db` (producción) o `data.db` relativo (desarrollo).
 
 **Tipo de base de datos:** SQL relacional.
 **Driver:** `better-sqlite3` (síncrono, embebido).
@@ -101,6 +101,7 @@ Se utiliza **Drizzle ORM** sobre **better-sqlite3** con un único archivo local 
 | `GET/POST` | `/api/competencias/:id/perfiles` | Perfiles por competencia |
 | `PUT/DELETE` | `/api/perfiles/:id` | Modificar/eliminar perfil |
 | `GET/POST/DELETE` | `/api/fichas` | Fichas |
+| `PUT` | `/api/fichas/:id` | Actualizar ficha |
 | `GET/POST/DELETE` | `/api/programacion-instructores` | Programación |
 | `POST` | `/api/programacion-instructores/limpiar-celda` | Limpiar celda de horario |
 | `DELETE` | `/api/programacion-instructores/ficha/:fichaId` | Eliminar por ficha |
@@ -114,9 +115,9 @@ Se utiliza **Drizzle ORM** sobre **better-sqlite3** con un único archivo local 
 
 ### 4.3 Limitaciones conocidas
 
-- **No hay autenticación ni autorización** implementada.
+- ~~**No hay autenticación ni autorización** implementada.~~ ✅ Implementado: JWT con cookie httpOnly, sistema de permisos granular (39 permisos, 10 módulos).
 - **No hay tests automatizados** configurados.
-- El archivo `data.db` está versionado en el repositorio (debería estar en `.gitignore`).
+- ~~El archivo `data.db` está versionado en el repositorio (debería estar en `.gitignore`).~~ ✅ Corregido: la BD está en `C:\sena-data\db\data.db` fuera del repo.
 
 ---
 
@@ -195,8 +196,8 @@ sena-gestion-educativa/
 
 ## 6. Observaciones y recomendaciones
 
-1. **Mover `data.db` al `.gitignore`** para evitar versionar datos locales.
-2. **Añadir autenticación** si la app se va a desplegar en producción.
+1. ~~**Mover `data.db` al `.gitignore`** para evitar versionar datos locales.~~ ✅ Corregido.
+2. ~~**Añadir autenticación** si la app se va a desplegar en producción.~~ ✅ Implementado: JWT + permisos granulares.
 3. **Agregar tests** (Vitest está disponible por la integración con Vite).
 4. Considerar migrar las validaciones de horario a una capa de servicio o schema validation (ej. Zod) para mantener el `server.ts` más limpio.
 5. Documentar los endpoints con OpenAPI/Swagger para facilitar el consumo desde el frontend.

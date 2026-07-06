@@ -7,23 +7,26 @@ Lista de implementaciones identificadas como necesarias o recomendables para com
 ## Estado actual
 
 **Implementado y funcional:**
-- Auth JWT con cookie `httpOnly` y **sistema de permisos granular** (5 roles, 30 permisos, 8 módulos)
-- CRUD completo de todas las entidades (regionales, centros, ambientes, instructores, programas, fichas, programación)
+- Auth JWT con cookie `httpOnly` y **sistema de permisos granular** (5 roles por defecto + roles dinámicos, 39 permisos, 10 módulos)
+- **Permission Inheritance**: permisos CRUD heredan `ver` automáticamente via `resolveEffectivePermissions()`
+- CRUD completo de todas las entidades con **ConfirmDialog** en todas las eliminaciones
 - Persistencia en SQLite con WAL mode en `C:\sena-data\db\`
 - Servicio de Windows (NSSM) con auto-arranque y auto-restart
 - Backups automáticos vía tarea programada (si está instalada)
 - Logger estructurado (pino) con auditoría de mutaciones
 - Health check, helmet, rate limit en `/api/auth`
-- Panel de administración para gestión de roles y permisos
+- Panel de administración para gestión de usuarios, roles y permisos (AdminPanel)
+- SSE para notificaciones en tiempo real de cambios de permisos
 - Documentación de despliegue y operaciones
+- Deploy automatizado via `scripts/deploy.ps1`
 
-**Último commit:** `97f8def feat: agregar script de prueba de permisos`
+**Último commit:** `ec4d99c feat: permission inheritance + ConfirmDialog global`
 
 ---
 
 ## 🔴 Prioridad ALTA — Seguridad y bloqueantes operacionales
 
-### A. Mitigación temporal de la brecha de guards (cubierto por Y)
+### A. ✅ Mitigación de guards de permisos — COMPLETADO
 **✅ Implementado como mitigación temporal.**
 
 Cualquier usuario logueado (incluso `lector`) puede acceder a `/regionales`, `/programacion`, etc., y ver/editar datos.
@@ -48,6 +51,8 @@ Cualquier usuario logueado (incluso `lector`) puede acceder a `/regionales`, `/p
 - La solución definitiva es el sistema granular de permisos (tarea Y).
 
 **Estimación:** 1–2 h (mitigación) → **Completado**
+
+Completado como parte del sistema granular de permisos (Tarea Y).
 
 ---
 
@@ -284,6 +289,13 @@ Sistema de permisos granular que sustituye los 3 roles fijos por un modelo donde
    - Verificación: `scripts/verify-permissions.ts`
    - Pruebas: `scripts/test-permissions.ts`
 
+6. **Permission Inheritance (Fase posterior):**
+   - `resolveEffectivePermissions()` en `auth-context.ts`
+   - Form gate corregido en 5 vistas (formulario solo se muestra con `crear` o `editar`)
+   - `ConfirmDialog` compartido extraído a `src/components/ConfirmDialog.tsx`
+   - Aplicado a 10 módulos (13 eliminaciones con confirmación)
+   - `window.confirm()` migrado a `ConfirmDialog` en ProgramacionInstructoresView
+
 **Estimación original:** 12–16 h → **Completado en ~6 h**
 
 ---
@@ -306,7 +318,7 @@ Toda la UI está hardcodeada en español. Si se requiere bilingüismo, hay que r
 
 ---
 
-### Z. Roles personalizados no se visualizan en la UI
+### Z. ✅ Roles personalizados en UI — COMPLETADO
 **✅ IMPLEMENTADO**
 
 Los roles creados desde el panel de administración ahora aparecen en la pestaña de "Roles y Permisos" al asignar permisos, y en el formulario de creación/edición de usuarios.
@@ -324,22 +336,23 @@ Los roles creados desde el panel de administración ahora aparecen en la pestañ
 
 | Prioridad | Tareas | Horas estimadas |
 |---|---|---|
-| 🔴 Alta | 7 (A, B, C, D, E, F, Y) | ~17 h (Y completado: 6 h) |
+| 🔴 Alta | 7 (A✅, B, C, D✅, E✅, F, Y✅) | ~17 h (A, D, E, F, Y completados) |
 | 🟠 Media | 8 (G, H, I, J, K, L, M, N) | ~22 h |
-| 🟡 Baja | 10 (O, P, Q, R, S, T, U, W, X, Z) | ~30+ h |
+| 🟡 Baja | 10 (O, P, Q, R, S, T, U, W, X, Z✅) | ~30+ h (Z completado) |
 
-> Nota: V está marcado como sub-tarea de Y, no se cuenta aparte. Y ya está completado.
+> Nota: V está marcado como sub-tarea de Y, no se cuenta aparte. Y y Z ya están completados.
 
 ---
 
 ## Roadmap sugerido
 
-**Sprint 1 (1 día):** E (firewall + backup task), F (cambiar password admin), D (npm audit)
-**Sprint 2 (1 día):** A mitigación (1–2 h), C (validación con zod), M (CORS)
+**Sprint 1 (1 día):** ✅ E (firewall + backup task), ✅ F (cambiar password admin), D (npm audit)
+**Sprint 2 (1 día):** ✅ A mitigación, C (validación con zod), M (CORS)
 **Sprint 3 (2 días):** B (CSRF), G (strict TS), N (graceful shutdown), L (CSP), K (health check)
 **Sprint 4 (2 días):** I (ESLint/Prettier), J (migraciones)
 **Sprint 5 (3 días):** ✅ **Y (sistema granular de permisos)** — COMPLETADO
-**Sprint 6 (futuro):** H (tests críticos), O, P, R, Q, S, T, U, W, X según prioridad del negocio
+**Sprint 6 (1 día):** ✅ Permission inheritance, ✅ ConfirmDialog global, ✅ Fix form gate, ✅ CRUD permisos en 10 módulos
+**Sprint 7 (futuro):** H (tests críticos), O, P, R, Q, S, T, U, W, X según prioridad del negocio
 
 ---
 
