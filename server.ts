@@ -199,9 +199,14 @@ async function startServer() {
     }
   });
 
-  app.delete('/api/tipos-ambiente/:id', async (req, res) => {
+  app.delete('/api/tipos-ambiente/:id', requirePermission('tipos_ambiente.eliminar'), async (req, res) => {
     try {
-      await db.delete(tiposAmbiente).where(eq(tiposAmbiente.id, Number(req.params.id)));
+      const id = Number(req.params.id);
+      const ambientesConTipo = await db.select().from(ambientes).where(eq(ambientes.tipoAmbienteId, id)).limit(1);
+      if (ambientesConTipo.length > 0) {
+        return res.status(400).json({ error: 'No se puede eliminar el tipo porque está siendo utilizado por uno o más ambientes.' });
+      }
+      await db.delete(tiposAmbiente).where(eq(tiposAmbiente.id, id));
       res.json({ success: true });
     } catch (e: any) {
       handleDbError(e, res);
