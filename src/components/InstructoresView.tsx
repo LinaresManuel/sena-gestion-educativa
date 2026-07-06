@@ -296,7 +296,7 @@ export default function InstructoresView() {
       </div>
 
       <ConfirmDialog
-        open={deletingId !== null}
+        isOpen={deletingId !== null}
         title="Eliminar Instructor"
         message="¿Estás seguro de que deseas eliminar este instructor? Esta acción no se puede deshacer."
         confirmText="Eliminar"
@@ -307,7 +307,7 @@ export default function InstructoresView() {
             setDeletingId(null);
           }
         }}
-        onCancel={() => setDeletingId(null)}
+        onClose={() => setDeletingId(null)}
       />
     </div>
   );

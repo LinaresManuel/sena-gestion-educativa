@@ -207,9 +207,9 @@ export default function TiposAmbienteView() {
         </div>
       </div>
       <ConfirmDialog
-        open={deletingId !== null}
+        isOpen={deletingId !== null}
         onClose={() => setDeletingId(null)}
-        onConfirm={() => { handleDelete(deletingId!); setDeletingId(null); }}
+        onConfirm={() => { if (deletingId !== null) { handleDelete(deletingId); setDeletingId(null); } }}
         title="Eliminar Tipo de Ambiente"
         message="¿Estás seguro de que deseas eliminar este tipo de ambiente? Esta acción no se puede deshacer."
         confirmText="Eliminar"

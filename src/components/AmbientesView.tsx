@@ -305,13 +305,13 @@ export default function AmbientesView() {
         />
       )}
       <ConfirmDialog
-        open={deletingId !== null}
+        isOpen={deletingId !== null}
         title="Eliminar Ambiente"
         message="¿Estás seguro de que deseas eliminar este ambiente? Esta acción no se puede deshacer."
         confirmText="Eliminar"
         danger
-        onConfirm={() => { if (deletingId) handleDelete(deletingId); setDeletingId(null); }}
-        onCancel={() => setDeletingId(null)}
+        onConfirm={() => { if (deletingId !== null) { handleDelete(deletingId); setDeletingId(null); } }}
+        onClose={() => setDeletingId(null)}
       />
     </div>
   );

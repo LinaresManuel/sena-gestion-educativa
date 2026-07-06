@@ -295,7 +295,7 @@ export default function ProgramasView() {
         confirmText="Eliminar"
         danger={true}
         isOpen={deletingId !== null}
-        onCancel={() => setDeletingId(null)}
+        onClose={() => setDeletingId(null)}
         onConfirm={() => { if (deletingId) { handleDelete(deletingId); setDeletingId(null); } }}
       />
     </div>
