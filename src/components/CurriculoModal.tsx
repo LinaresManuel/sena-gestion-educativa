@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Programa } from "./ProgramasView";
 import { X, Plus, Trash2, ChevronDown, ChevronRight, AlertCircle, CheckCircle2, Pencil } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 interface Competencia {
   id: number;
@@ -66,6 +67,9 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
   const [resFase, setResFase] = useState("Analisis");
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingCompId, setDeletingCompId] = useState<number | null>(null);
+  const [deletingResId, setDeletingResId] = useState<number | null>(null);
+  const [deletingPerfilId, setDeletingPerfilId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -499,7 +503,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                             </button>
                           )}
                           {mayEliminar && (
-                            <button onClick={() => handleDeleteCompetencia(comp.id)} className="text-red-400 p-1 hover:text-red-600 hover:bg-red-50 rounded transition" title="Borrar competencia">
+                            <button onClick={() => setDeletingCompId(comp.id)} className="text-red-400 p-1 hover:text-red-600 hover:bg-red-50 rounded transition" title="Borrar competencia">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -533,7 +537,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                                        </button>
                                      )}
                                      {mayEliminar && (
-                                       <button onClick={() => handleDeleteResultado(res.id)} className="text-gray-400 hover:text-red-600">
+                                       <button onClick={() => setDeletingResId(res.id)} className="text-gray-400 hover:text-red-600">
                                          <Trash2 className="w-3.5 h-3.5" />
                                        </button>
                                      )}
@@ -585,7 +589,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                                        </button>
                                      )}
                                      {mayEliminar && (
-                                       <button onClick={() => handleDeletePerfil(perfil.id)} className="text-gray-400 hover:text-red-600">
+                                        <button onClick={() => setDeletingPerfilId(perfil.id)} className="text-gray-400 hover:text-red-600">
                                          <Trash2 className="w-3.5 h-3.5" />
                                        </button>
                                      )}
@@ -627,6 +631,33 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
           </div>
         </div>
       </div>
+      <ConfirmDialog
+        isOpen={deletingCompId !== null}
+        onClose={() => setDeletingCompId(null)}
+        onConfirm={() => { if (deletingCompId) { handleDeleteCompetencia(deletingCompId); setDeletingCompId(null); } }}
+        title="Eliminar Competencia"
+        message="¿Estás seguro de que deseas eliminar esta competencia? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+      />
+      <ConfirmDialog
+        isOpen={deletingResId !== null}
+        onClose={() => setDeletingResId(null)}
+        onConfirm={() => { if (deletingResId) { handleDeleteResultado(deletingResId); setDeletingResId(null); } }}
+        title="Eliminar Resultado de Aprendizaje"
+        message="¿Estás seguro de que deseas eliminar este resultado de aprendizaje? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+      />
+      <ConfirmDialog
+        isOpen={deletingPerfilId !== null}
+        onClose={() => setDeletingPerfilId(null)}
+        onConfirm={() => { if (deletingPerfilId) { handleDeletePerfil(deletingPerfilId); setDeletingPerfilId(null); } }}
+        title="Eliminar Perfil"
+        message="¿Estás seguro de que deseas eliminar este perfil del instructor? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+      />
     </div>
   );
 }

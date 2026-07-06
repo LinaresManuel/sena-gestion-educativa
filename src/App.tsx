@@ -26,7 +26,7 @@ interface AuthUser {
 
 function Dashboard({ user }: { user: AuthUser }) {
   // Hooks para verificar permisos
-  const canViewProgramacion = useHasPermission('programacion.ver') || useHasAnyPermission('programacion.crear', 'programacion.editar');
+  const canViewProgramacion = useHasPermission('programacion.ver');
   const canViewRegionales = useHasPermission('regionales.ver');
   const canViewCentros = useHasPermission('centros.ver');
   const canViewAmbientes = useHasPermission('ambientes.ver');
@@ -101,7 +101,7 @@ function Dashboard({ user }: { user: AuthUser }) {
 
 function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout: () => void; children: React.ReactNode }) {
   // Hooks para verificar permisos
-  const canViewProgramacion = useHasPermission('programacion.ver') || useHasAnyPermission('programacion.crear', 'programacion.editar');
+  const canViewProgramacion = useHasPermission('programacion.ver');
   const canViewRegionales = useHasPermission('regionales.ver');
   const canViewCentros = useHasPermission('centros.ver');
   const canViewAmbientes = useHasPermission('ambientes.ver');

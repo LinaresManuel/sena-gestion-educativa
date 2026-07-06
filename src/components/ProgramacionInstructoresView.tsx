@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Calendar, User, Search, RefreshCw, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import { useHasPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 const DIAS_EN_ESP = ["DOMINGO", "LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO"];
 
@@ -34,6 +35,8 @@ export default function ProgramacionInstructoresView() {
   const [saving, setSaving] = useState(false);
 
   const [editMode, setEditMode] = useState(false);
+  const [clearingCell, setClearingCell] = useState<{dateStr: string; hr: string} | null>(null);
+  const [clearingCalendar, setClearingCalendar] = useState(false);
 
   useEffect(() => {
     fetchData();
@@ -173,7 +176,6 @@ export default function ProgramacionInstructoresView() {
   };
 
   const handleClearCell = async (dateStr: string, hr: string) => {
-    if (!confirm(`¿Seguro que deseas eliminar esta celda guardada?\nFecha: ${dateStr}\nHora: ${hr}`)) return;
     try {
       setLoading(true);
       const resp = await fetch("/api/programacion-instructores/limpiar-celda", {
@@ -202,7 +204,6 @@ export default function ProgramacionInstructoresView() {
 
   const handleClearCalendar = async () => {
     if (!fichaId) return;
-    if (!confirm("¿ATENCIÓN: Estás seguro de borrar TODA la programación guardada para esta Ficha? Esta acción no se puede deshacer.")) return;
     try {
       setLoading(true);
       const resp = await fetch(`/api/programacion-instructores/ficha/${fichaId}`, {
@@ -408,7 +409,7 @@ export default function ProgramacionInstructoresView() {
                  )}
                  {mayEliminar && fichaId && (
                    <button 
-                     onClick={handleClearCalendar}
+                     onClick={() => setClearingCalendar(true)}
                      className="px-3 py-1.5 bg-white border border-red-200 text-red-600 hover:bg-red-50 rounded-md text-sm font-medium transition"
                      title="Limpiar Todo el Calendario"
                    >
@@ -503,7 +504,7 @@ export default function ProgramacionInstructoresView() {
                                        {mayEliminar && (
                                          <button 
                                            title="Eliminar celda guardada"
-                                           onClick={() => handleClearCell(dateStr, hr)}
+                                           onClick={() => setClearingCell({dateStr, hr})}
                                            className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-sm hover:scale-110 z-10"
                                          >
                                            ✕
@@ -555,6 +556,25 @@ export default function ProgramacionInstructoresView() {
           </div>
         </div>
       </div>
+
+      <ConfirmDialog
+        isOpen={clearingCell !== null}
+        onClose={() => setClearingCell(null)}
+        onConfirm={() => { if (clearingCell) { handleClearCell(clearingCell.dateStr, clearingCell.hr); setClearingCell(null); } }}
+        title="Eliminar Celda"
+        message={`¿Estás seguro de que deseas eliminar la programación guardada del ${clearingCell?.dateStr} ${clearingCell?.hr}?`}
+        confirmText="Eliminar"
+        danger
+      />
+      <ConfirmDialog
+        isOpen={clearingCalendar}
+        onClose={() => setClearingCalendar(false)}
+        onConfirm={() => { handleClearCalendar(); setClearingCalendar(false); }}
+        title="Limpiar Todo el Calendario"
+        message="¿ATENCIÓN: Estás seguro de borrar TODA la programación guardada para esta Ficha? Esta acción no se puede deshacer."
+        confirmText="Limpiar Todo"
+        danger
+      />
     </div>
   );
 }

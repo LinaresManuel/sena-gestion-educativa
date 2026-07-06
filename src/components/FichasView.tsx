@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, X, Calendar, Clock, MapPin, Search, Pencil } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 interface Ficha {
   id: number;
@@ -36,6 +37,7 @@ export default function FichasView() {
   
   const [loading, setLoading] = useState(true);
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   // Form State
   const [numeroFicha, setNumeroFicha] = useState("");
@@ -392,7 +394,7 @@ export default function FichasView() {
                             </button>
                           )}
                           {mayEliminar && (
-                            <button onClick={() => handleDelete(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
+                            <button onClick={() => setDeletingId(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -447,6 +449,16 @@ export default function FichasView() {
           )}
         </div>
       </div>
+
+      <ConfirmDialog
+        isOpen={deletingId !== null}
+        onClose={() => setDeletingId(null)}
+        onConfirm={() => { if (deletingId) { handleDelete(deletingId); setDeletingId(null); } }}
+        title="Eliminar Ficha"
+        message="¿Estás seguro de que deseas eliminar esta ficha? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger={true}
+      />
     </div>
   );
 }

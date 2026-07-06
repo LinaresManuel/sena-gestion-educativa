@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 export interface ElementoAmbiente {
   id: number;
@@ -28,6 +29,7 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
   const [editingId, setEditingId] = useState<number | null>(null);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -254,7 +256,7 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
                               </button>
                             )}
                             {mayEliminar && (
-                              <button onClick={() => handleDelete(el.id)} className="text-gray-400 hover:text-red-600 transition p-1">
+                              <button onClick={() => setDeletingId(el.id)} className="text-gray-400 hover:text-red-600 transition p-1">
                                 <Trash2 className="w-4 h-4"/>
                               </button>
                             )}
@@ -269,6 +271,20 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
           </div>
         </div>
       </div>
+      <ConfirmDialog
+        isOpen={deletingId !== null}
+        onClose={() => setDeletingId(null)}
+        onConfirm={() => {
+          if (deletingId !== null) {
+            handleDelete(deletingId);
+            setDeletingId(null);
+          }
+        }}
+        title="Eliminar Elemento"
+        message="¿Estás seguro de que deseas eliminar este elemento del ambiente? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+      />
     </div>
   )
 }

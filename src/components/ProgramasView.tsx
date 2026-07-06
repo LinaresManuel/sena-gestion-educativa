@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, FileText, Download, List, X } from "lucide-react";
 import CurriculoModal from "./CurriculoModal";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 export interface Programa {
   id: number;
@@ -25,6 +26,7 @@ export default function ProgramasView() {
   const [activeProgramaCurriculo, setActiveProgramaCurriculo] = useState<Programa | null>(null);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -158,7 +160,7 @@ export default function ProgramasView() {
       )}
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        {hayAcciones && (
+        {(mayCrear || mayEditar) && (
           <div className="xl:col-span-1 border rounded-xl bg-white shadow-sm overflow-hidden flex flex-col max-h-[85vh]">
             <div className="p-4 border-b bg-gray-50 shrink-0">
               <h2 className="text-lg font-medium">{editingId ? "Editar Programa" : "Nuevo Programa"}</h2>
@@ -218,7 +220,7 @@ export default function ProgramasView() {
           </div>
         )}
 
-        <div className={hayAcciones ? "xl:col-span-2" : "xl:col-span-3"}>
+        <div className={(mayCrear || mayEditar) ? "xl:col-span-2" : "xl:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">
@@ -269,7 +271,7 @@ export default function ProgramasView() {
                             </button>
                           )}
                           {mayEliminar && (
-                            <button onClick={() => handleDelete(p.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                            <button onClick={() => setDeletingId(p.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -287,6 +289,15 @@ export default function ProgramasView() {
       {activeProgramaCurriculo && (
         <CurriculoModal programa={activeProgramaCurriculo} onClose={() => setActiveProgramaCurriculo(null)} />
       )}
+      <ConfirmDialog
+        title="Eliminar Programa"
+        message="¿Estás seguro de que deseas eliminar este programa de formación? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger={true}
+        isOpen={deletingId !== null}
+        onCancel={() => setDeletingId(null)}
+        onConfirm={() => { if (deletingId) { handleDelete(deletingId); setDeletingId(null); } }}
+      />
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { Plus, Trash2, Pencil, List, X } from "lucide-react";
 import { TipoAmbiente } from "./TiposAmbienteView";
 import ElementosAmbienteGrid from "./ElementosAmbienteGrid";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 interface Ambiente {
   id: number;
@@ -33,6 +34,7 @@ export default function AmbientesView() {
   const [selectedAmbienteForElements, setSelectedAmbienteForElements] = useState<Ambiente | null>(null);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -169,7 +171,7 @@ export default function AmbientesView() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {hayAcciones && (
+        {(mayCrear || mayEditar) && (
           <div className="lg:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
               <h2 className="text-lg font-medium mb-2">{editingId ? "Editar Ambiente" : "Nuevo Ambiente"}</h2>
@@ -237,7 +239,7 @@ export default function AmbientesView() {
           </div>
         )}
 
-        <div className={hayAcciones ? "lg:col-span-2" : "lg:col-span-3"}>
+        <div className={(mayCrear || mayEditar) ? "lg:col-span-2" : "lg:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">
@@ -281,7 +283,7 @@ export default function AmbientesView() {
                             </button>
                           )}
                           {mayEliminar && (
-                            <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                            <button onClick={() => setDeletingId(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -302,6 +304,15 @@ export default function AmbientesView() {
           onClose={() => setSelectedAmbienteForElements(null)} 
         />
       )}
+      <ConfirmDialog
+        open={deletingId !== null}
+        title="Eliminar Ambiente"
+        message="¿Estás seguro de que deseas eliminar este ambiente? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+        onConfirm={() => { if (deletingId) handleDelete(deletingId); setDeletingId(null); }}
+        onCancel={() => setDeletingId(null)}
+      />
     </div>
   );
 }

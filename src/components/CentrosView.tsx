@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 interface Centro {
   id: number;
@@ -25,6 +26,7 @@ export default function CentrosView() {
   const [editingId, setEditingId] = useState<number | null>(null);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -134,7 +136,7 @@ export default function CentrosView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {hayAcciones && (
+        {(mayCrear || mayEditar) && (
           <div className="md:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
               <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Centro" : "Nuevo Centro"}</h2>
@@ -192,7 +194,7 @@ export default function CentrosView() {
           </div>
         )}
 
-        <div className={hayAcciones ? "md:col-span-2" : "md:col-span-3"}>
+        <div className={(mayCrear || mayEditar) ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">
@@ -225,7 +227,7 @@ export default function CentrosView() {
                             <Pencil className="w-4 h-4" />
                           </button>)}
                           {mayEliminar && (
-                          <button onClick={() => handleDelete(c.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                          <button onClick={() => setDeletingId(c.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
                             <Trash2 className="w-4 h-4" />
                           </button>)}
                         </td>
@@ -238,6 +240,16 @@ export default function CentrosView() {
           </div>
         </div>
       </div>
+
+      <ConfirmDialog
+        isOpen={deletingId !== null}
+        onClose={() => setDeletingId(null)}
+        onConfirm={() => { if (deletingId) { handleDelete(deletingId); setDeletingId(null); } }}
+        title="Eliminar Centro"
+        message="¿Estás seguro de que deseas eliminar este centro de formación? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+      />
     </div>
   );
 

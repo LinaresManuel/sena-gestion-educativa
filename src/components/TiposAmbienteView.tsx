@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 export interface TipoAmbiente {
   id: number;
@@ -18,6 +19,7 @@ export default function TiposAmbienteView() {
   const [editingId, setEditingId] = useState<number | null>(null);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -117,7 +119,7 @@ export default function TiposAmbienteView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {hayAcciones && (
+        {(mayCrear || mayEditar) && (
           <div className="md:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
               <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Tipo" : "Nuevo Tipo"}</h2>
@@ -160,7 +162,7 @@ export default function TiposAmbienteView() {
           </div>
         )}
 
-        <div className={hayAcciones ? "md:col-span-2" : "md:col-span-3"}>
+        <div className={(mayCrear || mayEditar) ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">
@@ -191,7 +193,7 @@ export default function TiposAmbienteView() {
                             <Pencil className="w-4 h-4" />
                           </button>)}
                           {mayEliminar && (
-                          <button onClick={() => handleDelete(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                          <button onClick={() => setDeletingId(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
                             <Trash2 className="w-4 h-4" />
                           </button>)}
                         </td>
@@ -204,6 +206,15 @@ export default function TiposAmbienteView() {
           </div>
         </div>
       </div>
+      <ConfirmDialog
+        open={deletingId !== null}
+        onClose={() => setDeletingId(null)}
+        onConfirm={() => { handleDelete(deletingId!); setDeletingId(null); }}
+        title="Eliminar Tipo de Ambiente"
+        message="¿Estás seguro de que deseas eliminar este tipo de ambiente? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+      />
     </div>
   );
 }

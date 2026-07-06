@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, X, Pencil } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
+import ConfirmDialog from "./ConfirmDialog";
 
 interface Instructor {
   id: number;
@@ -23,6 +24,7 @@ export default function InstructoresView() {
   const [availablePerfiles, setAvailablePerfiles] = useState<{codigo: string, nombre: string}[]>([]);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
+  const [deletingId, setDeletingId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -277,7 +279,7 @@ export default function InstructoresView() {
                               </button>
                             )}
                             {mayEliminar && (
-                              <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1">
+                              <button onClick={() => setDeletingId(a.id)} className="text-gray-400 hover:text-red-600 transition p-1">
                                 <Trash2 className="w-4 h-4" />
                               </button>
                             )}
@@ -292,6 +294,21 @@ export default function InstructoresView() {
           </div>
         </div>
       </div>
+
+      <ConfirmDialog
+        open={deletingId !== null}
+        title="Eliminar Instructor"
+        message="¿Estás seguro de que deseas eliminar este instructor? Esta acción no se puede deshacer."
+        confirmText="Eliminar"
+        danger
+        onConfirm={() => {
+          if (deletingId !== null) {
+            handleDelete(deletingId);
+            setDeletingId(null);
+          }
+        }}
+        onCancel={() => setDeletingId(null)}
+      />
     </div>
   );
 }

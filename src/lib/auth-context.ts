@@ -11,6 +11,21 @@ interface AuthUser {
 
 export const AuthContext = createContext<AuthUser | null>(null);
 
+/**
+ * Resuelve permisos efectivos: si el usuario tiene cualquier accion CRUD
+ * en un modulo, se agrega automaticamente el permiso 'ver' de ese modulo.
+ */
+export function resolveEffectivePermissions(permisos: string[]): string[] {
+  const modules = new Set(permisos.map(p => p.split('.')[0]));
+  const resolved = new Set(permisos);
+  for (const mod of modules) {
+    if (permisos.some(p => p.startsWith(`${mod}.`) && p !== `${mod}.ver`)) {
+      resolved.add(`${mod}.ver`);
+    }
+  }
+  return [...resolved];
+}
+
 export function useAuth() {
   const user = useContext(AuthContext);
   if (!user) {
@@ -35,9 +50,9 @@ export function useCanEdit() {
  */
 export function useHasPermission(permissionCode: string) {
   const user = useAuth();
-  // Admin tiene todos los permisos
   if (user.rol === "admin") return true;
-  return user.permisos?.includes(permissionCode) ?? false;
+  const effective = resolveEffectivePermissions(user.permisos || []);
+  return effective.includes(permissionCode);
 }
 
 /**
@@ -46,7 +61,8 @@ export function useHasPermission(permissionCode: string) {
 export function useHasAnyPermission(...permissionCodes: string[]) {
   const user = useAuth();
   if (user.rol === "admin") return true;
-  return user.permisos?.some(p => permissionCodes.includes(p)) ?? false;
+  const effective = resolveEffectivePermissions(user.permisos || []);
+  return effective.some(p => permissionCodes.includes(p));
 }
 
 /**
@@ -78,7 +94,8 @@ export function useIsAdmin() {
  */
 export function hasPermission(user: { rol: string; permisos?: string[] }, permissionCode: string): boolean {
   if (user.rol === "admin") return true;
-  return user.permisos?.includes(permissionCode) ?? false;
+  const effective = resolveEffectivePermissions(user.permisos || []);
+  return effective.includes(permissionCode);
 }
 
 /**
@@ -86,5 +103,6 @@ export function hasPermission(user: { rol: string; permisos?: string[] }, permis
  */
 export function hasAnyPermission(user: { rol: string; permisos?: string[] }, ...permissionCodes: string[]): boolean {
   if (user.rol === "admin") return true;
-  return user.permisos?.some(p => permissionCodes.includes(p)) ?? false;
+  const effective = resolveEffectivePermissions(user.permisos || []);
+  return effective.some(p => permissionCodes.includes(p));
 }
