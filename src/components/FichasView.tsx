@@ -218,7 +218,7 @@ export default function FichasView() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {(mayCrear || mayEditar) && (
+        {(mayCrear || editingId !== null) && (
           <div className="lg:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
               <div className="flex items-center justify-between mb-4">
@@ -235,7 +235,7 @@ export default function FichasView() {
                     setProgramaId("");
                     setAmbientesId("");
                     setHorario({});
-                  }} className="text-sm text-gray-500 hover:text-gray-700">Cancelar</button>
+                  }} className="px-3 py-1.5 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancelar</button>
                 )}
               </div>
               
@@ -354,7 +354,7 @@ export default function FichasView() {
           </div>
         )}
 
-        <div className={(mayCrear || mayEditar) ? "lg:col-span-2" : "lg:col-span-3"}>
+        <div className={(mayCrear || editingId !== null) ? "lg:col-span-2" : "lg:col-span-3"}>
           {loading ? (
             <div className="bg-white p-12 rounded-xl border flex justify-center items-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>

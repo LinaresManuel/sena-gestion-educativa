@@ -157,7 +157,7 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
         )}
         
         <div className="p-6 overflow-auto flex-1 gap-6 grid grid-cols-1 md:grid-cols-3">
-          {(mayCrear || mayEditar) && (
+          {(mayCrear || editingId !== null) && (
             <div className="md:col-span-1">
               <form onSubmit={handleSubmit} className="border rounded-lg p-4 bg-gray-50 space-y-4">
                 <h3 className="font-medium">{editingId ? "Editar Elemento" : "Nuevo Elemento"}</h3>
@@ -199,14 +199,14 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
                     {editingId ? "Actualizar" : <><Plus className="w-4 h-4"/> Agregar</>}
                   </button>
                   {editingId && (
-                    <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-300 text-gray-800 py-2 rounded-md hover:bg-gray-400 text-sm">Cancel</button>
+                    <button type="button" onClick={cancelEdit} className="px-3 py-1.5 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancelar</button>
                   )}
                 </div>
               </form>
             </div>
           )}
           
-          <div className={(mayCrear || mayEditar) ? "md:col-span-2" : "md:col-span-3"}>
+          <div className={(mayCrear || editingId !== null) ? "md:col-span-2" : "md:col-span-3"}>
             <div className="border rounded-lg overflow-hidden bg-white">
               <table className="w-full text-left text-sm">
                 <thead className="bg-gray-100 border-b">

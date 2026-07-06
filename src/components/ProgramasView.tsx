@@ -160,7 +160,7 @@ export default function ProgramasView() {
       )}
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        {(mayCrear || mayEditar) && (
+        {(mayCrear || editingId !== null) && (
           <div className="xl:col-span-1 border rounded-xl bg-white shadow-sm overflow-hidden flex flex-col max-h-[85vh]">
             <div className="p-4 border-b bg-gray-50 shrink-0">
               <h2 className="text-lg font-medium">{editingId ? "Editar Programa" : "Nuevo Programa"}</h2>
@@ -220,7 +220,7 @@ export default function ProgramasView() {
           </div>
         )}
 
-        <div className={(mayCrear || mayEditar) ? "xl:col-span-2" : "xl:col-span-3"}>
+        <div className={(mayCrear || editingId !== null) ? "xl:col-span-2" : "xl:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">

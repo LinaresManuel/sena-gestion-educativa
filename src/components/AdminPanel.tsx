@@ -618,7 +618,16 @@ export default function AdminPanel() {
                     const permisosModulo = permisos.filter(p => p.modulo === modulo);
                     return (
                       <div key={modulo} className="border rounded-lg p-4">
-                        <h4 className="font-medium text-gray-900 mb-2 capitalize">{modulo}</h4>
+                        <div className="flex items-center justify-between mb-2">
+                          <h4 className="font-medium text-gray-900 capitalize">{modulo}</h4>
+                          {permisosModulo.every(p => rolePermisos.includes(p.codigo)) ? (
+                            <button onClick={() => setRolePermisos(prev => prev.filter(c => !permisosModulo.some(p => p.codigo === c)))}
+                              className="text-xs text-blue-600 hover:text-blue-800">Deseleccionar todo</button>
+                          ) : (
+                            <button onClick={() => setRolePermisos(prev => [...new Set([...prev, ...permisosModulo.map(p => p.codigo)])])}
+                              className="text-xs text-blue-600 hover:text-blue-800">Seleccionar todo</button>
+                          )}
+                        </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
                           {permisosModulo.map(permiso => (
                             <label key={permiso.codigo} className="flex items-center space-x-2 text-sm">

@@ -136,7 +136,7 @@ export default function CentrosView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {(mayCrear || mayEditar) && (
+        {(mayCrear || editingId !== null) && (
           <div className="md:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
               <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Centro" : "Nuevo Centro"}</h2>
@@ -194,7 +194,7 @@ export default function CentrosView() {
           </div>
         )}
 
-        <div className={(mayCrear || mayEditar) ? "md:col-span-2" : "md:col-span-3"}>
+        <div className={(mayCrear || editingId !== null) ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">

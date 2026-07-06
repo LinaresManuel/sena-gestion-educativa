@@ -11,6 +11,7 @@ import rateLimit from 'express-rate-limit';
 import authRouter, { seedAdminIfMissing } from './src/routes/auth.ts';
 import adminRouter from './src/routes/admin.ts';
 import { requireAuth, type AuthRequest } from './src/middleware/auth.ts';
+import { requirePermission } from './src/middleware/permissions.ts';
 import { requestLogger } from './src/middleware/request-logger.ts';
 import { auditLogger } from './src/middleware/audit.ts';
 import { addSseClient } from './src/lib/sse.ts';
@@ -238,9 +239,14 @@ async function startServer() {
     }
   });
 
-  app.delete('/api/ambientes/:id', async (req, res) => {
+  app.delete('/api/ambientes/:id', requirePermission('ambientes.eliminar'), async (req, res) => {
     try {
-      await db.delete(ambientes).where(eq(ambientes.id, Number(req.params.id)));
+      const id = Number(req.params.id);
+      const fichasConAmbiente = await db.select().from(fichas).where(eq(fichas.ambienteId, id)).limit(1);
+      if (fichasConAmbiente.length > 0) {
+        return res.status(400).json({ error: 'No se puede eliminar el ambiente porque está siendo utilizado por una o más fichas.' });
+      }
+      await db.delete(ambientes).where(eq(ambientes.id, id));
       res.json({ success: true });
     } catch (e: any) {
       handleDbError(e, res);

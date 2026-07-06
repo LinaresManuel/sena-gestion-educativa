@@ -169,13 +169,13 @@ export default function InstructoresView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {(mayCrear || mayEditar) && (
+        {(mayCrear || editingId !== null) && (
           <div className="md:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
               <div className="flex items-center justify-between mb-2">
                 <h2 className="text-lg font-medium">{editingId ? "Editar Instructor" : "Nuevo Instructor"}</h2>
                 {editingId && (
-                  <button type="button" onClick={cancelEdit} className="text-sm text-gray-500 hover:text-gray-700">Cancel</button>
+                  <button type="button" onClick={cancelEdit} className="px-3 py-1.5 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors">Cancelar</button>
                 )}
               </div>
               
@@ -238,7 +238,7 @@ export default function InstructoresView() {
           </div>
         )}
 
-        <div className={(mayCrear || mayEditar) ? "md:col-span-2" : "md:col-span-3"}>
+        <div className={(mayCrear || editingId !== null) ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">

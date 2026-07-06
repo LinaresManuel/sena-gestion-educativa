@@ -171,7 +171,7 @@ export default function AmbientesView() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {(mayCrear || mayEditar) && (
+        {(mayCrear || editingId !== null) && (
           <div className="lg:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
               <h2 className="text-lg font-medium mb-2">{editingId ? "Editar Ambiente" : "Nuevo Ambiente"}</h2>
@@ -239,7 +239,7 @@ export default function AmbientesView() {
           </div>
         )}
 
-        <div className={(mayCrear || mayEditar) ? "lg:col-span-2" : "lg:col-span-3"}>
+        <div className={(mayCrear || editingId !== null) ? "lg:col-span-2" : "lg:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">

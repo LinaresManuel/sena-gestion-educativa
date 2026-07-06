@@ -265,7 +265,11 @@ function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNot
           <Route path="/centros" element={<CentrosView />} />
           <Route path="/ambientes" element={<AmbientesView />} />
           <Route path="/tipos-ambiente" element={<TiposAmbienteView />} />
-          <Route path="/programas" element={<ProgramasView />} />
+          <Route path="/programas" element={
+            <RequirePermission user={user} permission="programas.ver">
+              <ProgramasView />
+            </RequirePermission>
+          } />
           <Route path="/instructores" element={<InstructoresView />} />
           <Route path="/fichas" element={<FichasView />} />
           <Route path="/programacion" element={

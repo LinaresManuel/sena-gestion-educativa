@@ -391,6 +391,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
         <div className="flex-1 overflow-y-auto p-4 space-y-6">
           
           {/* Add/Edit Competencia Form */}
+          {(mayCrear || editingComp !== null) && (
           <div className="bg-white border text-sm rounded-lg p-4 shadow-sm">
             <h3 className="font-semibold mb-3 flex items-center gap-2 text-gray-800">
               {editingComp ? (
@@ -440,6 +441,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
               </div>
             </form>
           </div>
+          )}
 
           {/* List of Competencias */}
           <div className="space-y-4">
@@ -487,7 +489,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                         </div>
                       </div>
                         <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
-                          {hayAcciones && (
+                          {mayCrear && (
                             <>
                               <button onClick={() => { setExpandedComp(comp.id); setActiveTab("RA"); setEditingRes(null); setResCodigo(""); setResNombre(""); setResDuracion(""); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
                                 + Añadir RA
