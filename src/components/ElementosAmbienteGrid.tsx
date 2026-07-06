@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
-import { useHasAnyPermission } from "../lib/auth-context";
+import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 
 export interface ElementoAmbiente {
   id: number;
@@ -19,7 +19,10 @@ interface Props {
 }
 
 export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onClose }: Props) {
-  const canEdit = useHasAnyPermission('ambientes.editar', 'ambientes.crear');
+  const mayCrear = useHasPermission('ambientes.crear');
+  const mayEditar = useHasPermission('ambientes.editar');
+  const mayEliminar = useHasPermission('ambientes.eliminar');
+  const hayAcciones = mayCrear || mayEditar || mayEliminar;
   const [elementos, setElementos] = useState<ElementoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -152,7 +155,7 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
         )}
         
         <div className="p-6 overflow-auto flex-1 gap-6 grid grid-cols-1 md:grid-cols-3">
-          {canEdit && (
+          {(mayCrear || mayEditar) && (
             <div className="md:col-span-1">
               <form onSubmit={handleSubmit} className="border rounded-lg p-4 bg-gray-50 space-y-4">
                 <h3 className="font-medium">{editingId ? "Editar Elemento" : "Nuevo Elemento"}</h3>
@@ -201,7 +204,7 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
             </div>
           )}
           
-          <div className={canEdit ? "md:col-span-2" : "md:col-span-3"}>
+          <div className={(mayCrear || mayEditar) ? "md:col-span-2" : "md:col-span-3"}>
             <div className="border rounded-lg overflow-hidden bg-white">
               <table className="w-full text-left text-sm">
                 <thead className="bg-gray-100 border-b">
@@ -210,14 +213,14 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
                     <th className="px-4 py-3 font-medium text-gray-500">Placa</th>
                     <th className="px-4 py-3 font-medium text-gray-500">Bien / Detalle</th>
                     <th className="px-4 py-3 font-medium text-gray-500">Estado</th>
-                    {canEdit && <th className="px-4 py-3 font-medium text-gray-500 text-right">Acciones</th>}
+                    {hayAcciones && <th className="px-4 py-3 font-medium text-gray-500 text-right">Acciones</th>}
                   </tr>
                 </thead>
                 <tbody className="divide-y">
                   {loading ? (
-                    <tr><td colSpan={canEdit ? 5 : 4} className="px-4 py-4 text-center text-gray-500">Cargando...</td></tr>
+                    <tr><td colSpan={hayAcciones ? 5 : 4} className="px-4 py-4 text-center text-gray-500">Cargando...</td></tr>
                   ) : elementos.length === 0 ? (
-                    <tr><td colSpan={canEdit ? 5 : 4} className="px-4 py-4 text-center text-gray-500">No hay elementos registrados en este ambiente.</td></tr>
+                    <tr><td colSpan={hayAcciones ? 5 : 4} className="px-4 py-4 text-center text-gray-500">No hay elementos registrados en este ambiente.</td></tr>
                   ) : (
                     elementos.map(el => (
                       <tr key={el.id} className="hover:bg-gray-50">
@@ -243,14 +246,18 @@ export default function ElementosAmbienteGrid({ ambienteId, ambienteNombre, onCl
                             {el.estado}
                           </span>
                         </td>
-                        {canEdit && (
+                        {hayAcciones && (
                           <td className="px-4 py-3 text-right space-x-1">
-                            <button onClick={() => handleEdit(el)} className="text-gray-400 hover:text-blue-600 transition p-1">
-                              <Pencil className="w-4 h-4"/>
-                            </button>
-                            <button onClick={() => handleDelete(el.id)} className="text-gray-400 hover:text-red-600 transition p-1">
-                              <Trash2 className="w-4 h-4"/>
-                            </button>
+                            {mayEditar && (
+                              <button onClick={() => handleEdit(el)} className="text-gray-400 hover:text-blue-600 transition p-1">
+                                <Pencil className="w-4 h-4"/>
+                              </button>
+                            )}
+                            {mayEliminar && (
+                              <button onClick={() => handleDelete(el.id)} className="text-gray-400 hover:text-red-600 transition p-1">
+                                <Trash2 className="w-4 h-4"/>
+                              </button>
+                            )}
                           </td>
                         )}
                       </tr>

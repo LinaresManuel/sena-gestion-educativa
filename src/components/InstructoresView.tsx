@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, X, Pencil } from "lucide-react";
-import { useHasAnyPermission } from "../lib/auth-context";
+import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 
 interface Instructor {
   id: number;
@@ -13,7 +13,10 @@ interface Instructor {
 }
 
 export default function InstructoresView() {
-  const canEdit = useHasAnyPermission('instructores.editar', 'instructores.crear');
+  const mayCrear = useHasPermission('instructores.crear');
+  const mayEditar = useHasPermission('instructores.editar');
+  const mayEliminar = useHasPermission('instructores.eliminar');
+  const hayAcciones = mayCrear || mayEditar || mayEliminar;
   const [instructores, setInstructores] = useState<Instructor[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -164,7 +167,7 @@ export default function InstructoresView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {canEdit && (
+        {(mayCrear || mayEditar) && (
           <div className="md:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
               <div className="flex items-center justify-between mb-2">
@@ -233,7 +236,7 @@ export default function InstructoresView() {
           </div>
         )}
 
-        <div className={canEdit ? "md:col-span-2" : "md:col-span-3"}>
+        <div className={(mayCrear || mayEditar) ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">
@@ -242,14 +245,14 @@ export default function InstructoresView() {
                   <th className="px-6 py-3 font-medium text-gray-500">Nombre Completo</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Vinculación</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Perfiles</th>
-                  {canEdit && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
+                  {hayAcciones && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {loading ? (
-                  <tr><td colSpan={canEdit ? 5 : 4} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
-                ) : instructores.length === 0 ? (
-                  <tr><td colSpan={canEdit ? 5 : 4} className="px-6 py-4 text-center text-gray-500">No hay instructores registrados.</td></tr>
+                    <tr><td colSpan={hayAcciones ? 5 : 4} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
+                  ) : instructores.length === 0 ? (
+                    <tr><td colSpan={hayAcciones ? 5 : 4} className="px-6 py-4 text-center text-gray-500">No hay instructores registrados.</td></tr>
                 ) : (
                   instructores.map(a => (
                     <tr key={a.id} className="hover:bg-gray-50">
@@ -265,15 +268,19 @@ export default function InstructoresView() {
                           ))}
                         </div>
                       </td>
-                      {canEdit && (
+                      {hayAcciones && (
                         <td className="px-6 py-4 text-right">
                           <div className="flex items-center justify-end gap-2">
-                            <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-purple-600 transition p-1">
-                              <Pencil className="w-4 h-4" />
-                            </button>
-                            <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1">
-                              <Trash2 className="w-4 h-4" />
-                            </button>
+                            {mayEditar && (
+                              <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-purple-600 transition p-1">
+                                <Pencil className="w-4 h-4" />
+                              </button>
+                            )}
+                            {mayEliminar && (
+                              <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1">
+                                <Trash2 className="w-4 h-4" />
+                              </button>
+                            )}
                           </div>
                         </td>
                       )}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Plus, Trash2, X, Calendar, Clock, MapPin, Search } from "lucide-react";
-import { useHasAnyPermission } from "../lib/auth-context";
+import { Plus, Trash2, X, Calendar, Clock, MapPin, Search, Pencil } from "lucide-react";
+import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 
 interface Ficha {
   id: number;
@@ -24,7 +24,11 @@ const HORAS = Array.from({ length: 16 }, (_, i) => {
 });
 
 export default function FichasView() {
-  const canEdit = useHasAnyPermission('fichas.editar', 'fichas.crear');
+  const mayCrear = useHasPermission('fichas.crear');
+  const mayEditar = useHasPermission('fichas.editar');
+  const mayEliminar = useHasPermission('fichas.eliminar');
+  const hayAcciones = mayCrear || mayEditar || mayEliminar;
+  const [editingId, setEditingId] = useState<number | null>(null);
   const [fichas, setFichas] = useState<Ficha[]>([]);
   const [centros, setCentros] = useState<any[]>([]);
   const [programas, setProgramas] = useState<any[]>([]);
@@ -126,25 +130,47 @@ export default function FichasView() {
     }
 
     try {
-      const resp = await fetch("/api/fichas", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          numeroFicha,
-          centroFormacionId: Number(centroFormacionId),
-          fechaInicio,
-          fechaFinLectiva,
-          fechaFin,
-          modalidad,
-          programaId: Number(programaId),
-          ambienteId: Number(ambienteId),
-          horario
-        }),
-      });
-      const data = await resp.json();
-      if (!resp.ok) throw new Error(data.error || "Error al registrar");
-      
-      showMessage("Ficha registrada correctamente", "success");
+      let resp;
+      if (editingId) {
+        resp = await fetch(`/api/fichas/${editingId}`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            numeroFicha,
+            centroFormacionId: Number(centroFormacionId),
+            fechaInicio,
+            fechaFinLectiva,
+            fechaFin,
+            modalidad,
+            programaId: Number(programaId),
+            ambienteId: Number(ambienteId),
+            horario
+          }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error || "Error al actualizar");
+        showMessage("Ficha actualizada correctamente", "success");
+        setEditingId(null);
+      } else {
+        resp = await fetch("/api/fichas", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            numeroFicha,
+            centroFormacionId: Number(centroFormacionId),
+            fechaInicio,
+            fechaFinLectiva,
+            fechaFin,
+            modalidad,
+            programaId: Number(programaId),
+            ambienteId: Number(ambienteId),
+            horario
+          }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) throw new Error(data.error || "Error al registrar");
+        showMessage("Ficha registrada correctamente", "success");
+      }
       setNumeroFicha("");
       setCentroFormacionId("");
       setFechaInicio("");
@@ -190,10 +216,26 @@ export default function FichasView() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {canEdit && (
+        {(mayCrear || mayEditar) && (
           <div className="lg:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
-              <h2 className="text-lg font-medium mb-4">Nueva Ficha</h2>
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-medium">{editingId ? "Editar Ficha" : "Nueva Ficha"}</h2>
+                {editingId && (
+                  <button type="button" onClick={() => {
+                    setEditingId(null);
+                    setNumeroFicha("");
+                    setCentroFormacionId("");
+                    setFechaInicio("");
+                    setFechaFinLectiva("");
+                    setFechaFin("");
+                    setModalidad("PRESENCIAL");
+                    setProgramaId("");
+                    setAmbientesId("");
+                    setHorario({});
+                  }} className="text-sm text-gray-500 hover:text-gray-700">Cancelar</button>
+                )}
+              </div>
               
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Número de Ficha</label>
@@ -304,13 +346,13 @@ export default function FichasView() {
               </div>
               
               <button type="submit" className="w-full mt-6 bg-purple-600 text-white py-2 rounded-md hover:bg-purple-700 flex items-center justify-center gap-2">
-                <Plus className="w-4 h-4" /> Registrar Ficha
+                {editingId ? "Actualizar Ficha" : <><Plus className="w-4 h-4" /> Registrar Ficha</>}
               </button>
             </form>
           </div>
         )}
 
-        <div className={canEdit ? "lg:col-span-2" : "lg:col-span-3"}>
+        <div className={(mayCrear || mayEditar) ? "lg:col-span-2" : "lg:col-span-3"}>
           {loading ? (
             <div className="bg-white p-12 rounded-xl border flex justify-center items-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
@@ -330,11 +372,30 @@ export default function FichasView() {
 
                   return (
                     <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-5 relative overflow-hidden group">
-                      {canEdit && (
-                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition">
-                          <button onClick={() => handleDelete(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
-                            <Trash2 className="w-4 h-4" />
-                          </button>
+                      {hayAcciones && (
+                        <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
+                          {mayEditar && (
+                            <button onClick={() => {
+                              setEditingId(ficha.id);
+                              setNumeroFicha(ficha.numeroFicha);
+                              setCentroFormacionId(String(ficha.centroFormacionId));
+                              setFechaInicio(ficha.fechaInicio);
+                              setFechaFinLectiva(ficha.fechaFinLectiva);
+                              setFechaFin(ficha.fechaFin);
+                              setModalidad(ficha.modalidad);
+                              setProgramaId(String(ficha.programaId));
+                              setAmbientesId(String(ficha.ambienteId));
+                              setHorario(typeof ficha.horario === 'string' ? JSON.parse(ficha.horario) : ficha.horario || {});
+                              window.scrollTo({ top: 0, behavior: 'smooth' });
+                            }} className="text-gray-400 hover:text-purple-600 p-1 bg-white rounded-full shadow-sm">
+                              <Pencil className="w-4 h-4" />
+                            </button>
+                          )}
+                          {mayEliminar && (
+                            <button onClick={() => handleDelete(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          )}
                         </div>
                       )}
 

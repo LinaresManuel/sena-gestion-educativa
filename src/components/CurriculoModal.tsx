@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Programa } from "./ProgramasView";
 import { X, Plus, Trash2, ChevronDown, ChevronRight, AlertCircle, CheckCircle2, Pencil } from "lucide-react";
-import { useHasAnyPermission } from "../lib/auth-context";
+import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 
 interface Competencia {
   id: number;
@@ -34,7 +34,10 @@ interface CurriculoModalProps {
 }
 
 export default function CurriculoModal({ programa, onClose }: CurriculoModalProps) {
-  const canEdit = useHasAnyPermission('programas.editar', 'programas.crear');
+  const mayCrear = useHasPermission('programas.crear');
+  const mayEditar = useHasPermission('programas.editar');
+  const mayEliminar = useHasPermission('programas.eliminar');
+  const hayAcciones = mayCrear || mayEditar || mayEliminar;
   const [competencias, setCompetencias] = useState<Competencia[]>([]);
   const [resultados, setResultados] = useState<Record<number, ResultadoAprendizaje[]>>({});
   const [perfiles, setPerfiles] = useState<Record<number, PerfilInstructor[]>>({});
@@ -479,19 +482,27 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
-                        <button onClick={() => { setExpandedComp(comp.id); setActiveTab("RA"); setEditingRes(null); setResCodigo(""); setResNombre(""); setResDuracion(""); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
-                          + Añadir RA
-                        </button>
-                        <button onClick={() => { setExpandedComp(comp.id); setActiveTab("Perfil"); setEditingPerfil(null); setPerfilCodigo(""); setPerfilNombre(""); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
-                          + Añadir Perfil
-                        </button>
-                        <button onClick={() => editCompetencia(comp)} className="text-blue-500 p-1 hover:text-blue-700 hover:bg-blue-50 rounded transition" title="Editar competencia">
-                          <Pencil className="w-4 h-4" />
-                        </button>
-                        <button onClick={() => handleDeleteCompetencia(comp.id)} className="text-red-400 p-1 hover:text-red-600 hover:bg-red-50 rounded transition" title="Borrar competencia">
-                          <Trash2 className="w-4 h-4" />
-                        </button>
+                        <div className="flex items-center gap-2" onClick={e => e.stopPropagation()}>
+                          {hayAcciones && (
+                            <>
+                              <button onClick={() => { setExpandedComp(comp.id); setActiveTab("RA"); setEditingRes(null); setResCodigo(""); setResNombre(""); setResDuracion(""); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
+                                + Añadir RA
+                              </button>
+                              <button onClick={() => { setExpandedComp(comp.id); setActiveTab("Perfil"); setEditingPerfil(null); setPerfilCodigo(""); setPerfilNombre(""); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
+                                + Añadir Perfil
+                              </button>
+                            </>
+                          )}
+                          {mayEditar && (
+                            <button onClick={() => editCompetencia(comp)} className="text-blue-500 p-1 hover:text-blue-700 hover:bg-blue-50 rounded transition" title="Editar competencia">
+                              <Pencil className="w-4 h-4" />
+                            </button>
+                          )}
+                          {mayEliminar && (
+                            <button onClick={() => handleDeleteCompetencia(comp.id)} className="text-red-400 p-1 hover:text-red-600 hover:bg-red-50 rounded transition" title="Borrar competencia">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
+                          )}
                       </div>
                     </div>
 
@@ -512,17 +523,21 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                                     {res.codigo && <span className="font-mono text-[10px] bg-slate-100 px-1 rounded text-slate-600 border">{res.codigo}</span>}
                                     <span className="text-gray-800 font-medium">{res.nombre}</span>
                                   </div>
-                                  <div className="flex items-center gap-2 flex-shrink-0">
-                                    <span className="font-medium text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded whitespace-nowrap">{res.fase || 'Analisis'}</span>
-                                    <span className="font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded whitespace-nowrap">{res.duracionHoras} hrs</span>
-                                    <span className={`font-medium text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded whitespace-nowrap`} title={`Horas Directas (${comp.porcentajeHorasDirectas}%)`}>{Math.floor(res.duracionHoras * ((comp.porcentajeHorasDirectas || 80) / 100))} hrs Dir.</span>
-                                    <button onClick={() => editResultado(res, comp.id)} className="text-blue-400 hover:text-blue-600 ml-2">
-                                      <Pencil className="w-3.5 h-3.5" />
-                                    </button>
-                                    <button onClick={() => handleDeleteResultado(res.id)} className="text-gray-400 hover:text-red-600">
-                                      <Trash2 className="w-3.5 h-3.5" />
-                                    </button>
-                                  </div>
+                                     <div className="flex items-center gap-2 flex-shrink-0">
+                                     <span className="font-medium text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded whitespace-nowrap">{res.fase || 'Analisis'}</span>
+                                     <span className="font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded whitespace-nowrap">{res.duracionHoras} hrs</span>
+                                     <span className={`font-medium text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded whitespace-nowrap`} title={`Horas Directas (${comp.porcentajeHorasDirectas}%)`}>{Math.floor(res.duracionHoras * ((comp.porcentajeHorasDirectas || 80) / 100))} hrs Dir.</span>
+                                     {mayEditar && (
+                                       <button onClick={() => editResultado(res, comp.id)} className="text-blue-400 hover:text-blue-600 ml-2">
+                                         <Pencil className="w-3.5 h-3.5" />
+                                       </button>
+                                     )}
+                                     {mayEliminar && (
+                                       <button onClick={() => handleDeleteResultado(res.id)} className="text-gray-400 hover:text-red-600">
+                                         <Trash2 className="w-3.5 h-3.5" />
+                                       </button>
+                                     )}
+                                   </div>
                                 </div>
                               ))
                             )}
@@ -563,14 +578,18 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                                     <span className="font-mono text-[10px] bg-slate-100 px-1 rounded text-slate-600 border">{perfil.codigo}</span>
                                     <span className="text-gray-800">{perfil.nombre}</span>
                                   </div>
-                                  <div className="flex items-center gap-2 ml-4">
-                                    <button onClick={() => editPerfil(perfil, comp.id)} className="text-blue-400 hover:text-blue-600">
-                                      <Pencil className="w-3.5 h-3.5" />
-                                    </button>
-                                    <button onClick={() => handleDeletePerfil(perfil.id)} className="text-gray-400 hover:text-red-600">
-                                      <Trash2 className="w-3.5 h-3.5" />
-                                    </button>
-                                  </div>
+                                   <div className="flex items-center gap-2 ml-4">
+                                     {mayEditar && (
+                                       <button onClick={() => editPerfil(perfil, comp.id)} className="text-blue-400 hover:text-blue-600">
+                                         <Pencil className="w-3.5 h-3.5" />
+                                       </button>
+                                     )}
+                                     {mayEliminar && (
+                                       <button onClick={() => handleDeletePerfil(perfil.id)} className="text-gray-400 hover:text-red-600">
+                                         <Trash2 className="w-3.5 h-3.5" />
+                                       </button>
+                                     )}
+                                   </div>
                                 </div>
                               ))
                             )}

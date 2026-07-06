@@ -1,9 +1,14 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Calendar, User, Search, RefreshCw, Layers, ChevronLeft, ChevronRight } from "lucide-react";
+import { useHasPermission } from "../lib/auth-context";
 
 const DIAS_EN_ESP = ["DOMINGO", "LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO"];
 
 export default function ProgramacionInstructoresView() {
+  const mayVer = useHasPermission('programacion.ver');
+  const mayCrear = useHasPermission('programacion.crear');
+  const mayEditar = useHasPermission('programacion.editar');
+  const mayEliminar = useHasPermission('programacion.eliminar');
   const [programaciones, setProgramaciones] = useState<any[]>([]);
   const [programas, setProgramas] = useState<any[]>([]);
   const [fichas, setFichas] = useState<any[]>([]);
@@ -393,13 +398,15 @@ export default function ProgramacionInstructoresView() {
                 <Calendar className="w-5 h-5 text-indigo-600" />
                 Calendario Programación
               </h2>
-              <div className="flex items-center gap-2">
-                 <button 
-                   onClick={() => setEditMode(!editMode)} 
-                   className={`px-3 py-1.5 rounded-md text-sm font-medium transition border ${editMode ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
-                   {editMode ? 'Modo Edición: Activo' : 'Habilitar Edición'}
-                 </button>
-                 {fichaId && (
+               <div className="flex items-center gap-2">
+                 {mayEditar && (
+                   <button 
+                     onClick={() => setEditMode(!editMode)} 
+                     className={`px-3 py-1.5 rounded-md text-sm font-medium transition border ${editMode ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
+                     {editMode ? 'Modo Edición: Activo' : 'Habilitar Edición'}
+                   </button>
+                 )}
+                 {mayEliminar && fichaId && (
                    <button 
                      onClick={handleClearCalendar}
                      className="px-3 py-1.5 bg-white border border-red-200 text-red-600 hover:bg-red-50 rounded-md text-sm font-medium transition"
@@ -413,12 +420,14 @@ export default function ProgramacionInstructoresView() {
                  <input type="month" value={currentMonthStr} onChange={e => setCurrentMonthStr(e.target.value)} className="border rounded px-2 py-1.5 font-semibold text-sm bg-white text-gray-800"/>
                  <button onClick={() => moveMonth(1)} className="p-1.5 hover:bg-gray-200 rounded text-gray-600"><ChevronRight className="w-5 h-5" /></button>
                  
-                 <button 
-                  onClick={handleSave}
-                  disabled={saving || Object.keys(calendario).length === 0}
-                  className="bg-indigo-600 text-white px-4 py-1.5 rounded-md text-sm font-medium hover:bg-indigo-700 transition disabled:opacity-50 ml-2">
-                  Guardar Mes
-                </button>
+                 {mayCrear && (
+                   <button 
+                    onClick={handleSave}
+                    disabled={saving || Object.keys(calendario).length === 0}
+                    className="bg-indigo-600 text-white px-4 py-1.5 rounded-md text-sm font-medium hover:bg-indigo-700 transition disabled:opacity-50 ml-2">
+                    Guardar Mes
+                   </button>
+                 )}
               </div>
             </div>
             
@@ -491,44 +500,46 @@ export default function ProgramacionInstructoresView() {
                                       <div className="text-[9px] leading-tight line-clamp-2" title={externoResInfo?.nombre}>
                                         {externoResInfo?.nombre || `Res: ${externallyConfiguredId}`}
                                       </div>
-                                      {editMode && (
-                                        <button 
-                                          title="Eliminar celda guardada"
-                                          onClick={() => handleClearCell(dateStr, hr)}
-                                          className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-sm hover:scale-110 z-10"
-                                        >
-                                          ✕
-                                        </button>
-                                      )}
+                                       {mayEliminar && (
+                                         <button 
+                                           title="Eliminar celda guardada"
+                                           onClick={() => handleClearCell(dateStr, hr)}
+                                           className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-sm hover:scale-110 z-10"
+                                         >
+                                           ✕
+                                         </button>
+                                       )}
                                    </div>
                                 ) : currentVal ? (
                                    <div className="w-full text-xs font-medium border border-indigo-200 bg-indigo-50 rounded p-1 text-indigo-800 text-center relative group min-h-[46px] flex flex-col justify-center">
-                                      <div className="text-[10px] font-bold text-indigo-900 border-b border-indigo-200/50 mb-0.5 pb-0.5">
-                                        {selectedResInfo?.codigo || 'S/C'}
-                                      </div>
-                                      <div className="text-[9px] leading-tight line-clamp-2" title={selectedResInfo?.nombre}>
-                                        {selectedResInfo?.nombre || `Res: ${currentVal}`}
-                                      </div>
-                                      <button 
-                                        title="Quitar"
-                                        onClick={() => handleCellChange(dateStr, hr, "")}
-                                        className="absolute -top-1.5 -right-1.5 bg-gray-600 text-white rounded-full w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-sm hover:scale-110 z-10"
-                                      >
-                                        ✕
-                                      </button>
+                                       <div className="text-[10px] font-bold text-indigo-900 border-b border-indigo-200/50 mb-0.5 pb-0.5">
+                                         {selectedResInfo?.codigo || 'S/C'}
+                                       </div>
+                                       <div className="text-[9px] leading-tight line-clamp-2" title={selectedResInfo?.nombre}>
+                                         {selectedResInfo?.nombre || `Res: ${currentVal}`}
+                                       </div>
+                                       {mayEliminar && (
+                                         <button 
+                                           title="Quitar"
+                                           onClick={() => handleCellChange(dateStr, hr, "")}
+                                           className="absolute -top-1.5 -right-1.5 bg-gray-600 text-white rounded-full w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-sm hover:scale-110 z-10"
+                                         >
+                                           ✕
+                                         </button>
+                                       )}
                                    </div>
-                                ) : isHourActiveForDay ? (
-                                  <select 
-                                    className="w-full text-xs box-border resize-none border border-gray-200 rounded p-1 focus:border-indigo-500 outline-none text-gray-700 bg-white min-h-[36px]"
-                                    value=""
+                                 ) : isHourActiveForDay && mayCrear ? (
+                                   <select 
+                                     className="w-full text-xs box-border resize-none border border-gray-200 rounded p-1 focus:border-indigo-500 outline-none text-gray-700 bg-white min-h-[36px]"
+                                     value=""
 
-                                    onChange={e => handleCellChange(dateStr, hr, e.target.value)}
-                                  >
-                                    <option value="" className="text-gray-400">--- Vacío ---</option>
-                                    {selectedResultadosInfo.map(r => (
-                                      <option key={r.id} value={r.id}>{r.fase} - {r.nombre.substring(0, 30)}...</option>
-                                    ))}
-                                  </select>
+                                     onChange={e => handleCellChange(dateStr, hr, e.target.value)}
+                                   >
+                                     <option value="" className="text-gray-400">--- Vacío ---</option>
+                                     {selectedResultadosInfo.map(r => (
+                                       <option key={r.id} value={r.id}>{r.fase} - {r.nombre.substring(0, 30)}...</option>
+                                     ))}
+                                   </select>
                                 ) : (
                                   <div className="text-center text-gray-300 text-xl font-light">-</div>
                                 )}
