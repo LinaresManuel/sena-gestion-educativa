@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, List, X } from "lucide-react";
 import { TipoAmbiente } from "./TiposAmbienteView";
 import ElementosAmbienteGrid from "./ElementosAmbienteGrid";
-import { useHasAnyPermission } from "../lib/auth-context";
+import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 
 interface Ambiente {
   id: number;
@@ -21,7 +21,10 @@ interface Centro {
 }
 
 export default function AmbientesView() {
-  const canEdit = useHasAnyPermission('ambientes.editar', 'ambientes.crear');
+  const mayCrear = useHasPermission('ambientes.crear');
+  const mayEditar = useHasPermission('ambientes.editar');
+  const mayEliminar = useHasPermission('ambientes.eliminar');
+  const hayAcciones = mayCrear || mayEditar || mayEliminar;
   const [ambientes, setAmbientes] = useState<Ambiente[]>([]);
   const [centros, setCentros] = useState<Centro[]>([]);
   const [tiposAmbiente, setTiposAmbiente] = useState<TipoAmbiente[]>([]);
@@ -166,7 +169,7 @@ export default function AmbientesView() {
       )}
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {canEdit && (
+        {hayAcciones && (
           <div className="lg:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
               <h2 className="text-lg font-medium mb-2">{editingId ? "Editar Ambiente" : "Nuevo Ambiente"}</h2>
@@ -234,13 +237,13 @@ export default function AmbientesView() {
           </div>
         )}
 
-        <div className={canEdit ? "lg:col-span-2" : "lg:col-span-3"}>
+        <div className={hayAcciones ? "lg:col-span-2" : "lg:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">
                 <thead className="bg-gray-50 border-b">
                   <tr>
-                    <th className="px-6 py-3 font-medium text-gray-500">Amd./Cód.</th>
+                    <th className="px-6 py-3 font-medium text-gray-500">Amd./Cod.</th>
                     <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
                     <th className="px-6 py-3 font-medium text-gray-500">Centro</th>
                     <th className="px-6 py-3 font-medium text-gray-500">Capacidad / Tipo</th>
@@ -272,15 +275,15 @@ export default function AmbientesView() {
                           <button onClick={() => setSelectedAmbienteForElements(a)} className="text-gray-400 hover:text-indigo-600 transition p-1" title="Elementos">
                             <List className="w-4 h-4" />
                           </button>
-                          {canEdit && (
-                            <>
-                              <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                                <Pencil className="w-4 h-4" />
-                              </button>
-                              <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                                <Trash2 className="w-4 h-4" />
-                              </button>
-                            </>
+                          {mayEditar && (
+                            <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                              <Pencil className="w-4 h-4" />
+                            </button>
+                          )}
+                          {mayEliminar && (
+                            <button onClick={() => handleDelete(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
                           )}
                         </td>
                       </tr>

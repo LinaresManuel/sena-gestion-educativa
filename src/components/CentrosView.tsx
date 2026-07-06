@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, X } from "lucide-react";
-import { useHasAnyPermission } from "../lib/auth-context";
+import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 
 interface Centro {
   id: number;
@@ -15,7 +15,10 @@ interface Regional {
 }
 
 export default function CentrosView() {
-  const canEdit = useHasAnyPermission('centros.editar', 'centros.crear');
+  const mayCrear = useHasPermission('centros.crear');
+  const mayEditar = useHasPermission('centros.editar');
+  const mayEliminar = useHasPermission('centros.eliminar');
+  const hayAcciones = mayCrear || mayEditar || mayEliminar;
   const [centros, setCentros] = useState<Centro[]>([]);
   const [regionales, setRegionales] = useState<Regional[]>([]);
   const [loading, setLoading] = useState(true);
@@ -131,7 +134,7 @@ export default function CentrosView() {
       )}
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {canEdit && (
+        {hayAcciones && (
           <div className="md:col-span-1">
             <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
               <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Centro" : "Nuevo Centro"}</h2>
@@ -189,25 +192,25 @@ export default function CentrosView() {
           </div>
         )}
 
-        <div className={canEdit ? "md:col-span-2" : "md:col-span-3"}>
+        <div className={hayAcciones ? "md:col-span-2" : "md:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <table className="w-full text-left text-sm">
               <thead className="bg-gray-50 border-b">
                 <tr>
-                  <th className="px-6 py-3 font-medium text-gray-500">Código</th>
+                  <th className="px-6 py-3 font-medium text-gray-500">Codigo</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
                   <th className="px-6 py-3 font-medium text-gray-500">Regional</th>
-                  {canEdit && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
+                  {hayAcciones && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
                 </tr>
               </thead>
               <tbody className="divide-y">
                 {loading ? (
                   <tr>
-                    <td colSpan={canEdit ? 4 : 3} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
+                    <td colSpan={hayAcciones ? 4 : 3} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
                   </tr>
                 ) : centros.length === 0 ? (
                   <tr>
-                    <td colSpan={canEdit ? 4 : 3} className="px-6 py-4 text-center text-gray-500">No hay centros registrados.</td>
+                    <td colSpan={hayAcciones ? 4 : 3} className="px-6 py-4 text-center text-gray-500">No hay centros registrados.</td>
                   </tr>
                 ) : (
                   centros.map(c => (
@@ -215,14 +218,16 @@ export default function CentrosView() {
                       <td className="px-6 py-4 font-mono text-gray-600">{c.codigo}</td>
                       <td className="px-6 py-4 font-medium">{c.nombre}</td>
                       <td className="px-6 py-4">{regionales.find(r => r.id === c.regionalId)?.nombre || c.regionalId}</td>
-                      {canEdit && (
+                      {hayAcciones && (
                         <td className="px-6 py-4 text-right space-x-2">
+                          {mayEditar && (
                           <button onClick={() => handleEdit(c)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
                             <Pencil className="w-4 h-4" />
-                          </button>
+                          </button>)}
+                          {mayEliminar && (
                           <button onClick={() => handleDelete(c.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
                             <Trash2 className="w-4 h-4" />
-                          </button>
+                          </button>)}
                         </td>
                       )}
                     </tr>

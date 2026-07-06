@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Plus, Trash2, Pencil, FileText, Download, List, X } from "lucide-react";
 import CurriculoModal from "./CurriculoModal";
-import { useHasAnyPermission } from "../lib/auth-context";
+import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 
 export interface Programa {
   id: number;
@@ -15,7 +15,10 @@ export interface Programa {
 }
 
 export default function ProgramasView() {
-  const canEdit = useHasAnyPermission('programas.editar', 'programas.crear');
+  const mayCrear = useHasPermission('programas.crear');
+  const mayEditar = useHasPermission('programas.editar');
+  const mayEliminar = useHasPermission('programas.eliminar');
+  const hayAcciones = mayCrear || mayEditar || mayEliminar;
   const [programas, setProgramas] = useState<Programa[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
@@ -155,7 +158,7 @@ export default function ProgramasView() {
       )}
 
       <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        {canEdit && (
+        {hayAcciones && (
           <div className="xl:col-span-1 border rounded-xl bg-white shadow-sm overflow-hidden flex flex-col max-h-[85vh]">
             <div className="p-4 border-b bg-gray-50 shrink-0">
               <h2 className="text-lg font-medium">{editingId ? "Editar Programa" : "Nuevo Programa"}</h2>
@@ -215,14 +218,14 @@ export default function ProgramasView() {
           </div>
         )}
 
-        <div className={canEdit ? "xl:col-span-2" : "xl:col-span-3"}>
+        <div className={hayAcciones ? "xl:col-span-2" : "xl:col-span-3"}>
           <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
             <div className="overflow-x-auto">
               <table className="w-full text-left text-sm whitespace-nowrap">
                 <thead className="bg-gray-50 border-b">
                   <tr>
                     <th className="px-6 py-3 font-medium text-gray-500">Programa</th>
-                    <th className="px-6 py-3 font-medium text-gray-500">Cód / Versión</th>
+                    <th className="px-6 py-3 font-medium text-gray-500">Cod / Version</th>
                     <th className="px-6 py-3 font-medium text-gray-500">Tipo</th>
                     <th className="px-6 py-3 font-medium text-gray-500">Total Horas</th>
                     <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>
@@ -260,15 +263,15 @@ export default function ProgramasView() {
                           <button onClick={() => setActiveProgramaCurriculo(p)} className="text-gray-400 hover:text-green-600 transition p-1" title="Contenidos Curriculares">
                             <List className="w-4 h-4" />
                           </button>
-                          {canEdit && (
-                            <>
-                              <button onClick={() => handleEdit(p)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                                <Pencil className="w-4 h-4" />
-                              </button>
-                              <button onClick={() => handleDelete(p.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                                <Trash2 className="w-4 h-4" />
-                              </button>
-                            </>
+                          {mayEditar && (
+                            <button onClick={() => handleEdit(p)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                              <Pencil className="w-4 h-4" />
+                            </button>
+                          )}
+                          {mayEliminar && (
+                            <button onClick={() => handleDelete(p.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                              <Trash2 className="w-4 h-4" />
+                            </button>
                           )}
                         </td>
                       </tr>
