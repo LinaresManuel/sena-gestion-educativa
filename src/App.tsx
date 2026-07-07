@@ -214,13 +214,6 @@ function RequirePermission({ user, permission, children }: { user: AuthUser | nu
   return <>{children}</>;
 }
 
-function RequirePasswordChange({ user, children }: { user: AuthUser; children: React.ReactNode }) {
-  if (user.debeCambiarPassword) {
-    return <Navigate to="/cambiar-password" replace />;
-  }
-  return <>{children}</>;
-}
-
 function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNotification }: {
   user: AuthUser | null;
   setUser: (u: AuthUser | null) => void;
@@ -267,38 +260,29 @@ function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNot
       )}
       <PrivateLayout user={user} onLogout={handleLogout}>
         <Routes>
-          <Route path="/" element={<RequirePasswordChange user={user}><Dashboard user={user} /></RequirePasswordChange>} />
-          <Route path="/regionales" element={<RequirePasswordChange user={user}><RegionalesView /></RequirePasswordChange>} />
-          <Route path="/centros" element={<RequirePasswordChange user={user}><CentrosView /></RequirePasswordChange>} />
-          <Route path="/ambientes" element={<RequirePasswordChange user={user}><AmbientesView /></RequirePasswordChange>} />
-          <Route path="/tipos-ambiente" element={<RequirePasswordChange user={user}><TiposAmbienteView /></RequirePasswordChange>} />
+          <Route path="/" element={<Dashboard user={user} />} />
+          <Route path="/regionales" element={<RegionalesView />} />
+          <Route path="/centros" element={<CentrosView />} />
+          <Route path="/ambientes" element={<AmbientesView />} />
+          <Route path="/tipos-ambiente" element={<TiposAmbienteView />} />
           <Route path="/programas" element={
-            <RequirePasswordChange user={user}>
-              <RequirePermission user={user} permission="programas.ver">
-                <ProgramasView />
-              </RequirePermission>
-            </RequirePasswordChange>
+            <RequirePermission user={user} permission="programas.ver">
+              <ProgramasView />
+            </RequirePermission>
           } />
-          <Route path="/instructores" element={<RequirePasswordChange user={user}><InstructoresView /></RequirePasswordChange>} />
-          <Route path="/fichas" element={<RequirePasswordChange user={user}><FichasView /></RequirePasswordChange>} />
+          <Route path="/instructores" element={<InstructoresView />} />
+          <Route path="/fichas" element={<FichasView />} />
           <Route path="/programacion" element={
-            <RequirePasswordChange user={user}>
-              <RequirePermission user={user} permission="programacion.ver">
-                <ProgramacionInstructoresView />
-              </RequirePermission>
-            </RequirePasswordChange>
+            <RequirePermission user={user} permission="programacion.ver">
+              <ProgramacionInstructoresView />
+            </RequirePermission>
           } />
           <Route path="/admin" element={
-            <RequirePasswordChange user={user}>
-              <RequirePermission user={user} permission="admin.ver">
-                <AdminPanel />
-              </RequirePermission>
-            </RequirePasswordChange>
+            <RequirePermission user={user} permission="admin.ver">
+              <AdminPanel />
+            </RequirePermission>
           } />
-          <Route path="/cambiar-password" element={<ChangePassword onPasswordChanged={async () => {
-            const res = await fetch('/api/auth/me');
-            if (res.ok) setUser(await res.json());
-          }} />} />
+          <Route path="/cambiar-password" element={<ChangePassword setUser={setUser} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </PrivateLayout>

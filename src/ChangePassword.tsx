@@ -1,31 +1,21 @@
 import { useState, useEffect, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { KeyRound } from "lucide-react";
-import { useAuth } from "./lib/auth-context";
 
-export default function ChangePassword({ onPasswordChanged }: { onPasswordChanged?: () => Promise<void> }) {
+export default function ChangePassword({ setUser }: { setUser: (u: any) => void }) {
   const navigate = useNavigate();
-  const user = useAuth();
-  const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [isFirstChange, setIsFirstChange] = useState(false);
   const [checking, setChecking] = useState(true);
-
-  useEffect(() => {
-    if (!user.debeCambiarPassword) {
-      navigate("/", { replace: true });
-    }
-  }, [user.debeCambiarPassword, navigate]);
 
   useEffect(() => {
     fetch("/api/auth/me", { credentials: "include" })
       .then(r => r.json())
       .then(data => {
-        if (data.debeCambiarPassword) {
-          setIsFirstChange(true);
+        if (data.debeCambiarPassword === false) {
+          navigate("/", { replace: true });
         }
       })
       .catch(() => {})
@@ -48,9 +38,6 @@ export default function ChangePassword({ onPasswordChanged }: { onPasswordChange
     setLoading(true);
     try {
       const body: any = { newPassword: next };
-      if (!isFirstChange) {
-        body.currentPassword = current;
-      }
 
       const resp = await fetch("/api/auth/change-password", {
         method: "POST",
@@ -63,7 +50,10 @@ export default function ChangePassword({ onPasswordChanged }: { onPasswordChange
         setError(data.error ?? "Error al cambiar la contraseña");
         return;
       }
-      await onPasswordChanged?.();
+      if (data.user) {
+        setUser(data.user);
+      }
+      navigate("/", { replace: true });
     } catch (err) {
       setError("No se pudo conectar con el servidor");
       console.error(err);
@@ -89,28 +79,12 @@ export default function ChangePassword({ onPasswordChanged }: { onPasswordChange
         </div>
 
         <p className="text-sm text-gray-600">
-          {isFirstChange
-            ? "Tu contraseña temporal ha expirado. Crea una nueva contraseña para continuar."
-            : "Por seguridad, cambia la contraseña antes de continuar."
-          }
+          Tu contraseña temporal ha expirado. Crea una nueva contraseña para continuar.
         </p>
 
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg text-sm">
             {error}
-          </div>
-        )}
-
-        {!isFirstChange && (
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña actual</label>
-            <input
-              type="password"
-              value={current}
-              onChange={(e) => setCurrent(e.target.value)}
-              required
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg outline-none focus:ring-2 focus:ring-blue-500"
-            />
           </div>
         )}
 

@@ -152,7 +152,41 @@ router.post('/change-password', requireAuth, async (req: AuthRequest, res) => {
     .set({ passwordHash: newHash, debeCambiarPassword: false })
     .where(eq(usuarios.id, u.id));
 
-  res.json({ ok: true });
+  // Recalcular permisos y generar nuevo JWT
+  const userRoles = await db.select().from(usuariosRoles).where(eq(usuariosRoles.usuarioId, u.id));
+  const roles = userRoles.map(r => r.rol);
+  if (roles.length === 0 && u.rol) roles.push(u.rol);
+
+  let userPermissions: string[] = [];
+  for (const rol of roles) {
+    const rolePerms = await db.select({ codigo: permisos.codigo })
+      .from(rolesPermisos)
+      .innerJoin(permisos, eq(rolesPermisos.permisoId, permisos.id))
+      .where(eq(rolesPermisos.rol, rol));
+    userPermissions = [...userPermissions, ...rolePerms.map(p => p.codigo)];
+  }
+  userPermissions = [...new Set(userPermissions)];
+
+  const token = signToken({
+    id: u.id,
+    username: u.username,
+    rol: u.rol as any,
+    permisos: userPermissions,
+  });
+  setAuthCookie(res, token);
+
+  res.json({
+    ok: true,
+    user: {
+      id: u.id,
+      username: u.username,
+      nombre: u.nombre,
+      rol: u.rol,
+      permisos: userPermissions,
+      debeCambiarPassword: false,
+      ultimoLoginAt: u.ultimoLoginAt,
+    },
+  });
 });
 
 export default router;
