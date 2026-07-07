@@ -2,7 +2,7 @@ import { useState, useEffect, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { KeyRound } from "lucide-react";
 
-export default function ChangePassword() {
+export default function ChangePassword({ onPasswordChanged }: { onPasswordChanged?: () => void }) {
   const navigate = useNavigate();
   const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
@@ -55,6 +55,7 @@ export default function ChangePassword() {
         setError(data.error ?? "Error al cambiar la contraseña");
         return;
       }
+      onPasswordChanged?.();
       navigate("/", { replace: true });
     } catch (err) {
       setError("No se pudo conectar con el servidor");

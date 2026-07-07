@@ -295,7 +295,10 @@ function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNot
               </RequirePermission>
             </RequirePasswordChange>
           } />
-          <Route path="/cambiar-password" element={<ChangePassword />} />
+          <Route path="/cambiar-password" element={<ChangePassword onPasswordChanged={async () => {
+            const res = await fetch('/api/auth/me');
+            if (res.ok) setUser(await res.json());
+          }} />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </PrivateLayout>
