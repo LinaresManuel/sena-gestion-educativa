@@ -3,7 +3,7 @@ import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/index.ts';
 import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, fichas, programacionInstructores } from './src/db/schema.ts';
-import { eq } from 'drizzle-orm';
+import { eq, and, ne } from 'drizzle-orm';
 import { config } from './src/config.ts';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
@@ -383,6 +383,19 @@ async function startServer() {
     }
   });
 
+  app.put('/api/instructores/:id', async (req, res) => {
+    try {
+      const result = await db.update(instructores)
+        .set(req.body)
+        .where(eq(instructores.id, Number(req.params.id)))
+        .returning();
+      if (result.length === 0) return res.status(404).json({ error: 'Instructor no encontrado' });
+      res.json(result[0]);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
   app.delete('/api/instructores/:id', async (req, res) => {
     try {
       await db.delete(instructores).where(eq(instructores.id, Number(req.params.id)));
@@ -649,6 +662,46 @@ async function startServer() {
       }
 
       const result = await db.insert(fichas).values(req.body).returning();
+      res.json(result[0]);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.put('/api/fichas/:id', async (req, res) => {
+    try {
+      const editId = Number(req.params.id);
+      const { fechaInicio, fechaFinLectiva, ambienteId, horario } = req.body;
+
+      // Validate availability excluding current ficha
+      const allFichas = await db.select().from(fichas)
+        .where(and(eq(fichas.ambienteId, Number(ambienteId)), ne(fichas.id, editId)));
+
+      const newStart = new Date(fechaInicio);
+      const newEnd = new Date(fechaFinLectiva);
+
+      for (const ficha of allFichas) {
+        const existStart = new Date(ficha.fechaInicio);
+        const existEnd = new Date(ficha.fechaFinLectiva);
+
+        if (newStart <= existEnd && newEnd >= existStart) {
+          const existHorario = typeof ficha.horario === 'string' ? JSON.parse(ficha.horario) : ficha.horario;
+          for (const [day, hours] of Object.entries(horario)) {
+            if (existHorario[day]) {
+              const intersection = (hours as string[]).filter(h => existHorario[day].includes(h));
+              if (intersection.length > 0) {
+                return res.status(400).json({ error: `El ambiente no está disponible los ${day} a las ${intersection.join(', ')} en las fechas seleccionadas debido a la ficha ${ficha.numeroFicha}` });
+              }
+            }
+          }
+        }
+      }
+
+      const result = await db.update(fichas)
+        .set(req.body)
+        .where(eq(fichas.id, editId))
+        .returning();
+      if (result.length === 0) return res.status(404).json({ error: 'Ficha no encontrada' });
       res.json(result[0]);
     } catch (e: any) {
       handleDbError(e, res);
