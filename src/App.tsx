@@ -240,6 +240,15 @@ function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNot
     );
   }
 
+  if (user.debeCambiarPassword) {
+    return (
+      <Routes>
+        <Route path="/cambiar-password" element={<ChangePassword setUser={setUser} />} />
+        <Route path="*" element={<Navigate to="/cambiar-password" replace />} />
+      </Routes>
+    );
+  }
+
   return (
     <AuthContext.Provider value={user}>
       {permisoNotification && (
