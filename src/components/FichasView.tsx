@@ -38,6 +38,8 @@ export default function FichasView() {
   const [loading, setLoading] = useState(true);
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [dependencias, setDependencias] = useState<{ tipo: string; count: number; label: string; elimina: boolean }[] | null>(null);
+  const [pasoDialogo, setPasoDialogo] = useState<'ninguno' | 'dependencias' | 'confirmar'>('ninguno');
 
   // Form State
   const [numeroFicha, setNumeroFicha] = useState("");
@@ -93,6 +95,22 @@ export default function FichasView() {
   const showMessage = (text: string, type: 'error' | 'success') => {
     setNotification({ text, type });
     setTimeout(() => setNotification(null), 3000);
+  };
+
+  const handleTrashClick = async (id: number) => {
+    setDeletingId(id);
+    try {
+      const res = await fetch(`/api/dependencias/fichas/${id}`);
+      const data = await res.json();
+      if (data.dependencias && data.dependencias.length > 0) {
+        setDependencias(data.dependencias);
+        setPasoDialogo('dependencias');
+      } else {
+        setPasoDialogo('confirmar');
+      }
+    } catch {
+      setPasoDialogo('confirmar');
+    }
   };
 
   const toggleDay = (day: string) => {
@@ -394,7 +412,7 @@ export default function FichasView() {
                             </button>
                           )}
                           {mayEliminar && (
-                            <button onClick={() => setDeletingId(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
+                            <button onClick={() => handleTrashClick(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -451,13 +469,47 @@ export default function FichasView() {
       </div>
 
       <ConfirmDialog
-        isOpen={deletingId !== null}
-        onClose={() => setDeletingId(null)}
-        onConfirm={() => { if (deletingId) { handleDelete(deletingId); setDeletingId(null); } }}
+        isOpen={pasoDialogo === 'dependencias'}
+        title="Eliminar Ficha"
+        message={
+          <>
+            <p className="mb-2">Este elemento tiene las siguientes dependencias:</p>
+            <ul className="list-disc pl-5 space-y-1 mb-3 text-sm">
+              {dependencias?.map((d, i) => (
+                <li key={i} className={d.elimina ? 'text-amber-700' : 'text-red-700'}>
+                  <strong>{d.count}</strong> {d.label}
+                  {d.elimina ? ' (se eliminarán en cascada)' : ' (debe eliminarlos primero)'}
+                </li>
+              ))}
+            </ul>
+            {dependencias?.some(d => !d.elimina) ? (
+              <p className="text-red-700 font-medium">No se puede eliminar hasta que resuelva las dependencias marcadas.</p>
+            ) : (
+              <p className="text-amber-700 font-medium">¿Desea continuar con la eliminación? Se eliminarán también los elementos listados.</p>
+            )}
+          </>
+        }
+        confirmText={dependencias?.some(d => !d.elimina) ? 'Entendido' : 'Continuar'}
+        danger
+        onConfirm={() => {
+          if (dependencias?.some(d => !d.elimina)) {
+            setDeletingId(null);
+            setDependencias(null);
+            setPasoDialogo('ninguno');
+          } else {
+            setPasoDialogo('confirmar');
+          }
+        }}
+        onClose={() => { setDeletingId(null); setDependencias(null); setPasoDialogo('ninguno'); }}
+      />
+      <ConfirmDialog
+        isOpen={pasoDialogo === 'confirmar'}
         title="Eliminar Ficha"
         message="¿Estás seguro de que deseas eliminar esta ficha? Esta acción no se puede deshacer."
         confirmText="Eliminar"
-        danger={true}
+        danger
+        onConfirm={() => { if (deletingId !== null) { handleDelete(deletingId); setDeletingId(null); } setPasoDialogo('ninguno'); }}
+        onClose={() => { setDeletingId(null); setPasoDialogo('ninguno'); }}
       />
     </div>
   );

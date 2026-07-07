@@ -20,10 +20,28 @@ export default function TiposAmbienteView() {
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
+  const [dependencias, setDependencias] = useState<{ tipo: string; count: number; label: string; elimina: boolean }[] | null>(null);
+  const [pasoDialogo, setPasoDialogo] = useState<'ninguno' | 'dependencias' | 'confirmar'>('ninguno');
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
     setTimeout(() => setNotification(null), 5000);
+  };
+
+  const handleTrashClick = async (id: number) => {
+    setDeletingId(id);
+    try {
+      const res = await fetch(`/api/dependencias/tipos-ambiente/${id}`);
+      const data = await res.json();
+      if (data.dependencias && data.dependencias.length > 0) {
+        setDependencias(data.dependencias);
+        setPasoDialogo('dependencias');
+      } else {
+        setPasoDialogo('confirmar');
+      }
+    } catch {
+      setPasoDialogo('confirmar');
+    }
   };
 
   // Form state
@@ -193,7 +211,7 @@ export default function TiposAmbienteView() {
                             <Pencil className="w-4 h-4" />
                           </button>)}
                           {mayEliminar && (
-                          <button onClick={() => setDeletingId(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                          <button onClick={() => handleTrashClick(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
                             <Trash2 className="w-4 h-4" />
                           </button>)}
                         </td>
@@ -207,13 +225,47 @@ export default function TiposAmbienteView() {
         </div>
       </div>
       <ConfirmDialog
-        isOpen={deletingId !== null}
-        onClose={() => setDeletingId(null)}
-        onConfirm={() => { if (deletingId !== null) { handleDelete(deletingId); setDeletingId(null); } }}
+        isOpen={pasoDialogo === 'dependencias'}
+        title="Eliminar Tipo de Ambiente"
+        message={
+          <>
+            <p className="mb-2">Este elemento tiene las siguientes dependencias:</p>
+            <ul className="list-disc pl-5 space-y-1 mb-3 text-sm">
+              {dependencias?.map((d, i) => (
+                <li key={i} className={d.elimina ? 'text-amber-700' : 'text-red-700'}>
+                  <strong>{d.count}</strong> {d.label}
+                  {d.elimina ? ' (se eliminarán en cascada)' : ' (debe eliminarlos primero)'}
+                </li>
+              ))}
+            </ul>
+            {dependencias?.some(d => !d.elimina) ? (
+              <p className="text-red-700 font-medium">No se puede eliminar hasta que resuelva las dependencias marcadas.</p>
+            ) : (
+              <p className="text-amber-700 font-medium">¿Desea continuar con la eliminación? Se eliminarán también los elementos listados.</p>
+            )}
+          </>
+        }
+        confirmText={dependencias?.some(d => !d.elimina) ? 'Entendido' : 'Continuar'}
+        danger
+        onConfirm={() => {
+          if (dependencias?.some(d => !d.elimina)) {
+            setDeletingId(null);
+            setDependencias(null);
+            setPasoDialogo('ninguno');
+          } else {
+            setPasoDialogo('confirmar');
+          }
+        }}
+        onClose={() => { setDeletingId(null); setDependencias(null); setPasoDialogo('ninguno'); }}
+      />
+      <ConfirmDialog
+        isOpen={pasoDialogo === 'confirmar'}
         title="Eliminar Tipo de Ambiente"
         message="¿Estás seguro de que deseas eliminar este tipo de ambiente? Esta acción no se puede deshacer."
         confirmText="Eliminar"
         danger
+        onConfirm={() => { if (deletingId !== null) { handleDelete(deletingId); setDeletingId(null); } setPasoDialogo('ninguno'); }}
+        onClose={() => { setDeletingId(null); setPasoDialogo('ninguno'); }}
       />
     </div>
   );

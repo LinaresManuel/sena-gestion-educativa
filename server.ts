@@ -88,6 +88,72 @@ async function startServer() {
   // Audit mutations (after auth so user is available)
   app.use('/api', auditLogger);
 
+  // Dependency check endpoint for delete confirmation
+  app.get('/api/dependencias/:entity/:id', async (req, res) => {
+    try {
+      const id = Number(req.params.id);
+      const dependencias: { tipo: string; count: number; label: string; elimina: boolean }[] = [];
+
+      switch (req.params.entity) {
+        case 'regionales': {
+          const rows = await db.select().from(centrosFormacion).where(eq(centrosFormacion.regionalId, id));
+          if (rows.length > 0) dependencias.push({ tipo: 'centros', count: rows.length, label: 'centros de formación', elimina: false });
+          break;
+        }
+        case 'centros': {
+          const ambRows = await db.select().from(ambientes).where(eq(ambientes.centroId, id));
+          if (ambRows.length > 0) dependencias.push({ tipo: 'ambientes', count: ambRows.length, label: 'ambientes', elimina: false });
+          const fchRows = await db.select().from(fichas).where(eq(fichas.centroFormacionId, id));
+          if (fchRows.length > 0) dependencias.push({ tipo: 'fichas', count: fchRows.length, label: 'fichas', elimina: false });
+          break;
+        }
+        case 'tipos-ambiente': {
+          const rows = await db.select().from(ambientes).where(eq(ambientes.tipoAmbienteId, id));
+          if (rows.length > 0) dependencias.push({ tipo: 'ambientes', count: rows.length, label: 'ambientes', elimina: false });
+          break;
+        }
+        case 'ambientes': {
+          const elemRows = await db.select().from(elementosAmbiente).where(eq(elementosAmbiente.ambienteId, id));
+          if (elemRows.length > 0) dependencias.push({ tipo: 'elementos', count: elemRows.length, label: 'elementos del ambiente', elimina: true });
+          const fchRows = await db.select().from(fichas).where(eq(fichas.ambienteId, id));
+          if (fchRows.length > 0) dependencias.push({ tipo: 'fichas', count: fchRows.length, label: 'fichas', elimina: false });
+          break;
+        }
+        case 'instructores': {
+          const rows = await db.select().from(programacionInstructores).where(eq(programacionInstructores.instructorId, id));
+          if (rows.length > 0) dependencias.push({ tipo: 'programaciones', count: rows.length, label: 'programaciones', elimina: false });
+          break;
+        }
+        case 'programas': {
+          const compRows = await db.select().from(competencias).where(eq(competencias.programaId, id));
+          if (compRows.length > 0) dependencias.push({ tipo: 'competencias', count: compRows.length, label: 'competencias (con resultados y perfiles asociados)', elimina: true });
+          const fchRows = await db.select().from(fichas).where(eq(fichas.programaId, id));
+          if (fchRows.length > 0) dependencias.push({ tipo: 'fichas', count: fchRows.length, label: 'fichas', elimina: false });
+          const progRows = await db.select().from(programacionInstructores).where(eq(programacionInstructores.programaId, id));
+          if (progRows.length > 0) dependencias.push({ tipo: 'programaciones', count: progRows.length, label: 'programaciones', elimina: false });
+          break;
+        }
+        case 'competencias': {
+          const raRows = await db.select().from(resultadosAprendizaje).where(eq(resultadosAprendizaje.competenciaId, id));
+          if (raRows.length > 0) dependencias.push({ tipo: 'resultados', count: raRows.length, label: 'resultados de aprendizaje', elimina: true });
+          const pfRows = await db.select().from(perfilesInstructor).where(eq(perfilesInstructor.competenciaId, id));
+          if (pfRows.length > 0) dependencias.push({ tipo: 'perfiles', count: pfRows.length, label: 'perfiles de instructor', elimina: true });
+          break;
+        }
+        case 'fichas': {
+          const rows = await db.select().from(programacionInstructores).where(eq(programacionInstructores.fichaId, id));
+          if (rows.length > 0) dependencias.push({ tipo: 'programaciones', count: rows.length, label: 'programaciones', elimina: false });
+          break;
+        }
+        default:
+          return res.status(400).json({ error: 'Entidad no válida' });
+      }
+      res.json({ dependencias });
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
   // API Routes for Regionales
   app.get('/api/regionales', async (req, res) => {
     try {

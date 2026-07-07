@@ -70,10 +70,28 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
   const [deletingCompId, setDeletingCompId] = useState<number | null>(null);
   const [deletingResId, setDeletingResId] = useState<number | null>(null);
   const [deletingPerfilId, setDeletingPerfilId] = useState<number | null>(null);
+  const [dependenciasComp, setDependenciasComp] = useState<{ count: number; label: string; elimina: boolean }[] | null>(null);
+  const [pasoComp, setPasoComp] = useState<'ninguno' | 'dependencias' | 'confirmar'>('ninguno');
+  const [pendingCompId, setPendingCompId] = useState<number | null>(null);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
     setTimeout(() => setNotification(null), 5000);
+  };
+
+  const handleCompTrashClick = (compId: number) => {
+    const compResultados = resultados[compId] || [];
+    const compPerfiles = perfiles[compId] || [];
+    const deps: { count: number; label: string; elimina: boolean }[] = [];
+    if (compResultados.length > 0) deps.push({ count: compResultados.length, label: 'resultados de aprendizaje', elimina: true });
+    if (compPerfiles.length > 0) deps.push({ count: compPerfiles.length, label: 'perfiles de instructor', elimina: true });
+    setPendingCompId(compId);
+    if (deps.length > 0) {
+      setDependenciasComp(deps);
+      setPasoComp('dependencias');
+    } else {
+      setPasoComp('confirmar');
+    }
   };
 
   // Form states for Perfil
@@ -173,13 +191,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
   };
 
   const handleDeleteCompetencia = async (id: number) => {
-    const compResultados = resultados[id] || [];
-    const compPerfiles = perfiles[id] || [];
-    if (compResultados.length > 0 || compPerfiles.length > 0) {
-      showMessage("No puede borrar la competencia si tiene resultados o perfiles asociados. Bórrelos primero.", "error");
-      return;
-    }
-
     try {
       const resp = await fetch(`/api/competencias/${id}`, { method: "DELETE" });
       if (!resp.ok) throw new Error((await resp.json()).error || "Error al borrar");
@@ -505,7 +516,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                             </button>
                           )}
                           {mayEliminar && (
-                            <button onClick={() => setDeletingCompId(comp.id)} className="text-red-400 p-1 hover:text-red-600 hover:bg-red-50 rounded transition" title="Borrar competencia">
+                            <button onClick={() => handleCompTrashClick(comp.id)} className="text-red-400 p-1 hover:text-red-600 hover:bg-red-50 rounded transition" title="Borrar competencia">
                               <Trash2 className="w-4 h-4" />
                             </button>
                           )}
@@ -634,13 +645,35 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
         </div>
       </div>
       <ConfirmDialog
-        isOpen={deletingCompId !== null}
-        onClose={() => setDeletingCompId(null)}
-        onConfirm={() => { if (deletingCompId) { handleDeleteCompetencia(deletingCompId); setDeletingCompId(null); } }}
+        isOpen={pasoComp === 'dependencias'}
+        title="Eliminar Competencia"
+        message={
+          <>
+            <p className="mb-2">Esta competencia tiene las siguientes dependencias:</p>
+            <ul className="list-disc pl-5 space-y-1 mb-3 text-sm">
+              {dependenciasComp?.map((d, i) => (
+                <li key={i} className="text-amber-700">
+                  <strong>{d.count}</strong> {d.label}
+                  {' (se eliminarán en cascada)'}
+                </li>
+              ))}
+            </ul>
+            <p className="text-amber-700 font-medium">¿Desea continuar con la eliminación? Se eliminarán también los elementos listados.</p>
+          </>
+        }
+        confirmText="Continuar"
+        danger
+        onConfirm={() => { setPasoComp('confirmar'); }}
+        onClose={() => { setPendingCompId(null); setDependenciasComp(null); setPasoComp('ninguno'); }}
+      />
+      <ConfirmDialog
+        isOpen={pasoComp === 'confirmar'}
         title="Eliminar Competencia"
         message="¿Estás seguro de que deseas eliminar esta competencia? Esta acción no se puede deshacer."
         confirmText="Eliminar"
         danger
+        onConfirm={() => { if (pendingCompId !== null) { handleDeleteCompetencia(pendingCompId); setPendingCompId(null); } setPasoComp('ninguno'); }}
+        onClose={() => { setPendingCompId(null); setDependenciasComp(null); setPasoComp('ninguno'); }}
       />
       <ConfirmDialog
         isOpen={deletingResId !== null}
