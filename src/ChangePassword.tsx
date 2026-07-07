@@ -1,9 +1,11 @@
 import { useState, useEffect, type FormEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { KeyRound } from "lucide-react";
+import { useAuth } from "./lib/auth-context";
 
 export default function ChangePassword({ onPasswordChanged }: { onPasswordChanged?: () => Promise<void> }) {
   const navigate = useNavigate();
+  const user = useAuth();
   const [current, setCurrent] = useState("");
   const [next, setNext] = useState("");
   const [confirm, setConfirm] = useState("");
@@ -11,6 +13,12 @@ export default function ChangePassword({ onPasswordChanged }: { onPasswordChange
   const [loading, setLoading] = useState(false);
   const [isFirstChange, setIsFirstChange] = useState(false);
   const [checking, setChecking] = useState(true);
+
+  useEffect(() => {
+    if (!user.debeCambiarPassword) {
+      navigate("/", { replace: true });
+    }
+  }, [user.debeCambiarPassword, navigate]);
 
   useEffect(() => {
     fetch("/api/auth/me", { credentials: "include" })
@@ -56,7 +64,6 @@ export default function ChangePassword({ onPasswordChanged }: { onPasswordChange
         return;
       }
       await onPasswordChanged?.();
-      navigate("/", { replace: true });
     } catch (err) {
       setError("No se pudo conectar con el servidor");
       console.error(err);
