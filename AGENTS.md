@@ -44,6 +44,18 @@ git push origin main
 
 No commitear `.agents/` ni `skills-lock.json` a menos que el usuario lo indique explícitamente.
 
+## Flujo Obligatorio para el Desarrollo de Features
+
+Antes de escribir, modificar o implementar una sola línea de código fuente en el proyecto (ya sea en `src/`, scripts o archivos raíz), el agente DEBE seguir un proceso secuencial obligatorio de tres pasos dentro de una subcarpeta numerada en el directorio de especificaciones: `spec/features/00X-nombre-tarea/` (ej. `spec/features/001-autenticacion/`):
+
+1. **Crear `spec.md` (Qué y Para qué):** Documentar qué hace exactamente esta feature, el comportamiento esperado y sus criterios de aceptación (Definition of Done) desde la perspectiva del usuario o del sistema.
+
+2. **Crear `plan.md` (Cómo):** Diseñar la estrategia técnica. Detallar qué componentes de la estructura actual se van a modificar, qué nuevos archivos se crearán en `src/` o la raíz, y cómo se estructurará la lógica.
+
+3. **Crear `tasks.md` (Checklist de ejecución):** Generar una lista ordenada de tareas técnicas detalladas con casillas de verificación `- [ ]`. El agente irá marcando estas tareas a medida que avance en la implementación del código real del proyecto.
+
+**Regla de Oro para el Agente:** Si el usuario te solicita una nueva funcionalidad, refactorización o cambio mayor, tu primera respuesta SIEMPRE debe ser proponer y crear la estructura de estos tres archivos `.md` en su respectiva carpeta bajo `spec/features/`. No comiences a alterar el código fuente del repositorio hasta que estos artefactos de especificación estén creados y asentados.
+
 ## Arquitectura
 
 `server.ts` (612 líneas) levanta una app Express que sirve **API + frontend** en el mismo puerto:
