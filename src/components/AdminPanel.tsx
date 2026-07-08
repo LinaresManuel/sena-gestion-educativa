@@ -3,22 +3,13 @@ import { useAuth } from '../lib/auth-context';
 import { Shield, Users, Key, BarChart3, Plus, Trash2, Pencil, Copy, RefreshCw, X, Search } from 'lucide-react';
 import ConfirmDialog from './ConfirmDialog';
 
-const ACTION_COLORS: Record<string, string> = {
-  ver: 'text-blue-700 bg-blue-50 border-blue-200',
-  crear: 'text-green-700 bg-green-50 border-green-200',
-  editar: 'text-amber-700 bg-amber-50 border-amber-200',
-  eliminar: 'text-red-700 bg-red-50 border-red-200',
-  roles: 'text-purple-700 bg-purple-50 border-purple-200',
-  reportes: 'text-indigo-700 bg-indigo-50 border-indigo-200',
-};
-
-const ACTION_LABELS: Record<string, string> = {
-  ver: 'Ver',
-  crear: 'Crear',
-  editar: 'Editar',
-  eliminar: 'Eliminar',
-  roles: 'Gestionar Roles',
-  reportes: 'Reportes',
+const ACTION_BORDERS: Record<string, string> = {
+  ver: 'border-blue-400',
+  crear: 'border-green-400',
+  editar: 'border-amber-400',
+  eliminar: 'border-red-400',
+  roles: 'border-purple-400',
+  reportes: 'border-indigo-400',
 };
 
 interface Permiso {
@@ -228,7 +219,7 @@ function RoleFormModal({
                 const permisosModulo = permisos.filter(p => p.modulo === modulo);
                 const seleccionados = permisosModulo.filter(p => selectedPermisos.includes(p.codigo));
                 return (
-                  <div key={modulo} className="border rounded-lg p-3">
+                  <div key={modulo} className="border rounded-lg p-2">
                     <div className="flex items-center justify-between mb-2">
                       <div className="flex items-center gap-2">
                         <h4 className="font-medium text-gray-900 capitalize text-sm">{modulo}</h4>
@@ -244,15 +235,12 @@ function RoleFormModal({
                           type="button" className="text-xs text-blue-600 hover:text-blue-800">Seleccionar todo</button>
                       )}
                     </div>
-                    <div className="grid grid-cols-2 gap-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
                       {permisosModulo.map(permiso => (
-                        <label key={permiso.codigo} className="flex items-center gap-2 text-sm p-1 rounded hover:bg-gray-50 cursor-pointer">
+                        <label key={permiso.codigo} className={`flex items-center gap-2 text-sm px-2 py-1.5 rounded hover:bg-gray-50 cursor-pointer border-l-2 ${ACTION_BORDERS[permiso.accion] ?? 'border-gray-300'}`}>
                           <input type="checkbox" checked={selectedPermisos.includes(permiso.codigo)}
                             onChange={() => togglePermiso(permiso.codigo)}
                             className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 shrink-0" />
-                          <span className={`px-1.5 py-0.5 text-xs font-medium rounded border ${ACTION_COLORS[permiso.accion] ?? 'text-gray-600 bg-gray-50 border-gray-200'}`}>
-                            {ACTION_LABELS[permiso.accion] ?? permiso.accion}
-                          </span>
                           <span className="truncate">{permiso.nombre}</span>
                         </label>
                       ))}
@@ -606,26 +594,26 @@ export default function AdminPanel() {
       )}
 
       {activeTab === 'roles' && (
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow">
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-medium text-gray-900">Roles</h3>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div className="bg-white p-4 rounded-lg shadow">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-md font-semibold text-gray-900">Roles</h3>
               <button onClick={() => setShowRoleForm(true)}
-                className="flex items-center gap-1 px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
-                <Plus className="w-4 h-4" /> Nuevo
+                className="flex items-center gap-1 px-2 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded-lg">
+                <Plus className="w-3.5 h-3.5" /> Nuevo
               </button>
             </div>
-            <div className="space-y-2">
+            <div className="space-y-1">
               {roles.map(role => (
                 <div key={role.rol} onClick={() => loadRolePermisos(role.rol)}
-                  className={`p-3 rounded-lg cursor-pointer transition ${selectedRole === role.rol ? 'bg-blue-50 border-2 border-blue-200' : 'bg-gray-50 hover:bg-gray-100 border-2 border-transparent'}`}>
+                  className={`p-2 rounded-lg cursor-pointer transition ${selectedRole === role.rol ? 'bg-blue-50 border border-blue-200' : 'bg-gray-50 hover:bg-gray-100 border border-transparent'}`}>
                   <div className="flex items-center justify-between">
                     <span className="font-medium text-gray-900">{role.rol}</span>
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm text-gray-500">{role.totalPermisos} permisos</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs text-gray-500">{role.totalPermisos}</span>
                         <button onClick={(e) => { e.stopPropagation(); setDeletingRole(role.rol); setShowDeleteRoleConfirm(true); }}
                           className="text-red-400 hover:text-red-600" title="Eliminar rol">
-                          <Trash2 className="w-4 h-4" />
+                          <Trash2 className="w-3.5 h-3.5" />
                         </button>
                     </div>
                   </div>
@@ -633,7 +621,7 @@ export default function AdminPanel() {
               ))}
             </div>
           </div>
-           <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow">
+          <div className="lg:col-span-3 bg-white p-6 rounded-lg shadow">
             {selectedRole ? (
               <>
                 <div className="flex items-center justify-between mb-4">
@@ -672,10 +660,10 @@ export default function AdminPanel() {
                       const seleccionadosModulo = permisosModulo.filter(p => rolePermisos.includes(p.codigo));
                       const visibleModulo = filtroPermisos ? permisosModulo.filter(p => p.modulo.includes(filtroPermisos.toLowerCase()) || p.nombre.toLowerCase().includes(filtroPermisos.toLowerCase()) || p.accion.includes(filtroPermisos.toLowerCase())) : permisosModulo;
                       return (
-                      <div key={modulo} className="border rounded-lg p-4">
+                      <div key={modulo} className="border rounded-lg p-3">
                         <div className="flex items-center justify-between mb-2">
                           <div className="flex items-center gap-2">
-                            <h4 className="font-medium text-gray-900 capitalize">{modulo}</h4>
+                            <h4 className="font-medium text-gray-900 capitalize text-sm">{modulo}</h4>
                             <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${seleccionadosModulo.length === permisosModulo.length ? 'text-green-700 bg-green-50' : 'text-gray-500 bg-gray-100'}`}>
                               {seleccionadosModulo.length}/{permisosModulo.length}
                             </span>
@@ -688,15 +676,12 @@ export default function AdminPanel() {
                               className="text-xs text-blue-600 hover:text-blue-800">Seleccionar todo</button>
                           )}
                         </div>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-1">
                           {visibleModulo.map(permiso => (
-                            <label key={permiso.codigo} className="flex items-center gap-2 text-sm p-1 rounded hover:bg-gray-50 cursor-pointer">
+                            <label key={permiso.codigo} className={`flex items-center gap-2 text-sm px-2 py-1.5 rounded hover:bg-gray-50 cursor-pointer border-l-2 ${ACTION_BORDERS[permiso.accion] ?? 'border-gray-300'}`}>
                               <input type="checkbox" checked={rolePermisos.includes(permiso.codigo)}
                                 onChange={() => togglePermiso(permiso.codigo)}
                                 className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 shrink-0" />
-                              <span className={`px-1.5 py-0.5 text-xs font-medium rounded border ${ACTION_COLORS[permiso.accion] ?? 'text-gray-600 bg-gray-50 border-gray-200'}`}>
-                                {ACTION_LABELS[permiso.accion] ?? permiso.accion}
-                              </span>
                               <span className="truncate">{permiso.nombre}</span>
                             </label>
                           ))}
