@@ -1,7 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../lib/auth-context';
-import { Shield, Users, Key, BarChart3, Plus, Trash2, Pencil, Copy, RefreshCw, X } from 'lucide-react';
+import { Shield, Users, Key, BarChart3, Plus, Trash2, Pencil, Copy, RefreshCw, X, Search } from 'lucide-react';
 import ConfirmDialog from './ConfirmDialog';
+
+const ACTION_COLORS: Record<string, string> = {
+  ver: 'text-blue-700 bg-blue-50 border-blue-200',
+  crear: 'text-green-700 bg-green-50 border-green-200',
+  editar: 'text-amber-700 bg-amber-50 border-amber-200',
+  eliminar: 'text-red-700 bg-red-50 border-red-200',
+  roles: 'text-purple-700 bg-purple-50 border-purple-200',
+  reportes: 'text-indigo-700 bg-indigo-50 border-indigo-200',
+};
+
+const ACTION_LABELS: Record<string, string> = {
+  ver: 'Ver',
+  crear: 'Crear',
+  editar: 'Editar',
+  eliminar: 'Eliminar',
+  roles: 'Gestionar Roles',
+  reportes: 'Reportes',
+};
 
 interface Permiso {
   id: number;
@@ -208,16 +226,34 @@ function RoleFormModal({
             <div className="space-y-3">
               {[...new Set(permisos.map(p => p.modulo))].map(modulo => {
                 const permisosModulo = permisos.filter(p => p.modulo === modulo);
+                const seleccionados = permisosModulo.filter(p => selectedPermisos.includes(p.codigo));
                 return (
                   <div key={modulo} className="border rounded-lg p-3">
-                    <h4 className="font-medium text-gray-900 mb-2 capitalize text-sm">{modulo}</h4>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2">
+                        <h4 className="font-medium text-gray-900 capitalize text-sm">{modulo}</h4>
+                        <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${seleccionados.length === permisosModulo.length ? 'text-green-700 bg-green-50' : 'text-gray-500 bg-gray-100'}`}>
+                          {seleccionados.length}/{permisosModulo.length}
+                        </span>
+                      </div>
+                      {permisosModulo.every(p => selectedPermisos.includes(p.codigo)) ? (
+                        <button onClick={() => setSelectedPermisos(prev => prev.filter(c => !permisosModulo.some(p => p.codigo === c)))}
+                          type="button" className="text-xs text-blue-600 hover:text-blue-800">Deseleccionar todo</button>
+                      ) : (
+                        <button onClick={() => setSelectedPermisos(prev => [...new Set([...prev, ...permisosModulo.map(p => p.codigo)])])}
+                          type="button" className="text-xs text-blue-600 hover:text-blue-800">Seleccionar todo</button>
+                      )}
+                    </div>
                     <div className="grid grid-cols-2 gap-2">
                       {permisosModulo.map(permiso => (
-                        <label key={permiso.codigo} className="flex items-center space-x-2 text-sm">
+                        <label key={permiso.codigo} className="flex items-center gap-2 text-sm p-1 rounded hover:bg-gray-50 cursor-pointer">
                           <input type="checkbox" checked={selectedPermisos.includes(permiso.codigo)}
                             onChange={() => togglePermiso(permiso.codigo)}
-                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
-                          <span>{permiso.nombre}</span>
+                            className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 shrink-0" />
+                          <span className={`px-1.5 py-0.5 text-xs font-medium rounded border ${ACTION_COLORS[permiso.accion] ?? 'text-gray-600 bg-gray-50 border-gray-200'}`}>
+                            {ACTION_LABELS[permiso.accion] ?? permiso.accion}
+                          </span>
+                          <span className="truncate">{permiso.nombre}</span>
                         </label>
                       ))}
                     </div>
@@ -308,6 +344,7 @@ export default function AdminPanel() {
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
   const [rolePermisos, setRolePermisos] = useState<string[]>([]);
   const [saving, setSaving] = useState(false);
+  const [filtroPermisos, setFiltroPermisos] = useState('');
 
   const [showUserForm, setShowUserForm] = useState(false);
   const [editingUser, setEditingUser] = useState<Usuario | null>(null);
@@ -596,16 +633,24 @@ export default function AdminPanel() {
               ))}
             </div>
           </div>
-          <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow">
+           <div className="lg:col-span-2 bg-white p-6 rounded-lg shadow">
             {selectedRole ? (
               <>
                 <div className="flex items-center justify-between mb-4">
                   <h3 className="text-lg font-medium text-gray-900">Permisos de: {selectedRole}</h3>
-                  <div className="flex space-x-2">
+                  <div className="flex items-center gap-2">
+                    <div className="relative">
+                      <Search className="w-4 h-4 absolute left-2 top-1/2 -translate-y-1/2 text-gray-400" />
+                      <input type="text" value={filtroPermisos} onChange={e => setFiltroPermisos(e.target.value)}
+                        placeholder="Filtrar permisos..."
+                        className="pl-7 pr-2 py-1 text-sm border rounded w-44 focus:ring-1 focus:ring-blue-500 outline-none" />
+                    </div>
+                    <button onClick={() => setRolePermisos(permisos.filter(p => p.accion === 'ver').map(p => p.codigo))}
+                      className="px-2 py-1 text-xs bg-blue-50 text-blue-700 hover:bg-blue-100 rounded">Solo lectura</button>
                     <button onClick={() => setRolePermisos(permisos.map(p => p.codigo))}
-                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded">Seleccionar todos</button>
+                      className="px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded">CRUD completo</button>
                     <button onClick={() => setRolePermisos([])}
-                      className="px-3 py-1 text-sm bg-gray-100 hover:bg-gray-200 rounded">Limpiar</button>
+                      className="px-2 py-1 text-xs bg-gray-100 hover:bg-gray-200 rounded">Limpiar</button>
                     <button onClick={saveRolePermisos} disabled={saving}
                       className="px-3 py-1 text-sm bg-blue-500 hover:bg-blue-600 text-white rounded disabled:opacity-50">
                       <RefreshCw className={`w-4 h-4 inline mr-1 ${saving ? 'animate-spin' : ''}`} />
@@ -614,12 +659,27 @@ export default function AdminPanel() {
                   </div>
                 </div>
                 <div className="space-y-4">
-                  {[...new Set(permisos.map(p => p.modulo))].map(modulo => {
-                    const permisosModulo = permisos.filter(p => p.modulo === modulo);
-                    return (
+                  {(() => {
+                    const modulosUnicos = [...new Set(permisos.map(p => p.modulo))];
+                    const permisosFiltrados = filtroPermisos
+                      ? permisos.filter(p => p.modulo.includes(filtroPermisos.toLowerCase()) || p.nombre.toLowerCase().includes(filtroPermisos.toLowerCase()) || p.accion.includes(filtroPermisos.toLowerCase()))
+                      : permisos;
+                    const modulosAMostrar = filtroPermisos
+                      ? [...new Set(permisosFiltrados.map(p => p.modulo))]
+                      : modulosUnicos;
+                    return modulosAMostrar.map(modulo => {
+                      const permisosModulo = permisos.filter(p => p.modulo === modulo);
+                      const seleccionadosModulo = permisosModulo.filter(p => rolePermisos.includes(p.codigo));
+                      const visibleModulo = filtroPermisos ? permisosModulo.filter(p => p.modulo.includes(filtroPermisos.toLowerCase()) || p.nombre.toLowerCase().includes(filtroPermisos.toLowerCase()) || p.accion.includes(filtroPermisos.toLowerCase())) : permisosModulo;
+                      return (
                       <div key={modulo} className="border rounded-lg p-4">
                         <div className="flex items-center justify-between mb-2">
-                          <h4 className="font-medium text-gray-900 capitalize">{modulo}</h4>
+                          <div className="flex items-center gap-2">
+                            <h4 className="font-medium text-gray-900 capitalize">{modulo}</h4>
+                            <span className={`text-xs px-1.5 py-0.5 rounded font-medium ${seleccionadosModulo.length === permisosModulo.length ? 'text-green-700 bg-green-50' : 'text-gray-500 bg-gray-100'}`}>
+                              {seleccionadosModulo.length}/{permisosModulo.length}
+                            </span>
+                          </div>
                           {permisosModulo.every(p => rolePermisos.includes(p.codigo)) ? (
                             <button onClick={() => setRolePermisos(prev => prev.filter(c => !permisosModulo.some(p => p.codigo === c)))}
                               className="text-xs text-blue-600 hover:text-blue-800">Deseleccionar todo</button>
@@ -629,18 +689,22 @@ export default function AdminPanel() {
                           )}
                         </div>
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                          {permisosModulo.map(permiso => (
-                            <label key={permiso.codigo} className="flex items-center space-x-2 text-sm">
+                          {visibleModulo.map(permiso => (
+                            <label key={permiso.codigo} className="flex items-center gap-2 text-sm p-1 rounded hover:bg-gray-50 cursor-pointer">
                               <input type="checkbox" checked={rolePermisos.includes(permiso.codigo)}
                                 onChange={() => togglePermiso(permiso.codigo)}
-                                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
-                              <span>{permiso.nombre}</span>
+                                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500 shrink-0" />
+                              <span className={`px-1.5 py-0.5 text-xs font-medium rounded border ${ACTION_COLORS[permiso.accion] ?? 'text-gray-600 bg-gray-50 border-gray-200'}`}>
+                                {ACTION_LABELS[permiso.accion] ?? permiso.accion}
+                              </span>
+                              <span className="truncate">{permiso.nombre}</span>
                             </label>
                           ))}
                         </div>
                       </div>
                     );
-                  })}
+                  });
+                })()}
                 </div>
               </>
             ) : (
