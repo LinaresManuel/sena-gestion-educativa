@@ -23,6 +23,27 @@ git pull workspace main
 
 **No commitear `.env.local`** (está en `.gitignore`). El deploy tiene los secretos reales, el workspace no.
 
+## Post-implementación: commit, deploy sync y push
+
+**Requisito obligatorio después de cada implementación en el workspace.** El agente debe ejecutar estos pasos al terminar cualquier cambio de código:
+
+```bash
+# 1. Commit en el workspace
+cd C:\Users\Sena Empresa\Desktop\SENA Software\sena-gestion-educativa
+git add <archivos>
+git commit -m "tipo: descripción del cambio"
+
+# 2. Sincronizar deploy
+cd C:\sena-gestion-educativa
+git pull workspace main
+
+# 3. Push al remoto
+cd C:\Users\Sena Empresa\Desktop\SENA Software\sena-gestion-educativa
+git push origin main
+```
+
+No commitear `.agents/` ni `skills-lock.json` a menos que el usuario lo indique explícitamente.
+
 ## Arquitectura
 
 `server.ts` (612 líneas) levanta una app Express que sirve **API + frontend** en el mismo puerto:
