@@ -48,6 +48,7 @@ export default function FichasView() {
   const isDragging = useRef(false);
   const dragStart = useRef<{ dia: string; hora: string } | null>(null);
   const dragEnd = useRef<{ dia: string; hora: string } | null>(null);
+  const [dragPreview, setDragPreview] = useState<{ minDay: number; maxDay: number; minHour: number; maxHour: number } | null>(null);
 
   // Form State
   const [numeroFicha, setNumeroFicha] = useState("");
@@ -134,20 +135,36 @@ export default function FichasView() {
     });
   };
 
+  function computeRange(start: { dia: string; hora: string }, end: { dia: string; hora: string }) {
+    const sd = DIAS_VISIBLES.indexOf(start.dia);
+    const ed = DIAS_VISIBLES.indexOf(end.dia);
+    const sh = HORAS.indexOf(start.hora);
+    const eh = HORAS.indexOf(end.hora);
+    return {
+      minDay: Math.min(sd, ed),
+      maxDay: Math.max(sd, ed),
+      minHour: Math.min(sh, eh),
+      maxHour: Math.max(sh, eh),
+    };
+  }
+
   function handleCellMouseDown(dia: string, hora: string) {
     isDragging.current = true;
     dragStart.current = { dia, hora };
     dragEnd.current = { dia, hora };
+    setDragPreview({ minDay: DIAS_VISIBLES.indexOf(dia), maxDay: DIAS_VISIBLES.indexOf(dia), minHour: HORAS.indexOf(hora), maxHour: HORAS.indexOf(hora) });
   }
 
   function handleCellMouseEnter(dia: string, hora: string) {
-    if (!isDragging.current) return;
+    if (!isDragging.current || !dragStart.current) return;
     dragEnd.current = { dia, hora };
+    setDragPreview(computeRange(dragStart.current, { dia, hora }));
   }
 
   function handleCellMouseUp() {
     if (!isDragging.current) return;
     isDragging.current = false;
+    setDragPreview(null);
 
     const start = dragStart.current;
     const end = dragEnd.current;
@@ -156,16 +173,7 @@ export default function FichasView() {
     dragStart.current = null;
     dragEnd.current = null;
 
-    const startDayIdx = DIAS_VISIBLES.indexOf(start.dia);
-    const endDayIdx = DIAS_VISIBLES.indexOf(end.dia);
-    const startHourIdx = HORAS.indexOf(start.hora);
-    const endHourIdx = HORAS.indexOf(end.hora);
-
-    const minDayIdx = Math.min(startDayIdx, endDayIdx);
-    const maxDayIdx = Math.max(startDayIdx, endDayIdx);
-    const minHourIdx = Math.min(startHourIdx, endHourIdx);
-    const maxHourIdx = Math.max(startHourIdx, endHourIdx);
-
+    const range = computeRange(start, end);
     const isSimpleClick = start.dia === end.dia && start.hora === end.hora;
 
     if (isSimpleClick) {
@@ -178,10 +186,10 @@ export default function FichasView() {
 
     setHorario(prev => {
       const clone = { ...prev };
-      for (let d = minDayIdx; d <= maxDayIdx; d++) {
+      for (let d = range.minDay; d <= range.maxDay; d++) {
         const dia = DIAS_VISIBLES[d];
         if (!clone[dia]) clone[dia] = [];
-        for (let h = minHourIdx; h <= maxHourIdx; h++) {
+        for (let h = range.minHour; h <= range.maxHour; h++) {
           const hora = HORAS[h];
           if (action === 'select') {
             if (!clone[dia].includes(hora)) clone[dia] = [...clone[dia], hora];
@@ -420,107 +428,118 @@ export default function FichasView() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleSubmit} className="p-4 space-y-4 max-h-[75vh] overflow-y-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Número de Ficha</label>
-                  <input value={numeroFicha} onChange={e => setNumeroFicha(e.target.value)} type="text" className="w-full border rounded-lg px-3 py-2 text-sm" required placeholder="Ej: 2686861" />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Modalidad</label>
-                  <select value={modalidad} onChange={e => setModalidad(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm bg-white">
-                    <option value="PRESENCIAL">Presencial</option>
-                    <option value="VIRTUAL">Virtual</option>
-                    <option value="MIXTA">Mixta</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Programa de Formación</label>
-                <select value={programaId} onChange={e => setProgramaId(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm bg-white" required>
-                  <option value="">Seleccione un programa...</option>
-                  {programas.map(p => (
-                    <option key={p.id} value={p.id}>{p.denominacion} ({p.codigo} - v{p.version})</option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Fecha Inicio</label>
-                  <input value={fechaInicio} onChange={e => setFechaInicio(e.target.value)} type="date" className="w-full border rounded-lg px-3 py-2 text-sm" required />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Fin (Lectiva)</label>
-                  <input value={fechaFinLectiva} onChange={e => setFechaFinLectiva(e.target.value)} type="date" className="w-full border rounded-lg px-3 py-2 text-sm" required />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Fin (Ficha)</label>
-                  <input value={fechaFin} onChange={e => setFechaFin(e.target.value)} type="date" className="w-full border rounded-lg px-3 py-2 text-sm" required />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
-                  <select value={centroFormacionId} onChange={e => setCentroFormacionId(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm bg-white" required>
-                    <option value="">Seleccione un centro...</option>
-                    {centros.map(c => (
-                      <option key={c.id} value={c.id}>{c.nombre}</option>
-                    ))}
-                  </select>
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Ambiente de Formación</label>
-                  <select value={ambienteId} onChange={e => setAmbientesId(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm bg-white" required>
-                    <option value="">Seleccione un ambiente...</option>
-                    {ambientes.map(a => (
-                      <option key={a.id} value={a.id}>{a.nombre} ({a.codigo})</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="border-t pt-4">
-                <label className="block text-sm font-bold text-gray-800 mb-3">Horario de Formación</label>
-                <p className="text-xs text-gray-500 mb-3">Haga clic para seleccionar una celda o arrastre para seleccionar un rango rectangular.</p>
-
-                <div
-                  className="grid gap-1 overflow-x-auto select-none"
-                  style={{ gridTemplateColumns: `60px repeat(6, 1fr)` }}
-                  onMouseUp={handleCellMouseUp}
-                  onMouseLeave={handleCellMouseUp}
-                >
-                  <div />
-                  {DIAS_VISIBLES.map(d => (
-                    <div key={d} className="text-center text-[10px] font-semibold text-gray-600 py-1.5">
-                      {d.slice(0, 3)}
+            <form onSubmit={handleSubmit} className="p-4 max-h-[75vh] overflow-y-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="space-y-3">
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Número de Ficha</label>
+                      <input value={numeroFicha} onChange={e => setNumeroFicha(e.target.value)} type="text" className="w-full border rounded-lg px-2 py-1.5 text-sm" required placeholder="Ej: 2686861" />
                     </div>
-                  ))}
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Modalidad</label>
+                      <select value={modalidad} onChange={e => setModalidad(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white">
+                        <option value="PRESENCIAL">Presencial</option>
+                        <option value="VIRTUAL">Virtual</option>
+                        <option value="MIXTA">Mixta</option>
+                      </select>
+                    </div>
+                  </div>
 
-                  {HORAS.map(hora => (
-                    <div key={hora} className="contents">
-                      <div className="text-[10px] text-gray-500 font-mono pr-1 text-right flex items-center justify-end h-6">
-                        {hora.split('-')[0]}
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">Programa de Formación</label>
+                    <select value={programaId} onChange={e => setProgramaId(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white" required>
+                      <option value="">Seleccione...</option>
+                      {programas.map(p => (
+                        <option key={p.id} value={p.id}>{p.denominacion}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-2">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Inicio</label>
+                      <input value={fechaInicio} onChange={e => setFechaInicio(e.target.value)} type="date" className="w-full border rounded-lg px-2 py-1.5 text-sm" required />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Fin Lectiva</label>
+                      <input value={fechaFinLectiva} onChange={e => setFechaFinLectiva(e.target.value)} type="date" className="w-full border rounded-lg px-2 py-1.5 text-sm" required />
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Fin Ficha</label>
+                      <input value={fechaFin} onChange={e => setFechaFin(e.target.value)} type="date" className="w-full border rounded-lg px-2 py-1.5 text-sm" required />
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Centro</label>
+                      <select value={centroFormacionId} onChange={e => setCentroFormacionId(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white" required>
+                        <option value="">Seleccione...</option>
+                        {centros.map(c => (
+                          <option key={c.id} value={c.id}>{c.nombre}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Ambiente</label>
+                      <select value={ambienteId} onChange={e => setAmbientesId(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white" required>
+                        <option value="">Seleccione...</option>
+                        {ambientes.map(a => (
+                          <option key={a.id} value={a.id}>{a.nombre}</option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-semibold text-gray-800 mb-2">Horario</label>
+                  <p className="text-[10px] text-gray-500 mb-2 leading-tight">Haga clic en una celda o arrastre para seleccionar un rango rectangular.</p>
+
+                  <div
+                    className="grid gap-0.5 select-none"
+                    style={{ gridTemplateColumns: `28px repeat(6, minmax(24px, 1fr))` }}
+                    onMouseUp={handleCellMouseUp}
+                    onMouseLeave={handleCellMouseUp}
+                  >
+                    <div />
+                    {DIAS_VISIBLES.map(d => (
+                      <div key={d} className="text-center text-[8px] font-semibold text-gray-600 leading-none">
+                        {d.slice(0, 3)}
                       </div>
-                      {DIAS_VISIBLES.map(dia => {
-                        const selected = horario[dia]?.includes(hora) ?? false;
-                        return (
-                          <div
-                            key={`${dia}-${hora}`}
-                            onMouseDown={() => handleCellMouseDown(dia, hora)}
-                            onMouseEnter={() => handleCellMouseEnter(dia, hora)}
-                            className={`rounded-md border transition-all duration-100 cursor-pointer h-6
-                              ${selected
-                                ? 'bg-purple-500/20 border-purple-400'
-                                : 'bg-gray-50/80 border-gray-200 hover:bg-purple-50 hover:border-purple-300'
-                              }`}
-                          />
-                        );
-                      })}
-                    </div>
-                  ))}
+                    ))}
+
+                    {HORAS.map(hora => {
+                      const hourIdx = HORAS.indexOf(hora);
+                      const inPreview = dragPreview !== null && hourIdx >= dragPreview.minHour && hourIdx <= dragPreview.maxHour;
+                      return (
+                        <div key={hora} className="contents">
+                          <div className="text-[7px] text-gray-500 font-mono text-right flex items-center justify-end h-4 leading-none">
+                            {hora.split('-')[0]}
+                          </div>
+                          {DIAS_VISIBLES.map((dia, dayIdx) => {
+                            const selected = horario[dia]?.includes(hora) ?? false;
+                            const inRange = inPreview && dayIdx >= dragPreview!.minDay && dayIdx <= dragPreview!.maxDay;
+                            return (
+                              <div
+                                key={`${dia}-${hora}`}
+                                onMouseDown={() => handleCellMouseDown(dia, hora)}
+                                onMouseEnter={() => handleCellMouseEnter(dia, hora)}
+                                className={`rounded-sm border transition-all duration-75 cursor-pointer h-4
+                                  ${inRange
+                                    ? 'bg-purple-500/35 border-purple-500'
+                                    : selected
+                                      ? 'bg-purple-500/20 border-purple-400'
+                                      : 'bg-gray-50/80 border-gray-200 hover:bg-purple-50 hover:border-purple-300'
+                                  }`}
+                              />
+                            );
+                          })}
+                        </div>
+                      );
+                    })}
+                  </div>
                 </div>
               </div>
 
