@@ -10,6 +10,7 @@ import ProgramasView from "./components/ProgramasView";
 import InstructoresView from "./components/InstructoresView";
 import FichasView from "./components/FichasView";
 import ProgramacionInstructoresView from "./components/ProgramacionInstructoresView";
+import PerfilesAcademicosView from "./components/PerfilesAcademicosView";
 import AdminPanel from "./components/AdminPanel";
 import Login from "./Login";
 import ChangePassword from "./ChangePassword";
@@ -109,6 +110,7 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
   const canViewProgramas = useHasPermission('programas.ver');
   const canViewInstructores = useHasPermission('instructores.ver');
   const canViewFichas = useHasPermission('fichas.ver');
+  const canViewPerfilesAcademicos = useHasPermission('perfiles_academicos.ver');
   const isAdmin = useIsAdmin();
 
   return (
@@ -154,6 +156,11 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
             {canViewProgramacion && (
               <Link to="/programacion" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
                 <Calendar className="w-5 h-5 text-indigo-500" /> Programación
+              </Link>
+            )}
+            {canViewPerfilesAcademicos && (
+              <Link to="/perfiles-academicos" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+                <Users className="w-5 h-5 text-purple-500" /> Perfiles Académicos
               </Link>
             )}
             {isAdmin && (
@@ -281,6 +288,11 @@ function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNot
           } />
           <Route path="/instructores" element={<InstructoresView />} />
           <Route path="/fichas" element={<FichasView />} />
+          <Route path="/perfiles-academicos" element={
+            <RequirePermission user={user} permission="perfiles_academicos.ver">
+              <PerfilesAcademicosView />
+            </RequirePermission>
+          } />
           <Route path="/programacion" element={
             <RequirePermission user={user} permission="programacion.ver">
               <ProgramacionInstructoresView />

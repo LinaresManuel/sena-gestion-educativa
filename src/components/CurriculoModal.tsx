@@ -25,6 +25,13 @@ interface ResultadoAprendizaje {
 interface PerfilInstructor {
   id: number;
   competenciaId: number;
+  perfilAcademicoId: number;
+  codigo: string;
+  nombre: string;
+}
+
+interface PerfilAcademicoOption {
+  id: number;
   codigo: string;
   nombre: string;
 }
@@ -46,7 +53,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
 
   // Global unique data for autocomplete
   const [uniqueCompetencias, setUniqueCompetencias] = useState<{codigo: string, nombre: string, duracionHoras: number}[]>([]);
-  const [uniquePerfiles, setUniquePerfiles] = useState<{codigo: string, nombre: string}[]>([]);
+  const [availablePerfiles, setAvailablePerfiles] = useState<PerfilAcademicoOption[]>([]);
 
   // Form states for Competencia
   const [editingComp, setEditingComp] = useState<Competencia | null>(null);
@@ -94,25 +101,24 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
     }
   };
 
-  // Form states for Perfil
+  // Form states for Perfil (selecciona desde lista maestra)
   const [editingPerfil, setEditingPerfil] = useState<PerfilInstructor | null>(null);
-  const [perfilCodigo, setPerfilCodigo] = useState("");
-  const [perfilNombre, setPerfilNombre] = useState("");
+  const [selectedPerfilId, setSelectedPerfilId] = useState<number | ''>('');
 
   const fetchCompetencias = async () => {
     setLoading(true);
     try {
-      const [res, compUniq, perfUniq] = await Promise.all([
+      const [res, compUniq, perfRes] = await Promise.all([
         fetch(`/api/programas/${programa.id}/competencias`),
         fetch(`/api/competencias-unicas`),
-        fetch(`/api/perfiles-unicos`)
+        fetch(`/api/perfiles-academicos`)
       ]);
       const data = await res.json();
       const compArray = Array.isArray(data) ? data : [];
       setCompetencias(compArray);
 
       if (compUniq.ok) setUniqueCompetencias(await compUniq.json());
-      if (perfUniq.ok) setUniquePerfiles(await perfUniq.json());
+      if (perfRes.ok) setAvailablePerfiles(await perfRes.json());
 
       const resPromises = compArray.map((c: Competencia) => fetch(`/api/competencias/${c.id}/resultados`).then(r => r.json()));
       const perfPromises = compArray.map((c: Competencia) => fetch(`/api/competencias/${c.id}/perfiles`).then(r => r.json()));
@@ -271,9 +277,11 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
 
   const handleAddPerfil = async (e: React.FormEvent, compId: number) => {
     e.preventDefault();
-    const existing = perfiles[compId]?.find(p => p.id !== editingPerfil?.id && (p.codigo === perfilCodigo || p.nombre === perfilNombre));
-    if (existing) {
-      showMessage("Ya existe un perfil con ese código o nombre en esta competencia.");
+    if (!selectedPerfilId) return;
+
+    const alreadyAssigned = perfiles[compId]?.some(p => p.perfilAcademicoId === selectedPerfilId);
+    if (alreadyAssigned) {
+      showMessage("Este perfil ya está asignado a la competencia.");
       return;
     }
 
@@ -283,10 +291,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
         resp = await fetch(`/api/perfiles/${editingPerfil.id}`, {
           method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            codigo: perfilCodigo,
-            nombre: perfilNombre
-          })
+          body: JSON.stringify({ perfilAcademicoId: selectedPerfilId })
         });
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al actualizar");
         showMessage("Perfil actualizado", "success");
@@ -294,17 +299,13 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
         resp = await fetch(`/api/competencias/${compId}/perfiles`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            codigo: perfilCodigo,
-            nombre: perfilNombre
-          })
+          body: JSON.stringify({ perfilAcademicoId: selectedPerfilId })
         });
-        if (!resp.ok) throw new Error((await resp.json()).error || "Error al crear");
-        showMessage("Perfil creado", "success");
+        if (!resp.ok) throw new Error((await resp.json()).error || "Error al asignar");
+        showMessage("Perfil asignado", "success");
       }
       setEditingPerfil(null);
-      setPerfilCodigo("");
-      setPerfilNombre("");
+      setSelectedPerfilId('');
       setActiveTab(null);
       fetchCompetencias();
     } catch (e: any) {
@@ -335,6 +336,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
       setResDuracion("");
       setResFase("Analisis");
       setEditingPerfil(null);
+      setSelectedPerfilId('');
     } else {
       setExpandedComp(compId);
     }
@@ -370,8 +372,7 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
     setExpandedComp(compId);
     setActiveTab("Perfil");
     setEditingPerfil(perfil);
-    setPerfilCodigo(perfil.codigo);
-    setPerfilNombre(perfil.nombre);
+    setSelectedPerfilId(perfil.perfilAcademicoId);
   };
 
   return (
@@ -505,7 +506,8 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                               <button onClick={() => { setExpandedComp(comp.id); setActiveTab("RA"); setEditingRes(null); setResCodigo(""); setResNombre(""); setResDuracion(""); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
                                 + Añadir RA
                               </button>
-                              <button onClick={() => { setExpandedComp(comp.id); setActiveTab("Perfil"); setEditingPerfil(null); setPerfilCodigo(""); setPerfilNombre(""); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
+                              <button onClick={() => { setExpandedComp(comp.id); setActiveTab("Perfil");       setEditingPerfil(null);
+      setSelectedPerfilId(''); }} className="text-xs bg-gray-100 text-gray-700 px-2 py-1 rounded hover:bg-gray-200 transition whitespace-nowrap">
                                 + Añadir Perfil
                               </button>
                             </>
@@ -614,23 +616,22 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
 
                           {activeTab === "Perfil" && (
                             <div className="bg-white p-3 border rounded border-indigo-200 shadow-sm mt-3 animate-in fade-in zoom-in-95 duration-200">
-                              <h5 className="text-xs font-semibold text-indigo-800 mb-2">{editingPerfil ? 'Editar' : 'Añadir'} Perfil del Instructor</h5>
-                              <form onSubmit={(e) => handleAddPerfil(e, comp.id)} className="flex gap-2">
-                                <input required type="text" list="perf-codigos" placeholder="Código" value={perfilCodigo} onChange={e => {
-                                  const val = e.target.value;
-                                  setPerfilCodigo(val);
-                                  if (!editingPerfil) {
-                                    const found = uniquePerfiles.find(p => p.codigo === val);
-                                    if (found) setPerfilNombre(found.nombre);
-                                  }
-                                }} className="w-24 border rounded text-xs px-2 py-1.5 focus:border-indigo-500 outline-none" />
-                                <datalist id="perf-codigos">
-                                  {uniquePerfiles.map(p => <option key={p.codigo} value={p.codigo}>{p.nombre}</option>)}
-                                </datalist>
-                                <input required type="text" placeholder="Nombre del perfil..." value={perfilNombre} onChange={e => setPerfilNombre(e.target.value)} className="flex-1 border rounded text-xs px-2 py-1.5 focus:border-indigo-500 outline-none" />
-                                <button type="submit" disabled={!perfilCodigo || !perfilNombre} className="bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-xs font-medium disabled:opacity-50">Guardar</button>
-                                <button type="button" onClick={() => { setActiveTab(null); setEditingPerfil(null); }} className="text-gray-500 px-2 hover:bg-gray-100 rounded text-xs">Cancelar</button>
-                              </form>
+                              <h5 className="text-xs font-semibold text-indigo-800 mb-2">{editingPerfil ? 'Cambiar perfil asignado' : 'Asignar Perfil Académico'}</h5>
+                              {availablePerfiles.length === 0 ? (
+                                <p className="text-xs text-gray-500">No hay perfiles académicos disponibles. Cree perfiles desde la sección "Perfiles Académicos" primero.</p>
+                              ) : (
+                                <form onSubmit={(e) => handleAddPerfil(e, comp.id)} className="flex gap-2">
+                                  <select value={selectedPerfilId} onChange={e => setSelectedPerfilId(Number(e.target.value) || '')}
+                                    className="flex-1 border rounded text-xs px-2 py-1.5 focus:border-indigo-500 outline-none" required>
+                                    <option value="">Seleccionar perfil...</option>
+                                    {availablePerfiles.map(p => (
+                                      <option key={p.id} value={p.id}>{p.codigo} - {p.nombre}</option>
+                                    ))}
+                                  </select>
+                                  <button type="submit" disabled={!selectedPerfilId} className="bg-indigo-600 text-white px-3 py-1.5 rounded hover:bg-indigo-700 text-xs font-medium disabled:opacity-50">Asignar</button>
+                                  <button type="button" onClick={() => { setActiveTab(null); setEditingPerfil(null); setSelectedPerfilId(''); }} className="text-gray-500 px-2 hover:bg-gray-100 rounded text-xs">Cancelar</button>
+                                </form>
+                              )}
                             </div>
                           )}
                         </div>

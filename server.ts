@@ -2,8 +2,8 @@ import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/index.ts';
-import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, fichas, programacionInstructores } from './src/db/schema.ts';
-import { eq, and, ne } from 'drizzle-orm';
+import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, perfilesAcademicos, competenciasPerfiles, instructoresPerfiles, fichas, programacionInstructores } from './src/db/schema.ts';
+import { eq, and, ne, sql } from 'drizzle-orm';
 import { config } from './src/config.ts';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
@@ -28,6 +28,7 @@ function handleDbError(e: any, res: any) {
     if (e.message.includes('instructores.documento')) return res.status(400).json({ error: 'Ya existe un instructor con este documento' });
     if (e.message.includes('programas.codigo')) return res.status(400).json({ error: 'Ya existe un programa con este código' });
     if (e.message.includes('fichas.numero_ficha')) return res.status(400).json({ error: 'Ya existe una ficha con este número' });
+    if (e.message.includes('perfiles_academicos.codigo')) return res.status(400).json({ error: 'Ya existe un perfil académico con este código' });
     return res.status(400).json({ error: 'El registro ya existe (valor duplicado)' });
   }
   res.status(500).json({ error: e.message });
@@ -136,8 +137,8 @@ async function startServer() {
         case 'competencias': {
           const raRows = await db.select().from(resultadosAprendizaje).where(eq(resultadosAprendizaje.competenciaId, id));
           if (raRows.length > 0) dependencias.push({ tipo: 'resultados', count: raRows.length, label: 'resultados de aprendizaje', elimina: true });
-          const pfRows = await db.select().from(perfilesInstructor).where(eq(perfilesInstructor.competenciaId, id));
-          if (pfRows.length > 0) dependencias.push({ tipo: 'perfiles', count: pfRows.length, label: 'perfiles de instructor', elimina: true });
+          const cpRows = await db.select().from(competenciasPerfiles).where(eq(competenciasPerfiles.competenciaId, id));
+          if (cpRows.length > 0) dependencias.push({ tipo: 'perfiles', count: cpRows.length, label: 'perfiles académicos asignados', elimina: false });
           break;
         }
         case 'fichas': {
@@ -368,7 +369,17 @@ async function startServer() {
   app.get('/api/instructores', async (req, res) => {
     try {
       const list = await db.select().from(instructores);
-      res.json(list);
+      const withPerfiles = await Promise.all(list.map(async (inst) => {
+        const perfiles = await db.select({
+          id: perfilesAcademicos.id,
+          codigo: perfilesAcademicos.codigo,
+          nombre: perfilesAcademicos.nombre,
+        }).from(instructoresPerfiles)
+          .innerJoin(perfilesAcademicos, eq(instructoresPerfiles.perfilAcademicoId, perfilesAcademicos.id))
+          .where(eq(instructoresPerfiles.instructorId, inst.id));
+        return { ...inst, perfiles };
+      }));
+      res.json(withPerfiles);
     } catch (e: any) {
       handleDbError(e, res);
     }
@@ -376,8 +387,27 @@ async function startServer() {
 
   app.post('/api/instructores', async (req, res) => {
     try {
-      const result = await db.insert(instructores).values(req.body).returning();
-      res.json(result[0]);
+      const { perfilIds, ...instructorData } = req.body;
+      const result = await db.insert(instructores).values(instructorData).returning();
+      const instructor = result[0];
+
+      if (Array.isArray(perfilIds) && perfilIds.length > 0) {
+        const values = perfilIds.map((pid: number) => ({
+          instructorId: instructor.id,
+          perfilAcademicoId: pid,
+        }));
+        await db.insert(instructoresPerfiles).values(values);
+      }
+
+      const perfiles = await db.select({
+        id: perfilesAcademicos.id,
+        codigo: perfilesAcademicos.codigo,
+        nombre: perfilesAcademicos.nombre,
+      }).from(instructoresPerfiles)
+        .innerJoin(perfilesAcademicos, eq(instructoresPerfiles.perfilAcademicoId, perfilesAcademicos.id))
+        .where(eq(instructoresPerfiles.instructorId, instructor.id));
+
+      res.json({ ...instructor, perfiles });
     } catch (e: any) {
       handleDbError(e, res);
     }
@@ -385,12 +415,33 @@ async function startServer() {
 
   app.put('/api/instructores/:id', async (req, res) => {
     try {
+      const { perfilIds, ...instructorData } = req.body;
       const result = await db.update(instructores)
-        .set(req.body)
+        .set(instructorData)
         .where(eq(instructores.id, Number(req.params.id)))
         .returning();
       if (result.length === 0) return res.status(404).json({ error: 'Instructor no encontrado' });
-      res.json(result[0]);
+
+      if (Array.isArray(perfilIds)) {
+        await db.delete(instructoresPerfiles).where(eq(instructoresPerfiles.instructorId, Number(req.params.id)));
+        if (perfilIds.length > 0) {
+          const values = perfilIds.map((pid: number) => ({
+            instructorId: Number(req.params.id),
+            perfilAcademicoId: pid,
+          }));
+          await db.insert(instructoresPerfiles).values(values);
+        }
+      }
+
+      const perfiles = await db.select({
+        id: perfilesAcademicos.id,
+        codigo: perfilesAcademicos.codigo,
+        nombre: perfilesAcademicos.nombre,
+      }).from(instructoresPerfiles)
+        .innerJoin(perfilesAcademicos, eq(instructoresPerfiles.perfilAcademicoId, perfilesAcademicos.id))
+        .where(eq(instructoresPerfiles.instructorId, Number(req.params.id)));
+
+      res.json({ ...result[0], perfiles });
     } catch (e: any) {
       handleDbError(e, res);
     }
@@ -478,15 +529,14 @@ async function startServer() {
           await db.insert(resultadosAprendizaje).values(nuevosResultados);
         }
 
-        // Copy perfiles
-        const existingPerfiles = await db.select().from(perfilesInstructor).where(eq(perfilesInstructor.competenciaId, templateId));
+        // Copy perfiles (via junction table)
+        const existingPerfiles = await db.select().from(competenciasPerfiles).where(eq(competenciasPerfiles.competenciaId, templateId));
         if (existingPerfiles.length > 0) {
           const nuevosPerfiles = existingPerfiles.map(p => ({
             competenciaId: newCompetencia.id,
-            codigo: p.codigo,
-            nombre: p.nombre
+            perfilAcademicoId: p.perfilAcademicoId,
           }));
-          await db.insert(perfilesInstructor).values(nuevosPerfiles);
+          await db.insert(competenciasPerfiles).values(nuevosPerfiles);
         }
       }
 
@@ -560,7 +610,7 @@ async function startServer() {
     }
   });
 
-  // API Routes for perfilesInstructor
+  // API Routes for Perfiles Académicos (asignación a competencias)
   app.get('/api/competencias-unicas', async (req, res) => {
     try {
       const list = await db.select({
@@ -577,9 +627,9 @@ async function startServer() {
   app.get('/api/perfiles-unicos', async (req, res) => {
     try {
       const list = await db.select({
-        codigo: perfilesInstructor.codigo,
-        nombre: perfilesInstructor.nombre
-      }).from(perfilesInstructor).groupBy(perfilesInstructor.codigo, perfilesInstructor.nombre);
+        codigo: perfilesAcademicos.codigo,
+        nombre: perfilesAcademicos.nombre
+      }).from(perfilesAcademicos);
       res.json(list);
     } catch (e: any) {
       handleDbError(e, res);
@@ -588,7 +638,15 @@ async function startServer() {
 
   app.get('/api/competencias/:id/perfiles', async (req, res) => {
     try {
-      const list = await db.select().from(perfilesInstructor).where(eq(perfilesInstructor.competenciaId, Number(req.params.id)));
+      const list = await db.select({
+        id: competenciasPerfiles.id,
+        competenciaId: competenciasPerfiles.competenciaId,
+        perfilAcademicoId: competenciasPerfiles.perfilAcademicoId,
+        codigo: perfilesAcademicos.codigo,
+        nombre: perfilesAcademicos.nombre,
+      }).from(competenciasPerfiles)
+        .innerJoin(perfilesAcademicos, eq(competenciasPerfiles.perfilAcademicoId, perfilesAcademicos.id))
+        .where(eq(competenciasPerfiles.competenciaId, Number(req.params.id)));
       res.json(list);
     } catch (e: any) {
       handleDbError(e, res);
@@ -597,8 +655,22 @@ async function startServer() {
 
   app.post('/api/competencias/:id/perfiles', async (req, res) => {
     try {
-      const result = await db.insert(perfilesInstructor).values({ ...req.body, competenciaId: Number(req.params.id) }).returning();
-      res.json(result[0]);
+      const { perfilAcademicoId } = req.body;
+      const result = await db.insert(competenciasPerfiles).values({
+        competenciaId: Number(req.params.id),
+        perfilAcademicoId,
+      }).returning();
+      const full = await db.select({
+        id: competenciasPerfiles.id,
+        competenciaId: competenciasPerfiles.competenciaId,
+        perfilAcademicoId: competenciasPerfiles.perfilAcademicoId,
+        codigo: perfilesAcademicos.codigo,
+        nombre: perfilesAcademicos.nombre,
+      }).from(competenciasPerfiles)
+        .innerJoin(perfilesAcademicos, eq(competenciasPerfiles.perfilAcademicoId, perfilesAcademicos.id))
+        .where(eq(competenciasPerfiles.id, result[0].id))
+        .limit(1);
+      res.json(full[0]);
     } catch (e: any) {
       handleDbError(e, res);
     }
@@ -606,8 +678,23 @@ async function startServer() {
 
   app.put('/api/perfiles/:id', async (req, res) => {
     try {
-      const result = await db.update(perfilesInstructor).set(req.body).where(eq(perfilesInstructor.id, Number(req.params.id))).returning();
-      res.json(result[0]);
+      const { perfilAcademicoId } = req.body;
+      const result = await db.update(competenciasPerfiles)
+        .set({ perfilAcademicoId })
+        .where(eq(competenciasPerfiles.id, Number(req.params.id)))
+        .returning();
+      if (result.length === 0) return res.status(404).json({ error: 'Asignación no encontrada' });
+      const full = await db.select({
+        id: competenciasPerfiles.id,
+        competenciaId: competenciasPerfiles.competenciaId,
+        perfilAcademicoId: competenciasPerfiles.perfilAcademicoId,
+        codigo: perfilesAcademicos.codigo,
+        nombre: perfilesAcademicos.nombre,
+      }).from(competenciasPerfiles)
+        .innerJoin(perfilesAcademicos, eq(competenciasPerfiles.perfilAcademicoId, perfilesAcademicos.id))
+        .where(eq(competenciasPerfiles.id, result[0].id))
+        .limit(1);
+      res.json(full[0]);
     } catch (e: any) {
       handleDbError(e, res);
     }
@@ -615,7 +702,75 @@ async function startServer() {
 
   app.delete('/api/perfiles/:id', async (req, res) => {
     try {
-      await db.delete(perfilesInstructor).where(eq(perfilesInstructor.id, Number(req.params.id)));
+      await db.delete(competenciasPerfiles).where(eq(competenciasPerfiles.id, Number(req.params.id)));
+      res.json({ success: true });
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  // API Routes for Perfiles Académicos (entidad independiente)
+  app.get('/api/perfiles-academicos', async (req, res) => {
+    try {
+      const list = await db.select().from(perfilesAcademicos);
+      // Agregar conteo de usos
+      const withCounts = await Promise.all(list.map(async (pa) => {
+        const [cpCount, ipCount] = await Promise.all([
+          db.select({ count: sql<number>`count(*)` }).from(competenciasPerfiles).where(eq(competenciasPerfiles.perfilAcademicoId, pa.id)),
+          db.select({ count: sql<number>`count(*)` }).from(instructoresPerfiles).where(eq(instructoresPerfiles.perfilAcademicoId, pa.id)),
+        ]);
+        return {
+          ...pa,
+          competenciasCount: Number(cpCount[0]?.count ?? 0),
+          instructoresCount: Number(ipCount[0]?.count ?? 0),
+        };
+      }));
+      res.json(withCounts);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.post('/api/perfiles-academicos', async (req, res) => {
+    try {
+      const { codigo, nombre, descripcion } = req.body;
+      const result = await db.insert(perfilesAcademicos).values({ codigo, nombre, descripcion }).returning();
+      res.json(result[0]);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.put('/api/perfiles-academicos/:id', async (req, res) => {
+    try {
+      const { codigo, nombre, descripcion } = req.body;
+      const result = await db.update(perfilesAcademicos)
+        .set({ codigo, nombre, descripcion })
+        .where(eq(perfilesAcademicos.id, Number(req.params.id)))
+        .returning();
+      if (result.length === 0) return res.status(404).json({ error: 'Perfil académico no encontrado' });
+      res.json(result[0]);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.delete('/api/perfiles-academicos/:id', async (req, res) => {
+    try {
+      const id = Number(req.params.id);
+      // Verificar dependencias
+      const [cpCount, ipCount] = await Promise.all([
+        db.select({ count: sql<number>`count(*)` }).from(competenciasPerfiles).where(eq(competenciasPerfiles.perfilAcademicoId, id)),
+        db.select({ count: sql<number>`count(*)` }).from(instructoresPerfiles).where(eq(instructoresPerfiles.perfilAcademicoId, id)),
+      ]);
+      if (Number(cpCount[0]?.count ?? 0) > 0 || Number(ipCount[0]?.count ?? 0) > 0) {
+        return res.status(409).json({
+          error: 'No se puede eliminar el perfil porque está asignado a competencias o instructores',
+          competencias: Number(cpCount[0]?.count ?? 0),
+          instructores: Number(ipCount[0]?.count ?? 0),
+        });
+      }
+      await db.delete(perfilesAcademicos).where(eq(perfilesAcademicos.id, id));
       res.json({ success: true });
     } catch (e: any) {
       handleDbError(e, res);

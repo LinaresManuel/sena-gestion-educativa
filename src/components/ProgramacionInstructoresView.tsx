@@ -281,8 +281,14 @@ export default function ProgramacionInstructoresView() {
   };
 
   const perfilNames = perfiles.map(p => p.nombre);
+  const perfilIds = perfiles.map(p => p.perfilAcademicoId).filter(Boolean);
   const instructoresFiltrados = instructores.filter(inst => {
-    if (perfilNames.length === 0) return true; 
+    if (perfilNames.length === 0) return true;
+    // Intentar match por IDs (nuevo sistema)
+    if (perfilIds.length > 0 && Array.isArray(inst.perfiles)) {
+      return inst.perfiles.some((p: any) => perfilIds.includes(p.id));
+    }
+    // Fallback: match por nombre textual (sistema legacy)
     if (!inst.requisitosAcademicos || !Array.isArray(inst.requisitosAcademicos)) return false;
     return inst.requisitosAcademicos.some((req: string) => perfilNames.includes(req));
   });

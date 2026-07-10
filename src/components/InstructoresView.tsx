@@ -3,6 +3,12 @@ import { Plus, Trash2, X, Pencil } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 import ConfirmDialog from "./ConfirmDialog";
 
+interface PerfilInfo {
+  id: number;
+  codigo: string;
+  nombre: string;
+}
+
 interface Instructor {
   id: number;
   documento: string;
@@ -11,6 +17,7 @@ interface Instructor {
   tipoVinculacion: string;
   estado: string;
   requisitosAcademicos: string[];
+  perfiles: PerfilInfo[];
 }
 
 export default function InstructoresView() {
@@ -21,7 +28,7 @@ export default function InstructoresView() {
   const [instructores, setInstructores] = useState<Instructor[]>([]);
   const [loading, setLoading] = useState(true);
   const [editingId, setEditingId] = useState<number | null>(null);
-  const [availablePerfiles, setAvailablePerfiles] = useState<{codigo: string, nombre: string}[]>([]);
+  const [availablePerfiles, setAvailablePerfiles] = useState<PerfilInfo[]>([]);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
@@ -55,7 +62,7 @@ export default function InstructoresView() {
   const [apellidos, setApellidos] = useState("");
   const [tipoVinculacion, setTipoVinculacion] = useState("PLANTA");
   const [estado, setEstado] = useState("ACTIVO");
-  const [selectedPerfiles, setSelectedPerfiles] = useState<string[]>([]);
+  const [selectedPerfiles, setSelectedPerfiles] = useState<number[]>([]);
 
   const fetchInstructores = async () => {
     setLoading(true);
@@ -73,9 +80,9 @@ export default function InstructoresView() {
 
   const fetchPerfiles = async () => {
     try {
-      const res = await fetch("/api/perfiles-unicos");
+      const res = await fetch("/api/perfiles-academicos");
       const data = await res.json();
-      setAvailablePerfiles(Array.isArray(data) ? data : []);
+      setAvailablePerfiles(Array.isArray(data) ? data.map((p: any) => ({ id: p.id, codigo: p.codigo, nombre: p.nombre })) : []);
     } catch (e) {
       console.error(e);
     }
@@ -86,11 +93,11 @@ export default function InstructoresView() {
     fetchPerfiles();
   }, []);
 
-  const togglePerfil = (nombre: string) => {
+  const togglePerfil = (id: number) => {
     setSelectedPerfiles(prev => 
-      prev.includes(nombre) 
-        ? prev.filter(p => p !== nombre)
-        : [...prev, nombre]
+      prev.includes(id) 
+        ? prev.filter(p => p !== id)
+        : [...prev, id]
     );
   };
 
@@ -101,7 +108,7 @@ export default function InstructoresView() {
     setApellidos(instructor.apellidos);
     setTipoVinculacion(instructor.tipoVinculacion);
     setEstado(instructor.estado);
-    setSelectedPerfiles(instructor.requisitosAcademicos || []);
+    setSelectedPerfiles(instructor.perfiles?.map((p: PerfilInfo) => p.id) || []);
   };
 
   const cancelEdit = () => {
@@ -128,7 +135,11 @@ export default function InstructoresView() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             documento, nombres, apellidos, tipoVinculacion, estado,
-            requisitosAcademicos: selectedPerfiles
+            perfilIds: selectedPerfiles,
+            requisitosAcademicos: selectedPerfiles.map(id => {
+              const p = availablePerfiles.find(ap => ap.id === id);
+              return p ? p.nombre : '';
+            }).filter(Boolean)
           }),
         });
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al actualizar");
@@ -140,7 +151,11 @@ export default function InstructoresView() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             documento, nombres, apellidos, tipoVinculacion, estado,
-            requisitosAcademicos: selectedPerfiles
+            perfilIds: selectedPerfiles,
+            requisitosAcademicos: selectedPerfiles.map(id => {
+              const p = availablePerfiles.find(ap => ap.id === id);
+              return p ? p.nombre : '';
+            }).filter(Boolean)
           }),
         });
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al registrar");
@@ -223,16 +238,16 @@ export default function InstructoresView() {
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Perfiles Académicos</label>
                 {availablePerfiles.length === 0 ? (
-                  <div className="text-sm text-gray-500 py-2">No hay perfiles registrados. Cree un perfil en la sección de Currículos primero.</div>
+                  <div className="text-sm text-gray-500 py-2">No hay perfiles registrados. Cree perfiles desde la sección "Perfiles Académicos" primero.</div>
                 ) : (
                   <div className="max-h-48 overflow-y-auto border rounded-md p-3 space-y-2 bg-gray-50">
-                    {availablePerfiles.map((p, i) => (
-                      <label key={i} className="flex items-start gap-2 cursor-pointer">
+                    {availablePerfiles.map(p => (
+                      <label key={p.id} className="flex items-start gap-2 cursor-pointer">
                         <input 
                           type="checkbox" 
                           className="mt-1"
-                          checked={selectedPerfiles.includes(p.nombre)}
-                          onChange={() => togglePerfil(p.nombre)}
+                          checked={selectedPerfiles.includes(p.id)}
+                          onChange={() => togglePerfil(p.id)}
                         />
                         <span className="text-sm text-gray-700">{p.nombre} <span className="text-gray-400 text-xs text-nowrap">({p.codigo})</span></span>
                       </label>
@@ -283,7 +298,10 @@ export default function InstructoresView() {
                       </td>
                       <td className="px-6 py-4">
                         <div className="flex flex-wrap gap-1">
-                          {Array.isArray(a.requisitosAcademicos) && a.requisitosAcademicos.map((r, i) => (
+                          {Array.isArray(a.perfiles) && a.perfiles.map(p => (
+                            <span key={p.id} className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs border border-blue-100">{p.nombre}</span>
+                          ))}
+                          {(!a.perfiles || a.perfiles.length === 0) && Array.isArray(a.requisitosAcademicos) && a.requisitosAcademicos.map((r, i) => (
                             <span key={i} className="bg-blue-50 text-blue-700 px-2 py-0.5 rounded text-xs border border-blue-100">{r}</span>
                           ))}
                         </div>

@@ -92,6 +92,34 @@ export const perfilesInstructor = sqliteTable('perfiles_instructor', {
   nombre: text('nombre').notNull(),
 });
 
+// ==========================================
+// PERFILES ACADEMICOS (entidad independiente)
+// ==========================================
+
+export const perfilesAcademicos = sqliteTable('perfiles_academicos', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  codigo: text('codigo').notNull().unique(),
+  nombre: text('nombre').notNull(),
+  descripcion: text('descripcion'),
+  createdAt: text('created_at').notNull().default("datetime('now')"),
+});
+
+export const competenciasPerfiles = sqliteTable('competencias_perfiles', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  competenciaId: integer('competencia_id').notNull().references(() => competencias.id, { onDelete: 'cascade' }),
+  perfilAcademicoId: integer('perfil_academico_id').notNull().references(() => perfilesAcademicos.id),
+}, (t) => ({
+  unq: unique().on(t.competenciaId, t.perfilAcademicoId),
+}));
+
+export const instructoresPerfiles = sqliteTable('instructores_perfiles', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  instructorId: integer('instructor_id').notNull().references(() => instructores.id, { onDelete: 'cascade' }),
+  perfilAcademicoId: integer('perfil_academico_id').notNull().references(() => perfilesAcademicos.id),
+}, (t) => ({
+  unq: unique().on(t.instructorId, t.perfilAcademicoId),
+}));
+
 export const fichas = sqliteTable('fichas', {
   id: integer('id').primaryKey({ autoIncrement: true }),
   numeroFicha: text('numero_ficha').notNull().unique(),

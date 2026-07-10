@@ -8,6 +8,7 @@ import { INSTRUCTORES_PERMISSIONS } from './instructores/permissions';
 import { FICHAS_PERMISSIONS } from './fichas/permissions';
 import { PROGRAMACION_PERMISSIONS } from './programacion/permissions';
 import { ADMIN_PERMISSIONS } from './admin/permissions';
+import { PERFILES_ACADEMICOS_PERMISSIONS } from './perfiles_academicos/permissions';
 
 // Auto-discovery: importar todos los permisos de módulos
 export const ALL_MODULE_PERMISSIONS = [
@@ -21,6 +22,7 @@ export const ALL_MODULE_PERMISSIONS = [
   ...FICHAS_PERMISSIONS,
   ...PROGRAMACION_PERMISSIONS,
   ...ADMIN_PERMISSIONS,
+  ...PERFILES_ACADEMICOS_PERMISSIONS,
 ];
 
 // Agrupar por módulo (en orden del sidebar)
@@ -35,6 +37,7 @@ export const PERMISSIONS_BY_MODULE = {
   fichas: FICHAS_PERMISSIONS,
   programacion: PROGRAMACION_PERMISSIONS,
   admin: ADMIN_PERMISSIONS,
+  perfiles_academicos: PERFILES_ACADEMICOS_PERMISSIONS,
 };
 
 // Todos los módulos disponibles (en orden del sidebar)
