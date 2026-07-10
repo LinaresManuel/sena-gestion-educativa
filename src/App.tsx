@@ -27,13 +27,15 @@ interface AuthUser {
 
 function Dashboard({ user }: { user: AuthUser }) {
   // Hooks para verificar permisos
-  const canViewProgramacion = useHasPermission('programacion.ver');
   const canViewRegionales = useHasPermission('regionales.ver');
   const canViewCentros = useHasPermission('centros.ver');
   const canViewAmbientes = useHasPermission('ambientes.ver');
-  const canViewProgramas = useHasPermission('programas.ver');
+  const canViewTiposAmbiente = useHasPermission('tipos_ambiente.ver');
   const canViewInstructores = useHasPermission('instructores.ver');
+  const canViewPerfilesAcademicos = useHasPermission('perfiles_academicos.ver');
+  const canViewProgramas = useHasPermission('programas.ver');
   const canViewFichas = useHasPermission('fichas.ver');
+  const canViewProgramacion = useHasPermission('programacion.ver');
   const isAdmin = useIsAdmin();
 
   return (
@@ -63,17 +65,29 @@ function Dashboard({ user }: { user: AuthUser }) {
           <h2 className="text-xl font-semibold mb-2">Ambientes</h2>
           <p className="text-sm text-gray-600">Administra los salones, talleres y demás espacios físicos.</p>
         </Link>)}
-        {canViewProgramas && (
-        <Link to="/programas" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
-          <BookOpen className="w-10 h-10 text-red-600 mb-4" />
-          <h2 className="text-xl font-semibold mb-2">Programas</h2>
-          <p className="text-sm text-gray-600">Gestor de programas de formación y titulaciones.</p>
+        {canViewTiposAmbiente && (
+        <Link to="/tipos-ambiente" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
+          <Home className="w-10 h-10 text-teal-600 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Tipos de Ambientes</h2>
+          <p className="text-sm text-gray-600">Gestiona las clasificaciones de ambientes.</p>
         </Link>)}
         {canViewInstructores && (
         <Link to="/instructores" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
           <Users className="w-10 h-10 text-purple-600 mb-4" />
           <h2 className="text-xl font-semibold mb-2">Instructores</h2>
           <p className="text-sm text-gray-600">Registra instructores y sus perfiles académicos.</p>
+        </Link>)}
+        {canViewPerfilesAcademicos && (
+        <Link to="/perfiles-academicos" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
+          <Users className="w-10 h-10 text-purple-500 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Perfiles Académicos</h2>
+          <p className="text-sm text-gray-600">Gestiona los perfiles académicos del sistema.</p>
+        </Link>)}
+        {canViewProgramas && (
+        <Link to="/programas" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
+          <BookOpen className="w-10 h-10 text-red-600 mb-4" />
+          <h2 className="text-xl font-semibold mb-2">Programas</h2>
+          <p className="text-sm text-gray-600">Gestor de programas de formación y titulaciones.</p>
         </Link>)}
         {canViewFichas && (
         <Link to="/fichas" className="p-6 border rounded-xl hover:shadow-md transition bg-white block">
@@ -141,13 +155,18 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
             <Link to="/tipos-ambiente" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <Home className="w-5 h-5 text-gray-400 ml-1" /> Tipos de Ambientes
             </Link>)}
-            {canViewProgramas && (
-            <Link to="/programas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <BookOpen className="w-5 h-5 text-gray-500" /> Programas
-            </Link>)}
             {canViewInstructores && (
             <Link to="/instructores" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <Users className="w-5 h-5 text-gray-500" /> Instructores
+            </Link>)}
+            {canViewPerfilesAcademicos && (
+              <Link to="/perfiles-academicos" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+                <Users className="w-5 h-5 text-purple-500" /> Perfiles Académicos
+              </Link>
+            )}
+            {canViewProgramas && (
+            <Link to="/programas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <BookOpen className="w-5 h-5 text-gray-500" /> Programas
             </Link>)}
             {canViewFichas && (
             <Link to="/fichas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
@@ -156,11 +175,6 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
             {canViewProgramacion && (
               <Link to="/programacion" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
                 <Calendar className="w-5 h-5 text-indigo-500" /> Programación
-              </Link>
-            )}
-            {canViewPerfilesAcademicos && (
-              <Link to="/perfiles-academicos" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Users className="w-5 h-5 text-purple-500" /> Perfiles Académicos
               </Link>
             )}
             {isAdmin && (

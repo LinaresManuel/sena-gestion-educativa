@@ -32,12 +32,12 @@ export const PERMISSIONS_BY_MODULE = {
   centros: CENTROS_PERMISSIONS,
   ambientes: AMBIENTES_PERMISSIONS,
   tipos_ambiente: TIPOS_AMBIENTE_PERMISSIONS,
-  programas: PROGRAMAS_PERMISSIONS,
   instructores: INSTRUCTORES_PERMISSIONS,
+  perfiles_academicos: PERFILES_ACADEMICOS_PERMISSIONS,
+  programas: PROGRAMAS_PERMISSIONS,
   fichas: FICHAS_PERMISSIONS,
   programacion: PROGRAMACION_PERMISSIONS,
   admin: ADMIN_PERMISSIONS,
-  perfiles_academicos: PERFILES_ACADEMICOS_PERMISSIONS,
 };
 
 // Todos los módulos disponibles (en orden del sidebar)
