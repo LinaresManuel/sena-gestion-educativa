@@ -19,38 +19,50 @@ Mismo patrón que RegionalesView, CentrosView, AmbientesView, etc.:
 
 Inspirado en `weekly-time-matrix.tsx` del proyecto de referencia `diseno-cronograma`.
 
-**Layout CSS Grid:**
+**Layout side-by-side simétrico:**
+
+El modal usa `max-w-4xl` con `grid grid-cols-1 lg:grid-cols-2 gap-8`. Ambas columnas
+tienen un encabezado de sección `text-sm font-semibold border-b pb-2` para simetría visual.
+
+- Columna izquierda: "Datos de la Ficha" — todos los labels a `text-xs font-medium`,
+  todos los inputs a `text-sm px-3 py-2` con `focus:ring-2 focus:ring-purple-500/30`.
+- Columna derecha: "Horario de Formación" — cuadrícula envuelta en `border rounded-lg p-2 bg-gray-50/50`.
+
+**Layout CSS Grid del horario:**
 
 ```tsx
 <div
-  className="grid gap-1 overflow-x-auto select-none"
-  style={{ gridTemplateColumns: `60px repeat(6, 1fr)` }}
+  className="grid gap-1 select-none border rounded-lg p-2 bg-gray-50/50"
+  style={{ gridTemplateColumns: `40px repeat(6, 1fr)` }}
   onMouseUp={handleCellMouseUp}
   onMouseLeave={handleCellMouseUp}
 >
   <div />
   {DIAS_VISIBLES.map(d => (
-    <div key={d} className="text-center text-[10px] font-semibold text-gray-600 py-1.5">
+    <div key={d} className="text-center text-[10px] font-semibold text-gray-600 leading-none pb-1">
       {d.slice(0, 3)}
     </div>
   ))}
 
   {HORAS.map(hora => (
     <div key={hora} className="contents">
-      <div className="text-[10px] text-gray-500 font-mono pr-1 text-right flex items-center justify-end h-6">
+      <div className="text-[10px] text-gray-500 font-mono text-right flex items-center justify-end pr-1 leading-none">
         {hora.split('-')[0]}
       </div>
       {DIAS_VISIBLES.map(dia => {
         const selected = horario[dia]?.includes(hora);
+        const inRange = inPreview && dayIdx >= dragPreview.minDay && dayIdx <= dragPreview.maxDay;
         return (
           <div
             key={`${dia}-${hora}`}
             onMouseDown={() => handleCellMouseDown(dia, hora)}
             onMouseEnter={() => handleCellMouseEnter(dia, hora)}
-            className={`rounded-md border transition-all duration-100 cursor-pointer h-6
-              ${selected
-                ? 'bg-purple-500/20 border-purple-400'
-                : 'bg-gray-50/80 border-gray-200 hover:bg-purple-50 hover:border-purple-300'
+            className={`rounded border transition-all duration-75 cursor-pointer h-6
+              ${inRange
+                ? 'bg-purple-500/35 border-purple-500'
+                : selected
+                  ? 'bg-purple-500/20 border-purple-400'
+                  : 'bg-white border-gray-200 hover:bg-purple-50 hover:border-purple-300'
               }`}
           />
         );
@@ -116,9 +128,10 @@ function handleCellMouseUp() {
 
 | Estado | Fondo | Borde |
 |---|---|---|
-| No seleccionada | `bg-gray-50/80` | `border-gray-200` |
+| No seleccionada | `bg-white` | `border-gray-200` |
 | Hover (no selec.) | `hover:bg-purple-50` | `hover:border-purple-300` |
 | Seleccionada | `bg-purple-500/20` | `border-purple-400` |
+| Preview (arrastre) | `bg-purple-500/35` | `border-purple-500` |
 
 ### 3. Filtro por programa
 

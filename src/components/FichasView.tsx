@@ -421,24 +421,31 @@ export default function FichasView() {
       {showForm && (
         <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-start justify-center z-50 pt-8 overflow-y-auto"
           onClick={handleClose}>
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-2xl my-8" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white z-10 rounded-t-xl">
-              <h3 className="text-lg font-semibold">{editingId ? 'Editar Ficha' : 'Nueva Ficha'}</h3>
-              <button onClick={handleClose} className="text-gray-400 hover:text-gray-600">
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl my-8" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-5 border-b sticky top-0 bg-white z-10 rounded-t-xl">
+              <h3 className="text-lg font-semibold text-gray-900">{editingId ? 'Editar Ficha' : 'Nueva Ficha'}</h3>
+              <button onClick={handleClose} className="text-gray-400 hover:text-gray-600 transition">
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleSubmit} className="p-4 max-h-[75vh] overflow-y-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                <div className="space-y-3">
+
+            <form onSubmit={handleSubmit} className="p-6 max-h-[75vh] overflow-y-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* --- Columna izquierda: Datos --- */}
+                <div className="space-y-4">
+                  <h4 className="text-sm font-semibold text-gray-800 border-b pb-2">Datos de la Ficha</h4>
+
                   <div className="grid grid-cols-2 gap-3">
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">Número de Ficha</label>
-                      <input value={numeroFicha} onChange={e => setNumeroFicha(e.target.value)} type="text" className="w-full border rounded-lg px-2 py-1.5 text-sm" required placeholder="Ej: 2686861" />
+                      <input value={numeroFicha} onChange={e => setNumeroFicha(e.target.value)} type="text"
+                        className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition"
+                        required placeholder="Ej: 2686861" />
                     </div>
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">Modalidad</label>
-                      <select value={modalidad} onChange={e => setModalidad(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white">
+                      <select value={modalidad} onChange={e => setModalidad(e.target.value)}
+                        className="w-full border rounded-lg px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition">
                         <option value="PRESENCIAL">Presencial</option>
                         <option value="VIRTUAL">Virtual</option>
                         <option value="MIXTA">Mixta</option>
@@ -448,64 +455,72 @@ export default function FichasView() {
 
                   <div>
                     <label className="block text-xs font-medium text-gray-700 mb-1">Programa de Formación</label>
-                    <select value={programaId} onChange={e => setProgramaId(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white" required>
-                      <option value="">Seleccione...</option>
+                    <select value={programaId} onChange={e => setProgramaId(e.target.value)}
+                      className="w-full border rounded-lg px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition" required>
+                      <option value="">Seleccione un programa...</option>
                       {programas.map(p => (
                         <option key={p.id} value={p.id}>{p.denominacion}</option>
                       ))}
                     </select>
                   </div>
 
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-3 gap-3">
                     <div>
-                      <label className="block text-xs font-medium text-gray-700 mb-1">Inicio</label>
-                      <input value={fechaInicio} onChange={e => setFechaInicio(e.target.value)} type="date" className="w-full border rounded-lg px-2 py-1.5 text-sm" required />
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Fecha Inicio</label>
+                      <input value={fechaInicio} onChange={e => setFechaInicio(e.target.value)} type="date"
+                        className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition" required />
                     </div>
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">Fin Lectiva</label>
-                      <input value={fechaFinLectiva} onChange={e => setFechaFinLectiva(e.target.value)} type="date" className="w-full border rounded-lg px-2 py-1.5 text-sm" required />
+                      <input value={fechaFinLectiva} onChange={e => setFechaFinLectiva(e.target.value)} type="date"
+                        className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition" required />
                     </div>
                     <div>
                       <label className="block text-xs font-medium text-gray-700 mb-1">Fin Ficha</label>
-                      <input value={fechaFin} onChange={e => setFechaFin(e.target.value)} type="date" className="w-full border rounded-lg px-2 py-1.5 text-sm" required />
+                      <input value={fechaFin} onChange={e => setFechaFin(e.target.value)} type="date"
+                        className="w-full border rounded-lg px-3 py-2 text-sm focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition" required />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-medium text-gray-700 mb-1">Centro</label>
-                      <select value={centroFormacionId} onChange={e => setCentroFormacionId(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white" required>
-                        <option value="">Seleccione...</option>
-                        {centros.map(c => (
-                          <option key={c.id} value={c.id}>{c.nombre}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <label className="block text-xs font-medium text-gray-700 mb-1">Ambiente</label>
-                      <select value={ambienteId} onChange={e => setAmbientesId(e.target.value)} className="w-full border rounded-lg px-2 py-1.5 text-sm bg-white" required>
-                        <option value="">Seleccione...</option>
-                        {ambientes.map(a => (
-                          <option key={a.id} value={a.id}>{a.nombre}</option>
-                        ))}
-                      </select>
-                    </div>
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">Centro de Formación</label>
+                    <select value={centroFormacionId} onChange={e => setCentroFormacionId(e.target.value)}
+                      className="w-full border rounded-lg px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition" required>
+                      <option value="">Seleccione un centro...</option>
+                      {centros.map(c => (
+                        <option key={c.id} value={c.id}>{c.nombre}</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">Ambiente de Formación</label>
+                    <select value={ambienteId} onChange={e => setAmbientesId(e.target.value)}
+                      className="w-full border rounded-lg px-3 py-2 text-sm bg-white focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition" required>
+                      <option value="">Seleccione un ambiente...</option>
+                      {ambientes.map(a => (
+                        <option key={a.id} value={a.id}>{a.nombre}</option>
+                      ))}
+                    </select>
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-semibold text-gray-800 mb-2">Horario</label>
-                  <p className="text-[10px] text-gray-500 mb-2 leading-tight">Haga clic en una celda o arrastre para seleccionar un rango rectangular.</p>
+                {/* --- Columna derecha: Horario --- */}
+                <div className="space-y-4">
+                  <h4 className="text-sm font-semibold text-gray-800 border-b pb-2">Horario de Formación</h4>
+                  <p className="text-xs text-gray-500 leading-relaxed">
+                    Haga clic para seleccionar una celda o arrastre para seleccionar un rango rectangular.
+                  </p>
 
                   <div
-                    className="grid gap-0.5 select-none"
-                    style={{ gridTemplateColumns: `28px repeat(6, minmax(24px, 1fr))` }}
+                    className="grid gap-1 select-none border rounded-lg p-2 bg-gray-50/50"
+                    style={{ gridTemplateColumns: `40px repeat(6, 1fr)` }}
                     onMouseUp={handleCellMouseUp}
                     onMouseLeave={handleCellMouseUp}
                   >
                     <div />
                     {DIAS_VISIBLES.map(d => (
-                      <div key={d} className="text-center text-[8px] font-semibold text-gray-600 leading-none">
+                      <div key={d} className="text-center text-[10px] font-semibold text-gray-600 leading-none pb-1">
                         {d.slice(0, 3)}
                       </div>
                     ))}
@@ -515,7 +530,7 @@ export default function FichasView() {
                       const inPreview = dragPreview !== null && hourIdx >= dragPreview.minHour && hourIdx <= dragPreview.maxHour;
                       return (
                         <div key={hora} className="contents">
-                          <div className="text-[7px] text-gray-500 font-mono text-right flex items-center justify-end h-4 leading-none">
+                          <div className="text-[10px] text-gray-500 font-mono text-right flex items-center justify-end pr-1 leading-none">
                             {hora.split('-')[0]}
                           </div>
                           {DIAS_VISIBLES.map((dia, dayIdx) => {
@@ -526,12 +541,12 @@ export default function FichasView() {
                                 key={`${dia}-${hora}`}
                                 onMouseDown={() => handleCellMouseDown(dia, hora)}
                                 onMouseEnter={() => handleCellMouseEnter(dia, hora)}
-                                className={`rounded-sm border transition-all duration-75 cursor-pointer h-4
+                                className={`rounded border transition-all duration-75 cursor-pointer h-6
                                   ${inRange
                                     ? 'bg-purple-500/35 border-purple-500'
                                     : selected
                                       ? 'bg-purple-500/20 border-purple-400'
-                                      : 'bg-gray-50/80 border-gray-200 hover:bg-purple-50 hover:border-purple-300'
+                                      : 'bg-white border-gray-200 hover:bg-purple-50 hover:border-purple-300'
                                   }`}
                               />
                             );
@@ -543,12 +558,12 @@ export default function FichasView() {
                 </div>
               </div>
 
-              {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
-              <div className="flex justify-end gap-2 pt-2 border-t">
+              {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3 mt-4">{error}</div>}
+              <div className="flex justify-end gap-2 pt-4 mt-4 border-t">
                 <button type="button" onClick={handleClose}
-                  className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
+                  className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition">Cancelar</button>
                 <button type="submit" disabled={saving || !numeroFicha.trim() || !centroFormacionId || !programaId || !ambienteId}
-                  className="px-4 py-2 text-sm text-white bg-purple-600 hover:bg-purple-700 rounded-lg disabled:opacity-50">
+                  className="px-4 py-2 text-sm text-white bg-purple-600 hover:bg-purple-700 rounded-lg disabled:opacity-50 transition">
                   {saving ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
                 </button>
               </div>
