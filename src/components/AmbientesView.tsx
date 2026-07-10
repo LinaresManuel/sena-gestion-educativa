@@ -30,6 +30,7 @@ export default function AmbientesView() {
   const [centros, setCentros] = useState<Centro[]>([]);
   const [tiposAmbiente, setTiposAmbiente] = useState<TipoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [selectedAmbienteForElements, setSelectedAmbienteForElements] = useState<Ambiente | null>(null);
 
@@ -37,6 +38,8 @@ export default function AmbientesView() {
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [dependencias, setDependencias] = useState<{ tipo: string; count: number; label: string; elimina: boolean }[] | null>(null);
   const [pasoDialogo, setPasoDialogo] = useState<'ninguno' | 'dependencias' | 'confirmar'>('ninguno');
+  const [error, setError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -91,11 +94,11 @@ export default function AmbientesView() {
       const ambData = await ambRes.json();
       const cenData = await cenRes.json();
       const tipData = await tipRes.json();
-      
+
       setAmbientes(Array.isArray(ambData) ? ambData : []);
       setCentros(Array.isArray(cenData) ? cenData : []);
       setTiposAmbiente(Array.isArray(tipData) ? tipData : []);
-      
+
       if (!Array.isArray(ambData)) console.error("Error fetching ambientes:", ambData);
     } catch (e) {
       console.error(e);
@@ -108,19 +111,34 @@ export default function AmbientesView() {
     fetchData();
   }, []);
 
+  function handleClose() {
+    setShowForm(false);
+    setEditingId(null);
+    setCentroId("");
+    setCodigo("");
+    setNombre("");
+    setCapacidad("");
+    setTipoAmbienteId("");
+    setUbicacion("");
+    setEstado("ACTIVO");
+    setError(null);
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!centroId) return showMessage("Seleccione un centro de formación", "error");
-    if (!tipoAmbienteId) return showMessage("Seleccione un tipo de ambiente", "error");
-    
-    const payload = { 
-      codigo, 
-      nombre, 
-      capacidad: Number(capacidad), 
-      tipoAmbienteId: Number(tipoAmbienteId), 
-      ubicacion, 
-      estado, 
-      centroId: Number(centroId) 
+    if (!centroId) return setError("Seleccione un centro de formación");
+    if (!tipoAmbienteId) return setError("Seleccione un tipo de ambiente");
+    setSaving(true);
+    setError(null);
+
+    const payload = {
+      codigo,
+      nombre,
+      capacidad: Number(capacidad),
+      tipoAmbienteId: Number(tipoAmbienteId),
+      ubicacion,
+      estado,
+      centroId: Number(centroId)
     };
 
     try {
@@ -133,7 +151,6 @@ export default function AmbientesView() {
         });
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al actualizar");
         showMessage("Ambiente actualizado correctamente", "success");
-        setEditingId(null);
       } else {
         resp = await fetch("/api/ambientes", {
           method: "POST",
@@ -143,11 +160,12 @@ export default function AmbientesView() {
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al crear");
         showMessage("Ambiente creado correctamente", "success");
       }
-      cancelEdit();
+      handleClose();
       fetchData();
     } catch (e: any) {
-      console.error(e);
-      showMessage(e.message || "Error al guardar ambiente");
+      setError(e.message || "Error al guardar ambiente");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -160,17 +178,8 @@ export default function AmbientesView() {
     setTipoAmbienteId(a.tipoAmbienteId.toString());
     setUbicacion(a.ubicacion || "");
     setEstado(a.estado);
-  };
-
-  const cancelEdit = () => {
-    setEditingId(null);
-    setCentroId("");
-    setCodigo("");
-    setNombre("");
-    setCapacidad("");
-    setTipoAmbienteId("");
-    setUbicacion("");
-    setEstado("ACTIVO");
+    setError(null);
+    setShowForm(true);
   };
 
   const handleDelete = async (id: number) => {
@@ -186,9 +195,15 @@ export default function AmbientesView() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto space-y-8">
+    <div className="max-w-7xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Ambientes</h1>
+        {mayCrear && (
+          <button onClick={() => { setShowForm(true); setEditingId(null); setCentroId(""); setCodigo(""); setNombre(""); setCapacidad(""); setTipoAmbienteId(""); setUbicacion(""); setEstado("ACTIVO"); setError(null); }}
+            className="flex items-center gap-1 px-3 py-1.5 text-sm bg-green-600 hover:bg-green-700 text-white rounded-lg">
+            <Plus className="w-4 h-4" /> Nuevo Ambiente
+          </button>
+        )}
       </div>
 
       {notification && (
@@ -200,40 +215,106 @@ export default function AmbientesView() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {(mayCrear || editingId !== null) && (
-          <div className="lg:col-span-1">
-            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm space-y-4">
-              <h2 className="text-lg font-medium mb-2">{editingId ? "Editar Ambiente" : "Nuevo Ambiente"}</h2>
-              
+      <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+        <div className="overflow-x-auto">
+          <table className="w-full text-left text-sm whitespace-nowrap">
+            <thead className="bg-gray-50 border-b">
+              <tr>
+                <th className="px-6 py-3 font-medium text-gray-500">Amd./Cod.</th>
+                <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
+                <th className="px-6 py-3 font-medium text-gray-500">Centro</th>
+                <th className="px-6 py-3 font-medium text-gray-500">Capacidad / Tipo</th>
+                <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y">
+              {loading ? (
+                <tr><td colSpan={5} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
+              ) : ambientes.length === 0 ? (
+                <tr><td colSpan={5} className="px-6 py-4 text-center text-gray-500">No hay ambientes registrados.</td></tr>
+              ) : (
+                ambientes.map(a => (
+                  <tr key={a.id} className="hover:bg-gray-50">
+                    <td className="px-6 py-4 font-mono font-medium">{a.codigo}</td>
+                    <td className="px-6 py-4">
+                      <div className="font-medium text-gray-900">{a.nombre}</div>
+                      {a.ubicacion && <div className="text-xs text-blue-500 truncate w-32">{a.ubicacion}</div>}
+                    </td>
+                    <td className="px-6 py-4">{centros.find(c => c.id === a.centroId)?.nombre || a.centroId}</td>
+                    <td className="px-6 py-4">
+                      <div>{a.capacidad} pax</div>
+                      <div className="text-xs text-gray-500">{tiposAmbiente.find(t => t.id === a.tipoAmbienteId)?.nombre || a.tipoAmbienteId}</div>
+                    </td>
+                    <td className="px-6 py-4 text-right space-x-2">
+                      <span className={`px-2 py-1 text-[10px] rounded-full font-medium ${a.estado === 'ACTIVO' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                        {a.estado}
+                      </span>
+                      <button onClick={() => setSelectedAmbienteForElements(a)} className="text-gray-400 hover:text-indigo-600 transition p-1" title="Elementos">
+                        <List className="w-4 h-4" />
+                      </button>
+                      {mayEditar && (
+                        <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                          <Pencil className="w-4 h-4" />
+                        </button>
+                      )}
+                      {mayEliminar && (
+                        <button onClick={() => handleTrashClick(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                          <Trash2 className="w-4 h-4" />
+                        </button>
+                      )}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {selectedAmbienteForElements && (
+        <ElementosAmbienteGrid
+          ambienteId={selectedAmbienteForElements.id}
+          ambienteNombre={selectedAmbienteForElements.nombre}
+          onClose={() => setSelectedAmbienteForElements(null)}
+        />
+      )}
+
+      {showForm && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center z-50"
+          onClick={handleClose}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white z-10">
+              <h3 className="text-lg font-semibold">{editingId ? 'Editar Ambiente' : 'Nuevo Ambiente'}</h3>
+              <button onClick={handleClose} className="text-gray-400 hover:text-gray-600">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <form onSubmit={handleSubmit} className="p-4 space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
-                <select required value={centroId} onChange={e => setCentroId(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                <select value={centroId} onChange={e => setCentroId(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required>
                   <option value="">Seleccione...</option>
                   {centros.map(c => <option key={c.id} value={c.id}>{c.nombre}</option>)}
                 </select>
               </div>
-              
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Código</label>
-                  <input type="text" required value={codigo} onChange={e => setCodigo(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Ej: A-101" />
+                  <input type="text" value={codigo} onChange={e => setCodigo(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required placeholder="Ej: A-101" />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Capacidad</label>
-                  <input type="number" required value={capacidad} onChange={e => setCapacidad(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="30" />
+                  <input type="number" value={capacidad} onChange={e => setCapacidad(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required placeholder="30" />
                 </div>
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                <input type="text" required value={nombre} onChange={e => setNombre(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Sala de Sistemas 1" />
+                <input type="text" value={nombre} onChange={e => setNombre(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required placeholder="Sala de Sistemas 1" />
               </div>
-
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Tipo</label>
-                  <select required value={tipoAmbienteId} onChange={e => setTipoAmbienteId(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                  <select value={tipoAmbienteId} onChange={e => setTipoAmbienteId(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required>
                     <option value="">Seleccione...</option>
                     {tiposAmbiente.map(t => (
                       <option key={t.id} value={t.id}>{t.nombre}</option>
@@ -242,98 +323,31 @@ export default function AmbientesView() {
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
-                  <select required value={estado} onChange={e => setEstado(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm">
+                  <select value={estado} onChange={e => setEstado(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
                     <option value="ACTIVO">ACTIVO</option>
                     <option value="INACTIVO">INACTIVO</option>
                     <option value="MANTENIMIENTO">MANTENIMIENTO</option>
                   </select>
                 </div>
               </div>
-
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Ubicación / Geolocalización</label>
-                <input type="text" value={ubicacion} onChange={e => setUbicacion(e.target.value)} className="w-full px-3 py-2 border rounded-md text-sm" placeholder="Lat, Lng o URL de Maps" />
+                <input type="text" value={ubicacion} onChange={e => setUbicacion(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" placeholder="Lat, Lng o URL de Maps" />
               </div>
-              
-              <div className="flex gap-2 mt-6">
-                <button type="submit" className="flex-1 bg-green-600 text-white py-2 rounded-md hover:bg-green-700 flex items-center justify-center gap-2">
-                  {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
+              {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
+              <div className="flex justify-end gap-2 pt-2 border-t">
+                <button type="button" onClick={handleClose}
+                  className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
+                <button type="submit" disabled={saving || !codigo.trim() || !nombre.trim() || !centroId || !tipoAmbienteId}
+                  className="px-4 py-2 text-sm text-white bg-green-600 hover:bg-green-700 rounded-lg disabled:opacity-50">
+                  {saving ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
                 </button>
-                {editingId && (
-                  <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200">
-                    Cancelar
-                  </button>
-                )}
               </div>
             </form>
           </div>
-        )}
-
-        <div className={(mayCrear || editingId !== null) ? "lg:col-span-2" : "lg:col-span-3"}>
-          <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="w-full text-left text-sm whitespace-nowrap">
-                <thead className="bg-gray-50 border-b">
-                  <tr>
-                    <th className="px-6 py-3 font-medium text-gray-500">Amd./Cod.</th>
-                    <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
-                    <th className="px-6 py-3 font-medium text-gray-500">Centro</th>
-                    <th className="px-6 py-3 font-medium text-gray-500">Capacidad / Tipo</th>
-                    <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>
-                  </tr>
-                </thead>
-                <tbody className="divide-y">
-                  {loading ? (
-                    <tr><td colSpan={5} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
-                  ) : ambientes.length === 0 ? (
-                    <tr><td colSpan={5} className="px-6 py-4 text-center text-gray-500">No hay ambientes registrados.</td></tr>
-                  ) : (
-                    ambientes.map(a => (
-                      <tr key={a.id} className="hover:bg-gray-50">
-                        <td className="px-6 py-4 font-mono font-medium">{a.codigo}</td>
-                        <td className="px-6 py-4">
-                          <div className="font-medium text-gray-900">{a.nombre}</div>
-                          {a.ubicacion && <div className="text-xs text-blue-500 truncate w-32">{a.ubicacion}</div>}
-                        </td>
-                        <td className="px-6 py-4">{centros.find(c => c.id === a.centroId)?.nombre || a.centroId}</td>
-                        <td className="px-6 py-4">
-                          <div>{a.capacidad} pax</div>
-                          <div className="text-xs text-gray-500">{tiposAmbiente.find(t => t.id === a.tipoAmbienteId)?.nombre || a.tipoAmbienteId}</div>
-                        </td>
-                        <td className="px-6 py-4 text-right space-x-2">
-                          <span className={`px-2 py-1 text-[10px] rounded-full font-medium ${a.estado === 'ACTIVO' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
-                            {a.estado}
-                          </span>
-                          <button onClick={() => setSelectedAmbienteForElements(a)} className="text-gray-400 hover:text-indigo-600 transition p-1" title="Elementos">
-                            <List className="w-4 h-4" />
-                          </button>
-                          {mayEditar && (
-                            <button onClick={() => handleEdit(a)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                              <Pencil className="w-4 h-4" />
-                            </button>
-                          )}
-                          {mayEliminar && (
-                            <button onClick={() => handleTrashClick(a.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                              <Trash2 className="w-4 h-4" />
-                            </button>
-                          )}
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
-          </div>
         </div>
-      </div>
-      {selectedAmbienteForElements && (
-        <ElementosAmbienteGrid 
-          ambienteId={selectedAmbienteForElements.id} 
-          ambienteNombre={selectedAmbienteForElements.nombre} 
-          onClose={() => setSelectedAmbienteForElements(null)} 
-        />
       )}
+
       <ConfirmDialog
         isOpen={pasoDialogo === 'dependencias'}
         title="Eliminar Ambiente"

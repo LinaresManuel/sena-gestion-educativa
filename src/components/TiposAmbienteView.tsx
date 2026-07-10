@@ -16,12 +16,15 @@ export default function TiposAmbienteView() {
   const hayAcciones = mayCrear || mayEditar || mayEliminar;
   const [tipos, setTipos] = useState<TipoAmbiente[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
   const [dependencias, setDependencias] = useState<{ tipo: string; count: number; label: string; elimina: boolean }[] | null>(null);
   const [pasoDialogo, setPasoDialogo] = useState<'ninguno' | 'dependencias' | 'confirmar'>('ninguno');
+  const [error, setError] = useState<string | null>(null);
+  const [saving, setSaving] = useState(false);
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -66,8 +69,18 @@ export default function TiposAmbienteView() {
     fetchData();
   }, []);
 
+  function handleClose() {
+    setShowForm(false);
+    setEditingId(null);
+    setNombre("");
+    setDescripcion("");
+    setError(null);
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSaving(true);
+    setError(null);
     try {
       let resp;
       if (editingId) {
@@ -78,7 +91,6 @@ export default function TiposAmbienteView() {
         });
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al actualizar");
         showMessage("Tipo actualizado correctamente", "success");
-        setEditingId(null);
       } else {
         resp = await fetch("/api/tipos-ambiente", {
           method: "POST",
@@ -88,12 +100,12 @@ export default function TiposAmbienteView() {
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al crear");
         showMessage("Tipo creado correctamente", "success");
       }
-      setNombre("");
-      setDescripcion("");
+      handleClose();
       fetchData();
     } catch (e: any) {
-      console.error(e);
-      showMessage(e.message || "Error al guardar el tipo");
+      setError(e.message || "Error al guardar el tipo");
+    } finally {
+      setSaving(false);
     }
   };
 
@@ -101,12 +113,8 @@ export default function TiposAmbienteView() {
     setEditingId(t.id);
     setNombre(t.nombre);
     setDescripcion(t.descripcion || "");
-  };
-
-  const cancelEdit = () => {
-    setEditingId(null);
-    setNombre("");
-    setDescripcion("");
+    setError(null);
+    setShowForm(true);
   };
 
   const handleDelete = async (id: number) => {
@@ -122,9 +130,15 @@ export default function TiposAmbienteView() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto space-y-8">
+    <div className="max-w-5xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Tipos de Ambientes</h1>
+        {mayCrear && (
+          <button onClick={() => { setShowForm(true); setEditingId(null); setNombre(""); setDescripcion(""); setError(null); }}
+            className="flex items-center gap-1 px-3 py-1.5 text-sm bg-teal-600 hover:bg-teal-700 text-white rounded-lg">
+            <Plus className="w-4 h-4" /> Nuevo Tipo
+          </button>
+        )}
       </div>
 
       {notification && (
@@ -136,94 +150,85 @@ export default function TiposAmbienteView() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {(mayCrear || editingId !== null) && (
-          <div className="md:col-span-1">
-            <form onSubmit={handleSubmit} className="bg-white p-6 rounded-xl border shadow-sm">
-              <h2 className="text-lg font-medium mb-4">{editingId ? "Editar Tipo" : "Nuevo Tipo"}</h2>
-              
-              <div className="space-y-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-                  <input
-                    type="text"
-                    required
-                    value={nombre}
-                    onChange={e => setNombre(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md text-sm"
-                    placeholder="Ej: Aula, Laboratorio"
-                  />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Descripcion</label>
-                  <textarea
-                    value={descripcion}
-                    onChange={e => setDescripcion(e.target.value)}
-                    className="w-full px-3 py-2 border rounded-md text-sm"
-                    placeholder="Detalle opcional..."
-                    rows={3}
-                  />
-                </div>
+      <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
+        <table className="w-full text-left text-sm">
+          <thead className="bg-gray-50 border-b">
+            <tr>
+              <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
+              <th className="px-6 py-3 font-medium text-gray-500">Descripcion</th>
+              {hayAcciones && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
+            </tr>
+          </thead>
+          <tbody className="divide-y">
+            {loading ? (
+              <tr>
+                <td colSpan={hayAcciones ? 3 : 2} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
+              </tr>
+            ) : tipos.length === 0 ? (
+              <tr>
+                <td colSpan={hayAcciones ? 3 : 2} className="px-6 py-4 text-center text-gray-500">No hay tipos registrados.</td>
+              </tr>
+            ) : (
+              tipos.map(t => (
+                <tr key={t.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 font-medium text-gray-900">{t.nombre}</td>
+                  <td className="px-6 py-4 text-gray-600">{t.descripcion}</td>
+                  {hayAcciones && (
+                    <td className="px-6 py-4 text-right space-x-2">
+                      {mayEditar && (
+                      <button onClick={() => handleEdit(t)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
+                        <Pencil className="w-4 h-4" />
+                      </button>)}
+                      {mayEliminar && (
+                      <button onClick={() => handleTrashClick(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
+                        <Trash2 className="w-4 h-4" />
+                      </button>)}
+                    </td>
+                  )}
+                </tr>
+              ))
+            )}
+          </tbody>
+        </table>
+      </div>
+
+      {showForm && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center z-50"
+          onClick={handleClose}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-md" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white z-10">
+              <h3 className="text-lg font-semibold">{editingId ? 'Editar Tipo' : 'Nuevo Tipo de Ambiente'}</h3>
+              <button onClick={handleClose} className="text-gray-400 hover:text-gray-600">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <form onSubmit={handleSubmit} className="p-4 space-y-4">
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                <input type="text" value={nombre} onChange={e => setNombre(e.target.value)}
+                  className="w-full border rounded-lg px-3 py-2 text-sm" required
+                  placeholder="Ej: Aula, Laboratorio" />
               </div>
-              
-              <div className="flex gap-2 mt-6">
-                <button type="submit" className="flex-1 bg-teal-600 text-white py-2 rounded-md hover:bg-teal-700 flex items-center justify-center gap-2 text-sm">
-                  {editingId ? "Actualizar" : <><Plus className="w-4 h-4" /> Agregar</>}
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Descripcion</label>
+                <textarea value={descripcion} onChange={e => setDescripcion(e.target.value)}
+                  className="w-full border rounded-lg px-3 py-2 text-sm" rows={3}
+                  placeholder="Detalle opcional..." />
+              </div>
+              {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
+              <div className="flex justify-end gap-2 pt-2 border-t">
+                <button type="button" onClick={handleClose}
+                  className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
+                <button type="submit" disabled={saving || !nombre.trim()}
+                  className="px-4 py-2 text-sm text-white bg-teal-600 hover:bg-teal-700 rounded-lg disabled:opacity-50">
+                  {saving ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
                 </button>
-                {editingId && (
-                  <button type="button" onClick={cancelEdit} className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-md hover:bg-gray-200 text-sm">
-                    Cancelar
-                  </button>
-                )}
               </div>
             </form>
           </div>
-        )}
-
-        <div className={(mayCrear || editingId !== null) ? "md:col-span-2" : "md:col-span-3"}>
-          <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
-            <table className="w-full text-left text-sm">
-              <thead className="bg-gray-50 border-b">
-                <tr>
-                  <th className="px-6 py-3 font-medium text-gray-500">Nombre</th>
-                  <th className="px-6 py-3 font-medium text-gray-500">Descripcion</th>
-                  {hayAcciones && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
-                </tr>
-              </thead>
-              <tbody className="divide-y">
-                {loading ? (
-                  <tr>
-                    <td colSpan={hayAcciones ? 3 : 2} className="px-6 py-4 text-center text-gray-500">Cargando...</td>
-                  </tr>
-                ) : tipos.length === 0 ? (
-                  <tr>
-                    <td colSpan={hayAcciones ? 3 : 2} className="px-6 py-4 text-center text-gray-500">No hay tipos registrados.</td>
-                  </tr>
-                ) : (
-                  tipos.map(t => (
-                    <tr key={t.id} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 font-medium text-gray-900">{t.nombre}</td>
-                      <td className="px-6 py-4 text-gray-600">{t.descripcion}</td>
-                      {hayAcciones && (
-                        <td className="px-6 py-4 text-right space-x-2">
-                          {mayEditar && (
-                          <button onClick={() => handleEdit(t)} className="text-gray-400 hover:text-blue-600 transition p-1" title="Editar">
-                            <Pencil className="w-4 h-4" />
-                          </button>)}
-                          {mayEliminar && (
-                          <button onClick={() => handleTrashClick(t.id)} className="text-gray-400 hover:text-red-600 transition p-1" title="Eliminar">
-                            <Trash2 className="w-4 h-4" />
-                          </button>)}
-                        </td>
-                      )}
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
         </div>
-      </div>
+      )}
+
       <ConfirmDialog
         isOpen={pasoDialogo === 'dependencias'}
         title="Eliminar Tipo de Ambiente"
