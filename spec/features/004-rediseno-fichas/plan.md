@@ -23,23 +23,21 @@ Inspirado en `weekly-time-matrix.tsx` del proyecto de referencia `diseno-cronogr
 
 ```tsx
 <div
-  className="grid gap-1.5 overflow-x-auto select-none"
-  style={{ gridTemplateColumns: `70px repeat(6, 1fr)` }}
-  onMouseUp={() => { isDragging.current = false; }}
-  onMouseLeave={() => { isDragging.current = false; }}
+  className="grid gap-1 overflow-x-auto select-none"
+  style={{ gridTemplateColumns: `60px repeat(6, 1fr)` }}
+  onMouseUp={handleCellMouseUp}
+  onMouseLeave={handleCellMouseUp}
 >
-  {/* Header: esquina vacía + días */}
   <div />
   {DIAS_VISIBLES.map(d => (
-    <div key={d} className="text-center text-xs font-semibold text-gray-600 py-2">
+    <div key={d} className="text-center text-[10px] font-semibold text-gray-600 py-1.5">
       {d.slice(0, 3)}
     </div>
   ))}
 
-  {/* Filas */}
   {HORAS.map(hora => (
-    <>
-      <div className="text-[11px] text-gray-500 font-mono pr-2 text-right flex items-center justify-end h-8">
+    <div key={hora} className="contents">
+      <div className="text-[10px] text-gray-500 font-mono pr-1 text-right flex items-center justify-end h-6">
         {hora.split('-')[0]}
       </div>
       {DIAS_VISIBLES.map(dia => {
@@ -49,50 +47,78 @@ Inspirado en `weekly-time-matrix.tsx` del proyecto de referencia `diseno-cronogr
             key={`${dia}-${hora}`}
             onMouseDown={() => handleCellMouseDown(dia, hora)}
             onMouseEnter={() => handleCellMouseEnter(dia, hora)}
-            className={`rounded-lg border-2 transition-all duration-100 cursor-pointer h-8
+            className={`rounded-md border transition-all duration-100 cursor-pointer h-6
               ${selected
-                ? 'bg-purple-500/20 border-purple-400 shadow-sm'
+                ? 'bg-purple-500/20 border-purple-400'
                 : 'bg-gray-50/80 border-gray-200 hover:bg-purple-50 hover:border-purple-300'
               }`}
           />
         );
       })}
-    </>
+    </div>
   ))}
 </div>
 ```
 
-**Click-and-drag con refs:**
+**Click-and-drag rectangular (rango días × horas):**
 
 ```typescript
 const isDragging = useRef(false);
-const dragAction = useRef<'select' | 'deselect' | null>(null);
+const dragStart = useRef<{ dia: string; hora: string } | null>(null);
+const dragEnd = useRef<{ dia: string; hora: string } | null>(null);
 
 function handleCellMouseDown(dia: string, hora: string) {
-  const currentlySelected = horario[dia]?.includes(hora) ?? false;
-  dragAction.current = currentlySelected ? 'deselect' : 'select';
   isDragging.current = true;
-  toggleHour(dia, hora);
+  dragStart.current = { dia, hora };
+  dragEnd.current = { dia, hora };
 }
 
 function handleCellMouseEnter(dia: string, hora: string) {
   if (!isDragging.current) return;
-  const targetState = dragAction.current === 'select';
-  const isCurrently = horario[dia]?.includes(hora) ?? false;
-  if (isCurrently !== targetState) toggleHour(dia, hora);
+  dragEnd.current = { dia, hora };
 }
 
-// En el JSX del grid: onMouseUp y onMouseLeave en el contenedor limpian drag.
+function handleCellMouseUp() {
+  if (!isDragging.current) return;
+  isDragging.current = false;
+  const start = dragStart.current;
+  const end = dragEnd.current;
+  if (!start || !end) return;
+
+  const [minD, maxD] = [DIAS_VISIBLES.indexOf(start.dia), DIAS_VISIBLES.indexOf(end.dia)].sort();
+  const [minH, maxH] = [HORAS.indexOf(start.hora), HORAS.indexOf(end.hora)].sort();
+
+  // Click simple → toggle individual
+  if (start.dia === end.dia && start.hora === end.hora) {
+    toggleHour(start.dia, start.hora);
+    return;
+  }
+
+  // Rango rectangular
+  const action = horario[start.dia]?.includes(start.hora) ? 'deselect' : 'select';
+  setHorario(prev => {
+    const clone = { ...prev };
+    for (let d = minD; d <= maxD; d++) {
+      const dia = DIAS_VISIBLES[d];
+      if (!clone[dia]) clone[dia] = [];
+      for (let hh = minH; hh <= maxH; hh++) {
+        const hora = HORAS[hh];
+        if (action === 'select' && !clone[dia].includes(hora)) clone[dia].push(hora);
+        if (action === 'deselect') clone[dia] = clone[dia].filter(x => x !== hora);
+      }
+    }
+    return clone;
+  });
+}
 ```
 
 **Estados visuales de las celdas:**
 
-| Estado | Fondo | Borde | Sombra |
-|---|---|---|---|
-| No seleccionada | `bg-gray-50/80` | `border-gray-200` | — |
-| Hover (no selec.) | `hover:bg-purple-50` | `hover:border-purple-300` | — |
-| Seleccionada | `bg-purple-500/20` | `border-purple-400` | `shadow-sm` |
-| Arrastre sobre selec. | `bg-purple-500/30` | `border-purple-500` | `shadow-md` |
+| Estado | Fondo | Borde |
+|---|---|---|
+| No seleccionada | `bg-gray-50/80` | `border-gray-200` |
+| Hover (no selec.) | `hover:bg-purple-50` | `hover:border-purple-300` |
+| Seleccionada | `bg-purple-500/20` | `border-purple-400` |
 
 ### 3. Filtro por programa
 

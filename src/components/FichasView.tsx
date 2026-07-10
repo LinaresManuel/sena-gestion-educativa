@@ -46,7 +46,8 @@ export default function FichasView() {
   const [filtroProgramaId, setFiltroProgramaId] = useState("");
 
   const isDragging = useRef(false);
-  const dragAction = useRef<'select' | 'deselect' | null>(null);
+  const dragStart = useRef<{ dia: string; hora: string } | null>(null);
+  const dragEnd = useRef<{ dia: string; hora: string } | null>(null);
 
   // Form State
   const [numeroFicha, setNumeroFicha] = useState("");
@@ -134,17 +135,63 @@ export default function FichasView() {
   };
 
   function handleCellMouseDown(dia: string, hora: string) {
-    const currentlySelected = horario[dia]?.includes(hora) ?? false;
-    dragAction.current = currentlySelected ? 'deselect' : 'select';
     isDragging.current = true;
-    toggleHour(dia, hora);
+    dragStart.current = { dia, hora };
+    dragEnd.current = { dia, hora };
   }
 
   function handleCellMouseEnter(dia: string, hora: string) {
     if (!isDragging.current) return;
-    const targetState = dragAction.current === 'select';
-    const isCurrently = horario[dia]?.includes(hora) ?? false;
-    if (isCurrently !== targetState) toggleHour(dia, hora);
+    dragEnd.current = { dia, hora };
+  }
+
+  function handleCellMouseUp() {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+
+    const start = dragStart.current;
+    const end = dragEnd.current;
+    if (!start || !end) return;
+
+    dragStart.current = null;
+    dragEnd.current = null;
+
+    const startDayIdx = DIAS_VISIBLES.indexOf(start.dia);
+    const endDayIdx = DIAS_VISIBLES.indexOf(end.dia);
+    const startHourIdx = HORAS.indexOf(start.hora);
+    const endHourIdx = HORAS.indexOf(end.hora);
+
+    const minDayIdx = Math.min(startDayIdx, endDayIdx);
+    const maxDayIdx = Math.max(startDayIdx, endDayIdx);
+    const minHourIdx = Math.min(startHourIdx, endHourIdx);
+    const maxHourIdx = Math.max(startHourIdx, endHourIdx);
+
+    const isSimpleClick = start.dia === end.dia && start.hora === end.hora;
+
+    if (isSimpleClick) {
+      toggleHour(start.dia, start.hora);
+      return;
+    }
+
+    const firstCellSelected = horario[start.dia]?.includes(start.hora) ?? false;
+    const action = firstCellSelected ? 'deselect' : 'select';
+
+    setHorario(prev => {
+      const clone = { ...prev };
+      for (let d = minDayIdx; d <= maxDayIdx; d++) {
+        const dia = DIAS_VISIBLES[d];
+        if (!clone[dia]) clone[dia] = [];
+        for (let h = minHourIdx; h <= maxHourIdx; h++) {
+          const hora = HORAS[h];
+          if (action === 'select') {
+            if (!clone[dia].includes(hora)) clone[dia] = [...clone[dia], hora];
+          } else {
+            clone[dia] = clone[dia].filter(hr => hr !== hora);
+          }
+        }
+      }
+      return clone;
+    });
   }
 
   function handleClose() {
@@ -437,24 +484,24 @@ export default function FichasView() {
 
               <div className="border-t pt-4">
                 <label className="block text-sm font-bold text-gray-800 mb-3">Horario de Formación</label>
-                <p className="text-xs text-gray-500 mb-3">Haga clic o arrastre sobre las celdas para seleccionar los bloques horarios.</p>
+                <p className="text-xs text-gray-500 mb-3">Haga clic para seleccionar una celda o arrastre para seleccionar un rango rectangular.</p>
 
                 <div
-                  className="grid gap-1.5 overflow-x-auto select-none"
-                  style={{ gridTemplateColumns: `70px repeat(6, 1fr)` }}
-                  onMouseUp={() => { isDragging.current = false; }}
-                  onMouseLeave={() => { isDragging.current = false; }}
+                  className="grid gap-1 overflow-x-auto select-none"
+                  style={{ gridTemplateColumns: `60px repeat(6, 1fr)` }}
+                  onMouseUp={handleCellMouseUp}
+                  onMouseLeave={handleCellMouseUp}
                 >
                   <div />
                   {DIAS_VISIBLES.map(d => (
-                    <div key={d} className="text-center text-xs font-semibold text-gray-600 py-2">
+                    <div key={d} className="text-center text-[10px] font-semibold text-gray-600 py-1.5">
                       {d.slice(0, 3)}
                     </div>
                   ))}
 
                   {HORAS.map(hora => (
                     <div key={hora} className="contents">
-                      <div className="text-[11px] text-gray-500 font-mono pr-2 text-right flex items-center justify-end h-8">
+                      <div className="text-[10px] text-gray-500 font-mono pr-1 text-right flex items-center justify-end h-6">
                         {hora.split('-')[0]}
                       </div>
                       {DIAS_VISIBLES.map(dia => {
@@ -464,9 +511,9 @@ export default function FichasView() {
                             key={`${dia}-${hora}`}
                             onMouseDown={() => handleCellMouseDown(dia, hora)}
                             onMouseEnter={() => handleCellMouseEnter(dia, hora)}
-                            className={`rounded-lg border-2 transition-all duration-100 cursor-pointer h-8
+                            className={`rounded-md border transition-all duration-100 cursor-pointer h-6
                               ${selected
-                                ? 'bg-purple-500/20 border-purple-400 shadow-sm'
+                                ? 'bg-purple-500/20 border-purple-400'
                                 : 'bg-gray-50/80 border-gray-200 hover:bg-purple-50 hover:border-purple-300'
                               }`}
                           />

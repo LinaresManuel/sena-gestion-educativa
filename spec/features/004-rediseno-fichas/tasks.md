@@ -3,7 +3,7 @@
 ## Preparación
 
 - [ ] Agregar estados: `showForm`, `error`, `saving`
-- [ ] Agregar refs: `isDragging`, `dragAction` para click-and-drag
+- [ ] Agregar refs: `isDragging`, `dragStart`, `dragEnd` para click-and-drag rectangular
 - [ ] Eliminar grid partido `lg:grid-cols-3` → tabla full-width
 
 ## Modal de formulario
@@ -17,13 +17,16 @@
 
 ## Cuadrícula semanal de horario
 
-- [ ] Reemplazar `toggleDay` + checkboxes por cuadrícula CSS Grid `70px repeat(6, 1fr)`
-- [ ] Implementar `handleCellMouseDown` con detección de acción (select/deselect)
-- [ ] Implementar `handleCellMouseEnter` para arrastre
-- [ ] Agregar `onMouseUp` y `onMouseLeave` en el contenedor del grid
-- [ ] Estados visuales para seleccionada, no seleccionada, hover, arrastre
-- [ ] Colores: `bg-purple-500/20 border-purple-400` para seleccionadas
-- [ ] Eliminar las variables `toggleDay` y `DIAS_SEMANA` (ya no se usan igual)
+- [ ] Reemplazar `toggleDay` + checkboxes por cuadrícula CSS Grid `60px repeat(6, 1fr)` con `gap-1`
+- [ ] Celdas compactas: `h-6` (24px), `rounded-md border`, texto hora en `text-[10px]`
+- [ ] Implementar `handleCellMouseDown` que registra celda inicial (`dragStart`, `dragEnd`)
+- [ ] Implementar `handleCellMouseEnter` que actualiza `dragEnd` durante arrastre
+- [ ] Implementar `handleCellMouseUp` que calcula rango rectangular (min/max días × horas)
+- [ ] Click simple (start === end) togglea celda individual
+- [ ] Drag rectangular aplica misma acción (select/deselect) a todo el rango
+- [ ] Agregar `onMouseUp={handleCellMouseUp}` y `onMouseLeave={handleCellMouseUp}` en contenedor
+- [ ] Estados visuales: `bg-purple-500/20 border-purple-400` sin shadow
+- [ ] Eliminar `toggleDay` y `DIAS_SEMANA` (ya no se usan)
 
 ## Filtro por programa
 

@@ -19,15 +19,15 @@ Rediseñar completamente el módulo de fichas con tres mejoras:
 
 - [ ] Modal para crear/editar fichas con `backdrop-blur-sm bg-white/30` (sin overlay oscuro).
 - [ ] Modal con header sticky, cuerpo scrolleable (`max-h-[85vh] overflow-y-auto`) y footer con botones Cancelar/Guardar.
-- [ ] Cuadrícula semanal de horario usando CSS Grid (`grid-template-columns: 70px repeat(6, 1fr)`) con `gap-1.5`.
+- [ ] Cuadrícula semanal de horario usando CSS Grid (`grid-template-columns: 60px repeat(6, 1fr)`) con `gap-1`.
 - [ ] Columnas: LUN, MAR, MIE, JUE, VIE, SAB. Filas: 06:00–21:00 en bloques de 1 hora.
-- [ ] Celdas con `rounded-lg border-2`, bordes cortados y gap entre celdas.
+- [ ] Celdas compactas: `h-6` (24px alto), `rounded-md border`, gap `gap-1`, texto hora en `text-[10px]`.
 - [ ] Celda no seleccionada: `bg-gray-50/80 border-gray-200`.
-- [ ] Celda seleccionada: `bg-purple-500/20 border-purple-400 shadow-sm` (semitransparente).
+- [ ] Celda seleccionada: `bg-purple-500/20 border-purple-400` (semitransparente, sin shadow).
 - [ ] Hover en celda no seleccionada: `hover:bg-purple-50 hover:border-purple-300`.
-- [ ] Click en celda: togglea selección (seleccionar/deseleccionar).
-- [ ] Click-and-drag: `onMouseDown` inicia drag, `onMouseEnter` aplica acción mientras se arrastra, `onMouseUp` finaliza.
-- [ ] Drag determina automáticamente si está seleccionando o deseleccionando según el estado de la celda donde se hizo clic inicial.
+- [ ] Click en celda: togglea selección individual.
+- [ ] Click-and-drag rectangular: `onMouseDown` registra celda inicial, `onMouseEnter` actualiza celda final mientras se arrastra, `onMouseUp` calcula el rango rectangular (min/max días × min/max horas) y aplica la acción a todas las celdas en ese rango.
+- [ ] Drag determina acción según estado de la celda inicial: seleccionada → deselecciona el rango; no seleccionada → lo selecciona.
 - [ ] Filtro por programa: dropdown que filtra la lista de fichas en tiempo real.
 - [ ] `npm run lint` sin errores nuevos.
 - [ ] Commit + deploy sync + push.
