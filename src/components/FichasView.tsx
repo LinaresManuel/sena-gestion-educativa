@@ -365,9 +365,9 @@ export default function FichasView() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
           {fichasFiltradas.length === 0 ? (
-            <div className="md:col-span-2 bg-white p-12 rounded-xl border flex flex-col items-center justify-center text-gray-500">
+            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4 bg-white p-12 rounded-xl border flex flex-col items-center justify-center text-gray-500">
               <Calendar className="w-12 h-12 mb-4 opacity-20" />
               <p>{filtroProgramaId ? "No hay fichas para el programa seleccionado" : "No hay fichas registradas"}</p>
             </div>
@@ -380,7 +380,7 @@ export default function FichasView() {
               const tieneHorario = fichaHorario && Object.keys(fichaHorario).length > 0 && Object.values(fichaHorario).some((h: any) => Array.isArray(h) && h.length > 0);
 
               return (
-                <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-5 relative overflow-hidden group">
+                <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-4 relative overflow-hidden group">
                   {hayAcciones && (
                     <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
                       {mayEditar && (
@@ -397,9 +397,9 @@ export default function FichasView() {
                   )}
 
                   {/* Ficha number + modalidad badge */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-md">
-                      <span>Ficha {ficha.numeroFicha}</span>
+                  <div className="flex items-center gap-1.5 mb-3">
+                    <span className="inline-flex items-center px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-md">
+                      Ficha {ficha.numeroFicha}
                     </span>
                     <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${
                       ficha.modalidad === 'VIRTUAL'
