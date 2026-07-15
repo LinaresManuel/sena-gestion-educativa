@@ -397,40 +397,50 @@ export default function FichasView() {
         )}
       </div>
 
-      <div className="flex items-center flex-wrap gap-2">
-        <SearchableSelect
-          value={filtroProgramaId}
-          onChange={v => setFiltroProgramaId(v)}
-          options={[
-            { value: "", label: "Programa: Todos" },
-            ...programas.map(p => ({ value: String(p.id), label: p.denominacion })),
-          ]}
-        />
-        <SearchableSelect
-          value={filtroRegionalId}
-          onChange={v => handleRegionalChange(v)}
-          options={[
-            { value: "", label: "Regional: Todas" },
-            ...regionales.map(r => ({ value: String(r.id), label: r.nombre })),
-          ]}
-        />
-        <SearchableSelect
-          value={filtroCentroId}
-          onChange={v => handleCentroChange(v)}
-          options={[
-            { value: "", label: "Centro: Todos" },
-            ...centrosFiltrados.map(c => ({ value: String(c.id), label: c.nombre })),
-          ]}
-        />
-        <SearchableSelect
-          value={filtroAmbienteId}
-          onChange={v => setFiltroAmbienteId(v)}
-          options={[
-            { value: "", label: "Ambiente: Todos" },
-            ...ambientesFiltrados.map(a => ({ value: String(a.id), label: a.nombre })),
-          ]}
-        />
-        <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 ml-auto">
+      <div className="flex items-start flex-wrap gap-3">
+        <div className="flex items-center flex-wrap gap-2 bg-gray-50/60 rounded-lg p-2 border border-gray-100 flex-1 min-w-0">
+          <SearchableSelect
+            value={filtroProgramaId}
+            onChange={v => setFiltroProgramaId(v)}
+            label="Programa"
+            placeholder="Todos"
+            options={[
+              { value: "", label: "Todos" },
+              ...programas.map(p => ({ value: String(p.id), label: p.denominacion })),
+            ]}
+          />
+          <SearchableSelect
+            value={filtroRegionalId}
+            onChange={v => handleRegionalChange(v)}
+            label="Regional"
+            placeholder="Todas"
+            options={[
+              { value: "", label: "Todas" },
+              ...regionales.map(r => ({ value: String(r.id), label: r.nombre })),
+            ]}
+          />
+          <SearchableSelect
+            value={filtroCentroId}
+            onChange={v => handleCentroChange(v)}
+            label="Centro"
+            placeholder="Todos"
+            options={[
+              { value: "", label: "Todos" },
+              ...centrosFiltrados.map(c => ({ value: String(c.id), label: c.nombre })),
+            ]}
+          />
+          <SearchableSelect
+            value={filtroAmbienteId}
+            onChange={v => setFiltroAmbienteId(v)}
+            label="Ambiente"
+            placeholder="Todos"
+            options={[
+              { value: "", label: "Todos" },
+              ...ambientesFiltrados.map(a => ({ value: String(a.id), label: a.nombre })),
+            ]}
+          />
+        </div>
+        <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 shrink-0 mt-2">
           <button onClick={() => setVista('cards')}
             className={`px-2 py-1 text-xs font-medium rounded-md transition ${vista === 'cards' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
             ⊞ Cards

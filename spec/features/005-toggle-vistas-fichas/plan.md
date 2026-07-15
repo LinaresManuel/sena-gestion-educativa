@@ -153,7 +153,7 @@ const fichasFiltradas = fichas.filter(f => {
 </div>
 ```
 
-### 7. SearchableSelect — filtros escribibles
+### 7. SearchableSelect — filtros escribibles con diseño moderno
 
 Crear `src/components/SearchableSelect.tsx`:
 
@@ -162,27 +162,35 @@ interface Props {
   value: string;
   onChange: (val: string) => void;
   options: { value: string; label: string }[];
+  label?: string;       // "Programa", "Regional", "Centro", "Ambiente"
+  placeholder?: string;  // "Todos", "Todas"
 }
 ```
 
-Comportamiento:
-- Trigger con icono Search + texto de opción seleccionada (o placeholder).
-- Al hacer clic: dropdown con input de búsqueda que filtra opciones.
-- `useEffect` con `mousedown` para cerrar al hacer clic fuera.
-- Opción activa (value === props.value) con `bg-purple-100 text-purple-700`.
-- "Sin resultados" cuando el filtro no encuentra coincidencias.
+**Trigger rediseñado:**
+- Label en `text-[10px] font-semibold text-gray-400 uppercase` antes del valor.
+- ChevronDown que gira 180° al abrir el dropdown.
+- Cuando hay filtro activo (`value !== ""`): borde `border-purple-300`, fondo `bg-purple-50/30`, botón X para limpiar.
+- Cuando no hay filtro: borde gris claro, hover con `hover:border-gray-300 hover:shadow-sm`.
 
-Reemplazar los 4 `<select>` del toolbar:
+**Dropdown pulido:**
+- Input de búsqueda con icono Search dentro (`left-2.5 top-1/2`).
+- Opción "Todos" (value="") separada con `border-b border-gray-100 mb-1`.
+- Opciones con `truncate` + `title={label}` para ver nombre completo al hover.
+- Opción activa con `bg-purple-50 text-purple-700 font-medium` + indicador púrpura.
+- Hover general: `hover:bg-gray-50`.
 
+**Agrupación visual en FichasView:**
 ```tsx
-<SearchableSelect
-  value={filtroProgramaId}
-  onChange={v => setFiltroProgramaId(v)}
-  options={[
-    { value: "", label: "Programa: Todos" },
-    ...programas.map(p => ({ value: String(p.id), label: p.denominacion })),
-  ]}
-/>
+<div className="flex ... gap-3">
+  <div className="flex items-center flex-wrap gap-2 bg-gray-50/60 rounded-lg p-2 border border-gray-100 flex-1">
+    <SearchableSelect label="Programa" placeholder="Todos" ... />
+    <SearchableSelect label="Regional" placeholder="Todas" ... />
+    <SearchableSelect label="Centro" placeholder="Todos" ... />
+    <SearchableSelect label="Ambiente" placeholder="Todos" ... />
+  </div>
+  <div className="toggle cards/tabla" />
+</div>
 ```
 
 ### 8. Modalidad badge
