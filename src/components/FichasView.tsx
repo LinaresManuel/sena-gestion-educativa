@@ -18,7 +18,7 @@ interface Ficha {
 
 const DIAS_VISIBLES = ["LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO"];
 
-const HORAS = Array.from({ length: 15 }, (_, i) => {
+const HORAS = Array.from({ length: 16 }, (_, i) => {
   const start = i + 6;
   const end = start + 1;
   return `${start.toString().padStart(2, '0')}:00-${end.toString().padStart(2, '0')}:00`;
@@ -421,7 +421,7 @@ export default function FichasView() {
       {showForm && (
         <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-start justify-center z-50 pt-8 overflow-y-auto"
           onClick={handleClose}>
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl my-8" onClick={e => e.stopPropagation()}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl my-4" onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between p-5 border-b sticky top-0 bg-white z-10 rounded-t-xl">
               <h3 className="text-lg font-semibold text-gray-900">{editingId ? 'Editar Ficha' : 'Nueva Ficha'}</h3>
               <button onClick={handleClose} className="text-gray-400 hover:text-gray-600 transition">
@@ -429,8 +429,8 @@ export default function FichasView() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-6 max-h-[75vh] overflow-y-auto">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <form onSubmit={handleSubmit} className="p-5 max-h-[78vh] overflow-y-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                 {/* --- Columna izquierda: Datos --- */}
                 <div className="space-y-4">
                   <h4 className="text-sm font-semibold text-gray-800 border-b pb-2">Datos de la Ficha</h4>
@@ -513,14 +513,14 @@ export default function FichasView() {
                   </p>
 
                   <div
-                    className="grid gap-1 select-none border rounded-lg p-2 bg-gray-50/50"
-                    style={{ gridTemplateColumns: `40px repeat(6, 1fr)` }}
+                    className="grid gap-0.5 select-none border rounded-lg p-1.5 bg-gray-50/50"
+                    style={{ gridTemplateColumns: `32px repeat(6, 1fr)` }}
                     onMouseUp={handleCellMouseUp}
                     onMouseLeave={handleCellMouseUp}
                   >
                     <div />
                     {DIAS_VISIBLES.map(d => (
-                      <div key={d} className="text-center text-[10px] font-semibold text-gray-600 leading-none pb-1">
+                      <div key={d} className="text-center text-[9px] font-semibold text-gray-600 leading-none pb-0.5">
                         {d.slice(0, 3)}
                       </div>
                     ))}
@@ -530,7 +530,7 @@ export default function FichasView() {
                       const inPreview = dragPreview !== null && hourIdx >= dragPreview.minHour && hourIdx <= dragPreview.maxHour;
                       return (
                         <div key={hora} className="contents">
-                          <div className="text-[10px] text-gray-500 font-mono text-right flex items-center justify-end pr-1 leading-none">
+                          <div className="text-[8px] text-gray-500 font-mono text-right flex items-center justify-end pr-1 leading-none">
                             {hora.split('-')[0]}
                           </div>
                           {DIAS_VISIBLES.map((dia, dayIdx) => {
@@ -541,7 +541,7 @@ export default function FichasView() {
                                 key={`${dia}-${hora}`}
                                 onMouseDown={() => handleCellMouseDown(dia, hora)}
                                 onMouseEnter={() => handleCellMouseEnter(dia, hora)}
-                                className={`rounded border transition-all duration-75 cursor-pointer h-6
+                                className={`rounded-sm border transition-all duration-75 cursor-pointer h-4
                                   ${inRange
                                     ? 'bg-purple-500/35 border-purple-500'
                                     : selected

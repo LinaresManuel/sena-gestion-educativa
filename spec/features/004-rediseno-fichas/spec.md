@@ -17,15 +17,15 @@ Rediseñar completamente el módulo de fichas con tres mejoras:
 
 ## Criterios de aceptación
 
-- [ ] Modal para crear/editar fichas con `backdrop-blur-sm bg-white/30` (sin overlay oscuro). Ancho `max-w-4xl`.
-- [ ] Modal con header sticky (`p-5 border-b`), cuerpo scrolleable (`p-6 max-h-[75vh] overflow-y-auto`) y footer con border-t.
-- [ ] Layout side-by-side simétrico: `grid grid-cols-1 lg:grid-cols-2 gap-8`. Columna izquierda = formulario, columna derecha = horario.
+- [ ] Modal para crear/editar fichas con `backdrop-blur-sm bg-white/30` (sin overlay oscuro). Ancho `max-w-5xl`.
+- [ ] Modal con header sticky (`p-5 border-b`), cuerpo scrolleable (`p-5 max-h-[78vh] overflow-y-auto`) y footer con border-t.
+- [ ] Layout side-by-side simétrico: `grid grid-cols-1 lg:grid-cols-2 gap-6`. Columna izquierda = formulario, columna derecha = horario.
 - [ ] Cada columna tiene un encabezado de sección con `border-b pb-2`: "Datos de la Ficha" / "Horario de Formación".
 - [ ] Consistencia tipográfica: todos los labels a `text-xs font-medium`, todos los inputs a `text-sm px-3 py-2`, encabezados de sección a `text-sm font-semibold`.
 - [ ] Inputs con feedback visual: `focus:ring-2 focus:ring-purple-500/30 focus:border-purple-400 outline-none transition`.
-- [ ] Cuadrícula semanal usando CSS Grid (`grid-template-columns: 40px repeat(6, 1fr)`) con `gap-1`, envuelta en contenedor `border rounded-lg p-2 bg-gray-50/50` para simetría visual con el formulario.
-- [ ] Columnas: LUN, MAR, MIE, JUE, VIE, SAB (`text-[10px] font-semibold`). Filas: 06:00–21:00, etiquetas hora en `text-[10px] font-mono`.
-- [ ] Celdas: `h-6` (24px), `rounded border`. No seleccionada: `bg-white border-gray-200`. Seleccionada: `bg-purple-500/20 border-purple-400`.
+- [ ] Cuadrícula semanal usando CSS Grid (`grid-template-columns: 32px repeat(6, 1fr)`) con `gap-0.5`, envuelta en contenedor `border rounded-lg p-1.5 bg-gray-50/50`.
+- [ ] Columnas: LUN, MAR, MIE, JUE, VIE, SAB (`text-[9px] font-semibold`). Filas: 06:00–22:00 (16 bloques), etiquetas hora en `text-[8px] font-mono`.
+- [ ] Celdas: `h-4` (16px), `rounded-sm border`. No seleccionada: `bg-white border-gray-200`. Seleccionada: `bg-purple-500/20 border-purple-400`.
 - [ ] Hover: `hover:bg-purple-50 hover:border-purple-300`.
 - [ ] Retorno visual durante arrastre: el rango preview se muestra con `bg-purple-500/35 border-purple-500` (más intenso que seleccionado).
 - [ ] Click en celda: togglea selección individual.
