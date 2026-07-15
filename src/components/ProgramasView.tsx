@@ -215,7 +215,7 @@ export default function ProgramasView() {
                 programas.map(p => (
                   <tr key={p.id} className="hover:bg-gray-50 align-top">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-gray-900 break-words">{p.denominacion}</div>
+                      <div className="font-medium text-gray-900 truncate max-w-[350px]" title={p.denominacion}>{p.denominacion}</div>
                       {p.pdfDocument && (
                         <a href={p.pdfDocument} download={`Programa_${p.codigo}.pdf`} className="inline-flex items-center gap-1 mt-2 text-xs text-blue-600 hover:text-blue-800 bg-blue-50 px-2 py-1 rounded">
                           <Download className="w-3 h-3" /> Descargar PDF
