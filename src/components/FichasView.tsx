@@ -35,6 +35,7 @@ export default function FichasView() {
   const [centros, setCentros] = useState<any[]>([]);
   const [programas, setProgramas] = useState<any[]>([]);
   const [ambientes, setAmbientes] = useState<any[]>([]);
+  const [regionales, setRegionales] = useState<any[]>([]);
 
   const [loading, setLoading] = useState(true);
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
@@ -44,6 +45,9 @@ export default function FichasView() {
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [filtroProgramaId, setFiltroProgramaId] = useState("");
+  const [filtroRegionalId, setFiltroRegionalId] = useState("");
+  const [filtroCentroId, setFiltroCentroId] = useState("");
+  const [filtroAmbienteId, setFiltroAmbienteId] = useState("");
   const [vista, setVista] = useState<'cards' | 'tabla'>('cards');
   const [showDetallesModal, setShowDetallesModal] = useState(false);
   const [detallesFicha, setDetallesFicha] = useState<Ficha | null>(null);
@@ -74,6 +78,7 @@ export default function FichasView() {
     fetchCentros();
     fetchProgramas();
     fetchAmbientes();
+    fetchRegionales();
   }, []);
 
   const fetchFichas = async () => {
@@ -105,6 +110,12 @@ export default function FichasView() {
     const res = await fetch("/api/ambientes");
     const data = await res.json();
     setAmbientes(Array.isArray(data) ? data : []);
+  };
+
+  const fetchRegionales = async () => {
+    const res = await fetch("/api/regionales");
+    const data = await res.json();
+    setRegionales(Array.isArray(data) ? data : []);
   };
 
   const showMessage = (text: string, type: 'error' | 'success') => {
@@ -238,6 +249,20 @@ export default function FichasView() {
     setShowHorarioModal(true);
   }
 
+  function handleRegionalChange(val: string) {
+    setFiltroRegionalId(val);
+    setFiltroCentroId("");
+    setFiltroAmbienteId("");
+  }
+
+  function handleCentroChange(val: string) {
+    setFiltroCentroId(val);
+    setFiltroAmbienteId("");
+  }
+
+  const centrosFiltrados = centros.filter(c => !filtroRegionalId || c.regionalId === Number(filtroRegionalId));
+  const ambientesFiltrados = ambientes.filter(a => !filtroCentroId || a.centroId === Number(filtroCentroId));
+
   function handleCloseHorarioModal() {
     setShowHorarioModal(false);
     setHorarioFichaSeleccionada(null);
@@ -338,9 +363,16 @@ export default function FichasView() {
     }
   };
 
-  const fichasFiltradas = fichas.filter(f =>
-    !filtroProgramaId || f.programaId === Number(filtroProgramaId)
-  );
+  const fichasFiltradas = fichas.filter(f => {
+    if (filtroProgramaId && f.programaId !== Number(filtroProgramaId)) return false;
+    if (filtroRegionalId) {
+      const c = centros.find(c => c.id === f.centroFormacionId);
+      if (!c || c.regionalId !== Number(filtroRegionalId)) return false;
+    }
+    if (filtroCentroId && f.centroFormacionId !== Number(filtroCentroId)) return false;
+    if (filtroAmbienteId && f.ambienteId !== Number(filtroAmbienteId)) return false;
+    return true;
+  });
 
   return (
     <div className="space-y-6">
@@ -356,33 +388,52 @@ export default function FichasView() {
           <h1 className="text-2xl font-bold tracking-tight text-gray-900">Gestión de Fichas</h1>
           <p className="text-sm text-gray-500 mt-1">Crea y coordina las fichas de formación con su respectivo horario y ambiente.</p>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="flex items-center gap-2">
-            <label className="text-sm text-gray-600 font-medium whitespace-nowrap">Programa:</label>
-            <select value={filtroProgramaId} onChange={e => setFiltroProgramaId(e.target.value)}
-              className="border rounded-lg px-3 py-1.5 text-sm bg-white max-w-[200px] overflow-hidden text-ellipsis">
-              <option value="">Todos</option>
-              {programas.map(p => (
-                <option key={p.id} value={p.id}>{p.denominacion}</option>
-              ))}
-            </select>
-          </div>
-          <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5">
-            <button onClick={() => setVista('cards')}
-              className={`px-2.5 py-1.5 text-xs font-medium rounded-md transition ${vista === 'cards' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
-              ⊞ Cards
-            </button>
-            <button onClick={() => setVista('tabla')}
-              className={`px-2.5 py-1.5 text-xs font-medium rounded-md transition ${vista === 'tabla' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
-              ⊟ Tabla
-            </button>
-          </div>
-          {mayCrear && (
-            <button onClick={() => { setShowForm(true); setEditingId(null); setNumeroFicha(""); setCentroFormacionId(""); setFechaInicio(""); setFechaFinLectiva(""); setFechaFin(""); setModalidad("PRESENCIAL"); setProgramaId(""); setAmbientesId(""); setHorario({}); setError(null); }}
-              className="flex items-center gap-1 px-3 py-1.5 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded-lg">
-              <Plus className="w-4 h-4" /> Nueva Ficha
-            </button>
-          )}
+        {mayCrear && (
+          <button onClick={() => { setShowForm(true); setEditingId(null); setNumeroFicha(""); setCentroFormacionId(""); setFechaInicio(""); setFechaFinLectiva(""); setFechaFin(""); setModalidad("PRESENCIAL"); setProgramaId(""); setAmbientesId(""); setHorario({}); setError(null); }}
+            className="flex items-center gap-1 px-3 py-1.5 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded-lg">
+            <Plus className="w-4 h-4" /> Nueva Ficha
+          </button>
+        )}
+      </div>
+
+      <div className="flex items-center flex-wrap gap-2">
+        <select value={filtroProgramaId} onChange={e => setFiltroProgramaId(e.target.value)}
+          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
+          <option value="">Programa: Todos</option>
+          {programas.map(p => (
+            <option key={p.id} value={p.id}>{p.denominacion}</option>
+          ))}
+        </select>
+        <select value={filtroRegionalId} onChange={e => handleRegionalChange(e.target.value)}
+          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
+          <option value="">Regional: Todas</option>
+          {regionales.map(r => (
+            <option key={r.id} value={r.id}>{r.nombre}</option>
+          ))}
+        </select>
+        <select value={filtroCentroId} onChange={e => handleCentroChange(e.target.value)}
+          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
+          <option value="">Centro: Todos</option>
+          {centrosFiltrados.map(c => (
+            <option key={c.id} value={c.id}>{c.nombre}</option>
+          ))}
+        </select>
+        <select value={filtroAmbienteId} onChange={e => setFiltroAmbienteId(e.target.value)}
+          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
+          <option value="">Ambiente: Todos</option>
+          {ambientesFiltrados.map(a => (
+            <option key={a.id} value={a.id}>{a.nombre}</option>
+          ))}
+        </select>
+        <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 ml-auto">
+          <button onClick={() => setVista('cards')}
+            className={`px-2 py-1 text-xs font-medium rounded-md transition ${vista === 'cards' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
+            ⊞ Cards
+          </button>
+          <button onClick={() => setVista('tabla')}
+            className={`px-2 py-1 text-xs font-medium rounded-md transition ${vista === 'tabla' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
+            ⊟ Tabla
+          </button>
         </div>
       </div>
 
@@ -409,11 +460,11 @@ export default function FichasView() {
                 return (
                   <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-4 flex flex-col h-full group">
                     {/* Ficha number + modalidad badge */}
-                    <div className="flex items-center gap-1.5 mb-3">
+                    <div className="flex items-center justify-between mb-3">
                       <span className="inline-flex items-center px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-md">
                         Ficha {ficha.numeroFicha}
                       </span>
-                      <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${
+                      <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-lg ${
                         ficha.modalidad === 'VIRTUAL'
                           ? 'bg-blue-100 text-blue-700'
                           : ficha.modalidad === 'MIXTA'
@@ -524,7 +575,7 @@ export default function FichasView() {
                         <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{ficha.numeroFicha}</td>
                         <td className="px-4 py-3 text-gray-600 max-w-[300px] truncate" title={programa?.denominacion}>{programa?.denominacion ?? '—'}</td>
                         <td className="px-4 py-3">
-                          <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${
+                          <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-lg ${
                             ficha.modalidad === 'VIRTUAL'
                               ? 'bg-blue-100 text-blue-700'
                               : ficha.modalidad === 'MIXTA'

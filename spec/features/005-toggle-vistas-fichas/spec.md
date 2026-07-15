@@ -4,9 +4,12 @@
 
 Agregar un toggle de vista (cards ↔ tabla) en el módulo de fichas, más un modal read-only "Ver Detalles" accesible desde la vista tabla.
 
-1. **Toggle cards/tabla** en el toolbar, junto al filtro de programa.
+1. **Toggle cards/tabla** en el toolbar.
 2. **Vista tabla** con columnas N° Ficha, Programa, Modalidad y Acciones (editar, eliminar, ver detalles).
 3. **Modal "Ver Detalles"** que muestra toda la información de la ficha (campos + horario en cuadrícula) en diseño side-by-side, solo lectura.
+4. **Filtros combinados**: programa, regional, centro y ambiente. La selección de regional y centro filtran los dropdowns siguientes en cascada.
+5. **Toolbar reorganizado**: fila superior con título + botón Nueva Ficha; fila inferior con filtros + toggle.
+6. **Modalidad badge** movida a la derecha en las cards, con `rounded-lg` para consistencia visual con el badge de ficha.
 
 ## Para qué
 
@@ -28,5 +31,13 @@ Agregar un toggle de vista (cards ↔ tabla) en el módulo de fichas, más un mo
 - [ ] El modal "Ver Detalles" solo aparece en la vista tabla (el botón 👁️ no existe en la vista cards).
 - [ ] Vista cards mantiene su botón "Ver Horario" existente (modal read-only angosto, solo grid).
 - [ ] Filtro por programa funciona en ambas vistas.
+- [ ] Toolbar en dos filas: título + Nueva Ficha arriba; filtros + toggle abajo.
+- [ ] Filtro por Regional: al seleccionar, filtra centros disponibles y resetea centro/ambiente.
+- [ ] Filtro por Centro: al seleccionar, filtra ambientes disponibles y resetea ambiente.
+- [ ] Filtro por Ambiente: selección directa sin cascada posterior.
+- [ ] Filtros combinados: los 4 filtros se aplican en AND a la lista de fichas.
+- [ ] Cada select usa `max-w-[180px] overflow-hidden text-ellipsis text-xs`.
+- [ ] Modalidad badge en cards: alineado a la derecha (`justify-between`), con `rounded-lg`.
+- [ ] Modalidad badge en tabla: también con `rounded-lg`.
 - [ ] `npm run lint` sin errores nuevos.
 - [ ] Commit + deploy sync + push.

@@ -86,11 +86,84 @@ function handleCloseDetallesModal() {
 
 No se modifica. Solo se envuelve el grid existente en `{vista === 'cards' && (...)}` para que no se renderice cuando la vista es tabla. El botón "Ver Horario" y su modal read-only angosto (`max-w-lg`) se mantienen intactos.
 
+### 6. Filtros combinados regional / centro / ambiente
+
+Nuevos estados:
+
+```typescript
+const [filtroRegionalId, setFiltroRegionalId] = useState("");
+const [filtroCentroId, setFiltroCentroId] = useState("");
+const [filtroAmbienteId, setFiltroAmbienteId] = useState("");
+```
+
+Fetch de regionales en useEffect + función `fetchRegionales()`.
+
+**Cascada:**
+
+```typescript
+function handleRegionalChange(val: string) {
+  setFiltroRegionalId(val);
+  setFiltroCentroId("");
+  setFiltroAmbienteId("");
+}
+function handleCentroChange(val: string) {
+  setFiltroCentroId(val);
+  setFiltroAmbienteId("");
+}
+```
+
+**Listas derivadas:**
+
+```typescript
+const centrosFiltrados = centros.filter(c => !filtroRegionalId || c.regionalId === Number(filtroRegionalId));
+const ambientesFiltrados = ambientes.filter(a => !filtroCentroId || a.centroId === Number(filtroCentroId));
+```
+
+**Filtrado combinado (AND):**
+
+```typescript
+const fichasFiltradas = fichas.filter(f => {
+  if (filtroProgramaId && f.programaId !== Number(filtroProgramaId)) return false;
+  if (filtroRegionalId) {
+    const c = centros.find(c => c.id === f.centroFormacionId);
+    if (!c || c.regionalId !== Number(filtroRegionalId)) return false;
+  }
+  if (filtroCentroId && f.centroFormacionId !== Number(filtroCentroId)) return false;
+  if (filtroAmbienteId && f.ambienteId !== Number(filtroAmbienteId)) return false;
+  return true;
+});
+```
+
+**Toolbar reorganizado (dos filas):**
+
+```tsx
+// Fila 1
+<div className="flex justify-between ...">
+  <h1> + <p>
+  <button>Nueva Ficha</button>
+</div>
+
+// Fila 2
+<div className="flex items-center flex-wrap gap-2">
+  <select>Programa</select>
+  <select>Regional</select>
+  <select>Centro</select>
+  <select>Ambiente</select>
+  <div class="ml-auto">Toggle cards/tabla</div>
+</div>
+```
+
+### 7. Modalidad badge
+
+- En cards: `justify-between` (ficha a la izquierda, modalidad a la derecha).
+- Badge con `rounded-lg` para consistencia con el badge de ficha.
+- También aplicado en la vista tabla.
+
 ### Archivos a modificar
 
 | Archivo | Cambio |
 |---|---|
-| `src/components/FichasView.tsx` | Toggle + tabla + modal detalles |
+| `src/components/FichasView.tsx` | Toggle + tabla + modal detalles + filtros + toolbar dos filas + modalidad badge |
 
 ### Lo que NO cambia
 
