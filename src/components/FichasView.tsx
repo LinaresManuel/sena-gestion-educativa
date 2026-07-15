@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from "react";
 import { Plus, Trash2, X, Calendar, Clock, MapPin, Search, Pencil, Eye } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 import ConfirmDialog from "./ConfirmDialog";
+import SearchableSelect from "./SearchableSelect";
 
 interface Ficha {
   id: number;
@@ -397,34 +398,38 @@ export default function FichasView() {
       </div>
 
       <div className="flex items-center flex-wrap gap-2">
-        <select value={filtroProgramaId} onChange={e => setFiltroProgramaId(e.target.value)}
-          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
-          <option value="">Programa: Todos</option>
-          {programas.map(p => (
-            <option key={p.id} value={p.id}>{p.denominacion}</option>
-          ))}
-        </select>
-        <select value={filtroRegionalId} onChange={e => handleRegionalChange(e.target.value)}
-          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
-          <option value="">Regional: Todas</option>
-          {regionales.map(r => (
-            <option key={r.id} value={r.id}>{r.nombre}</option>
-          ))}
-        </select>
-        <select value={filtroCentroId} onChange={e => handleCentroChange(e.target.value)}
-          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
-          <option value="">Centro: Todos</option>
-          {centrosFiltrados.map(c => (
-            <option key={c.id} value={c.id}>{c.nombre}</option>
-          ))}
-        </select>
-        <select value={filtroAmbienteId} onChange={e => setFiltroAmbienteId(e.target.value)}
-          className="border rounded-lg px-2 py-1.5 text-xs bg-white max-w-[180px] overflow-hidden text-ellipsis">
-          <option value="">Ambiente: Todos</option>
-          {ambientesFiltrados.map(a => (
-            <option key={a.id} value={a.id}>{a.nombre}</option>
-          ))}
-        </select>
+        <SearchableSelect
+          value={filtroProgramaId}
+          onChange={v => setFiltroProgramaId(v)}
+          options={[
+            { value: "", label: "Programa: Todos" },
+            ...programas.map(p => ({ value: String(p.id), label: p.denominacion })),
+          ]}
+        />
+        <SearchableSelect
+          value={filtroRegionalId}
+          onChange={v => handleRegionalChange(v)}
+          options={[
+            { value: "", label: "Regional: Todas" },
+            ...regionales.map(r => ({ value: String(r.id), label: r.nombre })),
+          ]}
+        />
+        <SearchableSelect
+          value={filtroCentroId}
+          onChange={v => handleCentroChange(v)}
+          options={[
+            { value: "", label: "Centro: Todos" },
+            ...centrosFiltrados.map(c => ({ value: String(c.id), label: c.nombre })),
+          ]}
+        />
+        <SearchableSelect
+          value={filtroAmbienteId}
+          onChange={v => setFiltroAmbienteId(v)}
+          options={[
+            { value: "", label: "Ambiente: Todos" },
+            ...ambientesFiltrados.map(a => ({ value: String(a.id), label: a.nombre })),
+          ]}
+        />
         <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 ml-auto">
           <button onClick={() => setVista('cards')}
             className={`px-2 py-1 text-xs font-medium rounded-md transition ${vista === 'cards' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>

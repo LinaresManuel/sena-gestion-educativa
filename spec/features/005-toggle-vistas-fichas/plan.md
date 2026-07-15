@@ -153,7 +153,39 @@ const fichasFiltradas = fichas.filter(f => {
 </div>
 ```
 
-### 7. Modalidad badge
+### 7. SearchableSelect — filtros escribibles
+
+Crear `src/components/SearchableSelect.tsx`:
+
+```tsx
+interface Props {
+  value: string;
+  onChange: (val: string) => void;
+  options: { value: string; label: string }[];
+}
+```
+
+Comportamiento:
+- Trigger con icono Search + texto de opción seleccionada (o placeholder).
+- Al hacer clic: dropdown con input de búsqueda que filtra opciones.
+- `useEffect` con `mousedown` para cerrar al hacer clic fuera.
+- Opción activa (value === props.value) con `bg-purple-100 text-purple-700`.
+- "Sin resultados" cuando el filtro no encuentra coincidencias.
+
+Reemplazar los 4 `<select>` del toolbar:
+
+```tsx
+<SearchableSelect
+  value={filtroProgramaId}
+  onChange={v => setFiltroProgramaId(v)}
+  options={[
+    { value: "", label: "Programa: Todos" },
+    ...programas.map(p => ({ value: String(p.id), label: p.denominacion })),
+  ]}
+/>
+```
+
+### 8. Modalidad badge
 
 - En cards: `justify-between` (ficha a la izquierda, modalidad a la derecha).
 - Badge con `rounded-lg` para consistencia con el badge de ficha.
@@ -163,7 +195,8 @@ const fichasFiltradas = fichas.filter(f => {
 
 | Archivo | Cambio |
 |---|---|
-| `src/components/FichasView.tsx` | Toggle + tabla + modal detalles + filtros + toolbar dos filas + modalidad badge |
+| `src/components/SearchableSelect.tsx` | **Crear** — componente select con búsqueda |
+| `src/components/FichasView.tsx` | Reemplazar 4 `<select>` por `<SearchableSelect>`, importar componente |
 
 ### Lo que NO cambia
 

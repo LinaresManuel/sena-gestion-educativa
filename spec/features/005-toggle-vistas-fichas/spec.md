@@ -36,7 +36,8 @@ Agregar un toggle de vista (cards ↔ tabla) en el módulo de fichas, más un mo
 - [ ] Filtro por Centro: al seleccionar, filtra ambientes disponibles y resetea ambiente.
 - [ ] Filtro por Ambiente: selección directa sin cascada posterior.
 - [ ] Filtros combinados: los 4 filtros se aplican en AND a la lista de fichas.
-- [ ] Cada select usa `max-w-[180px] overflow-hidden text-ellipsis text-xs`.
+- [ ] Cada filtro usa el componente `SearchableSelect` con input de búsqueda que filtra opciones mientras se escribe.
+- [ ] Dropdown del SearchableSelect: `w-72`, `max-h-48`, con scroll, hover highlight y opción activa resaltada.
 - [ ] Modalidad badge en cards: alineado a la derecha (`justify-between`), con `rounded-lg`.
 - [ ] Modalidad badge en tabla: también con `rounded-lg`.
 - [ ] `npm run lint` sin errores nuevos.
