@@ -62,8 +62,16 @@
 - [ ] Celdas sin interacción, solo visuales (selected/no-selected)
 - [ ] Botón "Cerrar" en footer
 
+## Ajuste de cards (post-implementación)
+
+- [ ] Grid: `xl:grid-cols-4 gap-3` → `lg:grid-cols-3 gap-4`
+- [ ] Card: agregar `flex flex-col h-full`
+- [ ] Contenido central envuelto en `flex-1` para que footer siempre quede al fondo
+- [ ] Botones de acción: sacar de `absolute top-3 right-3`, pasar al footer `border-t` siempre visibles
+- [ ] Footer: "Ver Horario" a la izquierda, acciones (✏️ 🗑️) a la derecha con `ml-auto`
+
 ## Verificación
 
 - [ ] `npm run lint` — sin errores nuevos
-- [ ] Probar: crear ficha con horario, ver horario en card, abrir modal read-only, cerrar
+- [ ] Probar: crear ficha con horario, ver horario en card, editar, eliminar, filtrar
 - [ ] Commit + deploy sync + push

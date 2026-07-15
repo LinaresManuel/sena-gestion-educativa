@@ -44,6 +44,9 @@ export default function FichasView() {
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [filtroProgramaId, setFiltroProgramaId] = useState("");
+  const [vista, setVista] = useState<'cards' | 'tabla'>('cards');
+  const [showDetallesModal, setShowDetallesModal] = useState(false);
+  const [detallesFicha, setDetallesFicha] = useState<Ficha | null>(null);
 
   const [showHorarioModal, setShowHorarioModal] = useState(false);
   const [horarioFichaSeleccionada, setHorarioFichaSeleccionada] = useState<Ficha | null>(null);
@@ -240,6 +243,19 @@ export default function FichasView() {
     setHorarioFichaSeleccionada(null);
   }
 
+  function handleVerDetalles(ficha: Ficha) {
+    setDetallesFicha({
+      ...ficha,
+      horario: typeof ficha.horario === 'string' ? JSON.parse(ficha.horario) : ficha.horario,
+    });
+    setShowDetallesModal(true);
+  }
+
+  function handleCloseDetallesModal() {
+    setShowDetallesModal(false);
+    setDetallesFicha(null);
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!numeroFicha || !centroFormacionId || !fechaInicio || !fechaFinLectiva || !fechaFin || !programaId || !ambienteId) {
@@ -351,6 +367,16 @@ export default function FichasView() {
               ))}
             </select>
           </div>
+          <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5">
+            <button onClick={() => setVista('cards')}
+              className={`px-2.5 py-1.5 text-xs font-medium rounded-md transition ${vista === 'cards' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
+              ⊞ Cards
+            </button>
+            <button onClick={() => setVista('tabla')}
+              className={`px-2.5 py-1.5 text-xs font-medium rounded-md transition ${vista === 'tabla' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
+              ⊟ Tabla
+            </button>
+          </div>
           {mayCrear && (
             <button onClick={() => { setShowForm(true); setEditingId(null); setNumeroFicha(""); setCentroFormacionId(""); setFechaInicio(""); setFechaFinLectiva(""); setFechaFin(""); setModalidad("PRESENCIAL"); setProgramaId(""); setAmbientesId(""); setHorario({}); setError(null); }}
               className="flex items-center gap-1 px-3 py-1.5 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded-lg">
@@ -365,106 +391,170 @@ export default function FichasView() {
           <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-purple-600"></div>
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-          {fichasFiltradas.length === 0 ? (
-            <div className="sm:col-span-2 lg:col-span-3 xl:col-span-4 bg-white p-12 rounded-xl border flex flex-col items-center justify-center text-gray-500">
-              <Calendar className="w-12 h-12 mb-4 opacity-20" />
-              <p>{filtroProgramaId ? "No hay fichas para el programa seleccionado" : "No hay fichas registradas"}</p>
-            </div>
-          ) : (
-            fichasFiltradas.map(ficha => {
-              const programa = programas.find(p => p.id === ficha.programaId);
-              const centro = centros.find(c => c.id === ficha.centroFormacionId);
-              const ambiente = ambientes.find(a => a.id === ficha.ambienteId);
-              const fichaHorario = typeof ficha.horario === 'string' ? JSON.parse(ficha.horario) : ficha.horario;
-              const tieneHorario = fichaHorario && Object.keys(fichaHorario).length > 0 && Object.values(fichaHorario).some((h: any) => Array.isArray(h) && h.length > 0);
+        vista === 'cards' ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {fichasFiltradas.length === 0 ? (
+              <div className="sm:col-span-2 lg:col-span-3 bg-white p-12 rounded-xl border flex flex-col items-center justify-center text-gray-500">
+                <Calendar className="w-12 h-12 mb-4 opacity-20" />
+                <p>{filtroProgramaId ? "No hay fichas para el programa seleccionado" : "No hay fichas registradas"}</p>
+              </div>
+            ) : (
+              fichasFiltradas.map(ficha => {
+                const programa = programas.find(p => p.id === ficha.programaId);
+                const centro = centros.find(c => c.id === ficha.centroFormacionId);
+                const ambiente = ambientes.find(a => a.id === ficha.ambienteId);
+                const fichaHorario = typeof ficha.horario === 'string' ? JSON.parse(ficha.horario) : ficha.horario;
+                const tieneHorario = fichaHorario && Object.keys(fichaHorario).length > 0 && Object.values(fichaHorario).some((h: any) => Array.isArray(h) && h.length > 0);
 
-              return (
-                <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-4 relative overflow-hidden group">
-                  {hayAcciones && (
-                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
-                      {mayEditar && (
-                        <button onClick={() => handleEdit(ficha)} className="text-gray-400 hover:text-purple-600 p-1.5 bg-white rounded-full shadow-sm border">
-                          <Pencil className="w-3.5 h-3.5" />
-                        </button>
-                      )}
-                      {mayEliminar && (
-                        <button onClick={() => handleTrashClick(ficha.id)} className="text-gray-400 hover:text-red-600 p-1.5 bg-white rounded-full shadow-sm border">
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      )}
+                return (
+                  <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-4 flex flex-col h-full group">
+                    {/* Ficha number + modalidad badge */}
+                    <div className="flex items-center gap-1.5 mb-3">
+                      <span className="inline-flex items-center px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-md">
+                        Ficha {ficha.numeroFicha}
+                      </span>
+                      <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${
+                        ficha.modalidad === 'VIRTUAL'
+                          ? 'bg-blue-100 text-blue-700'
+                          : ficha.modalidad === 'MIXTA'
+                            ? 'bg-amber-100 text-amber-700'
+                            : 'bg-purple-100 text-purple-700'
+                      }`}>
+                        {ficha.modalidad === 'VIRTUAL' ? 'Virtual' : ficha.modalidad === 'MIXTA' ? 'Mixta' : 'Presencial'}
+                      </span>
                     </div>
-                  )}
 
-                  {/* Ficha number + modalidad badge */}
-                  <div className="flex items-center gap-1.5 mb-3">
-                    <span className="inline-flex items-center px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-md">
-                      Ficha {ficha.numeroFicha}
-                    </span>
-                    <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${
-                      ficha.modalidad === 'VIRTUAL'
-                        ? 'bg-blue-100 text-blue-700'
-                        : ficha.modalidad === 'MIXTA'
-                          ? 'bg-amber-100 text-amber-700'
-                          : 'bg-purple-100 text-purple-700'
-                    }`}>
-                      {ficha.modalidad === 'VIRTUAL' ? 'Virtual' : ficha.modalidad === 'MIXTA' ? 'Mixta' : 'Presencial'}
-                    </span>
+                    {/* Content area — flex-1 to push footer down */}
+                    <div className="flex-1 space-y-0">
+                      <div className="mb-4">
+                        <p className="text-[10px] font-medium text-gray-500 uppercase tracking-wider mb-0.5">Programa de Formación</p>
+                        <h3 className="font-semibold text-gray-900 leading-snug text-sm">
+                          {programa ? programa.denominacion : 'Programa no encontrado'}
+                        </h3>
+                      </div>
+
+                      <div className="space-y-1.5 mb-4">
+                        <div className="flex items-center text-xs text-gray-600">
+                          <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                          <span className="font-medium text-gray-500 mr-1">Lectivo:</span>
+                          <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFinLectiva)}</span>
+                        </div>
+                        <div className="flex items-center text-xs text-gray-600">
+                          <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                          <span className="font-medium text-gray-500 mr-1">Ficha:</span>
+                          <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFin)}</span>
+                        </div>
+                      </div>
+
+                      <div className="space-y-1.5 mb-4">
+                        <div className="flex items-center text-xs text-gray-600">
+                          <MapPin className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                          <span className="font-medium text-gray-500 mr-1">Centro:</span>
+                          <span className="truncate">{centro ? centro.nombre : 'No asignado'}</span>
+                        </div>
+                        <div className="flex items-center text-xs text-gray-600">
+                          <Clock className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                          <span className="font-medium text-gray-500 mr-1">Ambiente:</span>
+                          <span className="truncate">{ambiente ? `${ambiente.nombre} (${ambiente.codigo})` : 'No asignado'}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Footer — always visible */}
+                    {(tieneHorario || hayAcciones) && (
+                      <div className="border-t pt-3 flex items-center gap-2">
+                        {tieneHorario && (
+                          <button onClick={() => handleVerHorario(ficha)}
+                            className="flex items-center gap-1 text-xs font-medium text-purple-700 hover:text-purple-800 transition">
+                            <Eye className="w-3.5 h-3.5" /> Ver Horario
+                          </button>
+                        )}
+                        {hayAcciones && (
+                          <div className="flex items-center gap-1 ml-auto">
+                            {mayEditar && (
+                              <button onClick={() => handleEdit(ficha)}
+                                className="text-gray-400 hover:text-purple-600 p-1.5 bg-white rounded-full shadow-sm border transition">
+                                <Pencil className="w-3.5 h-3.5" />
+                              </button>
+                            )}
+                            {mayEliminar && (
+                              <button onClick={() => handleTrashClick(ficha.id)}
+                                className="text-gray-400 hover:text-red-600 p-1.5 bg-white rounded-full shadow-sm border transition">
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    )}
                   </div>
-
-                  {/* Program */}
-                  <div className="mb-4">
-                    <p className="text-[10px] font-medium text-gray-500 uppercase tracking-wider mb-0.5">Programa de Formación</p>
-                    <h3 className="font-semibold text-gray-900 leading-snug text-sm">
-                      {programa ? programa.denominacion : 'Programa no encontrado'}
-                    </h3>
-                  </div>
-
-                  {/* Dates */}
-                  <div className="space-y-1.5 mb-4">
-                    <div className="flex items-center text-xs text-gray-600">
-                      <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                      <span className="font-medium text-gray-500 mr-1">Lectivo:</span>
-                      <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFinLectiva)}</span>
-                    </div>
-                    <div className="flex items-center text-xs text-gray-600">
-                      <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                      <span className="font-medium text-gray-500 mr-1">Ficha:</span>
-                      <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFin)}</span>
-                    </div>
-                  </div>
-
-                  {/* Center + Ambiente */}
-                  <div className="space-y-1.5 mb-4">
-                    <div className="flex items-center text-xs text-gray-600">
-                      <MapPin className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                      <span className="font-medium text-gray-500 mr-1">Centro:</span>
-                      <span className="truncate">{centro ? centro.nombre : 'No asignado'}</span>
-                    </div>
-                    <div className="flex items-center text-xs text-gray-600">
-                      <Clock className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                      <span className="font-medium text-gray-500 mr-1">Ambiente:</span>
-                      <span className="truncate">{ambiente ? `${ambiente.nombre} (${ambiente.codigo})` : 'No asignado'}</span>
-                    </div>
-                  </div>
-
-                  {/* Ver Horario button */}
-                  {tieneHorario && (
-                    <div className="border-t pt-3">
-                      <button
-                        onClick={() => handleVerHorario(ficha)}
-                        className="flex items-center justify-center gap-1.5 w-full py-1.5 text-xs font-medium text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition"
-                      >
-                        <Eye className="w-3.5 h-3.5" />
-                        Ver Horario
-                      </button>
-                    </div>
-                  )}
-                </div>
-              );
-            })
-          )}
-        </div>
+                );
+              })
+            )}
+          </div>
+        ) : (
+          <div className="overflow-x-auto bg-white rounded-xl border">
+            {fichasFiltradas.length === 0 ? (
+              <div className="flex flex-col items-center justify-center py-12 text-gray-500">
+                <Calendar className="w-12 h-12 mb-4 opacity-20" />
+                <p>{filtroProgramaId ? "No hay fichas para el programa seleccionado" : "No hay fichas registradas"}</p>
+              </div>
+            ) : (
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b bg-gray-50 text-left text-[11px] font-semibold text-gray-500 uppercase tracking-wider">
+                    <th className="px-4 py-3">N° Ficha</th>
+                    <th className="px-4 py-3">Programa</th>
+                    <th className="px-4 py-3">Modalidad</th>
+                    <th className="px-4 py-3">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {fichasFiltradas.map(ficha => {
+                    const programa = programas.find(p => p.id === ficha.programaId);
+                    return (
+                      <tr key={ficha.id} className="border-b last:border-0 hover:bg-gray-50 transition">
+                        <td className="px-4 py-3 font-medium text-gray-900 whitespace-nowrap">{ficha.numeroFicha}</td>
+                        <td className="px-4 py-3 text-gray-600 max-w-[300px] truncate" title={programa?.denominacion}>{programa?.denominacion ?? '—'}</td>
+                        <td className="px-4 py-3">
+                          <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${
+                            ficha.modalidad === 'VIRTUAL'
+                              ? 'bg-blue-100 text-blue-700'
+                              : ficha.modalidad === 'MIXTA'
+                                ? 'bg-amber-100 text-amber-700'
+                                : 'bg-purple-100 text-purple-700'
+                          }`}>
+                            {ficha.modalidad === 'VIRTUAL' ? 'Virtual' : ficha.modalidad === 'MIXTA' ? 'Mixta' : 'Presencial'}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3">
+                          <div className="flex items-center gap-1">
+                            {mayEditar && (
+                              <button onClick={() => handleEdit(ficha)}
+                                className="text-gray-400 hover:text-purple-600 p-1.5 bg-white rounded-full shadow-sm border transition">
+                                <Pencil className="w-3.5 h-3.5" />
+                              </button>
+                            )}
+                            {mayEliminar && (
+                              <button onClick={() => handleTrashClick(ficha.id)}
+                                className="text-gray-400 hover:text-red-600 p-1.5 bg-white rounded-full shadow-sm border transition">
+                                <Trash2 className="w-3.5 h-3.5" />
+                              </button>
+                            )}
+                            <button onClick={() => handleVerDetalles(ficha)}
+                              className="text-gray-400 hover:text-purple-600 p-1.5 bg-white rounded-full shadow-sm border transition">
+                              <Eye className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            )}
+          </div>
+        )
       )}
 
       {showForm && (
@@ -679,6 +769,123 @@ export default function FichasView() {
 
             <div className="flex justify-end p-4 border-t">
               <button onClick={handleCloseHorarioModal}
+                className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+                Cerrar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showDetallesModal && detallesFicha && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-start justify-center z-50 pt-8 overflow-y-auto"
+          onClick={handleCloseDetallesModal}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl my-4" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-5 border-b sticky top-0 bg-white z-10 rounded-t-xl">
+              <h3 className="text-lg font-semibold text-gray-900">Detalles — Ficha {detallesFicha.numeroFicha}</h3>
+              <button onClick={handleCloseDetallesModal} className="text-gray-400 hover:text-gray-600 transition">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-5 max-h-[78vh] overflow-y-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {/* Left: details */}
+                <div className="space-y-4">
+                  <h4 className="text-sm font-semibold text-gray-800 border-b pb-2">Datos de la Ficha</h4>
+
+                  <div className="grid grid-cols-2 gap-3">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Número de Ficha</label>
+                      <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{detallesFicha.numeroFicha}</span>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Modalidad</label>
+                      <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{detallesFicha.modalidad === 'VIRTUAL' ? 'Virtual' : detallesFicha.modalidad === 'MIXTA' ? 'Mixta' : 'Presencial'}</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">Programa de Formación</label>
+                    <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{(() => {
+                      const p = programas.find(pg => pg.id === detallesFicha.programaId);
+                      return p ? p.denominacion : '—';
+                    })()}</span>
+                  </div>
+
+                  <div className="grid grid-cols-3 gap-3">
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Fecha Inicio</label>
+                      <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{formatDate(detallesFicha.fechaInicio)}</span>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Fin Lectiva</label>
+                      <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{formatDate(detallesFicha.fechaFinLectiva)}</span>
+                    </div>
+                    <div>
+                      <label className="block text-xs font-medium text-gray-700 mb-1">Fin Ficha</label>
+                      <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{formatDate(detallesFicha.fechaFin)}</span>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">Centro de Formación</label>
+                    <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{(() => {
+                      const c = centros.find(ct => ct.id === detallesFicha.centroFormacionId);
+                      return c ? c.nombre : '—';
+                    })()}</span>
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-medium text-gray-700 mb-1">Ambiente de Formación</label>
+                    <span className="block text-sm text-gray-900 px-3 py-2 bg-gray-50/50 rounded-lg border">{(() => {
+                      const a = ambientes.find(am => am.id === detallesFicha.ambienteId);
+                      return a ? `${a.nombre} (${a.codigo})` : '—';
+                    })()}</span>
+                  </div>
+                </div>
+
+                {/* Right: horario grid */}
+                <div className="space-y-4">
+                  <h4 className="text-sm font-semibold text-gray-800 border-b pb-2">Horario de Formación</h4>
+
+                  <div
+                    className="grid gap-0.5 select-none border rounded-lg p-1.5 bg-gray-50/50"
+                    style={{ gridTemplateColumns: `32px repeat(6, 1fr)` }}
+                  >
+                    <div />
+                    {DIAS_VISIBLES.map(d => (
+                      <div key={d} className="text-center text-[9px] font-semibold text-gray-600 leading-none pb-0.5">
+                        {d.slice(0, 3)}
+                      </div>
+                    ))}
+
+                    {HORAS.map(hora => (
+                      <div key={hora} className="contents">
+                        <div className="text-[8px] text-gray-500 font-mono text-right flex items-center justify-end pr-1 leading-none">
+                          {hora.split('-')[0]}
+                        </div>
+                        {DIAS_VISIBLES.map(dia => {
+                          const selected = detallesFicha.horario[dia]?.includes(hora) ?? false;
+                          return (
+                            <div
+                              key={`${dia}-${hora}`}
+                              className={`rounded-sm border h-4 ${selected
+                                ? 'bg-purple-500/20 border-purple-400'
+                                : 'bg-white border-gray-200'
+                              }`}
+                            />
+                          );
+                        })}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex justify-end p-5 border-t">
+              <button onClick={handleCloseDetallesModal}
                 className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
                 Cerrar
               </button>
