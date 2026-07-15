@@ -360,7 +360,7 @@ export default function FichasView() {
           <div className="flex items-center gap-2">
             <label className="text-sm text-gray-600 font-medium whitespace-nowrap">Programa:</label>
             <select value={filtroProgramaId} onChange={e => setFiltroProgramaId(e.target.value)}
-              className="border rounded-lg px-3 py-1.5 text-sm bg-white">
+              className="border rounded-lg px-3 py-1.5 text-sm bg-white max-w-[200px] overflow-hidden text-ellipsis">
               <option value="">Todos</option>
               {programas.map(p => (
                 <option key={p.id} value={p.id}>{p.denominacion}</option>
@@ -428,7 +428,7 @@ export default function FichasView() {
                     <div className="flex-1 space-y-0">
                       <div className="mb-4">
                         <p className="text-[10px] font-medium text-gray-500 uppercase tracking-wider mb-0.5">Programa de Formación</p>
-                        <h3 className="font-semibold text-gray-900 leading-snug text-sm">
+                        <h3 className="font-semibold text-gray-900 leading-snug text-sm break-words">
                           {programa ? programa.denominacion : 'Programa no encontrado'}
                         </h3>
                       </div>

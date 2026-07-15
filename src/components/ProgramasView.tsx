@@ -196,7 +196,7 @@ export default function ProgramasView() {
 
       <div className="bg-white rounded-xl border shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left text-sm whitespace-nowrap">
+          <table className="w-full text-left text-sm">
             <thead className="bg-gray-50 border-b">
               <tr>
                 <th className="px-6 py-3 font-medium text-gray-500">Programa</th>
@@ -215,7 +215,7 @@ export default function ProgramasView() {
                 programas.map(p => (
                   <tr key={p.id} className="hover:bg-gray-50 align-top">
                     <td className="px-6 py-4">
-                      <div className="font-medium text-gray-900 whitespace-normal min-w-[200px]">{p.denominacion}</div>
+                      <div className="font-medium text-gray-900 break-words">{p.denominacion}</div>
                       {p.pdfDocument && (
                         <a href={p.pdfDocument} download={`Programa_${p.codigo}.pdf`} className="inline-flex items-center gap-1 mt-2 text-xs text-blue-600 hover:text-blue-800 bg-blue-50 px-2 py-1 rounded">
                           <Download className="w-3 h-3" /> Descargar PDF
