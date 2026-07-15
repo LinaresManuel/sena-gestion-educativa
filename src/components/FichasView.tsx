@@ -424,38 +424,45 @@ export default function FichasView() {
                       </span>
                     </div>
 
-                    {/* Content area — flex-1 to push footer down */}
-                    <div className="flex-1 space-y-0">
+                    {/* Content area — flex-1 + flex-col + mt-auto pushes dates/location to bottom */}
+                    <div className="flex-1 flex flex-col">
                       <div className="mb-4">
-                        <p className="text-[10px] font-medium text-gray-500 uppercase tracking-wider mb-0.5">Programa de Formación</p>
-                        <h3 className="font-semibold text-gray-900 leading-snug text-sm break-words">
+                        <div className="flex items-center gap-2 mb-0.5">
+                          <p className="text-[10px] font-medium text-gray-500 uppercase tracking-wider">Programa de Formación</p>
+                          {programa?.tipoPrograma && (
+                            <span className="text-[9px] font-medium text-gray-400 bg-gray-100 px-1.5 py-0.5 rounded">{programa.tipoPrograma}</span>
+                          )}
+                        </div>
+                        <h3 className="font-semibold text-gray-900 leading-snug text-sm line-clamp-2 break-words">
                           {programa ? programa.denominacion : 'Programa no encontrado'}
                         </h3>
                       </div>
 
-                      <div className="space-y-1.5 mb-4">
-                        <div className="flex items-center text-xs text-gray-600">
-                          <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                          <span className="font-medium text-gray-500 mr-1">Lectivo:</span>
-                          <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFinLectiva)}</span>
+                      <div className="mt-auto">
+                        <div className="space-y-1.5 mb-4">
+                          <div className="flex items-center text-xs text-gray-600">
+                            <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                            <span className="font-medium text-gray-500 mr-1">Lectivo:</span>
+                            <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFinLectiva)}</span>
+                          </div>
+                          <div className="flex items-center text-xs text-gray-600">
+                            <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                            <span className="font-medium text-gray-500 mr-1">Ficha:</span>
+                            <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFin)}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center text-xs text-gray-600">
-                          <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                          <span className="font-medium text-gray-500 mr-1">Ficha:</span>
-                          <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFin)}</span>
-                        </div>
-                      </div>
 
-                      <div className="space-y-1.5 mb-4">
-                        <div className="flex items-center text-xs text-gray-600">
-                          <MapPin className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                          <span className="font-medium text-gray-500 mr-1">Centro:</span>
-                          <span className="truncate">{centro ? centro.nombre : 'No asignado'}</span>
-                        </div>
-                        <div className="flex items-center text-xs text-gray-600">
-                          <Clock className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
-                          <span className="font-medium text-gray-500 mr-1">Ambiente:</span>
-                          <span className="truncate">{ambiente ? `${ambiente.nombre} (${ambiente.codigo})` : 'No asignado'}</span>
+                        <div className="space-y-1.5 mb-4">
+                          <div className="flex items-center text-xs text-gray-600">
+                            <MapPin className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                            <span className="font-medium text-gray-500 mr-1">Centro:</span>
+                            <span className="truncate">{centro ? centro.nombre : 'No asignado'}</span>
+                          </div>
+                          <div className="flex items-center text-xs text-gray-600">
+                            <Clock className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                            <span className="font-medium text-gray-500 mr-1">Ambiente:</span>
+                            <span className="truncate">{ambiente ? `${ambiente.nombre} (${ambiente.codigo})` : 'No asignado'}</span>
+                          </div>
                         </div>
                       </div>
                     </div>
