@@ -146,11 +146,69 @@ const fichasFiltradas = fichas.filter(f =>
 Select ubicado entre el header y la grilla de fichas, alineado a la izquierda con label "Programa:".
 Se actualiza en tiempo real (sin botón de aplicar).
 
+### 4. Rediseño de card de resumen
+
+Reemplazar la card de `fichasFiltradas.map()` con una nueva estructura:
+
+```tsx
+<div key={ficha.id} className="...group">
+  {/* Botones de acción hover (Editar / Eliminar) */}
+  
+  {/* Fila superior: "Ficha XXXXXX" + badge de modalidad coloreado */}
+  {/* Modalidad: PRESENCIAL → purple, VIRTUAL → blue, MIXTA → amber */}
+
+  {/* Label "PROGRAMA DE FORMACIÓN" + denominación del programa */}
+
+  {/* Fechas: dos filas Calendar */}
+  {/* Lectivo: formatDate(inicio) → formatDate(finLectiva) */}
+  {/* Ficha: formatDate(inicio) → formatDate(fin) */}
+
+  {/* Centro (MapPin) y Ambiente (Clock) */}
+
+  {/* Botón "Ver Horario" (Eye) si tiene horario asignado */}
+</div>
+```
+
+**Helper `formatDate`:**
+
+```typescript
+function formatDate(dateStr: string) {
+  if (!dateStr) return '';
+  const parts = dateStr.split('-');
+  if (parts.length !== 3) return dateStr;
+  return `${parts[2]}/${parts[1]}/${parts[0]}`;
+}
+```
+
+Muestra las fechas en formato DD/MM/AAAA en vez de ISO YYYY-MM-DD.
+
+### 5. Modal read-only de horario
+
+Nuevo modal que se abre desde el botón "Ver Horario" de cada card:
+
+```tsx
+const [showHorarioModal, setShowHorarioModal] = useState(false);
+const [horarioFichaSeleccionada, setHorarioFichaSeleccionada] = useState<Ficha | null>(null);
+
+function handleVerHorario(ficha: Ficha) {
+  setHorarioFichaSeleccionada({ ...ficha, horario: parseado });
+  setShowHorarioModal(true);
+}
+```
+
+- Mismo backdrop `backdrop-blur-sm bg-white/30`.
+- Ancho: `max-w-lg` (solo la cuadrícula, angosto).
+- Título: "Horario — Ficha XXXXXX".
+- Info complementaria: programa y ambiente en texto.
+- Cuadrícula idéntica a la del modal de creación (grid `32px repeat(6, 1fr)`, `gap-0.5`, `h-4`).
+- Celdas sin interacción: sin `onMouseDown/onMouseEnter`, `cursor-default`.
+- Footer con botón "Cerrar".
+
 ### Archivos a modificar
 
 | Archivo | Cambio |
 |---|---|
-| `src/components/FichasView.tsx` | Modal + cuadrícula semanal + filtro (único archivo) |
+| `src/components/FichasView.tsx` | Card + modal read-only + helper formatDate + estado horarioModal |
 
 ### Lo que NO cambia
 
@@ -158,3 +216,5 @@ Se actualiza en tiempo real (sin botón de aplicar).
 - Permisos (`fichas.*`)
 - ConfirmDialog para eliminaciones
 - Ruteo / Sidebar / App.tsx
+- Modal de creación existente (se mantiene intacto)
+- Lógica de click-and-drag (se mantiene en modal de edición)

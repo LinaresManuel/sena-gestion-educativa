@@ -42,8 +42,28 @@
 - [ ] Aplicar filtro: `fichasFiltradas` derivado
 - [ ] Renderizar `fichasFiltradas` en vez de `fichas`
 
+## Rediseño de card de resumen
+
+- [ ] Reemplazar card: ficha number + modalidad badge (PRESENCIAL=purple, VIRTUAL=blue, MIXTA=amber)
+- [ ] Agregar label "Programa de Formación" + denominación del programa
+- [ ] Fechas formateadas con `formatDate()`: `DD/MM/AAAA → DD/MM/AAAA`
+- [ ] Centro con icono MapPin, Ambiente con icono Clock
+- [ ] Botón "Ver Horario" con icono Eye, visible solo si hay horario asignado
+- [ ] Agregar helper `formatDate()`
+
+## Modal read-only de horario
+
+- [ ] Agregar estados `showHorarioModal`, `horarioFichaSeleccionada`
+- [ ] Agregar `handleVerHorario()` que parsea el horario y abre el modal
+- [ ] Agregar `handleCloseHorarioModal()` que resetea ambos estados
+- [ ] Modal con backdrop-blur, `max-w-lg`, título "Horario — Ficha XXXXXX"
+- [ ] Info complementaria: programa y ambiente
+- [ ] Cuadrícula read-only sin handlers de mouse, mismas dimensiones que creación
+- [ ] Celdas sin interacción, solo visuales (selected/no-selected)
+- [ ] Botón "Cerrar" en footer
+
 ## Verificación
 
 - [ ] `npm run lint` — sin errores nuevos
-- [ ] Probar: crear ficha con horario vía cuadrícula, editar, filtrar
+- [ ] Probar: crear ficha con horario, ver horario en card, abrir modal read-only, cerrar
 - [ ] Commit + deploy sync + push

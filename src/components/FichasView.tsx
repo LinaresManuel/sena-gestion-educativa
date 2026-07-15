@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Plus, Trash2, X, Calendar, Clock, MapPin, Search, Pencil } from "lucide-react";
+import { Plus, Trash2, X, Calendar, Clock, MapPin, Search, Pencil, Eye } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 import ConfirmDialog from "./ConfirmDialog";
 
@@ -44,6 +44,9 @@ export default function FichasView() {
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
   const [filtroProgramaId, setFiltroProgramaId] = useState("");
+
+  const [showHorarioModal, setShowHorarioModal] = useState(false);
+  const [horarioFichaSeleccionada, setHorarioFichaSeleccionada] = useState<Ficha | null>(null);
 
   const isDragging = useRef(false);
   const dragStart = useRef<{ dia: string; hora: string } | null>(null);
@@ -217,6 +220,26 @@ export default function FichasView() {
     setError(null);
   }
 
+  function formatDate(dateStr: string) {
+    if (!dateStr) return '';
+    const parts = dateStr.split('-');
+    if (parts.length !== 3) return dateStr;
+    return `${parts[2]}/${parts[1]}/${parts[0]}`;
+  }
+
+  function handleVerHorario(ficha: Ficha) {
+    setHorarioFichaSeleccionada({
+      ...ficha,
+      horario: typeof ficha.horario === 'string' ? JSON.parse(ficha.horario) : ficha.horario,
+    });
+    setShowHorarioModal(true);
+  }
+
+  function handleCloseHorarioModal() {
+    setShowHorarioModal(false);
+    setHorarioFichaSeleccionada(null);
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!numeroFicha || !centroFormacionId || !fechaInicio || !fechaFinLectiva || !fechaFin || !programaId || !ambienteId) {
@@ -351,66 +374,92 @@ export default function FichasView() {
           ) : (
             fichasFiltradas.map(ficha => {
               const programa = programas.find(p => p.id === ficha.programaId);
+              const centro = centros.find(c => c.id === ficha.centroFormacionId);
               const ambiente = ambientes.find(a => a.id === ficha.ambienteId);
               const fichaHorario = typeof ficha.horario === 'string' ? JSON.parse(ficha.horario) : ficha.horario;
+              const tieneHorario = fichaHorario && Object.keys(fichaHorario).length > 0 && Object.values(fichaHorario).some((h: any) => Array.isArray(h) && h.length > 0);
 
               return (
                 <div key={ficha.id} className="bg-white rounded-xl border shadow-sm hover:shadow-md transition p-5 relative overflow-hidden group">
                   {hayAcciones && (
-                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
+                    <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition flex items-center gap-1">
                       {mayEditar && (
-                        <button onClick={() => handleEdit(ficha)} className="text-gray-400 hover:text-purple-600 p-1 bg-white rounded-full shadow-sm">
-                          <Pencil className="w-4 h-4" />
+                        <button onClick={() => handleEdit(ficha)} className="text-gray-400 hover:text-purple-600 p-1.5 bg-white rounded-full shadow-sm border">
+                          <Pencil className="w-3.5 h-3.5" />
                         </button>
                       )}
                       {mayEliminar && (
-                        <button onClick={() => handleTrashClick(ficha.id)} className="text-gray-400 hover:text-red-600 p-1 bg-white rounded-full shadow-sm">
-                          <Trash2 className="w-4 h-4" />
+                        <button onClick={() => handleTrashClick(ficha.id)} className="text-gray-400 hover:text-red-600 p-1.5 bg-white rounded-full shadow-sm border">
+                          <Trash2 className="w-3.5 h-3.5" />
                         </button>
                       )}
                     </div>
                   )}
 
-                  <div className="flex items-start justify-between mb-3">
-                    <div>
-                      <span className="inline-block px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-md mb-2">
-                        Ficha {ficha.numeroFicha}
-                      </span>
-                      <h3 className="font-semibold text-gray-900 leading-tight">
-                        {programa ? programa.denominacion : 'Programa no encontrado'}
-                      </h3>
+                  {/* Ficha number + modalidad badge */}
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-md">
+                      <span>Ficha {ficha.numeroFicha}</span>
+                    </span>
+                    <span className={`inline-flex items-center px-2 py-0.5 text-[10px] font-semibold rounded-full ${
+                      ficha.modalidad === 'VIRTUAL'
+                        ? 'bg-blue-100 text-blue-700'
+                        : ficha.modalidad === 'MIXTA'
+                          ? 'bg-amber-100 text-amber-700'
+                          : 'bg-purple-100 text-purple-700'
+                    }`}>
+                      {ficha.modalidad === 'VIRTUAL' ? 'Virtual' : ficha.modalidad === 'MIXTA' ? 'Mixta' : 'Presencial'}
+                    </span>
+                  </div>
+
+                  {/* Program */}
+                  <div className="mb-4">
+                    <p className="text-[10px] font-medium text-gray-500 uppercase tracking-wider mb-0.5">Programa de Formación</p>
+                    <h3 className="font-semibold text-gray-900 leading-snug text-sm">
+                      {programa ? programa.denominacion : 'Programa no encontrado'}
+                    </h3>
+                  </div>
+
+                  {/* Dates */}
+                  <div className="space-y-1.5 mb-4">
+                    <div className="flex items-center text-xs text-gray-600">
+                      <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                      <span className="font-medium text-gray-500 mr-1">Lectivo:</span>
+                      <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFinLectiva)}</span>
+                    </div>
+                    <div className="flex items-center text-xs text-gray-600">
+                      <Calendar className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                      <span className="font-medium text-gray-500 mr-1">Ficha:</span>
+                      <span>{formatDate(ficha.fechaInicio)} → {formatDate(ficha.fechaFin)}</span>
                     </div>
                   </div>
 
-                  <div className="space-y-2 mt-4">
-                    <div className="flex flex-col text-sm text-gray-600 space-y-1">
-                      <div className="flex items-center">
-                        <Calendar className="w-4 h-4 mr-2 text-gray-400 shrink-0" />
-                        <span><span className="font-medium mr-1 text-xs">Lectiva:</span> {ficha.fechaInicio} a {ficha.fechaFinLectiva}</span>
-                      </div>
-                      <div className="flex items-center pl-6">
-                        <span className="text-xs text-gray-500"><span className="font-medium mr-1">Ficha:</span> {ficha.fechaInicio} a {ficha.fechaFin}</span>
-                      </div>
+                  {/* Center + Ambiente */}
+                  <div className="space-y-1.5 mb-4">
+                    <div className="flex items-center text-xs text-gray-600">
+                      <MapPin className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                      <span className="font-medium text-gray-500 mr-1">Centro:</span>
+                      <span className="truncate">{centro ? centro.nombre : 'No asignado'}</span>
                     </div>
-                    <div className="flex items-center text-sm text-gray-600">
-                      <MapPin className="w-4 h-4 mr-2 text-gray-400 shrink-0" />
-                      <span className="truncate">{ambiente ? `${ambiente.nombre} (${ambiente.codigo})` : 'Ambiente no encontrado'}</span>
-                    </div>
-
-                    <div className="pt-3 mt-3 border-t">
-                      <p className="text-xs font-medium text-gray-500 mb-2">Horario ({ficha.modalidad})</p>
-                      <div className="space-y-1">
-                        {Object.entries(fichaHorario).map(([dia, horas]: any) => (
-                          horas.length > 0 && (
-                            <div key={dia} className="flex items-start text-xs text-gray-600">
-                              <span className="font-medium w-16">{dia.slice(0, 3)}:</span>
-                              <span className="flex-1 truncate" title={horas.join(', ')}>{horas.join(', ')}</span>
-                            </div>
-                          )
-                        ))}
-                      </div>
+                    <div className="flex items-center text-xs text-gray-600">
+                      <Clock className="w-3.5 h-3.5 mr-2 text-gray-400 shrink-0" />
+                      <span className="font-medium text-gray-500 mr-1">Ambiente:</span>
+                      <span className="truncate">{ambiente ? `${ambiente.nombre} (${ambiente.codigo})` : 'No asignado'}</span>
                     </div>
                   </div>
+
+                  {/* Ver Horario button */}
+                  {tieneHorario && (
+                    <div className="border-t pt-3">
+                      <button
+                        onClick={() => handleVerHorario(ficha)}
+                        className="flex items-center justify-center gap-1.5 w-full py-1.5 text-xs font-medium text-purple-700 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-lg transition"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        Ver Horario
+                      </button>
+                    </div>
+                  )}
                 </div>
               );
             })
@@ -568,6 +617,72 @@ export default function FichasView() {
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showHorarioModal && horarioFichaSeleccionada && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-start justify-center z-50 pt-12 overflow-y-auto"
+          onClick={handleCloseHorarioModal}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg my-4" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white z-10 rounded-t-xl">
+              <h3 className="text-base font-semibold text-gray-900">Horario — Ficha {horarioFichaSeleccionada.numeroFicha}</h3>
+              <button onClick={handleCloseHorarioModal} className="text-gray-400 hover:text-gray-600 transition">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-4">
+              <div className="flex items-center gap-4 mb-4 text-xs text-gray-500">
+                <span><span className="font-medium text-gray-700">Programa:</span> {(() => {
+                  const p = programas.find(pg => pg.id === horarioFichaSeleccionada.programaId);
+                  return p ? p.denominacion : '—';
+                })()}</span>
+                <span><span className="font-medium text-gray-700">Ambiente:</span> {(() => {
+                  const a = ambientes.find(am => am.id === horarioFichaSeleccionada.ambienteId);
+                  return a ? `${a.nombre} (${a.codigo})` : '—';
+                })()}</span>
+              </div>
+
+              <div
+                className="grid gap-0.5 select-none border rounded-lg p-1.5 bg-gray-50/50"
+                style={{ gridTemplateColumns: `32px repeat(6, 1fr)` }}
+              >
+                <div />
+                {DIAS_VISIBLES.map(d => (
+                  <div key={d} className="text-center text-[9px] font-semibold text-gray-600 leading-none pb-0.5">
+                    {d.slice(0, 3)}
+                  </div>
+                ))}
+
+                {HORAS.map(hora => (
+                  <div key={hora} className="contents">
+                    <div className="text-[8px] text-gray-500 font-mono text-right flex items-center justify-end pr-1 leading-none">
+                      {hora.split('-')[0]}
+                    </div>
+                    {DIAS_VISIBLES.map(dia => {
+                      const selected = horarioFichaSeleccionada.horario[dia]?.includes(hora) ?? false;
+                      return (
+                        <div
+                          key={`${dia}-${hora}`}
+                          className={`rounded-sm border h-4 ${selected
+                            ? 'bg-purple-500/20 border-purple-400'
+                            : 'bg-white border-gray-200'
+                          }`}
+                        />
+                      );
+                    })}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex justify-end p-4 border-t">
+              <button onClick={handleCloseHorarioModal}
+                className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+                Cerrar
+              </button>
+            </div>
           </div>
         </div>
       )}

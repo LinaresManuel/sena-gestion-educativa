@@ -2,11 +2,13 @@
 
 ## Qué
 
-Rediseñar completamente el módulo de fichas con tres mejoras:
+Rediseñar el módulo de fichas con cinco mejoras:
 
 1. **Formulario modal** con backdrop-blur para crear/editar fichas (patrón existente en los otros módulos CRUD).
 2. **Selector de horario tipo cuadrícula semanal** con celdas seleccionables por click y click-and-drag, inspirado en el diseño visual del proyecto de referencia `diseno-cronograma` (componente `weekly-time-matrix.tsx`).
 3. **Filtro por programa** en la vista principal.
+4. **Rediseño de la card de resumen** con badge de modalidad, fechas formateadas DD/MM/AAAA, info de centro y ambiente, y botón "Ver Horario" para evitar saturación textual del horario.
+5. **Modal read-only de horario** que muestra la cuadrícula semanal completa sin interacción, accesible desde el botón "Ver Horario" de cada card.
 
 ## Para qué
 
@@ -32,5 +34,18 @@ Rediseñar completamente el módulo de fichas con tres mejoras:
 - [ ] Click-and-drag rectangular: `onMouseDown` registra celda inicial, `onMouseEnter` actualiza celda final y la previsualización (`dragPreview` state), `onMouseUp` calcula el rango y aplica la acción.
 - [ ] Drag determina acción según estado de la celda inicial: seleccionada → deselecciona el rango; no seleccionada → lo selecciona.
 - [ ] Filtro por programa: dropdown que filtra la lista de fichas en tiempo real.
+- [ ] Card de resumen de ficha rediseñada:
+  - Badge de modalidad con colores (Presencial=purple, Virtual=blue, Mixta=amber).
+  - Label "Programa de Formación" sobre el nombre del programa.
+  - Fechas formateadas como `DD/MM/AAAA → DD/MM/AAAA` con labels "Lectivo:" y "Ficha:".
+  - Centro y Ambiente en filas separadas con iconos (MapPin, Clock).
+  - Botón "Ver Horario" con icono Eye en lugar del listado textual de horas.
+- [ ] Modal read-only de horario:
+  - Mismo patrón `backdrop-blur-sm bg-white/30`, ancho `max-w-lg`.
+  - Muestra programa y ambiente como info complementaria.
+  - Cuadrícula semanal idéntica al modal de creación (grid `32px repeat(6, 1fr)`, `gap-0.5`, `h-4`).
+  - Celdas sin interacción: `cursor-default`, sin click/drag.
+  - Título: "Horario — Ficha XXXXXX".
+  - Botón "Cerrar" en footer.
 - [ ] `npm run lint` sin errores nuevos.
 - [ ] Commit + deploy sync + push.
