@@ -443,7 +443,7 @@ export default function FichasView() {
         {(filtroProgramaId || filtroRegionalId || filtroCentroId || filtroAmbienteId) && (
           <button
             onClick={() => { setFiltroProgramaId(""); setFiltroRegionalId(""); setFiltroCentroId(""); setFiltroAmbienteId(""); }}
-            className="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition self-center mt-2 shrink-0"
+            className="flex items-center gap-1 px-2 py-1 text-xs text-gray-500 hover:text-gray-700 border border-gray-200 hover:bg-gray-100 rounded-md transition self-center mt-2 shrink-0"
           >
             <X className="w-3 h-3" />
             Limpiar
