@@ -43,8 +43,8 @@ Agregar un toggle de vista (cards ↔ tabla) en el módulo de fichas, más un mo
 - [ ] Dropdown del SearchableSelect: `w-72`, `max-h-48`, input con icono Search dentro, opción "Todos" separada con border-b.
 - [ ] Opciones en dropdown con `truncate` + `title` para nombres largos, opción activa con indicador púrpura.
 - [ ] Los 4 filtros agrupados en contenedor `bg-gray-50/60 border border-gray-100 rounded-lg p-2`.
-- [ ] Botón "Limpiar" entre filtros y toggle, visible solo cuando hay al menos un filtro activo.
-- [ ] Botón "Limpiar" con `text-gray-500 border border-gray-200` para contraste suficiente sin ser invasivo.
+- [ ] Botón "Limpiar" dentro del contenedor de filtros, al final del flex-wrap, centrado verticalmente.
+- [ ] Botón "Limpiar" visible solo cuando hay al menos un filtro activo, con `text-gray-500 border border-gray-200`.
 - [ ] Modalidad badge en cards: alineado a la derecha (`justify-between`), con `rounded-lg`.
 - [ ] Modalidad badge en tabla: también con `rounded-lg`.
 - [ ] `npm run lint` sin errores nuevos.

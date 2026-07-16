@@ -397,7 +397,7 @@ export default function FichasView() {
         )}
       </div>
 
-      <div className="flex items-start flex-wrap gap-3">
+      <div className="flex items-center flex-wrap gap-3">
         <div className="flex items-center flex-wrap gap-2 bg-gray-50/60 rounded-lg p-2 border border-gray-100 flex-1 min-w-0">
           <SearchableSelect
             value={filtroProgramaId}
@@ -439,17 +439,17 @@ export default function FichasView() {
               ...ambientesFiltrados.map(a => ({ value: String(a.id), label: a.nombre })),
             ]}
           />
+          {(filtroProgramaId || filtroRegionalId || filtroCentroId || filtroAmbienteId) && (
+            <button
+              onClick={() => { setFiltroProgramaId(""); setFiltroRegionalId(""); setFiltroCentroId(""); setFiltroAmbienteId(""); }}
+              className="flex items-center gap-1 px-2 py-1 text-xs text-gray-500 hover:text-gray-700 border border-gray-200 hover:bg-gray-100 rounded-md transition shrink-0"
+            >
+              <X className="w-3 h-3" />
+              Limpiar
+            </button>
+          )}
         </div>
-        {(filtroProgramaId || filtroRegionalId || filtroCentroId || filtroAmbienteId) && (
-          <button
-            onClick={() => { setFiltroProgramaId(""); setFiltroRegionalId(""); setFiltroCentroId(""); setFiltroAmbienteId(""); }}
-            className="flex items-center gap-1 px-2 py-1 text-xs text-gray-500 hover:text-gray-700 border border-gray-200 hover:bg-gray-100 rounded-md transition self-center mt-2 shrink-0"
-          >
-            <X className="w-3 h-3" />
-            Limpiar
-          </button>
-        )}
-        <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 shrink-0 mt-2">
+        <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 shrink-0">
           <button onClick={() => setVista('cards')}
             className={`px-2 py-1 text-xs font-medium rounded-md transition ${vista === 'cards' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
             ⊞ Cards
