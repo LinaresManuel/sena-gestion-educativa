@@ -60,7 +60,7 @@ export default function SearchableSelect({ value, onChange, options, label, plac
   return (
     <div ref={containerRef} className="relative">
       <div
-        className={`flex items-center gap-1.5 border rounded-lg px-2.5 py-1.5 text-xs cursor-pointer transition min-w-[140px] ${
+        className={`flex items-center gap-1.5 border rounded-lg px-2.5 py-1.5 text-xs cursor-pointer transition w-[180px] shrink-0 ${
           hasValue
             ? 'border-purple-300 bg-purple-50/30'
             : 'border-gray-200 bg-white hover:border-gray-300 hover:shadow-sm'
