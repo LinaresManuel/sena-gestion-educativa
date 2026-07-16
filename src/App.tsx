@@ -129,72 +129,72 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <aside className="w-64 bg-white border-r flex flex-col overflow-y-auto">
-        <div className="p-6 flex-1">
-          <div className="flex items-center gap-2 mb-8">
-            <BookOpen className="w-8 h-8 text-blue-600" />
-            <span className="text-xl font-bold tracking-tight">SenaSchedule</span>
+      <aside className="w-64 bg-white border-r flex flex-col">
+        <div className="p-5 flex-1">
+          <div className="flex items-center gap-2 mb-5">
+            <BookOpen className="w-7 h-7 text-blue-600" />
+            <span className="text-lg font-bold tracking-tight">SenaSchedule</span>
           </div>
-          <nav className="space-y-1">
-            <Link to="/" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+          <nav className="space-y-0.5">
+            <Link to="/" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <LayoutDashboard className="w-5 h-5 text-gray-500" /> Dashboard
             </Link>
             {canViewRegionales && (
-            <Link to="/regionales" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Link to="/regionales" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <MapPin className="w-5 h-5 text-gray-500" /> Regionales
             </Link>)}
             {canViewCentros && (
-            <Link to="/centros" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Link to="/centros" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <Building className="w-5 h-5 text-gray-500" /> Centros
             </Link>)}
             {canViewAmbientes && (
-            <Link to="/ambientes" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Link to="/ambientes" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <Home className="w-5 h-5 text-gray-500" /> Ambientes
             </Link>)}
             {canViewTiposAmbiente && (
-            <Link to="/tipos-ambiente" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Link to="/tipos-ambiente" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <Home className="w-5 h-5 text-gray-400 ml-1" /> Tipos de Ambientes
             </Link>)}
             {canViewInstructores && (
-            <Link to="/instructores" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Link to="/instructores" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <Users className="w-5 h-5 text-gray-500" /> Instructores
             </Link>)}
             {canViewPerfilesAcademicos && (
-              <Link to="/perfiles-academicos" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Link to="/perfiles-academicos" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
                 <Users className="w-5 h-5 text-purple-500" /> Perfiles Académicos
               </Link>
             )}
             {canViewProgramas && (
-            <Link to="/programas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Link to="/programas" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <BookOpen className="w-5 h-5 text-gray-500" /> Programas
             </Link>)}
             {canViewFichas && (
-            <Link to="/fichas" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Link to="/fichas" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
               <BookOpen className="w-5 h-5 text-emerald-600" /> Fichas
             </Link>)}
             {canViewProgramacion && (
-              <Link to="/programacion" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Link to="/programacion" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
                 <Calendar className="w-5 h-5 text-indigo-500" /> Programación
               </Link>
             )}
             {isAdmin && (
               <>
-                <div className="border-t border-gray-200 my-3"></div>
-                <Link to="/admin" className="flex items-center gap-3 px-3 py-2 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+                <div className="border-t border-gray-200 my-2"></div>
+                <Link to="/admin" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
                   <Shield className="w-5 h-5 text-red-500" /> Administración
                 </Link>
               </>
             )}
           </nav>
         </div>
-        <div className="p-6 border-t">
-          <div className="text-sm mb-3">
+        <div className="p-4 border-t">
+          <div className="text-sm mb-2">
             <div className="font-medium text-gray-900">{user.nombre}</div>
             <div className="text-gray-500 text-xs">{user.username} · {user.rol}</div>
           </div>
           <button
             onClick={onLogout}
-            className="w-full flex items-center justify-center gap-2 text-sm text-red-600 hover:bg-red-50 py-2 rounded-md transition"
+            className="w-full flex items-center justify-center gap-2 text-sm text-red-600 hover:bg-red-50 py-1.5 rounded-md transition"
           >
             <LogOut className="w-4 h-4" /> Cerrar sesión
           </button>
