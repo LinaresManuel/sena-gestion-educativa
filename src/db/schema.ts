@@ -61,6 +61,7 @@ export const programas = sqliteTable('programas', {
   version: text('version').notNull(),
   horasLectiva: integer('horas_lectiva').notNull(),
   horasProductiva: integer('horas_productiva').notNull(),
+  duracionTotal: integer('duracion_total'),
   tipoPrograma: text('tipo_programa').notNull(),
   pdfDocument: text('pdf_document'),
 }, (t) => ({
@@ -73,6 +74,7 @@ export const competencias = sqliteTable('competencias', {
   codigo: text('codigo').notNull(),
   nombre: text('nombre').notNull(),
   duracionHoras: integer('duracion_horas').notNull(),
+  normaUnidadCompetencia: text('norma_unidad_competencia'),
   porcentajeHorasDirectas: integer('porcentaje_horas_directas').notNull().default(80),
 });
 
