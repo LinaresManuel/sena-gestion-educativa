@@ -440,6 +440,15 @@ export default function FichasView() {
             ]}
           />
         </div>
+        {(filtroProgramaId || filtroRegionalId || filtroCentroId || filtroAmbienteId) && (
+          <button
+            onClick={() => { setFiltroProgramaId(""); setFiltroRegionalId(""); setFiltroCentroId(""); setFiltroAmbienteId(""); }}
+            className="flex items-center gap-1 px-2 py-1 text-xs text-gray-400 hover:text-gray-600 hover:bg-gray-100 rounded-md transition self-center mt-2 shrink-0"
+          >
+            <X className="w-3 h-3" />
+            Limpiar
+          </button>
+        )}
         <div className="flex items-center gap-0.5 bg-gray-100 rounded-lg p-0.5 shrink-0 mt-2">
           <button onClick={() => setVista('cards')}
             className={`px-2 py-1 text-xs font-medium rounded-md transition ${vista === 'cards' ? 'bg-white text-gray-900 shadow-sm' : 'text-gray-500 hover:text-gray-700'}`}>
