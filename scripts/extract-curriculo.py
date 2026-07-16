@@ -14,6 +14,7 @@ import sys
 import os
 import json
 import re
+import time
 import requests
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -23,7 +24,7 @@ if not API_KEY:
     print("Error: variable de entorno OPENROUTER_API_KEY no definida.", file=sys.stderr)
     print("Configúrala con: $env:OPENROUTER_API_KEY='sk-or-v1-...'", file=sys.stderr)
     sys.exit(1)
-MODEL = "tencent/hy3:free"
+MODEL = "poolside/laguna-xs-2.1:free"
 
 
 # ── Fase 1: Extracción de texto del PDF ──────────────────────────
@@ -62,7 +63,6 @@ def call_llm(system_prompt: str, text: str) -> dict:
                 {"role": "system", "content": system_prompt},
                 {"role": "user", "content": f"Extrae la información estructurada del siguiente diseño curricular:\n\n{text}"},
             ],
-            "reasoning": {"enabled": True},
         },
         timeout=300,
     )
@@ -113,6 +113,8 @@ def main() -> None:
         print(f"Error: archivo no encontrado: {pdf_path}", file=sys.stderr)
         sys.exit(1)
 
+    start = time.time()
+
     print("📄 Extrayendo texto del PDF...", file=sys.stderr)
     text = extract_text_from_pdf(pdf_path)
     print(f"   → {len(text)} caracteres extraídos", file=sys.stderr)
@@ -137,7 +139,11 @@ def main() -> None:
         print(raw_response[:2000], file=sys.stderr)
         sys.exit(1)
 
-    print("✅ JSON válido extraído correctamente.", file=sys.stderr)
+    elapsed = time.time() - start
+    total_comp = len(result.get("competencias", []))
+    total_raps = sum(len(c.get("resultados_aprendizaje", [])) for c in result.get("competencias", []))
+    print(f"✅ JSON válido — {total_comp} competencias, {total_raps} RAPs", file=sys.stderr)
+    print(f"⏱ {elapsed:.1f}s total", file=sys.stderr)
     print(json.dumps(result, indent=2, ensure_ascii=False))
 
 
