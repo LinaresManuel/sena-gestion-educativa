@@ -130,63 +130,61 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
   return (
     <div className="flex h-screen bg-gray-50">
       <aside className="w-64 bg-white border-r flex flex-col">
-        <div className="p-5 flex-1">
-          <div className="flex items-center gap-2 mb-5">
-            <BookOpen className="w-7 h-7 text-blue-600" />
-            <span className="text-lg font-bold tracking-tight">SenaSchedule</span>
-          </div>
-          <nav className="space-y-0.5">
-            <Link to="/" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <LayoutDashboard className="w-5 h-5 text-gray-500" /> Dashboard
-            </Link>
-            {canViewRegionales && (
-            <Link to="/regionales" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <MapPin className="w-5 h-5 text-gray-500" /> Regionales
-            </Link>)}
-            {canViewCentros && (
-            <Link to="/centros" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <Building className="w-5 h-5 text-gray-500" /> Centros
-            </Link>)}
-            {canViewAmbientes && (
-            <Link to="/ambientes" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <Home className="w-5 h-5 text-gray-500" /> Ambientes
-            </Link>)}
-            {canViewTiposAmbiente && (
-            <Link to="/tipos-ambiente" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <Home className="w-5 h-5 text-gray-400 ml-1" /> Tipos de Ambientes
-            </Link>)}
-            {canViewInstructores && (
-            <Link to="/instructores" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <Users className="w-5 h-5 text-gray-500" /> Instructores
-            </Link>)}
-            {canViewPerfilesAcademicos && (
-              <Link to="/perfiles-academicos" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Users className="w-5 h-5 text-purple-500" /> Perfiles Académicos
-              </Link>
-            )}
-            {canViewProgramas && (
-            <Link to="/programas" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <BookOpen className="w-5 h-5 text-gray-500" /> Programas
-            </Link>)}
-            {canViewFichas && (
-            <Link to="/fichas" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-              <BookOpen className="w-5 h-5 text-emerald-600" /> Fichas
-            </Link>)}
-            {canViewProgramacion && (
-              <Link to="/programacion" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                <Calendar className="w-5 h-5 text-indigo-500" /> Programación
-              </Link>
-            )}
-            {isAdmin && (
-              <>
-                <div className="border-t border-gray-200 my-2"></div>
-                <Link to="/admin" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
-                  <Shield className="w-5 h-5 text-red-500" /> Administración
-                </Link>
-              </>
-            )}
-          </nav>
+        <div className="flex items-center gap-2 px-5 pt-5 pb-3">
+          <BookOpen className="w-7 h-7 text-blue-600" />
+          <span className="text-lg font-bold tracking-tight">SenaSchedule</span>
         </div>
+        <nav className="flex-1 flex flex-col justify-evenly px-3 overflow-y-auto">
+          <Link to="/" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <LayoutDashboard className="w-5 h-5 text-gray-500" /> Dashboard
+          </Link>
+          {canViewRegionales && (
+          <Link to="/regionales" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <MapPin className="w-5 h-5 text-gray-500" /> Regionales
+          </Link>)}
+          {canViewCentros && (
+          <Link to="/centros" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Building className="w-5 h-5 text-gray-500" /> Centros
+          </Link>)}
+          {canViewAmbientes && (
+          <Link to="/ambientes" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Home className="w-5 h-5 text-gray-500" /> Ambientes
+          </Link>)}
+          {canViewTiposAmbiente && (
+          <Link to="/tipos-ambiente" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Home className="w-5 h-5 text-gray-400 ml-1" /> Tipos de Ambientes
+          </Link>)}
+          {canViewInstructores && (
+          <Link to="/instructores" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <Users className="w-5 h-5 text-gray-500" /> Instructores
+          </Link>)}
+          {canViewPerfilesAcademicos && (
+            <Link to="/perfiles-academicos" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Users className="w-5 h-5 text-purple-500" /> Perfiles Académicos
+            </Link>
+          )}
+          {canViewProgramas && (
+          <Link to="/programas" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <BookOpen className="w-5 h-5 text-gray-500" /> Programas
+          </Link>)}
+          {canViewFichas && (
+          <Link to="/fichas" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+            <BookOpen className="w-5 h-5 text-emerald-600" /> Fichas
+          </Link>)}
+          {canViewProgramacion && (
+            <Link to="/programacion" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+              <Calendar className="w-5 h-5 text-indigo-500" /> Programación
+            </Link>
+          )}
+          {isAdmin && (
+            <>
+              <div className="border-t border-gray-200"></div>
+              <Link to="/admin" className="flex items-center gap-3 px-3 py-1.5 text-sm font-medium rounded-md hover:bg-gray-100 text-gray-700">
+                <Shield className="w-5 h-5 text-red-500" /> Administración
+              </Link>
+            </>
+          )}
+        </nav>
         <div className="p-4 border-t">
           <div className="text-sm mb-2">
             <div className="font-medium text-gray-900">{user.nombre}</div>
