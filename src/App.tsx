@@ -129,7 +129,7 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
 
   return (
     <div className="flex h-screen bg-gray-50">
-      <aside className="w-64 bg-white border-r flex flex-col">
+      <aside className="w-64 bg-white border-r flex flex-col overflow-y-auto">
         <div className="p-6 flex-1">
           <div className="flex items-center gap-2 mb-8">
             <BookOpen className="w-8 h-8 text-blue-600" />
