@@ -1124,6 +1124,11 @@ async function startServer() {
         if (inst.length === 0 || inst[0].centroFormacionId !== ficha.centroFormacionId) {
           errors.push(`Evento ${i}: instructor ${ev.instructorId} no pertenece al centro de la ficha`);
         }
+        if (inst.length > 0) {
+          if (!isHoraInHorario(inst[0].horario, dia, ev.horaInicio)) {
+            errors.push(`Evento ${i}: instructor ${ev.instructorId} no está disponible en ${dia} a las ${ev.horaInicio}:00 según su horario`);
+          }
+        }
         const instructorConflict = await db.select().from(programacionEventos).where(
           and(eq(programacionEventos.fecha, ev.fecha), eq(programacionEventos.horaInicio, ev.horaInicio), eq(programacionEventos.instructorId, ev.instructorId))
         );
@@ -1205,6 +1210,22 @@ async function startServer() {
       const { fecha, hora } = req.query;
       if (!fecha || hora === undefined) return res.status(400).json({ error: 'Se requiere fecha y hora' });
       const horaInicio = Number(hora);
+
+      const instr = await db.select({ horario: instructores.horario }).from(instructores).where(eq(instructores.id, instructorId));
+      if (instr.length > 0) {
+        const horario = instr[0].horario;
+        if (!horario || Object.keys(horario).length === 0) {
+          return res.json({ disponible: false, conflictos: [], motivo: 'Instructor sin horario de disponibilidad asignado' });
+        }
+        const dia = getDiaSemana(String(fecha));
+        const slots = (horario as Record<string, string[]>)[dia];
+        if (!slots || !Array.isArray(slots) || !slots.some(s => parseInt(s.split('-')[0], 10) === horaInicio)) {
+          return res.json({ disponible: false, conflictos: [], motivo: `Fuera del horario del instructor (${dia})` });
+        }
+      } else {
+        return res.status(404).json({ error: 'Instructor no encontrado' });
+      }
+
       const conditions = [
         eq(programacionEventos.instructorId, instructorId),
         eq(programacionEventos.fecha, String(fecha)),

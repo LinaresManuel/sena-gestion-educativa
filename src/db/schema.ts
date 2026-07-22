@@ -52,6 +52,7 @@ export const instructores = sqliteTable('instructores', {
   tipoVinculacion: text('tipo_vinculacion').notNull(), // Ej: PLANTA, CONTRATISTA
   requisitosAcademicos: text('requisitos_academicos', { mode: 'json' }), // Guardamos array de perfiles/títulos
   centroFormacionId: integer('centro_formacion_id').notNull().references(() => centrosFormacion.id),
+  horario: text('horario', { mode: 'json' }), // { "LUNES": ["06:00-07:00", ...], ... } (disponibilidad semanal)
   estado: text('estado').notNull().default('ACTIVO'),
 });
 

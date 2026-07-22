@@ -1,7 +1,13 @@
-import { useState, useEffect } from "react";
-import { Plus, Trash2, X, Pencil } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { Plus, Trash2, X, Pencil, Clock } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 import ConfirmDialog from "./ConfirmDialog";
+
+const DIAS_VISIBLES = ["LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO"];
+const HORAS = Array.from({ length: 16 }, (_, i) => {
+  const start = i + 6;
+  return `${start.toString().padStart(2, '0')}:00-${(start + 1).toString().padStart(2, '0')}:00`;
+});
 
 interface PerfilInfo {
   id: number;
@@ -19,6 +25,7 @@ interface Instructor {
   requisitosAcademicos: string[];
   perfiles: PerfilInfo[];
   centroFormacionId: number;
+  horario: { [key: string]: string[] } | null;
 }
 
 interface Centro {
@@ -74,6 +81,11 @@ export default function InstructoresView() {
   const [estado, setEstado] = useState("ACTIVO");
   const [selectedPerfiles, setSelectedPerfiles] = useState<number[]>([]);
   const [centroFormacionId, setCentroFormacionId] = useState<number | "">("");
+  const [horario, setHorario] = useState<{ [key: string]: string[] }>({});
+  const isDragging = useRef(false);
+  const dragStart = useRef<{ dia: string; hora: string } | null>(null);
+  const dragEnd = useRef<{ dia: string; hora: string } | null>(null);
+  const [dragPreview, setDragPreview] = useState<{ minDay: number; maxDay: number; minHour: number; maxHour: number } | null>(null);
 
   const fetchInstructores = async () => {
     setLoading(true);
@@ -125,7 +137,71 @@ export default function InstructoresView() {
     setEstado("ACTIVO");
     setSelectedPerfiles([]);
     setCentroFormacionId("");
+    setHorario({});
     setError(null);
+  }
+
+  const toggleHour = (day: string, hour: string) => {
+    setHorario(prev => {
+      const copy = { ...prev };
+      if (!copy[day]) copy[day] = [];
+      if (copy[day].includes(hour)) {
+        copy[day] = copy[day].filter(h => h !== hour);
+      } else {
+        copy[day] = [...copy[day], hour];
+      }
+      return copy;
+    });
+  };
+
+  function computeRange(start: { dia: string; hora: string }, end: { dia: string; hora: string }) {
+    const sd = DIAS_VISIBLES.indexOf(start.dia);
+    const ed = DIAS_VISIBLES.indexOf(end.dia);
+    const sh = HORAS.indexOf(start.hora);
+    const eh = HORAS.indexOf(end.hora);
+    return { minDay: Math.min(sd, ed), maxDay: Math.max(sd, ed), minHour: Math.min(sh, eh), maxHour: Math.max(sh, eh) };
+  }
+
+  function handleCellMouseDown(dia: string, hora: string) {
+    isDragging.current = true;
+    dragStart.current = { dia, hora };
+    dragEnd.current = { dia, hora };
+    setDragPreview({ minDay: DIAS_VISIBLES.indexOf(dia), maxDay: DIAS_VISIBLES.indexOf(dia), minHour: HORAS.indexOf(hora), maxHour: HORAS.indexOf(hora) });
+  }
+
+  function handleCellMouseEnter(dia: string, hora: string) {
+    if (!isDragging.current || !dragStart.current) return;
+    dragEnd.current = { dia, hora };
+    setDragPreview(computeRange(dragStart.current, { dia, hora }));
+  }
+
+  function handleCellMouseUp() {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    setDragPreview(null);
+    const start = dragStart.current;
+    const end = dragEnd.current;
+    if (!start || !end) return;
+    dragStart.current = null;
+    dragEnd.current = null;
+    const range = computeRange(start, end);
+    const isSimpleClick = start.dia === end.dia && start.hora === end.hora;
+    if (isSimpleClick) { toggleHour(start.dia, start.hora); return; }
+    const firstCellSelected = horario[start.dia]?.includes(start.hora) ?? false;
+    const action = firstCellSelected ? 'deselect' : 'select';
+    setHorario(prev => {
+      const copy = { ...prev };
+      for (let d = range.minDay; d <= range.maxDay; d++) {
+        const dia = DIAS_VISIBLES[d];
+        if (!copy[dia]) copy[dia] = [];
+        for (let h = range.minHour; h <= range.maxHour; h++) {
+          const hora = HORAS[h];
+          if (action === 'select') { if (!copy[dia].includes(hora)) copy[dia] = [...copy[dia], hora]; }
+          else { copy[dia] = copy[dia].filter(hr => hr !== hora); }
+        }
+      }
+      return copy;
+    });
   }
 
   const togglePerfil = (id: number) => {
@@ -144,6 +220,7 @@ export default function InstructoresView() {
     setTipoVinculacion(instructor.tipoVinculacion);
     setEstado(instructor.estado);
     setCentroFormacionId(instructor.centroFormacionId || "");
+    setHorario(instructor.horario || {});
     setSelectedPerfiles(instructor.perfiles?.map((p: PerfilInfo) => p.id) || []);
     setError(null);
     setShowForm(true);
@@ -159,6 +236,7 @@ export default function InstructoresView() {
     const body = {
       documento, nombres, apellidos, tipoVinculacion, estado,
       centroFormacionId: Number(centroFormacionId),
+      horario: Object.keys(horario).length > 0 ? horario : null,
       perfilIds: selectedPerfiles,
       requisitosAcademicos: selectedPerfiles.map(id => {
         const p = availablePerfiles.find(ap => ap.id === id);
@@ -211,7 +289,7 @@ export default function InstructoresView() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Instructores</h1>
         {mayCrear && (
-          <button onClick={() => { setShowForm(true); setEditingId(null); setDocumento(""); setNombres(""); setApellidos(""); setTipoVinculacion("PLANTA"); setEstado("ACTIVO"); setSelectedPerfiles([]); setCentroFormacionId(""); setError(null); }}
+          <button onClick={() => { setShowForm(true); setEditingId(null); setDocumento(""); setNombres(""); setApellidos(""); setTipoVinculacion("PLANTA"); setEstado("ACTIVO"); setSelectedPerfiles([]); setCentroFormacionId(""); setHorario({}); setError(null); }}
             className="flex items-center gap-1 px-3 py-1.5 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded-lg">
             <Plus className="w-4 h-4" /> Nuevo Instructor
           </button>
@@ -352,6 +430,45 @@ export default function InstructoresView() {
                   <option value="ACTIVO">ACTIVO</option>
                   <option value="INACTIVO">INACTIVO</option>
                 </select>
+              </div>
+              <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">
+                  <Clock className="w-3.5 h-3.5 inline mr-1" /> Disponibilidad Semanal
+                </label>
+                <div className="overflow-x-auto border rounded-lg bg-gray-50/50 select-none"
+                  onMouseUp={handleCellMouseUp} onMouseLeave={handleCellMouseUp}>
+                  <table className="w-full text-center border-collapse text-[10px]">
+                    <thead>
+                      <tr>
+                        <th className="border p-1 bg-gray-100 text-gray-500 font-semibold min-w-[50px]">Hr</th>
+                        {DIAS_VISIBLES.map(d => (
+                          <th key={d} className="border p-1 bg-gray-100 text-gray-500 font-semibold min-w-[64px] uppercase">{d.substring(0, 3)}</th>
+                        ))}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {HORAS.map((hora, rowIdx) => (
+                        <tr key={rowIdx}>
+                          <td className="border p-0.5 bg-gray-100 text-gray-400 font-mono text-[9px]">{hora.split('-')[0]}</td>
+                          {DIAS_VISIBLES.map((dia, colIdx) => {
+                            const isActive = horario[dia]?.includes(hora) ?? false;
+                            const inPreview = dragPreview && colIdx >= dragPreview.minDay && colIdx <= dragPreview.maxDay && rowIdx >= dragPreview.minHour && rowIdx <= dragPreview.maxHour;
+                            return (
+                              <td key={dia + hora}
+                                className={`border p-0.5 cursor-pointer transition-colors ${isActive ? 'bg-indigo-200 border-indigo-300' : inPreview ? 'bg-indigo-100/50 border-dashed border-indigo-200' : 'hover:bg-indigo-50 bg-white'}`}
+                                onMouseDown={() => handleCellMouseDown(dia, hora)}
+                                onMouseEnter={() => handleCellMouseEnter(dia, hora)}
+                              >
+                                {isActive && <div className="w-2 h-2 rounded-full bg-indigo-500 mx-auto" />}
+                              </td>
+                            );
+                          })}
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+                <p className="text-[10px] text-gray-400 mt-0.5">Arrastre para seleccionar horas disponibles. Vacío = sin disponibilidad.</p>
               </div>
               {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
               <div className="flex justify-end gap-2 pt-2 border-t">

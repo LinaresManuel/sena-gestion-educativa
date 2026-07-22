@@ -5,6 +5,12 @@ import ConfirmDialog from "./ConfirmDialog";
 import SearchableSelect from "./SearchableSelect";
 
 const DIAS_EN_ESP = ["DOMINGO", "LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO"];
+const DIAS_VISIBLES = ["LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO"];
+const HORAS = Array.from({ length: 16 }, (_, i) => {
+  const start = i + 6;
+  const end = start + 1;
+  return `${start.toString().padStart(2, '0')}:00-${end.toString().padStart(2, '0')}:00`;
+});
 
 interface Evento {
   id: number;
@@ -50,9 +56,12 @@ export default function ProgramacionInstructoresView() {
   const [selectedRAs, setSelectedRAs] = useState<number[]>([]);
   const [activeRAId, setActiveRAId] = useState<number | null>(null);
 
-  const [currentMonth, setCurrentMonth] = useState(() => {
+  const [currentWeekStart, setCurrentWeekStart] = useState(() => {
     const t = new Date();
-    return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}`;
+    const day = t.getDay();
+    const diff = t.getDate() - day + (day === 0 ? -6 : 1);
+    const monday = new Date(t.setDate(diff));
+    return `${monday.getFullYear()}-${String(monday.getMonth() + 1).padStart(2, '0')}-${String(monday.getDate()).padStart(2, '0')}`;
   });
 
   const [savedEvents, setSavedEvents] = useState<Evento[]>([]);
@@ -145,24 +154,20 @@ export default function ProgramacionInstructoresView() {
         setSavedEvents(flat);
       })
       .catch(() => setSavedEvents([]));
-  }, [fichaId, currentMonth]);
+  }, [fichaId]);
 
-  const uniqueHoursSet = new Set<number>();
-  Object.values(fichaHorario).forEach((hours: any) => {
-    hours.forEach((h: string) => uniqueHoursSet.add(parseInt(h.split('-')[0], 10)));
-  });
-  const uniqueHours = Array.from(uniqueHoursSet).sort((a, b) => a - b);
-
-  const datesInMonth: Date[] = [];
-  if (currentMonth && Object.keys(fichaHorario).length > 0) {
-    const [y, m] = currentMonth.split('-').map(Number);
-    const d = new Date(y, m - 1, 1);
-    while (d.getMonth() === m - 1) {
-      const dayName = DIAS_EN_ESP[d.getDay()];
-      if (fichaHorario[dayName]?.length > 0) datesInMonth.push(new Date(d));
-      d.setDate(d.getDate() + 1);
+  const weekDates: Date[] = [];
+  if (currentWeekStart) {
+    const [y, m, d] = currentWeekStart.split('-').map(Number);
+    const monday = new Date(y, m - 1, d);
+    for (let i = 0; i < 6; i++) {
+      const date = new Date(monday);
+      date.setDate(monday.getDate() + i);
+      weekDates.push(date);
     }
   }
+
+  const uniqueHours = Array.from({ length: 16 }, (_, i) => i + 6);
 
   const dateToKey = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
   const cellKey = (fecha: string, hora: number) => `${fecha}-${hora}`;
@@ -217,7 +222,7 @@ export default function ProgramacionInstructoresView() {
 
     for (let c = preview.minCol; c <= preview.maxCol; c++) {
       for (let r = preview.minRow; r <= preview.maxRow; r++) {
-        const date = datesInMonth[c];
+        const date = weekDates[c];
         if (!date) continue;
         const hora = uniqueHours[r];
         if (hora === undefined) continue;
@@ -338,11 +343,19 @@ export default function ProgramacionInstructoresView() {
     } catch { showMessage("Error al limpiar", "error"); }
   };
 
-  const moveMonth = (delta: number) => {
-    const [y, m] = currentMonth.split('-').map(Number);
-    const d = new Date(y, m - 1 + delta, 1);
-    setCurrentMonth(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
+  const moveWeek = (delta: number) => {
+    const [y, m, d] = currentWeekStart.split('-').map(Number);
+    const base = new Date(y, m - 1, d);
+    base.setDate(base.getDate() + delta * 7);
+    setCurrentWeekStart(`${base.getFullYear()}-${String(base.getMonth() + 1).padStart(2, '0')}-${String(base.getDate()).padStart(2, '0')}`);
   };
+
+  const weekLabel = (() => {
+    if (weekDates.length < 6) return currentWeekStart;
+    const start = weekDates[0];
+    const end = weekDates[5];
+    return `${start.getDate()} ${start.toLocaleDateString('es', { month: 'short' })} - ${end.getDate()} ${end.toLocaleDateString('es', { month: 'short' })}`;
+  })();
 
   const estadoColor = (estado: string) => {
     switch (estado) {
@@ -410,7 +423,7 @@ export default function ProgramacionInstructoresView() {
                     const isActive = activeRAId === r.id;
                     return (
                       <div key={r.id} className={`rounded-lg border p-2 cursor-pointer transition ${isActive ? 'border-indigo-400 bg-indigo-50 ring-1 ring-indigo-200' : 'border-gray-100 hover:border-gray-200 bg-gray-50/50'}`}
-                        onClick={() => { toggleRA(r.id); if (!selectedRAs.includes(r.id)) setActiveRAId(r.id); }}>
+                        onClick={() => setActiveRAId(r.id)}>
                         <div className="flex items-start gap-1.5">
                           <input type="checkbox" className="mt-0.5 rounded text-indigo-600" checked={selectedRAs.includes(r.id)} onChange={() => toggleRA(r.id)} onClick={e => e.stopPropagation()} />
                           <div className="flex-1 min-w-0">
@@ -444,9 +457,9 @@ export default function ProgramacionInstructoresView() {
                     <button onClick={() => setClearingAll(true)} className="px-2.5 py-1 bg-white border border-red-200 text-red-600 hover:bg-red-50 rounded text-xs font-medium">Limpiar Todo</button>
                   )}
                   <div className="h-5 w-px bg-gray-200" />
-                  <button onClick={() => moveMonth(-1)} className="p-1 hover:bg-gray-200 rounded"><ChevronLeft className="w-4 h-4" /></button>
-                  <input type="month" value={currentMonth} onChange={e => setCurrentMonth(e.target.value)} className="border rounded px-2 py-1 text-xs font-semibold bg-white" />
-                  <button onClick={() => moveMonth(1)} className="p-1 hover:bg-gray-200 rounded"><ChevronRight className="w-4 h-4" /></button>
+                  <button onClick={() => moveWeek(-1)} className="p-1 hover:bg-gray-200 rounded"><ChevronLeft className="w-4 h-4" /></button>
+                  <span className="text-xs font-semibold text-gray-700 min-w-[140px] text-center">{weekLabel}</span>
+                  <button onClick={() => moveWeek(1)} className="p-1 hover:bg-gray-200 rounded"><ChevronRight className="w-4 h-4" /></button>
                   {mayCrear && draftCells.size > 0 && (
                     <>
                       <div className="h-5 w-px bg-gray-200" />
@@ -464,21 +477,24 @@ export default function ProgramacionInstructoresView() {
                     <Calendar className="w-12 h-12 mb-3 text-gray-300" />
                     <p className="text-sm">Seleccione una ficha para ver el calendario.</p>
                   </div>
-                ) : datesInMonth.length === 0 ? (
+                ) : weekDates.length === 0 ? (
                   <div className="flex flex-col items-center justify-center py-20 text-gray-400">
-                    <p className="text-sm">No hay días de clase para este mes según el horario de la ficha.</p>
+                    <p className="text-sm">No hay días de clase para esta semana según el horario de la ficha.</p>
                   </div>
                 ) : (
                   <table className="w-full text-left border-collapse text-xs select-none">
                     <thead>
                       <tr>
                         <th className="border-b border-r bg-gray-100 p-1.5 font-semibold text-gray-600 text-center min-w-[70px] sticky left-0 z-20">Hora</th>
-                        {datesInMonth.map((d, i) => (
-                          <th key={i} className="border-b bg-gray-50 border-r border-gray-100 p-1 font-medium text-gray-600 text-center min-w-[80px]">
-                            <div className="text-[9px] font-bold tracking-wider uppercase text-gray-400">{DIAS_EN_ESP[d.getDay()].substring(0, 3)}</div>
-                            <div className="text-base font-black text-gray-800">{d.getDate()}</div>
-                          </th>
-                        ))}
+                        {DIAS_VISIBLES.map((dia, i) => {
+                          const date = weekDates[i];
+                          return (
+                            <th key={i} className="border-b bg-gray-50 border-r border-gray-100 p-1 font-medium text-gray-600 text-center min-w-[90px]">
+                              <div className="text-[9px] font-bold tracking-wider uppercase text-gray-400">{dia.substring(0, 3)}</div>
+                              {date && <div className="text-base font-black text-gray-800">{date.getDate()}</div>}
+                            </th>
+                          );
+                        })}
                       </tr>
                     </thead>
                     <tbody>
@@ -487,7 +503,7 @@ export default function ProgramacionInstructoresView() {
                           <td className="border-b border-r bg-gray-50 p-1.5 text-center font-bold text-gray-500 sticky left-0 z-10 whitespace-nowrap shadow-[2px_0_4px_rgba(0,0,0,0.02)]">
                             {String(hora).padStart(2, '0')}:00
                           </td>
-                          {datesInMonth.map((d, colIdx) => {
+                          {weekDates.map((d, colIdx) => {
                             const fecha = dateToKey(d);
                             const dayName = DIAS_EN_ESP[d.getDay()];
                             const slotExists = fichaHorario[dayName]?.some((s: string) => parseInt(s.split('-')[0], 10) === hora);
@@ -503,7 +519,7 @@ export default function ProgramacionInstructoresView() {
                                 onMouseDown={() => slotExists && handleMouseDown(colIdx, rowIdx)}
                                 onMouseEnter={() => slotExists && handleMouseEnter(colIdx, rowIdx)}>
                                 {saved ? (
-                                  <div className={`rounded p-1 text-center relative group min-h-[32px] flex flex-col justify-center border ${estadoColor(saved.estado)}`}
+                                  <div className={`rounded p-1 text-center relative group min-h-[40px] flex flex-col justify-center border ${estadoColor(saved.estado)}`}
                                     onClick={() => setSelectedEvent(saved)}>
                                     <div className="text-[9px] font-bold">{resInfo?.codigo || 'RA'}</div>
                                     <div className="text-[8px] leading-tight line-clamp-1" title={resInfo?.nombre}>{resInfo?.nombre?.substring(0, 20)}</div>
@@ -514,26 +530,26 @@ export default function ProgramacionInstructoresView() {
                                     )}
                                   </div>
                                 ) : draft ? (
-                                  <div className="rounded p-1 text-center border border-indigo-300 bg-indigo-100 text-indigo-700 min-h-[32px] flex flex-col justify-center relative group">
+                                  <div className="rounded p-1 text-center border border-indigo-300 bg-indigo-100 text-indigo-700 min-h-[40px] flex flex-col justify-center relative group">
                                     <div className="text-[9px] font-bold">{resInfo?.codigo || 'RA'}</div>
                                     <div className="text-[8px] leading-tight line-clamp-1">{resInfo?.nombre?.substring(0, 20)}</div>
                                     <button onClick={() => setDraftCells(prev => { const n = new Map(prev); n.delete(cellKey(fecha, hora)); return n; })}
                                       className="absolute -top-1 -right-1 bg-gray-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-[8px]">✕</button>
                                   </div>
                                 ) : conflict ? (
-                                  <div className="rounded p-1 text-center border border-amber-300 bg-amber-50 text-amber-600 min-h-[32px] flex items-center justify-center">
+                                  <div className="rounded p-1 text-center border border-amber-300 bg-amber-50 text-amber-600 min-h-[40px] flex items-center justify-center">
                                     <AlertTriangle className="w-3 h-3" />
                                   </div>
                                 ) : inPreview && slotExists && activeRAId ? (
-                                  <div className="rounded p-1 text-center border border-indigo-200 bg-indigo-50/60 text-indigo-400 min-h-[32px] flex items-center justify-center">
+                                  <div className="rounded p-1 text-center border border-indigo-200 bg-indigo-50/60 text-indigo-400 min-h-[40px] flex items-center justify-center">
                                     <div className="text-[9px]">{allResultados.find(r => r.id === activeRAId)?.codigo}</div>
                                   </div>
                                 ) : slotExists ? (
-                                  <div className="min-h-[32px] flex items-center justify-center text-gray-200 hover:bg-indigo-50/30 rounded transition">
+                                  <div className="min-h-[40px] flex items-center justify-center text-gray-200 hover:bg-indigo-50/30 rounded transition">
                                     <span className="text-[10px]">+</span>
                                   </div>
                                 ) : (
-                                  <div className="min-h-[32px]" />
+                                  <div className="min-h-[40px]" />
                                 )}
                               </td>
                             );
