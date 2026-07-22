@@ -51,6 +51,7 @@ export const instructores = sqliteTable('instructores', {
   apellidos: text('apellidos').notNull(),
   tipoVinculacion: text('tipo_vinculacion').notNull(), // Ej: PLANTA, CONTRATISTA
   requisitosAcademicos: text('requisitos_academicos', { mode: 'json' }), // Guardamos array de perfiles/títulos
+  centroFormacionId: integer('centro_formacion_id').notNull().references(() => centrosFormacion.id),
   estado: text('estado').notNull().default('ACTIVO'),
 });
 
@@ -142,8 +143,28 @@ export const programacionInstructores = sqliteTable('programacion_instructores',
   competenciaId: integer('competencia_id').notNull().references(() => competencias.id),
   instructorId: integer('instructor_id').notNull().references(() => instructores.id),
   resultadosIds: text('resultados_ids', { mode: 'json' }).notNull(),
-  eventos: text('eventos', { mode: 'json' }), // { [isoDate]: { [hora]: resultadoId } }
-});
+  estado: text('estado').notNull().default('PLANIFICADO'), // PLANIFICADO | EJECUTADO | CANCELADO
+  createdAt: text('created_at').notNull().default("datetime('now')"),
+  updatedAt: text('updated_at').notNull().default("datetime('now')"),
+}, (t) => ({
+  unq: unique().on(t.fichaId, t.competenciaId, t.instructorId),
+}));
+
+export const programacionEventos = sqliteTable('programacion_eventos', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  programacionId: integer('programacion_id').notNull().references(() => programacionInstructores.id, { onDelete: 'cascade' }),
+  fecha: text('fecha').notNull(), // YYYY-MM-DD
+  horaInicio: integer('hora_inicio').notNull(), // Entero 6-22 (hora de inicio del slot)
+  resultadoId: integer('resultado_id').notNull().references(() => resultadosAprendizaje.id),
+  instructorId: integer('instructor_id').notNull().references(() => instructores.id),
+  ambienteId: integer('ambiente_id').notNull().references(() => ambientes.id),
+  estado: text('estado').notNull().default('PLANIFICADO'), // PLANIFICADO | EJECUTADO | CANCELADO
+  createdAt: text('created_at').notNull().default("datetime('now')"),
+  updatedAt: text('updated_at').notNull().default("datetime('now')"),
+}, (t) => ({
+  unqInstructor: unique().on(t.fecha, t.horaInicio, t.instructorId), // Evita doble asignación de instructor
+  unqAmbiente: unique().on(t.fecha, t.horaInicio, t.ambienteId), // Evita doble reserva de ambiente
+}));
 
 export const usuarios = sqliteTable('usuarios', {
   id: integer('id').primaryKey({ autoIncrement: true }),

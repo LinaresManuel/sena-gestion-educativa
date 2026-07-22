@@ -2,8 +2,8 @@ import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/index.ts';
-import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, perfilesAcademicos, competenciasPerfiles, instructoresPerfiles, fichas, programacionInstructores } from './src/db/schema.ts';
-import { eq, and, ne, sql } from 'drizzle-orm';
+import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, perfilesAcademicos, competenciasPerfiles, instructoresPerfiles, fichas, programacionInstructores, programacionEventos } from './src/db/schema.ts';
+import { eq, and, ne, sql, inArray } from 'drizzle-orm';
 import { config } from './src/config.ts';
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
@@ -368,7 +368,8 @@ async function startServer() {
   // API Routes for Instructores
   app.get('/api/instructores', async (req, res) => {
     try {
-      const list = await db.select().from(instructores);
+      const where = req.query.centroId ? eq(instructores.centroFormacionId, Number(req.query.centroId)) : undefined;
+      const list = await db.select().from(instructores).where(where);
       const withPerfiles = await Promise.all(list.map(async (inst) => {
         const perfiles = await db.select({
           id: perfilesAcademicos.id,
@@ -385,7 +386,7 @@ async function startServer() {
     }
   });
 
-  app.post('/api/instructores', async (req, res) => {
+  app.post('/api/instructores', requirePermission('instructores.crear'), async (req, res) => {
     try {
       const { perfilIds, ...instructorData } = req.body;
       const result = await db.insert(instructores).values(instructorData).returning();
@@ -413,7 +414,7 @@ async function startServer() {
     }
   });
 
-  app.put('/api/instructores/:id', async (req, res) => {
+  app.put('/api/instructores/:id', requirePermission('instructores.editar'), async (req, res) => {
     try {
       const { perfilIds, ...instructorData } = req.body;
       const result = await db.update(instructores)
@@ -872,52 +873,103 @@ async function startServer() {
     }
   });
 
-  // API Routes for Programacion Instructores
-  app.get('/api/programacion-instructores', async (req, res) => {
+  // API Routes for Programacion Instructores (cabecera)
+  app.get('/api/programacion-instructores', requirePermission('programacion.ver'), async (req, res) => {
     try {
-      const list = await db.select().from(programacionInstructores);
+      const conditions = [];
+      if (req.query.fichaId) conditions.push(eq(programacionInstructores.fichaId, Number(req.query.fichaId)));
+      if (req.query.instructorId) conditions.push(eq(programacionInstructores.instructorId, Number(req.query.instructorId)));
+      const where = conditions.length > 0 ? and(...conditions) : undefined;
+      const list = await db.select({
+        id: programacionInstructores.id,
+        programaId: programacionInstructores.programaId,
+        fichaId: programacionInstructores.fichaId,
+        competenciaId: programacionInstructores.competenciaId,
+        instructorId: programacionInstructores.instructorId,
+        resultadosIds: programacionInstructores.resultadosIds,
+        estado: programacionInstructores.estado,
+        createdAt: programacionInstructores.createdAt,
+        updatedAt: programacionInstructores.updatedAt,
+        eventosCount: sql<number>`(SELECT COUNT(*) FROM programacion_eventos pe WHERE pe.programacion_id = ${programacionInstructores.id})`.as<'eventosCount'>('eventosCount'),
+      }).from(programacionInstructores).where(where);
       res.json(list);
     } catch (e: any) {
       handleDbError(e, res);
     }
   });
 
-  app.post('/api/programacion-instructores', async (req, res) => {
+  app.post('/api/programacion-instructores', requirePermission('programacion.crear'), async (req, res) => {
     try {
-      const result = await db.insert(programacionInstructores).values(req.body).returning();
-      res.json(result[0]);
+      const { programaId, fichaId, competenciaId, instructorId, resultadosIds, estado } = req.body;
+      const existing = await db.select().from(programacionInstructores).where(
+        and(
+          eq(programacionInstructores.fichaId, Number(fichaId)),
+          eq(programacionInstructores.competenciaId, Number(competenciaId)),
+          eq(programacionInstructores.instructorId, Number(instructorId)),
+        )
+      );
+      if (existing.length > 0) {
+        const updated = await db.update(programacionInstructores).set({
+          resultadosIds,
+          estado: estado ?? existing[0].estado,
+          updatedAt: sql`(datetime('now'))`,
+        }).where(eq(programacionInstructores.id, existing[0].id)).returning();
+        res.json(updated[0]);
+      } else {
+        const result = await db.insert(programacionInstructores).values({
+          programaId: Number(programaId),
+          fichaId: Number(fichaId),
+          competenciaId: Number(competenciaId),
+          instructorId: Number(instructorId),
+          resultadosIds,
+          estado: estado ?? 'PLANIFICADO',
+        }).returning();
+        res.json(result[0]);
+      }
     } catch (e: any) {
       handleDbError(e, res);
     }
   });
 
-  app.post('/api/programacion-instructores/limpiar-celda', async (req, res) => {
+  app.put('/api/programacion-instructores/:id', requirePermission('programacion.editar'), async (req, res) => {
+    try {
+      const { resultadosIds, estado } = req.body;
+      const updated = await db.update(programacionInstructores).set({
+        ...(resultadosIds !== undefined && { resultadosIds }),
+        ...(estado !== undefined && { estado }),
+        updatedAt: sql`(datetime('now'))`,
+      }).where(eq(programacionInstructores.id, Number(req.params.id))).returning();
+      if (updated.length === 0) return res.status(404).json({ error: 'Programación no encontrada' });
+      res.json(updated[0]);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.post('/api/programacion-instructores/limpiar-celda', requirePermission('programacion.editar'), async (req, res) => {
     try {
       const { fichaId, dateStr, hr } = req.body;
+      const horaInicio = parseInt(String(hr).split('-')[0], 10);
+      const allProg = await db.select({ id: programacionInstructores.id }).from(programacionInstructores).where(eq(programacionInstructores.fichaId, Number(fichaId)));
+      const progIds = allProg.map(p => p.id);
       let count = 0;
-      console.log(`Borrando celda para ficha: ${fichaId}, date: ${dateStr}, hr: ${hr}`);
-      
-      const allProg = await db.select().from(programacionInstructores).where(eq(programacionInstructores.fichaId, Number(fichaId)));
-      
-      for (const p of allProg) {
-         if (p.eventos) {
-            const ev = typeof p.eventos === 'string' ? JSON.parse(p.eventos) : p.eventos;
-            if (ev && ev[dateStr] && ev[dateStr][hr]) {
-               delete ev[dateStr][hr];
-               await db.update(programacionInstructores).set({ eventos: ev }).where(eq(programacionInstructores.id, p.id));
-               count++;
-            }
-         }
+      if (progIds.length > 0) {
+        const deleted = await db.delete(programacionEventos).where(
+          and(
+            inArray(programacionEventos.programacionId, progIds),
+            eq(programacionEventos.fecha, dateStr),
+            eq(programacionEventos.horaInicio, horaInicio)
+          )
+        );
+        count = deleted.changes;
       }
-      console.log(`Borradas: ${count}`);
       res.json({ success: true, count });
     } catch (e: any) {
-      console.error("Error en limpiar celda", e);
       handleDbError(e, res);
     }
   });
 
-  app.delete('/api/programacion-instructores/ficha/:fichaId', async (req, res) => {
+  app.delete('/api/programacion-instructores/ficha/:fichaId', requirePermission('programacion.eliminar'), async (req, res) => {
     try {
       await db.delete(programacionInstructores).where(eq(programacionInstructores.fichaId, Number(req.params.fichaId)));
       res.json({ success: true });
@@ -926,10 +978,295 @@ async function startServer() {
     }
   });
 
-  app.delete('/api/programacion-instructores/:id', async (req, res) => {
+  app.delete('/api/programacion-instructores/:id', requirePermission('programacion.eliminar'), async (req, res) => {
     try {
       await db.delete(programacionInstructores).where(eq(programacionInstructores.id, Number(req.params.id)));
       res.json({ success: true });
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+});
+
+  // ── API Routes for Programacion Eventos (detalle normalizado) ──
+
+  const DIAS_SEMANA_ES = ['DOMINGO', 'LUNES', 'MARTES', 'MIERCOLES', 'JUEVES', 'VIERNES', 'SABADO'];
+
+  function getDiaSemana(fecha: string): string {
+    const date = new Date(fecha + 'T00:00:00');
+    return DIAS_SEMANA_ES[date.getDay()];
+  }
+
+  function isHoraInHorario(horario: unknown, dia: string, horaInicio: number): boolean {
+    if (!horario || typeof horario !== 'object') return false;
+    const slots = (horario as Record<string, string[]>)[dia];
+    if (!slots || !Array.isArray(slots)) return false;
+    return slots.some(slot => parseInt(slot.split('-')[0], 10) === horaInicio);
+  }
+
+  app.get('/api/programacion-eventos', requirePermission('programacion.ver'), async (req, res) => {
+    try {
+      const conditions = [];
+      if (req.query.fichaId) {
+        conditions.push(eq(programacionInstructores.fichaId, Number(req.query.fichaId)));
+      }
+      if (req.query.instructorId) conditions.push(eq(programacionEventos.instructorId, Number(req.query.instructorId)));
+      if (req.query.fecha) conditions.push(eq(programacionEventos.fecha, String(req.query.fecha)));
+      if (req.query.programacionId) conditions.push(eq(programacionEventos.programacionId, Number(req.query.programacionId)));
+      const where = conditions.length > 0 ? and(...conditions) : undefined;
+      const list = await db.select({
+        id: programacionEventos.id,
+        programacionId: programacionEventos.programacionId,
+        fecha: programacionEventos.fecha,
+        horaInicio: programacionEventos.horaInicio,
+        resultadoId: programacionEventos.resultadoId,
+        instructorId: programacionEventos.instructorId,
+        ambienteId: programacionEventos.ambienteId,
+        estado: programacionEventos.estado,
+        createdAt: programacionEventos.createdAt,
+        updatedAt: programacionEventos.updatedAt,
+        resultadoCodigo: resultadosAprendizaje.codigo,
+        resultadoNombre: resultadosAprendizaje.nombre,
+        instructorNombre: instructores.nombres,
+        instructorApellido: instructores.apellidos,
+        ambienteCodigo: ambientes.codigo,
+        ambienteNombre: ambientes.nombre,
+        fichaId: programacionInstructores.fichaId,
+        programaId: programacionInstructores.programaId,
+        competenciaId: programacionInstructores.competenciaId,
+      })
+        .from(programacionEventos)
+        .leftJoin(resultadosAprendizaje, eq(programacionEventos.resultadoId, resultadosAprendizaje.id))
+        .leftJoin(instructores, eq(programacionEventos.instructorId, instructores.id))
+        .leftJoin(ambientes, eq(programacionEventos.ambienteId, ambientes.id))
+        .leftJoin(programacionInstructores, eq(programacionEventos.programacionId, programacionInstructores.id))
+        .where(where);
+      res.json(list);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.get('/api/programacion-eventos/ficha/:fichaId', requirePermission('programacion.ver'), async (req, res) => {
+    try {
+      const fichaId = Number(req.params.fichaId);
+      const events = await db.select({
+        id: programacionEventos.id,
+        programacionId: programacionEventos.programacionId,
+        fecha: programacionEventos.fecha,
+        horaInicio: programacionEventos.horaInicio,
+        resultadoId: programacionEventos.resultadoId,
+        instructorId: programacionEventos.instructorId,
+        ambienteId: programacionEventos.ambienteId,
+        estado: programacionEventos.estado,
+        resultadoCodigo: resultadosAprendizaje.codigo,
+        resultadoNombre: resultadosAprendizaje.nombre,
+        instructorNombre: instructores.nombres,
+        instructorApellido: instructores.apellidos,
+        competenciaId: programacionInstructores.competenciaId,
+      })
+        .from(programacionEventos)
+        .leftJoin(programacionInstructores, eq(programacionEventos.programacionId, programacionInstructores.id))
+        .leftJoin(resultadosAprendizaje, eq(programacionEventos.resultadoId, resultadosAprendizaje.id))
+        .leftJoin(instructores, eq(programacionEventos.instructorId, instructores.id))
+        .where(eq(programacionInstructores.fichaId, fichaId));
+      const grouped: Record<string, Record<number, typeof events[number]>> = {};
+      for (const e of events) {
+        if (!grouped[e.fecha]) grouped[e.fecha] = {};
+        grouped[e.fecha][e.horaInicio] = e;
+      }
+      res.json(grouped);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.post('/api/programacion-eventos', requirePermission('programacion.crear'), async (req, res) => {
+    try {
+      const { programacionId } = req.body;
+      const eventosInput: { fecha: string; horaInicio: number; resultadoId: number; instructorId: number; ambienteId: number }[] = req.body.eventos;
+
+      if (!programacionId || !eventosInput || !Array.isArray(eventosInput) || eventosInput.length === 0) {
+        return res.status(400).json({ error: 'Se requiere programacionId y un array de eventos' });
+      }
+
+      const prog = await db.select().from(programacionInstructores).where(eq(programacionInstructores.id, Number(programacionId)));
+      if (prog.length === 0) return res.status(404).json({ error: 'Programación no encontrada' });
+
+      const fichaRow = await db.select().from(fichas).where(eq(fichas.id, prog[0].fichaId));
+      if (fichaRow.length === 0) return res.status(404).json({ error: 'Ficha no encontrada' });
+      const ficha = fichaRow[0];
+
+      const ras = await db.select().from(resultadosAprendizaje)
+        .leftJoin(competencias, eq(resultadosAprendizaje.competenciaId, competencias.id))
+        .where(eq(competencias.id, prog[0].competenciaId));
+      const validResultadoIds = new Set(ras.map(r => r.resultados_aprendizaje.id));
+
+      const instructorRow = await db.select().from(instructores).where(eq(instructores.id, prog[0].instructorId));
+      const instructorCentroId = instructorRow[0]?.centroFormacionId;
+
+      const errors: string[] = [];
+      for (const [i, ev] of eventosInput.entries()) {
+        if (!ev.fecha || !ev.horaInicio || !ev.resultadoId || !ev.instructorId || !ev.ambienteId) {
+          errors.push(`Evento ${i}: faltan campos obligatorios`);
+          continue;
+        }
+        if (ev.fecha < ficha.fechaInicio || ev.fecha > ficha.fechaFinLectiva) {
+          errors.push(`Evento ${i}: fecha ${ev.fecha} fuera del rango lectivo de la ficha (${ficha.fechaInicio} a ${ficha.fechaFinLectiva})`);
+        }
+        const dia = getDiaSemana(ev.fecha);
+        if (!isHoraInHorario(ficha.horario, dia, ev.horaInicio)) {
+          errors.push(`Evento ${i}: hora ${ev.horaInicio} no está en el horario de la ficha para ${dia}`);
+        }
+        if (!validResultadoIds.has(ev.resultadoId)) {
+          errors.push(`Evento ${i}: resultado ${ev.resultadoId} no pertenece a la competencia de la programación`);
+        }
+        const inst = await db.select().from(instructores).where(eq(instructores.id, ev.instructorId));
+        if (inst.length === 0 || inst[0].centroFormacionId !== ficha.centroFormacionId) {
+          errors.push(`Evento ${i}: instructor ${ev.instructorId} no pertenece al centro de la ficha`);
+        }
+        const instructorConflict = await db.select().from(programacionEventos).where(
+          and(eq(programacionEventos.fecha, ev.fecha), eq(programacionEventos.horaInicio, ev.horaInicio), eq(programacionEventos.instructorId, ev.instructorId))
+        );
+        if (instructorConflict.length > 0) {
+          errors.push(`Evento ${i}: instructor ${ev.instructorId} ya tiene un evento en ${ev.fecha} hora ${ev.horaInicio}`);
+        }
+        const ambienteConflict = await db.select().from(programacionEventos).where(
+          and(eq(programacionEventos.fecha, ev.fecha), eq(programacionEventos.horaInicio, ev.horaInicio), eq(programacionEventos.ambienteId, ev.ambienteId))
+        );
+        if (ambienteConflict.length > 0) {
+          errors.push(`Evento ${i}: ambiente ${ev.ambienteId} ya está reservado en ${ev.fecha} hora ${ev.horaInicio}`);
+        }
+      }
+
+      if (errors.length > 0) {
+        return res.status(409).json({ error: 'Conflictos detectados', conflictos: errors });
+      }
+
+      const inserted = await db.insert(programacionEventos).values(
+        eventosInput.map(ev => ({
+          programacionId: Number(programacionId),
+          fecha: ev.fecha,
+          horaInicio: ev.horaInicio,
+          resultadoId: ev.resultadoId,
+          instructorId: ev.instructorId,
+          ambienteId: ev.ambienteId,
+          estado: 'PLANIFICADO' as const,
+        }))
+      ).returning();
+      res.json(inserted);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.put('/api/programacion-eventos/:id', requirePermission('programacion.editar'), async (req, res) => {
+    try {
+      const { estado, resultadoId, instructorId } = req.body;
+      const updatedFields: Record<string, unknown> = { updatedAt: sql`(datetime('now'))` };
+      if (estado !== undefined) updatedFields.estado = estado;
+      if (resultadoId !== undefined) updatedFields.resultadoId = resultadoId;
+      if (instructorId !== undefined) {
+        const existing = await db.select().from(programacionEventos).where(eq(programacionEventos.id, Number(req.params.id)));
+        if (existing.length === 0) return res.status(404).json({ error: 'Evento no encontrado' });
+        const conflict = await db.select().from(programacionEventos).where(
+          and(
+            eq(programacionEventos.fecha, existing[0].fecha),
+            eq(programacionEventos.horaInicio, existing[0].horaInicio),
+            eq(programacionEventos.instructorId, Number(instructorId)),
+            ne(programacionEventos.id, Number(req.params.id)),
+          )
+        );
+        if (conflict.length > 0) {
+          return res.status(409).json({ error: 'Instructor ya tiene un evento en esa fecha y hora' });
+        }
+        updatedFields.instructorId = Number(instructorId);
+      }
+      const updated = await db.update(programacionEventos).set(updatedFields).where(eq(programacionEventos.id, Number(req.params.id))).returning();
+      if (updated.length === 0) return res.status(404).json({ error: 'Evento no encontrado' });
+      res.json(updated[0]);
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  app.delete('/api/programacion-eventos/:id', requirePermission('programacion.eliminar'), async (req, res) => {
+    try {
+      await db.delete(programacionEventos).where(eq(programacionEventos.id, Number(req.params.id)));
+      res.json({ success: true });
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  // Disponibilidad de instructor
+  app.get('/api/disponibilidad/instructor/:id', requirePermission('programacion.ver'), async (req, res) => {
+    try {
+      const instructorId = Number(req.params.id);
+      const { fecha, hora } = req.query;
+      if (!fecha || hora === undefined) return res.status(400).json({ error: 'Se requiere fecha y hora' });
+      const horaInicio = Number(hora);
+      const conditions = [
+        eq(programacionEventos.instructorId, instructorId),
+        eq(programacionEventos.fecha, String(fecha)),
+        eq(programacionEventos.horaInicio, horaInicio),
+      ];
+      if (req.query.fichaId) {
+        const progIds = await db.select({ id: programacionInstructores.id }).from(programacionInstructores)
+          .where(ne(programacionInstructores.fichaId, Number(req.query.fichaId)));
+        if (progIds.length > 0) {
+          conditions.push(inArray(programacionEventos.programacionId, progIds.map(p => p.id)));
+        }
+      }
+      const conflictos = await db.select({
+        eventoId: programacionEventos.id,
+        fichaId: programacionInstructores.fichaId,
+        fichaNumero: fichas.numeroFicha,
+        programaDenominacion: programas.denominacion,
+        estado: programacionEventos.estado,
+      })
+        .from(programacionEventos)
+        .leftJoin(programacionInstructores, eq(programacionEventos.programacionId, programacionInstructores.id))
+        .leftJoin(fichas, eq(programacionInstructores.fichaId, fichas.id))
+        .leftJoin(programas, eq(programacionInstructores.programaId, programas.id))
+        .where(and(...conditions));
+      res.json({ disponible: conflictos.length === 0, conflictos });
+    } catch (e: any) {
+      handleDbError(e, res);
+    }
+  });
+
+  // Disponibilidad de ambiente
+  app.get('/api/disponibilidad/ambiente/:id', requirePermission('programacion.ver'), async (req, res) => {
+    try {
+      const ambienteId = Number(req.params.id);
+      const { fecha, hora } = req.query;
+      if (!fecha || hora === undefined) return res.status(400).json({ error: 'Se requiere fecha y hora' });
+      const horaInicio = Number(hora);
+      const conditions = [
+        eq(programacionEventos.ambienteId, ambienteId),
+        eq(programacionEventos.fecha, String(fecha)),
+        eq(programacionEventos.horaInicio, horaInicio),
+      ];
+      if (req.query.fichaId) {
+        const progIds = await db.select({ id: programacionInstructores.id }).from(programacionInstructores)
+          .where(ne(programacionInstructores.fichaId, Number(req.query.fichaId)));
+        if (progIds.length > 0) {
+          conditions.push(inArray(programacionEventos.programacionId, progIds.map(p => p.id)));
+        }
+      }
+      const conflictos = await db.select({
+        eventoId: programacionEventos.id,
+        fichaId: programacionInstructores.fichaId,
+        fichaNumero: fichas.numeroFicha,
+        programaDenominacion: programas.denominacion,
+        estado: programacionEventos.estado,
+      })
+        .from(programacionEventos)
+        .leftJoin(programacionInstructores, eq(programacionEventos.programacionId, programacionInstructores.id))
+        .leftJoin(fichas, eq(programacionInstructores.fichaId, fichas.id))
+        .leftJoin(programas, eq(programacionInstructores.programaId, programas.id))
+        .where(and(...conditions));
+      res.json({ disponible: conflictos.length === 0, conflictos });
     } catch (e: any) {
       handleDbError(e, res);
     }

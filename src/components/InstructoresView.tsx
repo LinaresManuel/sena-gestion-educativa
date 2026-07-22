@@ -18,6 +18,12 @@ interface Instructor {
   estado: string;
   requisitosAcademicos: string[];
   perfiles: PerfilInfo[];
+  centroFormacionId: number;
+}
+
+interface Centro {
+  id: number;
+  nombre: string;
 }
 
 export default function InstructoresView() {
@@ -30,6 +36,7 @@ export default function InstructoresView() {
   const [showForm, setShowForm] = useState(false);
   const [editingId, setEditingId] = useState<number | null>(null);
   const [availablePerfiles, setAvailablePerfiles] = useState<PerfilInfo[]>([]);
+  const [centros, setCentros] = useState<Centro[]>([]);
 
   const [notification, setNotification] = useState<{type: 'error' | 'success', text: string} | null>(null);
   const [deletingId, setDeletingId] = useState<number | null>(null);
@@ -66,6 +73,7 @@ export default function InstructoresView() {
   const [tipoVinculacion, setTipoVinculacion] = useState("PLANTA");
   const [estado, setEstado] = useState("ACTIVO");
   const [selectedPerfiles, setSelectedPerfiles] = useState<number[]>([]);
+  const [centroFormacionId, setCentroFormacionId] = useState<number | "">("");
 
   const fetchInstructores = async () => {
     setLoading(true);
@@ -91,9 +99,20 @@ export default function InstructoresView() {
     }
   };
 
+  const fetchCentros = async () => {
+    try {
+      const res = await fetch("/api/centros");
+      const data = await res.json();
+      setCentros(Array.isArray(data) ? data.map((c: any) => ({ id: c.id, nombre: c.nombre })) : []);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
   useEffect(() => {
     fetchInstructores();
     fetchPerfiles();
+    fetchCentros();
   }, []);
 
   function handleClose() {
@@ -105,6 +124,7 @@ export default function InstructoresView() {
     setTipoVinculacion("PLANTA");
     setEstado("ACTIVO");
     setSelectedPerfiles([]);
+    setCentroFormacionId("");
     setError(null);
   }
 
@@ -123,6 +143,7 @@ export default function InstructoresView() {
     setApellidos(instructor.apellidos);
     setTipoVinculacion(instructor.tipoVinculacion);
     setEstado(instructor.estado);
+    setCentroFormacionId(instructor.centroFormacionId || "");
     setSelectedPerfiles(instructor.perfiles?.map((p: PerfilInfo) => p.id) || []);
     setError(null);
     setShowForm(true);
@@ -131,11 +152,13 @@ export default function InstructoresView() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (selectedPerfiles.length === 0) return setError("Seleccione al menos un perfil");
+    if (!centroFormacionId) return setError("Seleccione un centro de formación");
     setSaving(true);
     setError(null);
 
     const body = {
       documento, nombres, apellidos, tipoVinculacion, estado,
+      centroFormacionId: Number(centroFormacionId),
       perfilIds: selectedPerfiles,
       requisitosAcademicos: selectedPerfiles.map(id => {
         const p = availablePerfiles.find(ap => ap.id === id);
@@ -188,7 +211,7 @@ export default function InstructoresView() {
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Instructores</h1>
         {mayCrear && (
-          <button onClick={() => { setShowForm(true); setEditingId(null); setDocumento(""); setNombres(""); setApellidos(""); setTipoVinculacion("PLANTA"); setEstado("ACTIVO"); setSelectedPerfiles([]); setError(null); }}
+          <button onClick={() => { setShowForm(true); setEditingId(null); setDocumento(""); setNombres(""); setApellidos(""); setTipoVinculacion("PLANTA"); setEstado("ACTIVO"); setSelectedPerfiles([]); setCentroFormacionId(""); setError(null); }}
             className="flex items-center gap-1 px-3 py-1.5 text-sm bg-purple-600 hover:bg-purple-700 text-white rounded-lg">
             <Plus className="w-4 h-4" /> Nuevo Instructor
           </button>
@@ -211,15 +234,16 @@ export default function InstructoresView() {
               <th className="px-6 py-3 font-medium text-gray-500">Documento</th>
               <th className="px-6 py-3 font-medium text-gray-500">Nombre Completo</th>
               <th className="px-6 py-3 font-medium text-gray-500">Vinculación</th>
+              <th className="px-6 py-3 font-medium text-gray-500">Centro</th>
               <th className="px-6 py-3 font-medium text-gray-500">Perfiles</th>
               {hayAcciones && <th className="px-6 py-3 font-medium text-gray-500 text-right">Acciones</th>}
             </tr>
           </thead>
           <tbody className="divide-y">
             {loading ? (
-                <tr><td colSpan={hayAcciones ? 5 : 4} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
+                <tr><td colSpan={hayAcciones ? 6 : 5} className="px-6 py-4 text-center text-gray-500">Cargando...</td></tr>
               ) : instructores.length === 0 ? (
-                <tr><td colSpan={hayAcciones ? 5 : 4} className="px-6 py-4 text-center text-gray-500">No hay instructores registrados.</td></tr>
+                <tr><td colSpan={hayAcciones ? 6 : 5} className="px-6 py-4 text-center text-gray-500">No hay instructores registrados.</td></tr>
             ) : (
               instructores.map(a => (
                 <tr key={a.id} className="hover:bg-gray-50">
@@ -228,6 +252,7 @@ export default function InstructoresView() {
                   <td className="px-6 py-4">
                     <span className="bg-gray-100 text-gray-700 px-2 py-1 rounded text-xs">{a.tipoVinculacion}</span>
                   </td>
+                  <td className="px-6 py-4 text-sm text-gray-600">{centros.find(c => c.id === a.centroFormacionId)?.nombre || '—'}</td>
                   <td className="px-6 py-4">
                     <div className="flex flex-wrap gap-1">
                       {Array.isArray(a.perfiles) && a.perfiles.map(p => (
@@ -295,6 +320,15 @@ export default function InstructoresView() {
                 </select>
               </div>
               <div>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
+                <select value={centroFormacionId} onChange={e => setCentroFormacionId(Number(e.target.value))} className="w-full border rounded-lg px-3 py-2 text-sm" required>
+                  <option value="">Seleccione un centro...</option>
+                  {centros.map(c => (
+                    <option key={c.id} value={c.id}>{c.nombre}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Perfiles Académicos</label>
                 {availablePerfiles.length === 0 ? (
                   <div className="text-sm text-gray-500 py-2">No hay perfiles registrados. Cree perfiles desde la sección "Perfiles Académicos" primero.</div>
@@ -323,7 +357,7 @@ export default function InstructoresView() {
               <div className="flex justify-end gap-2 pt-2 border-t">
                 <button type="button" onClick={handleClose}
                   className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
-                <button type="submit" disabled={saving || !documento.trim() || !nombres.trim() || !apellidos.trim() || selectedPerfiles.length === 0}
+                <button type="submit" disabled={saving || !documento.trim() || !nombres.trim() || !apellidos.trim() || !centroFormacionId || selectedPerfiles.length === 0}
                   className="px-4 py-2 text-sm text-white bg-purple-600 hover:bg-purple-700 rounded-lg disabled:opacity-50">
                   {saving ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
                 </button>

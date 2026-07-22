@@ -71,6 +71,7 @@ async function seed() {
         "QUIMICO",
         "MATEMATICO"
       ],
+      "centroFormacionId": 1,
       "estado": "ACTIVO"
     },
     {
@@ -82,6 +83,7 @@ async function seed() {
       "requisitosAcademicos": [
         "ING INDUSTRIAL"
       ],
+      "centroFormacionId": 1,
       "estado": "ACTIVO"
     }
   ],
@@ -167,8 +169,8 @@ async function seed() {
       "numeroFicha": "93939",
       "centroFormacionId": 1,
       "fechaInicio": "2025-01-01",
-      "fechaFinLectiva": "20205-12-31",
-      "fechaFin": "12027-01-01",
+      "fechaFinLectiva": "2025-12-31",
+      "fechaFin": "2026-01-01",
       "modalidad": "PRESENCIAL",
       "horario": {
         "LUNES": [

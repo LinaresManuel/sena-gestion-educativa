@@ -1,0 +1,3657 @@
+
+--- PAGINA 1 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+GESTION COMERCIAL DE NEGOCIOS VERDES 
+1. INFORMACION BÁSICA DEL PROGRAMA DE FORMACION TITULADA 
+1.1 Denominación 
+del Programa: 
+El programa aún se encuentra vigente 
+1 
+1.2. Código 
+Programa: 
+1.3. Versión 
+Programa: 
+621102 
+null 
+1.4. Vigencia del 
+Programa: 
+Fecha inicio programa: 
+Fecha fin programa: 
+3120 horas 
+Etapa Lectiva: 
+Etapa Productiva: 
+Total: 
+3984 horas 
+1.5 Duración 
+máxima estimada 
+del aprendizaje 
+(horas) 
+864 horas 
+Total: 
+1.6 Tipo de 
+programa 
+TITULADO 
+1.7 Título o 
+certificado que 
+obtendrá 
+TECNÓLOGO 
+1.8 Justificación 
+En la primera conclusión del Millennium Ecosystem Assessment, se afirmó; que, en los últimos 50 años, el ser 
+humano ha desfigurado los ecosistemas, de forma más veloz y dilatada que, en otros periodos de tiempo 
+análogo de la historia humana, con la excusa de solucionar rápidamente las demandas progresivas de 
+alimento, agua dulce, madera, fibra y combustibles, ocasionado una perdida irreversible de la diversidad de la 
+vida sobre la tierra (Well-Being, 2005). 
+La European Commission, adoptó; desde el 6 de mayo de 2013, una estrategia que promueve una red de 
+infraestructura verde denominada TEN-G, equivalente a las redes existentes para transporte, energía y TIC, 
+con el fin de reestructurar la salud de los ecosistemas (European Commission, 2019). 
+Colombia, a partir de 1998, inicia con esta responsabilidad, con la creación del primer programa Nacional de 
+Biocomercio en América Latina y el mundo, apoyado por el Instituto Alexander von Humboldt-IAvH, del 
+entonces Minambiente y la Conferencia de las Naciones Unidas sobre Comercio y desarrollo  UNCTAD. De 
+forma adicional, se publicó; el Plan Estratégico Nacional de mercados Verdes  PENMV (2002) con la finalidad 
+de acceder a nuevos mercados con productos colombianos en cuatro categorías: biocomercio, desarrollo 
+limpio, ecoproductos industriales y el ecoturismo (Minambiente, 2014). 
+Así mismo, se puntualizó; que los negocios verdes, están comprendidos por actividades económicas, en las 
+que se ofertan bienes o servicios, que originan impacto ambiental positivo y subvencionan a su conservación, 
+como capital natural, que soporta el desarrollo de los territorios (Ministerio de medio ambiente y desarrollo 
+sostenible, 2014). 
+Por su parte, el SENA, atendiendo a su rol, como uno de los actores sectoriales en generación de 
+conocimiento, innovación y valor agregado del PRNB (Programa nacional de biocomercio sostenible) en 
+articulación con las agendas de competitividad, productividad e innovación (Mincit), presenta la Tecnología en 
+Gestión Comercial de Negocios Verdes, dando alcance al objetivo general del Programa Nacional de 
+Biocomercio Sostenible, consistente en desarrollar negocios innovadores y competitivos, basados en el 
+aprovechamiento sostenible de la biodiversidad nativa, a través de lineamientos claros que promuevan 
+principios de biocomercio (Minambiente, 2014). 
+De acuerdo con el PND de Colombia (2018 - 2022)1 los negocios verdes, diversifican la economía 
+Página 1 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 2 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+nacional y fomentan oportunidades de empleo, potenciando ventajas comparativas y competitivas de las 
+regiones, por lo cual, en el objetivo siete, se enuncia que MinAmbiente, Minvivienda y la CRA, contribuirán en 
+la reducción del 20% de gases efecto invernadero (Acuerdo de París) y permitirán la generación de 
+infraestructura y empleos verdes de la línea A del Pacto por la Sostenibilidad (Miniambiente, 2018). 
+Por otra parte, es significativo mencionar que Colombia, el segundo país más biodiverso y una de las doce 
+naciones más megadiversas de la tierra (Colciencias , 2019) tiene una ventaja comparativa para desarrollar 
+negocios internacionales a partir de esta riqueza, que suscite el bienestar y desarrollo, coadyuve con la 
+subsistencia de la biodiversidad (UNCTAD, 2010), a la vez que  pueda ser generador de ingresos a la 
+población con pobreza monetaria (para el año 2018 fue del 27% y la pobreza extrema fue de 7,2% en el total 
+nacional (DANE, 2018)), tal como ha quedado demostrado con los 1.414 negocios verdes, confirmados por el 
+Ministerio de Ambiente y desarrollo sostenible, que aportan a la empleabilidad en el país, con una cifra de 
+ocupación de más de 20.000 personas en el año 2019 (Miniambiente, 2019). 
+Adicionalmente, con la oferta de este programa, el SENA construye un programa de formación donde se 
+diseña la cadena de valor de las ideas de negocio generadas a partir de la biodiversidad, dando respuesta a 
+las dinámicas de la población del siglo XXI, caracterizada por consumidores más conscientes,  donde 
+Colombia 
+COMERCIO 
+Sector económico: 
+Sector clase mundial: 
+Sector locomotora: 
+1.9 Sectores a los 
+que se asocia el 
+programa 
+Sector locomotora: 
+2.0 Estrategia 
+metodológica 
+Centrada en la construcción de autonomía para garantizar la calidad de la formación en el marco de la 
+formación por competencias, el aprendizaje por proyectos y el uso de técnicas didácticas activas que 
+estimulan el pensamiento para la resolución de problemas simulados y reales; soportadas en el utilización de 
+las tecnologías de la información y la comunicación, integradas, en ambientes abiertos y pluritecnológicos, 
+que en todo caso recrean el contexto productivo y vinculan al aprendiz con la realidad cotidiana y el desarrollo 
+de las competencias. 
+Igualmente, debe estimular de manera permanente la autocrítica y la reflexión del aprendiz sobre el que hacer 
+y los resultados de aprendizaje que logra a través de la vinculación activa de las cuatro fuentes de información 
+para la construcción de conocimiento: 
+El instructor  Tutor. 
+El entorno. 
+Las TIC. 
+El trabajo colaborativo. 
+2. PERFIL IDÓNEO DE EGRESO 
+2.1 PERFIL OCUPACIONAL 
+2.1.1 NOMBRE DE LA(s) OCUPACIONES QUE PODRÁ DESEMPEÑAR EL EGRESADO 
+2.1.2 PRINCIPALES PRODUCTOS DEL TRABAJO DEL EGRESADO 
+Código del campo ocupacional 
+Ocupación 
+6211 
+Supervisores de Ventas 
+INFORME DE CARACTERIZACION DEL ENTORNO AMBIENTAL DEL NEGOCIO. 
+CATEGORIZACION DEL NEGOCIO VERDE DE ACUERDO AL MARCO REFERENCIAL. 
+PROPUESTA DE CONDICIONES Y CARACTERISTICAS DE LA CADENA DE SUMINISTRO. 
+PLAN DE COMERCIALIZACION DE PRODUCTOS VERDES. 
+Página 2 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 3 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+2.1.3 COMPETENCIAS QUE DESARROLLARÁ 
+Código del campo ocupacional 
+Ocupación 
+6211 
+Supervisores de Ventas 
+2.2 PERFIL PROFESIONAL 
+Código del campo ocupacional 
+Ocupación 
+6211 
+Supervisores de Ventas 
+2.3 PROYECCIÓN DEL EGRESADO 
+2.3.1 En lo laboral 
+EL EGRESADO PODRA DESEMPEÑARSE EN CARGOS DE APOYO AL PROFESIONAL EN LA 
+IDENTIFICACION, DESARROLLO Y EN LA GESTION COMERCIAL DE NEGOCIOS VERDES DE 
+PRODUCTOS Y SERVICIOS CON SOSTENIBILIDAD AMBIENTAL, ECONOMICA Y SOCIAL. 
+CUMPLIENDO LAS SIGUIENTES FUNCIONES: CONTROLAR LA ESTRUCTURA DE CATEGORIA DE 
+PRODUCTO O SERVICIO, PROYECTAR PRESUPUESTO DE VENTAS, COORDINAR LOS EQUIPOS DE 
+TRABAJO COMERCIAL, ASESORAR Y VISITAR A LOS CLIENTES, APOYAR LABORES LOGISTICAS Y 
+PRESENTAR PROPUESTAS COMERCIALES. 
+2.3.2 En lo 
+empresarial 
+EL EGRESADO PODRA DESEMPEÑARSE COMO ASESOR OPORTUNIDADES DE GESTION COMERCIAL 
+DE NEGOCIOS VERDES  Y EMPRENDER UNIDADES DE NEGOCIO ENFOCADAS A LOS NEGOCIOS 
+VERDES BAJOS LOS PRINCIPIOS DE RESPONSABILIDAD SOCIAL EMPRESARIAL Y DESARROLLO 
+2.3.3 En el entorno 
+social 
+EN EL CAMPO SOCIAL, EL EGRESADO PODRA GENERAR OPORTUNIDADES LABORALES QUE 
+FAVOREZCAN EL DESARROLLO SOSTENIBLE, LA INCLUSION SOCIAL Y EL CRECIMIENTO PERSONAL. 
+2.3.4 En la 
+formación y 
+aprendizaje 
+permanente 
+EL EGRESADO PODRA CONTINUAR SU FORMACION EN EL NIVEL DE PREGRADO Y POSTGRADO EN 
+AREAS DE INGENIERIA DE MERCADOS, ADMINISTRACION DE EMPRESAS, MERCADOLOGO, 
+PROFESIONAL EN MERCADEO Y PUBLICIDAD, PROFESIONAL EN MARKETING, PROFESIONAL EN 
+MERCADEO. 
+PARA ACTUALIZARSE Y CUALIFICAR SU DESEMPEÑO PODRA DESARROLLAR CURSOS DE 
+FORMACION COMPLEMENTARIA Y ACCIONES DE FORMACION ESPECIALIZACIONES TECNOLOGICAS 
+EN TEMAS COMO: DESARROLLO DE INVESTIGACION DE MERCADOS, TRADE MARKETING, 
+ESTRUCTURACION DEL PLAN COMERCIAL, GESTION ESTRATEGICA DE SERVICIO AL CLIENTE Y 
+MERCADEO DE NEGOCIOS EN LINEA. 
+2.3.5 En la 
+innovación y 
+desarrollo 
+tecnológico 
+EL EGRESADO DEL PROGRAMA PODRA PARTICIPAR EN PROYECTOS DE INVESTIGACION DE BASE 
+TECNOLOGICA ORIENTADO A MEJORAR LA CALIDAD DE LOS PROCESOS AMBIENTALES, 
+COMERCIALES Y LA EFECTIVIDAD DE LA FUERZA DE VENTAS, CON LA APLICACION DE LA 
+TECNOLOGIA DE LA INFORMACION Y LA COMUNICACION. (TICS). PLANTEAR ALTERNATIVAS DE 
+SOLUCION EN EL USO DE CANALES DE DISTRIBUCION, COMERCIALIZACION Y VENTAS. 
+EL EGRESADO DEL PROGRAMA TECNOLOGIA EN GESTION COMERCIAL DE NEGOCIOS VERDES ES UN 
+TALENTO HUMANO FORMADO INTEGRALMENTE BAJO EL ENFOQUE POR COMPETENCIAS CON CAPACIDAD DE 
+DETERMINAR LAS OPORTUNIDADES DE MERCADO, RECOPILAR INFORMACION PARA REALIZAR ANALISIS DE 
+TENDENCIAS DEL MERCADO VERDE Y NEGOCIAR PRODUCTOS CON CRITERIOS DE SOSTENIBILIDAD 
+(ECONOMICA, SOCIAL, AMBIENTAL); CON UN ALTO SENTIDO DE RESPONSABILIDAD EN SOCIAL-EMPRESARIAL 
+POTENCIANDO LA CALIDAD DEL TALENTO HUMANO, EL TRABAJO EN EQUIPO Y LIDERAZGO. PODRA 
+DESEMPEÑARSE EN EMPRESAS COMERCIALIZACION DE BIENES Y SERVICIOS DE LA BIODIVERSIDAD, EN 
+CARGOS DE COORDINADOR DE MERCADEO O SUPERVISOR DE VENTAS. 
+2.4 DESCRIPCIÓN GENERAL DEL PERFIL DEL EGRESADO 
+Página 3 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 4 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+3. PERFIL IDÓNEO DE INGRESO 
+3.1 REQUERIMIENTOS 
+3.1.1 Nivel de competencias a demostrar en el proceso de ingreso por tipo de certificación: 
+Nivel académico 
+adecuado  para 
+caracterizar al aspirante 
+de acuerdo con el perfil 
+de egreso: 
+11 
+Grado: 
+MEDIA ACADÉMICA 
+Requiere Certificación 
+académica (si/no) 
+SI 
+Requiere  Formación para el 
+trabajo y desarrollo humano. 
+(si/no) 
+NO 
+Cuál? 
+No. 
+Horas 
+3.1.2  Edad mínima definida 
+en la ley: 
+16 años 
+3.1.3 Requisitos adicionales: 
+Presentar resultado de la prueba o examen de estado de la educación media 
+3.1.4 Restricciones de ingreso soportadas en la legislación vigente: 
+(Limitaciones físicas o cognitivas que impiden total o parcialmente el desarrollo de la  formación y que estén expresamente 
+descrita y soportadas en normas relacionadas con el desempeño ocupacional y profesional) 
+No existe legislación que establezca restricciones de ingreso a nivel de discapacidad física y cognitiva. 
+3.2 ASPECTOS ACTITUDINALES, MOTIVACIONALES Y DE INTERÉS 
+Interés relacionado con el emprendimiento; Preferencia por el trabajo en equipo, liderazgo y comunicación asertiva, 
+vocación de servicio; Preferencia por trabajos que exigen el cumplimiento de normas, procedimientos, estándares, 
+protocolos; Interés en la formación técnica aplicada a la industria; Gusto por actividades laborales de incentivar el 
+desarrollo sostenible, disposición para comercializar productos con enfoque ambiental; Disposición para respetar 
+jerarquías y acatar órdenes; Preferencia por el trabajo operativo, interés por la investigación de productos y servicios 
+verdes, motivación para la organización de actividades ambientales. 
+Página 4 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 5 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+CLASE 
+3.3 COMPETENCIAS A EVALUAR EN EL PROCESO DE INGRESO 
+TIPO 
+COMPETENCIA 
+INDICADOR 
+NIVEL 
+ACADEMICO 
+GRADO 
+% 
+Laboral 
+Organizacional 
+MEDIA ACADÉMICA 
+Responsabilidad Ambiental. 
+Evalúo el impacto de las 
+acciones desarrolladas en la 
+conservación de los recursos 
+naturales. 
+11 
+1 
+Laboral 
+Organizacional 
+MEDIA ACADÉMICA 
+Responsabilidad Ambiental. 
+Actúo siguiendo los 
+procedimientos establecidos 
+para el uso y preservación de 
+los recursos. 
+11 
+1 
+Laboral 
+Organizacional 
+MEDIA ACADÉMICA 
+Responsabilidad Ambiental. 
+Identifico prácticas adecuadas 
+para el uso y preservación de 
+los recursos. 
+11 
+2 
+Laboral 
+Organizacional 
+MEDIA ACADÉMICA 
+Responsabilidad Ambiental. 
+Reconozco los problemas que 
+surgen del uso y disposición 
+de las distintas clases de 
+recursos en dive 
+11 
+2 
+Laboral 
+Organizacional 
+MEDIA ACADÉMICA 
+Orientación al Servicio. 
+Oriento mis acciones para 
+satisfacer los requerimientos y 
+necesidades de los otros en 
+los contextos 
+11 
+2 
+Laboral 
+Organizacional 
+MEDIA ACADÉMICA 
+Gestión de la Información. 
+Produzco nueva información y 
+conocimiento con base en los 
+análisis desarrollados. 
+11 
+2 
+Laboral 
+Organizacional 
+MEDIA ACADÉMICA 
+Gestión de la Información. 
+Identifico fuentes de 
+información para obtener 
+datos relevantes y confiables. 
+11 
+2 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Trabajo en Equipo. 
+Establezco nuevas formas de 
+interacción con los miembros 
+del equipo para mejorar los 
+resultados. 
+11 
+1 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Trabajo en Equipo. 
+Evalúo la dinámica del equipo 
+y su capacidad de alcanzar 
+resultados. 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Comprendo la importancia de 
+la defensa del medio 
+ambiente, tanto en el nivel 
+local como global, y pa 
+11 
+2 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Valoro positivamente las 
+normas constitucionales que 
+hacen posible la preservación 
+de las diferencia 
+11 
+2 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Utilizo distintas formas de 
+expresión para promover y 
+defender los derechos 
+11 
+2 
+Página 5 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 6 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+humanos en mi contexto e 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Contribuyo a que los 
+conflictos entre personas y 
+entre grupos se manejen de 
+manera pacífica y constr 
+11 
+2 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Trabajo en Equipo. 
+Defino los objetivos en 
+conjunto con los otros 
+miembros. 
+11 
+1 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Trabajo en Equipo. 
+Interactúo con otros aunque 
+no los conozca previamente, 
+para enfrentar una tarea o 
+situación. 
+11 
+1 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Manejo de Conflictos. 
+Evalúo el cumplimiento y la 
+efectividad de los acuerdos. 
+11 
+1 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Manejo de Conflictos. 
+Identifico alternativas para 
+manejar y resolver los 
+conflictos. 
+11 
+1 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Manejo de Conflictos. 
+Determino las causas de los 
+conflictos y el impacto que 
+éstos tienen en las diferentes 
+personas. 
+11 
+1 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Manejo de Conflictos. 
+Identifico y preveo los 
+conflictos actuales y 
+potenciales entre miembros 
+de un grupo o comunidad. 
+11 
+1 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Liderazgo. 
+Evalúo el impacto de las 
+acciones en el cambio cultural 
+del grupo y propongo medidas 
+para mejorar co 
+11 
+2 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Liderazgo. 
+Contribuyo para que los 
+miembros del equipo aporten 
+a la solución de los problemas 
+colectivos. 
+11 
+2 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Liderazgo. 
+Reconozco, con la 
+participación del grupo, los 
+problemas colectivos. 
+11 
+2 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Liderazgo. 
+Identifico las oportunidades y 
+amenazas del entorno 
+(sociales, culturales, 
+económicas, entre otras). 
+11 
+2 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Liderazgo. 
+Identifico las necesidades y 
+expectativas de un grupo o 
+comunidad. 
+11 
+2 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Comunicación. 
+Verifico la comprensión 
+acertada de lo que expresan o 
+me demandan los otros. 
+11 
+2 
+Página 6 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 7 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+Laboral 
+Interpersonal 
+MEDIA ACADÉMICA 
+Comunicación. 
+Sustento con argumentos, 
+basados en evidencias, 
+hechos y datos, mis ideas y 
+puntos de vista. 
+11 
+2 
+Laboral 
+Intelectual 
+MEDIA ACADÉMICA 
+Creatividad. 
+Modifico y adapto métodos y 
+procedimientos ya conocidos 
+(estadísticos, descriptivos, 
+comparativos). 
+11 
+2 
+Laboral 
+Intelectual 
+MEDIA ACADÉMICA 
+Creatividad. 
+Pongo a prueba las ideas 
+innovadoras mediante 
+mecanismos de observación y 
+contraste. 
+11 
+2 
+Laboral 
+Intelectual 
+MEDIA ACADÉMICA 
+Creatividad. 
+Identifico ideas innovadoras 
+para resolver problemas de 
+variados contextos (sociales, 
+culturales, ec 
+11 
+2 
+Laboral 
+Empresariales 
+y Para el 
+Emprendimient 
+o 
+MEDIA ACADÉMICA 
+Identificación de 
+Oportunidades para crear 
+Empresas o unidades de 
+Negocio. 
+Ubico la información 
+necesaria para elaborar un 
+análisis del mercado (clientes, 
+competidores y produ 
+11 
+2 
+Laboral 
+Empresariales 
+y Para el 
+Emprendimient 
+o 
+MEDIA ACADÉMICA 
+Identificación de 
+Oportunidades para crear 
+Empresas o unidades de 
+Negocio. 
+Identifico los potenciales 
+clientes del producto o 
+servicio. 
+11 
+2 
+Laboral 
+Empresariales 
+y Para el 
+Emprendimient 
+o 
+MEDIA ACADÉMICA 
+Identificación de 
+Oportunidades para crear 
+Empresas o unidades de 
+Negocio. 
+Establezco las fortalezas y 
+factores diferenciadores del 
+producto o servicio. 
+11 
+2 
+Laboral 
+Empresariales 
+y Para el 
+Emprendimient 
+o 
+MEDIA ACADÉMICA 
+Identificación de 
+Oportunidades para crear 
+Empresas o unidades de 
+Negocio. 
+Identifico oportunidades para 
+crear o proveer bienes o 
+servicios, teniendo en cuenta 
+las necesidades 
+11 
+2 
+Laboral 
+Empresariales 
+y Para el 
+Emprendimient 
+o 
+MEDIA ACADÉMICA 
+Elaboración de planes para 
+crear empresas o Unidades 
+de Negocio. 
+Defino estrategias de 
+mercadeo y venta de los 
+productos y servicios. 
+11 
+2 
+Laboral 
+Empresariales 
+y Para el 
+Emprendimient 
+o 
+MEDIA ACADÉMICA 
+Elaboración de planes para 
+crear empresas o Unidades 
+de Negocio. 
+Defino las características del 
+producto o servicio. 
+11 
+2 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Pluralidad, identidad y 
+valoración de las 
+diferencias. 
+Argumento y debato dilemas 
+de la vida en los que los 
+valores de distintas culturas o 
+grupos sociales 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Pluralidad, identidad y 
+valoración de las 
+diferencias. 
+Construyo una posición crítica 
+frente a las situaciones de 
+discriminación y exclusión 
+social que res 
+11 
+1 
+Página 7 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 8 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Solución de problemas con 
+tecnología. 
+Interpreto y represento ideas 
+sobre diseños, innovaciones o 
+protocolos de experimentos 
+mediante el u 
+11 
+1 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Solución de problemas con 
+tecnología. 
+Propongo y evalúo el uso de 
+tecnología para mejorar la 
+productividad en la pequeña 
+empresa. 
+11 
+1 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Naturaleza y evolución de la 
+tecnología. 
+Relaciono el desarrollo 
+tecnológico con los avances 
+en la ciencia, la técnica, las 
+matemáticas y otr 
+11 
+1 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Apropiación y uso de la 
+tecnología. 
+Selecciono y utilizo (según los 
+requerimientos) instrumentos 
+tecnológicos para medir, 
+interpreto y a 
+11 
+2 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Apropiación y uso de la 
+tecnología. 
+Trabajo en equipo en la 
+realización de proyectos 
+tecnológicos y, cuando lo 
+hago, involucro herramien 
+11 
+2 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Apropiación y uso de la 
+tecnología. 
+Actúo teniendo en cuenta 
+normas de seguridad 
+industrial y utilizo elementos 
+de protección en ambient 
+11 
+2 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Apropiación y uso de la 
+tecnología. 
+Utilizo adecuadamente 
+herramientas informáticas de 
+uso común para la búsqueda 
+y procesamiento de la 
+11 
+2 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Tecnología y sociedad. 
+Analizo el potencial de los 
+recursos naturales y de los 
+nuevos materiales utilizados 
+en la producció 
+11 
+1 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Numérico y 
+Sistemas Numericos. 
+Analizo representaciones 
+decimales de los números 
+reales para diferenciar entre 
+racionales e irracio 
+11 
+2 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Producción Textual. 
+Comprendo el valor del 
+lenguaje en los procesos de 
+construcción del 
+conocimiento. 
+11 
+1 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Ética de la Comunicación. 
+Utilizo el diálogo y la 
+argumentación para superar 
+enfrentamientos y posiciones 
+antagónicas. 
+11 
+1 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Ética de la Comunicación. 
+Respeto la diversidad de 
+criterios y posiciones 
+ideológicas que surgen en los 
+grupos humanos. 
+11 
+1 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Comprensión e 
+Interpretación Textual. 
+Asumo una actitud crítica 
+frente a los textos que leo y 
+elaboro, y frente a otros 
+11 
+1 
+Página 8 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 9 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+tipos de texto: ex 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Lectura. 
+Utilizo variedad de estrategias 
+de comprensión de lectura 
+adecuadas al propósito y al 
+tipo de texto. 
+11 
+1 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Lectura. 
+Identifico palabras clave 
+dentro del texto que me 
+permiten comprender su 
+sentido general. 
+11 
+1 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Escucha. 
+Utilizo las imágenes e 
+información del contexto de 
+habla para comprender mejor 
+lo que escucho. 
+11 
+1 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Escucha. 
+Identifico el propósito de un 
+texto oral. 
+11 
+1 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Escritura. 
+Escribo textos expositivos 
+sobre temas de mi interés. 
+11 
+1 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Conversación. 
+Uso mis conocimientos 
+previos para participar en una 
+conversación. 
+11 
+1 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Conversación. 
+Participo espontáneamente 
+en conversaciones sobre 
+temas de mi interés utilizando 
+un lenguaje claro y 
+11 
+1 
+Básica 
+Ciencias 
+Sociales 
+MEDIA ACADÉMICA 
+Relaciones espaciales y 
+ambientales. 
+Identifico y analizo las 
+consecuencias sociales, 
+económicas, políticas y 
+culturales de los procesos 
+11 
+2 
+Básica 
+Ciencias 
+Sociales 
+MEDIA ACADÉMICA 
+Me aproximo al 
+conocimiento como 
+científico(a) social. 
+Planteo un tema o problema 
+de investigación. 
+11 
+1 
+Básica 
+Ciencias 
+Sociales 
+MEDIA ACADÉMICA 
+Desarrollo compromisos 
+personales y sociales. 
+Asumo una posición crítica 
+frente a situaciones de 
+discriminación ante 
+posiciones ideológicas y prop 
+11 
+1 
+Básica 
+Ciencias 
+Naturales 
+MEDIA ACADÉMICA 
+Me aproximo al 
+conocimiento como 
+científico(a) natural. 
+Realizo mediciones con 
+instrumentos y equipos 
+adecuados. 
+11 
+2 
+Básica 
+Ciencias 
+Sociales 
+MEDIA ACADÉMICA 
+Relaciones espaciales y 
+ambientales. 
+Analizo críticamente los 
+factores que ponen en riesgo 
+el derecho del ser humano a 
+una alimentación s 
+11 
+2 
+Básica 
+Ciencias 
+Sociales 
+MEDIA ACADÉMICA 
+Relaciones espaciales y 
+ambientales. 
+Explico y evalúo el impacto 
+del desarrollo industrial y 
+tecnológico sobre el medio 
+ambiente y el ser 
+11 
+2 
+Página 9 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 10 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+Básica 
+Ciencias 
+Sociales 
+MEDIA ACADÉMICA 
+Me aproximo al 
+conocimiento como 
+científico(a) social. 
+Diseño un cronograma de 
+trabajo. 
+11 
+1 
+Básica 
+Ciencias 
+Sociales 
+MEDIA ACADÉMICA 
+Me aproximo al 
+conocimiento como 
+científico(a) social. 
+Justifico la importancia de la 
+investigación que propongo. 
+11 
+1 
+Básica 
+Ciencias 
+Naturales 
+MEDIA ACADÉMICA 
+Desarrollo compromisos 
+personales y sociales.. 
+Cumplo mi función cuando 
+trabajo en grupo y respeto las 
+funciones de otras personas. 
+11 
+1 
+3.4 DOTACIÓN MÍNIMA DE AMBIENTES DE APRENDIZAJE PARA LA COMPETENCIA DE 
+3.4.1 Caracterización de 
+ambiente mínimo 
+Capacidad para 36 aprendices. Mesas y sillas ergonómicas con puestos individuales de trabajo. 
+Ambientes propicios para el manejo de la comunicación asertiva. 
+3.4.2 Maquinaria y Equipo 
+Especializado 
+Equipos de cómputo, uno por aprendiz 
+Impresora Láser Color 
+Televisor Smart TV con salida HDMI y puertos USB 
+Tablero interactivo 
+Aire Acondicionado 
+3.4.3 Software 
+Especializado 
+Software especializado para análisis y procesamiento de 
+Información. 
+Software para estadística. 
+Software especializado de gestión en el punto de venta. 
+3.4.4 Herramientas 
+Especializadas 
+Kit para desarrollar habilidad en Visual Merchandising - Vitrinismo 
+3.4.5 Simuladores 
+específicos del entorno 
+Ambientes simulados o reales para el entrenamiento del personal en Ventas 
+3.4.6 Muebles 
+colaborativos 
+Muebles y mesas colaborativas 
+3.4.7 Tecnologías de la 
+información y las 
+comunicaciones 
+Conexión a Internet para cada uno de los equipos de cómputo por cable estructurado o Wifi 
+3.4.8 Elementos y 
+condiciones relacionadas 
+con la seguridad 
+industrial, la salud 
+ocupacional y el  medio 
+ambiente: 
+Iluminación natural adecuada en caso que se trabaje en el día. Iluminación artificial en caso de 
+trabajar en la noche.  Los pasillos de circulación lo suficientemente amplios de modo que permitan el 
+movimiento seguro del personal. Que cumpla con las normas de sismo resistencia e iluminación. 
+Página 10 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 11 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+APLICACIÓN DE CONOCIMIENTOS DE LAS CIENCIAS NATURALES DE ACUERDO CON 
+SITUACIONES DEL CONTEXTO PRODUCTIVO Y SOCIAL. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220201501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+CIENCIAS NATURALES: FÍSICA 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA2 SOLUCIONAR PROBLEMAS ASOCIADOS CON EL SECTOR PRODUCTIVOS CON BASE EN LOS PRINCIPIOS Y 
+LEYES DE LA FÍSICA. 
+RA1 IDENTIFICAR LOS PRINCIPIOS Y LEYES DE LA FÍSICA EN LA SOLUCIÓN DE PROBLEMAS DE ACUERDO AL 
+CONTEXTO PRODUCTIVO. 
+RA4 PROPONER ACCIONES DE MEJORA EN LOS PROCESOS PRODUCTIVOS DE ACUERDO CON LOS 
+PRINCIPIOS Y LEYES DE LA FÍSICA. 
+RA3 VERIFICAR LAS TRANSFORMACIONES FÍSICAS DE LA MATERIA UTILIZANDO HERRAMIENTAS 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+UTILIZAR MAGNITUDES FÍSICAS ESCALARES 
+EXPLICAR   CAMBIOS FISCOS DE LA MATERIA 
+DESCRIBIR EL MOVIMIENTO DE LOS CUERPOS 
+IDENTIFICAR LOS ELEMENTOS DE UN PROCESO TÉRMICO 
+IDENTIFICAR LOS PRINCIPIOS FÍSICOS DEL FUNCIONAMIENTO DE LAS MÁQUINAS 
+DESCRIBIR LA TRASFORMACIÓN DE LA ENERGÍA 
+EXPLICAR LAS VARIABLES QUE INTERVIENEN EN UN SISTEMA TÉRMICO 
+DESCRIBIR LAS FASES DE OBSERVACIÓN, FORMULACIÓN DE HIPÓTESIS DE TRABAJO, EXPERIMENTACIÓN E 
+IDENTIFICACIÓN DE LEYES FÍSICAS 
+REALIZAR EXPERIMENTOS PARA COMPROBAR PRINCIPIOS Y TEORÍAS FÍSICAS 
+4.6.2 CONOCIMIENTOS DEL SABER 
+FÍSICA: CONCEPTO Y APLICACIONES 
+OBSERVACIÓN: MÉTODOS, TÉCNICAS, ATRIBUTOS, APLICACIONES Y USOS 
+EXPERIMENTACIÓN: MÉTODOS, TÉCNICAS, ATRIBUTOS, APLICACIONES Y USOS 
+MATERIA: CONCEPTO, CARACTERÍSTICAS Y ESTADOS 
+MAGNITUDES FÍSICAS: CONCEPTO, CARACTERÍSTICAS Y TIPOS 
+SISTEMAS DE UNIDADES: CONCEPTO, EQUIVALENCIAS Y TIPOS 
+MÁQUINAS: CONCEPTO Y TIPOS 
+MOVIMIENTO: CONCEPTO, LEYES, PRINCIPIOS, CARACTERÍSTICAS Y TIPOS 
+ENERGÍA: CONCEPTO, LEYES, PRINCIPIOS, MANIFESTACIONES Y TIPOS 
+SISTEMAS TERMODINÁMICOS: CONCEPTOS Y APLICACIONES 
+ONDAS: CONCEPTO, CARACTERÍSTICAS, TIPOS 
+FÍSICA MODERNA: CONCEPTO, CLASIFICACIÓN Y APLICACIONES 
+Página 11 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 12 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.7 CRITERIOS DE EVALUACIÓN 
+UTILIZAR MAGNITUDES FÍSICAS ESCALARES CON BASE EN LOS PRINCIPIOS Y LEYES DE LA FÍSICA 
+EXPLICAR LAS VARIABLES QUE INTERVIENEN EN UN SISTEMA TÉRMICO UTILIZANDO HERRAMIENTAS 
+TECNOLÓGICAS 
+DESCRIBIR LAS FASES DE OBSERVACIÓN, FORMULACIÓN DE HIPÓTESIS DE TRABAJO, EXPERIMENTACIÓN E 
+IDENTIFICACIÓN DE LEYES FÍSICAS DE ACUERDO AL CONTEXTO PRODUCTIVO 
+REALIZAR EXPERIMENTOS PARA COMPROBAR PRINCIPIOS Y TEORÍAS FÍSICAS TENIENDO EN CUENTA 
+SOLUCIÓN DE PROBLEMAS DE ACUERDO AL CONTEXTO PRODUCTIVO 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EL NÚCLEO BÁSICO DE CONOCIMIENTO DE: EDUCACIÓN; O 
+INGENIERÍA QUÍMICA Y AFINES; O QUÍMICA Y AFINES: O FÍSICA O BIOLOGÍA, MICROBIOLOGÍA Y AFINES. (VER 
+ANEXO N.B.C) 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DOCE (12) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA PROFESIÓN APLICADO EN LAS ÁREAS DE CIENCIAS 
+NATURALES Y DOCE (12) MESES EN DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+APLICAR PRÁCTICAS  DE PROTECCIÓN AMBIENTAL, SEGURIDAD Y SALUD EN EL TRABAJO 
+DE ACUERDO CON LAS POLÍTICAS ORGANIZACIONALES  Y LA NORMATIVIDAD VIGENTE. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220601501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+PROTECCIÓN PARA LA SALUD Y EL MEDIO AMBIENTE 
+Página 12 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 13 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA3 REALIZAR SEGUIMIENTO Y ACOMPAÑAMIENTO AL DESARROLLO DE LOS PLANES Y PROGRAMAS 
+AMBIENTALES Y SST, SEGÚN EL ÁREA DE DESEMPEÑO. 
+RA4 PROPONER ACCIONES DE MEJORA PARA EL MANEJO AMBIENTAL Y EL CONTROL DE LA SST, DE ACUERDO 
+CON ESTRATEGIAS DE TRABAJO, COLABORATIVO, COOPERATIVO Y COORDINADO EN EL CONTEXTO 
+PRODUCTIVO Y SOCIAL. 
+RA2 IMPLEMENTAR ESTRATEGIAS PARA EL CONTROL DE LOS IMPACTOS AMBIENTALES Y DE LOS 
+ACCIDENTES Y ENFERMEDADES DE ACUERDO CON LOS PLANES Y PROGRAMAS ESTABLECIDOS POR LA 
+RA1 ANALIZAR LAS ESTRATEGIAS PARA LA PREVENCIÓN Y CONTROL DE LOS IMPACTOS AMBIENTALES Y DE 
+LOS ACCIDENTES Y ENFERMEDADES LABORALES DE ACUERDO CON LAS POLÍTICAS ORGANIZACIONALES Y EL 
+ENTORNO SOCIAL. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+DIFERENCIAR LOS ASPECTOS E IMPACTOS AMBIENTALES ASOCIADOS A SU ENTORNO LABORAL Y SOCIAL 
+REVISAR LA POLÍTICA AMBIENTAL Y DE SEGURIDAD Y SALUD EN EL TRABAJO 
+PONER EN PRÁCTICA LAS ESTRATEGIAS PARA EL CONTROL DE LOS IMPACTOS AMBIENTALES Y ATEL 
+IDENTIFICAR LAS CLASES DE PLANES Y PROGRAMAS DE GESTIÓN AMBIENTAL Y DE SST ESTABLECIDOS 
+PARA LA INTERVENCIÓN DE LOS IMPACTOS AMBIENTALES Y LOS RIESGOS DE SST 
+LLEVAR A CABO LAS ACTIVIDADES ESTABLECIDAS EN LOS PLANES Y PROGRAMAS AMBIENTALES Y DE SST, 
+ESTABLECIDOS POR LA ORGANIZACIÓN 
+MONITOREAR LA EJECUCIÓN DE LAS ACTIVIDADES PROPIAS DE SU CONTEXTO, ESTABLECIDAS EN LOS 
+PLANES Y PROGRAMAS DE GESTIÓN AMBIENTAL Y DE SST 
+RECOMENDAR ACCIONES TENDIENTES A MEJORAR LA GESTIÓN AMBIENTAL Y LA SST 
+PROMOVER LA CULTURA AMBIENTALMENTE RESPONSABLE, EL DESARROLLO SUSTENTABLE Y EL 
+AUTOCUIDADO EN SU CONTEXTO SOCIAL Y PRODUCTIVO 
+4.6.2 CONOCIMIENTOS DEL SABER 
+MEDIO AMBIENTE: CONCEPTO, COMPONENTES, CONSERVACIÓN, ASPECTOS E IMPACTOS AMBIENTALES, 
+NORMATIVIDAD BÁSICA LEGAL 
+ASPECTOS E IMPACTOS AMBIENTALES: CONCEPTO, CARACTERÍSTICAS, CLASES SEGÚN EL CONTEXTO 
+SOCIAL Y PRODUCTIVO, PROBLEMÁTICA AMBIENTAL ASOCIADA Y LEGISLACIÓN APLICABLE 
+POLÍTICAS AMBIENTALES Y DE SST: CONCEPTO, CARACTERÍSTICAS, ALCANCE Y CLASES 
+PLANES DE MANEJO Y GESTIÓN AMBIENTAL: OBJETO, APLICACIÓN Y ESTRUCTURA 
+PLANES Y PROGRAMAS DE GESTIÓN DE SST: OBJETO, APLICACIÓN Y ESTRUCTURA 
+SISTEMA DE GESTIÓN Y SEGURIDAD Y SALUD EN EL TRABAJO: CONCEPTOS GENERALES Y MARCO BÁSICO 
+LEGAL, DERECHOS Y DEBERES 
+DIRECTRICES Y REQUISITOS INTERNOS DEL SISTEMA DE SEGURIDAD Y SALUD EN EL TRABAJO: 
+REGLAMENTO DE HIGIENE Y SEGURIDAD INDUSTRIAL, REGLAMENTO INTERNO DE TRABAJO, 
+PROCEDIMIENTOS DE TRABAJO SEGURO, PROGRAMAS, POLÍTICA DE SEGURIDAD SALUD EN EL TRABAJO Y 
+POLÍTICAS DE PREVENCIÓN DE ALCOHOL Y SUSTANCIAS PSICOACTIVAS 
+PELIGROS DE SEGURIDAD Y SALUD EN EL TRABAJO PROPIOS DEL SECTOR ECONÓMICO: CONCEPTO, 
+CARACTERÍSTICAS, CLASES, EFECTOS A LA SALUD, MECANISMOS DE CONTROL Y NORMATIVIDAD 
+LESIONES Y ENFERMEDADES PROPIAS DEL SECTOR ECONÓMICO: CONCEPTOS, CLASES, CAUSAS Y 
+CARACTERÍSTICAS 
+MEDIDAS DE MANEJO AMBIENTAL: CONCEPTO, PREVENCIÓN, CONTROL Y MITIGACIÓN, ESTRATEGIAS DE 
+IMPLEMENTACIÓN 
+Página 13 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 14 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+PLAN DE EMERGENCIAS Y CONTINGENCIAS: CONCEPTO, CLASES, OBJETO, ALCANCE Y ESTRUCTURA BÁSICA 
+MONITOREO Y SEGUIMIENTO: CONCEPTO, MÉTODOS Y DOCUMENTACIÓN ASOCIADA 
+NORMATIVIDAD: REPORTE E INVESTIGACIÓN DE ACCIDENTES DE TRABAJO Y ENFERMEDADES LABORALES 
+COMITÉS AMBIENTALES Y DE SEGURIDAD Y SALUD EN EL TRABAJO: CONCEPTO, CARACTERÍSTICAS Y 
+FUNCIONES 
+4.7 CRITERIOS DE EVALUACIÓN 
+RELACIONA LA LEGISLACIÓN Y NORMATIVIDAD VIGENTE SOBRE MEDIO AMBIENTE Y SST CON LOS ASPECTOS 
+E IMPACTOS AMBIENTALES, GROS Y RIESGOS QUE SE PRESENTAN EN SU AMBIENTE DE TRABAJO SEGÚN 
+POLÍTICAS DE LA ORGANIZACIÓN Y EL ENTORNO LABORAL. 
+DETERMINA ACCIONES PARA ORIENTAR A SU EQUIPO DE TRABAJO EN LOS PLANES Y PROGRAMAS 
+AMBIENTALES Y DE SST SEGÚN POLÍTICAS DE LA ORGANIZACIÓN. 
+IMPLEMENTA ACCIONES COORDINADAS PARA EL MONITOREO DE LOS PLANES Y PROGRAMAS AMBIENTALES 
+Y DE SST SEGÚN SU ÁREA DE DESEMPEÑO. 
+FOMENTA LA CULTURA AMBIENTAL RESPONSABLE, EL DESARROLLO SUSTENTABLE Y EL AUTOCUIDADO EN 
+SU CONTEXTO SOCIAL Y PRODUCTIVO DE ACUERDO CON LA INTEGRACIÓN DE LOS DIFERENTES ACTORES 
+RELACIONADOS. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+ALTERNATIVA 1 
+TÍTULO DE TECNÓLOGO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: 
+BIOLOGÍA, MICROBIOLOGÍA Y AFINES; O INGENIERÍA AMBIENTAL, SANITARIA Y AFINES; O SALUD PÚBLICA; O 
+INGENIERÍA INDUSTRIAL Y AFINES. VER ANEXOS: (N.B.C.), (TITULOS SENA). 
+TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+ALTERNATIVA 2 
+TÍTULO PROFESIONAL UNIVERSITARIO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: 
+BIOLOGÍA, MICROBIOLOGÍA Y AFINES; O INGENIERÍA AMBIENTAL, SANITARIA Y AFINES; O EDUCACIÓN; O 
+INGENIERÍA INDUSTRIAL Y AFINES. (VER ANEXO N.B.C). 
+TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+4.8.2 Experiencia laboral y/o especialización: 
+ALTERNATIVA 1: 
+TREINTA (30) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: 
+DIECIOCHO (18) MESES DE EXPERIENCIA RELACIONADA CON EL EJERCICIO DE PROTECCIÓN AMBIENTAL, 
+SEGURIDAD Y SALUD EN EL TRABAJO Y DOCE (12) MESES EN DOCENCIA. 
+ALTERNATIVA 2: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: 
+DOCE (12) MESES DE EXPERIENCIA RELACIONADA CON EL EJERCICIO DE PROTECCIÓN AMBIENTAL, 
+SEGURIDAD Y SALUD EN EL TRABAJO Y DOCE (12) MESES EN DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+Página 14 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 15 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Categorizar negocios sostenibles según criterios verdes y normativa 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220201082 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+CATEGORIZACIÓN DE NEGOCIOS SOSTENIBLES. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+336 horas 
+DENOMINACIÓN 
+RA1. CLASIFICAR NEGOCIOS VERDES DE ACUERDO CON PARÁMETROS DE CALIDAD Y MARCO DE 
+REFERENCIA. 240H 
+RA2. DEFINIR OPORTUNIDADES PARA EL  NEGOCIO VERDE SEGÚN LAS TENDENCIAS DEL MERCADO Y EL 
+CONTEXTO REGIONAL. 96H 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+RA1. 
+IDENTIFICAR PRINCIPIOS Y CRITERIOS DEL BIOTRADE. 
+IDENTIFICAR FUNCIONES DE LAS CORPORACIONES AUTÓNOMAS REGIONALES A NIVEL NACIONAL. 
+IDENTIFICAR PILARES DE SOSTENIBILIDAD. 
+UTILIZAR FORMATOS DE FICHAS TÉCNICAS. 
+IDENTIFICAR PROGRAMAS Y POLÍTICAS NACIONALES, REGIONALES PARA LOS NEGOCIOS VERDES. 
+ILUSTRAR CRITERIOS DE LOS NEGOCIOS VERDES. 
+DESCRIBIR BIENES Y SERVICIOS SOSTENIBLES, SECTORES Y SUBSECTORES. 
+DESCRIBIR ECOPRODUCTOS INDUSTRIALES, SECTORES Y SUBSECTORES. 
+DESCRIBIR MERCADO DE CARBONO, SECTORES Y SUBSECTORES. 
+DESCRIBIR MODELOS DE BIOECONOMÍA REGIONAL Y NACIONAL. 
+DESCRIBE COMPORTAMIENTOS GREENWASHING. 
+IDENTIFICAR EL USO DE SELLOS Y CERTIFICACIONES. 
+RA2. 
+IDENTIFICAR OPORTUNIDADES DE NEGOCIOS VERDES A NIVEL REGIONAL. 
+DEFINIR LAS CARACTERÍSTICAS DE UN CONSUMIDOR DE PRODUCTOS SOSTENIBLES. 
+DESCRIBIR OBJETIVOS DE CONSUMO SOSTENIBLE Y LA CREACIÓN DE VALOR COMPARTIDO. 
+Página 15 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 16 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+ESTRUCTURAR EL PROCESO DE COMERCIO JUSTO - FLO. 
+DILIGENCIAR FORMATOS DE INCENTIVOS ECONÓMICOS. 
+DIFERENCIAR PRODUCTOS ECOLÓGICOS Y ORGÁNICOS. 
+IDENTIFICAR OPORTUNIDADES DE NEGOCIOS VERDES. 
+DEFINIR ESTRATEGIAS DE ECOMARKETING. 
+DESCRIBIR ACTIVIDADES DE ECONOMÍA CIRCULAR. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+RA1. 
+BIOCOMERCIO (BIOTRADE): CONCEPTO, PRINCIPIOS Y CRITERIOS. 
+CORPORACIONES AUTÓNOMAS REGIONALES: CONCEPTO, CARACTERÍSTICAS, ESTRUCTURA Y NORMATIVA. 
+POLÍTICA DE PRODUCCIÓN Y CONSUMO SOSTENIBLE: CONCEPTO, IMPORTANCIA. 
+FICHA TÉCNICA: CONCEPTO, APLICACIÓN Y TIPOS. 
+SOSTENIBILIDAD ECONÓMICA, SOCIAL Y AMBIENTAL: CONCEPTO Y CARACTERÍSTICAS. 
+PLAN NACIONAL DE NEGOCIOS VERDES Y SOSTENIBLES: CARACTERÍSTICAS, ESTRUCTURA, NORMATIVA Y 
+CRITERIOS DE IDENTIFICACIÓN. 
+PROGRAMAS REGIONALES DE NEGOCIOS VERDES: CARACTERÍSTICAS, NORMATIVA, ESTRUCTURA Y 
+RECURSOS. 
+BIENES Y SERVICIOS SOSTENIBLES PROVENIENTES DE LOS RECURSOS NATURALES (NEGOCIOS DE 
+RESTAURACIÓN, BICOMERCIO, AGROSISTEMAS SOSTENIBLES): CONCEPTO, CARACTERÍSTICAS Y CASOS DE 
+ÉXITO. 
+ECOPRODUCTOS INDUSTRIALES (APROVECHAMIENTO Y VALORACIÓN DE RESIDUOS, FUENTES NO 
+CONVENCIONALES DE ENERGÍA, CONSTRUCCIÓN SOSTENIBLE, OTROS SERVICIOS VERDES SOSTENIBLES). 
+CONCEPTO, CARACTERÍSTICAS Y CASOS DE ÉXITO. 
+MERCADO DE CARBONO: CONCEPTO, TIPOS, ACUERDOS Y CASOS DE ÉXITO. 
+BIOECONOMÍA (BIONEGOCIOS): CONCEPTO Y MODELOS. 
+GREENWASHING: CONCEPTO, CARACTERÍSTICAS Y TIPOS. 
+SELLOS Y CERTIFICACIONES: CONCEPTO, CARACTERÍSTICAS Y DIFERENCIAS. 
+RA2. 
+CONSUMIDOR ECOLÓGICO: CONCEPTO Y PROCESO DE DECISIÓN DE COMPRA. 
+CIUDADES SOSTENIBLES - SERVICIOS ECOSISTÉMICOS: CONCEPTO, CARACTERÍSTICAS Y CASOS DE ÉXITO. 
+CREACIÓN DEL VALOR COMPARTIDO: CONCEPTO Y CARACTERÍSTICAS. 
+CONSUMO SOSTENIBLE: POLÍTICAS, CONCEPTO Y CARACTERÍSTICAS. 
+COMERCIO JUSTO - CERTIFICACIÓN FLO: CONCEPTO, PROCESO Y APLICACIÓN. 
+COMPRAS PÚBLICAS SOSTENIBLES: CONCEPTO, CARACTERÍSTICAS Y APLICACIÓN. 
+INCENTIVOS ECONÓMICOS: CONCEPTO, MARCO NORMATIVO Y EXONERACIÓN. 
+EMPRENDIMIENTO NEGOCIOS VERDES: CONCEPTO Y ESTRUCTURA. 
+PRODUCTOS ECOLÓGICOS - ORGÁNICOS: CONCEPTO, ATRIBUTOS, CLASIFICACIÓN, CARACTERÍSTICAS Y 
+REFERENCIAS. 
+CHOCÓ BIOGEOGRÁFICO: DESCRIPCIÓN, UBICACIÓN Y POTENCIAL. 
+ECOMARKETING NORMATIVA: LEGISLACIÓN COMERCIAL VIGENTE, PROPIEDAD INTELECTUAL, PATENTES E 
+4.7 CRITERIOS DE EVALUACIÓN 
+RA1. 
+REDACTA MARCO REFERENCIAL DE ACUERDO CON LAS POLÍTICAS, PROGRAMAS Y PLANES EXISTENTES 
+PARA LOS NEGOCIOS VERDES A NIVEL NACIONAL Y REGIONAL. 
+DESCRIBE LAS CATEGORÍAS, SECTORES Y SUBSECTORES DE LOS NEGOCIOS VERDES DE ACUERDO CON 
+POLÍTICAS NACIONALES. 
+EVALÚA OPORTUNIDADES DE NEGOCIOS VERDES TENIENDO EN CUENTA LOS CRITERIOS ESTABLECIDOS 
+POR EL MINISTERIO DE AMBIENTE. 
+Página 16 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 17 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+RA2. 
+DIFERENCIA LOS MODELOS DE ECONÓMICA LINEAL DE LOS MODELOS DE ECONÓMICA CIRCULAR TENIENDO 
+EN CUENTA EL BENEFICIO EMPRESARIAL. 
+ELABORA INFORME DE LAS OPORTUNIDADES DE NEGOCIO SOSTENIBLE A NIVEL REGIONAL DE ACUERDO 
+CON EL CONTEXTO Y LOS CRITERIOS DE NEGOCIOS VERDES. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EN DISCIPLINA ACADÉMICA DEL NÚCLEO BÁSICO DE CONOCIMIENTO 
+EN: ADMINISTRACIÓN, ECONOMÍA O INGENIERÍA INDUSTRIAL Y AFINES. 
+ESTAS PROFESIONES DEBEN ESTAR ASOCIADAS A LOS PROGRAMAS DE FORMACIÓN QUE IMPARTIRÁ EN SU 
+DESEMPEÑO Y SE CITAN LOS TÍTULOS OBTENIDOS, NÚCLEOS BÁSICOS DE CONOCIMIENTO Y ÁREAS DE 
+CONOCIMIENTO:  INGENIERO INDUSTRIAL, ECONOMISTA, PROFESIONAL EN MERCADEO, PROFESIONAL EN 
+ADMINISTRACIÓN, ESPECIALISTA EN LOGÍSTICA. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDOS ASÍ: DOCE (12) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE ACTIVIDADES RELACIONADAS CON NEGOCIOS VERDES Y MERCADEO 
+Y DOCE (12) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+DESARROLLAR PROCESOS DE COMUNICACIÓN EFICACES Y EFECTIVOS, TENIENDO EN 
+CUENTA SITUACIONES  DE ORDEN SOCIAL, PERSONAL Y PRODUCTIVO. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201524 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+COMUNICACIÓN 
+Página 17 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 18 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA1 ANALIZAR LOS COMPONENTES DE LA COMUNICACIÓN SEGÚN SUS CARACTERÍSTICAS, INTENCIONALIDAD 
+Y CONTEXTO. 
+RA4 ESTABLECER PROCESOS DE ENRIQUECIMIENTO LEXICAL Y ACCIONES DE MEJORAMIENTO EN EL 
+DESARROLLO DE PROCESOS COMUNICATIVOS SEGÚN REQUERIMIENTOS DEL CONTEXTO. 
+RA2 ARGUMENTAR EN FORMA ORAL Y ESCRITA ATENDIENDO LAS EXIGENCIAS Y PARTICULARIDADES DE LAS 
+DIVERSAS SITUACIONES COMUNICATIVAS MEDIANTE LOS DISTINTOS SISTEMAS DE REPRESENTACIÓN. 
+RA3 RELACIONAR LOS PROCESOS COMUNICATIVOS TENIENDO EN CUENTA CRITERIOS DE LÓGICA Y 
+RACIONALIDAD. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+RECONOCER LA IMPORTANCIA, NATURALEZA Y CARACTERÍSTICAS DE LA COMUNICACIÓN HUMANA 
+MANTENER LA ATENCIÓN Y ESCUCHA EN LOS PROCESOS DE COMUNICACIÓN 
+INTERPRETAR MENSAJES Y RECONSTRUIR EL DISCURSO CON SUS PROPIAS PALABRAS MANTENIENDO EL 
+SENTIDO 
+APLICAR TÉCNICAS PARA LA COMUNICACIÓN VERBAL Y NO VERBAL 
+USAR EL LÉXICO CON PRECISIÓN Y PROPIEDAD EN LOS PROCESOS DE COMUNICACIÓN 
+UTILIZAR LA INFORMACIÓN SEGÚN EL PROPÓSITO ESTABLECIDO 
+APROPIAR UN MÉTODO PARA LEER COMPRENSIVA E INTERPRETATIVAMENTE 
+ESTABLECER ACUERDOS A PARTIR DE LA DIVERSIDAD DE CONCEPTOS Y OPINIONES 
+REDACTAR DIFERENTES TIPOS DE TEXTOS APLICANDO REGLAS GRAMATICALES Y ORTOGRÁFICAS 
+EXPONER EN FORMA ORAL O ESCRITA UN PLANTEAMIENTO UTILIZANDO LOS PRINCIPIOS DE LA 
+4.6.2 CONOCIMIENTOS DEL SABER 
+COMUNICACIÓN: CONCEPTO, TIPOS, USOS, MEDIOS, CANALES, TÉCNICAS, PROCESOS CARACTERÍSTICOS, 
+ESCENARIOS, COMPONENTES, FUNCIONES, BARRERAS, NIVELES 
+EXPRESIÓN CORPORAL: CONCEPTO, CARACTERÍSTICAS, GESTOS, POSTURAS, EMOCIONES, SENTIMIENTOS 
+ACTOS DE HABLA: CONCEPTO, PERCEPCIÓN, OBSERVACIÓN, ESCUCHA ACTIVA, COMUNICACIÓN VERBAL Y 
+NO VERBAL 
+COMPRENSIÓN DE TEXTOS: CONCEPTO, TÉCNICAS, PROCESOS, NIVELES, CARACTERÍSTICAS, 
+INTERPRETACIÓN, ELEMENTOS 
+REDACCIÓN DE TEXTOS: TIPOS, USOS, CLASES, PARTES, FORMA, CONTENIDO, INTENCIONALIDAD, TÉCNICAS, 
+MÉTODOS, COHESIÓN, COHERENCIA, SINTAXIS, ORTOGRAFÍA, SIGNOS DE PUNTUACIÓN, SEMÁNTICA, 
+PRINCIPIOS Y CUALIDADES 
+ARGUMENTACIÓN: CONCEPTO, PROCESOS, ELEMENTOS, CARACTERÍSTICAS, LA PREGUNTA, LA TESIS, EL 
+ARGUMENTO, LA CONCLUSIÓN, LA SÍNTESIS 
+PROPOSICIÓN: CONCEPTO, PROCESOS, ELEMENTOS, CARACTERÍSTICAS 
+ESTILO: CONCEPTO, CARACTERÍSTICAS, APLICACIÓN 
+CARÁCTER CONVENCIONAL Y FUNCIÓN SOCIAL DE LOS SIGNOS: CONCEPTO, TIPOS, RELACIONES, USOS, 
+CARÁCTER, INTERPRETACIÓN, CARACTERÍSTICAS, CONTEXTO, ELEMENTOS BÁSICOS DE LA SEMIÓTICA Y 
+SEMIOLOGÍA 
+PROCESOS DE PENSAMIENTO: CONCEPTO, ANÁLISIS, SÍNTESIS, PROPOSICIÓN, ARGUMENTACIÓN 
+CONSULTA Y LECTURA: MÉTODOS, TÉCNICAS SELECCIÓN, ORGANIZACIÓN Y ARCHIVO DE INFORMACIÓN EN 
+DIVERSAS FUENTES, NIVELES, ESTRATEGIAS 
+NORMATIVIDAD: NORMAS ICONTEC PARA LA ELABORACIÓN DE TEXTOS ESCRITOS 
+Página 18 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 19 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.7 CRITERIOS DE EVALUACIÓN 
+ESCUCHA CON ATENCIÓN Y CONCENTRACIÓN, ASIENTE Y PREGUNTA AL HABLANTE-OYENTE PARA 
+RETROALIMENTAR EL PROCESO. 
+INTERPRETA MENSAJES Y RECONSTRUYE EL DISCURSO CON SUS PROPIAS PALABRAS MANTENIENDO EL 
+SENTIDO. 
+ESTABLECE ACUERDOS A PARTIR DE LA DIVERSIDAD DE CONCEPTOS Y OPINIONES. 
+USA EL LÉXICO CON PRECISIÓN Y PROPIEDAD EN LOS PROCESOS DE COMUNICACIÓN RELACIONADOS CON 
+EL ÁREA DE DESEMPEÑO LABORAL. 
+UTILIZA EL LENGUAJE SEGÚN EL DESTINATARIO, EL PROPÓSITO, EL CONTEXTO Y EL CONTENIDO. 
+REDACTA TEXTOS CON COHESIÓN Y COHERENCIA SIGUIENDO PAUTAS DE PROGRESIÓN TEMÁTICA. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EL NÚCLEO BÁSICO DE CONOCIMIENTO DE: COMUNICACIÓN SOCIAL, 
+PERIODISMO Y AFINES; O EDUCACIÓN; O LENGUAS MODERNAS, LITERATURA, LINGÜÍSTICA Y AFINES. (VER 
+ANEXO N.B.C) 
+TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DOCE (12) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA COMUNICACIÓN Y DOCE (12) MESES EN DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Ejercer derechos fundamentales del trabajo en el marco de la constitución política y los convenios 
+internacionales. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+210201501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+Página 19 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 20 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+Ejercer derechos fundamentales del trabajo en el marco de la constitución política y los convenios 
+internacionales. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+03- Practicar los derechos fundamentales en el trabajo de acuerdo con la Constitución Política y los Convenios 
+Internacionales. 
+01- Reconocer el trabajo como factor de movilidad social y transformación vital con referencia a la fenomenología y a los 
+derechos fundamentales en el trabajo. 
+04- Participar en acciones solidarias teniendo en cuenta el ejercicio de los derechos humanos, de los pueblos y de la 
+naturaleza. 
+02- Valorar la importancia de la ciudadanía laboral con base en el estudio de los derechos humanos y fundamentales en el 
+trabajo. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Analizar la relación entre el trabajo y el desarrollo humano (1) 
+Identificar  la naturaleza de los derechos humanos y fundamentales del trabajo (1) 
+Relacionar, en el marco de los derechos humano el desarrollo social, la autonomía y la dignidad (2) 
+Desarrollar documentos relacionados con los derechos y las obligaciones políticas, prestacionales, sociales, y de 
+bienestar derivadas de las acciones laborales. (2) 
+Argumentar el ejercicio de los derechos del trabajo como defensa de los mismos y expresión de la ciudadanía laboral. (3) 
+Dimensionar el ejercicio del derecho a la huelga. (3) 
+Integrar acciones de solidaridad para la defensa del ser humano, la naturaleza y los valores de la convivencia social y 
+ciudadanía (4) 
+4.6.2 CONOCIMIENTOS DEL SABER 
+1. Persona sociedad y Trabajo 
+-  Dignidad humana, democracia, el trabajo, Justicia y paz. 
+-  Desarrollo humano integral. 
+-  Diversidad cultural 
+-  Fenomenología del mundo del trabajo 
+2. Leyes fundamentales y mandatos legales 
+-  Política. Derechos humanos y Constitución Política de Colombia. 
+-  Principios y derechos de la OIT: Declaración de la O.I.T. 
+-  Derecho a la vida. 
+-  Derechos políticos y civiles. 
+-  Trabajo digno y decente: Definición, análisis del trabajo forzoso u obligatorio. 
+3. Derechos del trabajo y Ciudadanía laboral 
+-  Derechos del trabajo y su impacto en el desarrollo de la sociedad 
+-  Dialogo social 
+-  Persona sujeta de derechos y deberes en el contexto de los derechos humanos 
+Página 20 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 21 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+-  Derechos individuales y colectivos del trabajo: Características y campos para el desarrollo del derecho individual y 
+colectivo en el mundo del trabajo 
+-  Mecanismos de protección de los derechos en el trabajo. 
+-  Trabajo Decente: Integración de políticas 
+-  Igualdad de género: equidad y balance de género 
+-  Trabajo forzado y Trabajo Infantil 
+-  Enfoque diferencial, valor ciudadano para la inclusión social 
+-  Discriminación laboral en casos de enfermedades terminales 
+-  Resolución pacífica de los conflictos; negociación colectiva y huelga 
+-  Derechos para la sostenibilidad empresarial: Eficiencia, Eficacia, Efectividad. 
+4. Ejercicio de los derechos en el trabajo. 
+-  Aplicación de los mecanismos de protección de los derechos en el trabajo. 
+-  Caja de herramientas laborales: salario, prestaciones sociales, seguridad social y contratación. 
+-  Sociedad del Ocio: recreación, deporte, arte cultura, vida familiar. 
+-  Derechos y libertades ciudadanas. 
+5. Derecho a la Asociación, normatividad nacional e internacional. 
+-  Valores democráticos sobre el sindicalismo. Normatividad nacional e internacional 
+-  Asociaciones sindicales, libertad sindical y derechos asociados. 
+-  Libertad de Asociación y Sindical 
+-  Derecho de Negociación Colectiva: agentes, reconocimiento de la asociación para resolver problemas 
+6. Derechos de Solidaridad o de los Pueblos 
+-  Relación entre el ser humano, la naturaleza y el planeta. 
+-  Autodeterminación de los pueblos y desarrollo sostenible y seguridad alimentaria. 
+-  Estrategias de desarrollo e impacto ambiental en Colombia. 
+-  Postconflicto y paz 
+-  Apropiación del avance y uso de la ciencia y la tecnología. 
+-  Desarrollo para una vida digna 
+-  Identidad Nacional y Cultural 
+4.7 CRITERIOS DE EVALUACIÓN 
+-  Compara las condiciones del trabajo, en el devenir histórico de la humanidad de acuerdo con los derechos humanos y 
+fundamentales en el trabajo. (1) 
+-  Argumenta los momentos relevantes del devenir histórico de los derechos humanos y fundamentales en el trabajo en la 
+línea del tiempo. (1) 
+-  Selecciona los mecanismos de protección para el ejercicio de la ciudadanía laboral aplicando la normativa. (2) 
+-  Analiza situaciones que repercuten en ejercicio de los derechos fundamentales en el trabajo, desarrollando habilidades 
+de comunicación según técnicas y protocolos. (3) 
+-  Elabora documentos relacionados con las obligaciones económicas, sociales y de bienestar derivadas de las acciones 
+laborales de acuerdo con la normativa. (3) 
+-  Evalúa los resultados de la aplicación de los mecanismos de protección para el ejercicio de la ciudadanía laboral acorde 
+con la normativa (3) 
+-  Propone estrategias de solución de conflictos y negociación de acuerdo con la normativa. (3) 
+-  Justifica la importancia de los derechos de los pueblos y de la solidaridad en el ejercicio de la ciudadanía 
+Página 21 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 22 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+laboral de acuerdo con la normativa. (4) 
+-  Relaciona, de los derechos de los pueblos y de la solidaridad, la autodeterminación de los pueblos, el desarrollo 
+sostenible, la seguridad alimentaria, el derecho al uso de la ciencia y la tecnología y la paz en función de los indicadores 
+de desarrollo humano. (4) 
+-  Propone acciones de defensa relacionadas con la autodeterminación de los pueblos, el desarrollo sostenible, la 
+seguridad alimentaria, el derecho al uso de la ciencia y la tecnología y la paz en función de los indicadores del desarrollo 
+humano. (4) 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+Certificado de Aptitud Profesional ¿ SENA, o certificado por autoridad competente en cualquiera de las nueve áreas de 
+desempeño de la CNO y en el nivel ocupacional 2,3 o 4 (Ver anexo C. N.O) 
+Alternativa 1. 
+Certificado de técnico, o certificado por autoridad competente en cualquiera de las nueve áreas de desempeño de la CNO 
+y en el nivel ocupacional 3 o 4 (Ver anexo C. N.O) 
+Alternativa 2 
+Título de Técnico Profesional en cualquiera de los 55 núcleos básicos de conocimiento, o en NULL o Sin clasificar. Ver 
+anexos: (N.B.C.), (TITULOS SENA). 
+Alternativa 3 
+Título de Tecnólogo en cualquiera de los 55 núcleos básicos de conocimiento, o en NULL o Sin clasificar. Ver anexos: 
+(N.B.C.), (TITULOS SENA) 
+Alternativa 4 
+Título Profesional universitario en cualquiera de los 55 núcleos básicos de conocimiento, o en NULL o Sin clasificar. (Ver 
+anexo N.B.C) Tarjeta profesional en los casos exigidos por la Ley 
+4.8.2 Experiencia laboral y/o especialización: 
+Cuarenta y ocho (48) meses de experiencia relacionada distribuida así: 
+Treinta y seis (36) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del 
+trabajo y doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida. 
+Alternativa 1. 
+Cuarenta y dos (42) meses de experiencia relacionada distribuida así: 
+Treinta (30) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo y 
+Doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida. 
+Alternativa 2 
+Treinta y seis (36) meses de experiencia relacionada distribuida así: 
+Veinticuatro (24) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo 
+y doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida 
+Alternativa 3 
+Treinta (30) meses de experiencia relacionada distribuida así: 
+Dieciocho (18) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo y 
+doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida 
+Alternativa 4 
+Veinticuatro (24) meses de experiencia relacionada distribuida así: 
+Página 22 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 23 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+Doce (12) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo y doce 
+(12) meses en docencia o instrucción certificada por entidad legalmente reconocida 
+4.8.3 Competencias: 
+1. Crea espacios pedagógicos de reflexión y apropiación para la valoración de los derechos y deberes en el trabajo 
+2. Interpreta la relación entre el trabajo y el desarrollo humano. 
+3. Identifica la naturaleza de los derechos humanos y del trabajo. 
+4. Genera procesos de interacción social interacciones en el marco de los derechos humanos y laborales para el 
+desarrollo social para el desarrollo de con autonomía y dignidad. 
+5. Implementa acciones para la elaboración el diligenciamiento de documentos relacionados con la política pública, de 
+salarios y los acuerdos internacionales de la OIT y los derechos económicos, sociales y de bienestar derivadas de las 
+acciones laborales. 
+6. Argumenta los derechos el ejercicio de los derechos fundamentales del trabajo y los mecanismos de protección como 
+ejercicio de la ciudadanía laboral. 
+7. Organiza acciones pedagógicas para la aplicación de los principios de los derechos de asociación. 
+8. Integra acciones de solidaridad para la defensa del ser humano, la naturaleza y la cultura de la paz. y los valores de la 
+convivencia la paz y la ciudadana 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Enrique Low Murtra-Interactuar en el contexto productivo y social de acuerdo con principios  éticos 
+para la construcción de una cultura de paz. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201526 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ÉTICA PARA LA CONSTRUCCIÓN DE UNA CULTURA DE PAZ 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA1 PROMOVER MI DIGNIDAD Y LA DEL OTRO A PARTIR DE LOS PRINCIPIOS Y VALORES ÉTICOS COMO 
+APORTE EN LA INSTAURACIÓN DE UNA CULTURA DE PAZ. 
+RA2 ESTABLECER RELACIONES DE CRECIMIENTO PERSONAL Y COMUNITARIO A PARTIR DEL BIEN COMÚN 
+COMO APORTE PARA EL DESARROLLO SOCIAL. 
+RA4 CONTRIBUIR CON EL FORTALECIMIENTO DE LA CULTURA DE PAZ A PARTIR DE LA DIGNIDAD HUMANA Y 
+LAS ESTRATEGIAS PARA LA TRANSFORMACIÓN DE CONFLICTOS. 
+RA3 PROMOVER EL USO RACIONAL DE LOS RECURSOS NATURALES A PARTIR DE CRITERIOS DE 
+SOSTENIBILIDAD Y SUSTENTABILIDAD ÉTICA Y NORMATIVA VIGENTE. 
+Página 23 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 24 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+ESTABLECER COMUNICACIÓN CONSTRUCTIVA 
+RESPETAR AL OTRO 
+FIJAR EL PROYECTO DE VIDA 
+RECLAMAR DERECHOS DE DIGNIDAD 
+USAR LA CIENCIA Y LA TECNOLOGÍA PARA MEJORAR MI CALIDAD DE VIDA 
+EXIGIR RECONOCIMIENTO EN FUNCIÓN DE MI PRESENCIA PROTAGÓNICA EN LA SOCIEDAD 
+RECONOCER EL VALOR INTRÍNSECO DE CADA PERSONA 
+MANTENER EL VALOR DE MI DIGNIDAD Y LA DIGNIDAD DEL OTRO 
+RECONOCER LA AUTONOMÍA PERSONAL Y DEL OTRO 
+RECONOCER MIS DIFERENCIAS E IGUALDADES CON EL OTRO 
+PRACTICAR CON HECHOS EL RESPETO CONMIGO MISMO Y CON LOS DEMÁS 
+APLICAR LA CAPACIDAD DE ESCUCHA 
+RESPETAR LA OPINIÓN E IDEAS DEL OTRO 
+APLICAR ESTILOS DE COMUNICACIÓN 
+PRACTICAR CON HECHOS EL RESPETO A LOS DEMÁS 
+RESPETAR LA PRIVACIDAD DEL OTRO 
+RESPETAR LAS CREENCIAS 
+RESPETAR LUGARES DE ENCUENTRO COMUNITARIO 
+PRACTICAR ACTOS DE RESPETO 
+RESPETAR LAS NORMAS SOCIALES 
+CONVIVIR EN COMUNIDAD 
+ASUMIR COMPORTAMIENTO DE CULTURA CIUDADANA 
+EJERCER ROL PROTAGÓNICO EN EL DESARROLLO SOCIAL 
+FORTALECER COMPETENCIAS DE LIDERAZGO 
+DESARROLLAR PROYECTOS SOCIALES 
+DESARROLLAR EL SENTIDO DE PERTENENCIA 
+ESTABLECER PROCESOS DE COMUNICACIÓN CONSTRUCTIVA 
+IDENTIFICAR LOS HECHOS DE VIOLENCIA EN MI HISTORIA DE VIDA 
+RECONOCER LA IMPORTANCIA DEL DESARROLLO DE UNA CULTURA DE PAZ 
+IDENTIFICAR ESTRATEGIAS DE RECONCILIACIÓN 
+APLICAR ESTRATEGIAS DE RECONCILIACIÓN 
+ESTABLECER RELACIONES CONSTRUCTIVAS Y RESPETUOSAS 
+ESTABLECER RELACIONES INTERPERSONALES 
+ASUMIR ACTITUDES CRÍTICAS CONSTRUCTIVAS Y ARGUMENTATIVAS 
+ESTABLECER GESTOS DE SOLIDARIOS 
+GENERAR PROCESOS DE CONSTRUCCIÓN DE PAZ EN EL NÚCLEO FAMILIAR 
+ESTABLECER RELACIONES INTERPERSONALES A PARTIR DE UNA COMUNICACIÓN ASERTIVA, TOLERANCIA Y 
+SOLIDARIDAD 
+APLICAR NORMATIVA VIGENTE EN RELACIÓN CON DERECHOS HUMANOS Y DERECHO INTERNACIONAL 
+HUMANITARIO 
+4.6.2 CONOCIMIENTOS DEL SABER 
+HOMBRE: CONCEPTO, SUJETO MORAL, SUJETO ÉTICO, SER RACIONAL 
+CONCEPTO DE NATURALEZA HUMANA, DIGNIDAD HUMANA, ACTOS HUMANOS, ACCIONES HUMANAS, 
+LIBERTAD, LEY NATURAL, LEY POSITIVA Y MORAL 
+AXIOLOGÍA: CONCEPTO, JERARQUÍA DE VALORES 
+ÉTICA: CONCEPTO Y APLICABILIDAD 
+TRABAJO: CONCEPTO, SISTEMA DE RELACIONES 
+RELACIONES SOCIALES: CONCEPTO, CLASES 
+RECONCILIACIÓN: CONCEPTO, CONDICIONES 
+TRABAJO EN EQUIPO: CONTEXTUALIZACIÓN, ALCANCE, TÉCNICAS, FUNDAMENTOS Y VENTAJAS 
+Página 24 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 25 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+RESOLUCIÓN DE CONFLICTOS: CONTEXTUALIZACIÓN, DESTREZAS, TÉCNICAS Y TEORÍAS 
+COMUNICACIÓN ASERTIVA: CONTEXTUALIZACIÓN, ESTRATEGIAS, FUNDAMENTOS, TIPOS Y TÉCNICAS 
+LIDERAZGO: CONCEPTO, TENDENCIAS Y GENERALIDADES 
+INTELIGENCIA EMOCIONAL: CONCEPTO, ALCANCE Y TÉCNICAS 
+COACHING: CONCEPTO, ALCANCE Y TÉCNICAS BÁSICAS 
+PROGRAMACIÓN NEUROLINGÜÍSTICA: CONCEPTO, ALCANCE, TÉCNICAS BÁSICAS 
+TOMA DE DECISIONES: CONCEPTO, MODELOS, ESTRATÉGICAS Y ANÁLISIS ESTRATÉGICO Y ALCANCE 
+RELACIONES INTERPERSONALES: CONCEPTO Y ALCANCE 
+CONTEXTO DEL CONFLICTO: CONCEPTO, CONTEXTO SOCIAL Y POLÍTICO, CONFLICTO ARMADO 
+CONCEPTO DE PAZ, VIOLENCIA. CONFLICTO, RESPETO, FAMILIA, DIÁLOGO Y CONCERTACIÓN 
+JUSTICIA: CONCEPTO, CLASES 
+EQUIDAD: CONCEPTO, APLICACIONES 
+CONCEPTO Y FORMAS DE GOBIERNO, SOCIEDAD, ESTADO, PAÍS, CONSTITUCIÓN, GOBERNALIDAD, Y 
+DEMOCRACIA 
+CONVIVENCIA: CONCEPTO, LIBERTAD, CRITICIDAD, NEGOCIACIÓN FRENTE AL CONFLICTO, REPARACIÓN Y 
+REINTEGRACIÓN 
+DERECHOS HUMANOS: CONCEPTO, NORMATIVA VIGENTE 
+DERECHO INTERNACIONAL HUMANITARIO: CONCEPTO, NORMATIVA VIGENTE 
+AUTOESTIMA, AUTONOMÍA, AUTOCONTROL, AUTOCUIDADO 
+COMUNICACIÓN: ACCIÓN INSTRUMENTAL, ACCIÓN ESTRATÉGICA Y ACCIÓN COMUNICATIVA 
+HABILIDADES PARA LA VIDA Y PARA LA CONVIVENCIA: AUTOCONOCIMIENTO, EMPATÍA, COMUNICACIÓN 
+ASERTIVA, RELACIONES INTERPERSONALES, TOMA DE DECISIONES, SOLUCIÓN DE PROBLEMAS Y DE 
+CONFLICTOS, PENSAMIENTO CREATIVO, PENSAMIENTO CRÍTICO, MANEJO DE EMOCIONES Y SENTIMIENTOS, 
+MANEJO DE TENSIONES Y ESTRÉS 
+PARTICIPACIÓN CIUDADANA: CONCEPTO, MECANISMOS E INSTANCIAS DE PARTICIPACIÓN CIUDADANA, BIEN 
+COMÚN, ALTERIDAD Y GÉNERO, PROCESO DE SOCIABILIDAD HUMANA, REPRESENTACIONES SOCIALES O 
+IMAGINARIOS CULTURALES, CULTURAS EMERGENTES, ROLES SOCIALES. 
+RESPONSABILIDAD SOCIAL: CONCEPTO, ESTRATEGIAS PARA GENERAR UNA CULTURA DE RESPONSABILIDAD 
+SOCIAL 
+4.7 CRITERIOS DE EVALUACIÓN 
+DEFINE SU PROYECTO DE VIDA DE ACUERDO A LOS CRITERIOS DE DIGNIDAD, DE RESPETO, CREENCIAS, 
+ECOLOGÍA Y CULTURA 
+RECONOCE SU VALOR Y EL VALOR DEL OTRO DE ACUERDO A LOS PRINCIPIOS DE DIGNIDAD Y 
+CONSTRUCCIÓN CULTURAL Y AUTONOMÍA 
+UTILIZA HERRAMIENTAS QUE PERMITEN LA COMUNICACIÓN ASERTIVA EN DIFERENTES ENTORNOS 
+TENIENDO EN CUENTA LA PEDAGOGÍA PARA LA PAZ 
+CONSTRUYE RELACIONES INTERPERSONALES A PARTIR DEL ENFOQUE DIFERENCIAL Y LA PROMOCIÓN DE 
+UNA CULTURA DE PAZ 
+CAMBIA ACTITUDES FRENTE A SU COMPORTAMIENTO CON BASE EN LA DIGNIDAD, APORTANDO A LA 
+CULTURA DE PAZ 
+MODIFICA ACTITUDES COMPORTAMENTALES A PARTIR DE LA RESOLUCIÓN PACÍFICA DE CONFLICTOS 
+APLICA ACCIONES DE PREVENCIÓN DE ACCIONES VIOLENTAS CON BASE EN ESTRATEGIAS DE 
+COMUNICACIÓN ASERTIVA 
+EVIDENCIA RESPETO POR EL BIEN COMÚN, LA ALTERIDAD Y EL DIÁLOGO CON EL OTRO CON BASE EN 
+PRINCIPIOS AXIOLÓGICOS 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+ALTERNATIVA 1 
+TÍTULO DE TECNÓLOGO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: SOCIOLOGÍA, TRABAJO SOCIAL Y 
+AFINES; O CIENCIA POLÍTICA, RELACIONES INTERNACIONALES. VER ANEXOS: (N.B.C.), (TITULOS SENA). 
+Página 25 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 26 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+ALTERNATIVA 2 
+TÍTULO PROFESIONAL UNIVERSITARIO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: ANTROPOLOGÍA, 
+ARTES LIBERALES; O SOCIOLOGÍA, TRABAJO SOCIAL Y AFINES; O CIENCIA POLÍTICA, RELACIONES 
+INTERNACIONALES; O EDUCACIÓN; O FILOSOFÍA, TEOLOGÍA Y AFINES; O PSICOLOGÍA; O DERECHO Y AFINES. 
+(VER ANEXO N.B.C). 
+4.8.2 Experiencia laboral y/o especialización: 
+ALTERNATIVA 1 
+TREINTA (30) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DIECIOCHO (18) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA INTERACCIÓN CONSIGO MISMO, CON LOS DEMÁS, 
+CON LA NATURALEZA Y CON LA TRASCENDENCIA Y DOCE (12) MESES EN DOCENCIA. 
+ALTERNATIVA 2 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DOCE (12) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA INTERACCIÓN CONSIGO MISMO, CON LOS DEMÁS, 
+CON LA NATURALEZA Y CON LA TRASCENDENCIA Y DOCE (12) MESES EN DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Estructurar sistema de gestión ambiental según procedimiento técnico y normativa 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220201089 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ESTRUCTURACIÓN DEL SISTEMA DE GESTIÓN AMBIENTAL. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+384 horas 
+DENOMINACIÓN 
+Página 26 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 27 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+RA1. CARACTERIZAR EL ENTORNO AMBIENTAL CUMPLIENDO CON ESTÁNDARES NORMATIVOS NACIONALES. 
+144H 
+RA2. ESTRUCTURAR PROPUESTA AMBIENTAL TENIENDO EN CUENTA LA NORMATIVA Y PROTOCOLOS DE 
+PRODUCCIÓN LIMPIA. 240H 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+RA1. 
+DESCRIBIR LA RELACIÓN ENTRE EL MEDIO AMBIENTE Y LAS ACTIVIDADES PRODUCTIVAS. 
+IDENTIFICAR PLANES ESTRATÉGICOS, TÁCTICOS Y OPERATIVOS. 
+IDENTIFICAR VARIABLES Y ATRIBUTOS AMBIENTALES. 
+SELECCIONAR ESTÁNDARES DE REFERENCIA. 
+IDENTIFICAR EL IMPACTO AMBIENTAL DE LA ACTIVIDAD PRODUCTIVA. 
+UTILIZAR PLANES DE MANEJO AMBIENTAL. 
+IDENTIFICAR PROBLEMÁTICAS AMBIENTALES REGIONALES Y NACIONALES. 
+REALIZAR DIVULGACIÓN DE LOS OBJETIVOS DE DESARROLLO SOSTENIBLE ONU. 
+IDENTIFICAR GUÍAS AMBIENTALES SECTORIALES. 
+CONSTRUIR INFORME AMBIENTAL. 
+APLICAR LISTAS DE CHEQUEO AMBIENTAL. 
+IDENTIFICAR INVENTARIO AMBIENTAL. 
+DESCRIBIR PROCESO DEL CICLO PHVA. 
+IDENTIFICAR DOCUMENTACIÓN INTERNA Y EXTERNA. 
+CLASIFICAR ACTIVIDAD RESPONSABILIDAD SOCIAL EMPRESARIAL. 
+IDENTIFICAR ENFERMEDADES TRANSMITIDAS POR LOS ALIMENTOS. 
+RA2. 
+IDENTIFICAR TRATADOS Y CONVENIOS AMBIENTALES INTERNACIONALES RATIFICADOS POR COLOMBIA. 
+DILIGENCIAR FORMATOS SIGUIENDO LINEAMIENTOS DE LA LEGISLACIÓN Y NORMATIVA AMBIENTAL VIGENTE. 
+IDENTIFICAR INSTRUMENTOS ECONÓMICOS. 
+APLICAR INSTRUMENTOS DE RECOLECCIÓN. 
+IDENTIFICAR OPORTUNIDADES DE MEJORA PARA HUELLA HÍDRICA. 
+IDENTIFICAR OPORTUNIDADES DE MEJORA PARA HUELLA ECOLÓGICA. 
+IDENTIFICAR OPORTUNIDADES DE MEJORA PARA DISPOSICIÓN DE RESIDUOS. 
+IDENTIFICA MATRIZ DE RIESGO. 
+DESCRIBIR ACCIONES DE PRODUCCIÓN LIMPIA. 
+REVISAR CICLO DE VIDA DEL PRODUCTO. 
+RELACIONAR NORMATIVIDAD AMBIENTAL CON PRODUCTOS Y SERVICIOS VERDES. 
+ELABORAR PLAN DE ACCIÓN PARA EL DESARROLLO DE LA PROPUESTA. 
+APLICAR METODOLOGÍA PERT. 
+REALIZAR LISTADOS MAESTROS DEL SISTEMA GESTIÓN AMBIENTAL. 
+ELABORAR MANUALES DE INSTRUCCIÓN. 
+ELEGIR BUENAS PRÁCTICAS AMBIENTALES Y DE MANUFACTURA. 
+APLICAR HERRAMIENTAS DE MEJORAMIENTO CONTINUO. 
+UTILIZAR MATRIZ DE INDICADORES AMBIENTALES. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+RA1. 
+ECOLOGÍA BÁSICA: CONCEPTO, APLICACIÓN Y CARACTERÍSTICAS. 
+ASPECTOS AMBIENTALES: CONCEPTO E INVENTARIO. 
+REVISIÓN AMBIENTAL INICIAL: CONCEPTO, CARACTERÍSTICAS Y DOCUMENTACIÓN. 
+VARIABLES AMBIENTALES: CONCEPTO Y TIPOS. 
+ATRIBUTOS AMBIENTALES: CONCEPTOS, TIPOS Y ESTÁNDARES DE REFERENCIA. 
+DESEMPEÑO AMBIENTAL: CONCEPTO E INDICADORES. 
+Página 27 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 28 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+INDICADORES AMBIENTALES: CONCEPTO Y TIPOS. 
+IMPACTO AMBIENTAL: CONCEPTO, METODOLOGÍA, ASPECTOS, PROYECTOS, ACTIVIDADES Y EVALUACIÓN. 
+PLANES DE MANEJO AMBIENTAL: CONCEPTO, FORMULACIÓN Y CARACTERÍSTICAS. 
+PROBLEMÁTICAS AMBIENTALES GLOBALES: CONCEPTO Y TIPOS. 
+DESARROLLO SOSTENIBLE: CONCEPTO, PRINCIPIOS Y OBJETIVOS DE LA ONU. 
+GUÍAS AMBIENTALES: CONCEPTO, ACTIVIDADES PRODUCTIVAS Y MEDIDAS DE MANEJO AMBIENTAL. 
+INFORME: CONCEPTO, TIPOS, CARACTERÍSTICAS Y BENEFICIOS. 
+LISTA DE CHEQUEO: CONCEPTO, APLICACIÓN, REQUISITO Y CARACTERÍSTICAS. 
+INVENTARIO AMBIENTAL: CONCEPTO Y CARACTERÍSTICAS. 
+CICLO PHVA: CONCEPTO, CARACTERÍSTICAS Y APLICACIÓN. 
+GESTIÓN DOCUMENTAL: CONCEPTO, PROCESOS, PROCEDIMIENTOS, NORMATIVA, MANEJO Y 
+ALMACENAMIENTO. 
+NORMATIVA AMBIENTAL: ESTRUCTURA Y APLICABILIDAD. 
+RESPONSABILIDAD SOCIAL: NORMATIVA, CARACTERÍSTICAS Y ESTRUCTURA. 
+SISTEMAS DE GESTIÓN DE INOCUIDAD ALIMENTARIA: NORMATIVA, OBJETO Y CAMPO DE APLICACIÓN. 
+RA2. 
+TRATADOS Y CONVENIOS AMBIENTALES RATIFICADOS POR COLOMBIA: DEFINICIÓN, TIPOS, 
+CARACTERÍSTICAS Y APLICACIONES. 
+MINISTERIO AMBIENTE: CONCEPTO, FUNCIONES, COMPETENCIA, RÉGIMEN SANCIONATORIO. 
+AUTORIDADES AMBIENTALES: CONCEPTO, DIFERENCIACIÓN, CARACTERÍSTICAS, TRÁMITES, PERMISOS Y 
+FUNCIONES. 
+INSTRUMENTOS ECONÓMICOS: CONCEPTO, VARIABLES, FORMATOS Y ANÁLISIS. 
+INSTRUMENTOS DE RECOLECCIÓN: CONCEPTO, VARIABLES, CLASES, FORMATOS, ANÁLISIS Y RESULTADOS. 
+HUELLA HÍDRICA: CONCEPTO, GENERALIDADES, MÉTODO Y APLICACIÓN. 
+HUELLA ECOLÓGICA: CONCEPTO, GENERALIDADES, MÉTODOS Y APLICACIÓN. 
+MANEJO DE RESIDUOS: CONCEPTO, CRITERIOS TÉCNICOS Y CLASIFICACIÓN. 
+DISPOSICIÓN DE RESIDUOS: CONCEPTO Y CARACTERÍSTICAS. 
+MATRICES DE ANÁLISIS RIESGO: CONCEPTO, TIPOS, APLICACIÓN, NORMATIVA. 
+CICLO DE VIDA DEL PRODUCTO Y PRODUCCIÓN LIMPIA: CONCEPTO, CARACTERÍSTICAS, CADENA DE VALOR, 
+BENEFICIOS Y NORMATIVA. 
+PLAN DE ACCIÓN: ESTRUCTURA Y APLICABILIDAD. 
+METODOLOGÍA PERT: CONCEPTOS, CARACTERÍSTICAS Y APLICACIÓN. 
+DIAGRAMA DE GANTT: CONCEPTOS, CARACTERÍSTICAS Y APLICACIÓN. 
+MANUALES DE INSTRUCCIÓN: ESTRUCTURA Y APLICABILIDAD. 
+BUENAS PRÁCTICAS AMBIENTALES Y DE MANUFACTURA (BPM): CONCEPTO, CARACTERÍSTICAS. 
+HERRAMIENTAS DE MEJORAMIENTO CONTINUO: DIAGRAMA DE FLUJO, HOJAS DE VERIFICACIÓN, 
+HISTOGRAMAS, DIAGRAMA DE PARETO, DIAGRAMA DE CAUSA Y EFECTO, DIAGRAMA DE DISPERSIÓN, 
+GRÁFICAS DE CONTROL. 
+4.7 CRITERIOS DE EVALUACIÓN 
+RA1. 
+IDENTIFICA VARIABLES AMBIENTALES DE ACUERDO CON CONDICIONES DEL ENTORNO. 
+DESCRIBE EL IMPACTO AMBIENTAL EN LOS PRODUCTOS Y SERVICIOS DE ACUERDO CON NORMATIVA Y 
+ACTIVIDAD ECONÓMICA DE LA EMPRESA. 
+DESCRIBE NORMATIVA AMBIENTAL TENIENDO EN CUENTA LOS PRODUCTOS Y SERVICIOS DE LA EMPRESA. 
+RA2. 
+APLICA INSTRUMENTOS ECONÓMICOS, TENIENDO EN CUENTA LA ACTIVIDAD PRODUCTIVA DE LA EMPRESA. 
+PRESENTA PLAN DE ACCIÓN DE LA PROPUESTA TENIENDO EN CUENTA NORMATIVA Y REQUERIMIENTOS DE 
+LA EMPRESA. 
+Página 28 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 29 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+SELECCIONA OPORTUNIDADES DE MEJORA DE ACUERDO CON LA IDENTIFICACIÓN DE LA HUELLA HÍDRICA, 
+ECOLÓGICA Y MANEJO DE RESIDUOS. 
+PRESENTA PROPUESTA AMBIENTAL DE ACUERDO CON LOS PRODUCTOS Y SERVICIOS DE LA EMPRESA. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO DE PROFESIONAL UNIVERSITARIO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: INGENIERÍA 
+AMBIENTAL, SANITARIA Y AFINES; O INGENIERÍA QUÍMICA Y AFINES; O QUÍMICA Y AFINES; O INGENIERÍA 
+AGRONÓMICA, PECUARIA Y AFINES; O INGENIERÍA AGRÍCOLA, FORESTAL Y AFINES; O EDUCACIÓN; O 
+BIOLOGÍA, MICROBIOLOGÍA Y AFINES. 
+ESTAS PROFESIONES DEBEN ESTAR ASOCIADAS A LOS PROGRAMAS DE FORMACIÓN QUE IMPARTIRÁ EN SU 
+DESEMPEÑO Y SE CITAN LOS TÍTULOS OBTENIDOS, NÚCLEOS BÁSICOS DE CONOCIMIENTO Y ÁREAS DE 
+CONOCIMIENTO: INGENIERÍA AMBIENTAL, INGENIERÍA QUÍMICA O INGENIERÍA AGRONÓMICA. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDOS ASÍ: DOCE (12) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE GESTIÓN AMBIENTAL SECTORIAL Y URBANA Y DOCE (12) MESES EN 
+LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Formular el plan según objetivos y metodologías 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+260101061 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+FORMULACIÓN DEL PLAN COMERCIAL. 
+Página 29 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 30 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+528 horas 
+DENOMINACIÓN 
+RA2. PROCESAR INFORMACIÓN DEL MERCADO, CUMPLIENDO CON PROCEDIMIENTOS TÉCNICOS. 240H 
+RA1. DIAGNOSTICAR LA SITUACIÓN DEL MERCADO DE ACUERDO CON EL TIPO DE PRODUCTO A 
+COMERCIALIZAR.	144H 
+RA3. ESTRUCTURAR PROPUESTA PARA NEGOCIO VERDE, DE ACUERDO CON DIAGNÓSTICO DE MERCADO. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+RA1. 
+DEFINIR VARIABLES DEL PLAN COMERCIAL. 
+ESTABLECER OBJETIVOS DE MERCADEO. 
+DEFINIR EL ANÁLISIS SITUACIONAL DEL PRODUCTO EN EL MERCADO. 
+IDENTIFICAR EMPRESAS DE BIOCOMERCIO Y NEGOCIOS VERDES. 
+IDENTIFICAR ASPECTOS QUE PROMUEVAN LA CULTURA INNOVADORA EN LA ORGANIZACIÓN. 
+UTILIZAR HERRAMIENTAS DIAGNÓSTICAS. 
+IDENTIFICAR SISTEMAS DE INFORMACIÓN EN BIOCOMERCIO Y NEGOCIOS VERDES. 
+DESCRIBIR LA SEGMENTACIÓN DE MERCADO. 
+ELABORAR INFORME DE DIAGNÓSTICO SITUACIONAL. 
+RA2. 
+IDENTIFICAR NECESIDADES DE INFORMACIÓN. 
+IDENTIFICAR FUENTES DE INFORMACIÓN. 
+SELECCIONAR TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN. 
+DETERMINAR INSTRUMENTOS DE RECOLECCIÓN DE INFORMACIÓN. 
+DEFINIR LA MUESTRA. 
+PLANTEAR EL TRABAJO DE CAMPO. 
+RECOLECTAR INFORMACIÓN. 
+TABULAR DATOS. 
+ANALIZAR INFORMACIÓN. 
+PROCESAR INFORMACIÓN EN SOFTWARE ESTADÍSTICO. 
+ELABORAR INFORME DE MERCADOS. 
+RA3. 
+DESCRIBIR PRODUCTOS Y SERVICIOS BIO, ECOLÓGICOS Y ORGÁNICOS. 
+ESTABLECER USOS DE PRODUCTOS Y SERVICIOS BIO, ECOLÓGICOS Y ORGÁNICOS. 
+ASIGNAR ATRIBUTOS A LOS PRODUCTOS. 
+SELECCIONAR EMPAQUE, ENVASE Y EMBALAJE AMIGABLE CON EL MEDIO AMBIENTE. 
+CREAR GREEN BRANDING DE LOS PRODUCTOS Y SERVICIOS. 
+ELABORAR FICHAS TÉCNICAS DE PRODUCTOS. 
+DESCRIBIR MEZCLA DE MERCADEO PARA PRODUCTOS VERDES. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+RA1. 
+PLANEACIÓN: CONCEPTO, PRINCIPIOS Y ETAPAS. 
+PLAN COMERCIAL: CONCEPTO, HERRAMIENTAS, METODOLOGÍA, ESTRUCTURA Y ETAPAS. 
+OBJETIVOS: CONCEPTO, FORMULACIÓN, CARACTERÍSTICAS Y TIPOS. 
+ANÁLISIS SITUACIONAL: CONCEPTO, VARIABLES Y METODOLOGÍA, CUANTIFICACIÓN DE MACROENTORNO Y 
+Página 30 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 31 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+MICROENTORNO. 
+DIAGNÓSTICO: CONCEPTO, TIPOS, TÉCNICAS Y METODOLOGÍAS. 
+ENTORNO EMPRESARIAL: CONCEPTOS Y VARIABLES. 
+PLATAFORMA ESTRATÉGICA: CONCEPTO, METODOLOGÍAS, CARACTERÍSTICAS Y COMPONENTES. 
+EMPRESA: CONCEPTO, TIPOS, CONSTITUCIÓN Y NORMATIVA. 
+COMPETENCIA: CONCEPTO Y TIPOS. 
+RA2. 
+INVESTIGACIÓN DE MERCADOS: CONCEPTO, PROCESO, PASOS E IMPORTANCIA. 
+INFORMACIÓN: CONCEPTO Y TIPOS. 
+NECESIDAD: CONCEPTO. 
+FUENTES DE INFORMACIÓN: CONCEPTO, CARACTERÍSTICAS Y TIPOS. 
+TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN: CONCEPTO Y TIPOS. 
+INSTRUMENTOS DE RECOLECCIÓN DE INFORMACIÓN: CONCEPTO, CLASES Y ESTRUCTURA. 
+MUESTREO: CONCEPTO Y TÉCNICAS. 
+MUESTRA: CONCEPTO. 
+TRABAJO DE CAMPO: METODOLOGÍA, SEGUIMIENTO, ESTRUCTURA Y PROTOCOLOS. 
+TABULACIÓN: CONCEPTO, TIPOS Y HERRAMIENTAS. 
+DISTRIBUCIÓN DE FRECUENCIAS: CONCEPTO Y ESTRUCTURA. 
+GRÁFICAS: ESTRUCTURA Y TIPOS. 
+TABLAS: ESTRUCTURA Y PROCESO. 
+ESTADÍSTICA: CONCEPTO, MÉTODOS, TIPOS Y USOS. 
+SOFTWARE PARA ESTADÍSTICA: PROCEDIMIENTO DE USO. 
+BIG DATA: CONCEPTOS Y USOS. 
+INTELIGENCIA DE MERCADOS: CONCEPTO Y APLICABILIDAD. 
+INFORME DE INVESTIGACIÓN: CONCEPTO, PASOS Y ESTRUCTURA 
+RA3. 
+MARKETING GREEN (MERCADEO VERDE): CONCEPTO, MEZCLA, BENEFICIOS Y PROCESOS. 
+PMV (PRODUCTO MÍNIMO VIABLE): CONCEPTO, METODOLOGÍA Y FASES. 
+CATEGORY MANAGER: CONCEPTO, PROCESO Y VENTAJAS. 
+EMPAQUE ECOLÓGICO, BIODEGRADABLE: CONCEPTO, TIPOS, FUNCIONES Y USOS. 
+ENVASES ECOLÓGICOS, BIODEGRADABLE: CONCEPTO, TIPOS, FUNCIONES Y USOS. 
+EMBALAJE SOSTENIBLE: CONCEPTO, TIPOS, FUNCIONES Y USOS. 
+MARCA: CONCEPTO, SÍMBOLOS, EMBLEMAS, ETIQUETA Y CARACTERES QUE IDENTIFICAN EL NOMBRE. 
+GREEN BRANDING: CONCEPTO, DISEÑO, ELEMENTOS, ESTRUCTURA Y BENEFICIOS. 
+PROPIEDAD INTELECTUAL, PATENTES E INVENCIONES: CONCEPTO, CARACTERÍSTICAS Y NORMATIVA. 
+BRANDING (CONSTRUCCIÓN DE MARCA): CONCEPTO, DISEÑO, ELEMENTOS, ESTRUCTURA Y BENEFICIOS. 
+MEZCLA DE MERCADEO: CONCEPTO, VARIABLES, APLICABILIDAD 
+COOLHUNTING: CONCEPTO, TIPOS Y ACTIVIDAD. 
+PROPUESTA DE VALOR - FACTOR INNOVACIÓN: CONCEPTO Y TIPOS. 
+DESIGN THINKING: METODOLOGÍA Y FASES. 
+BUSINESS MODEL CANVAS VERDE: CONCEPTO, METODOLOGÍA Y FASES. 
+4.7 CRITERIOS DE EVALUACIÓN 
+RA1. 
+RELACIONA VARIABLES DEL MERCADO SEGÚN ENTORNO ORGANIZACIONAL. 
+DESCRIBE ANÁLISIS SITUACIONAL, TENIENDO EN CUENTA TENDENCIAS DEL ENTORNO. 
+RELACIONA VARIABLES DEL PLAN COMERCIAL SEGÚN POLÍTICAS DE LA EMPRESA. 
+DESCRIBE ANÁLISIS SITUACIONAL DE NEGOCIOS VERDES SEGÚN COMPORTAMIENTO Y TENDENCIAS DEL 
+ENTORNO EMPRESARIAL. 
+Página 31 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 32 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+PRESENTA LAS NECESIDADES DE INFORMACIÓN TENIENDO EN CUENTA OBJETIVOS DEL ESTUDIO DE 
+MERCADOS. 
+RA2. 
+PRESENTA LAS NECESIDADES DE INFORMACIÓN TENIENDO EN CUENTA OBJETIVOS DEL ESTUDIO DE 
+MERCADOS. 
+ORGANIZA INFORMACIÓN DEL MERCADO TENIENDO EN CUENTA LAS TÉCNICAS DE RECOLECCIÓN DE 
+INFORMACIÓN. 
+ ESTRUCTURA INFORME DE INVESTIGACIÓN DE MERCADOS DE ACUERDO CON EL PROBLEMA PLATEADO. 
+RA3. 
+PROPONE ATRIBUTOS DE LOS PRODUCTOS TENIENDO EN CUENTA SU USO Y NECESIDADES DEL SEGMENTO. 
+SELECCIONA EL GREEN BRAND, TENIENDO EN CUENTA LOS REQUERIMIENTOS DEL PRODUCTO Y LA 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EN DISCIPLINA ACADÉMICA DEL NÚCLEO BÁSICO DE CONOCIMIENTO 
+EN: ADMINISTRACIÓN, ECONOMÍA O INGENIERÍA INDUSTRIAL Y AFINES. 
+ESTAS PROFESIONES DEBEN ESTAR ASOCIADAS A LOS PROGRAMAS DE FORMACIÓN QUE IMPARTIRÁ EN SU 
+DESEMPEÑO Y SE CITAN LOS TÍTULOS OBTENIDOS, NÚCLEOS BÁSICOS DE CONOCIMIENTO Y ÁREAS DE 
+CONOCIMIENTO: INGENIERO DE MERCADOS, INGENIERO FINANCIERO, INGENIERO INDUSTRIAL, 
+ADMINISTRACIÓN DE ORGANIZACIONES, ECONOMISTA, MERCADÓLOGO, PROFESIONAL EN  MERCADEO Y 
+PUBLICIDAD, PROFESIONAL EN ADMINISTRACIÓN. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DOCE (12) MESES ESTARÁN RELACIONADOS 
+CON EL ÁREA DE MERCADEO, VENTAS O COMERCIALIZACIÓN, EN DESARROLLO DEL OBJETO DE LA 
+FORMACIÓN PROFESIONAL A LA QUE SE DEDICA EL CARGO Y DOCE (12) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+Página 32 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 33 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+GENERAR HÁBITOS SALUDABLES DE VIDA MEDIANTE LA APLICACIÓN DE PROGRAMAS DE 
+ACTIVIDAD FÍSICA EN LOS CONTEXTOS PRODUCTIVOS Y SOCIALES. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+230101507 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ACTIVIDAD FÍSICA Y HÁBITOS DE VIDA SALUDABLE 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA4 IMPLEMENTAR UN PLAN DE ERGONOMÍA Y PAUSAS ACTIVAS SEGÚN LAS CARACTERÍSTICAS DE LA 
+FUNCIÓN PRODUCTIVA. 
+RA1 DESARROLLAR HABILIDADES PSICOMOTRICES EN EL CONTEXTO PRODUCTIVO Y SOCIAL. 
+RA3 EJECUTAR ACTIVIDADES DE ACONDICIONAMIENTO FÍSICO ORIENTADAS HACIA EL MEJORAMIENTO DE LA 
+CONDICIÓN FÍSICA EN LOS CONTEXTOS PRODUCTIVO Y SOCIAL. 
+RA2 PRACTICAR HÁBITOS SALUDABLES MEDIANTE LA APLICACIÓN DE FUNDAMENTOS DE NUTRICIÓN E 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+IDENTIFICAR CONCEPTOS BÁSICOS DE ANATOMÍA Y FISIOLOGÍA 
+APLICAR CONCEPTOS BÁSICOS DE LA MIOLOGÍA HUMANA EN EL ANÁLISIS DEL MOVIMIENTO 
+INTERPRETAR LOS FUNDAMENTOS DE ESTILO DE VIDA SALUDABLE, HIGIENE Y NUTRICIÓN 
+ADMINISTRAR UN PLAN DE HIGIENE CORPORAL DENTRO DEL CONTEXTO PRODUCTIVO 
+EJECUTAR RUTINAS DE EJERCICIO FÍSICO 
+ESTABLECER PAUSAS DE ACUERDO CON CARGAS DE TRABAJO Y TIEMPOS DE ACTIVIDAD FÍSICA 
+IDENTIFICAR LAS TÉCNICAS DE COORDINACIÓN MOTRIZ RELACIONADAS CON SU PERFIL OCUPACIONAL 
+SELECCIONAR TÉCNICAS QUE LE PERMITEN POTENCIAR SU CAPACIDAD DE REACCIÓN MENTAL Y MEJORAR 
+SUS DESTREZAS MOTORAS 
+APLICAR CONCEPTOS BÁSICOS DE ERGONOMÍA Y PAUSAS ACTIVAS 
+DISCRIMINAR EJERCICIOS ESPECÍFICOS PARA LA PREVENCIÓN DE RIESGOS ERGONÓMICOS 
+4.6.2 CONOCIMIENTOS DEL SABER 
+FUNDAMENTOS DE ANATOMÍA Y FISIOLOGÍA 
+CONCEPTOS, CARACTERÍSTICAS Y ESTILOS DE VIDA SALUDABLE 
+CONCEPTOS DE HIGIENE Y SU APLICABILIDAD 
+CONCEPTOS DE NUTRICIÓN, BASES FUNDAMENTALES Y PLANES NUTRICIONALES SEGÚN ACTIVIDAD 
+LABORAL 
+FUNDAMENTOS DE MIOLOGÍA Y ANÁLISIS DEL MOVIMIENTO 
+DEFINICIÓN, CARACTERÍSTICAS, COMPONENTES Y VENTAJAS DE LA ACTIVIDAD FÍSICA 
+DEFINICIÓN, CLASES, CONDICIÓN, TIEMPOS DE APLICACIÓN, BENEFICIOS DEL EJERCICIO FÍSICO 
+CONCEPTUALIZACIÓN Y USO DE LA FICHA ANTROPOMÉTRICA 
+CARACTERÍSTICAS DE LA FRECUENCIA CARDIACA 
+DEFINICIÓN, CLASES Y CARACTERÍSTICAS DE LOS TEST FÍSICO ATLÉTICOS 
+DEFINICIÓN Y CARACTERÍSTICAS DEL ACONDICIONAMIENTO FÍSICO 
+Página 33 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 34 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+DEFINICIÓN Y CARACTERÍSTICAS DE LA DESTREZA MOTORA 
+CONCEPTUALIZACIÓN Y CONDICIONANTES DE LA PSICOMOTRICIDAD 
+DEFINICIÓN DE MOTRICIDAD Y SU CLASIFICACIÓN, BENEFICIOS 
+APLICABILIDAD DE LA ERGONOMÍA Y LA ACTIVIDAD FÍSICA 
+POSTURAS, CLASIFICACIÓN, MANEJO DE CARGAS Y PLANES POSTURALES 
+REHABILITACIÓN Y PLAN DE TRABAJO 
+PAUSAS ACTIVAS, CONCEPTOS Y PRÁCTICAS 
+USO ADECUADO DEL TIEMPO LIBRE 
+4.7 CRITERIOS DE EVALUACIÓN 
+RECONOCE FUNDAMENTOS DE ESTILO DE VIDA SALUDABLE, HIGIENE Y NUTRICIÓN EN LOS CONTEXTOS 
+PRODUCTIVO Y SOCIAL 
+DESARROLLA RUTINAS DE EJERCICIO FÍSICO SEGÚN LAS NECESIDADES DE LOS CONTEXTOS LABORAL Y 
+SOCIAL 
+CLASIFICA CONCEPTOS BÁSICOS DE ERGONOMÍA Y PAUSAS ACTIVAS DE ACUERDO CON LA NATURALEZA DE 
+LA FUNCIÓN PRODUCTIVA 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+ALTERNATIVA 1 
+TÍTULO DE TECNÓLOGO EN EL NÚCLEO BÁSICO DE CONOCIMIENTO DE: 
+DEPORTES, EDUCACIÓN FÍSICA Y RECREACIÓN VER ANEXOS: (N.B.C.), (TITULOS SENA). 
+ALTERNATIVA 2 
+TÍTULO PROFESIONAL UNIVERSITARIO EL NÚCLEO BÁSICO DE CONOCIMIENTO DE: 
+DEPORTES, EDUCACIÓN FÍSICA Y RECREACIÓN; O EDUCACIÓN FÍSICA Y AFINES; O EDUCACIÓN (VER ANEXO 
+N.B.C) 
+TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+4.8.2 Experiencia laboral y/o especialización: 
+ALTERNATIVA 1 
+TREINTA (30) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DIECIOCHO (18) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE CULTURA FÍSICA Y DOCE (12) MESES EN DOCENCIA 
+ALTERNATIVA 2 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: 
+DOCE (12) MESES DE EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA CULTURA FÍSICA Y DOCE (12) 
+MESES EN DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+Página 34 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 35 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Gestionar procesos propios de la cultura emprendedora y empresarial de acuerdo con el perfil 
+personal y los requerimientos de los contextos productivo y social. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201529 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+CULTURA EMPRENDEDORA Y EMPRESARIAL 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA3 ESTRUCTURAR EL PLAN DE NEGOCIO DE ACUERDO CON LAS CARACTERÍSTICAS EMPRESARIALES Y 
+TENDENCIAS DE MERCADO. 
+RA2 CARACTERIZAR LA IDEA DE NEGOCIO TENIENDO EN CUENTA LAS OPORTUNIDADES Y NECESIDADES DEL 
+SECTOR PRODUCTIVO Y SOCIAL. 
+RA4 VALORAR LA PROPUESTA DE NEGOCIO CONFORME CON SU ESTRUCTURA Y NECESIDADES DEL SECTOR 
+PRODUCTIVO Y SOCIAL. 
+RA1 INTEGRAR ELEMENTOS DE LA CULTURA EMPRENDEDORA TENIENDO EN CUENTA EL PERFIL PERSONAL Y 
+EL CONTEXTO DE DESARROLLO SOCIAL. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+IDENTIFICAR LOS ELEMENTOS DE LA CULTURA EMPRENDEDORA 
+RECONOCER CASOS DE ÉXITO EMPRESARIAL 
+DETERMINAR ELEMENTOS PERSONALES EN LA CULTURA EMPRENDEDORA 
+ANALIZAR EL SECTOR PRODUCTIVO DE INFLUENCIA 
+ESTABLECER OPORTUNIDADES DE NEGOCIO 
+ESTABLECER SOLUCIONES A PROBLEMAS O NECESIDADES PLANTEADAS 
+IDENTIFICAR NECESIDADES EMPRESARIALES DEL SECTOR PRODUCTIVO DE INFLUENCIA 
+RECONOCER LAS CARACTERÍSTICAS DEL PERFIL EMPRENDEDOR 
+ANALIZAR EL MERCADO POTENCIAL 
+IDENTIFICAR ESTRUCTURAS ORGANIZACIONALES 
+DEFINIR LA NATURALEZA DE LAS ORGANIZACIONES EMPRESARIALES 
+RECONOCER ESTRUCTURAS OPERACIONALES 
+CONSTRUIR PROPUESTAS EMPRESARIALES 
+ESTABLECER PRINCIPIOS DE GESTIÓN EMPRESARIAL 
+CONSTRUIR IDEAS DE NEGOCIO 
+ABORDAR LOS CONTEXTOS DE INFLUENCIA DE LA IDEA DE NEGOCIO 
+Página 35 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 36 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.6.2 CONOCIMIENTOS DEL SABER 
+EMPRENDIMIENTO: CONCEPTO, CARACTERÍSTICAS, 	HABILIDADES, TIPOS, PERFIL EMPRENDEDOR, 
+RESPONSABILIDAD, COMUNICACIÓN ASERTIVA, AUTOGESTIÓN, AUTONOMÍA, PRINCIPIOS Y VALORES ÉTICOS 
+IDEACIÓN: CONCEPTO, METODOLOGÍAS, TÉCNICAS Y HERRAMIENTAS 
+PROBLEMA: CONCEPTOS, ESTRUCTURA DE PROBLEMA, ALTERNATIVAS CREATIVAS DE SOLUCIÓN 
+IDEAS Y OPORTUNIDADES DE NEGOCIO, MODELAJE DE IDEAS 
+VALIDACIÓN TEMPRANA DE MERCADOS, INNOVACIÓN, CREATIVIDAD, PROCESO CREATIVO 
+EMPRESA: CONCEPTO, CARACTERÍSTICAS, ESTRUCTURA, TIPOLOGÍA, ÁREAS FUNCIONALES, 
+FORMALIZACIÓN 
+MERCADOS: CONCEPTO, TIPOS, ESTRUCTURA, CARACTERÍSTICAS PRODUCTIVIDAD, COMPETITIVIDAD 
+ESTRUCTURA OPERACIONAL: CONCEPTO, PRODUCTO, PROCESO, INFRAESTRUCTURA FÍSICA, 
+REQUERIMIENTOS TÉCNICOS, TECNOLÓGICOS Y HUMANOS 
+ESTRUCTURA ORGANIZACIONAL: CONCEPTO, TIPOLOGÍA, ESTRUCTURA ORGÁNICA 
+PLANEACIÓN ESTRATÉGICA: CONCEPTO 
+GESTIÓN EMPRESARIAL: CONCEPTO, HABILIDADES, DESTREZAS, NIVELES, ESTRUCTURA, CONTROL Y 
+4.7 CRITERIOS DE EVALUACIÓN 
+PLANTEA IDEAS DE NEGOCIO A PARTIR DE OPORTUNIDADES Y NECESIDADES DEL MERCADO CONFORME 
+CON EL ANÁLISIS SECTORIAL 
+ESTRUCTURA UN PERFIL DE EMPRENDEDOR TENIENDO EN CUENTA LAS HABILIDADES Y PRINCIPIOS DE LA 
+GESTIÓN EMPRESARIAL 
+CONSTRUYE PROPUESTAS EMPRESARIALES Y DE NEGOCIO TENIENDO EN CUENTA LAS NECESIDADES Y 
+SEGMENTACIÓN DEL MERCADO 
+DETERMINA EL IMPACTO DEL PLAN DE NEGOCIO CONFORME CON LAS ATRIBUCIONES Y DINÁMICAS DEL 
+SECTOR PRODUCTIVO 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+ALTERNATIVA 1 
+TÍTULO DE TECNÓLOGO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: ADMINISTRACIÓN, CONTADURÍA 
+PÚBLICA; O INGENIERÍA ADMINISTRATIVA Y AFINES. VER ANEXOS: (N.B.C.), (TITULOS SENA) 
+ALTERNATIVA 2 
+TÍTULO PROFESIONAL UNIVERSITARIO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: EDUCACIÓN; O 
+ADMINISTRACIÓN, CONTADURÍA PÚBLICA; O INGENIERÍA ADMINISTRATIVA Y AFINES; Y ECONOMÍA. (VER 
+ANEXO N.B.C) 
+TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+4.8.2 Experiencia laboral y/o especialización: 
+ALTERNATIVA 1 
+TREINTA (30) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DIECIOCHO (18) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE EMPRENDIMIENTO (12) MESES EN DOCENCIA. 
+ALTERNATIVA 2 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DOCE (12) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE EMPRENDIMIENTO Y DOCE (12) MESES EN DOCENCIA. 
+Página 36 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 37 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+INTERACTUAR EN LENGUA INGLESA DE FORMA ORAL Y ESCRITA DENTRO DE CONTEXTOS 
+SOCIALES Y LABORALES SEGÚN LOS CRITERIOS ESTABLECIDOS POR EL MARCO COMÚN 
+EUROPEO DE REFERENCIA PARA LAS LENGUAS. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240202501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+INGLÉS 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+384 horas 
+DENOMINACIÓN 
+RA2 INTERCAMBIAR OPINIONES SOBRE SITUACIONES COTIDIANAS Y LABORALES ACTUALES, PASADAS Y 
+FUTURAS EN CONTEXTOS SOCIALES ORALES Y ESCRITOS. 96H 
+RA1 COMPRENDER INFORMACIÓN SOBRE SITUACIONES COTIDIANAS Y LABORALES ACTUALES Y FUTURAS A 
+TRAVÉS DE INTERACCIONES SOCIALES DE FORMA ORAL Y ESCRITA. 48H 
+RA4 IMPLEMENTAR ACCIONES DE MEJORA RELACIONADAS CON EL USO DE EXPRESIONES, ESTRUCTURAS Y 
+DESEMPEÑO SEGÚN LOS RESULTADOS DE APRENDIZAJE FORMULADOS PARA EL PROGRAMA.	48H 
+RA5 PRESENTAR UN PROCESO PARA LA REALIZACIÓN DE UNA ACTIVIDAD EN SU QUEHACER LABORAL DE 
+ACUERDO CON LOS PROCEDIMIENTOS ESTABLECIDOS DESDE SU PROGRAMA DE FORMACIÓN.	48H 
+RA6 EXPLICAR LAS FUNCIONES DE SU OCUPACIÓN LABORAL USANDO EXPRESIONES DE ACUERDO AL NIVEL 
+REQUERIDO POR EL PROGRAMA DE FORMACIÓN. 48H 
+RA3 DISCUTIR SOBRE POSIBLES SOLUCIONES A PROBLEMAS DENTRO DE UN RANGO VARIADO DE 
+CONTEXTOS SOCIALES Y LABORALES. 96H 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+ESTABLECER LAS DIFERENCIAS ENTRE PRESENTE SIMPLE Y PRESENTE CONTINUO EN TEXTOS SENCILLOS 
+PLANEAR UN ITINERARIO USANDO EL PRESENTE CONTINUO PARA LA ORGANIZACIÓN DE VIAJES, EVENTOS 
+Y/O CELEBRACIONES 
+Página 37 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 38 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+DESCRIBIR HABITACIONES, CASAS O LUGARES DE TRABAJO USANDO PRONOMBRES POSESIVOS, 
+PREPOSICIONES DE LUGAR, ADJETIVOS CALIFICATIVOS Y VOCABULARIO ESPECÍFICO 
+IDENTIFICAR LAS EDIFICACIONES Y LOS LUGARES DE INTERÉS REGIONAL, NACIONAL E INTERNACIONAL 
+SUMINISTRAR INFORMACIÓN SOBRE LA UBICACIÓN Y LA MANERA DE LLEGAR A UN LUGAR DETERMINADO 
+ESTABLECER DIFERENCIAS Y SIMILITUDES ENTRE PERSONAS, LUGARES O COSAS 
+NARRAR EVENTOS Y ACONTECIMIENTOS USANDO ESTRUCTURAS GRAMATICALES EN EL TIEMPO PASADO Y 
+CONECTORES QUE BRINDEN COHERENCIA Y COHESIÓN AL TEXTO 
+ESCRIBIR TEXTOS SENCILLOS EN ORDEN CRONOLÓGICO SOBRE ACONTECIMIENTOS PASADOS 
+REALIZAR UNA INVITACIÓN FORMAL A UN EVENTO EMPLEANDO LAS ESTRUCTURAS DEL FUTURO Y WOULD 
+LIKE TO 
+HABLAR DE PLANES FUTUROS PARA SU TRABAJO Y SU CARRERA 
+NARRAR EVENTOS Y ACONTECIMIENTOS USANDO ESTRUCTURAS GRAMATICALES DEL TIEMPO PASADO, 
+PERFECTO Y CONECTORES QUE BRINDEN COHERENCIA Y COHESIÓN AL TEXTO 
+EXPRESAR HECHOS REALES Y POSIBLES ACERCA DE DIVERSOS EVENTOS O SITUACIONES DEL ENTORNO 
+OFRECER SOLUCIÓN A SITUACIONES PARTICULARES EN SU ÁREA OCUPACIONAL 
+PARTICIPAR EN UNA LLAMADA TELEFÓNICA (SALUDAR, PREGUNTAR, RESOLVER PREGUNTAS) 
+HACER PROPUESTAS Y SOLICITUDES EMPLEANDO VERBOS MODALES Y FÓRMULAS DE CORTESÍA EN 
+DIVERSOS CONTEXTOS 
+RESPONDER A PROPUESTAS Y SOLICITUDES EMPLEANDO VERBOS MODALES Y FÓRMULAS DE CORTESÍA EN 
+DIVERSOS CONTEXTOS 
+EXPRESAR INSEGURIDAD SOBRE ALGUNA CUESTIÓN U OPINIÓN 
+ESCRIBIR INFORMES Y REPORTES LABORALES UTILIZANDO FRASES CONCRETAS Y UNA INTRODUCCIÓN, 
+DESARROLLO Y CONCLUSIÓN 
+DESCRIBIR EL PROCESO DE PREPARACIÓN Y EJECUCIÓN DE UNA ACTIVIDAD DE SU QUEHACER LABORAL 
+DAR INSTRUCCIONES DE UN PROCESO RELACIONADO CON SU QUEHACER LABORAL 
+SEGUIR INSTRUCCIONES DE UN PROCESO RELACIONADO CON SU QUEHACER LABORAL 
+EXPONER LAS ACCIONES Y FUNCIONES RELACIONADAS CON SU CARGO 
+PUNTUALIZAR LAS LABORES ESPECÍFICAS QUE DESARROLLA EN SU LUGAR DE TRABAJO, HACIENDO USO DE 
+VOCABULARIO ADECUADO 
+RECONOCER LOS FONEMAS DEL SISTEMA VOCÁLICO INGLÉS 
+ESTABLECER DIFERENCIAS ENTRE DIVERSOS SONIDOS COMUNES DEL INGLÉS 
+PRONUNCIAR TÉRMINOS Y FRASES HACIENDO USO DE LAS REGLAS DE LA ACENTUACIÓN Y ENTONACIÓN 
+ADECUADA PARA ESTE NIVEL DE FORMACIÓN 
+HACER USO DE ESTRATEGIAS METACOGNITIVAS COMO EL USO DE FLASHCARDS, GRÁFICOS 
+ORGANIZACIONALES Y PORTAFOLIOS, PARA MONITOREAR SU PROCESO DE APRENDIZAJE 
+PUNTUALIZAR LAS LABORES ESPECÍFICAS QUE DESARROLLA EN SU LUGAR DE TRABAJO, HACIENDO USO DE 
+VOCABULARIO ADECUADO 
+RECONOCER LOS FONEMAS DEL SISTEMA VOCÁLICO INGLÉS 
+ESTABLECER DIFERENCIAS ENTRE DIVERSOS SONIDOS COMUNES DEL INGLÉS 
+PRONUNCIAR TÉRMINOS Y FRASES HACIENDO USO DE LAS REGLAS DE LA ACENTUACIÓN Y ENTONACIÓN 
+ADECUADA PARA ESTE NIVEL DE FORMACIÓN 
+HACER USO DE ESTRATEGIAS METACOGNITIVAS COMO EL USO DE FLASHCARDS, GRÁFICOS 
+ORGANIZACIONALES Y PORTAFOLIOS, PARA MONITOREAR SU PROCESO DE APRENDIZAJE 
+4.6.2 CONOCIMIENTOS DEL SABER 
+1. GRAMÁTICA 
+PRESENTE SIMPLE Y PRESENTE CONTINUO 
+PRESENTE CONTINUO: (USO PARA PLANES Y ACUERDOS) 
+PRONOMBRES POSESIVOS 
+PREPOSICIONES DE LUGAR (REVISIÓN) 
+PREPOSICIONES DE MOVIMIENTO 
+ADJETIVOS 
+COMPARATIVOS 
+FORMAS VERBALES EN EL PASADO SIMPLE (REGULAR VERBS AND IRREGULAR VERBS) 
+Página 38 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 39 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+USED TO 
+PASADO CONTINUO 
+PASADO SIMPLE Y PASADO CONTINUO 
+FUTURO CON LAS FÓRMULAS: WILL, BE GOING TO 
+WOULD LIKE TO 
+DIFERENCIA ENTRE EL PRESENTE PERFECTO Y PASADO SIMPLE. 
+CONDICIONAL ZERO Y FIRST 
+WOULD RATHER (USO Y CONTEXTO) 
+HAD BETTER, SHOULD, I THINK (THAT), I CONSIDER (THAT), MUST, COULD. 
+SUPERLATIVOS (USO Y CONTEXTO) 
+ADVERBIOS DE FORMA Y MANERA 
+CONECTORES 
+VERBOS FRASALES COMUNES 
+CLÁUSULAS DE RELATIVO 
+IMPERATIVO PARA DAR INSTRUCCIONES 
+CONDICIONAL ZERO (IF, WHEN) 
+2. VOCABULARIO 
+ACTIVIDADES DEL TIEMPO LIBRE 
+CELEBRACIONES, COSTUMBRES Y TRADICIONES 
+CUARTOS, LUGARES EN UNA CASA Y SUS OBJETOS 
+TIENDAS Y LUGARES EN LA CIUDAD Y LOS PUEBLOS 
+EDIFICACIONES Y CONSTRUCCIONES 
+APARIENCIA DE LAS PERSONAS 
+COMPORTAMIENTOS Y PERSONALIDADES 
+CUALIDADES Y DEFECTOS PERSONALES 
+EXPRESIONES DE TIEMPO EN EL PASADO Y FUTURO 
+REUNIONES FAMILIARES, ACTIVIDADES DE LA INFANCIA, EVENTOS HISTÓRICOS 
+WHEN Y WHILE 
+NÚMEROS ORDINALES Y CARDINALES 
+CONECTORES (MEANWHILE, SUDDENLY, HOWEVER, THEN, AFTER) 
+EVENTOS FORMALES (CONGRESOS, CONFERENCIAS) 
+PREPOSICIONES DE TIEMPO (IN, ON , AT) EN DIFERENTES CONTEXTOS 
+ADVERBIOS (YET, STILL, EVER, ALREADY, JUST, LATELY) 
+SINCE, FOR Y AGO 
+VOCABULARIO DE VIAJES 
+FENÓMENOS NATURALES 
+EXPRESIONES DE CORTESÍA PARA INTERCAMBIAR OPINIONES 
+EXPRESIONES IDIOMÁTICAS COMUNES EN CONTEXTOS LABORALES 
+TERMINOLOGÍA TÉCNICA OCUPACIONAL 
+TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN 
+CONECTORES DE SECUENCIA 
+VOCABULARIO Y EXPRESIONES RELACIONADAS CON SU ÁREA OCUPACIONAL 
+VOCABULARIO Y EXPRESIONES RELACIONADAS CON LAS FUNCIONES EN EL ÁREA OCUPACIONAL 
+ELECTRODOMÉSTICOS, MAQUINARIA, INSUMOS Y EQUIPAMIENTO 
+LUGARES DE TRABAJO 
+3. PRONUNCIACIÓN 
+SUJETO + CONTRACCIONES CON AUXILIARES 
+ACENTUACIÓN EN FRASES (CONTENIDO Y FUNCIONES DE LAS PALABRAS) 
+REGLA DE PRONUNCIACIÓN --&#8208; ED ENDING, VOICED CONSONANTS VS VOICELESS CONSONANTS. 
+ENTONACIÓN DE FONEMAS DE SUSTANTIVOS PLURALES 
+FONEMAS VOCÁLICOS 
+DIFERENCIA ENTRE EL PRESENTE PERFECTO Y PASADO SIMPLE 
+Página 39 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 40 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+CONDICIONAL ZERO Y FIRST 
+WOULD RATHER (USO Y CONTEXTO) 
+HAD BETTER, SHOULD , I THINK (THAT), I CONSIDER (THAT), MUST, COULD. 
+SUPERLATIVOS (USO Y CONTEXTO) 
+ADVERBIOS DE FORMA Y MANERA 
+CONECTORES 
+VERBOS FRASALES COMUNES 
+CLÁUSULAS DE RELATIVO 
+IMPERATIVO PARA DAR INSTRUCCIONES 
+CONDICIONAL ZERO (IF, WHEN) 
+DIFERENCIA ENTRE EL SONIDO TH /&#952;/ Y /Ð/ 
+ENTONACIÓN PARA PRESENTAR INFORMACIÓN NUEVA 
+ACENTUACIÓN EN FRASES (CONTENIDO Y FUNCIONES DE LAS PALABRAS) 
+ACENTUACIÓN DE ÉNFASIS 
+REDUCCIÓN VOCÁLICA 
+INTERNATIONAL PHONETIC ALPHABET (RECONOCIMIENTO DE LOS SÍMBOLOS Y SU PRONUNCIACIÓN) 
+ELEVACIÓN Y CAÍDA DE LA ENTONACIÓN EN DIFERENTES TIPOS DE FRASES 
+CONEXIÓN Y ELISIÓN DE SONIDOS CON LOS SUPERLATIVOS 
+4. ESTRATEGIAS DE APRENDIZAJE 
+USO DE ORGANIZADORES GRÁFICOS (DIAGRAMAS DE FLUJO, MAPAS CONCEPTUALES, MAPAS MENTALES, 
+ENTRE OTROS) 
+USO DE TARJETAS DIDÁCTICAS O FLASHCARDS 
+USO DE PORTAFOLIOS 
+4.7 CRITERIOS DE EVALUACIÓN 
+RA 1 
+RECONOCE LA IDEA GENERAL Y DETALLES ESPECÍFICOS EN INTERACCIONES ORALES DE LA VIDA COTIDIANA 
+ARTICULADAS CON CLARIDAD Y UNA VELOCIDAD PROMEDIO 
+RECONOCE LA IDEA GENERAL Y DETALLES ESPECÍFICOS EN TEXTOS ESCRITOS DE LA VIDA COTIDIANA 
+ARTICULADOS CON CLARIDAD 
+RA 2 
+COMPRENDE INFORMACIÓN CONCRETA RELATIVA A TEMAS COTIDIANOS Y LABORALES EN TEXTOS ORALES 
+Y ESCRITOS 
+DESCRIBE DE MANERA SENCILLA Y CLARA ASUNTOS, ACCIONES, EXPERIENCIAS, SENTIMIENTOS, PLANES 
+RELACIONADOS CON TEMAS DE SU INTERÉS Y COTIDIANIDAD, SIGUIENDO UNA SECUENCIA LINEAL DE 
+ELEMENTOS 
+RA 3 Y 4 
+OFRECE BREVES RAZONAMIENTOS Y EXPLICACIONES DE OPINIONES, PLANES Y ACCIONES 
+SE COMUNICA DE MANERA EFICAZ EN TORNO A TEMÁTICAS COTIDIANAS Y LABORALES SENCILLAS 
+HACIENDO USO DE UNA ADECUADA PRONUNCIACIÓN, FLUIDEZ, RANGO DE VOCABULARIO Y ESTRUCTURA 
+GRAMATICAL PARA EL NIVEL PRE INTERMEDIO 
+BRINDA SOLUCIÓN   A   UN   PROBLEMA   SENCILLA   HACIENDO   USO   DE   UNA   ADECUADA 
+PRONUNCIACIÓN, FLUIDEZ, RANGO DE VOCABULARIO Y ESTRUCTURA GRAMATICAL PARA EL NIVEL PRE 
+INTERMEDIO 
+ENLAZA UNA SERIE DE ELEMENTOS BREVES, CONCRETOS Y SENCILLOS PARA CREAR UNA SECUENCIA 
+COHESIONADA Y LINEAL 
+HACE USO DE VOCABULARIO RELACIONADO CON FAMILIA, AFICIONES E INTERESES, TRABAJO, VIAJES Y 
+HECHOS DE ACTUALIDAD, EN TEXTOS ORALES Y ESCRITOS 
+RA 5 Y 6 
+SIGUE INSTRUCCIONES DE UN PROCESO RELACIONADO CON SU QUEHACER LABORAL 
+Página 40 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 41 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+HACE USO DE TÉRMINOS Y EXPRESIONES RELACIONADAS CON SU ÁMBITO LABORAL ESPECÍFICO 
+ES CAPAZ DE HACER UNA PRESENTACIÓN BREVE Y PREPARADA SOBRE UN TEMA DENTRO DE SU 
+ESPECIALIDAD CON LA SUFICIENTE CLARIDAD COMO PARA QUE SE PUEDA SEGUIR SIN DIFICULTAD LA 
+MAYOR PARTE DEL TIEMPO Y CUYAS IDEAS PRINCIPALES ESTÁN EXPLICADAS CON UNA RAZONABLE 
+PRECISIÓN 
+PARTICIPA EN JUEGOS DE ROL GUIADOS O SITUACIONES SIMULADAS SOBRE SITUACIONES COTIDIANAS Y 
+LABORALES ACTUALES, PASADAS Y FUTURAS EN CONTEXTOS SOCIALES ORALES Y ESCRITOS 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+ALTERNATIVA 1 
+TÍTULO DE TECNÓLOGO EN CUALQUIER NÚCLEO DE CONOCIMIENTO, CERTIFICADO MÍNIMO EN NIVEL B2 DE 
+ACUERDO CON EL MCER EN CADA UNA DE LAS CUATRO (4) HABILIDADES DE DOMINIO DE LENGUA 
+(COMPRENSIÓN ORAL, COMPRENSIÓN ESCRITA, PRODUCCIÓN ORAL, PRODUCCIÓN ESCRITA). LOS 
+EXÁMENES DE LENGUA ADMITIDOS DEBEN TENER UNA VIGENCIA MÁXIMA DE 2 AÑOS Y SON AQUELLOS 
+ENLISTADOS EN LA RESOLUCIÓN 12730 DEL 28 DE JUNIO DE 2017 DEL MINISTERIO DE EDUCACIÓN NACIONAL. 
+NO SE ACEPTAN AQUELLOS EXÁMENES CATALOGADOS EN ESTA RESOLUCIÓN COMO CLASIFICACIÓN 
+(PLACEMENT), NIÑOS DE 7 A 12 AÑOS (YOUNG LEARNERS) Y JÓVENES (TEENAGERS)). 
+ALTERNATIVA 2 
+TÍTULO PROFESIONAL UNIVERSITARIO EN CUALQUIER NÚCLEO DE CONOCIMIENTO, CERTIFICADO MÍNIMO EN 
+NIVEL B2 DE ACUERDO CON EL MCER EN CADA UNA DE LAS CUATRO (4) HABILIDADES DE DOMINIO DE 
+LENGUA (COMPRENSIÓN ORAL, COMPRENSIÓN ESCRITA, PRODUCCIÓN ORAL, PRODUCCIÓN ESCRITA).  LOS 
+EXÁMENES DE LENGUA ADMITIDOS DEBEN TENER UNA VIGENCIA MÁXIMA DE 2 AÑOS Y SON AQUELLOS 
+ENLISTADOS EN LA RESOLUCIÓN 12730 DEL 28 DE JUNIO DE 2017 DEL MINISTERIO DE EDUCACIÓN NACIONAL. 
+NO SE ACEPTAN AQUELLOS EXÁMENES CATALOGADOS EN ESTA RESOLUCIÓN COMO CLASIFICACIÓN 
+(PLACEMENT), NIÑOS DE 7 A 12 AÑOS (YOUNG LEARNERS) Y JÓVENES (TEENAGERS)). 
+4.8.2 Experiencia laboral y/o especialización: 
+ALTERNATIVA 1 
+VEINTICUATRO (24) MESES DE EXPERIENCIA EN LA INSTRUCCIÓN Y/O DOCENCIA DE LA LENGUA O LENGUAS 
+A IMPARTIR. 
+ALTERNATIVA 2 
+TREINTA Y SEIS (36) MESES DE EXPERIENCIA EN LA INSTRUCCIÓN Y/O DOCENCIA DE LA LENGUA O LENGUAS 
+A IMPARTIR. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+Página 41 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 42 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Negociar productos o servicios de acuerdo con objetivos estratégicos 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+260101021 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+NEGOCIACIÓN DE PRODUCTOS O SERVICIOS. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+480 horas 
+DENOMINACIÓN 
+RA3. DEFINIR LA ESTRATEGIA COMERCIAL DEL PRODUCTO O SERVICIO DE ACUERDO CON TÉCNICAS DE 
+MERCHANDISING. 144H 
+RA2. ESTRUCTURAR PORTAFOLIO DEL PRODUCTO O SERVICIO DE ACUERDO CON EL MERCADO META.	96H 
+RA4. REALIZAR PROCESO DE NEGOCIACIÓN CUMPLIENDO CON PROTOCOLOS TÉCNICOS. 144H 
+RA1. DEFINIR POTENCIAL DE CLIENTES DE ACUERDO CON LAS METAS Y CANALES DE DISTRIBUCIÓN. 96H 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+RA1. 
+DESCRIBIR LA DEMANDA. 
+DESCRIBIR LA OFERTA. 
+IDENTIFICAR LAS NECESIDADES Y TIPOLOGÍA DE LOS CLIENTES. 
+IDENTIFICAR LOS FORMATOS COMERCIALES. 
+ORGANIZAR EL SISTEMA DE DISTRIBUCIÓN Y LA FORMA DE ENTREGA DEL PRODUCTO. 
+CLASIFICAR LA RED OMNICANAL SEGÚN CAPACIDAD, COBERTURA FINANCIERA, DEMANDA. 
+IDENTIFICAR LOS TIPOS DE STOCK. 
+RA2. 
+SELECCIONAR LOS PRODUCTOS Y SERVICIOS A COMERCIALIZAR. 
+ESTRUCTURAR BROCHURE. 
+ELABORAR CAMPAÑA PROMOCIONAL DEL PRODUCTO O SERVICIO. 
+UTILIZAR HERRAMIENTAS DIGITALES PARA COMUNICACIÓN COMERCIAL. 
+REALIZAR CAMPAÑA DE SOCIAL MEDIA MARKETING. 
+SELECCIONAR ESTRATEGIAS DE COMERCIO ELECTRÓNICO. 
+RA3. 
+IDENTIFICAR ESTRUCTURA DEL PUNTO DE VENTA. 
+APLICAR TÉCNICAS DE EXHIBICIÓN. 
+VALORAR NIVELES Y ZONAS DE EXHIBICIÓN. 
+DEFINIR ESTRATEGIAS DE EXHIBICIÓN. 
+DETERMINAR TÉCNICAS MERCHANDISING AL PUNTO DE VENTA. 
+REALIZAR LAYOUT DEL ESTABLECIMIENTO COMERCIAL. 
+IDENTIFICAR PLANIMETRÍA PARA LA IMPLANTACIÓN DE PRODUCTOS. 
+MANEJAR SOFTWARE DE GESTIÓN EN EL PUNTO DE VENTA. 
+Página 42 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 43 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+ESTABLECER ACCIONES DE COMUNICACIÓN. 
+ELABORAR PLAN DE EXHIBICIÓN. 
+ELABORAR STORYTELLING DEL PRODUCTO. 
+REALIZAR PITCH ELEVETOR DEL NEGOCIO VERDE. 
+ESTRUCTURAR CAMPAÑAS DE ENDOMARKETING. 
+RA4. 
+REALIZAR DEMOSTRACIONES DE PRODUCTO O SERVICIO. 
+IDENTIFICAR EL PROCESO DE NEGOCIACIÓN. 
+EMPLEAR TÉCNICAS DE NEGOCIACIÓN Y VENTAS 
+UTILIZAR ESTRATEGIAS DE NEUROMARKETING. 
+PACTAR CONDICIONES COMERCIALES. 
+EFECTUAR CIERRE DE LA NEGOCIACIÓN. 
+SUPERAR OBJECIONES DEL CLIENTE. 
+REALIZAR SEGUIMIENTO AL PROCESO DE NEGOCIACIÓN. 
+DILIGENCIAR DOCUMENTOS COMERCIALES. 
+REGISTRAR LAS CONDICIONES Y TÉRMINOS DE LA NEGOCIACIÓN. 
+EMPLEAR HERRAMIENTAS DEL CRM. 
+EMPLEAR HERRAMIENTAS DE GESTIÓN DE PUNTO DE VENTA. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+RA1. 
+DEMANDA: CONCEPTO, CLASES, MÉTODOS, EFECTOS, ELASTICIDAD, COMPONENTES, VARIACIÓN, CURVA, 
+GRÁFICOS, TENDENCIAS Y PROYECCIÓN. 
+OFERTA: CONCEPTO, CLASES, MÉTODOS, EFECTOS, ELASTICIDAD, COMPONENTES, VARIACIÓN, CURVA, 
+GRÁFICOS, TENDENCIAS Y PROYECCIÓN. 
+PERFIL DEL CLIENTE: CONCEPTO, CARACTERIZACIÓN O ESTRUCTURA, APLICABILIDAD Y TIPOLOGÍAS. 
+PSICOLOGÍA DEL CONSUMIDOR: CONCEPTO, FUNDAMENTOS, NECESIDADES, APLICABILIDAD EN LA VENTA Y 
+ETAPAS DEL PROCESO DE COMPRA. 
+FORMATOS COMERCIALES: CONCEPTO, TIPOS Y CLASIFICACIÓN. 
+CANALES DE DISTRIBUCIÓN: CONCEPTO, CLASIFICACIÓN, CARACTERÍSTICAS, SISTEMA, ESTRUCTURA Y 
+MÉTODOS DE SELECCIÓN. 
+DISTRIBUCIÓN Y DISEÑO DE UNA RED OMNICANAL: CONCEPTO, ESTRUCTURA Y APLICABILIDAD. 
+GESTIÓN DE STOCKS: CONCEPTO, TIPOS, CARACTERÍSTICAS, TECNOLOGÍAS Y UBICACIÓN. 
+RA2. 
+PORTAFOLIO DE PRODUCTOS Y SERVICIOS: CONCEPTO, ESTRUCTURA Y APLICABILIDAD. 
+VALOR AGREGADO Y PAQUETE DE BENEFICIOS: CONCEPTO, ESTRUCTURA, APLICABILIDAD. 
+BROCHURE: CONCEPTO Y TIPOS. 
+CAMPAÑA PROMOCIONAL: CONCEPTO, CLASES, ESTRUCTURA, PRESUPUESTO Y MATERIALES. 
+COMUNICACIÓN COMERCIAL: CONCEPTO, CLASES, USOS Y TIPO MATERIAL PROMOCIONAL. 
+IDENTIDAD CORPORATIVA: CONCEPTO, IMAGEN Y MANUAL. 
+MARKETING DIGITAL: CONCEPTO, ESTRATEGIAS, HERRAMIENTAS, CASOS ÉXITO. 
+HERRAMIENTAS DIGITALES DE COMERCIALIZACIÓN: CONCEPTO, TIPOS, CARACTERÍSTICAS, USO Y 
+NORMATIVA. 
+SOCIAL MEDIA MARKETING (MERCADEO DE REDES SOCIALES): CONCEPTO, PLATAFORMAS, ESTRATEGIAS, 
+MEDIOS Y MÉTRICAS. 
+COMERCIO ELECTRÓNICO: FUNDAMENTOS, MODELOS DE NEGOCIOS, PLATAFORMAS DE COMERCIO 
+ELECTRÓNICO, DATOS Y MEDICIÓN PARA E-COMMERCE. 
+RA3. 
+PUNTO DE VENTA: CONCEPTOS, TIPOS Y DIMENSIONES. 
+MOBILIARIO COMERCIAL: CONCEPTO, USOS Y CLASIFICACIÓN. 
+SURTIDO: CONCEPTO, DIMENSIONES, NIVELES, ESTRUCTURA, USOS Y BENEFICIOS. 
+Página 43 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 44 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+ESTRATEGIAS EXHIBICIÓN: CONCEPTO, TIPOS Y CLASIFICACIÓN. 
+MERCHANDISING DE GESTIÓN: CONCEPTO, ESTRUCTURA, TÉCNICAS, TEORÍA DEL COLOR, VITRINISMO, 
+LINEAL. 
+LAYOUT: CONCEPTO, APLICACIÓN Y FUNCIÓN. 
+PLANOGRAMAS Y PLANIMETRÍA: CONCEPTO, BENEFICIOS, USOS. 
+SOFTWARE DE GESTIÓN EN EL PUNTO DE VENTA: CONCEPTO, CARACTERÍSTICAS, HERRAMIENTAS. 
+COMUNICACIÓN COMERCIAL: CONCEPTO, CLASES, USOS Y TIPOS MATERIAL PROMOCIONAL. 
+PLAN DE EXHIBICIÓN: CONCEPTO, ESTRUCTURA Y ETAPAS. 
+TIPOS DE ESTRATEGIA: NEWORKING, COWORKING. 
+STORYTELLING: CONCEPTO, ESTRUCTURA. 
+ELEVETOR PITCH: CONCEPTO, ESTRUCTURA, TIPOS. 
+ENDOMARKETING: CONCEPTO, ESTRATEGIAS, ESTRUCTURA Y MÉTODOS. 
+RA4. 
+DEMOSTRACIONES DE PRODUCTO O SERVICIO: CONCEPTO Y TIPOS. 
+NEGOCIACIÓN: CONCEPTO, OBJETIVOS, TÉCNICAS, VARIABLES, CRITERIOS, POLÍTICAS, TIPOS, 
+PREPARACIÓN, DOCUMENTACIÓN, SEGUIMIENTO, HABILIDADES Y APLICABILIDAD 
+TÉCNICAS DE NEGOCIACIÓN: CONCEPTO, TIPOS Y APLICABILIDAD. 
+VENTAS: CONCEPTO, PAUTAS, PROCESO, PREVENTA, POLÍTICAS, TIPOS, ESTRATEGIAS Y FUNCIONES. 
+ESTRATEGIAS DE VENTAS: CONCEPTO Y TIPOS. 
+NEUROMARKETING: CONCEPTO, FUNCIONES Y CARACTERÍSTICAS. 
+CONDICIONES COMERCIALES: CONCEPTO, TIPOS E IMPORTANCIA. 
+CIERRE NEGOCIACIÓN: CONCEPTO, ESTRATEGIAS Y TIPOS 
+OBJECIONES: CONCEPTO, TIPOS Y TRATAMIENTO 
+POSTVENTA: CONCEPTO, ETAPAS, PROCESO Y PROCEDIMIENTO 
+DOCUMENTOS COMERCIALES: CONCEPTO, CLASES, ELEMENTOS Y DILIGENCIAMIENTO. 
+TRANSACCIONES COMERCIALES: CONCEPTO, CLASES, SOPORTES, PROCESO, ELEMENTOS Y FORMAS DE 
+PAGO. 
+4.7 CRITERIOS DE EVALUACIÓN 
+RA1. 
+CARACTERIZA OFERTA Y DEMANDA SEGÚN LA ESTRUCTURA DE MERCADO. 
+CLASIFICA NECESIDADES DE LOS CLIENTES SEGÚN EL PERFIL DEL CONSUMIDOR. 
+DETERMINA EL CANAL DE DISTRIBUCIÓN DE ACUERDO CON LAS CARACTERÍSTICAS DEL MERCADO 
+OBJETIVO. 
+RA2. 
+DISEÑA BROCHURE DE ACUERDO CON EL PRODUCTO O SERVICIO. 
+DEFINE MEDIOS DE COMUNICACIÓN DIGITAL DE ACUERDO CON EL PRODUCTO O SERVICIO A 
+COMERCIALIZAR. 
+PROYECTA EL USO DE REDES SOCIALES PARA LA CAMPAÑA PROMOCIONAL DE ACUERDO CON PLAN 
+COMERCIAL. 
+RA3. 
+PROPONE PLAN DE EXHIBICIÓN DE ACUERDO CON LAS CATEGORÍAS DE LOS PRODUCTOS EN EL FORMATO 
+COMERCIAL. 
+COORDINA ACTIVIDADES PARA LA CAMPAÑA PROMOCIONAL DE ACUERDO CON PLAN COMERCIAL. 
+UTILIZA TÉCNICAS NARRATIVAS PARA LA PRESENTACIÓN ACORDE CON LAS CARACTERÍSTICAS DEL 
+Página 44 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 45 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+PRESENTA EL PRODUCTO TENIENDO EN CUENTA VARIABLES DE NEGOCIACIÓN. 
+ESTRUCTURA LA PROPUESTA DE NEGOCIACIÓN DE ACUERDO CON PLAN COMERCIAL. 
+DILIGENCIA DOCUMENTOS COMERCIALES TENIENDO EN CUENTA EL TIPO DE VENTA. 
+VERIFICA REQUISITOS Y CONDICIONES DEL CONTRATO SEGÚN LAS CARACTERÍSTICAS DE LA NEGOCIACIÓN. 
+UTILIZA HERRAMIENTAS DE GESTIÓN DE RELACIONES CON LOS CLIENTES APLICANDO PROTOCOLOS DE LA 
+EMPRESA. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EN DISCIPLINA ACADÉMICA DEL NÚCLEO BÁSICO DE CONOCIMIENTO 
+EN: ADMINISTRACIÓN, ECONOMÍA O INGENIERÍA INDUSTRIAL Y AFINES. 
+ESTAS PROFESIONES DEBEN ESTAR ASOCIADAS A LOS PROGRAMAS DE FORMACIÓN QUE IMPARTIRÁ EN SU 
+DESEMPEÑO Y SE CITAN LOS TÍTULOS OBTENIDOS, NÚCLEOS BÁSICOS DE CONOCIMIENTO Y ÁREAS DE 
+CONOCIMIENTO: INGENIERO DE MERCADOS, INGENIERO FINANCIERO, INGENIERO INDUSTRIAL, 
+ADMINISTRACIÓN DE EMPRESAS, ECONOMISTA, MERCADÓLOGO, PROFESIONAL EN MERCADEO Y 
+PUBLICIDAD, PROFESIONAL EN ADMINISTRACIÓN. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DOCE (12) MESES ESTARÁN RELACIONADOS 
+CON EL ÁREA DE MERCADEO, VENTAS Y COMERCIALIZACIÓN, EN DESARROLLO DEL OBJETO DE LA 
+FORMACIÓN PROFESIONAL A LA QUE SE DEDICA EL CARGO Y DOCE (12) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Orientar investigación formativa según referentes técnicos 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201064 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+Página 45 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 46 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+INVESTIGACIÓN 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA2 ESTRUCTURAR EL PROYECTO DE ACUERDO A CRITERIOS DE LA INVESTIGACIÓN. 
+RA4 PROPONER SOLUCIONES A LAS NECESIDADES DEL CONTEXTO SEGÚN RESULTADOS DE LA 
+RA3 ARGUMENTAR ASPECTOS TEÓRICOS DEL PROYECTO SEGÚN REFERENTES NACIONALES E 
+RA1 ANALIZAR EL CONTEXTO PRODUCTIVO SEGÚN SUS CARACTERÍSTICAS Y NECESIDADES. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+DIFERENCIAR FORMAS DE CONOCIMIENTO 
+DEFINIR LAS TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN 
+FORMULAR EL PROBLEMA DE INVESTIGACIÓN 
+PLANTEAR LA PREGUNTA DE INVESTIGACIÓN 
+CONTEXTUALIZAR LA IMPORTANCIA DE LA INVESTIGACIÓN 
+DETERMINAR DE LOS OBJETIVOS DE INVESTIGACIÓN 
+REALIZAR BÚSQUEDAS DE INFORMACIÓN 
+ELABORAR DEL MARCO TEÓRICO DE LA INVESTIGACIÓN 
+APLICAR TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN 
+ELABORAR EL INFORME DE LA INVESTIGACIÓN 
+4.6.2 CONOCIMIENTOS DEL SABER 
+CONOCIMIENTO: CONCEPTO, TIPOS 
+COSMOVISIÓN: CONCEPTO, PERSPECTIVAS E IMPORTANCIA 
+INVESTIGACIÓN: CONCEPTOS Y ENFOQUES 
+METODOLOGÍAS, MÉTODOS Y TÉCNICAS DE INVESTIGACIÓN: CONCEPTOS Y TIPOS 
+PROYECTOS DE INVESTIGACIÓN: CONCEPTO, TIPOS, ESTRUCTURAS Y PROCEDIMIENTOS 
+IDEAS, PROBLEMAS Y PREGUNTAS DE INVESTIGACIÓN 
+JUSTIFICACIÓN: CONCEPTO, COMPONENTES 
+OBJETIVOS DE INVESTIGACIÓN: CONCEPTO, TIPOS 
+FUENTES DE INFORMACIÓN: DEFINICIÓN, TIPOS Y REFERENCIACIÓN 
+MARCO TEÓRICO: CONCEPTO, TIPOS 
+INFORME DE INVESTIGACIÓN: CARACTERÍSTICAS, TIPOS 
+4.7 CRITERIOS DE EVALUACIÓN 
+RECONOCE LAS NECESIDADES DEL CONTEXTO, SEGÚN LAS PROBLEMÁTICAS IDENTIFICADAS. 
+DESCRIBE EL PROBLEMA DE INVESTIGACIÓN DE ACUERDO A LOS ELEMENTOS OBSERVADOS. 
+PLANTEA LOS OBJETIVOS DE LA INVESTIGACIÓN SEGÚN LA PREGUNTA DE INVESTIGACIÓN. 
+CONSOLIDA EL PROYECTO DE INVESTIGACIÓN TENIENDO EN CUENTA LA PERTINENCIA Y LOS ALCANCES. 
+ELABORA EL MARCO TEÓRICO DE LA INVESTIGACIÓN DE ACUERDO A LOS CONTEXTOS NACIONAL E 
+INTERNACIONAL. 
+Página 46 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 47 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+APLICA TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN DE ACUERDO A CRITERIOS ESTABLECIDOS POR LA 
+METODOLOGÍA. 
+COMUNICA LOS RESULTADOS DE LA INVESTIGACIÓN SEGÚN CRITERIOS DE PRESENTACIÓN DE INFORMES. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EN CUALQUIERA DE LOS 55 NÚCLEOS BÁSICOS DE CONOCIMIENTO, O 
+EN NULL O SIN CLASIFICAR. (VER ANEXO N.B.C) 
+TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+4.8.2 Experiencia laboral y/o especialización: 
+TREINTA (30) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: VEINTICUATRO (24) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA INVESTIGACIÓN Y SEIS (6) MESES EN DOCENCIA 
+CERTIFICADA POR ENTIDAD LEGALMENTE RECONOCIDA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Planear integración de cadenas de suministro según normativa y modelos de gestión 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+210101067 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+PLANEACIÓN DE LA CADENA DE SUMINISTRO. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+480 horas 
+DENOMINACIÓN 
+RA1. DEFINIR EL MODELO DE INTEGRACIÓN DE LA CADENA DE SUMINISTRO DE ACUERDO CON EL PLAN 
+COMERCIAL DE LA EMPRESA.	144H 
+Página 47 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 48 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+RA3. COSTEAR LA CADENA DE SUMINISTRO DE ACUERDO CON CONDICIONES DE LA DISTRIBUCIÓN FÍSICA Y 
+COMERCIAL. 96H 
+RA2. DETERMINAR EL PROCESO DE LA CADENA DE SUMINISTRO DEL PRODUCTO VERDE DE ACUERDO CON 
+LOS REQUERIMIENTOS DE LA EMPRESA. 144H 
+RA4. VALORAR EL MODELO DE INTEGRACIÓN SEGÚN EL DESEMPEÑO DE LOS ACTORES DE LA CADENA DE 
+SUMINISTRO. 96H 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+RA1. 
+DETERMINAR NECESIDADES DE LOS ACTORES DE LA CADENA. 
+DESCRIBIR PROCESOS DE LOGÍSTICA DE APROVISIONAMIENTO, PRODUCCIÓN, DISTRIBUCIÓN Y LOGÍSTICA 
+INVERSA. 
+DESCRIBIR ESLABONES DE LA CADENA DE SUMINISTRO. 
+IDEAR DISEÑO DE PRODUCTOS Y SERVICIOS. 
+IDENTIFICAR ACTIVIDADES DE LOGÍSTICA INVERSA. 
+DESCRIBIR EL PROCESO SUPPLY CHAIN MANAGEMENT. 
+DETERMINAR EL LEAD TIME DEL PRODUCTO O SERVICIO. 
+IDEAR CADENA DE VALOR DEL PRODUCTO O SERVICIO. 
+DIFERENCIAR ESTRATEGIAS PUSH Y PULL. 
+DEFINIR LAS REDES DE DISTRIBUCIÓN DESDE PROVEEDOR AL CLIENTE. 
+RA2. 
+DETERMINAR LAS RELACIONES DEL NEGOCIO VERDE CON PROVEEDORES, FABRICANTES, DISTRIBUIDORES 
+Y CLIENTES. 
+DISEÑAR EL DIAGRAMA CAUSAL DE LA CADENA DE SUMINISTRO. 
+DEFINIR SISTEMAS DE INFORMACIÓN Y COMUNICACIÓN EN EL PROCESO DE SUMINISTRO. 
+ESTRUCTURAR REDES DE DISTRIBUCIÓN DESDE PROVEEDOR AL CLIENTE. 
+FORMULAR LA PRIORIDAD COMPETITIVA (COSTO, TIEMPO, CALIDAD, FLEXIBILIDAD E INNOVACIÓN). 
+ESTABLECER CRITERIOS DE VALORACIÓN DE PROVEEDORES. 
+RA3. 
+IDENTIFICAR ACUERDOS DE NEGOCIACIÓN INTERNACIONAL. 
+IDENTIFICAR TIPO DE ACUERDOS COMERCIALES. 
+APLICAR TÉCNICAS DE NEGOCIACIÓN. 
+PROYECTAR COSTOS DE LA CADENA DE SUMINISTRO. 
+PROYECTAR GASTOS DE LA CADENA DE SUMINISTRO. 
+DESARROLLAR ESTRATEGIAS DE COSTOS. 
+ESTRUCTURAR COSTOS DE COMERCIO INTERNACIONAL. 
+ELABORAR PRESUPUESTOS. 
+REALIZAR COSTEO POR ACTIVIDADES. 
+DETERMINAR NIVELES DE SERVICIO (UNIDADES - PROFIT). 
+EMPLEAR PUNTO DE EQUILIBRIO PARA LA FIJACIÓN DE PRECIOS. 
+RA4. 
+ESTRUCTURAR INDICADORES DE GESTIÓN. 
+COMPARAR INDICADORES DE GESTIÓN DE LA CADENA CON SUS SIMILARES. 
+ELABORAR INFORME DE LA GESTIÓN. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+RA1. 
+CADENA DE SUMINISTRO: CONCEPTO, TIPOS DE ESLABONES, ACTORES, CATEGORÍAS Y CRITERIOS. 
+PROCESOS DE LA CADENA DE SUMINISTRO: CONCEPTO, NIVELES, ACTIVIDADES, FASES, CLASIFICACIÓN Y 
+Página 48 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 49 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+CARACTERIZACIÓN. 
+PROCESOS DE LOGÍSTICA: CONCEPTO, APROVISIONAMIENTO, CLASIFICACIÓN Y APLICACIÓN. 
+PROCESOS DE PRODUCCIÓN: CONCEPTO, CLASIFICACIÓN Y APLICACIÓN. 
+PROCESOS DE DISTRIBUCIÓN: CONCEPTO, CLASIFICACIÓN Y APLICACIÓN. 
+DISEÑO DE PRODUCTOS: CONCEPTO Y APLICABILIDAD 
+PROCESOS DE SERVICIOS: CONCEPTO, CLASIFICACIÓN Y APLICACIÓN. 
+NIVEL DE SERVICIO: CONCEPTO, ACUERDOS, CICLO Y MODELO. 
+PROCESOS DE LOGÍSTICA INVERSA: CONCEPTO, CLASIFICACIÓN Y APLICACIÓN. 
+SUPPLY CHAIN MANAGEMENT: CONCEPTO Y APLICABILIDAD 
+LEAD TIME: CONCEPTO Y APLICACIÓN. 
+CADENA DE VALOR: CONCEPTO, TIPO DE EMPRESAS, CADENA DE VALOR Y MODELOS DE CADENA DE VALOR. 
+SISTEMAS PUSH Y PULL: CONCEPTO Y DIFERENCIAS. 
+REDES DE DISTRIBUCIÓN: CONCEPTO, TIPOS, ESTRUCTURAS, COSTOS, TRANSPORTE Y DISTRIBUCIÓN 
+FÍSICA. 
+RA2. 
+ESTRATEGIAS DE INTEGRACIÓN: CONCEPTO, TIPOS, METODOLOGÍA. 
+ENFOQUE SISTÉMICO: CONCEPTO, TEORÍAS, ENTRADAS Y SALIDAS. 
+TOMA DE DECISIONES: CONCEPTO, VARIABLES DE DECISIÓN, MODELOS. 
+TRAZABILIDAD: DEFINICIÓN Y APLICACIÓN (ETIQUETA RFID, CÓDIGO DE BARRAS). 
+DIAGRAMA CAUSAL: CONCEPTO Y APLICABILIDAD 
+SISTEMAS DE INFORMACIÓN: CONCEPTO, TIPOS, APLICACIONES, SOFTWARE. 
+PRIORIDADES COMPETITIVAS: COSTO, TIEMPO, CALIDAD, FLEXIBILIDAD E INNOVACIÓN. 
+EVALUACIÓN DE PROVEEDORES: CLASIFICACIÓN ABC, PONDERACIÓN DE FACTORES. 
+RA3. 
+ACUERDOS INTERNACIONALES: TIPOS, CARACTERÍSTICAS, NORMATIVA. 
+ACUERDOS COMERCIALES: CONCEPTOS, TIPOS, CARACTERÍSTICAS. 
+NEGOCIACIÓN: CONCEPTO, ASPECTOS CULTURALES, TÉCNICAS DE NEGOCIACIÓN (MODELO JAPONÉS, 
+AMERICANO, EUROPEO). 
+COSTOS: CONCEPTO, CLASIFICACIÓN, SISTEMAS, METODOLOGÍA. 
+GASTOS: CONCEPTO, CLASIFICACIÓN, SISTEMAS, METODOLOGÍA. 
+ESTRATEGIAS DE COSTOS: CONCEPTO, PLANIFICACIÓN, NIVELES, SUBSISTEMAS. 
+COSTOS COMERCIO INTERNACIONAL: CONCEPTO, TRÁMITES ADUANEROS, INCOTERMS. 
+PRESUPUESTOS: CONCEPTO, TIPOS, APLICACIÓN, METODOLOGÍA, ESTRUCTURA. 
+COSTEO POR ACTIVIDADES: CONCEPTO, MÉTODOS, CASOS PRÁCTICOS. 
+NIVEL DE SERVICIO EN UNIDADES - PROFIT: CONCEPTO, APLICABILIDAD. 
+PUNTO DE EQUILIBRIO OPERATIVO: CONCEPTO Y COMPONENTES. 
+RA4. 
+INDICADORES DE GESTIÓN: CONCEPTO, TIPOS, APLICACIONES. 
+EVALUACIÓN FINANCIERA: CONCEPTO, PUNTO DE EQUILIBRIO, RENTABILIDAD, MÁRGENES DE 
+CONTRIBUCIÓN. 
+4.7 CRITERIOS DE EVALUACIÓN 
+RA1. 
+PRESENTA LOS ACTORES DE LA CADENA DE SUMINISTRO DE ACUERDO CON EL PRODUCTO O SERVICIO. 
+DESCRIBE ELEMENTOS DE DISEÑO DEL PRODUCTO O SERVICIO SEGÚN LAS ESPECIFICACIONES TÉCNICAS. 
+DESCRIBE CADENA VALOR DE ACUERDO CON EL PRODUCTO O SERVICIO. 
+RA2. 
+IDENTIFICA LA ESTRATEGIA DE INTEGRACIÓN DE LA CADENA DE SUMINISTRO DE ACUERDO CON EL TIPO 
+Página 49 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 50 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+PRODUCTO O SERVICIO. 
+DEFINE PROCESO DE TRAZABILIDAD Y LOS SISTEMAS DE INFORMACIÓN SEGÚN EL PRODUCTO O SERVICIO. 
+APLICA TÉCNICAS DE EVALUACIÓN DE PROVEEDORES DE ACUERDO CON LA PRIORIDAD COMPETITIVA. 
+RA3. 
+VERIFICA ACUERDOS COMERCIALES Y TÉRMINOS DE NEGOCIACIÓN DE ACUERDO CON LAS POLÍTICAS DE LA 
+ORGANIZACIÓN. 
+PRESENTA COSTOS DEL PRODUCTO O SERVICIO DE ACUERDO CON LA CADENA DE SUMINISTRO. 
+DESCRIBE EL PRESUPUESTO SEGÚN EL MODELO DE INTEGRACIÓN DE LA CADENA DE SUMINISTRO. 
+RA4. 
+COMPARA INDICADORES DE GESTIÓN DE LA CADENA DE SUMINISTRO DE ACUERDO CON LOS OBJETIVOS 
+ORGANIZACIONALES. 
+ESTRUCTURA INFORME DE GESTIÓN TENIENDO EN CUENTA EVALUACIÓN FINANCIERA. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EN EL NÚCLEO BÁSICO DE CONOCIMIENTO DE: INGENIERÍA 
+INDUSTRIAL Y AFINES; O ECONOMÍA; O ADMINISTRACIÓN. 
+ESTAS PROFESIONES DEBEN ESTAR ASOCIADAS A LOS PROGRAMAS DE FORMACIÓN QUE IMPARTIRÁ EN SU 
+DESEMPEÑO Y SE CITAN LOS TÍTULOS OBTENIDOS, NÚCLEOS BÁSICOS DE CONOCIMIENTO Y ÁREAS DE 
+CONOCIMIENTO: INGENIERO DE INDUSTRIAL O ADMINISTRADOR DE EMPRESAS CON ESPECIALIZACIÓN EN 
+LOGÍSTICA. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DOCE (12) MESES ESTARÁN RELACIONADOS 
+CON EL EJERCICIO DE OPERACIONES LOGÍSTICAS, EN DESARROLLO DEL OBJETO DE LA FORMACIÓN 
+PROFESIONAL A LA QUE SE DEDICA EL CARGO Y DOCE (12) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+Página 50 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 51 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Razonar cuantitativamente frente a situaciones susceptibles de ser abordadas de manera matemática 
+en contextos laborales, sociales y personales. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201528 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+MATEMÁTICAS 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA4 PROPONER ACCIONES DE MEJORA FRENTE A LOS RESULTADOS DE LOS PROCEDIMIENTOS 
+MATEMÁTICOS DE ACUERDO CON EL PROBLEMA PLANTEADO. 
+RA1 IDENTIFICAR MODELOS MATEMÁTICOS DE ACUERDO CON LOS REQUERIMIENTOS DEL PROBLEMA 
+PLANTEADO EN CONTEXTOS SOCIALES Y PRODUCTIVO. 
+RA2 PLANTEAR PROBLEMAS MATEMÁTICOS A PARTIR DE SITUACIONES GENERADAS EN EL CONTEXTO 
+SOCIAL Y PRODUCTIVO. 
+RA3 RESOLVER PROBLEMAS MATEMÁTICOS A PARTIR DE SITUACIONES GENERADAS EN EL CONTEXTO 
+SOCIAL Y PRODUCTIVO. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+PLANTEAR ECUACIONES 
+PLANTEAR SISTEMAS DE ECUACIONES 
+ESTABLECER RELACIONES DE PROPORCIONALIDAD ENTRE VARIABLES 
+APLICAR CRITERIOS DE SEMEJANZA Y CONGRUENCIA DE FIGURAS 
+APLICAR LOS TEOREMAS DE THALES Y PITÁGORAS 
+REPRESENTAR FUNCIONES EN EL PLANO CARTESIANO 
+REALIZAR OPERACIONES CON NÚMEROS REALES Y CON NÚMEROS COMPLEJOS 
+CALCULAR PERÍMETROS, ÁREAS Y VOLÚMENES 
+REALIZAR TRANSFORMACIONES GEOMÉTRICAS EN EL PLANO 
+REALIZAR CONVERSIONES DE UNIDADES DE MEDIDA 
+RESOLVER ECUACIONES DE PRIMER Y SEGUNDO GRADO 
+RESOLVER SISTEMAS DE ECUACIONES 
+CONSTRUIR GRÁFICOS ESTADÍSTICOS 
+CALCULAR ELEMENTOS DE FUNCIONES 
+COMPROBAR LOS PROCEDIMIENTOS MATEMÁTICOS 
+VERIFICAR LA SOLUCIÓN DE UNA ECUACIÓN 
+DETERMINAR ERRORES DE CÁLCULOS 
+USAR HERRAMIENTAS COMPUTACIONALES BÁSICAS PARA CÁLCULOS NUMÉRICOS 
+ELABORAR INFERENCIAS 
+4.6.2 CONOCIMIENTOS DEL SABER 
+Página 51 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 52 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+NÚMEROS REALES: CONCEPTO, REPRESENTACIONES (FRACCIONES, RAZONES, DECIMALES, PORCENTAJES) 
+Y PROPIEDADES. 
+NÚMEROS COMPLEJOS: CONCEPTO, REPRESENTACIONES Y OPERACIONES 
+OPERACIONES ARITMÉTICAS: PROPIEDADES Y ORDEN DE LAS OPERACIONES. 
+PROPORCIONALIDAD DIRECTA E INVERSA: CONCEPTO Y REGLA DE TRES 
+GEOMETRÍA: CONCEPTOS, POLÍGONOS, LA CIRCUNFERENCIAS Y SÓLIDOS 
+TRIGONOMETRÍA: CONCEPTOS, RAZONES, TEOREMAS Y APLICACIONES 
+ECUACIONES: MÉTODOS DE SOLUCIÓN 
+SISTEMAS DE ECUACIONES: CONCEPTO, TIPOS Y MÉTODOS DE SOLUCIÓN 
+FUNCIONES: CONCEPTO, REPRESENTACIONES Y TIPOS (POLINÓMICAS, EXPONENCIALES, 
+TRIGONOMÉTRICAS, ETC.) 
+VARIABLES ESTADÍSTICAS: CONCEPTO Y TIPOS 
+ESTADÍSTICA DESCRIPTIVA: MEDIDAS DE CENTRALIDAD (MEDIA, MODA Y MEDIANA) Y MEDIDAS DE 
+DISPERSIÓN (VARIANZA Y DESVIACIÓN ESTÁNDAR) 
+GRÁFICOS ESTADÍSTICOS: DIAGRAMA DE BARRAS, CIRCULAR, PICTOGRAMAS Y SERIES 
+TEOREMA DE PITÁGORAS Y THALES: CONCEPTO Y APLICACIONES 
+CONVERSIÓN DE UNIDADES Y SISTEMA DE MEDIDAS 
+SEMEJANZA Y CONGRUENCIA DE SUPERFICIES Y CUERPOS 
+TRANSFORMACIONES SOBRE POLÍGONOS: RÍGIDAS (TRASLACIONES, ROTACIONES, REFLEXIONES) Y 
+HOMOTECIAS (AMPLIACIONES Y REDUCCIONES) 
+DERIVADA E INTEGRAL DE UNA FUNCIÓN: CONCEPTO Y REGLAS 
+HOJAS DE CÁLCULO: CONCEPTO, SINTAXIS Y APLICACIONES 
+4.7 CRITERIOS DE EVALUACIÓN 
+PLANTEA ECUACIONES O SISTEMAS DE ECUACIONES DE ACUERDO CON LA RELACIÓN ENTRE LAS 
+VARIABLES. 
+PRESENTA SOLUCIÓN A PROBLEMAS MEDIANTE FIGURAS GEOMÉTRICAS. 
+APLICA PROCEDIMIENTOS ARITMÉTICOS Y ALGEBRAICOS SEGÚN EL PROBLEMA PLANTEADO. 
+SELECCIONA LAS HERRAMIENTAS COMPUTACIONALES PARA LA VERIFICACIÓN DE LOS RESULTADOS DE 
+ACUERDO CON LOS REQUERIMIENTOS MATEMÁTICOS. 
+ELABORA UNA PROPUESTA DE SOLUCIÓN ALTERNATIVA A PARTIR DE LOS PROCEDIMIENTOS MATEMÁTICOS 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+ALTERNATIVA 1 
+TÍTULO DE TECNÓLOGO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: EDUCACIÓN; VER ANEXOS: (N.B.C.), 
+(TITULOS SENA). 
+ALTERNATIVA 2 
+TÍTULO PROFESIONAL UNIVERSITARIO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: EDUCACIÓN; O 
+MATEMÁTICAS, ESTADÍSTICA Y AFINES; O FÍSICA. (VER ANEXO N.B.C). 
+TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+4.8.2 Experiencia laboral y/o especialización: 
+ALTERNATIVA 1 
+TREINTA (30) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DIECIOCHO (18) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA MATEMÁTICA Y DOCE (12) MESES EN DOCENCIA. 
+ALTERNATIVA 2 
+Página 52 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 53 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DOCE (12) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE MATEMÁTICAS Y DOCE (12) MESES EN DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Resultado de Aprendizaje de la Inducción. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201530 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+INDUCCIÓN 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA APROPIAR CARACTERÍSTICAS DE LA GESTIÓN ORGANIZACIONAL DEL SENA EN EL CONTEXTO DE LA 
+MISIÓN INSTITUCIONAL DE ACUERDO CON SU ROL PROYECTO DE VIDA Y DESARROLLO PROFESIONAL. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+IDENTIFICAR EL DESARROLLO HISTÓRICO DEL SENA. 
+IDENTIFICAR LA IDENTIDAD CORPORATIVA DEL SENA. 
+DESCRIBIR LOS ELEMENTOS QUE CONFORMAN LA IMAGEN CORPORATIVA DEL SENA. 
+IDENTIFICAR LA ESTRUCTURA ORGANIZACIONAL DE LA ENTIDAD. 
+DESCRIBIR LAS NORMAS DE CONVIVENCIA QUE REGULAN EL COMPORTAMIENTO DEL APRENDIZ, DURANTE 
+EL PROCESO DE FORMACIÓN. 
+DESCRIBIR LAS CARACTERÍSTICAS DE LA FORMACIÓN PROFESIONAL INTEGRAL DEL SENA. 
+DIFERENCIAR LAS CARACTERÍSTICAS DE LA OFERTA DE PROGRAMAS DE FORMACIÓN PROFESIONAL 
+INTEGRAL. 
+Página 53 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 54 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.6.2 CONOCIMIENTOS DEL SABER 
+MISIÓN, VISIÓN, HISTORIA INSTITUCIONAL, OBJETIVOS DE LA FORMACIÓN PROFESIONAL, PRINCIPIOS 
+ÉTICOS, VALORES ÉTICOS Y PROCEDERES ÉTICOS. 
+ELEMENTOS DE LA IMAGEN INSTITUCIONAL: ESCUDO, BANDERA, LOGO, SÍMBOLO, HIMNO, ESCARAPELAS. 
+ESTRUCTURA ORGANIZACIONAL DEL SERVICIO NACIONAL DE APRENDIZAJE SENA. 
+POLÍTICAS DE BIENESTAR A APRENDICES Y NORMAS DE CONVIVENCIA INTERNA: ALTERNATIVAS PARA EL 
+DESARROLLO DE LA ETAPA PRODUCTIVA. 
+ETAPAS DE LA FORMACIÓN: TIPOLOGÍA, CARACTERÍSTICAS, PROCEDIMIENTO. MANUAL DE CONVIVENCIA, 
+NORMAS ESPECÍFICAS DE LOS CENTROS. 
+FORMACIÓN PROFESIONAL INTEGRAL: CONCEPTO, PRINCIPIOS Y CARACTERÍSTICAS. 
+TIPOS DE OFERTA DE PROGRAMAS DE FORMACIÓN PROFESIONAL Y SUS CARACTERÍSTICAS. TIPOS DE 
+CERTIFICADO DE ACUERDO CON LA FORMACIÓN Y DURACIÓN DE LOS PROGRAMAS DE FORMACIÓN. 
+DESARROLLO DE COMPETENCIAS EN LA FORMACIÓN PROFESIONAL INTEGRAL, CONCEPTO, TIPOS Y 
+CARACTERÍSTICAS. 
+PROYECTO FORMATIVO: CONCEPTO, FASES ACTIVIDADES, DENOMINACIÓN, OBJETIVOS, PORTAFOLIO DE 
+EVIDENCIAS: ESTRUCTURA, TIPOS DE EVIDENCIA, FORMATO, CONTENIDOS. 
+PLATAFORMAS TECNOLÓGICAS SENA: TUTORIALES SENA: LMS, SOFÍA PLUS, SISTEMA VIRTUAL DE 
+APRENDICES (SVA), GESTIÓN CONTRATO DE APRENDIZAJE. CORREO MISENA. PORTALES, REDES SOCIALES 
+DE LA ENTIDAD. 
+RUTA DE FORMACIÓN: ETAPA LECTIVA, ETAPA PRÁCTICA (ALTERNATIVAS). DURACIÓN, CARACTERÍSTICAS, 
+REQUISITOS, FORMATOS, COMPROMISOS, EVALUACIÓN Y SEGUIMIENTO, PLAN DE MEJORA. 
+4.7 CRITERIOS DE EVALUACIÓN 
+RECONOCE LA IDENTIDAD INSTITUCIONAL Y LOS PROCEDIMIENTOS ADMINISTRATIVOS Y FORMATIVOS. 
+IDENTIFICA LOS COMPONENTES Y ESTRUCTURA DE LA FORMACIÓN PROFESIONAL INTEGRAL SEGÚN EL 
+PROGRAMA DE FORMACIÓN Y SU PERFIL COMO APRENDIZ DEL SENA. 
+INCORPORA A SU PROYECTO DE VIDA LAS OPORTUNIDADES OFRECIDAS POR EL SENA. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+PARA EL DESARROLLO INTEGRAL DE ESTA COMPETENCIA SE REQUIERE LA PARTICIPACIÓN DEL 
+INSTRUCTOR TÉCNICO DEL PROGRAMA DE FORMACIÓN, LOS INSTRUCTORES DE LAS COMPETENCIAS CLAVE 
+Y TRANSVERSALES, EL PROFESIONAL DE DESARROLLO HUMANO, EQUIPO DE BIENESTAR Y LIDERAZGO AL 
+APRENDIZ, RELACIONES CORPORATIVAS, ADMINISTRACIÓN EDUCATIVA, COORDINADORES MISIONALES Y 
+ACADÉMICOS EN COORDINACIÓN CON EL SUBDIRECTOR DE CENTRO. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DOCE (12) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE LA TEMÁTICA DE LA COMPETENCIA Y DOCE (12) MESES 
+4.8.3 Competencias: 
+PRÁCTICA DE PRINCIPIOS, VALORES Y PROCEDERES ÉTICOS DE ACUERDO CON EL CÓDIGO DE ÉTICA 
+INSTITUCIONAL. 
+DISPOSICIÓN AL CAMBIO. 
+HABILIDADES INVESTIGATIVAS. 
+MANEJO DE GRUPOS. 
+LIDERAZGO. 
+COMUNICACIÓN EFICAZ Y ASERTIVA. 
+Página 54 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 55 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+TRABAJO EN EQUIPO. 
+MANEJO DE LAS TIC. 
+CONOCIMIENTO DE MANUAL DE IDENTIDAD CORPORATIVA SENA. 
+CONOCIMIENTO DE LAS POLÍTICAS INSTITUCIONALES PARA EL APRENDIZ. 
+CONOCIMIENTO DEL PROCESO GESTIÓN DE LA FORMACIÓN PROFESIONAL INTEGRAL. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+RESULTADOS DE APRENDIZAJE ETAPA PRACTICA 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+999999999 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+864 horas 
+DENOMINACIÓN 
+APLICAR EN LA RESOLUCIÓN DE PROBLEMAS REALES DEL SECTOR PRODUCTIVO, LOS CONOCIMIENTOS, 
+HABILIDADES Y DESTREZAS PERTINENTES A LAS COMPETENCIAS DEL PROGRAMA DE FORMACIÓN 
+ASUMIENDO ESTRATEGIAS Y METODOLOGÍAS DE AUTOGESTIÓN 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+4.6.2 CONOCIMIENTOS DEL SABER 
+4.7 CRITERIOS DE EVALUACIÓN 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+Página 55 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 56 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.8.2 Experiencia laboral y/o especialización: 
+4.8.3 Competencias: 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Utilizar herramientas informáticas de acuerdo con las necesidades de manejo de información 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501046 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+TIC 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+RA3 EVALUAR LOS RESULTADOS, DE ACUERDO CON LOS REQUERIMIENTOS. 
+RA2 APLICAR FUNCIONALIDADES DE HERRAMIENTAS Y SERVICIOS TIC, DE ACUERDO CON MANUALES DE USO, 
+PROCEDIMIENTOS ESTABLECIDOS Y BUENAS PRÁCTICAS. 
+RA1 ALISTAR HERRAMIENTAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN (TIC), DE 
+ACUERDO CON LAS NECESIDADES DE PROCESAMIENTO DE INFORMACIÓN Y COMUNICACIÓN. 
+RA4 OPTIMIZAR LOS RESULTADOS, DE ACUERDO CON LA VERIFICACIÓN. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+IDENTIFICAR EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET 
+DISPONER EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET 
+MANEJAR COMPUTADORES, PERIFÉRICOS, TABLETAS, EQUIPOS MÓVILES Y REPRODUCTORES DE MEDIOS 
+ELECTRÓNICOS 
+APLICAR FUNCIONALIDADES DE SISTEMAS OPERATIVOS 
+MANEJAR PROCESADOR DE TEXTO, HOJA DE CÁLCULO, SOFTWARE PARA PRESENTACIONES, 
+DIAGRAMACIÓN, BASES DE DATOS Y PROGRAMAS ESPECÍFICOS 
+UTILIZAR MOTORES DE BÚSQUEDA, NAVEGACIÓN, CORREO ELECTRÓNICO, TRANSFERENCIA DE ARCHIVOS, 
+CHAT, LISTAS DE CORREOS, BLOGS, WIKIS, FOROS WEB, SPACES, GRUPOS DE NOTICIAS, TELEFONÍA IP, 
+TELEVISIÓN IP, COMPRAR EN INTERNET, E-LEARNING, MARKETING DIGITAL, TRABAJO COLABORATIVO, 
+COMPUTACIÓN EN LA NUBE, REDES SOCIALES Y VIDEOCONFERENCIA POR INTERNET 
+MANEJAR HERRAMIENTAS COLABORATIVAS EN INTERNET 
+VALORAR RESULTADOS OBTENIDOS 
+Página 56 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 57 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+APLICAR PROCESOS DE MEJORA 
+4.6.2 CONOCIMIENTOS DEL SABER 
+TECNOLOGÍA: CONCEPTO, TIPOS, CARACTERÍSTICAS 
+HERRAMIENTAS TIC: CLASES, CARACTERÍSTICAS, USOS 
+TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN: CONCEPTO, COMPONENTES, CARACTERÍSTICAS, 
+CLASIFICACIÓN, USOS, TENDENCIAS 
+EQUIPOS Y PERIFÉRICOS TIC 
+COMPUTADOR: CONCEPTO, ARQUITECTURA, FUNCIONAMIENTO, TIPOS, CARACTERÍSTICAS 
+PERIFÉRICOS: CONCEPTO, CLASIFICACIÓN, CARACTERÍSTICAS, FUNCIONAMIENTO 
+OTROS (TABLETAS, EQUIPOS MÓVILES, REPRODUCTORES DE MEDIOS ELECTRÓNICOS): CONCEPTO, 
+FUNCIONAMIENTO, TIPOS, CARACTERÍSTICAS 
+REDES DE DATOS: CONCEPTO, CONECTIVIDAD, TIPOS, CARACTERÍSTICAS, USOS, SERVICIOS 
+SOFTWARE: CONCEPTO, HERRAMIENTAS, FUNCIONES, PROPIEDADES 
+TIPOS DE SOFTWARE: 
+SOFTWARE DE SISTEMA (SISTEMA OPERATIVO): CONCEPTO, CLASES, FUNCIONES, CARACTERÍSTICAS, USOS 
+SOFTWARE DE APLICACIÓN (PROCESADOR DE TEXTO, HOJA DE CÁLCULO, PROGRAMA DE PRESENTACIÓN, 
+BASE DE DATOS, DIAGRAMACIÓN, SOFTWARE ESPECÍFICO): CONCEPTO, CLASES, FUNCIONES, 
+CARACTERÍSTICAS, USOS 
+SOFTWARE DE DESARROLLO: CONCEPTO, CLASES, FUNCIONES, CARACTERÍSTICAS, USOS 
+INTERNET: 
+DEFINICIÓN, HISTORIA, EVOLUCIÓN, ARQUITECTURA, UTILIDADES 
+CONEXIÓN: TIPOS, CONFIGURACIÓN, CARACTERÍSTICAS 
+HERRAMIENTAS COLABORATIVAS 
+SERVICIOS DE INTERNET: 
+(NAVEGACIÓN, CORREO ELECTRÓNICO, TRANSFERENCIA DE ARCHIVOS, BÚSQUEDAS, LISTAS DE CORREOS, 
+GRUPOS DE NOTICIAS, CHATS, BLOGS, WIKIS, FOROS WEB, SPACES, REDES SOCIALES, INTERCAMBIO DE 
+ARCHIVOS P2P, TELEFONÍA VOIP, TELEVISIÓN IPTV, COMPRAR EN INTERNET, E-LEARNING, MARKETING 
+DIGITAL, TRABAJO COLABORATIVO, COMPUTACIÓN EN LA NUBE): CONCEPTO, REQUERIMIENTOS, TIPOS, 
+UTILIDADES, APLICACIONES, VENTAJAS, DESVENTAJAS 
+VERIFICACIÓN DE RESULTADOS: OBJETO, TÉCNICAS 
+OPTIMIZACIÓN: DEFINICIÓN, OBJETO, IMPLEMENTACIÓN 
+4.7 CRITERIOS DE EVALUACIÓN 
+ESCOGE EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET, DE ACUERDO CON LAS 
+NECESIDADES DE PROCESAMIENTO DE INFORMACIÓN Y CARACTERÍSTICAS. 
+MANEJA COMPUTADORES, TABLETAS, CELULARES Y OTROS EQUIPOS TIC, DE ACUERDO CON LAS 
+FUNCIONALIDADES DE LOS MISMOS. 
+MANEJA PROCESADOR DE TEXTO, HOJA DE CÁLCULO, SOFTWARE PARA PRESENTACIONES, DIAGRAMACIÓN, 
+BASES DE DATOS Y SOFTWARE ESPECÍFICO, DE ACUERDO CON LAS FUNCIONALIDADES DE CADA 
+PROGRAMA Y LAS NECESIDADES DE MANEJO DE LA INFORMACIÓN. 
+UTILIZA MOTORES DE BÚSQUEDA, NAVEGACIÓN, CORREO ELECTRÓNICO, TRANSFERENCIA DE ARCHIVOS, 
+CHAT, LISTAS DE CORREOS, BLOGS, WIKIS, FOROS WEB, SPACES, GRUPOS DE NOTICIAS, TELEFONÍA IP, 
+TELEVISIÓN IP, COMPRAR EN INTERNET, E-DEARNING, MARKETING DIGITAL, TRABAJO COLABORATIVO, 
+COMPUTACIÓN EN LA NUBE, REDES SOCIALES Y VIDEOCONFERENCIA POR INTERNET, DE ACUERDO CON LAS 
+NECESIDADES DE INFORMACIÓN Y COMUNICACIÓN. 
+MANEJA HERRAMIENTAS COLABORATIVAS EN INTERNET, DE ACUERDO CON LAS NECESIDADES DEL EQUIPO 
+DE TRABAJO. 
+Página 57 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 58 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+ALTERNATIVA 1 
+TECNÓLOGO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: INGENIERÍA DE SISTEMAS, TELEMÁTICA Y 
+AFINES. VER ANEXOS: (N.B.C.), (TITULOS SENA). 
+ALTERNATIVA 2 
+PROFESIONAL UNIVERSITARIO EN NÚCLEOS BÁSICOS DE CONOCIMIENTO DE: EDUCACIÓN; O INGENIERÍA DE 
+SISTEMAS, TELEMÁTICA Y AFINES; O INGENIERÍA ELECTRÓNICA, TELECOMUNICACIONES Y AFINES; O 
+ADMINISTRACIÓN. (VER ANEXO N.B.C) TARJETA PROFESIONAL EN LOS CASOS EXIGIDOS POR LA LEY. 
+4.8.2 Experiencia laboral y/o especialización: 
+ALTERNATIVA 1 
+TREINTA (30) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: 
+DIECIOCHO (18) MESES DE EXPERIENCIA RELACIONADA CON EL EJERCICIO DE EDUMÁTICA EN LA 
+FORMACIÓN PROFESIONAL Y DOCE (12) MESES EN DOCENCIA 
+ALTERNATIVA 2 
+VEINTICUATRO (24) MESES DE EXPERIENCIA RELACIONADA DISTRIBUIDA ASÍ: DOCE (12) MESES DE 
+EXPERIENCIA RELACIONADA CON EL EJERCICIO DE EDUMÁTICA EN LA FORMACIÓN PROFESIONAL Y DOCE 
+(12) MESES EN DOCENCIA. 
+4.8.3 Competencias: 
+COMPETENCIAS COMUNES 
+ORIENTACIÓN A RESULTADOS 
+ORIENTACIÓN AL USUARIO Y AL CIUDADANO 
+TRANSPARENCIA 
+COMPROMISO CON LA ORGANIZACIÓN 
+COMPETENCIAS COMPORTAMENTALES NIVEL INSTRUCTOR (RES. 1458 DE 2017  ANEXO NO. 2) 
+1. EXPERTICIA TÉCNICA 
+2. TRABAJO EN EQUIPO Y COLABORACIÓN 
+3. APRENDIZAJE CONTINUO 
+4. CREATIVIDAD E INNOVACIÓN 
+4.9 MATERIALES DE FORMACIÓN 
+Tipo Material 
+Descripción del Material 
+Codificación ORIONS 
+Cantidad 
+Unidades 
+4.10 REFERENTES BIBLIOGRÁFICOS PARA LA COMPETENCIA DE FORMACIÓN 
+Página 58 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 59 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+6. CONTROL DEL DOCUMENTO 
+CARGO 
+NOMBRE 
+DEPENDENCIA / RED 
+FECHA 
+CLAUDIA JULIANA LEON PINTO 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE SERVICIOS 
+EMPRESARIALES Y 
+TURÍSTICOS. REGIONAL 
+SANTANDER 
+21/09/2018 
+BELKIS ROSMILD MOLANO 
+ASESORA 
+METODOLÓGICA DE 
+DISEÑO 
+Autor 
+CENTRO DE TECNOLOGÍA 
+DE LA MANUFACTURA 
+AVANZADA.. REGIONAL 
+ANTIOQUIA 
+06/08/2020 
+IVAN VELEZ VILLEGAS 
+APROBAR ANALISIS 
+Autor 
+CENTRO DE COMERCIO Y 
+TURISMO. REGIONAL 
+QUINDÍO 
+06/08/2020 
+MARIA CONSUELO GOMEZ 
+INSTRUCTORA 
+TÉCNICA DISEÑO 
+Autor 
+CENTRO DE LA 
+INDUSTRIA, LA EMPRESA 
+Y LOS SERVICIOS. 
+REGIONAL HUILA 
+06/08/2020 
+JULIAN GALEANO 
+INSTRUCTOR 
+TÉCNICO DISEÑO 
+Autor 
+CENTRO DE COMERCIO Y 
+SERVICIOS. REGIONAL 
+RISARALDA 
+06/08/2020 
+NIDIA ALEXANDRA LEON 
+DINAMIZADORA 
+SECTORIAL DE RED 
+COMERCIO Y VENTAS 
+Autor 
+DIRECCION GENERAL. 
+DIRECCIÓN GENERAL 
+06/08/2020 
+JOSE LUIS CASTAÑO 
+ASESOR 
+METODOLÓGICO DE 
+DISEÑO 
+Autor 
+CENTRO DE COMERCIO Y 
+SERVICIOS. REGIONAL 
+CALDAS 
+06/08/2020 
+HECTOR FABIAN ZAPATA 
+INSTRUCTOR 
+TÉCNICO DISEÑO 
+Autor 
+null. REGIONAL 
+RISARALDA 
+13/08/2020 
+BRIAN MAURICIO MARQUEZ 
+INSTRUCTOR 
+TÉCNICO DISEÑO 
+Autor 
+CENTRO DE 
+BIOTECNOLOGIA 
+INDUSTRIAL. REGIONAL 
+VALLE 
+13/08/2020 
+ANDRES FELIPE VALENCIA 
+PIMIENTA 
+QUITAR SUSPENDIDO 
+Autor 
+DIRECCION GENERAL. 
+DIRECCIÓN GENERAL 
+13/10/2020 
+ORLANDO OLIVA COBOS 
+QUITAR SUSPENDIDO 
+Autor 
+null. REGIONAL DISTRITO 
+CAPITAL 
+20/08/2022 
+CATALINA HERNANDEZ PALACIO 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE COMERCIO. 
+REGIONAL ANTIOQUIA 
+24/08/2022 
+IVAN VELEZ VILLEGAS 
+Aprobación 
+CENTRO DE COMERCIO Y 
+TURISMO. 
+23/10/2020 
+IVAN VELEZ VILLEGAS 
+Aprobación 
+CENTRO DE COMERCIO Y 
+TURISMO. 
+30/08/2022 
+Página 59 de 
+60 
+5/06/24 18:14 
+
+--- PAGINA 60 ---
+LÍNEA TECNOLÓGICA: CLIENTE 
+RED TECNOLÓGICA: VENTAS Y COMERCIALIZACIÓN 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN COMERCIO Y VENTAS 
+CONTROL DE CAMBIOS 
+CARGO 
+NOMBRE 
+DEPENDENCIA / RED 
+FECHA 
+Página 60 de 
+60 
+5/06/24 18:14 

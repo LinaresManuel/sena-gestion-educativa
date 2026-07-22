@@ -1,0 +1,4031 @@
+
+--- PÁGINA 1 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+ANALISIS Y DESARROLLO DE SOFTWARE. 
+1. INFORMACION BÁSICA DEL PROGRAMA DE FORMACION TITULADA 
+1.1 Denominación 
+del Programa: 
+El programa aún se encuentra vigente 
+1 
+1.2. Código 
+Programa: 
+1.3. Versión 
+Programa: 
+228118 
+10/09/2021 
+1.4. Vigencia del 
+Programa: 
+Fecha inicio programa: 
+Fecha fin programa: 
+3120 horas 
+Etapa Lectiva: 
+Etapa Productiva: 
+Total: 
+3984 horas 
+1.5 Duración 
+máxima estimada 
+del aprendizaje 
+(horas) 
+864 horas 
+Total: 
+1.6 Tipo de 
+programa 
+TITULADO 
+1.7 Título o 
+certificado que 
+obtendrá 
+TECNÓLOGO 
+1.8 Justificación 
+Los flujos de nuevas tecnologías llegan al país a un ritmo sin precedentes, haciendo que la demanda interna y 
+las expectativas por nuevos productos y servicios se transformen con similar rapidez. De esta forma, la 
+prospectiva de la industria TIC de los países menos desarrollados debe partir de la ubicación de la oferta 
+nacional en el eje definido por las tensiones entre el mercado global y el mercado local, que operan como dos 
+polos frente al tema. Esto significa identificar los focos tecnológicos prioritarios tanto a escala nacional como 
+internacional, a partir de las fortalezas y debilidades del sector, con el fin de establecer el mercado objetivo. 
+Teniendo en cuenta que estos evolucionan y se transforman continua y rápidamente, el talento humano en 
+Colombia, formado en áreas de TI, se convierte en el determinante para afrontar los retos propuestos para el 
+corto, mediano y largo plazo [1]. 
+En el plano internacional, el interés por los servicios de las Industrias 4.0 de Colombia (BPO, Software, Salud, 
+Audiovisuales y contenidos digitales, Comunicación Gráfica y Editorial) continúa ampliándose con ritmo 
+acelerado.  En 2018, estas exportaciones registraron US$407,5 millones, con un incremento de 33%. 
+Al desagregar por sector, se destaca el liderazgo de las ventas de Software, que aportaron US$159,7 millones, 
+seguido por BPO con US$103,9 millones, Audiovisuales y contenidos digitales con US$82,8 millones, Salud 
+con US$57,4 millones y Comunicación Gráfica y Editorial con US$3,5 millones [2]. 
+El número de profesionales de tecnología que demandan las empresas colombianas, es mucho mayor que el 
+de profesionales disponibles en el país, según datos del Ministerio de Tecnologías de la Información y las 
+Comunicaciones (MinTIC).  El déficit de profesionales en esa área será de casi 70 mil cerrando el 2019 [3]. 
+Dadas las proyecciones, después de 2019 el problema de la escasez de talento humano formado en áreas de 
+TI, seguirá creciendo y no puede resolverse fácilmente, por lo tanto, el Gobierno de Colombia debe adoptar 
+medidas para superar este déficit. 
+Ante la necesidad existente y futura de formación de personal en tecnologías relacionadas con el 
+Página 1 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 2 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+sector de las TIC, se deben ofertar programas de formación para el fortalecimiento de capacidades en 
+desarrollos a la medida, programación, algoritmos, bases de datos y redes (Arquitectura Cliente-Servidor); 
+integración aplicada de las áreas,  testing con la adaptación del software a diferentes mercados y sectores , 
+tecnologías de gestión y producción en la nube, tecnologías de seguridad digital o ciberseguridad,  tecnologías 
+de producción, gestión y manipulación de contenidos digitales sobre redes y plataformas virtuales, fijas, 
+móviles y convergentes, big data, blockchain, IoT, machine learning, metodologías de desarrollo de software, 
+generación, producción y explotación de software en la nube, así como reforzar conocimiento en áreas como 
+Administración de Proyectos y fortalecer las habilidades blandas en áreas como la comunicación, trabajo en 
+equipo, interacción con clientes e Inglés de Negocios. 
+Estos campos requeridos de formación, están siendo demandados por el sector productivo y generan 
+oportunidades potenciales de desempeño para las personas, derivando en los factores que se tienen en 
+cuenta para la generación de diseños curriculares relacionados con las tecnologías del sector TIC y la red de 
+conocimiento en Informática, Diseño y Desarrollo de Software, como apoyo al crecimiento del mismo. 
+El SENA ofrece el programa de formación Tecnólogo en Análisis y Desarrollo de Software, con todos los 
+elementos de formación profesional, sociales, tecnológicos y culturales, aportando como elementos 
+diferenciadores, metodologías y plataformas para el desarrollo de software de calidad, con acceso a 
+tecnologías de última generación y una estructuración sobre métodos más que contenidos, lo que potencia la 
+formación de ciudadanos librepensadores, con capacidad crítica, solidaria y 
+SERVICIOS 
+Sector económico: 
+Sector clase mundial: 
+Sector locomotora: 
+1.9 Sectores a los 
+que se asocia el 
+programa 
+Sector locomotora: 
+2.0 Estrategia 
+metodológica 
+Centrada en la construcción de autonomía para garantizar la calidad de la formación en el marco de la 
+formación por competencias, el aprendizaje por proyectos y el  uso de  técnicas didácticas activas que 
+estimulan el pensamiento para la resolución de problemas simulados y reales; soportadas en el utilización de 
+las tecnologías de la información y la comunicación, integradas, en ambientes abiertos y pluritecnológicos, 
+que en todo caso recrean el contexto productivo y vinculan al aprendiz con la realidad cotidiana y el desarrollo 
+de las competencias. 
+Igualmente, debe estimular de manera  permanente la autocrítica y la reflexión del aprendiz sobre el que 
+hacer y los resultados de aprendizaje que logra a través de la  vinculación  activa  de las cuatro fuentes de 
+información para la construcción de conocimiento: 
+-El instructor  -  Tutor 
+-El entorno 
+-Las TIC 
+-El trabajo colaborativo 
+2. PERFIL IDÓNEO DE EGRESO 
+2.1 PERFIL OCUPACIONAL 
+2.1.1 NOMBRE DE LA(s) OCUPACIONES QUE PODRÁ DESEMPEÑAR EL EGRESADO 
+2.1.2 PRINCIPALES PRODUCTOS DEL TRABAJO DEL EGRESADO 
+Código del campo ocupacional 
+Ocupación 
+2281 
+Técnicos en Tecnologías de la Información 
+* INFORME DE ESPECIFICACION DE REQUISITOS 
+* INFORMES DE ANALISIS Y DISEÑO DEL SOFTWARE 
+Página 2 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 3 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+* PROPUESTAS TECNICAS DE SERVICIOS TI 
+* BASE DE DATOS DEL SOFTWARE 
+* PROTOTIPO DE LA SOLUCION DE SOFTWARE 
+* CODIGO DEL SOFTWARE 
+* INFORME DE RESULTADOS DE PRUEBAS DE SOFTWARE 
+* MANUALES TECNICOS DEL SOFTWARE 
+2.1.3 COMPETENCIAS QUE DESARROLLARÁ 
+Nombre de Norma de Competencia Laboral / Unidad de competencia 
+Código NCL / UC 
+APLICACIÓN DE CONOCIMIENTOS DE LAS CIENCIAS NATURALES DE ACUERDO 
+CON SITUACIONES DEL CONTEXTO PRODUCTIVO Y SOCIAL. 
+220201501 
+APLICAR PRÁCTICAS  DE PROTECCIÓN AMBIENTAL, SEGURIDAD Y SALUD EN EL 
+TRABAJO DE ACUERDO CON LAS POLÍTICAS ORGANIZACIONALES  Y LA 
+NORMATIVIDAD VIGENTE. 
+220601501 
+Controlar la calidad del servicio de software de acuerdo con los estándares técnicos 
+220501098 
+DESARROLLAR LA SOLUCIÓN DE SOFTWARE DE ACUERDO CON EL DISEÑO Y 
+METODOLOGÍAS DE DESARROLLO 
+220501096 
+DESARROLLAR PROCESOS DE COMUNICACIÓN EFICACES Y EFECTIVOS, 
+TENIENDO EN CUENTA SITUACIONES  DE ORDEN SOCIAL, PERSONAL Y 
+240201524 
+Diseñar la solución de software de acuerdo con procedimientos y requisitos técnicos 
+220501095 
+Ejercer derechos fundamentales del trabajo en el marco de la constitución política y los 
+convenios internacionales. 
+210201501 
+Enrique Low Murtra-Interactuar en el contexto productivo y social de acuerdo con 
+principios  éticos para la construcción de una cultura de paz. 
+240201526 
+Establecer requisitos de la solución de software de acuerdo con estándares y 
+procedimiento técnico 
+220501092 
+Estructurar propuesta técnica de servicio de tecnología de la información según requisitos 
+técnicos y normativa 
+220501094 
+Evaluar requisitos de la solución de software de acuerdo con metodologías de análisis y 
+estándares 
+220501093 
+GENERAR HÁBITOS SALUDABLES DE VIDA MEDIANTE LA APLICACIÓN DE 
+PROGRAMAS DE ACTIVIDAD FÍSICA EN LOS CONTEXTOS PRODUCTIVOS Y 
+SOCIALES. 
+230101507 
+Gestionar procesos propios de la cultura emprendedora y empresarial de acuerdo con el 
+perfil personal y los requerimientos de los contextos productivo y social. 
+240201529 
+Implementar la solución de software de acuerdo con los requisitos de operación y modelos 
+de referencia 
+220501097 
+INTERACTUAR EN LENGUA INGLESA DE FORMA ORAL Y ESCRITA DENTRO DE 
+CONTEXTOS SOCIALES Y LABORALES SEGÚN LOS CRITERIOS ESTABLECIDOS 
+POR EL MARCO COMÚN EUROPEO DE REFERENCIA PARA LAS LENGUAS. 
+240202501 
+Orientar investigación formativa según referentes técnicos 
+240201064 
+Razonar cuantitativamente frente a situaciones susceptibles de ser abordadas de manera 
+matemática en contextos laborales, sociales y personales. 
+240201528 
+Resultado de Aprendizaje de la Inducción. 
+240201530 
+RESULTADOS DE APRENDIZAJE ETAPA PRACTICA 
+999999999 
+Utilizar herramientas informáticas de acuerdo con las necesidades de manejo de 
+220501046 
+Página 3 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 4 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+información 
+2.2 PERFIL PROFESIONAL 
+2.2.1 Procedimientos/ Habilidades 
+cognitivas, psicomotoras 
+2.2.2 Conocimientos / Saberes 
+esenciales 
+2.2.3 Competencias Sociales 
+* SOLUCION DE PROBLEMAS 
+* INTERPRETACION DE DOCUMENTOS 
+* ORGANIZACION DE IDEAS 
+* PRIORIZACION DE TAREAS 
+* CAPACIDAD DE ANALISIS 
+* CAPACIDAD DE SINTESIS 
+* EVALUACION DE RESULTADOS 
+* GESTION DE REQUISITOS 
+* FUNDAMENTOS DE PROYECTOS DE 
+SOFTWARE 
+* METODOLOGIAS DE DESARROLLO DE 
+SOFTWARE 
+* MODELAMIENTO DE SOFTWARE 
+* BUENAS PRACTICAS EN EL DESARROLLO 
+DE SOFTWARE 
+* BASES DE DATOS 
+* PARADIGMAS DE PROGRAMACION 
+* PLATAFORMAS DE DESARROLLO DE 
+SOFTWARE 
+* PROGRAMACION DE SOFTWARE 
+* HERRAMIENTAS INFORMATICAS 
+* PATRONES DE DISEÑO 
+* FRAMEWORKS PARA DESARROLLO DE 
+SOFTWARE 
+* DOCUMENTACION DEL PROCESO DE 
+DESARROLLO DE SOFTWARE 
+* DERECHOS DE AUTOR 
+* LICENCIAMIENTO DE SOFTWARE 
+* PRUEBAS DE SOFTWARE 
+* IMPLANTACION DE SOFTWARE 
+* TECNICAS DE COMUNICACION ORAL Y 
+ESCRITA 
+* INGLES TECNICO 
+* TRABAJO EN EQUIPO 
+* RESPONSABILIDAD Y PUNTUALIDAD 
+* ORIENTACION AL LOGRO DE OBJETIVOS 
+* CAPACIDAD DE ADAPTACION AL CAMBIO 
+* DISPOSICION AL MEJORAMIENTO 
+CONTINUO 
+* COMUNICACION ASERTIVA 
+* PROPOSITIVO 
+* SEGUIR ORIENTACIONES 
+* PENSAMIENTO CRITICO 
+2.3 PROYECCIÓN DEL EGRESADO 
+2.3.1 En lo laboral 
+PODRA DESEMPEÑARSE DESARROLLANDO SOLUCIONES DE SOFTWARE A TRAVES DE CONTRATOS 
+DE PRESTACION DE SERVICIOS EN EMPRESAS PUBLICAS O PRIVADAS EN EL SECTOR TI. DE IGUAL 
+FORMA PUEDE PARTICIPAR COMO ANALISTA, DISEÑADOR Y PROGRAMADOR DE SOFTWARE EN 
+PROYECTOS ESPECIFICOS DE ACUERDO CON LA NECESIDAD DEL SERVICIO. 
+2.3.2 En lo 
+empresarial 
+PRESTAR SERVICIOS PERSONALES COMO ANALISTA, DISEÑADOR Y PROGRAMADOR DE SOFTWARE 
+INDEPENDIENTE. DE IGUAL FORMA PUEDE HACER PARTE DE UNIDADES PRODUCTIVAS 
+ENCARGADAS DE LAS LAS DIFERENTES TAREAS EN LOS PROCESOS DE DESARROLLO DE 
+2.3.3 En el entorno 
+social 
+EL EGRESADO A PARTIR DE SU FORMACION, BRINDARA SOLUCIONES EN SOFTWARE QUE 
+BENEFICIEN LA CALIDAD DE VIDA DE LAS PERSONAS, AL TIEMPO QUE MEJORA LA DINAMICA Y 
+ECONOMIA DEL PAIS. 
+2.3.4 En la 
+formación y 
+aprendizaje 
+permanente 
+EL EGRESADO TENDRA LA CAPACIDAD DE AUTOAPRENDIZAJE Y ACTUALIZACION PERMANENTE DE 
+ACUERDO CON LAS NUEVAS TENDENCIAS DE DESARROLLO DE SOFTWARE EN EL MERCADO. 
+Página 4 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 5 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+2.3.5 En la 
+innovación y 
+desarrollo 
+tecnológico 
+DE ACUERDO CON LOS AVANCES TECNOLOGICOS Y LAS NUEVAS TENDENCIAS PARA 
+DESARROLLAR SOFTWARE, EL EGRESADO ESTARA EN CAPACIDAD DE PROPONER CAMBIOS Y 
+MEJORAS EN LOS PROCESOS DE NEGOCIO GENERANDO VALOR AGREGADO. 
+DESARROLLO DE APLICACIONES DE SOFTWARE. 
+2.4 DESCRIPCIÓN GENERAL DEL PERFIL DEL EGRESADO 
+3. PERFIL IDÓNEO DE INGRESO 
+3.1 REQUERIMIENTOS 
+3.1.1 Nivel de competencias a demostrar en el proceso de ingreso por tipo de certificación: 
+Nivel académico 
+adecuado  para 
+caracterizar al aspirante 
+de acuerdo con el perfil 
+de egreso: 
+11 
+Grado: 
+MEDIA ACADÉMICA 
+Requiere Certificación 
+académica (si/no) 
+SI 
+Requiere  Formación para el 
+trabajo y desarrollo humano. 
+(si/no) 
+NO 
+Cuál? 
+No. 
+Horas 
+3.1.2  Edad mínima definida 
+en la ley: 
+14 años 
+3.1.3 Requisitos adicionales: 
+Presentar resultado de la prueba o examen de estado de la educación media 
+3.1.4 Restricciones de ingreso soportadas en la legislación vigente: 
+(Limitaciones físicas o cognitivas que impiden total o parcialmente el desarrollo de la  formación y que estén expresamente 
+descrita y soportadas en normas relacionadas con el desempeño ocupacional y profesional) 
+Ninguna 
+Página 5 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 6 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+3.2 ASPECTOS ACTITUDINALES, MOTIVACIONALES Y DE INTERÉS 
+Respetuoso, Responsabilidad con el trabajo asignado, Comprometido, Persona adaptable al Trabajo en equipo y trabajo 
+individual., Uso de Nuevas Tecnologías, Solución de Problemas. 
+CLASE 
+3.3 COMPETENCIAS A EVALUAR EN EL PROCESO DE INGRESO 
+TIPO 
+COMPETENCIA 
+INDICADOR 
+NIVEL 
+ACADEMICO 
+GRADO 
+% 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Lectura. 
+Identifico palabras clave 
+dentro del texto que me 
+permiten comprender su 
+sentido general. 
+11 
+2 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Lectura. 
+Analizo textos descriptivos, 
+narrativos y argumentativos 
+con el fin de comprender las 
+ideas principa 
+11 
+2 
+Básica 
+Ingles 
+MEDIA ACADÉMICA 
+Lectura. 
+Comprendo variedad de 
+textos informativos 
+provenientes de diferentes 
+fuentes. 
+11 
+1 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Aleatorio y 
+Sistemas de Datos. 
+Describo tendencias que se 
+observan en conjuntos de 
+variables relacionadas. 
+11 
+3 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Aleatorio y 
+Sistemas de Datos. 
+Interpreto nociones básicas 
+relacionadas con el manejo 
+de información como 
+población, muestra, varia 
+11 
+3 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Aleatorio y 
+Sistemas de Datos. 
+Interpreto conceptos de 
+probabilidad condicional e 
+independencia de eventos. 
+11 
+2 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Aleatorio y 
+Sistemas de Datos. 
+Resuelvo y planteo problemas 
+usando conceptos básicos de 
+conteo y probabilidad 
+(combinaciones, permu 
+11 
+2 
+Básica 
+Lenguaje 
+BÁSICA 
+SECUNDARIA 
+Comprensión e 
+Interpretación Textual. 
+Comprendo el sentido global 
+de cada uno de los textos que 
+leo, la intención de quien lo 
+produce y la 
+9 
+3 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Comprensión e 
+Interpretación Textual. 
+Elaboro hipótesis de 
+interpretación atendiendo a la 
+intención comunicativa y al 
+sentido global del t 
+11 
+3 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Comprensión e 
+Interpretación Textual. 
+Relaciono el significado de los 
+textos que leo con los 
+contextos sociales, culturales 
+y políticos en 
+11 
+3 
+Página 6 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 7 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Comprensión e 
+Interpretación Textual. 
+Construyo reseñas críticas 
+acerca de los textos que leo. 
+11 
+3 
+Básica 
+Lenguaje 
+MEDIA ACADÉMICA 
+Producción Textual. 
+Caracterizo y utilizo 
+estrategias descriptivas, 
+explicativas y analógicas en 
+mi producción de textos 
+11 
+12 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Numérico y 
+Sistemas Numericos. 
+Analizo representaciones 
+decimales de los números 
+reales para diferenciar entre 
+racionales e irracio 
+11 
+4 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Numérico y 
+Sistemas Numericos. 
+Comparo y contrasto las 
+propiedades de los números 
+(naturales, enteros, racionales 
+y reales) y las d 
+11 
+4 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Numérico y 
+Sistemas Numericos. 
+Utilizo argumentos de la 
+teoría de números para 
+justificar relaciones que 
+involucran números natural 
+11 
+4 
+Básica 
+Matematicas 
+MEDIA ACADÉMICA 
+Pensamiento Numérico y 
+Sistemas Numericos. 
+Establezco relaciones y 
+diferencias entre diferentes 
+notaciones de números reales 
+para decidir sobre 
+11 
+3 
+Básica 
+Matematicas 
+BÁSICA 
+SECUNDARIA 
+Pensamiento Variacional y 
+Sistemas Algebraicos y 
+Analíticos. 
+Construyo expresiones 
+algebraicas equivalentes a 
+una expresión algebraica 
+dada. 
+9 
+5 
+Básica 
+Matematicas 
+BÁSICA 
+SECUNDARIA 
+Pensamiento Variacional y 
+Sistemas Algebraicos y 
+Analíticos. 
+Modelo situaciones de 
+variación con funciones 
+polinómicas. 
+9 
+5 
+Básica 
+Matematicas 
+BÁSICA 
+SECUNDARIA 
+Pensamiento Variacional y 
+Sistemas Algebraicos y 
+Analíticos. 
+Identifico diferentes métodos 
+para solucionar sistemas de 
+ecuaciones lineales. 
+9 
+5 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Apropiación y uso de la 
+tecnología. 
+Utilizo adecuadamente 
+herramientas informáticas de 
+uso común para la búsqueda 
+y procesamiento de la 
+11 
+4 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Apropiación y uso de la 
+tecnología. 
+Trabajo en equipo en la 
+realización de proyectos 
+tecnológicos y, cuando lo 
+hago, involucro herramien 
+11 
+4 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Apropiación y uso de la 
+tecnología. 
+Integro componentes y pongo 
+en marcha sistemas 
+informáticos personales 
+utilizando manuales e instruc 
+11 
+3 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Solución de problemas con 
+tecnología. 
+Propongo, analizo y comparo 
+diferentes soluciones a un 
+mismo 
+11 
+4 
+Página 7 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 8 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+problema, explicando su 
+origen, ventaja 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Solución de problemas con 
+tecnología. 
+Optimizo soluciones 
+tecnológicas a través de 
+estrategias de innovación, 
+investigación, desarrollo y 
+11 
+3 
+Básica 
+Tecnologia 
+Informatica 
+MEDIA ACADÉMICA 
+Solución de problemas con 
+tecnología. 
+Propongo y evalúo el uso de 
+tecnología para mejorar la 
+productividad en la pequeña 
+empresa. 
+11 
+3 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Pluralidad, identidad y 
+valoración de las 
+diferencias. 
+Construyo una posición crítica 
+frente a las situaciones de 
+discriminación y exclusión 
+social que res 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Pluralidad, identidad y 
+valoración de las 
+diferencias. 
+Comprendo que el respeto 
+por la diferencia no significa 
+aceptar que otras personas o 
+grupos vulneren 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Contribuyo a que los 
+conflictos entre personas y 
+entre grupos se manejen de 
+manera pacífica y constr 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Analizo críticamente las 
+decisiones, acciones u 
+omisiones que se toman en el 
+ámbito nacional o inter 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Conozco y respeto las normas 
+de tránsito. (Conocimientos y 
+competencias integradoras). 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Convivencia y paz 
+Comprendo la importancia de 
+la defensa del medio 
+ambiente, tanto en el nivel 
+local como global, y pa 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Participación y 
+responsabilidad 
+democrática. 
+Participo en iniciativas 
+políticas democráticas en mi 
+medio escolar o localidad. 
+(Competencias integ 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Participación y 
+responsabilidad 
+democrática. 
+Comprendo qué es un bien 
+público y participo en 
+acciones que velan por su 
+buen uso, tanto en la comu 
+11 
+1 
+Ciudadana 
+Ciudadana 
+MEDIA ACADÉMICA 
+Participación y 
+responsabilidad 
+democrática. 
+Comprendo que cuando se 
+actúa en forma corrupta y se 
+usan los bienes públicos para 
+beneficio persona 
+11 
+2 
+Página 8 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 9 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+3.4 DOTACIÓN MÍNIMA DE AMBIENTES DE APRENDIZAJE PARA LA COMPETENCIA DE 
+3.4.1 Caracterización de 
+ambiente mínimo 
+*  Área mínima : 70 mt2 
+3.4.2 Maquinaria y Equipo 
+Especializado 
+*  26 Computadoras, memoria RAM 4Gb, procesador mayor o igual a 2.5 Ghz o superior, Disco Duro 
+de 512 GB. 
+3.4.3 Software 
+Especializado 
+*  Sistemas operativos. 
+*  Software ofimático. 
+*  Entornos de Desarrollo (escritorio, web y móvil). 
+*  Suite para desarrollo Web (servidores, lenguaje y motor de base de datos). 
+*  Herramientas CASE. 
+*  Software para diseño gráfico. 
+*  Software para Gestión de Proyectos. 
+3.4.4 Herramientas 
+Especializadas 
+*  Lectores de código de barras. 
+*  Lectores de huella. 
+*  Tarjetas RFID. 
+*  Dispositivos móviles. 
+3.4.5 Simuladores 
+específicos del entorno 
+*  Máquinas virtuales 
+3.4.6 Muebles 
+colaborativos 
+*  Mesas y sillas ergonómicas, para ubicación de 25 aprendices. 
+*  Mesa y silla ergonómica, para ubicación del instructor. 
+3.4.7 Tecnologías de la 
+información y las 
+comunicaciones 
+*  Videobeam o TV con entrada VGA y HDMI 
+*  Conectividad a Internet para 26 Equipos. 
+*  Servidores 
+3.4.8 Elementos y 
+condiciones relacionadas 
+con la seguridad 
+industrial, la salud 
+ocupacional y el  medio 
+ambiente: 
+*  Ambientes con buena aireación e iluminación. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+APLICACIÓN DE CONOCIMIENTOS DE LAS CIENCIAS NATURALES DE ACUERDO CON 
+SITUACIONES DEL CONTEXTO PRODUCTIVO Y SOCIAL. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220201501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+FISICA 
+Página 9 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 10 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+02  SOLUCIONAR PROBLEMAS ASOCIADOS CON EL SECTOR PRODUCTIVO CON BASE EN LOS PRINCIPIOS Y 
+LEYES DE LA FÍSICA. 
+04  PROPONER ACCIONES DE MEJORA EN LOS PROCESOS PRODUCTIVOS DE ACUERDO CON LOS PRINCIPIOS 
+Y LEYES DE LA FÍSICA. 
+03  VERIFICAR LAS TRANSFORMACIONES FÍSICAS DE LA MATERIA UTILIZANDO HERRAMIENTAS 
+01  IDENTIFICAR LOS PRINCIPIOS Y LEYES DE LA FÍSICA EN LA SOLUCIÓN DE PROBLEMAS DE ACUERDO AL 
+CONTEXTO PRODUCTIVO. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+*  UTILIZAR MAGNITUDES FÍSICAS ESCALARES. 
+*  EXPLICAR CAMBIOS FISCOS DE LA MATERIA. 
+*  DESCRIBIR EL MOVIMIENTO DE LOS CUERPOS. 
+*  IDENTIFICAR LOS ELEMENTOS DE UN PROCESO TÉRMICO. 
+*  IDENTIFICAR LOS PRINCIPIOS FÍSICOS DEL FUNCIONAMIENTO DE LAS MÁQUINAS. 
+*  DESCRIBIR LA TRASFORMACIÓN DE LA ENERGÍA. 
+*  EXPLICAR LAS VARIABLES QUE INTERVIENEN EN UN SISTEMA TÉRMICO. 
+*  DESCRIBIR LAS FASES DE OBSERVACIÓN, FORMULACIÓN DE HIPÓTESIS DE TRABAJO, EXPERIMENTACIÓN E 
+IDENTIFICACIÓN DE LEYES FÍSICAS. 
+*  REALIZAR EXPERIMENTOS PARA COMPROBAR PRINCIPIOS Y TEORÍAS FÍSICAS. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  FÍSICA: CONCEPTO Y APLICACIONES. 
+*  OBSERVACIÓN: MÉTODOS, TÉCNICAS, ATRIBUTOS, APLICACIONES Y USOS. 
+*  EXPERIMENTACIÓN: MÉTODOS, TÉCNICAS, ATRIBUTOS, APLICACIONES Y USOS. 
+*  MATERIA: CONCEPTO, CARACTERÍSTICAS Y ESTADOS. 
+*  MAGNITUDES FÍSICAS: CONCEPTO, CARACTERÍSTICAS Y TIPOS. 
+*  SISTEMAS DE UNIDADES: CONCEPTO, EQUIVALENCIAS Y TIPOS. 
+*  MÁQUINAS: CONCEPTO Y TIPOS. 
+*  MOVIMIENTO: CONCEPTO, LEYES, PRINCIPIOS, CARACTERÍSTICAS Y TIPOS. 
+*  ENERGÍA: CONCEPTO, LEYES, PRINCIPIOS, MANIFESTACIONES Y TIPOS. 
+*  SISTEMAS TERMODINÁMICOS: CONCEPTOS Y APLICACIONES. 
+*  ONDAS: CONCEPTO, CARACTERÍSTICAS, TIPOS 
+*  FÍSICA MODERNA: CONCEPTO, CLASIFICACIÓN Y APLICACIONES. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  IDENTIFICA LOS PRINCIPIOS Y LEYES FÍSICAS ACORDES CON EL CONTEXTO PRODUCTIVO. 
+*  INTERPRETA CAMBIOS FÍSICOS DE LOS CUERPOS DE ACUERDO CON TEORÍAS, LEYES Y PRINCIPIOS. 
+*  DESCRIBE LAS MANIFESTACIONES DE LA ENERGÍA SEGÚN EL CONTEXTO SOCIAL Y PRODUCTIVO. 
+*  EXPLICA EL COMPORTAMIENTO DE FENÓMENOS FÍSICOS SEGÚN EL CONTEXTO PRODUCTIVO. 
+*  ARGUMENTA LA INCIDENCIA DE LOS PRINCIPIOS Y LEYES DE LA FÍSICA CONFORME CON EL CONTEXTO 
+PRODUCTIVO. 
+*  REALIZA EXPERIMENTOS PARA LA INTERPRETACIÓN DE FENÓMENOS DE ACUERDO CON LOS PRINCIPIOS Y 
+LAS LEYES DE LA FÍSICA. 
+Página 10 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 11 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+LICENCIADO EN FÍSICA, O FÍSICO, O INGENIERO FÍSICO, O PROFESIONAL EN ÁREA DE LA INGENIERÍA AFÍN 
+CON EL PROGRAMA DE FORMACIÓN. 
+4.8.2 Experiencia laboral y/o especialización: 
+MÍNIMO 12 MESES DE EXPERIENCIA LABORAL EN EL ÁREA OBJETO DEL DESEMPEÑO. 
+EXPERIENCIA DOCENTE DE MÍNIMA DE 12 MESES. 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO. 
+*  MANEJO DE LAS TIC. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+APLICAR PRÁCTICAS  DE PROTECCIÓN AMBIENTAL, SEGURIDAD Y SALUD EN EL TRABAJO 
+DE ACUERDO CON LAS POLÍTICAS ORGANIZACIONALES  Y LA NORMATIVIDAD VIGENTE. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220601501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+PROTECCIÓN PARA LA SALUD Y EL MEDIO AMBIENTE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+04  PROPONER ACCIONES DE MEJORA PARA EL MANEJO AMBIENTAL Y EL CONTROL DE LA SST, DE ACUERDO 
+CON ESTRATEGIAS DE TRABAJO, COLABORATIVO, COOPERATIVO Y COORDINADO EN EL CONTEXTO 
+PRODUCTIVO Y SOCIAL. 
+01  ANALIZAR LAS ESTRATEGIAS PARA LA PREVENCIÓN Y CONTROL DE LOS IMPACTOS AMBIENTALES Y DE 
+Página 11 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 12 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+ACCIDENTES Y ENFERMEDADES LABORALES (ATEL) DE ACUERDO CON LAS POLÍTICAS ORGANIZACIONALES Y 
+EL ENTORNO SOCIAL. 
+03  REALIZAR SEGUIMIENTO Y ACOMPAÑAMIENTO AL DESARROLLO DE LOS PLANES Y PROGRAMAS 
+AMBIENTALES Y SST, SEGÚN EL  ÁREA DE DESEMPEÑO. 
+02  IMPLEMENTAR ESTRATEGIAS PARA EL CONTROL DE LOS IMPACTOS AMBIENTALES Y DE LOS ACCIDENTES 
+Y ENFERMEDADES   DE ACUERDO  CON LOS PLANES Y PROGRAMAS  ESTABLECIDOS POR LA ORGANIZACIÓN. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+*  DIFERENCIAR LOS ASPECTOS E IMPACTOS AMBIENTALES ASOCIADOS A SU ENTORNO LABORAL Y SOCIAL. 
+*  EXAMINAR LAS ESTRATEGIAS ESTABLECIDAS PARA EL CONTROL DE LOS IMPACTOS AMBIENTALES Y LOS 
+ATEL. 
+*  REVISAR LA POLÍTICA AMBIENTAL Y DE SEGURIDAD Y SALUD EN EL TRABAJO. 
+*  PONER EN PRÁCTICA LAS ESTRATEGIAS PARA EL CONTROL DE LOS IMPACTOS AMBIENTALES Y  ATEL. 
+*  IDENTIFICAR LAS CLASES DE PLANES Y PROGRAMAS DE GESTIÓN AMBIENTAL Y DE SST ESTABLECIDOS 
+PARA LA INTERVENCIÓN DE LOS IMPACTOS AMBIENTALES   Y LOS RIESGOS DE SST. 
+*  LLEVAR A CABO LAS ACTIVIDADES ESTABLECIDAS EN LOS PLANES Y PROGRAMAS AMBIENTALES Y DE SST, 
+ESTABLECIDOS POR LA ORGANIZACIÓN. 
+*  ORIENTAR AL EQUIPO DE TRABAJO EN EL CUMPLIMIENTO DE LOS PLANES Y PROGRAMAS AMBIENTALES Y 
+DE SST. 
+*  MONITOREAR LA EJECUCIÓN DE LAS ACTIVIDADES PROPIAS DE SU CONTEXTO, ESTABLECIDAS EN LOS 
+PLANES Y PROGRAMAS DE GESTIÓN AMBIENTAL Y DE SST. 
+*  CONFIRMAR LA EJECUCIÓN DE LAS ACTIVIDADES ESTABLECIDAS EN LOS PLANES Y PROGRAMAS 
+AMBIENTALES Y DE SST. 
+*  CONSOLIDAR LA INFORMACIÓN DEL SEGUIMIENTO AL CUMPLIMIENTO DE LOS PLANES AMBIENTALES Y 
+SST. 
+*  PARTICIPAR EN LA INVESTIGACIÓN DE INCIDENTES AMBIENTALES Y ATEL. 
+*  APOYAR LA GESTIÓN DE ACCIONES DE  MEJORA  DE ACUERDO CON LOS REQUERIMIENTOS DE LA 
+ORGANIZACIÓN. 
+*  RECOMENDAR ACCIONES TENDIENTES A MEJORAR  LA GESTIÓN AMBIENTAL Y LA SST. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  MEDIO AMBIENTE: CONCEPTO, COMPONENTES, CONSERVACIÓN, ASPECTOS E IMPACTOS AMBIENTALES, 
+NORMATIVIDAD BÁSICA LEGAL. 
+*  ASPECTOS E IMPACTOS AMBIENTALES: CONCEPTO, CARACTERÍSTICAS, CLASES SEGÚN EL CONTEXTO 
+SOCIAL Y PRODUCTIVO, PROBLEMÁTICA AMBIENTAL ASOCIADA  Y  LEGISLACIÓN APLICABLE 
+*  IMPACTOS AMBIENTALES: CONCEPTO, CLASES, MEDIDAS DE MANEJO AMBIENTAL. 
+*  POLÍTICAS AMBIENTALES Y DE SST: CONCEPTO, CARACTERÍSTICAS, ALCANCE Y CLASES. 
+*  PLANES DE MANEJO Y GESTIÓN AMBIENTAL: OBJETO, APLICACIÓN  Y ESTRUCTURA. 
+*  PLANES Y PROGRAMAS DE GESTIÓN DE SST: OBJETO, APLICACIÓN Y ESTRUCTURA. 
+*  SISTEMA DE GESTIÓN Y SEGURIDAD Y SALUD EN EL TRABAJO: CONCEPTOS GENERALES Y MARCO BÁSICO 
+LEGAL, DERECHOS Y DEBERES. 
+*  DIRECTRICES Y REQUISITOS INTERNOS DEL SISTEMA DE SEGURIDAD Y SALUD EN EL TRABAJO: 
+REGLAMENTO DE HIGIENE Y SEGURIDAD INDUSTRIAL, REGLAMENTO INTERNO DE TRABAJO, 
+PROCEDIMIENTOS DE TRABAJO SEGURO, PROGRAMAS, POLÍTICA DE SEGURIDAD SALUD EN EL TRABAJO Y 
+POLÍTICAS DE PREVENCIÓN DE ALCOHOL Y SUSTANCIAS PSICOACTIVAS. 
+*  PELIGROS DE SEGURIDAD Y SALUD EN EL TRABAJO PROPIOS DEL SECTOR ECONÓMICO: CONCEPTO, 
+CARACTERÍSTICAS, CLASES, EFECTOS A LA SALUD, MECANISMOS DE CONTROL Y NORMATIVIDAD. 
+*  LESIONES Y ENFERMEDADES PROPIAS DEL SECTOR ECONÓMICO: CONCEPTOS, CLASES, CAUSAS Y 
+CARACTERÍSTICAS. 
+*  CONSECUENCIAS DE LOS ACTOS ESTÁNDAR Y SUB ESTÁNDAR EN EL AMBIENTE LABORAL: CONCEPTO Y 
+Página 12 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 13 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+CONSECUENCIAS. 
+*  MEDIDAS DE MANEJO AMBIENTAL: CONCEPTO,  PREVENCIÓN, CONTROL Y MITIGACIÓN, ESTRATEGIAS DE 
+IMPLEMENTACIÓN. 
+*  PLAN DE EMERGENCIAS Y CONTINGENCIAS: CONCEPTO, CLASES, OBJETO, ALCANCE Y ESTRUCTURA 
+BÁSICA. 
+*  DIRECTRICES Y REQUISITOS INTERNOS DEL SISTEMA DE SEGURIDAD Y SALUD EN EL TRABAJO: 
+REGLAMENTO DE HIGIENE Y SEGURIDAD INDUSTRIAL, REGLAMENTO INTERNO DE TRABAJO, 
+PROCEDIMIENTOS DE TRABAJO SEGURO, PROGRAMAS, POLÍTICA DE SEGURIDAD SALUD EN EL TRABAJO Y 
+POLÍTICAS DE PREVENCIÓN DE ALCOHOL Y SUSTANCIAS PSICOACTIVAS. 
+*  MONITOREO Y SEGUIMIENTO: CONCEPTO, MÉTODOS Y DOCUMENTACIÓN ASOCIADA. 
+*  EVIDENCIAS DE CUMPLIMIENTO A LOS PROGRAMAS AMBIENTALES Y DE SST: CONCEPTO, CLASES Y 
+CARACTERÍSTICAS. 
+*  NORMATIVIDAD: REPORTE E INVESTIGACIÓN DE ACCIDENTES DE TRABAJO Y ENFERMEDADES  LABORALES. 
+*  SOSTENIBILIDAD EN EL CONTEXTO PRODUCTIVO: CONSERVACIÓN USO Y MANEJO DE LOS RECURSOS. 
+*  ESTRATEGIAS DE TRABAJO COLABORATIVO, COOPERATIVO Y COORDINADO: CONCEPTO Y 
+CARACTERÍSTICAS. 
+*  COMITÉS AMBIENTALES Y DE SEGURIDAD Y SALUD EN EL TRABAJO: CONCEPTO, CARACTERÍSTICAS Y 
+FUNCIONES. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  INTERPRETA EL CONTEXTO AMBIENTAL Y DE SST, ASOCIADO A SU ENTORNO LABORAL Y SOCIAL ACORDE 
+CON LA LEGISLACIÓN Y NORMATIVIDAD VIGENTE. 
+*  RELACIONA LA LEGISLACIÓN Y NORMATIVIDAD VIGENTE SOBRE MEDIO AMBIENTE Y SST CON LOS 
+ASPECTOS E IMPACTOS AMBIENTALES, GROS Y RIESGOS QUE SE PRESENTAN EN SU AMBIENTE DE TRABAJO 
+SEGÚN POLÍTICAS  DE LA ORGANIZACIÓN Y  EL ENTORNO LABORAL. 
+*  ANALIZA LOS PLANES Y PROGRAMAS DE GESTIÓN AMBIENTAL Y DE SST PARA LA APLICACIÓN DE LOS 
+CONTROLES DE IMPACTO AMBIENTAL ESTABLECIDOS POR LA ORGANIZACIÓN. 
+*  PARTICIPA EN EL DESARROLLO DE ACCIONES ORIENTADAS AL CONTROL DE LOS IMPACTOS AMBIENTALES 
+Y LA DISMINUCIÓN DE ACCIDENTES Y ENFERMEDADES LABORALES DE ACUERDO CON LOS PLANES Y 
+PROGRAMAS ESTABLECIDOS POR LA ORGANIZACIÓN. 
+*  DETERMINA ACCIONES PARA ORIENTAR A SU EQUIPO DE TRABAJO EN LOS PLANES Y PROGRAMAS 
+AMBIENTALES Y DE SST SEGÚN POLÍTICAS DE LA ORGANIZACIÓN. 
+*  IMPLEMENTA ACCIONES COORDINADAS PARA EL MONITOREO DE LOS PLANES Y PROGRAMAS 
+AMBIENTALES Y DE SST SEGÚN SU ÁREA  DE DESEMPEÑO. 
+*  FOMENTA LA CULTURA  AMBIENTAL  RESPONSABLE, EL DESARROLLO SUSTENTABLE  Y EL AUTOCUIDADO 
+EN SU CONTEXTO SOCIAL Y PRODUCTIVO DE ACUERDO CON LA INTEGRACIÓN DE LOS DIFERENTES 
+ACTORES RELACIONADOS. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+*  PROFESIONAL ESPECIALIZADO EN SEGURIDAD Y SALUD EN EL TRABAJO CON FORMACIÓN EN GESTIÓN 
+AMBIENTAL O EDUCACIÓN AMBIENTAL. 
+*  INGENIERO AMBIENTAL, ECÓLOGO O PROFESIONES AFINES CON FORMACIÓN EN SEGURIDAD Y SALUD EN 
+EL  TRABAJO. 
+*  PROFESIONAL  CON ESPECIALIZACIÓN EN GESTIÓN AMBIENTAL Y SEGURIDAD Y SALUD EN EL TRABAJO. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOA CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA. 
+Página 13 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 14 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO. 
+*  MANEJO DE LAS TIC. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Controlar la calidad del servicio de software de acuerdo con los estándares técnicos 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501098 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ADOPCIÓN DE BUENAS PRÁCTICAS EN EL PROCESO DE DESARROLLO DE SOFTWARE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+144 horas 
+DENOMINACIÓN 
+02  VERIFICAR LA CALIDAD DEL SOFTWARE DE ACUERDO CON LAS PRÁCTICAS ASOCIADAS EN LOS 
+PROCESOS DE DESARROLLO. 
+03  REALIZAR ACTIVIDADES DE MEJORA DE LA CALIDAD DEL SOFTWARE A PARTIR DE LOS RESULTADOS DE LA 
+VERIFICACIÓN. 
+01  INCORPORAR ACTIVIDADES DE ASEGURAMIENTO DE LA CALIDAD DEL SOFTWARE DE ACUERDO CON 
+ESTÁNDARES DE LA INDUSTRIA. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+INCORPORAR ACTIVIDADES DE ASEGURAMIENTO DE LA CALIDAD DEL SOFTWARE DE ACUERDO CON 
+ESTÁNDARES DE LA INDUSTRIA: 
+*  CARACTERIZAR LOS PROCESOS DE DESARROLLO DE SOFTWARE. 
+*  SELECCIONAR BUENAS PRÁCTICAS DE CALIDAD. 
+*  APLICAR PROCESO PERSONAL DE DESARROLLO DE SOFTWARE. 
+*  DOCUMENTAR PROCESO PERSONAL DE DESARROLLO DE SOFTWARE. 
+*  ELABORAR LOS INSTRUMENTOS DE PROCESOS DE ASEGURAMIENTO DE LA CALIDAD ORIENTADOS AL 
+DESARROLLO DE SOFTWARE. 
+Página 14 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 15 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  DILIGENCIAR DOCUMENTACIÓN DE PROCESOS DE ASEGURAMIENTO DE LA CALIDAD PARA EL SOFTWARE 
+DESARROLLADO. 
+VERIFICAR LA CALIDAD DEL SOFTWARE DE ACUERDO CON LAS PRÁCTICAS ASOCIADAS EN LOS PROCESOS 
+DE DESARROLLO: 
+*  EVALUAR COMPORTAMIENTOS DEL SOFTWARE 
+*  ELABORAR INFORME DE EVALUACIÓN DE LA CALIDAD. 
+*  CREAR BITÁCORA DE LECCIONES APRENDIDAS. 
+REALIZAR ACTIVIDADES DE MEJORA DE LA CALIDAD DEL SOFTWARE A PARTIR DE LOS RESULTADOS DE LA 
+VERIFICACIÓN: 
+*  AJUSTAR PROCESOS DEL DESARROLLO DE SOFTWARE. 
+*  DETERMINAR LAS ACCIONES CORRECTIVAS, PREVENTIVAS Y DE MEJORAMIENTO DEL SOFTWARE. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+INCORPORAR ACTIVIDADES DE ASEGURAMIENTO DE LA CALIDAD DEL SOFTWARE DE ACUERDO CON 
+ESTÁNDARES DE LA INDUSTRIA: 
+*  FUNDAMENTOS DE CALIDAD: CONCEPTOS, GESTIÓN DE PROCESOS, 
+*  ESTÁNDARES DE CALIDAD PARA EL DESARROLLO DE SOFTWARE: CONJUNTO DE NORMAS ISO/IEC 25000 
+SQUARE, ISO/IEC 15504, IEEE. 
+*  MODELOS DE CALIDAD DE SOFTWARE: CMMI 
+*  METODOLOGÍAS DE DESARROLLO:  ÁGILES, TRADICIONALES 
+*  DISCIPLINAS DE CALIDAD DE SOFTWARE: PSP FUNDAMENTALS, TSP 
+*  ADMINISTRACIÓN DEL PROCESO PERSONAL DE CONSTRUCCIÓN DE SOFTWARE: FUNDAMENTOS, 
+PRINCIPIOS, NIVELES, SCRIPTS, FORMAS, ESTÁNDARES, DOCUMENTACIÓN, MÉTODO PROBE, ESTADÍSTICAS, 
+HERRAMIENTAS INFORMÁTICAS DE APOYO. 
+*  DOCUMENTACIÓN: FORMATOS, PLANTILLAS, ESTÁNDARES DE DOCUMENTACIÓN DE PROCESOS DE 
+CALIDAD. 
+VERIFICAR LA CALIDAD DEL SOFTWARE DE ACUERDO CON LAS PRÁCTICAS ASOCIADAS EN LOS PROCESOS 
+DE DESARROLLO: 
+*  EVALUACIÓN DE CALIDAD: CONTROL DE CALIDAD, HERRAMIENTAS, DOCUMENTACIÓN DE HALLAZGOS. 
+*  EVALUACIÓN DE REQUISITOS NO FUNCIONALES:  SEGURIDAD, USABILIDAD, ACCESIBILIDAD, PORTABILIDAD, 
+TIEMPOS DE RESPUESTA, ADAPTABILIDAD, CONFIABILIDAD. 
+*  GESTIÓN DEL CONOCIMIENTO:  LECCIONES APRENDIDAS, RECOMENDACIONES. 
+REALIZAR ACTIVIDADES DE MEJORA DE LA CALIDAD DEL SOFTWARE A PARTIR DE LOS RESULTADOS DE LA 
+VERIFICACIÓN: 
+*   PLANES DE MEJORA: ELABORACIÓN, ACCIONES CORRECTIVAS, PREVENTIVAS Y DE MEJORAMIENTO, 
+4.7 CRITERIOS DE EVALUACIÓN 
+Página 15 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 16 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+INCORPORAR ACTIVIDADES DE ASEGURAMIENTO DE LA CALIDAD DEL SOFTWARE DE ACUERDO CON 
+ESTÁNDARES DE LA INDUSTRIA: 
+*  CARACTERIZA LOS PROCESOS DE DESARROLLO DEL SOFTWARE DE ACUERDO CON LOS LINEAMIENTOS DE 
+CALIDAD ESTABLECIDOS. 
+*  SELECCIONA BUENAS PRÁCTICAS DE CALIDAD DE ACUERDO CON EL REFERENTE DE LOS MARCOS DE 
+TRABAJO. 
+*  APLICA EL PROCESO PERSONAL DE DESARROLLO DE SOFTWARE PARA MEJORAR LA CALIDAD DEL 
+SOFTWARE DESARROLLADO. 
+*  REGISTRA LAS ACTIVIDADES REALIZADAS EN EL PROCESO PERSONAL DE DESARROLLO DE SOFTWARE DE 
+ACUERDO CON LAS FORMAS DISPUESTAS EN EL LIBRO DE TRABAJO. 
+*  ELABORA INSTRUMENTOS PARA DOCUMENTAR PROCESOS DE ASEGURAMIENTO DE LA CALIDAD 
+ORIENTADOS AL DESARROLLO DE SOFTWARE. 
+*  DILIGENCIA LA DOCUMENTACIÓN DE PROCESOS DE ASEGURAMIENTO DE LA CALIDAD PARA EL SOFTWARE 
+DESARROLLADO SIGUIENDO PARÁMETROS ESTABLECIDOS. 
+VERIFICAR LA CALIDAD DEL SOFTWARE DE ACUERDO CON LAS PRÁCTICAS ASOCIADAS EN LOS PROCESOS 
+DE DESARROLLO: 
+*  EVALÚA COMPORTAMIENTOS DEL SISTEMA DE ACUERDO CON LOS REQUISITOS NO FUNCIONALES DEL 
+SOFTWARE. 
+*  ELABORA INFORME DE EVALUACIÓN DE LA CALIDAD DE ACUERDO CON LOS RESULTADOS DE LA 
+VERIFICACIÓN. 
+*  CREA BITÁCORA DE LECCIONES APRENDIDAS A PARTIR DE LOS RESULTADOS DE LA VERIFICACIÓN DEL 
+SOFTWARE. 
+REALIZAR ACTIVIDADES DE MEJORA DE LA CALIDAD DEL SOFTWARE A PARTIR DE LOS RESULTADOS DE LA 
+VERIFICACIÓN: 
+*  AJUSTA PROCESOS DEL DESARROLLO DE SOFTWARE DE ACUERDO CON EL REFERENTE DE CALIDAD 
+ADOPTADO. 
+*  DETERMINA LAS ACCIONES CORRECTIVAS, PREVENTIVAS Y DE MEJORAMIENTO DE ACUERDO CON LOS 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO DE TECNÓLOGO O PROFESIONAL EN SISTEMAS O AFINES, CON CONOCIMIENTOS EN: 
+*  ESTÁNDARES DE CALIDAD DE SOFTWARE 
+*  MODELOS DE CALIDAD 
+*  DISCIPLINAS DE CALIDAD DE SOFTWARE (PSP, TSP) 
+*  METODOLOGÍAS PARA EL DESARROLLO DE SOFTWARE. 
+PREFERIBLEMENTE CON CERTIFICACIÓN PSP. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA. 
+Página 16 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 17 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.3 Competencias: 
+*  CONOCIMIENTO DE TÉCNICAS Y HERRAMIENTAS DE MODELAMIENTO DE SISTEMAS DE INFORMACIÓN. 
+*  CONOCIMIENTO DE PATRONES DE DISEÑO DE SOFTWARE. 
+*  DOMINIO DE MODELOS DE CALIDAD DEL SOFTWARE. 
+*  DOMINIO DE ATRIBUTOS DE CALIDAD DEL SOFTWARE. 
+*  ORIENTACIÓN DE FORMACIÓN PROFESIONAL. 
+*  NIVEL ALTO DE LECTURA DEL IDIOMA INGLÉS Y NIVEL MEDIO DE HABLA Y ESCUCHA DE ESTE IDIOMA. 
+*  FORMULACIÓN, EJECUCIÓN Y EVALUACIÓN PROYECTOS. 
+COMPETENCIAS ACTITUDINALES: 
+*  CAPACIDAD DE TRABAJO EN EQUIPO. 
+*  CAPACIDAD DE LIDERAZGO. 
+*  TOLERANCIA. 
+*  SOLIDARIDAD. 
+*  PUNTUALIDAD. 
+*  RESPONSABILIDAD EN EL DESEMPEÑO DE SUS FUNCIONES. 
+*  SENTIDO DE PERTENENCIA POR LA INSTITUCIÓN. 
+*  RELACIONES INTERPERSONALES BASADAS EN EL RESPETO MUTUO Y RECONOCIMIENTO DE LA 
+DIFERENCIA EN EL OTRO. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+DESARROLLAR LA SOLUCIÓN DE SOFTWARE DE ACUERDO CON EL DISEÑO Y 
+METODOLOGÍAS DE DESARROLLO 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501096 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+CONSTRUCCIÓN DEL SOFTWARE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+1008 horas 
+DENOMINACIÓN 
+03  CREAR COMPONENTES FRONT-END DEL SOFTWARE DE ACUERDO CON EL DISEÑO. 
+05  REALIZAR PRUEBAS AL SOFTWARE PARA VERIFICAR SU FUNCIONALIDAD. 
+01  PLANEAR ACTIVIDADES DE CONSTRUCCIÓN DEL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO. 
+02  CONSTRUIR LA BASE DE DATOS PARA EL SOFTWARE A PARTIR DEL MODELO DE DATOS. 
+04  CODIFICAR EL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Página 17 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 18 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+PLANEAR ACTIVIDADES DE CONSTRUCCIÓN DEL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO: 
+*  INTERPRETAR INFORME DE DISEÑO. 
+*  SELECCIONAR HERRAMIENTAS DE DESARROLLO. 
+*  CONFIGURAR HERRAMIENTAS DE DESARROLLO. 
+*  SELECCIONAR HERRAMIENTAS DE VERSIONAMIENTO. 
+*  CONFIGURAR HERRAMIENTAS DE VERSIONAMIENTO. 
+*  DEFINIR ESTÁNDARES DE CODIFICACIÓN. 
+CONSTRUIR LA BASE DE DATOS PARA EL SOFTWARE A PARTIR DEL MODELO DE DATOS: 
+*  CREAR OBJETOS DE LA BASE DE DATOS. 
+*  MANIPULAR DATOS EN EL SISTEMA ADMINISTRADOR DE BASES DE DATOS (SMBD). 
+*  DEFINIR ESQUEMAS DE SEGURIDAD DE LOS DATOS. 
+CREAR COMPONENTES FRONT-END DEL SOFTWARE DE ACUERDO CON EL DISEÑO: 
+*  GENERAR PLANTILLAS Y ESTILOS. 
+*  CREAR INTERFACES GRÁFICAS DE USUARIO EN APLICACIONES DE ESCRITORIO, WEB Y MÓVILES. 
+CODIFICAR EL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO: 
+*  APLICAR ESTÁNDARES DE CODIFICACIÓN. 
+*  CODIFICAR LOS MÓDULOS DEL SOFTWARE STAND-ALONE, WEB Y MÓVIL. 
+*  CREAR SERVICIOS WEB. 
+*  INTEGRAR MÓDULOS. 
+*  INCORPORAR TECNOLOGÍAS EMERGENTES Y DISRUPTIVAS. 
+REALIZAR PRUEBAS AL SOFTWARE PARA VERIFICAR SU  FUNCIONALIDAD: 
+*  REALIZAR PLAN DE PRUEBAS. 
+*  DEFINIR CASOS DE PRUEBA. 
+*  DEFINIR AMBIENTE DE PRUEBA. 
+*  REALIZAR PRUEBAS. 
+*  DOCUMENTAR LAS PRUEBAS. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+PLANEAR ACTIVIDADES DE CONSTRUCCIÓN DEL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO: 
+*  INFORME DE DISEÑO: INTERPRETACIÓN, ANÁLISIS. 
+*  HERRAMIENTAS DE APOYO: VERSIONAMIENTO, CONTROL DE CAMBIOS DEL CÓDIGO, INTEGRACIÓN 
+CONTINUA. 
+*  ESTÁNDARES DE CODIFICACIÓN: PLANTILLA DE ESTÁNDAR DE CÓDIGO, (DOCUMENTACIÓN DE CÓDIGO, 
+REGLAS DE NOMBRADO PARA VARIABLES, MÉTODOS, ATRIBUTOS, CLASES, TABLAS, CAMPOS, 
+INDENTACIÓN). 
+CONSTRUIR LA BASE DE DATOS PARA EL SOFTWARE A PARTIR DEL MODELO DE DATOS: 
+Página 18 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 19 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  MOTORES DE BASES DE DATOS RELACIONALES (ORACLE, SQL SERVER, POSTGRESQL, MYSQL, MARIADB, 
+SQLITE): CONCEPTOS DE SISTEMA MANEJADOR DE BASES DE DATOS - SMBD, LICENCIAMIENTO, 
+INSTALACIÓN, INSTANCIAS, CONFIGURACIÓN, SISTEMA DE ARCHIVOS,  OBJETOS DE LA BD  (TABLAS, 
+RELACIONES, ÍNDICES, VISTAS, PROCEDIMIENTOS ALMACENADOS, RESTRICCIONES), SEGURIDAD DE LA 
+INFORMACIÓN, PERMISOS, COPIAS DE SEGURIDAD, RESTAURACIÓN DE LA BD. 
+*  NOSQL: (REDIS, MONGODB): CONCEPTOS, INSTALACIÓN, CONSULTAS, DOCUMENTOS, COLECCIONES, 
+OBJETOS. 
+*  SQL: SENTENCIAS DDL (CREATE, ALTER, DROP, TRUNCATE), DML (SELECT, INSERT, UPDATE, DELETE, 
+MERGE), DCL (REVOKE, GRANT), CONTROL DE TRANSACCIONES (COMMIT, ROLLBACK), PROGRAMACIÓN EN 
+SQL (CURSORES, PROCEDIMIENTOS, FUNCIONES, TRIGGERS). 
+CREAR COMPONENTES FRONT-END DEL SOFTWARE DE ACUERDO CON EL DISEÑO: 
+*  INTERFAZ GRÁFICA EN APLICACIONES DE ESCRITORIO: FORMULARIOS, OBJETOS DE UN FORMULARIO, 
+CUADROS DE DIALOGO, MENÚS, BARRAS DE HERRAMIENTAS. 
+*  INTERFAZ GRÁFICA EN APLICACIONES WEB: CONCEPTO, MANEJO DE ETIQUETAS, FORMULARIOS, 
+COMPONENTES DEL FORMULARIO, DISTRIBUCIÓN, W3C, VALIDADOR W3C, FRAMEWORK FRONT-END 
+(BOOTSTRAP). 
+*  HOJAS DE ESTILO: CONCEPTOS, SINTAXIS, USOS. 
+*  JAVASCRIPT: SINTAXIS, LIBRERÍAS(JQUERY, MODERNIZR), FRAMEWORKS (ANGULARJS, PROTOTYPE, 
+MOOTOOLS). 
+*  GESTORES DE CONTENIDOS: CONCEPTOS, TIPOS, USO (WORDPRESS, JOOMLA). 
+*  INTERFAZ GRÁFICA EN APLICACIONES MÓVILES: DISPOSITIVOS, PLATAFORMAS, ORGANIZACIÓN DE 
+CONTENIDOS, VISTAS, FRAMEWORKS PARA DESARROLLO MÓVIL. 
+CODIFICAR EL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO: 
+*  LENGUAJE DE PROGRAMACIÓN ORIENTADO A OBJETOS: C#, JAVA (SE, EE), PHP, PYTHON, RUBY. 
+CONCEPTOS ASOCIADOS AL LENGUAJE, ANTECEDENTES, IDE, SINTAXIS, ESTRUCTURA GENERAL DEL 
+LENGUAJE (ESTÁNDAR DE CÓDIGO), APLICACIONES, CLIENTES PERSONALIZADOS PARA CONEXIÓN A LAS 
+BASES DE DATOS (CADENAS DE CONEXIÓN), GENERACIÓN DE REPORTES. 
+*  EDITORES DE CÓDIGO: CARACTERÍSTICAS, INSTALACIÓN, USO (VISUAL STUDIO CODE, SUBLIME TEXT, 
+ATOM, BRACKETS, NOTEPAD ++). 
+*  ENTORNOS DE DESARROLLO / FRAMEWORKS: CARACTERÍSTICAS, INSTALACIÓN, USO (NETBEANS, VISUAL 
+STUDIO .NET, ECLIPSE, ANACONDA, LARAVEL, RUBY ON RAILS, DJANGO, VAADIN). 
+*  SEGURIDAD: SQL INJECTION, ALGORITMOS DE ENCRIPTACIÓN, FIRMAS DIGITALES, MANEJO DE SESIONES. 
+*  SERVIDORES DE APLICACIONES / SERVIDORES WEB:  DEFINICIONES, TIPOS, USOS (GLASSFISH, APACHE, 
+IIS, NODE.JS) 
+*  SERVICIOS WEB: CONCEPTO, TIPOS (SOAP, RESTFUL), FORMATO INTERCAMBIO DE DATOS (JSON, XML). 
+*  CLOUD COMPUTING: CONCEPTO, DESARROLLO EN LA NUBE (PLATAFORMAS AZURE, AWS, HEROKU, 
+EDITORES CLOUD9, FUNCIÓN COMO SERVICIO FAAS AWS LAMBDA). 
+*  CREACIÓN DE APP: CONCEPTO, PLATAFORMAS NATIVAS (ANDROID, IOS), SQLITE, LIBRERÍAS DE 
+TERCEROS. 
+*  ENTORNOS DE DESARROLLO MÓVIL: CONCEPTO, PLATAFORMAS (KOTLIN, SWIFT, IONIC) 
+*  INTERNET DE LAS COSAS: INTRODUCCIÓN, APLICACIONES, DESARROLLOS. 
+*  BLOCKCHAIN: INTRODUCCIÓN, APLICACIONES, DESARROLLOS. 
+*  MACHINE LEARNING: CONCEPTOS, APLICACIONES, DEEP LEARNING. 
+*  CONTROL DE VERSIONES: HERRAMIENTAS PARA CONTROL DE CAMBIOS EN EL CÓDIGO (GIT, GITHUB, 
+APACHE SUBVERSION). 
+Página 19 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 20 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+REALIZAR PRUEBAS AL SOFTWARE PARA VERIFICAR SU  FUNCIONALIDAD: 
+*  PRUEBAS: CONCEPTOS, NIVELES, TIPOS, ENFOQUES, PLAN DE PRUEBAS, DISEÑO DE CASOS DE PRUEBA, 
+HERRAMIENTAS TECNOLÓGICAS PARA PRUEBAS, DOCUMENTACIÓN DE PRUEBAS (UNITARIAS, CARGA, 
+ESTRÉS, INTEGRACIÓN). 
+*  DESARROLLO GUIADO POR PRUEBAS (TDD):  METODOLOGÍAS ÁGILES, CODIFICACIÓN Y PRUEBAS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+PLANEAR ACTIVIDADES DE CONSTRUCCIÓN DEL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO: 
+*  INTERPRETA EL INFORME DE DISEÑO PARA DEFINIR EL PLAN DE TRABAJO EN LA CONSTRUCCIÓN DEL 
+SOFTWARE. 
+*  SELECCIONA Y CONFIGURA HERRAMIENTAS DE DESARROLLO DE ACUERDO CON LAS CONDICIONES DEL 
+SOFTWARE A CONSTRUIR. 
+*  SELECCIONA Y CONFIGURA HERRAMIENTAS DE VERSIONAMIENTO PARA EL CONTROL DE CAMBIOS EN EL 
+CÓDIGO. 
+*  DEFINE ESTÁNDARES DE CODIFICACIÓN DE ACUERDO CON LAS REGLAS DE LA PLATAFORMA DE 
+DESARROLLO SELECCIONADA. 
+CONSTRUIR LA BASE DE DATOS PARA EL SOFTWARE A PARTIR DEL MODELO DE DATOS: 
+*  CREA LA BASE DE DATOS INTEGRANDO LOS OBJETOS DE ACUERDO CON LA FUNCIONALIDAD DEL 
+SOFTWARE. 
+*  IMPLEMENTA RESTRICCIONES EN LA BASE DE DATOS DE ACUERDO CON LAS REGLAS DE DISEÑO. 
+*  DEFINE ESQUEMAS DE SEGURIDAD EN LA BASE DE DATOS PARA MANTENER LA INTEGRIDAD DE LA 
+INFORMACIÓN. 
+CREAR COMPONENTES FRONT-END DEL SOFTWARE DE ACUERDO CON EL DISEÑO: 
+*  GENERA PLANTILLAS Y ESTILOS DE ACUERDO CON EL DISEÑO ESTABLECIDO. 
+*  CREA INTERFACES DE USUARIO APLICANDO BUENAS PRÁCTICAS DE USABILIDAD Y ACCESIBILIDAD. 
+CODIFICAR EL SOFTWARE DE ACUERDO CON EL DISEÑO ESTABLECIDO: 
+*  CODIFICA LOS MÓDULOS DEL SOFTWARE STAND-ALONE, WEB Y MÓVIL, DE ACUERDO CON LAS 
+ESPECIFICACIONES DEL DISEÑO Y EL ESTÁNDAR DE CODIFICACIÓN. 
+*  CREA SERVICIOS WEB PARA DISPONER DE MÉTODOS REUTILIZABLES EN EL SOFTWARE. 
+*  INTEGRA LOS MÓDULOS DEL SOFTWARE DE ACUERDO CON LOS PROPÓSITOS DEL SISTEMA. 
+*  INCORPORA TECNOLOGÍAS EMERGENTES Y DISRUPTIVAS DE ACUERDO CON LOS PROPÓSITOS DEL 
+SOFTWARE. 
+REALIZAR PRUEBAS AL SOFTWARE PARA VERIFICAR SU  FUNCIONALIDAD: 
+*  DISEÑA CASOS DE PRUEBA PARA COMPROBAR LA FUNCIONALIDAD DEL SOFTWARE ESPECIFICADA EN LOS 
+CASOS DE USO. 
+*  DEFINE EL AMBIENTE DE PRUEBAS DE ACUERDO CON LAS CONDICIONES DEL ENTORNO DE PRODUCCIÓN. 
+*  REALIZA PRUEBAS AL SOFTWARE DE ACUERDO CON EL PLAN DE PRUEBAS. 
+Página 20 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 21 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TECNÓLOGO O PROFESIONAL EN SISTEMAS Y AFINES, CON CONOCIMIENTOS EN: 
+*  SISTEMAS DE GESTIÓN DE BASES DE DATOS. 
+*  LENGUAJES DE PROGRAMACIÓN ORIENTADOS A OBJETOS (C#, JAVA, JAVASCRIPT, PHP, PYTHON, RUBY). 
+*  PLATAFORMAS DE DESARROLLO PARA MÓVILES. 
+*  CONOCIMIENTOS APLICADO AL CICLO DE VIDA DEL SOFTWARE. 
+*  CONOCIMIENTO DE MODELOS Y DISCIPLINAS DE CALIDAD DE SOFTWARE. 
+*  CONOCIMIENTO DE METODOLOGÍAS TRADICIONALES Y ÁGILES APLICADAS EN EL DESARROLLO DE 
+SOFTWARE. 
+*  PRUEBAS DE SOFTWARE. 
+*  FRAMEWORKS DE DESARROLLO (FRONT-END, BACK-END). 
+*  CONOCIMIENTO DE TECNOLOGÍAS EMERGENTES Y DISRUPTIVAS (IOT, BLOCKCHAIN, BIG DATA, MACHINE 
+LEARNING). 
+PREFERIBLEMENTE CON CERTIFICACIONES INTERNACIONALES EN TECNOLOGÍAS APLICADAS AL 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+*  FORMULAR, EJECUTAR Y EVALUAR PROYECTOS. 
+*  TRABAJAR EN EQUIPO. 
+*  ESTABLECER PROCESOS COMUNICATIVOS ASERTIVOS. 
+*  CAPACIDAD EN LA COORDINACIÓN DE EQUIPOS INTERDISCIPLINARES. 
+*  MANEJAR LAS TIC ASOCIADAS AL ÁREA OBJETO DE LA FORMACIÓN. 
+*  ADAPTACIÓN AL CAMBIO. 
+*  INVESTIGAR 
+*  MANEJAR GRUPOS. 
+*  LECTOESCRITURA 
+*  ARGUMENTATIVO Y PROPOSITIVO 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+DESARROLLAR PROCESOS DE COMUNICACIÓN EFICACES Y EFECTIVOS, TENIENDO EN 
+CUENTA SITUACIONES  DE ORDEN SOCIAL, PERSONAL Y PRODUCTIVO. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201524 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+COMUNICACIÓN 
+Página 21 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 22 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+03  RELACIONAR LOS PROCESOS COMUNICATIVOS TENIENDO EN CUENTA CRITERIOS DE LÓGICA Y 
+RACIONALIDAD. 
+01  ANALIZAR LOS COMPONENTES DE LA COMUNICACIÓN SEGÚN SUS CARACTERÍSTICAS, INTENCIONALIDAD 
+Y CONTEXTO. 
+04  ESTABLECER PROCESOS DE ENRIQUECIMIENTO LEXICAL Y ACCIONES DE MEJORAMIENTO EN EL 
+DESARROLLO DE PROCESOS COMUNICATIVOS SEGÚN REQUERIMIENTOS DEL CONTEXTO. 
+02  ARGUMENTAR EN FORMA ORAL Y ESCRITA ATENDIENDO LAS EXIGENCIAS Y PARTICULARIDADES DE LAS 
+DIVERSAS SITUACIONES COMUNICATIVAS MEDIANTE LOS DISTINTOS SISTEMAS DE REPRESENTACIÓN. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+*  RECONOCER LA IMPORTANCIA, NATURALEZA Y CARACTERÍSTICAS DE LA COMUNICACIÓN HUMANA. 
+*  MANTENER LA ATENCIÓN Y ESCUCHA EN LOS PROCESOS DE COMUNICACIÓN. 
+*  INTERPRETAR MENSAJES Y RECONSTRUIR EL DISCURSO CON SUS PROPIAS PALABRAS MANTENIENDO EL 
+SENTIDO. 
+*  APLICAR TÉCNICAS PARA LA COMUNICACIÓN VERBAL Y NO VERBAL. 
+*  INTERPRETAR SEÑALES, SIGNOS, SÍMBOLOS E ÍCONOS PROPIOS DE SU ACTIVIDAD LABORAL. 
+*  USAR EL LÉXICO CON PRECISIÓN Y PROPIEDAD EN LOS PROCESOS DE COMUNICACIÓN. 
+*  ORGANIZAR LA INFORMACIÓN. 
+*  UTILIZAR LA INFORMACIÓN SEGÚN EL PROPÓSITO ESTABLECIDO. 
+*  APROPIAR UN MÉTODO PARA LEER COMPRENSIVA E INTERPRETATIVAMENTE. 
+*  ESTABLECER ACUERDOS A PARTIR DE LA DIVERSIDAD DE CONCEPTOS Y OPINIONES. 
+*  CODIFICAR Y DECODIFICAR MENSAJES. 
+*  UTILIZAR LA INFORMACIÓN SEGÚN EL PROPÓSITO ESTABLECIDO. 
+*  EMPLEAR ESTRUCTURAS TEXTUALES EN LA COMUNICACIÓN ORAL Y ESCRITA. 
+*  REDACTAR DIFERENTES TIPOS DE TEXTOS APLICANDO REGLAS GRAMATICALES Y ORTOGRÁFICAS. 
+*  EXPONER EN FORMA ORAL O ESCRITA UN PLANTEAMIENTO UTILIZANDO LOS PRINCIPIOS DE LA 
+ARGUMENTACIÓN. 
+*  SELECCIONAR EL TIPO DE TEXTO CON SUS INTERESES Y NECESIDADES DE CONOCIMIENTO. 
+*  CODIFICAR Y DECODIFICAR MENSAJES. 
+*  REALIZAR PROCESOS DE ARGUMENTACIÓN DE IDEAS, PROPOSICIÓN Y PLANTEAMIENTO DE TESIS. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  COMUNICACIÓN: CONCEPTO, TIPOS, USOS, MEDIOS, CANALES, TÉCNICAS, PROCESOS CARACTERÍSTICAS, 
+ESCENARIOS, COMPONENTES, FUNCIONES, BARRERAS, NIVELES. 
+*  EXPRESIÓN CORPORAL: CONCEPTO, CARACTERÍSTICAS, GESTOS, POSTURAS, EMOCIONES, 
+SENTIMIENTOS. 
+*  ACTOS DE HABLA: CONCEPTO, PERCEPCIÓN, OBSERVACIÓN, ESCUCHA ACTIVA, COMUNICACIÓN VERBAL Y 
+NO VERBAL. 
+*  COMPRENSIÓN DE TEXTOS: CONCEPTO, TÉCNICAS, PROCESOS, NIVELES, CARACTERÍSTICAS, 
+INTERPRETACIÓN, ELEMENTOS. 
+*  REDACCIÓN DE TEXTOS: TIPOS, USOS, CLASES, PARTES, FORMA, CONTENIDO, INTENCIONALIDAD, 
+TÉCNICAS, MÉTODOS, COHESIÓN, COHERENCIA, SINTAXIS, ORTOGRAFÍA, SIGNOS DE PUNTUACIÓN, 
+SEMÁNTICA, PRINCIPIOS Y CUALIDADES. 
+Página 22 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 23 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+ARGUMENTO, LA CONCLUSIÓN, LA SÍNTESIS. 
+*  LA PROPOSICIÓN: CONCEPTO, PROCESOS, ELEMENTOS, CARACTERÍSTICAS. 
+*  EL ESTILO: CONCEPTO, CARACTERÍSTICAS, APLICACIÓN. 
+*  CARÁCTER CONVENCIONAL Y FUNCIÓN SOCIAL DE LOS SIGNOS: CONCEPTO, TIPOS, RELACIONES, USOS, 
+CARÁCTER, INTERPRETACIÓN, CARACTERÍSTICAS, CONTEXTO, ELEMENTOS BÁSICOS DE LA SEMIÓTICA Y 
+SEMIOLOGÍA. 
+*  PROCESOS DE PENSAMIENTO: CONCEPTO, ANÁLISIS, SÍNTESIS, PROPOSICIÓN, ARGUMENTACIÓN. 
+*  CONSULTA Y LECTURA: MÉTODOS, TÉCNICAS SELECCIÓN, ORGANIZACIÓN Y ARCHIVO DE INFORMACIÓN EN 
+DIVERSAS FUENTES, NIVELES, ESTRATEGIAS. 
+*  NORMATIVIDAD: NORMAS ICONTEC PARA LA ELABORACIÓN DE TEXTOS ESCRITOS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  RECONOCE LA IMPORTANCIA, NATURALEZA Y CARACTERÍSTICAS DE LA COMUNICACIÓN HUMANA, SEGÚN 
+EL CONTEXTO EN EL QUE SE DESARROLLA. 
+*  ESCUCHA CON ATENCIÓN Y CONCENTRACIÓN, ASIENTE Y PREGUNTA AL HABLANTE-OYENTE PARA 
+RETROALIMENTAR EL PROCESO. 
+*  ESTABLECE ACUERDOS A PARTIR DE LA DIVERSIDAD DE CONCEPTOS Y OPINIONES. 
+*  INTERPRETA MENSAJES Y RECONSTRUYE EL DISCURSO CON SUS PROPIAS PALABRAS MANTENIENDO EL 
+SENTIDO. 
+*  APLICA TÉCNICAS PARA LA COMUNICACIÓN VERBAL Y NO VERBAL TENIENDO EN CUENTA 
+CARACTERÍSTICAS COMUNICATIVAS. 
+*  INTERPRETA SEÑALES, SIGNOS, SÍMBOLOS E ÍCONOS PROPIOS DE SU ACTIVIDAD LABORAL. 
+*  USA EL LÉXICO CON PRECISIÓN Y PROPIEDAD EN LOS PROCESOS DE COMUNICACIÓN RELACIONADOS CON 
+EL ÁREA DE DESEMPEÑO LABORAL. 
+*  GRÁFICA LA INFORMACIÓN UTILIZANDO INSTRUMENTOS GRÁFICOS SEMÁNTICOS. 
+*  UTILIZA LA INFORMACIÓN SEGÚN EL PROPÓSITO ESTABLECIDO. 
+*  CODIFICA Y DECODIFICA MENSAJES UTILIZANDO LOS ÍCONOS, LOS SÍMBOLOS, LAS SEÑALES, PLANOS, 
+ESQUEMAS Y FLUJOGRAMAS SEGÚN REQUERIMIENTO. 
+*  APROPIA UN MÉTODO PARA LEER COMPRENSIVA E INTERPRETATIVAMENTE. 
+*  UTILIZA EL LENGUAJE SEGÚN EL DESTINATARIO, EL PROPÓSITO, EL CONTEXTO Y EL CONTENIDO. 
+*  APLICA TÉCNICAS PARA LA COMUNICACIÓN VERBAL Y NO VERBAL SEGÚN REQUERIMIENTOS 
+ESTABLECIDOS. 
+*  REDACTA TEXTOS CON COHESIÓN Y COHERENCIA SIGUIENDO PAUTAS DE PROGRESIÓN TEMÁTICA. 
+*  EMPLEA EN LA ELABORACIÓN DE TEXTOS LAS ESTRUCTURAS TEXTUALES BÁSICAS. 
+*  PRODUCE TEXTOS EXPLICATIVOS, INSTRUCTIVOS, DESCRIPTIVOS O ARGUMENTATIVOS SEGÚN 
+ESPECIFICACIONES. 
+*  UTILIZA LAS REGLAS GRAMATICALES Y LOS SIGNOS DE PUNTUACIÓN SEGÚN EL TEXTO COMUNICATIVO. 
+*  EMPLEA PARA LA PRODUCCIÓN DE TEXTOS NORMATIVIDAD VIGENTE. 
+*  IDENTIFICA LOS DIFERENTES TIPOS DE TEXTOS TENIENDO EN CUENTA SU INTENCIONALIDAD. 
+*  SELECCIONA EL TIPO DE TEXTO DE ACUERDO CON SUS INTERESES Y NECESIDADES DE CONOCIMIENTO. 
+*  CODIFICA Y DECODIFICA MENSAJES UTILIZANDO LOS ÍCONOS, SÍMBOLOS, SEÑALES EN EL CONTEXTO DE 
+SU ACTIVIDAD LABORAL Y SOCIAL. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+FORMACIÓN EN CIENCIAS DE LA COMUNICACIÓN, PERIODISMO, LINGÜÍSTICA, FILOLOGÍA, LENGUAS CLÁSICAS 
+O MODERNAS, ESPAÑOL Y LITERATURA. 
+Página 23 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 24 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.2 Experiencia laboral y/o especialización: 
+*  DOS (2) AÑO DE EXPERIENCIA LABORAL EN EL ÁREA 
+*  SEIS (6) MESES DE EXPERIENCIA DOCENTE 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Diseñar la solución de software de acuerdo con procedimientos y requisitos técnicos 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501095 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+MODELADO DE LOS ARTEFACTOS DEL SOFTWARE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+336 horas 
+DENOMINACIÓN 
+03  DETERMINAR LAS CARACTERÍSTICAS TÉCNICAS DE LA INTERFAZ GRÁFICA DEL SOFTWARE ADOPTANDO 
+ESTÁNDARES. 
+02  ESTRUCTURAR EL MODELO DE DATOS DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES DEL 
+ANÁLISIS. 
+04  VERIFICAR LOS ENTREGABLES DE LA FASE DE DISEÑO DEL SOFTWARE DE ACUERDO CON LO 
+ESTABLECIDO EN EL INFORME DE ANÁLISIS. 
+01  ELABORAR LOS ARTEFACTOS DE DISEÑO DEL SOFTWARE SIGUIENDO LAS PRÁCTICAS DE LA 
+METODOLOGÍA SELECCIONADA. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+ELABORAR LOS ARTEFACTOS DE DISEÑO DEL SOFTWARE SIGUIENDO LAS PRÁCTICAS DE LA METODOLOGÍA 
+SELECCIONADA: 
+Página 24 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 25 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  INTERPRETAR EL INFORME DE ANÁLISIS. 
+*  APROPIAR CONCEPTOS Y PRINCIPIOS DE DISEÑO ORIENTADO A OBJETOS. 
+*  DEFINIR PLATAFORMA TECNOLÓGICA. 
+*  DEFINIR ENTREGABLES DE DISEÑO. 
+*  CREAR VISTAS ESTÁTICAS. 
+*  INCORPORAR PATRONES DE DISEÑO DE SOFTWARE. 
+*  DEFINIR ARQUITECTURA DEL SOFTWARE. 
+*  CREAR VISTA DE COMPONENTES. 
+*  CREAR VISTA DE DESPLIEGUE. 
+ESTRUCTURAR EL MODELO DE DATOS DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES DEL 
+ANÁLISIS: 
+*  DETERMINAR TIPOS DE BASES DE DATOS. 
+*  GENERAR EL MODELO CONCEPTUAL. 
+*  GENERAR EL MODELO LÓGICO. 
+*  ESTANDARIZAR EL MODELO DE DATOS. 
+*  ESTABLECER DICCIONARIO DE DATOS. 
+*  DEFINIR POLÍTICAS DE SEGURIDAD DE LOS DATOS. 
+DETERMINAR LAS CARACTERÍSTICAS TÉCNICAS DE LA INTERFAZ GRÁFICA DEL SOFTWARE ADOPTANDO 
+ESTÁNDARES: 
+*  PROPONER INTERFAZ GRÁFICA DE USUARIO EN APLICACIONES STAND-ALONE Y WEB 
+*  PROPONER INTERFAZ GRÁFICA DE USUARIO EN APLICACIONES MÓVILES. 
+*  CONSTRUIR MAPA DE NAVEGACIÓN. 
+*  ELABORAR PROTOTIPOS. 
+VERIFICAR LOS ENTREGABLES DE LA FASE DE DISEÑO DEL SOFTWARE DE ACUERDO CON LO ESTABLECIDO 
+EN EL INFORME DE ANÁLISIS: 
+*  ELABORAR LISTAS DE CHEQUEO PARA VERIFICACIÓN. 
+*  EVALUAR ARTEFACTOS DE DISEÑO. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+ELABORAR LOS ARTEFACTOS DE DISEÑO DEL SOFTWARE SIGUIENDO LAS PRÁCTICAS DE LA METODOLOGÍA 
+SELECCIONADA: 
+*  INFORME DE ANÁLISIS: INTERPRETACIÓN, ANÁLISIS Y TOMA DE DECISIONES. 
+*  DISEÑO ORIENTADO A OBJETOS: CONCEPTOS (COHESIÓN, ACOPLAMIENTO, ENCAPSULAMIENTO, 
+POLIMORFISMO, COMPOSICIÓN, HERENCIA, INTERFACES), PRINCIPIOS (ADAPTABILIDAD, EXTENSIBILIDAD, 
+MANTENIBILIDAD, REUSABILIDAD, DESEMPEÑO, ESCALABILIDAD, CONFIABILIDAD, EFICIENCIA). 
+*  PLATAFORMAS TECNOLÓGICAS: MOTORES DE BASES DE DATOS RELACIONALES, NO RELACIONALES, 
+LENGUAJES DE PROGRAMACIÓN CON ORIENTACIÓN A OBJETOS. 
+*  DIAGRAMA  DE CLASES: ATRIBUTOS, MÉTODOS, RELACIONES. 
+*  PATRONES DE DISEÑO (GOF): CONCEPTOS, COMPORTAMENTALES (ESTRATEGIA, COMANDO, ITERADOR), 
+CREACIONALES (SINGLETON, FÁBRICA ABSTRACTA), ESTRUCTURALES (FACHADA). 
+*  ARQUITECTURA DE SOFTWARE: GENERALIDADES, CONCEPTOS, TIPOS DE ARQUITECTURAS, 
+COMPONENTES, VISTAS Y MODELOS RELACIONADOS, CUALIDADES SISTÉMICAS. 
+Página 25 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 26 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  ARQUITECTURA ORIENTADA A SERVICIOS (SOA, REST, GRAPHQL): CONCEPTOS, APLICACIONES. 
+*  ARQUITECTURAS MICROSERVICES Y SERVERLESS:  CONCEPTOS, APLICACIONES. 
+*  DEVOPS, INTEGRACIÓN CONTINUA:  CONCEPTOS, APLICACIONES. 
+*  ARQUITECTURA  CLIENTE / SERVIDOR: CONCEPTO, 2 CAPAS, 3 CAPAS, N CAPAS, APLICACIONES 
+DISTRIBUIDAS, CLIENTES MÓVILES, CONCEPTOS ARQUITECTURA REST. 
+*  MODELO VISTA CONTROLADOR: CONCEPTO, APLICACIÓN 
+*  VISTA DE COMPONENTES: DIAGRAMA DE COMPONENTES. 
+*  VISTA FÍSICA: DIAGRAMA DE DESPLIEGUE. 
+*  DOCUMENTO DE DISEÑO: MODELOS, ARQUITECTURA CANDIDATA. 
+ESTRUCTURAR EL MODELO DE DATOS DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES DEL 
+ANÁLISIS: 
+*  MODELO LÓGICO DE DATOS (MODELO RELACIONAL): CONCEPTO, REPRESENTACIÓN, CARDINALIDAD, 
+REGLAS DE TRANSFORMACIÓN DE MODELO CONCEPTUAL A MODELO LÓGICO, RESTRICCIONES, 
+HERRAMIENTAS PARA EL DISEÑO DE BASE DE DATOS. 
+*  BASES DE DATOS: CONCEPTOS, CARACTERÍSTICAS, RELACIONALES, NO RELACIONALES, MOTORES. 
+*  DICCIONARIO DE DATOS: TIPO DE DATOS, TAMAÑO DE LOS DATOS, ESTÁNDARES DE NOMBRADO, 
+RESTRICCIONES Y DOMINIO DE DATOS. 
+*  NORMALIZACIÓN: CONCEPTOS, FORMAS NORMALES, EJEMPLOS. 
+*  SEGURIDAD DE LA INFORMACIÓN: CONCEPTO, POLÍTICAS, ENCRIPTACIÓN DE DATOS, TRATAMIENTO DE 
+DATOS PERSONALES, NIVELES DE ACCESO. 
+*  BIG DATA:  CONCEPTOS, APLICACIONES. 
+DETERMINAR LAS CARACTERÍSTICAS TÉCNICAS DE LA INTERFAZ GRÁFICA DEL SOFTWARE ADOPTANDO 
+ESTÁNDARES: 
+*  COMPONENTE GRÁFICO: CONCEPTOS, CARACTERÍSTICAS, TEORÍA DEL COLOR, USABILIDAD, 
+ACCESIBILIDAD, FRAMEWORK FRONT-END, W3C, WEB SEMÁNTICA. 
+*  DISEÑO DE INTERFAZ PARA DISPOSITIVOS MÓVILES: CONCEPTOS, DISPOSITIVOS, CARACTERÍSTICAS, 
+REGLAS DE DISEÑO. 
+*  TIPOS DE PROTOTIPADO: CONCEPTOS, TÉCNICAS (BOCETOS, MAPAS DE NAVEGACIÓN, PROTOTIPOS EN 
+PAPEL, PROTOTIPOS DE SOFTWARE), HERRAMIENTAS DE APOYO, PROTOTIPADO PARA APLICACIONES WEB, 
+STAND-ALONE Y MÓVILES. 
+VERIFICAR LOS ENTREGABLES DE LA FASE DE DISEÑO DEL SOFTWARE DE ACUERDO CON LO ESTABLECIDO 
+EN EL INFORME DE ANÁLISIS: 
+*  TÉCNICAS DE EVALUACIÓN: INSPECCIÓN, REVISIÓN. 
+*  LISTAS DE CHEQUEO: CRITERIOS DE ACEPTACIÓN. 
+*  PRÁCTICAS DE DISEÑO: BAJO ACOPLAMIENTO Y ALTA COHESIÓN. 
+*  INFORME DE DISEÑO: CONCEPTO, CARACTERÍSTICAS, ARTEFACTOS ELABORADOS EN LA FASE DE DISEÑO. 
+4.7 CRITERIOS DE EVALUACIÓN 
+ELABORAR LOS ARTEFACTOS DE DISEÑO DEL SOFTWARE SIGUIENDO LAS PRÁCTICAS DE LA METODOLOGÍA 
+SELECCIONADA: 
+*  INTERPRETA EL INFORME DE ANÁLISIS IDENTIFICANDO LAS CARACTERÍSTICAS DEL SOFTWARE A DISEÑAR. 
+*  DEFINE LAS PLATAFORMAS TECNOLÓGICAS A EMPLEAR EN EL DESARROLLO DE ACUERDO CON LAS 
+Página 26 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 27 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+CONDICIONES DEL SOFTWARE A DESARROLLAR. 
+*  DEFINE LOS ENTREGABLES DE DISEÑO SIGUIENDO LOS CONCEPTOS Y PRINCIPIOS DE ORIENTACIÓN A 
+OBJETOS. 
+*  CREA EL DIAGRAMA DE CLASES DE ACUERDO CON LOS REQUISITOS, APLICANDO BUENAS PRÁCTICAS DE 
+DISEÑO ORIENTADO A OBJETOS. 
+*  INCORPORA PATRONES DE DISEÑO PROPENDIENDO EN MEJORES PRÁCTICAS PARA LA CODIFICACIÓN Y 
+MANTENIBILIDAD DEL SOFTWARE. 
+*  DEFINE LA ARQUITECTURA DEL SOFTWARE DANDO CUMPLIMIENTO A LOS REQUISITOS FUNCIONALES Y NO 
+FUNCIONALES. 
+*  CREA LA VISTA DE COMPONENTES PARA VISUALIZAR EL SOFTWARE EN FASES AVANZADAS DEL CICLO DE 
+VIDA. 
+*  CREA LA VISTA DE DESPLIEGUE DEL SOFTWARE PARA DETERMINAR CONDICIONES DE LA IMPLANTACIÓN 
+DE LA SOLUCIÓN INFORMÁTICA. 
+ESTRUCTURAR EL MODELO DE DATOS DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES DEL 
+ANÁLISIS: 
+*  GENERA EL MODELO CONCEPTUAL DE ACUERDO CON EL TIPO DE BASE DE DATOS SELECCIONADA Y LAS 
+ESPECIFICACIONES DEL ANÁLISIS. 
+*  GENERA EL MODELO LÓGICO DE ACUERDO CON LA TÉCNICA SELECCIONADA. 
+*  NORMALIZA EL MODELO LÓGICO DE ACUERDO CON EL TIPO DE BASE DE DATOS. 
+*  CREA EL DICCIONARIO DE DATOS DE ACUERDO CON EL MODELO LÓGICO. 
+*  DEFINE POLÍTICAS DE SEGURIDAD PARA GARANTIZAR INTEGRIDAD, CONFIDENCIALIDAD Y DISPONIBILIDAD 
+DE LOS DATOS. 
+DETERMINAR LAS CARACTERÍSTICAS TÉCNICAS DE LA INTERFAZ GRÁFICA DEL SOFTWARE ADOPTANDO 
+ESTÁNDARES: 
+*  PROPONE LA INTERFAZ GRÁFICA DE USUARIO CUMPLIENDO REGLAS DE USABILIDAD Y ACCESIBILIDAD 
+PARA APLICACIONES STAND-ALONE Y WEB. 
+*  PROPONE LA INTERFAZ GRÁFICA DE USUARIO CUMPLIENDO REGLAS DE USABILIDAD Y ACCESIBILIDAD 
+PARA APLICACIONES MÓVILES. 
+*  CONSTRUYE EL MAPA DE NAVEGACIÓN CUMPLIENDO REGLAS DE USABILIDAD Y ACCESIBILIDAD. 
+*  ELABORA PROTOTIPOS SEGÚN LOS REQUISITOS DEL SOFTWARE. 
+VERIFICAR LOS ENTREGABLES DE LA FASE DE DISEÑO DEL SOFTWARE DE ACUERDO CON LO ESTABLECIDO 
+EN EL INFORME DE ANÁLISIS: 
+*  ELABORA LISTAS DE CHEQUEO PARA VERIFICACIÓN DE LA DOCUMENTACIÓN DE DISEÑO 
+*  EVALÚA LOS ARTEFACTOS DE DISEÑO TENIENDO EN CUENTA EL CUMPLIMIENTO DE REQUISITOS Y LA 
+CALIDAD DE LOS ENTREGABLES GENERADOS. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TECNÓLOGO O PROFESIONAL EN SISTEMAS Y AFINES. 
+*  CONOCIMIENTOS EN DISEÑO DE SOFTWARE, BASES DE DATOS, ARQUITECTURA DE SOFTWARE, PATRONES 
+DE DISEÑO. 
+*  CONOCIMIENTOS EN DISEÑO DE INTERFACES DE USUARIO, DISEÑO GRÁFICO 
+Página 27 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 28 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA, DE LOS CUALES DIECIOCHO (18) MESES RELACIONADOS CON 
+EL ÁREA DE DISEÑO DE SOFTWARE Y SEIS (6) MESES EN LABORES DE DOCENCIA EN EL ÁREA. 
+CERTIFICACIÓN 
+*  PREFERIBLEMENTE CON CERTIFICACIÓN EN ARQUITECTURA DE SOFTWARE Y EN ORIENTACIÓN DE 
+PROCESOS FORMATIVOS PRESENCIALES Y/O VIRTUALES. 
+4.8.3 Competencias: 
+*  DOMINIO DE TÉCNICAS Y HERRAMIENTAS DE MODELAMIENTO DE SISTEMAS DE INFORMACIÓN 
+*  CONOCIMIENTO DE PATRONES DE DISEÑO DE SOFTWARE 
+*  DOMINIO DE TÉCNICAS Y HERRAMIENTAS DE MODELAMIENTO DE DATOS 
+*  CONOCIMIENTOS DE MODELOS DE CALIDAD DEL SOFTWARE 
+*  DOMINIO DE ATRIBUTOS DE CALIDAD DEL SOFTWARE 
+*  ORIENTACIÓN DE FORMACIÓN PROFESIONAL 
+*  NIVEL ALTO DE LECTURA DEL IDIOMA INGLÉS Y NIVEL MEDIO DE HABLA Y ESCUCHA DE ESTE IDIOMA. 
+*  FORMULACIÓN, EJECUCIÓN Y EVALUACIÓN PROYECTOS. 
+COMPETENCIAS ACTITUDINALES: 
+*  CAPACIDAD DE TRABAJO EN EQUIPO 
+*  CAPACIDAD DE LIDERAZGO 
+*  TOLERANCIA 
+*  SOLIDARIDAD 
+*  PUNTUALIDAD 
+*  RESPONSABILIDAD EN EL DESEMPEÑO DE SUS FUNCIONES 
+*  SENTIDO DE PERTENENCIA POR LA INSTITUCIÓN. 
+*  RELACIONES INTERPERSONALES BASADAS EN EL RESPETO MUTUO Y RECONOCIMIENTO DE LA 
+DIFERENCIA EN EL OTRO 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Ejercer derechos fundamentales del trabajo en el marco de la constitución política y los convenios 
+internacionales. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+210201501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+Ejercer derechos fundamentales del trabajo en el marco de la constitución política y los convenios 
+internacionales. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+Página 28 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 29 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+01- Reconocer el trabajo como factor de movilidad social y transformación vital con referencia a la fenomenología y a los 
+derechos fundamentales en el trabajo. 
+03- Practicar los derechos fundamentales en el trabajo de acuerdo con la Constitución Política y los Convenios 
+Internacionales. 
+02- Valorar la importancia de la ciudadanía laboral con base en el estudio de los derechos humanos y fundamentales en el 
+trabajo. 
+04- Participar en acciones solidarias teniendo en cuenta el ejercicio de los derechos humanos, de los pueblos y de la 
+naturaleza. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Analizar la relación entre el trabajo y el desarrollo humano (1) 
+Identificar  la naturaleza de los derechos humanos y fundamentales del trabajo (1) 
+Relacionar, en el marco de los derechos humano el desarrollo social, la autonomía y la dignidad (2) 
+Desarrollar documentos relacionados con los derechos y las obligaciones políticas, prestacionales, sociales, y de 
+bienestar derivadas de las acciones laborales. (2) 
+Argumentar el ejercicio de los derechos del trabajo como defensa de los mismos y expresión de la ciudadanía laboral. (3) 
+Dimensionar el ejercicio del derecho a la huelga. (3) 
+Integrar acciones de solidaridad para la defensa del ser humano, la naturaleza y los valores de la convivencia social y 
+ciudadanía (4) 
+4.6.2 CONOCIMIENTOS DEL SABER 
+1. Persona sociedad y Trabajo 
+-  Dignidad humana, democracia, el trabajo, Justicia y paz. 
+-  Desarrollo humano integral. 
+-  Diversidad cultural 
+-  Fenomenología del mundo del trabajo 
+2. Leyes fundamentales y mandatos legales 
+-  Política. Derechos humanos y Constitución Política de Colombia. 
+-  Principios y derechos de la OIT: Declaración de la O.I.T. 
+-  Derecho a la vida. 
+-  Derechos políticos y civiles. 
+-  Trabajo digno y decente: Definición, análisis del trabajo forzoso u obligatorio. 
+3. Derechos del trabajo y Ciudadanía laboral 
+-  Derechos del trabajo y su impacto en el desarrollo de la sociedad 
+-  Dialogo social 
+-  Persona sujeta de derechos y deberes en el contexto de los derechos humanos 
+-  Derechos individuales y colectivos del trabajo: Características y campos para el desarrollo del derecho individual y 
+colectivo en el mundo del trabajo 
+-  Mecanismos de protección de los derechos en el trabajo. 
+-  Trabajo Decente: Integración de políticas 
+-  Igualdad de género: equidad y balance de género 
+-  Trabajo forzado y Trabajo Infantil 
+-  Enfoque diferencial, valor ciudadano para la inclusión social 
+-  Discriminación laboral en casos de enfermedades terminales 
+Página 29 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 30 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+-  Resolución pacífica de los conflictos; negociación colectiva y huelga 
+-  Derechos para la sostenibilidad empresarial: Eficiencia, Eficacia, Efectividad. 
+4. Ejercicio de los derechos en el trabajo. 
+-  Aplicación de los mecanismos de protección de los derechos en el trabajo. 
+-  Caja de herramientas laborales: salario, prestaciones sociales, seguridad social y contratación. 
+-  Sociedad del Ocio: recreación, deporte, arte cultura, vida familiar. 
+-  Derechos y libertades ciudadanas. 
+5. Derecho a la Asociación, normatividad nacional e internacional. 
+-  Valores democráticos sobre el sindicalismo. Normatividad nacional e internacional 
+-  Asociaciones sindicales, libertad sindical y derechos asociados. 
+-  Libertad de Asociación y Sindical 
+-  Derecho de Negociación Colectiva: agentes, reconocimiento de la asociación para resolver problemas 
+6. Derechos de Solidaridad o de los Pueblos 
+-  Relación entre el ser humano, la naturaleza y el planeta. 
+-  Autodeterminación de los pueblos y desarrollo sostenible y seguridad alimentaria. 
+-  Estrategias de desarrollo e impacto ambiental en Colombia. 
+-  Postconflicto y paz 
+-  Apropiación del avance y uso de la ciencia y la tecnología. 
+-  Desarrollo para una vida digna 
+-  Identidad Nacional y Cultural 
+4.7 CRITERIOS DE EVALUACIÓN 
+-  Compara las condiciones del trabajo, en el devenir histórico de la humanidad de acuerdo con los derechos humanos y 
+fundamentales en el trabajo. (1) 
+-  Argumenta los momentos relevantes del devenir histórico de los derechos humanos y fundamentales en el trabajo en la 
+línea del tiempo. (1) 
+-  Selecciona los mecanismos de protección para el ejercicio de la ciudadanía laboral aplicando la normativa. (2) 
+-  Analiza situaciones que repercuten en ejercicio de los derechos fundamentales en el trabajo, desarrollando habilidades 
+de comunicación según técnicas y protocolos. (3) 
+-  Elabora documentos relacionados con las obligaciones económicas, sociales y de bienestar derivadas de las acciones 
+laborales de acuerdo con la normativa. (3) 
+-  Evalúa los resultados de la aplicación de los mecanismos de protección para el ejercicio de la ciudadanía laboral acorde 
+con la normativa (3) 
+-  Propone estrategias de solución de conflictos y negociación de acuerdo con la normativa. (3) 
+-  Justifica la importancia de los derechos de los pueblos y de la solidaridad en el ejercicio de la ciudadanía laboral de 
+acuerdo con la normativa. (4) 
+-  Relaciona, de los derechos de los pueblos y de la solidaridad, la autodeterminación de los pueblos, el desarrollo 
+sostenible, la seguridad alimentaria, el derecho al uso de la ciencia y la tecnología y la paz en función de los indicadores 
+de desarrollo humano. (4) 
+Página 30 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 31 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+-  Propone acciones de defensa relacionadas con la autodeterminación de los pueblos, el desarrollo sostenible, la 
+seguridad alimentaria, el derecho al uso de la ciencia y la tecnología y la paz en función de los indicadores del desarrollo 
+humano. (4) 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+Certificado de Aptitud Profesional ¿ SENA, o certificado por autoridad competente en cualquiera de las nueve áreas de 
+desempeño de la CNO y en el nivel ocupacional 2,3 o 4 (Ver anexo C. N.O) 
+Alternativa 1. 
+Certificado de técnico, o certificado por autoridad competente en cualquiera de las nueve áreas de desempeño de la CNO 
+y en el nivel ocupacional 3 o 4 (Ver anexo C. N.O) 
+Alternativa 2 
+Título de Técnico Profesional en cualquiera de los 55 núcleos básicos de conocimiento, o en NULL o Sin clasificar. Ver 
+anexos: (N.B.C.), (TITULOS SENA). 
+Alternativa 3 
+Título de Tecnólogo en cualquiera de los 55 núcleos básicos de conocimiento, o en NULL o Sin clasificar. Ver anexos: 
+(N.B.C.), (TITULOS SENA) 
+Alternativa 4 
+Título Profesional universitario en cualquiera de los 55 núcleos básicos de conocimiento, o en NULL o Sin clasificar. (Ver 
+anexo N.B.C) Tarjeta profesional en los casos exigidos por la Ley 
+4.8.2 Experiencia laboral y/o especialización: 
+Cuarenta y ocho (48) meses de experiencia relacionada distribuida así: 
+Treinta y seis (36) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del 
+trabajo y doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida. 
+Alternativa 1. 
+Cuarenta y dos (42) meses de experiencia relacionada distribuida así: 
+Treinta (30) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo y 
+Doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida. 
+Alternativa 2 
+Treinta y seis (36) meses de experiencia relacionada distribuida así: 
+Veinticuatro (24) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo 
+y doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida 
+Alternativa 3 
+Treinta (30) meses de experiencia relacionada distribuida así: 
+Dieciocho (18) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo y 
+doce (12) meses en docencia o instrucción certificada por entidad legalmente reconocida 
+Alternativa 4 
+Veinticuatro (24) meses de experiencia relacionada distribuida así: 
+Doce (12) meses de experiencia relacionada con el ejercicio de los derechos humanos y fundamentales del trabajo y doce 
+(12) meses en docencia o instrucción certificada por entidad legalmente reconocida 
+Página 31 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 32 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.3 Competencias: 
+1. Crea espacios pedagógicos de reflexión y apropiación para la valoración de los derechos y deberes en el trabajo 
+2. Interpreta la relación entre el trabajo y el desarrollo humano. 
+3. Identifica la naturaleza de los derechos humanos y del trabajo. 
+4. Genera procesos de interacción social interacciones en el marco de los derechos humanos y laborales para el 
+desarrollo social para el desarrollo de con autonomía y dignidad. 
+5. Implementa acciones para la elaboración el diligenciamiento de documentos relacionados con la política pública, de 
+salarios y los acuerdos internacionales de la OIT y los derechos económicos, sociales y de bienestar derivadas de las 
+acciones laborales. 
+6. Argumenta los derechos el ejercicio de los derechos fundamentales del trabajo y los mecanismos de protección como 
+ejercicio de la ciudadanía laboral. 
+7. Organiza acciones pedagógicas para la aplicación de los principios de los derechos de asociación. 
+8. Integra acciones de solidaridad para la defensa del ser humano, la naturaleza y la cultura de la paz. y los valores de la 
+convivencia la paz y la ciudadana 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Enrique Low Murtra-Interactuar en el contexto productivo y social de acuerdo con principios  éticos 
+para la construcción de una cultura de paz. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201526 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ETICA PARA LA CONSTRUCCIÓN DE UNA CULTURA DE PAZ. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+02  ESTABLECER RELACIONES DE CRECIMIENTO PERSONAL Y COMUNITARIO A PARTIR DEL BIEN COMÚN 
+COMO APORTE PARA EL DESARROLLO SOCIAL. 
+03  PROMOVER EL USO RACIONAL DE LOS RECURSOS NATURALES A PARTIR DE CRITERIOS DE 
+SOSTENIBILIDAD Y SUSTENTABILIDAD ÉTICA Y NORMATIVA VIGENTE. 
+01  PROMOVER MI DIGNIDAD Y LA DEL OTRO A PARTIR DE LOS PRINCIPIOS Y VALORES ÉTICOS COMO APORTE 
+EN LA INSTAURACIÓN DE UNA CULTURA DE PAZ. 
+04  CONTRIBUIR CON EL FORTALECIMIENTO DE LA CULTURA DE PAZ A PARTIR DE LA DIGNIDAD HUMANA Y LAS 
+ESTRATEGIAS PARA LA TRANSFORMACIÓN DE CONFLICTOS. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Página 32 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 33 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  ESTABLECER COMUNICACIÓN CONSTRUCTIVA. 
+*  RESPETAR AL OTRO. 
+*  FIJAR  EL PROYECTO DE VIDA. 
+*  RECLAMAR DERECHOS DE DIGNIDAD. 
+*  USAR LA CIENCIA Y LA TECNOLOGÍA PARA MEJORAR MI CALIDAD DE VIDA. 
+*  EXIGIR RECONOCIMIENTO EN FUNCIÓN DE MI PRESENCIA PROTAGÓNICA EN LA SOCIEDAD. 
+*  RECONOCER EL VALOR INTRÍNSECO DE CADA PERSONA. 
+*  MANTENER EL VALOR DE MI DIGNIDAD. 
+*  MANTENER EL VALOR DE LA DIGNIDAD DEL OTRO. 
+*  RECONOCER LA AUTONOMÍA PERSONAL. 
+*  RECONOCER LA AUTONOMÍA DEL OTRO. 
+*  RECONOCER MIS DIFERENCIAS E IGUALDADES CON EL OTRO. 
+*  PRACTICAR  CON HECHOS EL RESPETO CONMIGO MISMO Y CON LOS DEMÁS. 
+*  APLICAR LA CAPACIDAD DE ESCUCHA. 
+*  RESPETAR LA OPINIÓN DEL OTRO. 
+*  CONSIDERAR LAS IDEAS DEL OTRO. 
+*  IDENTIFICAR ESTILOS DE COMUNICACIÓN. 
+*  APLICAR ESTILOS DE COMUNICACIÓN. 
+*  PRACTICAR CON HECHOS EL RESPETO A LOS DEMÁS. 
+*  RESPETAR LA PRIVACIDAD DEL OTRO. 
+*  RESPETAR LAS CREENCIAS. 
+*  RESPETAR LUGARES DE ENCUENTRO COMUNITARIO. 
+*  CUIDAR LUGARES DE ENCUENTRO COMUNITARIO. 
+*  PRACTICAR ACTOS DE RESPETO. 
+*  RESPETAR LAS NORMAS SOCIALES. 
+*  CONVIVIR EN COMUNIDAD. 
+*  ASUMIR COMPORTAMIENTO DE CULTURA CIUDADANA. 
+*  EJERCER ROL PROTAGÓNICO EN EL DESARROLLO SOCIAL. 
+*  FORTALECER COMPETENCIAS DE LIDERAZGO. 
+*  PROPONER TEMAS PARA PROYECTOS SOCIALES. 
+*  DESARROLLAR PROYECTOS SOCIALES. 
+*  DESARROLLAR EL SENTIDO DE PERTENENCIA. 
+*  INTERPRETAR LA TENDENCIAS MUNDIALES EN CIENCIA, TECNOLOGÍA Y SOCIEDAD. 
+*  INCENTIVAR EL APROVECHAMIENTO DE LOS RECURSOS NATURALES. 
+*  PRESERVAR LOS RECURSOS NATURALES. 
+*  ESTABLECER PROCESOS DE COMUNICACIÓN CONSTRUCTIVA. 
+*  IDENTIFICAR LOS HECHOS DE VIOLENCIA EN MI HISTORIA DE VIDA. 
+*  RECONOCER LA IMPORTANCIA DEL DESARROLLO DE UNA CULTURA DE PAZ. 
+*  IDENTIFICAR ESTRATEGIAS DE RECONCILIACIÓN. 
+*  APLICAR ESTRATEGIAS DE RECONCILIACIÓN. 
+*  ESTABLECER RELACIONES  CONSTRUCTIVAS ESTABLECER RELACIONES RESPETUOSAS. 
+*  APORTAR EN EL DESARROLLO DE UNA CULTURA DE PAZ. 
+*  ESTABLECER RELACIONES INTERPERSONALES. 
+*  ASUMIR ACTITUDES CRÍTICAS CONSTRUCTIVAS. 
+*  ASUMIR ACTITUDES CRÍTICAS ARGUMENTATIVAS. 
+*  ESTABLECER GESTOS  DE SOLIDARIOS. 
+*  GENERAR PROCESOS DE CONSTRUCCIÓN DE PAZ EN EL NÚCLEO FAMILIAR. 
+*  ESTABLECER RELACIONES INTERPERSONALES A PARTIR DE UNA COMUNICACIÓN ASERTIVA. 
+*  ESTABLECER RELACIONES DE TOLERANCIA. 
+*  ESTABLECER RELACIONES DE SOLIDARIDAD. 
+*  APLICAR NORMATIVA VIGENTE EN RELACIÓN CON DERECHOS HUMANOS Y DERECHO INTERNACIONAL 
+HUMANITARIO. 
+Página 33 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 34 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  HOMBRE: CONCEPTO,  SUJETO MORAL, SUJETO ÉTICO. 
+*  NATURALEZA HUMANA: CONCEPTO. 
+*  DIGNIDAD HUMANA: CONCEPTO. 
+*  ACTOS  HUMANOS: CONCEPTO. 
+*  ACCIONES HUMANAS: CONCEPTO. 
+*  LIBERTAD: CONCEPTO. 
+*  LEY NATURAL: CONCEPTO. 
+*  LEY POSITIVA: CONCEPTO, APLICACIONES. 
+*  MORAL: CONCEPTO. 
+*  AXIOLOGÍA: CONCEPTO, JERARQUÍA DE VALORES. 
+*  ÉTICA: CONCEPTO. 
+*  ÉTICA APLICADA: CONCEPTO, CARACTERÍSTICAS. 
+*  HOMBRE: CONCEPTO,  SER RELACIONAL. 
+*  TRABAJO: CONCEPTO,  SISTEMA DE RELACIONES. 
+*  RELACIONES SOCIALES: CONCEPTO, CLASES. 
+*  RECONCILIACIÓN: CONCEPTO, CONDICIONES. 
+*  TRABAJO EN EQUIPO: CONTEXTUALIZACIÓN, ALCANCE, TÉCNICAS, FUNDAMENTOS Y VENTAJAS. 
+*  RESOLUCIÓN DE CONFLICTOS: CONTEXTUALIZACIÓN, DESTREZAS, TÉCNICAS Y TEORÍAS. 
+*  COMUNICACIÓN ASERTIVA: CONTEXTUALIZACIÓN, ESTRATEGIAS, FUNDAMENTOS, TIPOS Y TÉCNICAS. 
+*  LIDERAZGO: CONCEPTO, TENDENCIAS Y GENERALIDADES. 
+*  INTELIGENCIA EMOCIONAL: CONCEPTO, ALCANCE Y TÉCNICAS. 
+*  COACHING: CONCEPTO, ALCANCE Y TÉCNICAS BÁSICAS. 
+*  PROGRAMACIÓN NEUROLINGÜÍSTICA: CONCEPTO, ALCANCE, TÉCNICAS BÁSICAS. 
+*  TOMA DE DECISIONES: CONCEPTO, MODELOS, ESTRATÉGICAS Y ANÁLISIS ESTRATÉGICO Y ALCANCE. 
+*  RELACIONES INTERPERSONALES: CONCEPTO Y ALCANCE. 
+*  CONTEXTO DEL CONFLICTO: CONCEPTO, CONTEXTO SOCIAL Y POLÍTICO, CONFLICTO ARMADO. 
+*  PAZ: CONCEPTO. 
+*  VIOLENCIA: CONCEPTO. 
+*  CONFLICTO: CONCEPTO, HITOS DE LA HISTORIA. 
+*  RESPETO: CONCEPTO. 
+*  FAMILIA: CONCEPTO. 
+*  DIÁLOGO: CONCEPTO. 
+*  CONCERTACIÓN: CONCEPTO. 
+*  JUSTICIA: CONCEPTO, CLASES. 
+*  EQUIDAD: CONCEPTO, APLICACIONES. 
+*  GOBIERNO: CONCEPTO, FORMAS. 
+*  SOCIEDAD: CONCEPTO. 
+*  ESTADO: CONCEPTO. 
+*  PAÍS: CONCEPTO. 
+*  CONSTITUCIÓN: CONCEPTO. 
+*  GOBERNALIDAD: CONCEPTO. 
+*  DEMOCRACIA: CONCEPTO, CLASES. 
+*  CONVIVENCIA: CONCEPTO. 
+*  LIBERTAD: CONCEPTO. 
+*  CRITICIDAD: CONCEPTO. 
+*  NEGOCIACIÓN FRENTE AL CONFLICTO. 
+*  REPARACIÓN: CONCEPTO. 
+*  REINTEGRACIÓN: CONCEPTO, RUTA. 
+*  DERECHOS HUMANOS: CONCEPTO, NORMATIVA VIGENTE. 
+*  DERECHO INTERNACIONAL HUMANITARIO: CONCEPTO, NORMATIVA VIGENTE. 
+*  AUTOESTIMA, AUTONOMÍA, AUTOCONTROL, AUTOCUIDADO. 
+Página 34 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 35 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  COMUNICACIÓN: ACCIÓN INSTRUMENTAL, ACCIÓN ESTRATÉGICA Y ACCIÓN COMUNICATIVA. 
+*  HABILIDADES PARA LA VIDA Y PARA LA CONVIVENCIA: AUTOCONOCIMIENTO, EMPATÍA, COMUNICACIÓN 
+ASERTIVA, RELACIONES INTERPERSONALES, TOMA DE DECISIONES, SOLUCIÓN DE PROBLEMAS Y DE 
+CONFLICTOS, PENSAMIENTO CREATIVO, PENSAMIENTO CRÍTICO, MANEJO DE EMOCIONES Y SENTIMIENTOS, 
+MANEJO DE TENSIONES Y ESTRÉS. 
+*  PARTICIPACIÓN CIUDADANA: CONCEPTO, MECANISMOS E INSTANCIAS DE PARTICIPACIÓN CIUDADANA, 
+BIEN COMÚN, ALTERIDAD Y GÉNERO, PROCESO DE SOCIABILIDAD HUMANA, REPRESENTACIONES SOCIALES 
+O IMAGINARIOS CULTURALES, CULTURAS EMERGENTES, ROLES SOCIALES. 
+*  RESPONSABILIDAD SOCIAL: CONCEPTO, ESTRATEGIAS PARA GENERAR UNA CULTURA DE 
+RESPONSABILIDAD SOCIAL. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  DEFINE SU PROYECTO DE VIDA DE ACUERDO A LOS CRITERIOS DE DIGNIDAD, DE RESPETO, CREENCIAS, 
+ECOLOGÍA  Y CULTURA. 
+*  RECONOCE SU VALOR Y EL VALOR DEL OTRO DE ACUERDO A LOS PRINCIPIOS DE DIGNIDAD Y 
+CONSTRUCCIÓN CULTURAL Y AUTONOMÍA. 
+*  DEFINE SU PROYECTO DE VIDA CON BASE EN CRITERIOS AXIOLÓGICOS Y CULTURALES Y HÁBITOS DE 
+CONVIVENCIA. 
+*  UTILIZA HERRAMIENTAS QUE PERMITEN LA COMUNICACIÓN ASERTIVA EN DIFERENTES ENTORNOS 
+TENIENDO EN CUENTA LA PEDAGOGÍA PARA LA PAZ. 
+*  CONSTRUYE RELACIONES INTERPERSONALES A PARTIR DEL ENFOQUE DIFERENCIAL Y LA PROMOCIÓN  DE 
+UNA CULTURA DE PAZ. 
+*  CAMBIA ACTITUDES FRENTE A SU COMPORTAMIENTO CON BASE EN LA DIGNIDAD, APORTANDO A LA 
+CULTURA DE PAZ. 
+*  RECONOCE HITOS HISTÓRICOS  DE VIOLENCIA Y PAZ COMO APORTE A LA CONSTRUCCIÓN DE UNA 
+CULTURA DE PAZ. 
+*  MODIFICA ACTITUDES COMPORTAMENTALES  A PARTIR DE LA RESOLUCIÓN PACÍFICA DE CONFLICTOS. 
+*  APLICA ACCIONES DE PREVENCIÓN DE ACCIONES VIOLENTAS CON BASE EN ESTRATEGIAS DE 
+COMUNICACIÓN ASERTIVA. 
+*  EVIDENCIA RESPETO POR EL BIEN COMÚN, LA ALTERIDAD Y EL DIÁLOGO CON EL OTRO CON BASE EN 
+PRINCIPIOS AXIOLÓGICOS. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+OPCIÓN 1: PROFESIONAL EN CARRERAS DE FORMACIÓN RELACIONADAS CON FILOSOFÍA, O ANTROPOLOGÍA, 
+O PSICOLOGÍA, O TRABAJO SOCIAL, O SOCIOLOGÍA O AFINES. 
+OPCIÓN 2: PROFESIONAL CON ESTUDIOS RELACIONADOS EN ÉTICA, O BIOÉTICA, O DEONTOLOGÍA O 
+HUMANISMO. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA Y/O TRABAJO COMUNITARIO. 
+Página 35 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 36 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA 
+*  DOMINIO LECTO-ESCRITURAL 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO 
+*  TRABAJO EN EQUIPO. 
+*MANEJO DE LAS TIC 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Establecer requisitos de la solución de software de acuerdo con estándares y procedimiento técnico 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501092 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ESPECIFICACIÓN DE REQUISITOS DEL SOFTWARE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+144 horas 
+DENOMINACIÓN 
+02  RECOLECTAR INFORMACIÓN DEL SOFTWARE A CONSTRUIR DE ACUERDO CON LAS NECESIDADES DEL 
+CLIENTE. 
+04  VALIDAR EL INFORME DE REQUISITOS DE ACUERDO CON LAS NECESIDADES DEL CLIENTE. 
+01  CARACTERIZAR LOS PROCESOS DE LA ORGANIZACIÓN DE ACUERDO CON EL SOFTWARE A CONSTRUIR. 
+03  ESTABLECER LOS REQUISITOS DEL SOFTWARE DE ACUERDO CON LA INFORMACIÓN RECOLECTADA. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+CARACTERIZAR LOS PROCESOS DE LA ORGANIZACIÓN DE ACUERDO CON EL SOFTWARE A CONSTRUIR: 
+*  IDENTIFICAR PROCESOS DE LA ORGANIZACIÓN. 
+*  APLICAR TÉCNICAS DE ANÁLISIS DE PROCESOS. 
+*  ELABORAR DIAGRAMA DE PROCESOS. 
+RECOLECTAR INFORMACIÓN DEL SOFTWARE A CONSTRUIR DE ACUERDO CON LAS NECESIDADES DEL 
+CLIENTE: 
+Página 36 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 37 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  DETERMINAR LAS FRONTERAS DEL SISTEMA Y DEL CONTEXTO. 
+*  SELECCIONAR FUENTES DE REQUISITOS. 
+*  CATEGORIZAR LOS REQUISITOS. 
+*  TIPIFICAR LOS REQUISITOS. 
+*  DETERMINAR TÉCNICAS DE ELICITACIÓN DE REQUISITOS. 
+*  DISEÑAR INSTRUMENTOS PARA RECOLECTAR INFORMACIÓN. 
+*  APLICAR INSTRUMENTOS DE RECOLECCIÓN DE INFORMACIÓN. 
+*  ORGANIZAR Y DEPURAR INFORMACIÓN. 
+ESTABLECER LOS REQUISITOS DEL SOFTWARE DE ACUERDO CON LA INFORMACIÓN RECOLECTADA: 
+*  IDENTIFICAR ESTÁNDARES. 
+*  REDACTAR LOS REQUISITOS. 
+*  PRESENTAR INFORME DE REQUISITOS. 
+VALIDAR EL INFORME DE REQUISITOS DE ACUERDO CON LAS NECESIDADES DEL CLIENTE: 
+*  SELECCIONAR TÉCNICAS DE VALIDACIÓN DE REQUISITOS. 
+*  ELABORAR LISTAS DE CHEQUEO PARA VALIDACIÓN. 
+*  VERIFICAR REQUISITOS CON EL CLIENTE. 
+*  AJUSTAR CAMBIOS DE LA DOCUMENTACIÓN DE REQUISITOS DE SOFTWARE. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+CARACTERIZAR LOS PROCESOS DE LA ORGANIZACIÓN DE ACUERDO CON EL SOFTWARE A CONSTRUIR: 
+*  TEORÍA GENERAL DE SISTEMAS: ORÍGENES, CONCEPTOS. 
+*  ENFOQUE SISTÉMICO: CONCEPTO, CARACTERÍSTICAS, APLICACIÓN, ORGANIZACIONES INTELIGENTES. 
+*  DATOS E INFORMACIÓN: CONCEPTOS DATOS E INFORMACIÓN, PROCESAMIENTO DE DATOS Y ACTIVIDADES 
+DE PROCESAMIENTO DE DATOS. 
+*  SISTEMAS DE INFORMACIÓN: ELEMENTOS, OBJETIVOS, CLASIFICACIÓN. 
+*  CICLO DE VIDA DEL SOFTWARE: DEFINICIÓN, ELEMENTOS, MODELOS, FASES Y SUS OBJETIVOS. 
+*  METODOLOGÍAS DE DESARROLLO: CONCEPTOS, TIPOS. 
+*  PROCESOS: DEFINICIÓN, CARACTERÍSTICAS, ENTRADAS, COMPONENTES, REPRESENTACIÓN GRÁFICA, 
+PROCEDIMIENTOS, MODELO DE PROCESOS DE NEGOCIO (BPM). 
+RECOLECTAR INFORMACIÓN DEL SOFTWARE A CONSTRUIR DE ACUERDO CON LAS NECESIDADES DEL 
+CLIENTE: 
+*  TÉCNICAS DE ELICITACIÓN DE REQUISITOS: TÉCNICAS DE PROSPECCIÓN, TÉCNICAS DE CREATIVIDAD, 
+TÉCNICAS CENTRADAS EN LA DOCUMENTACIÓN, TÉCNICAS DE OBSERVACIÓN. 
+*  REQUISITOS: CONCEPTOS, REQUISITOS FUNCIONALES Y NO FUNCIONALES. 
+*  INGENIERÍA DE REQUISITOS:  ANÁLISIS DE REQUISITOS, GESTIÓN DE REQUISITOS, PRÁCTICAS 
+ÁGILES(HISTORIAS DE USUARIOS, ITERACIONES, PRODUCT BACKLOG, ESTIMACIONES, STORYBOARD)". 
+*  ESTADÍSTICA DESCRIPTIVA: DEFINICIÓN, POBLACIÓN, ELEMENTOS Y CARACTERÍSTICAS, VARIABLES 
+CUALITATIVAS Y CUANTITATIVAS, MEDIDAS DE TENDENCIAS CENTRAL (MEDIA, MEDIA GEOMÉTRICA, 
+MEDIANA, MODA), REPRESENTACIÓN GRÁFICA DE LOS DATOS. 
+*  FUENTES DE REQUISITOS: IMPLICADOS, DOCUMENTACIÓN, SISTEMAS EN OPERACIÓN. 
+Página 37 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 38 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  TIPOS DE DOCUMENTACIÓN DE REQUISITOS: LENGUAJE NATURAL, MODELOS CONCEPTUALES, HÍBRIDOS. 
+*  BUENAS PRÁCTICAS DE DOCUMENTACIÓN: NTC1486 DEL ICONTEC, APA, BUENAS PRÁCTICAS DE 
+REDACCIÓN DE REQUISITOS. 
+*  INFORME DE REQUISITOS: ELEMENTOS DEL DOCUMENTO, IREB (INTERNATIONAL REQUIREMENTS 
+ENGINEERING BOARD), ESTÁNDAR IEEE. 
+*  HISTORIAS DE USUARIO: CARACTERÍSTICAS, USO, CRITERIOS DE ACEPTACIÓN. 
+VALIDAR EL INFORME DE REQUISITOS DE ACUERDO CON LAS NECESIDADES DEL CLIENTE: 
+*  LISTAS DE CHEQUEO PARA VALIDACIÓN DE INFORMACIÓN. 
+*  TÉCNICAS PARA VALIDAR REQUISITOS: INSPECCIONES, REVISIÓN GUIADA, OPINIÓN DE EXPERTOS. 
+*  VERSIONAMIENTO DE REQUISITOS: GESTIÓN DE CAMBIOS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+CARACTERIZAR LOS PROCESOS DE LA ORGANIZACIÓN DE ACUERDO CON EL SOFTWARE A CONSTRUIR: 
+*  IDENTIFICA PROCESOS DE LA ORGANIZACIÓN DE ACUERDO CON LA ESTRUCTURA ORGANIZACIONAL DE LA 
+EMPRESA Y LOS REQUERIMIENTOS DEL CLIENTE. 
+*  APLICA TÉCNICAS DE ANÁLISIS DE PROCESOS, SIGUIENDO LA METODOLOGÍA ESTABLECIDA. 
+*  ELABORA DIAGRAMA DE PROCESOS IDENTIFICANDO ÁREAS DE INCIDENCIA DIRECTA CON EL SISTEMA DE 
+INFORMACIÓN A CONSTRUIR. 
+*  RECONOCE LAS FRONTERAS Y EL CONTEXTO DEL SISTEMA DE ACUERDO CON EL ALCANCE DEL 
+PROYECTO. 
+RECOLECTAR INFORMACIÓN DEL SOFTWARE A CONSTRUIR DE ACUERDO CON LAS NECESIDADES DEL 
+CLIENTE: 
+*  IDENTIFICA LAS FRONTERAS DEL SISTEMA Y DEL CONTEXTO DE ACUERDO DE LAS FUENTES DE 
+REQUISITOS. 
+*  RECONOCE LAS FUENTES DE REQUISITOS DE ACUERDO CON EL PROYECTO ESPECIFICADO. 
+*  DIFERENCIA LOS TIPOS DE REQUISITOS SEGÚN SUS CARACTERÍSTICAS PARTICULARES. 
+*  DISEÑA INSTRUMENTOS PARA RECOLECCIÓN DE INFORMACIÓN SIGUIENDO NORMAS Y PROCEDIMIENTOS 
+TÉCNICOS. 
+*  UTILIZA LAS TÉCNICAS DE CAPTURA DE REQUISITOS DE ACUERDO CON LAS FUENTES IDENTIFICADAS. 
+*  ORGANIZA LA INFORMACIÓN RECOLECTADA PARA ANALIZARLA. 
+ESTABLECER LOS REQUISITOS DEL SOFTWARE DE ACUERDO CON LA INFORMACIÓN RECOLECTADA: 
+*  GENERA LA DOCUMENTACIÓN DE LA ESPECIFICACIÓN DE REQUISITOS DE ACUERDO CON NORMATIVIDAD Y 
+ESTÁNDARES RELACIONADOS. 
+*  PRESENTA EL INFORME DE REQUISITOS DE ACUERDO CON ESTÁNDARES ESTABLECIDOS. 
+VALIDAR EL INFORME DE REQUISITOS DE ACUERDO CON LAS NECESIDADES DEL CLIENTE: 
+Página 38 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 39 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TECNÓLOGO O PROFESIONAL EN SISTEMAS Y AFINES, CON CONOCIMIENTOS EN INGENIERÍA DE 
+REQUISITOS, ELABORACIÓN Y APLICACIÓN DE INSTRUMENTOS PARA RECOLECCIÓN DE INFORMACIÓN, 
+TRABAJO POR PROCESOS, ESTADÍSTICA DESCRIPTIVA Y ELABORACIÓN DE INFORMES. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+*  FORMULAR, EJECUTAR Y EVALUAR PROYECTOS. 
+*  TRABAJAR EN EQUIPO. 
+*  ESTABLECER PROCESOS COMUNICATIVOS ASERTIVOS. 
+*  CAPACIDAD EN LA COORDINACIÓN DE EQUIPOS INTERDISCIPLINARES. 
+*  MANEJAR LAS TIC ASOCIADAS AL ÁREA OBJETO DE LA FORMACIÓN. 
+*  ADAPTACIÓN AL CAMBIO. 
+*  INVESTIGAR 
+*  MANEJAR GRUPOS. 
+*  LECTOESCRITURA 
+*  ARGUMENTATIVO Y PROPOSITIVO 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Estructurar propuesta técnica de servicio de tecnología de la información según requisitos técnicos y 
+normativa 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501094 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ELABORACIÓN DE LA PROPUESTA TÉCNICA DEL SOFTWARE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+144 horas 
+DENOMINACIÓN 
+01  DEFINIR ESPECIFICACIONES TÉCNICAS DEL SOFTWARE DE ACUERDO CON LAS CARACTERÍSTICAS DEL 
+SOFTWARE A CONSTRUIR. 
+03  VALIDAR LAS CONDICIONES DE LA PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LOS 
+INTERESES DE LAS PARTES. 
+02  ELABORAR PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES TÉCNICAS 
+DEFINIDAS. 
+Página 39 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 40 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+DEFINIR ESPECIFICACIONES TÉCNICAS DEL SOFTWARE DE ACUERDO CON LAS CARACTERÍSTICAS DEL 
+SOFTWARE A CONSTRUIR: 
+*  DISEÑAR FORMATOS DE FICHAS TÉCNICAS. 
+*  DILIGENCIAR FORMATOS DE FICHAS TÉCNICAS. 
+*  ELABORAR REFERENTES TÉCNICOS. 
+*  DETERMINAR LICENCIAMIENTOS TECNOLÓGICOS. 
+ELABORAR PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES TÉCNICAS 
+DEFINIDAS: 
+*  ELABORAR ANÁLISIS COMPARATIVO DE PROVEEDORES Y PRESUPUESTOS. 
+*  ESTIMAR COSTOS Y PRESUPUESTOS DEL SOFTWARE 
+*  CONSTRUIR LA PROPUESTA TÉCNICA TENIENDO EN CUENTA LA ARQUITECTURA A IMPLEMENTAR PARA EL 
+SOFTWARE. 
+VALIDAR LAS CONDICIONES DE LA PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LOS INTERESES 
+DE LAS PARTES. 
+*  PRESENTAR  LA PROPUESTA TÉCNICA Y COSTOS DEL SOFTWARE. 
+*  FORMULAR AJUSTES SOBRE LOS PARÁMETROS TÉCNICOS. 
+*  VERIFICAR QUE LA PROPUESTA TÉCNICA CONTENGA LA INFORMACIÓN NECESARIA PARA LA ELABORACIÓN 
+DEL CONTRATO 
+*  VERIFICAR LOS TÉRMINOS TÉCNICOS DE REFERENCIA. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+DEFINIR ESPECIFICACIONES TÉCNICAS DEL SOFTWARE DE ACUERDO CON LAS CARACTERÍSTICAS DEL 
+SOFTWARE A CONSTRUIR: 
+*  TECNOLOGÍA INFORMÁTICA: CARACTERÍSTICAS DE HARDWARE Y SOFTWARE, TENDENCIAS DE 
+FABRICACIÓN TI Y MERCADO EN EL ÁMBITO NACIONAL E INTERNACIONAL. 
+*  SOLUCIONES INFORMÁTICAS: DIAGNÓSTICO DE NECESIDADES Y ELABORACIÓN DE REFERENTES 
+TÉCNICOS. 
+*  GESTIÓN TECNOLÓGICA: CONCEPTOS Y CARACTERÍSTICAS, INNOVACIÓN, EMPRENDIMIENTO Y 
+ACTIVIDADES DE LA GESTIÓN TECNOLÓGICA. 
+*  CONTRATACIÓN DE SERVICIOS DE TI: CONCEPTO, TIPOS, PRINCIPIOS Y CARACTERÍSTICAS, NORMATIVIDAD 
+GENERAL DE LA CONTRATACIÓN TANTO PRIVADA COMO ESTATAL. 
+*  PROYECTOS DE TI: TIPOS, CARACTERÍSTICAS, FASES. 
+*  LICENCIAMIENTO DE SOFTWARE: CONCEPTO, TIPOS, CARACTERÍSTICAS, DIFERENCIAS DE CARÁCTER 
+TÉCNICO Y DE CONDICIONES DE CUMPLIMIENTO 
+*  PROPIEDAD INTELECTUAL: DERECHOS DE AUTOR, PROPIEDAD INDUSTRIAL, REGISTRO DE SOFTWARE. 
+ELABORAR PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES TÉCNICAS 
+DEFINIDAS: 
+*  COSTOS: CONCEPTOS, FUNDAMENTOS, CLASIFICACIÓN. 
+Página 40 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 41 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+SOFTWARE. 
+*  FICHA TÉCNICA: ELEMENTOS MÍNIMOS PARA DESCRIBIR LOS REFERENTES TÉCNICOS. 
+*  TÉRMINOS DE REFERENCIA: CONCEPTO, ELEMENTOS Y CONSTRUCCIÓN. 
+VALIDAR LAS CONDICIONES DE LA PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LOS INTERESES 
+DE LAS PARTES: 
+*  COMUNICACIÓN: TÉCNICAS, TIPOS Y HABILIDADES. 
+*  NEGOCIACIÓN DE TECNOLOGÍA: ESTILOS DE NEGOCIACIÓN, PRINCIPIOS DE NEGOCIACIÓN, 
+IDENTIFICACIÓN Y SOLUCIÓN DE CONFLICTOS. 
+*  CONTRATO: CONCEPTO, TIPOS, PARTES, NORMATIVIDAD 
+*  ACUERDOS DE NIVELES DE SERVICIO: CONCEPTO, FORMULACIÓN, MÉTRICAS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+DEFINIR ESPECIFICACIONES TÉCNICAS DEL SOFTWARE DE ACUERDO CON LAS CARACTERÍSTICAS DEL 
+SOFTWARE A CONSTRUIR: 
+*  DISEÑA FORMATOS DE FICHAS TÉCNICAS DE ACUERDO CON ESTÁNDARES. 
+*  ELABORA REFERENTES TÉCNICOS DE ACUERDO CON NORMATIVIDAD LEGAL VIGENTE. 
+*  DIMENSIONA LAS LICENCIAS DE SOFTWARE DE ACUERDO CON LAS CARACTERÍSTICAS DE LA SOLUCIÓN Y 
+LAS NECESIDADES DE LA EMPRESA. 
+*  ESTIMA CONDICIONES TÉCNICAS Y ECONÓMICAS DE ACUERDO CON LAS CARACTERÍSTICAS DE LA 
+SOLUCIÓN DE SOFTWARE Y LAS NECESIDADES DE LA EMPRESA. 
+ELABORAR PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LAS ESPECIFICACIONES TÉCNICAS 
+DEFINIDAS: 
+*  ELABORA ANÁLISIS COMPARATIVO DE PROVEEDORES CONSIDERANDO COSTOS, CANTIDAD Y 
+ESPECIFICACIONES TÉCNICAS DEFINIDAS. 
+*  ESTIMA COSTOS DE SOFTWARE Y HARDWARE DE ACUERDO CON LAS CARACTERÍSTICAS DEL NEGOCIO. 
+*  DOCUMENTA LA PROPUESTA TÉCNICA SEGÚN LAS ESPECIFICACIONES DE LA SOLUCIÓN DE SOFTWARE. 
+VALIDAR LAS CONDICIONES DE LA PROPUESTA TÉCNICA DEL SOFTWARE DE ACUERDO CON LOS INTERESES 
+DE LAS PARTES: 
+*  REALIZA LA PRESENTACIÓN DE LA PROPUESTA SEGÚN PROPÓSITOS DE LA NEGOCIACIÓN. 
+*  DOCUMENTA LAS SUGERENCIAS DEL CLIENTE SEGÚN LA NECESIDAD DEL NEGOCIO. 
+*  AJUSTA LOS PARÁMETROS TÉCNICOS DE ACUERDO CON LOS RESULTADOS DE LA NEGOCIACIÓN. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TECNÓLOGO O PROFESIONAL EN SISTEMAS O AFINES CON CONOCIMIENTOS EN: NEGOCIACIÓN DE 
+TECNOLOGÍA Y/O GESTIÓN DE PROYECTOS DE TI, GESTIÓN COMERCIAL. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+Página 41 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 42 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.3 Competencias: 
+*  FORMULAR, EJECUTAR Y EVALUAR PROYECTOS. 
+*  TRABAJAR EN EQUIPO. 
+*  ESTABLECER PROCESOS COMUNICATIVOS ASERTIVOS. 
+*  CAPACIDAD EN LA COORDINACIÓN DE EQUIPOS INTERDISCIPLINARES. 
+*  MANEJAR LAS TIC ASOCIADAS AL ÁREA OBJETO DE LA FORMACIÓN. 
+*  ADAPTACIÓN AL CAMBIO. 
+*  INVESTIGAR 
+*  MANEJAR GRUPOS. 
+*  LECTOESCRITURA 
+*  ARGUMENTATIVO Y PROPOSITIVO 
+*  MANEJO DE GRUPOS Y DOMINIO DE ESTRATEGIAS PARA LA SOLUCIÓN DE CONFLICTOS. 
+*  LIDERAZGO 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Evaluar requisitos de la solución de software de acuerdo con metodologías de análisis y estándares 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501093 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ANÁLISIS DE LA ESPECIFICACIÓN DE REQUISITOS DEL SOFTWARE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+288 horas 
+DENOMINACIÓN 
+02  MODELAR LAS FUNCIONES DEL SOFTWARE DE ACUERDO CON EL INFORME DE REQUISITOS. 
+04  VERIFICAR LOS MODELOS REALIZADOS EN LA FASE DE ANÁLISIS DE ACUERDO CON LO ESTABLECIDO EN 
+EL INFORME DE REQUISITOS. 
+01 PLANEAR ACTIVIDADES DE ANÁLISIS DE ACUERDO CON LA METODOLOGÍA SELECCIONADA. 
+03  DESARROLLAR PROCESOS LÓGICOS A TRAVÉS DE LA IMPLEMENTACIÓN DE ALGORITMOS. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Página 42 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 43 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+PLANEAR ACTIVIDADES DE ANÁLISIS DE ACUERDO CON LA METODOLOGÍA SELECCIONADA: 
+*  CARACTERIZAR LA SOLUCIÓN DE SOFTWARE. 
+*  IDENTIFICAR METODOLOGÍAS DE DESARROLLO DE SOFTWARE. 
+*  SELECCIONAR METODOLOGÍA DE DESARROLLO DE SOFTWARE. 
+*  ESTABLECER LAS ACTIVIDADES DE LA METODOLOGÍA SELECCIONADA. 
+MODELAR LAS FUNCIONES DEL SOFTWARE DE ACUERDO CON EL INFORME DE REQUISITOS: 
+*  INTERPRETAR INFORME DE REQUISITOS. 
+*  DIAGRAMAR CASOS DE USO. 
+*  REALIZAR DIAGRAMAS DE ACTIVIDADES. 
+*  GENERAR PLANTILLAS EXTENDIDAS DE CASOS DE USO. 
+*  CONSTRUIR EL MODELO DE DOMINIO DEL SISTEMA. 
+*  CREAR INFORME DE ANÁLISIS. 
+*  ELABORAR EL MODELO ENTIDAD RELACIÓN. 
+DESARROLLAR PROCESOS LÓGICOS A TRAVÉS DE LA IMPLEMENTACIÓN DE ALGORITMOS: 
+*  SOLUCIONAR PROBLEMAS DE LÓGICA PROPOSICIONAL. 
+*  APLICAR ESTRUCTURAS SECUENCIALES EN LA CONSTRUCCIÓN DE ALGORITMOS. 
+*  APLICAR ESTRUCTURAS DE CONTROL EN LA CONSTRUCCIÓN DE ALGORITMOS. 
+*  APLICAR ESTRUCTURAS CÍCLICAS EN LA CONSTRUCCIÓN DE ALGORITMOS. 
+*  CONSTRUIR ALGORITMOS CON FUNCIONES Y PROCEDIMIENTOS. 
+*  CONSTRUIR ALGORITMOS CON ARREGLOS. 
+*  CONSTRUIR ALGORITMOS CON MANEJO DE ARCHIVOS. 
+VERIFICAR LOS MODELOS REALIZADOS EN LA FASE DE ANÁLISIS DE ACUERDO CON LO ESTABLECIDO EN EL 
+INFORME DE REQUISITOS: 
+*  ELABORAR LISTAS DE CHEQUEO PARA VALIDACIÓN 
+*  APLICAR LISTAS DE CHEQUEO PARA VALIDACIÓN 
+*  EVALUAR INFORME DE ANÁLISIS 
+*  AJUSTAR CAMBIOS DE LA DOCUMENTACIÓN DE ANÁLISIS 
+*  REALIZAR PROTOTIPO INICIAL DEL SOFTWARE 
+4.6.2 CONOCIMIENTOS DEL SABER 
+PLANEAR ACTIVIDADES DE ANÁLISIS DE ACUERDO CON LA METODOLOGÍA SELECCIONADA: 
+*  METODOLOGÍAS DE DESARROLLO DE SOFTWARE: CONCEPTO, CLASIFICACIÓN, ROLES, EJEMPLOS. 
+*  METODOLOGÍAS TRADICIONALES: PROCESO UNIFICADO RACIONAL (RUP) 
+*  METODOLOGÍAS ÁGILES: SCRUM, PROGRAMACIÓN EXTREMA (XP), DESARROLLO RÁPIDO DE APLICACIONES 
+(RAD). 
+*  PROYECTOS DE SOFTWARE: CARACTERÍSTICAS, TIPOS, COMPONENTES. 
+*  PLANEACIÓN: DEFINIR Y PRIORIZAR ACTIVIDADES DE ANÁLISIS, FIJAR CRONOGRAMAS Y ENTREGABLES. 
+MODELAR LAS FUNCIONES DEL SOFTWARE DE ACUERDO CON EL INFORME DE REQUISITOS: 
+Página 43 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 44 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  INFORMES DE REQUISITOS: ANÁLISIS, INTERPRETACIÓN Y TOMA DE DECISIONES. 
+*  ANÁLISIS ORIENTADO A OBJETOS: CONCEPTOS DE OBJETO, CLASE, INSTANCIA, MULTIPLICIDAD, 
+ASOCIACIÓN, AGREGACIÓN, COMPOSICIÓN, ACTOR, CASO DE USO, MENSAJES, EXCEPCIONES, 
+CONDICIONES, POST-CONDICIONES, FOCOS DE CONTROL. 
+*  UML: DEFINICIÓN, NOTACIÓN, ELEMENTOS, RELACIONES, DIAGRAMAS, CLASIFICACIÓN. 
+*  DIAGRAMAS UML: CASOS DE USO, ACTIVIDADES, MODELO DE DOMINIO. 
+*  HERRAMIENTAS CASE: DEFINICIÓN, TIPOS, USO. 
+*  MODELO DE DATOS: FUNDAMENTOS DE BASES DE DATOS, MODELO ENTIDAD RELACIÓN. 
+DESARROLLAR PROCESOS LÓGICOS A TRAVÉS DE LA IMPLEMENTACIÓN DE ALGORITMOS: 
+*  LÓGICA MATEMÁTICA: FUNDAMENTOS, LÓGICA PROPOSICIONAL. 
+*  ALGORITMO: CONCEPTO, TIPOS, TÉCNICAS PARA LA FORMULACIÓN DE ALGORITMOS (PSEUDOCÓDIGO, 
+DIAGRAMAS DE FLUJO), ENTIDADES PRIMITIVAS, JERARQUÍA DE OPERADORES, ESTRUCTURAS 
+SECUENCIALES, CONDICIONALES, CÍCLICAS, ARREGLOS, FUNCIONES, PROCEDIMIENTOS, PRUEBA DE 
+ESCRITORIO. 
+*  HERRAMIENTAS PARA CREACIÓN Y PRUEBA DE ALGORITMOS: DFD, LPP O PSEINT, PYTHON. 
+VERIFICAR LOS MODELOS REALIZADOS EN LA FASE DE ANÁLISIS DE ACUERDO CON LO ESTABLECIDO EN EL 
+INFORME DE REQUISITOS: 
+*  INFORME DE ANÁLISIS: ESTRUCTURA, RESULTADOS. 
+*  INSTRUMENTOS DE VERIFICACIÓN: LISTAS DE CHEQUEO. 
+*  TRAZABILIDAD: ARTEFACTOS GENERADOS EN EL ANÁLISIS FRENTE A LOS REQUISITOS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+PLANEAR ACTIVIDADES DE ANÁLISIS DE ACUERDO CON LA METODOLOGÍA SELECCIONADA: 
+*  IDENTIFICA METODOLOGÍAS DE DESARROLLO DE SOFTWARE DE ACUERDO CON LAS CARACTERÍSTICAS 
+DEL SOFTWARE A DESARROLLAR. 
+*  ESTABLECE LAS ACTIVIDADES DE ANÁLISIS DE ACUERDO CON LA METODOLOGÍA SELECCIONADA. 
+MODELAR LAS FUNCIONES DEL SOFTWARE DE ACUERDO CON EL INFORME DE REQUISITOS: 
+*  INTERPRETA EL INFORME DE REQUISITOS PARA MODELAR LAS FUNCIONES DEL SOFTWARE. 
+*  ELABORA DIAGRAMAS DE CASOS DE USO DE ACUERDO CON LOS ESTÁNDARES ACTUALES MEDIANTE 
+LENGUAJE UNIFICADO DE MODELADO (UML). 
+*  REALIZA DIAGRAMAS DE ACTIVIDADES EXPONIENDO DETALLES DE LOS CASOS DE USO. 
+*  GENERA PLANTILLAS EXTENDIDAS DE CASOS DE USO EXPRESANDO LA INTENCIÓN DE LAS ACCIONES A 
+DESARROLLAR. 
+*  REPRESENTA EL NEGOCIO EN TÉRMINO DE CLASES ABSTRACTAS GENERANDO UN MODELO DE DOMINIO 
+CONSISTENTE. 
+*  DOCUMENTA LAS ACTIVIDADES DE ANÁLISIS A TRAVÉS DE UN INFORME. 
+*  ELABORA EL MODELO ENTIDAD RELACIÓN DE ACUERDO CON LOS REQUISITOS DEL SOFTWARE. 
+DESARROLLAR PROCESOS LÓGICOS A TRAVÉS DE LA IMPLEMENTACIÓN DE ALGORITMOS: 
+*  SOLUCIONA PROBLEMAS DE LÓGICA PROPOSICIONAL INCORPORANDO HABILIDADES PROPIAS EN EL 
+Página 44 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 45 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+COMO PROGRAMADOR. 
+*  CREA SOLUCIONES A PROBLEMAS MEDIANTE ALGORITMOS QUE INCLUYEN ESTRUCTURAS SECUENCIALES, 
+CONDICIONALES Y CÍCLICAS 
+*  CREA FUNCIONES Y PROCEDIMIENTOS EN LA SOLUCIÓN DE ALGORITMOS PARA ORDENAR Y SIMPLIFICAR 
+LOS CÓDIGOS. 
+*  MANIPULA ARREGLOS EN DIFERENTES DIMENSIONES PARA DAR SOLUCIÓN A PROBLEMAS REALES. 
+*  ADMINISTRA LA INFORMACIÓN DE LOS USUARIOS POR MEDIO DE ARCHIVOS, PERMITIENDO EL INGRESO, 
+MODIFICACIÓN Y ELIMINACIÓN DE LOS DATOS. 
+VERIFICAR LOS MODELOS REALIZADOS EN LA FASE DE ANÁLISIS DE ACUERDO CON LO ESTABLECIDO EN EL 
+INFORME DE REQUISITOS: 
+*  ELABORA LISTAS DE CHEQUEO PARA VALIDACIÓN DE LA DOCUMENTACIÓN DE ANÁLISIS 
+*  EVALÚA EL INFORME DE ANÁLISIS TENIENDO EN CUENTA LA CALIDAD DE LOS ARTEFACTOS GENERADOS Y 
+LA RESPUESTA AL CUMPLIMIENTO DE REQUISITOS. 
+*  REALIZA MEJORAS A LA DOCUMENTACIÓN DE ANÁLISIS DE ACUERDO CON LOS RESULTADOS DE LA 
+EVALUACIÓN. 
+*  REALIZA PROTOTIPO INICIAL DEL SOFTWARE DE ACUERDO CON LOS CASOS DE USO IDENTIFICADOS. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TECNÓLOGO O PROFESIONAL EN SISTEMAS Y AFINES, CON CONOCIMIENTOS EN LA FASE DE REQUISITOS Y 
+ANÁLISIS DEL CICLO DE VIDA DEL SOFTWARE, INTERPRETACIÓN Y ELABORACIÓN DE INFORMES, UML, 
+METODOLOGÍAS TRADICIONALES Y ÁGILES PARA EL DESARROLLO DE SOFTWARE, MODELOS Y DISCIPLINAS 
+DE CALIDAD DE SOFTWARE. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+*  FORMULAR, EJECUTAR Y EVALUAR PROYECTOS. 
+*  TRABAJAR EN EQUIPO. 
+*  ESTABLECER PROCESOS COMUNICATIVOS ASERTIVOS. 
+*  CAPACIDAD EN LA COORDINACIÓN DE EQUIPOS INTERDISCIPLINARES. 
+*  MANEJAR LAS TIC ASOCIADAS AL ÁREA OBJETO DE LA FORMACIÓN. 
+*  ADAPTACIÓN AL CAMBIO. 
+*  INVESTIGAR 
+*  MANEJAR GRUPOS. 
+*  LECTOESCRITURA 
+*  ARGUMENTATIVO Y PROPOSITIVO 
+*  MANEJO DE GRUPOS Y DOMINIO DE ESTRATEGIAS PARA LA SOLUCIÓN DE CONFLICTOS. 
+*  LIDERAZGO 
+Página 45 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 46 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+GENERAR HÁBITOS SALUDABLES DE VIDA MEDIANTE LA APLICACIÓN DE PROGRAMAS DE 
+ACTIVIDAD FÍSICA EN LOS CONTEXTOS PRODUCTIVOS Y SOCIALES. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+230101507 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+ACTIVIDAD FÍSICA Y HÁBITOS DE VIDA SALUDABLE 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+02  PRACTICAR HÁBITOS SALUDABLES MEDIANTE LA APLICACIÓN DE  FUNDAMENTOS DE NUTRICIÓN E 
+01  DESARROLLAR HABILIDADES PSICOMOTRICES EN EL CONTEXTO PRODUCTIVO Y SOCIAL. 
+03  EJECUTAR ACTIVIDADES DE ACONDICIONAMIENTO FÍSICO ORIENTADAS HACIA EL MEJORAMIENTO DE LA 
+CONDICIÓN FÍSICA EN LOS CONTEXTOS PRODUCTIVO Y SOCIAL. 
+04  IMPLEMENTAR UN PLAN DE ERGONOMÍA Y PAUSAS ACTIVAS SEGÚN LAS CARACTERÍSTICAS DE LA 
+FUNCIÓN PRODUCTIVA. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+*  IDENTIFICA LOS CONCEPTOS BÁSICOS DE ANATOMÍA Y FISIOLOGÍA. 
+*  APLICA  LOS CONCEPTOS BÁSICOS DE LA MIOLOGÍA HUMANA CON BASE EN EL ANÁLISIS DEL MOVIMIENTO. 
+*  INTERPRETA LOS FUNDAMENTOS DE ESTILO DE VIDA SALUDABLE, HIGIENE Y NUTRICIÓN EN LOS 
+CONTEXTOS PRODUCTIVO Y SOCIAL. 
+*  ADMINISTRA UN PLAN DE HIGIENE CORPORAL DENTRO DEL CONTEXTO PRODUCTIVO. 
+*  EJECUTA RUTINAS DE EJERCICIO FÍSICO SEGÚN LAS NECESIDADES DE LOS CONTEXTOS LABORAL Y 
+SOCIAL. 
+*  ESTABLECE PAUSAS DE ACUERDO CON CARGAS DE TRABAJO Y TIEMPOS DE ACTIVIDAD FÍSICA PARA UNA 
+RECUPERACIÓN ADECUADA. 
+*  IDENTIFICA LAS TÉCNICAS DE COORDINACIÓN MOTRIZ  RELACIONADAS CON SU PERFIL OCUPACIONAL. 
+*  SELECCIONA TÉCNICAS QUE LE PERMITEN POTENCIAR SU CAPACIDAD DE REACCIÓN MENTAL Y MEJORAR 
+SUS DESTREZAS MOTORAS SEGÚN LA NATURALEZA DE SU ENTORNO LABORAL. 
+*  APLICA CONCEPTOS BÁSICOS DE ERGONOMÍA Y PAUSAS ACTIVAS DE ACUERDO CON LA NATURALEZA DE 
+LA FUNCIÓN PRODUCTIVA. 
+*  DISCRIMINA EJERCICIOS ESPECÍFICOS PARA LA PREVENCIÓN DE RIESGOS ERGONÓMICOS SEGÚN SU 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  FUNDAMENTOS DE ANATOMÍA Y FISIOLOGÍA. 
+*  CONCEPTOS, CARACTERÍSTICAS Y ESTILOS DE VIDA SALUDABLE. 
+*  CONCEPTOS DE HIGIENE Y SU APLICABILIDAD. 
+*  CONCEPTOS DE NUTRICIÓN, BASES FUNDAMENTALES Y PLANES NUTRICIONALES SEGÚN ACTIVIDAD 
+LABORAL. 
+*  FUNDAMENTOS DE MIOLOGÍA Y ANÁLISIS DEL MOVIMIENTO. 
+Página 46 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 47 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  DEFINICIÓN, CLASES, CONDICIÓN, TIEMPOS DE APLICACIÓN, BENEFICIOS DEL EJERCICIO FÍSICO. 
+*  CONCEPTUALIZACIÓN Y USO DE LA FICHA ANTROPOMÉTRICA. 
+*  CARACTERÍSTICAS DE LA FRECUENCIA CARDIACA. 
+*  DEFINICIÓN, CLASES Y CARACTERÍSTICAS DE LOS TEST FÍSICO ATLÉTICOS. 
+*  DEFINICIÓN Y CARACTERÍSTICAS DEL ACONDICIONAMIENTO FÍSICO. 
+*  APLICACIÓN DE SERIES, REPETICIONES Y CARGAS DE TRABAJO EN EL EJERCICIO FÍSICO. 
+*  DEFINICIÓN Y CARACTERÍSTICAS DE LA DESTREZA MOTORA. 
+*  CONCEPTUALIZACIÓN Y CONDICIONANTES DE LA PSICOMOTRICIDAD. 
+*  DEFINICIÓN DE MOTRICIDAD Y SU CLASIFICACIÓN, BENEFICIOS. 
+*  APLICABILIDAD DE LA ERGONOMÍA Y LA ACTIVIDAD FÍSICA. 
+*  POSTURAS, CLASIFICACIÓN, MANEJO DE CARGAS Y PLANES POSTURALES. 
+*  REHABILITACIÓN Y PLAN DE TRABAJO. 
+*  PAUSAS ACTIVAS, CONCEPTOS Y PRÁCTICAS. 
+*  USO ADECUADO DEL TIEMPO LIBRE. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  IDENTIFICA LOS CONCEPTOS BÁSICOS DE ANATOMÍA Y FISIOLOGÍA. 
+*  APLICA  LOS CONCEPTOS BÁSICOS DE LA MIOLOGÍA HUMANA CON BASE EN EL ANÁLISIS DEL MOVIMIENTO. 
+*  INTERPRETA LOS FUNDAMENTOS DE ESTILO DE VIDA SALUDABLE, HIGIENE Y NUTRICIÓN EN LOS 
+CONTEXTOS PRODUCTIVO Y SOCIAL. 
+*  ADMINISTRA UN PLAN DE HIGIENE CORPORAL DENTRO DEL CONTEXTO PRODUCTIVO. 
+*  EJECUTA RUTINAS DE EJERCICIO FÍSICO SEGÚN LAS NECESIDADES DE LOS CONTEXTOS LABORAL Y 
+SOCIAL. 
+*  ESTABLECE PAUSAS DE ACUERDO CON CARGAS DE TRABAJO Y TIEMPOS DE ACTIVIDAD FÍSICA PARA UNA 
+RECUPERACIÓN ADECUADA. 
+*  IDENTIFICA LAS TÉCNICAS DE COORDINACIÓN MOTRIZ  RELACIONADAS CON SU PERFIL OCUPACIONAL. 
+*  SELECCIONA TÉCNICAS QUE LE PERMITEN POTENCIAR SU CAPACIDAD DE REACCIÓN MENTAL Y MEJORAR 
+SUS DESTREZAS MOTORAS SEGÚN LA NATURALEZA DE SU ENTORNO LABORAL. 
+*  APLICA CONCEPTOS BÁSICOS DE ERGONOMÍA Y PAUSAS ACTIVAS DE ACUERDO CON LA NATURALEZA DE 
+LA FUNCIÓN PRODUCTIVA. 
+*  DISCRIMINA EJERCICIOS ESPECÍFICOS PARA LA PREVENCIÓN DE RIESGOS ERGONÓMICOS SEGÚN SU 
+ACTIVIDAD LABORAL. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+*  LICENCIADO EN EDUCACIÓN FÍSICA 
+*  PROFESIONAL EN CIENCIAS DEL DEPORTE. 
+*  TECNÓLOGO EN ACTIVIDAD FÍSICA O ENTRENAMIENTO DEPORTIVO CON ESPECIALIZACIÓN TECNOLÓGICA 
+RELACIONADA CON EL ÁREA DE CONOCIMIENTO. 
+4.8.2 Experiencia laboral y/o especialización: 
+MÍNIMO 12 MESES DE EXPERIENCIA LABORAL EN EL ÁREA OBJETO DEL DESEMPEÑO. 
+EXPERIENCIA DOCENTE MÍNIMO DE 12 MESES 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+Página 47 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 48 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA 
+*  DOMINIO LECTO-ESCRITURAL 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO 
+*  TRABAJO EN EQUIPO. 
+*  MANEJO DE LAS TIC 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Gestionar procesos propios de la cultura emprendedora y empresarial de acuerdo con el perfil 
+personal y los requerimientos de los contextos productivo y social. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201529 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+CULTURA EMPRENDEDORA Y EMPRESARIAL. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+02  CARACTERIZAR LA IDEA DE NEGOCIO TENIENDO EN CUENTA LAS OPORTUNIDADES Y NECESIDADES DEL 
+SECTOR PRODUCTIVO Y SOCIAL. 
+03  ESTRUCTURAR EL PLAN DE NEGOCIO DE ACUERDO CON LAS CARACTERÍSTICAS EMPRESARIALES Y 
+TENDENCIAS DE MERCADO. 
+04  VALORAR LA PROPUESTA DE NEGOCIO CONFORME CON SU ESTRUCTURA Y NECESIDADES DEL SECTOR 
+PRODUCTIVO Y SOCIAL. 
+01  INTEGRAR ELEMENTOS DE LA CULTURA EMPRENDEDORA TENIENDO EN CUENTA EL PERFIL PERSONAL Y 
+EL CONTEXTO DE DESARROLLO SOCIAL. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+*  IDENTIFICAR LOS ELEMENTOS DE LA CULTURA EMPRENDEDORA. 
+*  RECONOCER CASOS DE ÉXITO EMPRESARIAL. 
+*  DETERMINAR ELEMENTOS PERSONALES EN LA CULTURA EMPRENDEDORA. 
+*  ANALIZAR EL SECTOR PRODUCTIVO DE INFLUENCIA. 
+*  CONSULTAR FUENTES DE INFORMACIÓN PRIMARIAS Y SECUNDARIAS. 
+*  RECOLECTAR INFORMACIÓN DE FORMA ESTADÍSTICA. 
+*  ESTABLECER OPORTUNIDADES DE NEGOCIO. 
+*  ESTABLECER SOLUCIONES A PROBLEMAS O NECESIDADES PLANTEADAS. 
+*  IDENTIFICAR NECESIDADES EMPRESARIALES DEL SECTOR PRODUCTIVO DE INFLUENCIA. 
+*  RECONOCER LAS CARACTERÍSTICAS DEL PERFIL EMPRENDEDOR. 
+*  ANALIZAR EL MERCADO POTENCIAL. 
+Página 48 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 49 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  IDENTIFICAR ESTRUCTURAS ORGANIZACIONALES. 
+*  DEFINIR LA NATURALEZA DE LAS ORGANIZACIONES EMPRESARIALES. 
+*  RECONOCER ESTRUCTURAS OPERACIONALES. 
+*  CONSTRUIR PROPUESTAS EMPRESARIALES. 
+*  ESTABLECER PRINCIPIOS DE GESTIÓN EMPRESARIAL. 
+*  DESARROLLAR HABILIDADES DE GESTIÓN EMPRESARIAL. 
+*  DETERMINAR ESTRATEGIAS DE MERCADEO. 
+*  CONSTRUIR IDEAS DE NEGOCIO. 
+*  EMPLEAR ELEMENTOS DE LA PLANEACIÓN ESTRATÉGICA. 
+*  ABORDAR LOS CONTEXTOS DE INFLUENCIA DE LA IDEA DE NEGOCIO. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  EMPRENDIMIENTO: CONCEPTO, CARACTERÍSTICAS, HABILIDADES, TIPOS,	PERFIL EMPRENDEDOR, 
+RESPONSABILIDAD, COMUNICACIÓN ASERTIVA, AUTOGESTIÓN, AUTONOMÍA, PRINCIPIOS Y VALORES ÉTICOS. 
+*  IDEACIÓN, CONCEPTO, METODOLOGÍAS, TÉCNICAS Y HERRAMIENTAS. 
+*  PROBLEMA, CONCEPTOS, ESTRUCTURA DE PROBLEMA, ALTERNATIVAS CREATIVAS DE SOLUCIÓN. 
+*  IDEAS Y OPORTUNIDADES DE NEGOCIO, MODELAJE DE IDEAS. 
+*  VALIDACIÓN TEMPRANA DE MERCADOS, INNOVACIÓN, CREATIVIDAD, PROCESO CREATIVO. 
+*  EMPRESA, CONCEPTO, CARACTERÍSTICAS, ESTRUCTURA, TIPOLOGÍA, ÁREAS FUNCIONALES, 
+FORMALIZACIÓN. 
+*  MERCADOS, CONCEPTO, TIPOS, ESTRUCTURA, CARACTERÍSTICAS PRODUCTIVIDAD, COMPETITIVIDAD. 
+*  ESTRUCTURA OPERACIONAL, CONCEPTO, PRODUCTO, PROCESO, INFRAESTRUCTURA FÍSICA, 
+REQUERIMIENTOS TÉCNICOS, TECNOLÓGICOS Y HUMANOS. 
+*  ESTRUCTURA ORGANIZACIONAL, CONCEPTO, TIPOLOGÍA, ESTRUCTURA ORGÁNICA. 
+*  PLANEACIÓN ESTRATÉGICA. 
+*  FINANZAS, CONCEPTO, TIPOS, ESTRUCTURA BÁSICA, TENDENCIA Y PROSPECTIVA. 
+*  GESTIÓN EMPRESARIAL, CONCEPTO, HABILIDADES, DESTREZAS, NIVELES, ESTRUCTURA, CONTROL Y 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  APLICA ACCIONES DE EMPRENDIMIENTO DE ACUERDO CON LOS ELEMENTOS DE DESARROLLO SOCIAL Y 
+PERSONAL. 
+*  PLANTEA IDEAS DE NEGOCIO A PARTIR DE OPORTUNIDADES Y NECESIDADES DEL MERCADO CONFORME 
+CON EL ANÁLISIS SECTORIAL. 
+*  ESTRUCTURA UN PERFIL DE EMPRENDEDOR TENIENDO EN CUENTA LAS HABILIDADES Y PRINCIPIOS DE LA 
+GESTIÓN EMPRESARIAL. 
+*  INTEGRA ELEMENTOS BÁSICOS DE INVESTIGACIÓN DE ACUERDO CON LAS NECESIDADES DESCRIPTIVAS 
+DEL PLAN DE NEGOCIO. 
+*  DETERMINA GRUPOS FOCALES DE MERCADO DE ACUERDO CON LA IDEA DE NEGOCIO. 
+*  CONSTRUYE PROPUESTAS EMPRESARIALES Y DE NEGOCIO TENIENDO EN CUENTA LAS NECESIDADES Y 
+SEGMENTACIÓN DEL MERCADO. 
+*  DETERMINA EL IMPACTO DEL PLAN DE NEGOCIO CONFORME CON LAS ATRIBUCIONES Y DINÁMICAS DEL 
+SECTOR PRODUCTIVO. 
+*  ARGUMENTA LA IDEA DE NEGOCIO CONFORME CON LA PROPUESTA Y NECESIDADES DEL SECTOR 
+PRODUCTIVO. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+*  PROFESIONAL EN CIENCIAS ECONÓMICAS O AFINES. 
+*  PROFESIONAL EN ADMINISTRACIÓN DE EMPRESAS O AFINES. 
+*  PROFESIONAL EN MERCADEO O AFINES. 
+*  PROFESIONAL EN INGENIERÍA INDUSTRIAL O AFINES. 
+Página 49 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 50 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (12) MESES ESTARÁN 
+RELACIONADOS  CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+DOCE (12) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO. 
+*  MANEJO DE LAS TIC. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Implementar la solución de software de acuerdo con los requisitos de operación y modelos de 
+referencia 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501097 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+IMPLANTACIÓN DEL SOFTWARE. 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+144 horas 
+DENOMINACIÓN 
+03  DOCUMENTAR EL PROCESO DE IMPLANTACIÓN DE SOFTWARE SIGUIENDO ESTÁNDARES DE CALIDAD. 
+02  DESPLEGAR EL SOFTWARE DE ACUERDO CON LA ARQUITECTURA Y LAS POLÍTICAS ESTABLECIDAS. 
+01  PLANEAR ACTIVIDADES DE IMPLANTACIÓN DEL SOFTWARE DE ACUERDO CON LAS CONDICIONES DEL 
+SISTEMA. 
+04  IMPLANTAR EL SOFTWARE DE ACUERDO CON LOS NIVELES DE SERVICIO ESTABLECIDOS CON EL CLIENTE. 
+Página 50 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 51 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+PLANEAR ACTIVIDADES DE IMPLANTACIÓN DEL SOFTWARE DE ACUERDO CON LAS CONDICIONES DEL 
+SISTEMA: 
+*  PREPARAR LA PLATAFORMA TECNOLÓGICA. 
+*  VERIFICAR EL CUMPLIMIENTO DE LAS CARACTERÍSTICAS MÍNIMAS DE HARDWARE REQUERIDAS PARA EL 
+SOFTWARE DESARROLLADO. 
+*  DISEÑAR EL PLAN DE MIGRACIÓN DE DATOS. 
+*  DISEÑAR EL PLAN DE RESPALDO DE LOS DATOS. 
+*  ELABORAR EL PLAN DE INSTALACIÓN. 
+DESPLEGAR EL SOFTWARE DE ACUERDO CON LA ARQUITECTURA Y LAS POLÍTICAS ESTABLECIDAS: 
+*  GENERAR COPIAS DE RESPALDO DE LOS DATOS. 
+*  CONFIGURAR LOS SERVICIOS REQUERIDOS 
+*  CONFIGURAR EL SOFTWARE EN EL SERVIDOR. 
+*  CONFIGURAR EL SERVIDOR DE BASE DE DATOS. 
+*  HACER LA MIGRACIÓN DE LOS DATOS. 
+*  CONFIGURAR PERMISOS. 
+*  CREAR USUARIOS. 
+*  ASIGNAR ROLES A LOS USUARIOS. 
+*  EJECUTAR SCRIPTS DE INSTALACIÓN. 
+*  CARGAR ARCHIVOS EN EL SITIO DE PUBLICACIÓN. 
+*  REALIZAR PRUEBAS DE FUNCIONALIDAD DEL SOFTWARE. 
+DOCUMENTAR EL PROCESO DE IMPLANTACIÓN DEL SOFTWARE SIGUIENDO ESTÁNDARES DE CALIDAD: 
+*  ELABORAR PLANES DE MANTENIMIENTO Y SOPORTE DEL SOFTWARE 
+*  DOCUMENTAR EL PROCESO DE MIGRACIÓN Y RESPALDO DE LOS DATOS. 
+*  ELABORAR MANUALES DE INSTALACIÓN, TÉCNICO Y DE USUARIO. 
+IMPLANTAR EL SOFTWARE DE ACUERDO CON LOS NIVELES DE SERVICIO ESTABLECIDOS CON EL CLIENTE: 
+*  DISEÑAR EL PLAN DE CAPACITACIÓN DE USUARIOS. 
+*  CAPACITAR A LOS USUARIOS. 
+*  REALIZAR PRUEBAS DE ACEPTACIÓN. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+PLANEAR ACTIVIDADES DE IMPLANTACIÓN DEL SOFTWARE DE ACUERDO CON LAS CONDICIONES DEL 
+SISTEMA: 
+*  HARDWARE DE SERVIDORES: RACK, BLADE, ARREGLOS DE DISCOS. 
+*  SOFTWARE DE SERVIDORES: TIPOS, CARACTERÍSTICAS, LICENCIAMIENTO, MÁQUINAS VIRTUALES 
+(VMWARE), SERVIDORES DE BASES DE DATOS. 
+*  MIGRACIÓN DE DATOS: CONCEPTO, PLANES, COPIAS DE SEGURIDAD, PROCESOS DE RESTAURACIÓN. 
+*  SISTEMAS OPERATIVOS DE SERVIDORES: CONCEPTO, CARACTERÍSTICAS, TIPOS (LINUX, WINDOWS 
+SERVER), LICENCIAMIENTO, REQUISITOS MÍNIMOS DE INSTALACIÓN. 
+Página 51 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 52 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  HOSTING Y DOMINIO: TIPOS, CONFIGURACIONES, GESTORES DE CONTENIDOS. 
+*  FTP: CONCEPTO, TRANSFERENCIA DE ARCHIVOS. 
+DESPLEGAR EL SOFTWARE DE ACUERDO CON LA ARQUITECTURA Y LAS POLÍTICAS ESTABLECIDAS: 
+*  CONTEXTO DEL AMBIENTE DE PRODUCCIÓN: UBICACIÓN DE LOS SERVIDORES, SISTEMA OPERATIVO DE 
+RED, POLÍTICAS DE SEGURIDAD, CONFIGURACIÓN DEL SISTEMA (SERVIDORES, CLIENTES). 
+*  DISTRIBUCIÓN DEL SOFTWARE: PROCEDIMIENTO DE LIBERACIÓN DEL SOFTWARE, ORGANIZACIÓN DE 
+ARCHIVOS 
+*  CLOUD COMPUTING: CONCEPTOS, DISEÑO, TECNOLOGÍAS Y PRINCIPALES HERRAMIENTAS PARA 
+TRABAJAR EN LA NUBE, AZURE, AWS, HEROKU, NODE.JS, SERVICIOS Y PROVEEDORES CLOUD DE 
+RELEVANCIA, COSTOS. 
+DOCUMENTAR EL PROCESO DE IMPLANTACIÓN DE SOFTWARE SIGUIENDO ESTÁNDARES DE CALIDAD: 
+*  MANUALES: TIPOS (TÉCNICO, USUARIO E INSTALACIÓN), AYUDAS EN LÍNEA, TÉCNICAS DE PRESENTACIÓN 
+DE TRABAJOS ESCRITOS, NORMAS ICONTEC / APA, REDACCIÓN, ORTOGRAFÍA. 
+*  INFORMES TÉCNICOS: DEFINICIÓN, CARACTERÍSTICAS, CONTENIDO. 
+IMPLANTAR EL SOFTWARE DE ACUERDO CON LOS NIVELES DE SERVICIO ESTABLECIDOS CON EL CLIENTE: 
+*  CAPACITACIÓN: TÉCNICAS DE COMUNICACIÓN ORAL, PLANES DE CAPACITACIÓN Y ELABORACIÓN DE 
+MATERIALES DE APOYO. 
+*  ACTAS DE ENTREGA: FORMATO, DILIGENCIAMIENTO 
+4.7 CRITERIOS DE EVALUACIÓN 
+PLANEAR ACTIVIDADES DE IMPLANTACIÓN DEL SOFTWARE DE ACUERDO CON LAS CONDICIONES DEL 
+SISTEMA: 
+*  PREPARA LA PLATAFORMA TECNOLÓGICA, CON BASE EN LAS CARACTERÍSTICAS DEL SISTEMA OPERATIVO 
+SELECCIONADO. 
+*  VERIFICA EL CUMPLIMIENTO DE LAS CARACTERÍSTICAS MÍNIMAS DE HARDWARE REQUERIDAS PARA EL 
+SOFTWARE DESARROLLADO. 
+*  DISEÑA EL PLAN DE MIGRACIÓN DE DATOS DE ACUERDO CON LAS CONDICIONES DE IMPLEMENTACIÓN. 
+*  DISEÑA EL PLAN DE RESPALDO DE LOS DATOS PARA MITIGAR RIESGOS. 
+*  ELABORA EL PLAN DE INSTALACIÓN DE ACUERDO CON LAS CARACTERÍSTICAS DEL SOFTWARE A 
+IMPLANTAR. 
+DESPLEGAR EL SOFTWARE DE ACUERDO CON LA ARQUITECTURA Y LAS POLÍTICAS ESTABLECIDAS: 
+*  GENERA LAS COPIAS DE RESPALDO SEGÚN EL PLAN ESTABLECIDO 
+*  CONFIGURA LOS SERVICIOS SEGÚN LOS REQUERIMIENTOS DEL SOFTWARE DESARROLLADO. 
+*  CONFIGURA EL SOFTWARE EN EL SERVIDOR DE ACUERDO CON LOS REQUERIMIENTOS TÉCNICOS. 
+*  MIGRA LOS DATOS SEGÚN EL PLAN. 
+*  REALIZA LA CONFIGURACIÓN DE USUARIOS EN LA PLATAFORMA SEGÚN REQUISITOS DE SEGURIDAD Y 
+PRIVILEGIOS ASIGNADOS. 
+*  PUBLICA LA APLICACIÓN DE ACUERDO CON LA PLATAFORMA DE PRODUCCIÓN. 
+*  REALIZA PRUEBAS DE FUNCIONALIDAD DEL SOFTWARE PARA COMPROBAR LA OPERATIVIDAD. 
+Página 52 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 53 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+DOCUMENTAR EL PROCESO DE IMPLANTACIÓN DE SOFTWARE SIGUIENDO ESTÁNDARES DE CALIDAD: 
+*  ELABORA LOS PLANES DE MANTENIMIENTO Y SOPORTE PARA GARANTIZAR LA FUNCIONALIDAD DEL 
+SOFTWARE EN EL TIEMPO. 
+*  DOCUMENTA EL PLAN DE MIGRACIÓN Y RESPALDO DE LOS DATOS DE ACUERDO CON LOS 
+PROCEDIMIENTOS REALIZADOS. 
+*  ELABORA MANUALES PARA FACILITAR A LOS USUARIOS EL USO Y GESTIÓN DEL SOFTWARE. 
+IMPLANTAR EL SOFTWARE DE ACUERDO CON LOS NIVELES DE SERVICIO ESTABLECIDOS CON EL CLIENTE: 
+*  ELABORA EL PLAN DE CAPACITACIÓN DE LOS USUARIOS TENIENDO EN CUENTA LAS FUNCIONALIDADES 
+DEL SOFTWARE. 
+*  CAPACITA A LOS USUARIOS DEL SOFTWARE DE ACUERDO CON EL PLAN ESTABLECIDO. 
+*  EJECUTA PRUEBAS DE ACEPTACIÓN PARA EL CIERRE Y ENTREGA FORMAL DEL SOFTWARE AL CLIENTE. 
+*  ELABORA EL ACTA DE ENTREGA DE ACUERDO CON LOS NIVELES DE SERVICIO  ESTABLECIDOS CON EL 
+CLIENTE. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TECNÓLOGO O PROFESIONAL EN SISTEMAS Y AFINES, CON CONOCIMIENTOS EN: 
+*  CONFIGURACIÓN DE SERVIDORES. 
+*  COMPUTACIÓN EN LA NUBE. 
+*  MÓVILES. 
+*  LENGUAJES DE PROGRAMACIÓN. 
+*  REDES. 
+*  DISTRIBUCIÓN DE APLICACIONES. 
+*  CAPACITACIÓN DE USUARIOS. 
+*  PRUEBAS DE SOFTWARE. 
+*  DOCUMENTACIÓN. 
+4.8.2 Experiencia laboral y/o especialización: 
+VEINTICUATRO (24) MESES DE EXPERIENCIA: DE LOS CUALES DIECIOCHO (18) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+*  FORMULAR, EJECUTAR Y EVALUAR PROYECTOS. 
+*  TRABAJAR EN EQUIPO. 
+*  ESTABLECER PROCESOS COMUNICATIVOS ASERTIVOS. 
+*  REDACCIÓN DE TEXTOS. 
+*  MANEJAR NORMAS DE PRESENTACIÓN DE TRABAJOS ESCRITOS. 
+*  CAPACIDAD EN LA COORDINACIÓN DE EQUIPOS INTERDISCIPLINARES. 
+*  MANEJAR LAS TIC ASOCIADAS AL ÁREA OBJETO DE LA FORMACIÓN. 
+*  ADAPTACIÓN AL CAMBIO. 
+*  INVESTIGAR. 
+*  MANEJAR GRUPOS. 
+*  LECTOESCRITURA. 
+Página 53 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 54 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+INTERACTUAR EN LENGUA INGLESA DE FORMA ORAL Y ESCRITA DENTRO DE CONTEXTOS 
+SOCIALES Y LABORALES SEGÚN LOS CRITERIOS ESTABLECIDOS POR EL MARCO COMÚN 
+EUROPEO DE REFERENCIA PARA LAS LENGUAS. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240202501 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+INGLES 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+384 horas 
+DENOMINACIÓN 
+06  EXPLICAR LAS FUNCIONES DE SU OCUPACIÓN LABORAL USANDO EXPRESIONES DE ACUERDO AL NIVEL 
+REQUERIDO POR EL PROGRAMA DE FORMACIÓN. 
+04  IMPLEMENTAR ACCIONES DE MEJORA RELACIONADAS CON EL USO DE EXPRESIONES, ESTRUCTURAS Y 
+DESEMPEÑO SEGÚN LOS RESULTADOS DE APRENDIZAJE FORMULADOS PARA EL PROGRAMA. 
+02  INTERCAMBIAR OPINIONES SOBRE SITUACIONES COTIDIANAS Y LABORALES ACTUALES, PASADAS Y 
+FUTURAS EN CONTEXTOS SOCIALES ORALES Y ESCRITOS. 
+05  PRESENTAR UN PROCESO PARA LA REALIZACIÓN DE UNA ACTIVIDAD EN SU QUEHACER LABORAL DE 
+ACUERDO CON LOS PROCEDIMIENTOS ESTABLECIDOS DESDE SU PROGRAMA DE FORMACIÓN. 
+01  COMPRENDER INFORMACIÓN SOBRE SITUACIONES COTIDIANAS Y LABORALES ACTUALES Y FUTURAS A 
+TRAVÉS DE INTERACCIONES SOCIALES DE FORMA ORAL Y ESCRITA. 
+03  DISCUTIR SOBRE POSIBLES SOLUCIONES A PROBLEMAS DENTRO DE UN RANGO VARIADO DE CONTEXTOS 
+SOCIALES Y LABORALES. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+*  ESTABLECER LAS DIFERENCIAS  ENTRE  PRESENTE  SIMPLE  Y  PRESENTE  CONTINUO  EN    TEXTOS 
+SENCILLOS. 
+*  PLANEAR UN ITINERARIO USANDO EL PRESENTE CONTINUO PARA LA ORGANIZACIÓN DE VIAJES, EVENTOS 
+Y/O CELEBRACIONES. 
+*  DESCRIBIR HABITACIONES, CASAS O LUGARES DE TRABAJO USANDO PRONOMBRES POSESIVOS, 
+PREPOSICIONES DE LUGAR, ADJETIVOS CALIFICATIVOS Y VOCABULARIO ESPECÍFICO. 
+*  IDENTIFICAR LAS EDIFICACIONES Y LOS LUGARES DE INTERÉS REGIONAL, NACIONAL E INTERNACIONAL. 
+*  SUMINISTRAR INFORMACIÓN SOBRE LA UBICACIÓN Y LA MANERA DE LLEGAR A UN LUGAR DETERMINADO. 
+*  ESTABLECER DIFERENCIAS Y SIMILITUDES ENTRE PERSONAS, LUGARES O COSAS. 
+*  NARRAR EVENTOS Y ACONTECIMIENTOS USANDO ESTRUCTURAS GRAMATICALES EN EL TIEMPO PASADO Y 
+Página 54 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 55 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  ESCRIBIR TEXTOS SENCILLOS EN ORDEN CRONOLÓGICO SOBRE ACONTECIMIENTOS PASADOS. 
+*  REALIZAR UNA INVITACIÓN FORMAL  A UN EVENTO EMPLEANDO LAS ESTRUCTURAS DEL FUTURO Y WOULD 
+LIKE TO. 
+*  HABLAR DE PLANES FUTUROS PARA SU TRABAJO Y SU CARRERA. 
+*  NARRAR EVENTOS Y ACONTECIMIENTOS USANDO ESTRUCTURAS GRAMATICALES DEL TIEMPO PASADO, 
+PERFECTO Y CONECTORES QUE BRINDEN COHERENCIA Y COHESIÓN AL TEXTO. 
+*  EXPRESAR  HECHOS  REALES  Y  POSIBLES  ACERCA  DE  DIVERSOS  EVENTOS  O  SITUACIONES  DEL 
+ENTORNO. 
+*  OFRECER SOLUCIÓN A SITUACIONES PARTICULARES EN SU ÁREA OCUPACIONAL. 
+*  PARTICIPAR EN UNA LLAMADA TELEFÓNICA (SALUDAR, PREGUNTAR, RESOLVER PREGUNTAS). 
+*  HACER PROPUESTAS Y SOLICITUDES EMPLEANDO VERBOS MODALES Y FÓRMULAS DE CORTESÍA EN 
+DIVERSOS CONTEXTOS. 
+*  RESPONDER A PROPUESTAS Y SOLICITUDES EMPLEANDO VERBOS MODALES Y  FÓRMULAS  DE CORTESÍA 
+EN DIVERSOS CONTEXTOS. 
+*  EXPRESAR INSEGURIDAD SOBRE ALGUNA CUESTIÓN U OPINIÓN. 
+*  ESCRIBIR INFORMES Y REPORTES LABORALES UTILIZANDO FRASES CONCRETAS Y UNA INTRODUCCIÓN, 
+DESARROLLO Y CONCLUSIÓN. 
+*  DESCRIBIR EL PROCESO DE PREPARACIÓN Y EJECUCIÓN DE UNA ACTIVIDAD DE SU    QUEHACER LABORAL. 
+*  DAR INSTRUCCIONES DE UN PROCESO RELACIONADO CON SU QUEHACER LABORAL. 
+*  SEGUIR INSTRUCCIONES DE UN PROCESO RELACIONADO CON SU QUEHACER LABORAL. 
+*  EXPONER LAS ACCIONES Y FUNCIONES RELACIONADAS CON SU CARGO. 
+*  PUNTUALIZAR LAS LABORES ESPECÍFICAS QUE DESARROLLA EN SU LUGAR DE TRABAJO, HACIENDO USO 
+DE VOCABULARIO ADECUADO. 
+*  RECONOCER LOS FONEMAS DEL SISTEMA VOCÁLICO INGLÉS. 
+*  ESTABLECER DIFERENCIAS ENTRE DIVERSOS SONIDOS COMUNES DEL INGLÉS. 
+*  PRONUNCIAR TÉRMINOS Y FRASES HACIENDO USO DE LAS REGLAS DE LA ACENTUACIÓN Y ENTONACIÓN 
+ADECUADA PARA ESTE NIVEL DE FORMACIÓN. 
+*  HACER USO DE ESTRATEGIAS METACOGNITIVAS COMO EL USO DE FLASHCARDS, GRÁFICOS 
+4.6.2 CONOCIMIENTOS DEL SABER 
+GRAMÁTICA 
+*  PRESENTE SIMPLE Y PRESENTE CONTINUO. 
+*  PRESENTE CONTINUO: (USO PARA PLANES Y ACUERDOS). 
+*  PRONOMBRES POSESIVOS. 
+*  PREPOSICIONES DE LUGAR (REVISIÓN). 
+*  PREPOSICIONES DE MOVIMIENTO. 
+*  ADJETIVOS. 
+*  COMPARATIVOS. 
+*  FORMAS VERBALES EN EL PASADO SIMPLE ( REGULAR VERBS AND IRREGULAR VERBS). 
+*  USED TO 
+*  PASADO CONTINUO. 
+*  PASADO SIMPLE Y PASADO CONTINUO. 
+*  FUTURO CON LAS FÓRMULAS: WILL, BE GOING TO. 
+*  DIFERENCIA ENTRE EL PRESENTE PERFECTO Y PASADO SIMPLE. 
+*  CONDICIONAL ZERO Y FIRST. 
+*  WOULD RATHER (USO Y CONTEXTO). 
+*  HAD BETTER, SHOULD , I THINK (THAT), I CONSIDER (THAT),  MUST, COULD. 
+*  SUPERLATIVOS (USO Y CONTEXTO). 
+*  ADVERBIOS DE FORMA Y MANERA. 
+*  CONECTORES. 
+*  VERBOS FRASALES COMUNES. 
+*  CLÁUSULAS DE RELATIVO. 
+Página 55 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 56 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  IMPERATIVO PARA DAR INSTRUCCIONES. 
+*  CONDICIONAL ZERO (IF, WHEN). 
+*  VOCABULARIO. 
+*  ACTIVIDADES DEL TIEMPO LIBRE. 
+*  CELEBRACIONES, COSTUMBRES Y TRADICIONES. 
+*  CUARTOS, LUGARES EN UNA CASA Y SUS OBJETOS. 
+*  TIENDAS Y LUGARES EN LA CIUDAD Y LOS PUEBLOS. 
+*  EDIFICACIONES Y CONSTRUCCIONES. 
+*  APARIENCIA DE LAS PERSONAS. 
+*  COMPORTAMIENTOS Y PERSONALIDADES. 
+*  CUALIDADES Y DEFECTOS PERSONALES. 
+*  EXPRESIONES DE TIEMPO EN EL PASADO Y FUTURO. 
+*  REUNIONES FAMILIARES, ACTIVIDADES DE LA INFANCIA, EVENTOS HISTÓRICOS. 
+*  WHEN Y WHILE. 
+*  NÚMEROS ORDINALES Y CARDINALES. 
+*  CONECTORES (MEANWHILE, SUDDENLY, HOWEVER, THEN, AFTER). 
+*  EVENTOS FORMALES (CONGRESOS, CONFERENCIAS). 
+*  PREPOSICIONES DE TIEMPO  (IN, ON , AT) EN DIFERENTES CONTEXTOS. 
+*  ADVERBIOS (YET, STILL, EVER, ALREADY, JUST, LATELY). 
+*  SINCE, FOR Y AGO. 
+*  VOCABULARIO DE VIAJES. 
+*  FENÓMENOS NATURALES. 
+*  EXPRESIONES DE CORTESÍA PARA INTERCAMBIAR OPINIONES. 
+*  EXPRESIONES IDIOMÁTICAS COMUNES EN CONTEXTOS LABORALES. 
+*  TERMINOLOGÍA TÉCNICA OCUPACIONAL. 
+*  TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN. 
+*  CONECTORES DE SECUENCIA. 
+*  VOCABULARIO Y EXPRESIONES RELACIONADAS CON SU ÁREA OCUPACIONAL. 
+*  VOCABULARIO Y EXPRESIONES RELACIONADAS CON LAS FUNCIONES EN EL ÁREA OCUPACIONAL. 
+*  ELECTRODOMÉSTICOS, MAQUINARIA, INSUMOS Y EQUIPAMIENTO. 
+*  LUGARES DE TRABAJO. 
+*  PRONUNCIACIÓN. 
+*  SUJETO + CONTRACCIONES CON AUXILIARES. 
+*  ACENTUACIÓN EN FRASES (CONTENIDO Y FUNCIONES DE LAS PALABRAS). 
+*  REGLA DE PRONUNCIACIÓN --&#8208;  ED  ENDING, VOICED CONSONANTS VS VOICELESS   CONSONANTS. 
+*  ENTONACIÓN  DE FONEMAS DE SUSTANTIVOS PLURALES. 
+*  FONEMAS VOCÁLICOS. 
+*  DIFERENCIA ENTRE EL SONIDO TH /&#952;/ Y /Ð/ 
+*  ENTONACIÓN PARA PRESENTAR INFORMACIÓN NUEVA. 
+*  ACENTUACIÓN EN FRASES (CONTENIDO Y FUNCIONES DE LAS PALABRAS). 
+*  ACENTUACIÓN DE ÉNFASIS. 
+*  REDUCCIÓN VOCÁLICA. 
+*  INTERNATIONAL PHONETIC ALPHABET (RECONOCIMIENTO DE LOS SÍMBOLOS Y SU PRONUNCIACIÓN). 
+*  ELEVACIÓN Y CAÍDA DE LA ENTONACIÓN EN DIFERENTES TIPOS DE FRASES. 
+*  CONEXIÓN Y ELISIÓN DE SONIDOS CON LOS SUPERLATIVOS. 
+ESTRATEGIAS DE APRENDIZAJE 
+*  USO DE ORGANIZADORES GRÁFICOS (DIAGRAMAS DE FLUJO, MAPAS CONCEPTUALES,  MAPAS MENTALES, 
+ENTRE OTROS). 
+*  USO DE TARJETAS DIDÁCTICAS O FLASHCARDS. 
+*  USO DE PORTAFOLIOS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+Página 56 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 57 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  RECONOCE LA IDEA GENERAL Y DETALLES ESPECÍFICOS EN INTERACCIONES ORALES DE LA VIDA 
+COTIDIANA ARTICULADAS CON CLARIDAD Y UNA VELOCIDAD PROMEDIO. 
+*  RECONOCE LA IDEA GENERAL Y DETALLES  ESPECÍFICOS  EN  TEXTOS  ESCRITOS  DE  LA  VIDA  COTIDIANA 
+ARTICULADOS CON CLARIDAD. 
+*  COMPRENDE INFORMACIÓN CONCRETA RELATIVA A TEMAS COTIDIANOS Y LABORALES EN  TEXTOS 
+ORALES  Y  ESCRITOS. 
+*  DESCRIBE DE MANERA SENCILLA Y CLARA ASUNTOS, ACCIONES, EXPERIENCIAS, SENTIMIENTOS, PLANES 
+RELACIONADOS CON TEMAS DE SU INTERÉS Y COTIDIANIDAD, SIGUIENDO UNA SECUENCIA LINEAL DE 
+ELEMENTOS. 
+*  OFRECE BREVES RAZONAMIENTOS Y EXPLICACIONES DE OPINIONES, PLANES Y ACCIONES. 
+*  SE COMUNICA DE MANERA EFICAZ EN TORNO A TEMÁTICAS COTIDIANAS Y LABORALES SENCILLAS 
+HACIENDO   USO DE UNA ADECUADA PRONUNCIACIÓN, FLUIDEZ, RANGO  DE  VOCABULARIO  Y ESTRUCTURA 
+GRAMATICAL  PARA EL NIVEL PRE INTERMEDIO. 
+*  BRINDA   SOLUCIÓN   A   UN   PROBLEMA   SENCILLA   HACIENDO   USO   DE   UNA   ADECUADA 
+PRONUNCIACIÓN, FLUIDEZ, RANGO DE VOCABULARIO Y ESTRUCTURA GRAMATICAL PARA EL NIVEL PRE 
+INTERMEDIO. 
+*  ENLAZA UNA SERIE DE ELEMENTOS BREVES, CONCRETOS Y SENCILLOS PARA CREAR UNA SECUENCIA 
+COHESIONADA Y LINEAL. 
+*  HACE USO DE VOCABULARIO RELACIONADO CON  FAMILIA,  AFICIONES  E  INTERESES,  TRABAJO, VIAJES Y 
+HECHOS DE ACTUALIDAD, EN TEXTOS ORALES Y ESCRITOS. 
+*  SIGUE INSTRUCCIONES DE UN PROCESO RELACIONADO CON SU QUEHACER LABORAL. 
+*  HACE USO DE TÉRMINOS Y EXPRESIONES RELACIONADAS CON SU ÁMBITO LABORAL ESPECÍFICO. 
+*  ES CAPAZ DE HACER UNA PRESENTACIÓN BREVE Y PREPARADA SOBRE UN TEMA DENTRO  DE  SU 
+ESPECIALIDAD CON LA SUFICIENTE CLARIDAD COMO PARA QUE SE PUEDA SEGUIR SIN DIFICULTAD LA 
+MAYOR PARTE  DEL  TIEMPO  Y  CUYAS  IDEAS  PRINCIPALES  ESTÁN  EXPLICADAS  CON  UNA RAZONABLE 
+PRECISIÓN. 
+*  PARTICIPA EN JUEGOS DE ROL GUIADOS O SITUACIONES SIMULADAS SOBRE SITUACIONES COTIDIANAS Y 
+LABORALES ACTUALES, PASADAS Y FUTURAS EN CONTEXTOS SOCIALES ORALES Y  ESCRITOS. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+PROFESIONAL CON TÍTULO EN LICENCIATURA EN IDIOMAS O PROFESIONAL EN CUALQUIER ÁREA DE 
+CONOCIMIENTO. 
+NIVEL MÍNIMO B2 DE SUFICIENCIA EN INGLÉS, ACREDITADO MEDIANTE UNA DE LAS SIGUIENTES PRUEBAS 
+INTERNACIONALES: 
+*  FCE (FIRST CERTIFICATE IN ENGLISH) BEC (VANTAGE O HIGHER) CELS  (VANTAGE O HIGHER) IELTS (MÍNIMO 
+5,5). 
+*  ISE II (INTEGRATED SKILLS IN ENGLISH) TOEFL PBT (MÍNIMO 567 TOEFL CBT (MÍNIMO 227). 
+*  TOEFL IBT (MÍNIMO 87). 
+*  BULATS (B2 EN TODAS LAS HABILIDADES) CAE (CERTIFICATE IN ADVANCED ENGLISH) CPE (CERTIFICATE OF 
+PROFICIENCY IN ENGLISH) APTIS (B2 EN TODAS LAS HABILIDADES. 
+4.8.2 Experiencia laboral y/o especialización: 
+*  MÍNIMO 12 MESES EN LA ORIENTACIÓN DE PROCESOS DE CAPACITACIÓN O FORMACIÓN EN LA LENGUA 
+EXTRANJERA EN MODALIDAD PRESENCIAL. 
+*  DEMOSTRAR  ALTAS  COMPETENCIAS  ADMINISTRATIVAS  Y  TÉCNICAS  DEL  SISTEMA  DE  GESTIÓN 
+ACADÉMICA Y LMS. 
+*  DOMINIO DEMOSTRADO EN OFIMÁTICA E INTERNET Y/O CIUDADANÍA DIGITAL. 
+*  COMPETENCIAS METODOLÓGICAS PARA LA ORIENTACIÓN DE PROGRAMAS DE FORMACIÓN PARA EL 
+TRABAJO Y  EL DESARROLLO HUMANO. 
+Página 57 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 58 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  HABILIDADES EN COMUNICACIÓN ESCRITA, SOLUCIÓN DE PROBLEMAS, PENSAMIENTO CRÍTICO, 
+ENTENDIMIENTO INTERPERSONAL, TRABAJO EN EQUIPO Y COMPRENSIÓN LECTORA. 
+*  CREATIVO Y PROACTIVO. 
+*  PREFERIBLEMENTE: ESTAR CERTIFICADO EN EL CURSO DE INSTRUCTOR VIRTUAL VIGENTE, ESTABLECIDO 
+POR LA DIRECCIÓN DE FORMACIÓN PROFESIONAL DEL SENA Y/O CERTIFICADO RELACIONADO CON TUTORÍA 
+VIRTUAL EXPEDIDO EN LOS TRES ÚLTIMOS AÑOS. 
+*  PREFERIBLEMENTE: CONOCIMIENTO DE LA METODOLOGÍA DE FORMACIÓN DEL SENA. 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS 
+*  MANEJO DE GRUPOS 
+*  LIDERAZGO 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA 
+*  DOMINIO LECTO-ESCRITURAL 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO 
+*  TRABAJO EN EQUIPO 
+*  MANEJO DE LAS TIC. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Orientar investigación formativa según referentes técnicos 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201064 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+INVESTIGACIÓN 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+04  PROPONER SOLUCIONES A LAS NECESIDADES DEL CONTEXTO SEGÚN RESULTADOS DE LA 
+01  ANALIZAR EL CONTEXTO PRODUCTIVO SEGÚN SUS CARACTERÍSTICAS Y NECESIDADES. 
+03  ARGUMENTAR ASPECTOS TEÓRICOS DEL PROYECTO SEGÚN REFERENTES NACIONALES E 
+02  ESTRUCTURAR EL PROYECTO DE ACUERDO A CRITERIOS DE LA INVESTIGACIÓN. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Página 58 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 59 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  DIFERENCIAR FORMAS DE CONOCIMIENTO. 
+*  DEFINIR LAS TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN. 
+*  FORMULAR EL PROBLEMA DE INVESTIGACIÓN. 
+*  PLANTEAR LA PREGUNTA DE INVESTIGACIÓN. 
+*  CONTEXTUALIZAR LA IMPORTANCIA DE LA INVESTIGACIÓN 
+*  DETERMINAR DE LOS OBJETIVOS DE INVESTIGACIÓN. 
+*  REALIZAR BÚSQUEDAS DE INFORMACIÓN. 
+*  ELABORAR DEL MARCO TEÓRICO DE LA INVESTIGACIÓN. 
+*  APLICAR TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN. 
+*  ELABORAR EL INFORME DE LA INVESTIGACIÓN. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  CONOCIMIENTO: CONCEPTO, TIPOS. 
+*  COSMOVISIÓN: CONCEPTO, PERSPECTIVAS E IMPORTANCIA. 
+*  INVESTIGACIÓN: CONCEPTOS Y ENFOQUES. 
+*  METODOLOGÍAS, MÉTODOS Y TÉCNICAS DE INVESTIGACIÓN: CONCEPTOS Y TIPOS. 
+*  PROYECTOS DE INVESTIGACIÓN: CONCEPTO, TIPOS, ESTRUCTURAS Y PROCEDIMIENTOS. 
+*  IDEAS, PROBLEMAS Y PREGUNTAS DE INVESTIGACIÓN. 
+*  JUSTIFICACIÓN: CONCEPTO, COMPONENTES. 
+*  OBJETIVOS DE INVESTIGACIÓN: CONCEPTO, TIPOS. 
+*  FUENTES DE INFORMACIÓN: DEFINICIÓN, TIPOS Y REFERENCIACIÓN. 
+*  MARCO TEÓRICO: CONCEPTO, TIPOS. 
+*  INFORME DE INVESTIGACIÓN: CARACTERÍSTICAS, TIPOS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  RECONOCE LAS NECESIDADES DEL CONTEXTO, SEGÚN LAS PROBLEMÁTICAS IDENTIFICADAS. 
+*  DESCRIBE EL PROBLEMA DE INVESTIGACIÓN DE ACUERDO A LOS ELEMENTOS OBSERVADOS. 
+*  PLANTEA LOS OBJETIVOS DE LA INVESTIGACIÓN SEGÚN LA PREGUNTA DE INVESTIGACIÓN. 
+*  CONSOLIDA EL PROYECTO DE INVESTIGACIÓN TENIENDO EN CUENTA LA PERTINENCIA Y LOS ALCANCES. 
+*  ELABORA EL MARCO TEÓRICO DE LA INVESTIGACIÓN DE ACUERDO A LOS CONTEXTOS NACIONAL E 
+INTERNACIONAL. 
+*  APLICA TÉCNICAS DE RECOLECCIÓN DE INFORMACIÓN DE ACUERDO A CRITERIOS ESTABLECIDOS POR LA 
+METODOLOGÍA 
+*  COMUNICA LOS RESULTADOS DE LA INVESTIGACIÓN SEGÚN CRITERIOS DE PRESENTACIÓN DE INFORMES. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+PROFESIONAL QUE REALICE Y PARTICIPE EN LAS ÁREAS DE PROYECTOS DE INVESTIGACIÓN Y AFINES. 
+4.8.2 Experiencia laboral y/o especialización: 
+*  DOS (2) AÑOS DE EXPERIENCIA LABORAL EN EL ÁREA. 
+*  SEIS (6) MESES DE EXPERIENCIA DOCENTE. 
+Página 59 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 60 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO 
+*  MANEJO DE LAS TIC 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Razonar cuantitativamente frente a situaciones susceptibles de ser abordadas de manera matemática 
+en contextos laborales, sociales y personales. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201528 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+MATEMÁTICAS 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+03  RESOLVER PROBLEMAS MATEMÁTICOS A PARTIR DE SITUACIONES GENERADAS EN EL CONTEXTO SOCIAL 
+Y PRODUCTIVO. 
+01  IDENTIFICAR MODELOS MATEMÁTICOS DE ACUERDO CON LOS REQUERIMIENTOS DEL PROBLEMA 
+PLANTEADO  EN CONTEXTOS SOCIALES Y PRODUCTIVO. 
+04  PROPONER ACCIONES DE MEJORA FRENTE A LOS RESULTADOS DE LOS PROCEDIMIENTOS MATEMÁTICOS 
+DE ACUERDO CON EL PROBLEMA PLANTEADO. 
+02  PLANTEAR PROBLEMAS MATEMÁTICOS A PARTIR DE SITUACIONES GENERADAS EN EL CONTEXTO SOCIAL 
+Y PRODUCTIVO. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+*  PLANTEAR ECUACIONES. 
+*  PLANTEAR SISTEMAS DE ECUACIONES. 
+*  ESTABLECER RELACIONES DE PROPORCIONALIDAD ENTRE VARIABLES. 
+*  APLICAR CRITERIOS DE SEMEJANZA Y CONGRUENCIA DE FIGURAS. 
+*  APLICAR LOS TEOREMAS DE THALES Y PITÁGORAS. 
+*  REPRESENTAR FUNCIONES EN EL PLANO CARTESIANO. 
+Página 60 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 61 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  CALCULAR PERÍMETROS, ÁREAS Y VOLÚMENES. 
+*  REALIZAR TRANSFORMACIONES GEOMÉTRICAS EN EL PLANO. 
+*  REALIZAR CONVERSIONES DE UNIDADES DE MEDIDA. 
+*  RESOLVER ECUACIONES DE PRIMER Y SEGUNDO GRADO. 
+*  RESOLVER SISTEMAS DE ECUACIONES. 
+*  CONSTRUIR GRÁFICOS ESTADÍSTICOS. 
+*  CALCULAR ELEMENTOS DE FUNCIONES. 
+*  COMPROBAR LOS PROCEDIMIENTOS MATEMÁTICOS. 
+*  VERIFICAR LA SOLUCIÓN DE UNA ECUACIÓN. 
+*  DETERMINAR ERRORES DE CÁLCULOS. 
+*  USAR HERRAMIENTAS COMPUTACIONALES BÁSICAS PARA CÁLCULOS NUMÉRICOS. 
+*  ELABORAR INFERENCIAS. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  NÚMEROS REALES: CONCEPTO, REPRESENTACIONES (FRACCIONES, RAZONES, DECIMALES, 
+PORCENTAJES) Y PROPIEDADES. 
+*  NÚMEROS COMPLEJOS: CONCEPTO, REPRESENTACIONES Y OPERACIONES. 
+*  OPERACIONES ARITMÉTICAS: PROPIEDADES Y ORDEN DE LAS OPERACIONES. 
+*  PROPORCIONALIDAD DIRECTA E INVERSA: CONCEPTO Y REGLA DE TRES. 
+*  GEOMETRÍA: CONCEPTOS, POLÍGONOS, LA CIRCUNFERENCIAS Y SÓLIDOS. 
+*  TRIGONOMETRÍA: CONCEPTOS, RAZONES, TEOREMAS Y APLICACIONES. 
+*  ECUACIONES: MÉTODOS DE SOLUCIÓN. 
+*  SISTEMAS DE ECUACIONES: CONCEPTO, TIPOS Y MÉTODOS DE SOLUCIÓN. 
+*  FUNCIONES: CONCEPTO, REPRESENTACIONES Y TIPOS (POLINÓMICAS, EXPONENCIALES, 
+TRIGONOMÉTRICAS, ETC.). 
+*  VARIABLES ESTADÍSTICAS: CONCEPTO Y TIPOS. 
+*  ESTADÍSTICA DESCRIPTIVA: MEDIDAS DE CENTRALIDAD (MEDIA, MODA Y MEDIANA) Y MEDIDAS DE 
+DISPERSIÓN (VARIANZA Y DESVIACIÓN ESTÁNDAR). 
+*  GRÁFICOS ESTADÍSTICOS: DIAGRAMA DE BARRAS, CIRCULAR, PICTOGRAMAS Y SERIES. 
+*  TEOREMA DE PITÁGORAS Y THALES: CONCEPTO Y APLICACIONES. 
+*  CONVERSIÓN DE UNIDADES Y SISTEMA DE MEDIDAS. 
+*  SEMEJANZA Y CONGRUENCIA DE SUPERFICIES Y CUERPOS. 
+*  TRANSFORMACIONES SOBRE POLÍGONOS: RÍGIDAS (TRASLACIONES, ROTACIONES, REFLEXIONES) Y 
+HOMOTECIAS (AMPLIACIONES Y REDUCCIONES). 
+*  DERIVADA E INTEGRAL DE UNA FUNCIÓN: CONCEPTO Y REGLAS. 
+*  HOJAS DE CÁLCULO: CONCEPTO, SINTAXIS Y APLICACIONES. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  PRESENTA LA RELACIÓN ENTRE DOS CANTIDADES O VARIABLES SEGÚN LOS FUNDAMENTOS 
+MATEMÁTICOS. 
+*  DEFINE EL PROBLEMA A RESOLVER DE ACUERDO CON LAS NECESIDADES DE SU ENTORNO. 
+*  PLANTEA ECUACIONES O SISTEMAS DE ECUACIONES DE ACUERDO CON LA RELACIÓN ENTRE LAS 
+VARIABLES. 
+*  PRESENTA SOLUCIÓN A PROBLEMAS MEDIANTE FIGURAS GEOMÉTRICAS. 
+*  APLICA PROCEDIMIENTOS ARITMÉTICOS Y ALGEBRAICOS SEGÚN EL PROBLEMA PLANTEADO. 
+*  RESUELVE ECUACIONES O SISTEMAS DE ECUACIONES DE ACUERDO CON PRINCIPIOS MATEMÁTICOS. 
+*  CALCULA PERÍMETROS, ÁREAS Y VOLÚMENES DE ACUERDO CON LOS ELEMENTOS DE LA FIGURA 
+GEOMÉTRICA. 
+*  REALIZA CONVERSIONES SEGÚN LAS EQUIVALENCIAS ENTRE SISTEMAS DE MEDIDA. 
+*  REPRESENTA  CONJUNTO DE DATOS DE ACUERDO CON LA VARIABLE ESTADÍSTICA. 
+*  SELECCIONA LAS HERRAMIENTAS COMPUTACIONALES PARA LA VERIFICACIÓN DE LOS RESULTADOS DE 
+Página 61 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 62 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TÍTULO PROFESIONAL UNIVERSITARIO EN DISCIPLINA ACADÉMICA DEL NÚCLEO BÁSICO DE CONOCIMIENTO 
+EN: LICENCIADO EN MATEMÁTICAS O INGENIERO AFÍN AL PROGRAMA DE FORMACIÓN. 
+4.8.2 Experiencia laboral y/o especialización: 
+DOCE (12 ) MESES DE EXPERIENCIA: DE LOS CUALES SEIS (6) MESES  MÍNIMOS EN LABORES DE DOCENCIA. 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO. 
+*  MANEJO DE LAS TIC. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Resultado de Aprendizaje de la Inducción. 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+240201530 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+INDUCCIÓN 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+01  IDENTIFICAR LA DINÁMICA ORGANIZACIONAL DEL SENA Y EL ROL DE LA FORMACIÓN PROFESIONAL 
+INTEGRAL DE ACUERDO CON SU PROYECTO DE VIDA Y EL DESARROLLO PROFESIONAL. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Página 62 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 63 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  IDENTIFICAR EL DESARROLLO HISTÓRICO DEL SENA. 
+*  IDENTIFICAR LA IDENTIDAD CORPORATIVA DEL SENA. 
+*  DESCRIBIR LOS ELEMENTOS QUE CONFORMAN LA IMAGEN CORPORATIVA DEL SENA. 
+*  IDENTIFICAR LA ESTRUCTURA ORGANIZACIONAL DE LA ENTIDAD. 
+*  DESCRIBIR LAS NORMAS DE CONVIVENCIA QUE REGULAN EL COMPORTAMIENTO DEL APRENDIZ, DURANTE 
+EL PROCESO DE FORMACIÓN. 
+*  DESCRIBIR LAS CARACTERÍSTICAS DE LA FORMACIÓN PROFESIONAL INTEGRAL DEL SENA. 
+*  DIFERENCIAR LAS CARACTERÍSTICAS DE LA OFERTA DE PROGRAMAS DE FORMACIÓN PROFESIONAL 
+INTEGRAL. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  MISIÓN, VISIÓN, HISTORIA INSTITUCIONAL, OBJETIVOS DE LA FORMACIÓN PROFESIONAL, PRINCIPIOS 
+ÉTICOS, VALORES ÉTICOS Y PROCEDERES ÉTICOS. 
+*  ELEMENTOS DE LA IMAGEN INSTITUCIONAL: ESCUDO, BANDERA, LOGO SÍMBOLO, HIMNO, ESCARAPELAS. 
+*  ESTRUCTURA ORGANIZACIONAL DEL SERVICIO NACIONAL DE APRENDIZAJE SENA, POLÍTICAS DE 
+BIENESTAR A APRENDICES Y NORMAS DE CONVIVENCIA INTERNA: ALTERNATIVAS PARA EL DESARROLLO DE 
+LA ETAPA PRODUCTIVA. 
+*  ETAPAS DE LA FORMACIÓN: TIPOLOGÍA, CARACTERÍSTICAS, PROCEDIMIENTO. 
+*  MANUAL DE CONVIVENCIA, NORMA ESPECÍFICA DE LOS CENTROS. 
+*  FORMACIÓN PROFESIONAL INTEGRAL: CONCEPTO, PRINCIPIOS Y CARACTERÍSTICAS. 
+*  TIPOS DE OFERTA DE PROGRAMAS DE FORMACIÓN PROFESIONAL Y SUS CARACTERÍSTICAS. 
+*  TIPOS DE CERTIFICADO DE ACUERDO CON LA FORMACIÓN Y DURACIÓN DE LOS PROGRAMAS DE 
+FORMACIÓN. 
+*  DESARROLLO DE COMPETENCIAS EN LA FORMACIÓN PROFESIONAL INTEGRAL: CONCEPTO, TIPOS Y 
+CARACTERÍSTICAS. 
+*  PROYECTO FORMATIVO: CONCEPTO, FASES, ACTIVIDADES, DENOMINACIÓN, OBJETIVOS 
+*  PORTAFOLIO DE EVIDENCIAS: ESTRUCTURA, TIPOS DE EVIDENCIA, FORMATO, CONTENIDOS. 
+*  PLATAFORMAS TECNOLÓGICAS SENA: TUTORIALES SENA: LMS, SOFIA PLUS, SISTEMA VIRTUAL DE 
+APRENDICES (SVA), GESTIÓN CONTRATO DE APRENDIZAJE. CORREO MISENA, PORTALES, REDES SOCIALES 
+DE LA ENTIDAD 
+*  RUTA DE FORMACIÓN: ETAPA LECTIVA, ETAPA PRÁCTICA (ALTERNATIVAS). DURACIÓN, CARACTERÍSTICAS, 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  RECONOCE LA IDENTIDAD INSTITUCIONAL Y LOS PROCEDIMIENTOS ADMINISTRATIVOS Y FORMATIVOS. 
+*  IDENTIFICA LOS COMPONENTES Y ESTRUCTURA DE LA FORMACIÓN PROFESIONAL INTEGRAL SEGÚN EL 
+PROGRAMA DE FORMACIÓN Y SU PERFIL COMO APRENDIZ DEL SENA. 
+*  INCORPORA A SU PROYECTO DE VIDA LAS OPORTUNIDADES OFRECIDAS POR EL SENA. 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+PARA EL DESARROLLO INTEGRAL DE ESTA COMPETENCIA SE REQUIERE LA PARTICIPACIÓN DEL 
+INSTRUCTOR TÉCNICO DEL PROGRAMA DE FORMACIÓN, LOS INSTRUCTORES DE LAS COMPETENCIAS CLAVE 
+Y TRANSVERSALES, EL PROFESIONAL DE DESARROLLO HUMANO, EQUIPO DE BIENESTAR Y LIDERAZGO AL 
+APRENDIZ, RELACIONES CORPORATIVAS, ADMINISTRACIÓN EDUCATIVA, COORDINADORES MISIONALES Y 
+ACADÉMICOS EN COORDINACIÓN CON EL SUBDIRECTOR DE CENTRO. 
+4.8.2 Experiencia laboral y/o especialización: 
+MÍNIMO 12 MESES DE EXPERIENCIA LABORAL EN EL ÁREA OBJETO DEL DESEMPEÑO. 
+Página 63 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 64 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS, VALORES Y PROCEDERES ÉTICOS DE ACUERDO CON EL CÓDIGO DE ÉTICA 
+INSTITUCIONAL. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO. 
+*  MANEJO DE LAS TIC. 
+*  CONOCIMIENTO DE MANUAL DE IDENTIDAD CORPORATIVA SENA. 
+*  CONOCIMIENTO DE LAS POLÍTICAS INSTITUCIONALES PARA EL APRENDIZ. 
+*  CONOCIMIENTO DEL PROCESO GESTIÓN DE LA FORMACIÓN PROFESIONAL INTEGRAL. 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+RESULTADOS DE APRENDIZAJE ETAPA PRACTICA 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+999999999 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+864 horas 
+DENOMINACIÓN 
+APLICAR EN LA RESOLUCIÓN DE PROBLEMAS REALES DEL SECTOR PRODUCTIVO, LOS CONOCIMIENTOS, 
+HABILIDADES Y DESTREZAS PERTINENTES A LAS COMPETENCIAS DEL PROGRAMA DE FORMACIÓN 
+ASUMIENDO ESTRATEGIAS Y METODOLOGÍAS DE AUTOGESTIÓN 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+4.6.2 CONOCIMIENTOS DEL SABER 
+Página 64 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 65 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.7 CRITERIOS DE EVALUACIÓN 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+4.8.2 Experiencia laboral y/o especialización: 
+4.8.3 Competencias: 
+4.	CONTENIDOS CURRICULARES DE LA COMPETENCIA 
+Utilizar herramientas informáticas de acuerdo con las necesidades de manejo de información 
+4.1 NORMA / UNIDAD DE 
+COMPETENCIA 
+220501046 
+4.2 CÓDIGO NORMA DE 
+COMPETENCIA LABORAL 
+4.3 NOMBRE DE LA 
+COMPETENCIA 
+TIC 
+4.5 RESULTADOS DE APRENDIZAJE 
+4.4 DURACIÓN MÁXIMA ESTIMADA PARA EL LOGRO DEL 
+APRENDIZAJE (Horas) 
+48 horas 
+DENOMINACIÓN 
+02  APLICAR FUNCIONALIDADES DE HERRAMIENTAS Y SERVICIOS TIC, DE ACUERDO CON MANUALES DE USO, 
+PROCEDIMIENTOS ESTABLECIDOS Y BUENAS PRÁCTICAS. 
+04  OPTIMIZAR LOS RESULTADOS, DE ACUERDO CON LA VERIFICACIÓN. 
+03  EVALUAR LOS RESULTADOS, DE ACUERDO CON LOS REQUERIMIENTOS. 
+01  ALISTAR HERRAMIENTAS DE TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN (TIC), DE ACUERDO 
+CON LAS NECESIDADES DE PROCESAMIENTO DE INFORMACIÓN Y COMUNICACIÓN. 
+4.6 CONOCIMIENTOS 
+4.6.1 CONOCIMIENTOS DE PROCESO 
+Página 65 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 66 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+*  IDENTIFICAR EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET. 
+*  DISPONER EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET. 
+*  MANEJAR COMPUTADORES, PERIFÉRICOS, TABLETAS, EQUIPOS MÓVILES Y REPRODUCTORES DE MEDIOS 
+ELECTRÓNICOS. 
+*  APLICAR FUNCIONALIDADES DE SISTEMAS OPERATIVOS. 
+*  MANEJAR PROCESADOR DE TEXTO, HOJA DE CÁLCULO, SOFTWARE PARA PRESENTACIONES, 
+DIAGRAMACIÓN, BASES DE DATOS Y PROGRAMAS ESPECÍFICOS. 
+*  UTILIZAR MOTORES DE BÚSQUEDA, NAVEGACIÓN, CORREO ELECTRÓNICO, TRANSFERENCIA DE ARCHIVOS, 
+CHAT, LISTAS DE CORREOS, BLOGS, WIKIS, FOROS WEB, SPACES, GRUPOS DE NOTICIAS, TELEFONÍA IP, 
+TELEVISIÓN IP, COMPRAR EN INTERNET, E-LEARNING, MARKETING DIGITAL, TRABAJO COLABORATIVO, 
+COMPUTACIÓN EN LA NUBE, REDES SOCIALES Y VIDEOCONFERENCIA POR INTERNET. 
+*  MANEJAR HERRAMIENTAS COLABORATIVAS EN INTERNET. 
+*  VALORAR RESULTADOS OBTENIDOS. 
+*  APLICAR PROCESOS DE MEJORA. 
+4.6.2 CONOCIMIENTOS DEL SABER 
+*  TECNOLOGÍA: CONCEPTO, TIPOS, CARACTERÍSTICAS. 
+*  HERRAMIENTAS TIC: CLASES, CARACTERÍSTICAS, USOS. 
+*  TECNOLOGÍAS DE LA INFORMACIÓN Y LA COMUNICACIÓN: CONCEPTO, COMPONENTES, CARACTERÍSTICAS, 
+CLASIFICACIÓN, USOS, TENDENCIAS. 
+*  EQUIPOS Y PERIFÉRICOS TIC: 
+**  COMPUTADOR: CONCEPTO, ARQUITECTURA, FUNCIONAMIENTO, TIPOS, CARACTERÍSTICAS. 
+**  PERIFÉRICOS: CONCEPTO, CLASIFICACIÓN, CARACTERÍSTICAS, FUNCIONAMIENTO. 
+**  OTROS (TABLETAS, EQUIPOS MÓVILES, REPRODUCTORES DE MEDIOS ELECTRÓNICOS): CONCEPTO, 
+FUNCIONAMIENTO, TIPOS, CARACTERÍSTICAS 
+*  REDES DE DATOS: CONCEPTO, CONECTIVIDAD, TIPOS, CARACTERÍSTICAS, USOS, SERVICIOS. 
+*  SOFTWARE: CONCEPTO, HERRAMIENTAS, FUNCIONES, PROPIEDADES. 
+*  TIPOS DE SOFTWARE: 
+**  SOFTWARE DE SISTEMA (SISTEMA OPERATIVO): CONCEPTO, CLASES, FUNCIONES, CARACTERÍSTICAS, 
+USOS. 
+**  SOFTWARE DE APLICACIÓN (PROCESADOR DE TEXTO, HOJA DE CÁLCULO, PROGRAMA DE PRESENTACIÓN, 
+BASE DE DATOS, DIAGRAMACIÓN, SOFTWARE ESPECÍFICO): CONCEPTO, CLASES, FUNCIONES, 
+CARACTERÍSTICAS, USOS. 
+**  SOFTWARE DE DESARROLLO: CONCEPTO, CLASES, FUNCIONES, CARACTERÍSTICAS, USOS. 
+*  INTERNET:  DEFINICIÓN, HISTORIA, EVOLUCIÓN, ARQUITECTURA, UTILIDADES. 
+*  CONEXIÓN: TIPOS, CONFIGURACIÓN, CARACTERÍSTICAS. 
+*  HERRAMIENTAS COLABORATIVAS. 
+*  SERVICIOS DE INTERNET:  (NAVEGACIÓN, CORREO ELECTRÓNICO, TRANSFERENCIA DE ARCHIVOS, 
+BÚSQUEDAS, LISTAS DE CORREOS, GRUPOS DE NOTICIAS, CHATS, BLOGS, WIKIS, FOROS WEB, SPACES, 
+REDES SOCIALES, INTERCAMBIO DE ARCHIVOS P2P, TELEFONÍA VOIP, TELEVISIÓN IPTV, COMPRAR EN 
+INTERNET, E-LEARNING, MARKETING DIGITAL, TRABAJO COLABORATIVO, COMPUTACIÓN EN LA NUBE): 
+CONCEPTO, REQUERIMIENTOS, TIPOS, UTILIDADES, APLICACIONES, VENTAJAS, DESVENTAJAS. 
+*  VERIFICACIÓN DE RESULTADOS: OBJETO, TÉCNICAS. 
+4.7 CRITERIOS DE EVALUACIÓN 
+*  IDENTIFICA EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET, DE ACUERDO CON LAS 
+NECESIDADES DE USO. 
+*  COMPARA EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET, DE ACUERDO CON LAS 
+CARACTERÍSTICAS. 
+*  ESCOGE EQUIPOS TIC, TIPOS DE SOFTWARE Y SERVICIOS DE INTERNET, DE ACUERDO CON LAS 
+NECESIDADES DE PROCESAMIENTO DE INFORMACIÓN Y CARACTERÍSTICAS. 
+*  MANEJA COMPUTADORES, TABLETAS, CELULARES Y OTROS EQUIPOS TIC, DE ACUERDO CON LAS 
+Página 66 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 67 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+FUNCIONALIDADES DE LOS MISMOS. 
+*  APLICA FUNCIONALIDADES DE SISTEMAS OPERATIVOS, DE ACUERDO CON LAS NECESIDADES DE 
+ADMINISTRACIÓN DE LOS RECURSOS DEL EQUIPO. 
+*  MANEJA PROCESADOR DE TEXTO, HOJA DE CÁLCULO, SOFTWARE PARA PRESENTACIONES, 
+DIAGRAMACIÓN, BASES DE DATOS Y SOFTWARE ESPECÍFICO, DE ACUERDO CON LAS FUNCIONALIDADES DE 
+CADA PROGRAMA Y LAS NECESIDADES DE MANEJO DE LA INFORMACIÓN. 
+*  UTILIZA MOTORES DE BÚSQUEDA, NAVEGACIÓN, CORREO ELECTRÓNICO, TRANSFERENCIA DE ARCHIVOS, 
+CHAT, LISTAS DE CORREOS, BLOGS, WIKIS, FOROS WEB, SPACES, GRUPOS DE NOTICIAS, TELEFONÍA IP, 
+TELEVISIÓN IP, COMPRAR EN INTERNET, E-DEARNING, MARKETING DIGITAL, TRABAJO COLABORATIVO, 
+COMPUTACIÓN EN LA NUBE, REDES SOCIALES Y VIDEOCONFERENCIA POR INTERNET, DE ACUERDO CON LAS 
+NECESIDADES DE INFORMACIÓN Y COMUNICACIÓN. 
+*  PARTICIPA EN REDES SOCIALES, DE ACUERDO CON LAS NECESIDADES DE COMUNICACIÓN. 
+*  MANEJA HERRAMIENTAS COLABORATIVAS EN INTERNET, DE ACUERDO CON LAS NECESIDADES DEL 
+EQUIPO DE TRABAJO. 
+*  COMPRUEBA EL FUNCIONAMIENTO DE LOS EQUIPOS, PRODUCTOS O SERVICIOS OBTENIDOS CON EL USO 
+DE HERRAMIENTAS TIC, DE ACUERDO CON LOS RESULTADOS ESPERADOS. 
+*  APLICA PROCESOS DE MEJORA A LOS PRODUCTOS, DE ACUERDO CON LAS COMPROBACIONES 
+4.8 PERFIL DEL INSTRUCTOR 
+4.8.1 Requisitos Académicos: 
+TECNÓLOGO O PROFESIONAL EN ÁREAS AFINES CON TECNOLOGÍAS DE LA INFORMACIÓN Y LA 
+4.8.2 Experiencia laboral y/o especialización: 
+MÍNIMO, DIECIOCHO (18) MESES DE EXPERIENCIA LABORAL, DE LOS CUALES DOCE (12) MESES ESTARÁN 
+RELACIONADOS CON EL EJERCICIO DE LA PROFESIÓN U OFICIO OBJETO DE LA FORMACIÓN PROFESIONAL Y 
+SEIS (6) MESES EN LABORES DE DOCENCIA EN EL ÁREA. 
+4.8.3 Competencias: 
+*  PRÁCTICA DE PRINCIPIOS Y VALORES ÉTICOS UNIVERSALES. 
+*  DISPOSICIÓN AL CAMBIO. 
+*  HABILIDADES INVESTIGATIVAS. 
+*  MANEJO DE GRUPOS. 
+*  LIDERAZGO. 
+*  COMUNICACIÓN EFICAZ Y ASERTIVA. 
+*  DOMINIO LECTO-ESCRITURAL. 
+*  DOMINIO ARGUMENTATIVO Y PROPOSITIVO. 
+*  TRABAJO EN EQUIPO. 
+*  MANEJO DE LAS TIC. 
+4.9 MATERIALES DE FORMACIÓN 
+Tipo Material 
+Descripción del Material 
+Codificación ORIONS 
+Cantidad 
+Unidades 
+Página 67 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 68 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+4.10 REFERENTES BIBLIOGRÁFICOS PARA LA COMPETENCIA DE FORMACIÓN 
+6. CONTROL DEL DOCUMENTO 
+CARGO 
+NOMBRE 
+DEPENDENCIA / RED 
+FECHA 
+NICOLAS CRUZ RIOS 
+APROBAR ANALISIS 
+Autor 
+DIRECCION GENERAL. 
+DIRECCIÓN GENERAL 
+29/10/2019 
+LILIANA MARIA GALEANO ZEA 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE SERVICIOS Y 
+GESTION EMPRESARIAL. 
+REGIONAL ANTIOQUIA 
+29/10/2019 
+RONALD MARTELO 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO PARA LA 
+INDUSTRIA 
+PETROQUIMICA. 
+REGIONAL BOLÍVAR 
+27/11/2019 
+FABIAN JOSE FADUL 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO NACIONAL 
+COLOMBO ALEMAN. 
+REGIONAL ATLÁNTICO 
+27/11/2019 
+FERNELLY CARVAJAL 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE LA 
+INDUSTRIA, LA EMPRESA 
+Y LOS SERVICIOS. 
+REGIONAL HUILA 
+27/11/2019 
+CESAR MARINO CUELLAR 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE LA 
+INDUSTRIA, LA EMPRESA 
+Y LOS SERVICIOS. 
+REGIONAL HUILA 
+27/11/2019 
+HERNANDO FORERO 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO INDUSTRIAL DE 
+MANTENIMIENTO 
+INTEGRAL. REGIONAL 
+SANTANDER 
+27/11/2019 
+JONATHAN GUERRERO 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE 
+TELEINFORMÁTICA Y 
+PRODUCCIÓN 
+INDUSTRIAL. REGIONAL 
+27/11/2019 
+CLAUDIA MARCELA PORRAS 
+ASESOR DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE SERVICIOS Y 
+GESTION EMPRESARIAL. 
+REGIONAL ANTIOQUIA 
+27/11/2019 
+ANA YAQUELINE CHAVARRO 
+EQUIPO DE DISEÑO 
+Autor 
+CENTRO DE 
+27/11/20 
+Página 68 de 
+69 
+25/03/22 03:27 PM 
+
+--- PÁGINA 69 ---
+LÍNEA TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN Y LAS COMUNICACIONES 
+GESTIÓN DE LA INFORMACIÓN 
+RED TECNOLÓGICA: TECNOLOGÍAS DE LA INFORMACIÓN, DISEÑO Y DESARROLLO DE 
+SOFTWARE 
+RED DE CONOCIMIENTO: RED DE CONOCIMIENTO EN INFORMÁTICA, DISEÑO Y DESARROLLO 
+DE SOFTWARE 
+ANA YAQUELINE CHAVARRO 
+CURRICULAR 
+Autor 
+ELECTRICIDAD, 
+ELECTRÓNICA Y 
+TELECOMUNICACIONES. 
+REGIONAL DISTRITO 
+CAPITAL 
+19 
+EMILSEN DEL CARMEN 
+CALDERON 
+ASESOR DISEÑO 
+CURRICULAR 
+Autor 
+CENTRO DE GESTION DE 
+MERCADOS, LOGISTICA Y 
+TECNOLOGIAS DE LA 
+INFORMACION. REGIONAL 
+DISTRITO CAPITAL 
+27/11/2019 
+LUIS GONZALO HENAO HENAO 
+ACTIVAR PROGRAMA 
+Autor 
+DIRECCION GENERAL. 
+DIRECCIÓN GENERAL 
+10/09/2021 
+NICOLAS CRUZ RIOS 
+Aprobación 
+DIRECCION GENERAL. 
+10/12/2019 
+CONTROL DE CAMBIOS 
+CARGO 
+NOMBRE 
+DEPENDENCIA / RED 
+FECHA 
+CARLOS ANDRES GARCIA ARIAS 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+CENTRO DE COMERCIO Y 
+SERVICIOS. REGIONAL 
+CALDAS 
+11/10/2021 
+Responsable 
+de la Revisión 
+EVELIO CHAPARRO MOYANO 
+EQUIPO DE DISEÑO 
+CURRICULAR 
+CENTRO INDUSTRIAL Y DE 
+DESARROLLO 
+EMPRESARIAL DE 
+SOACHA. REGIONAL 
+CUNDINAMARCA 
+09/11/2021 
+Responsable 
+de la Revisión 
+Página 69 de 
+69 
+25/03/22 03:27 PM 
