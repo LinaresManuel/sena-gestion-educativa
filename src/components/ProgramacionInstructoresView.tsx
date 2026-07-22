@@ -1,554 +1,539 @@
-import { useState, useEffect } from "react";
-import { Plus, Trash2, Calendar, User, Search, RefreshCw, Layers, ChevronLeft, ChevronRight } from "lucide-react";
+import { useState, useEffect, useRef, useCallback } from "react";
+import { Calendar, ChevronLeft, ChevronRight, Trash2, X, Save, Layers, CheckCircle2, AlertTriangle, Clock } from "lucide-react";
 import { useHasPermission } from "../lib/auth-context";
 import ConfirmDialog from "./ConfirmDialog";
+import SearchableSelect from "./SearchableSelect";
 
 const DIAS_EN_ESP = ["DOMINGO", "LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES", "SABADO"];
 
+interface Evento {
+  id: number;
+  programacionId: number;
+  fecha: string;
+  horaInicio: number;
+  resultadoId: number;
+  instructorId: number;
+  ambienteId: number;
+  estado: string;
+  resultadoCodigo?: string;
+  resultadoNombre?: string;
+  instructorNombre?: string;
+  instructorApellido?: string;
+  competenciaId?: number;
+}
+
+interface DraftCell {
+  resultadoId: number;
+  instructorId: number;
+  ambienteId: number;
+}
+
 export default function ProgramacionInstructoresView() {
-  const mayVer = useHasPermission('programacion.ver');
   const mayCrear = useHasPermission('programacion.crear');
   const mayEditar = useHasPermission('programacion.editar');
   const mayEliminar = useHasPermission('programacion.eliminar');
-  const [programaciones, setProgramaciones] = useState<any[]>([]);
-  const [programas, setProgramas] = useState<any[]>([]);
-  const [fichas, setFichas] = useState<any[]>([]);
-  const [competencias, setCompetencias] = useState<any[]>([]);
-  const [instructores, setInstructores] = useState<any[]>([]);
-  const [perfiles, setPerfiles] = useState<any[]>([]);
-  const [resultados, setResultados] = useState<any[]>([]);
-  const [allResultados, setAllResultados] = useState<any[]>([]);
 
-  const [programaId, setProgramaId] = useState("");
+  const [regionales, setRegionales] = useState<any[]>([]);
+  const [centros, setCentros] = useState<any[]>([]);
+  const [fichas, setFichas] = useState<any[]>([]);
+  const [programas, setProgramas] = useState<any[]>([]);
+  const [instructores, setInstructores] = useState<any[]>([]);
+  const [allResultados, setAllResultados] = useState<any[]>([]);
+  const [competencias, setCompetencias] = useState<any[]>([]);
+  const [resultados, setResultados] = useState<any[]>([]);
+
+  const [regionalId, setRegionalId] = useState("");
+  const [centroId, setCentroId] = useState("");
   const [fichaId, setFichaId] = useState("");
   const [competenciaId, setCompetenciaId] = useState("");
   const [instructorId, setInstructorId] = useState("");
-  
-  const [selectedResultados, setSelectedResultados] = useState<number[]>([]);
-  
-  const [currentMonthStr, setCurrentMonthStr] = useState<string>(""); // YYYY-MM
-  
-  // { '2023-11-01': { '06:00-07:00': resultadoId } }
-  const [calendario, setCalendario] = useState<{[date: string]: {[hora: string]: number}}>({});
-  
+  const [selectedRAs, setSelectedRAs] = useState<number[]>([]);
+  const [activeRAId, setActiveRAId] = useState<number | null>(null);
+
+  const [currentMonth, setCurrentMonth] = useState(() => {
+    const t = new Date();
+    return `${t.getFullYear()}-${String(t.getMonth() + 1).padStart(2, '0')}`;
+  });
+
+  const [savedEvents, setSavedEvents] = useState<Evento[]>([]);
+  const [draftCells, setDraftCells] = useState<Map<string, DraftCell>>(new Map());
+  const [conflictCells, setConflictCells] = useState<Set<string>>(new Set());
+
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
+  const [notification, setNotification] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
+  const [clearingAll, setClearingAll] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState<Evento | null>(null);
+  const [deletingEventId, setDeletingEventId] = useState<number | null>(null);
 
-  const [editMode, setEditMode] = useState(false);
-  const [clearingCell, setClearingCell] = useState<{dateStr: string; hr: string} | null>(null);
-  const [clearingCalendar, setClearingCalendar] = useState(false);
+  const isDragging = useRef(false);
+  const dragStart = useRef<{ colIdx: number; rowIdx: number } | null>(null);
+  const dragEnd = useRef<{ colIdx: number; rowIdx: number } | null>(null);
+  const [dragPreview, setDragPreview] = useState<{ minCol: number; maxCol: number; minRow: number; maxRow: number } | null>(null);
 
-  useEffect(() => {
-    fetchData();
-    const today = new Date();
-    setCurrentMonthStr(`${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}`);
+  const showMessage = useCallback((text: string, type: 'error' | 'success' = 'error') => {
+    setNotification({ type, text });
+    setTimeout(() => setNotification(null), 4000);
   }, []);
 
-  const fetchData = async () => {
-    setLoading(true);
-    try {
-      const [progRes, instRes, prograInstRes, fichasRes, resultadosRes] = await Promise.all([
-        fetch("/api/programas"),
-        fetch("/api/instructores"),
-        fetch("/api/programacion-instructores"),
-        fetch("/api/fichas"),
-        fetch("/api/resultados")
-      ]);
-      setProgramas(await progRes.json());
-      setInstructores(await instRes.json());
-      setFichas(await fichasRes.json());
-      setAllResultados(await resultadosRes.json());
-      
-      if (prograInstRes.ok) {
-        setProgramaciones(await prograInstRes.json());
-      }
-    } catch (e) {
-      console.error(e);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    if (programaId) {
-      fetch(`/api/programas/${programaId}/competencias`)
-        .then(res => res.json())
-        .then(data => {
-          setCompetencias(data);
-          setCompetenciaId("");
-          setFichaId(""); // reset ficha
-        });
-    } else {
-      setCompetencias([]);
-      setCompetenciaId("");
-      setFichaId("");
-    }
-  }, [programaId]);
+    (async () => {
+      setLoading(true);
+      try {
+        const [regRes, cenRes, ficRes, progRes, insRes, resRes] = await Promise.all([
+          fetch("/api/regionales"), fetch("/api/centros"), fetch("/api/fichas"),
+          fetch("/api/programas"), fetch("/api/instructores"), fetch("/api/resultados"),
+        ]);
+        setRegionales(await regRes.json());
+        setCentros(await cenRes.json());
+        setFichas(await ficRes.json());
+        setProgramas(await progRes.json());
+        setInstructores(await insRes.json());
+        setAllResultados(await resRes.json());
+      } catch (e) { console.error(e); }
+      finally { setLoading(false); }
+    })();
+  }, []);
 
-  useEffect(() => {
-    if (competenciaId) {
-      Promise.all([
-        fetch(`/api/competencias/${competenciaId}/perfiles`),
-        fetch(`/api/competencias/${competenciaId}/resultados`)
-      ]).then(async ([perfRes, resRes]) => {
-        setPerfiles(await perfRes.json());
-        setResultados(await resRes.json());
-        setInstructorId("");
-        setSelectedResultados([]);
-      });
-    } else {
-      setPerfiles([]);
-      setResultados([]);
-      setInstructorId("");
-      setSelectedResultados([]);
-    }
-  }, [competenciaId]);
-
-  const toggleResultado = (id: number) => {
-    setSelectedResultados(prev => 
-      prev.includes(id) ? prev.filter(r => r !== id) : [...prev, id]
-    );
-  };
-
-  const handleCellChange = (dateStr: string, hr: string, val: string) => {
-    const resId = val ? parseInt(val) : null;
-    
-    // Check remaining direct hours 
-    if (resId && val) {
-       const res = resultados.find(r => r.id === resId);
-       const comp = competencias.find(c => c.id === Number(competenciaId));
-       if (res && comp) {
-          const hoursTotal = Math.floor(res.duracionHoras * ((comp.porcentajeHorasDirectas || 80) / 100));
-          const used = countHours(resId);
-          if (used >= hoursTotal) {
-             alert(`No puedes asignar más horas. El tope de horas directas (${hoursTotal}h) para este resultado se ha alcanzado.`);
-             return;
-          }
-       }
-    }
-
-    setCalendario(prev => {
-      const dayData = { ...(prev[dateStr] || {}) };
-      if (!val) {
-        delete dayData[hr];
-      } else {
-        dayData[hr] = resId!;
-      }
-      return {
-        ...prev,
-        [dateStr]: dayData
-      };
-    });
-  };
+  const fichasFiltradas = fichas.filter(f => {
+    if (centroId && f.centroFormacionId !== Number(centroId)) return false;
+    return true;
+  });
 
   const currentFicha = fichas.find(f => f.id === Number(fichaId));
-  const fichaHorario = currentFicha && typeof currentFicha.horario === 'string' 
-    ? JSON.parse(currentFicha.horario) 
-    : (currentFicha?.horario || {});
+  const fichaHorario: Record<string, string[]> = currentFicha?.horario ?? {};
+  const fichaProgramaId = currentFicha?.programaId;
+  const fichaCentroId = currentFicha?.centroFormacionId;
+  const fichaAmbienteId = currentFicha?.ambienteId;
 
-  const uniqueHoursSet = new Set<string>();
-  Object.values(fichaHorario).forEach((hours: any) => {
-    hours.forEach((h: string) => uniqueHoursSet.add(h));
+  useEffect(() => {
+    if (!fichaProgramaId) { setCompetencias([]); setCompetenciaId(""); return; }
+    fetch(`/api/programas/${fichaProgramaId}/competencias`)
+      .then(r => r.json()).then(data => { setCompetencias(data); setCompetenciaId(""); });
+  }, [fichaProgramaId]);
+
+  useEffect(() => {
+    if (!competenciaId) { setResultados([]); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); return; }
+    Promise.all([
+      fetch(`/api/competencias/${competenciaId}/resultados`).then(r => r.json()),
+    ]).then(([ras]) => { setResultados(ras); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); });
+  }, [competenciaId]);
+
+  const perfilesCompatibles = (() => {
+    if (!competenciaId) return [];
+    const perfIds = new Set<number>();
+    instructores.forEach(inst => {
+      if (Array.isArray(inst.perfiles)) inst.perfiles.forEach((p: any) => perfIds.add(p.id));
+    });
+    return Array.from(perfIds);
+  })();
+
+  const instructoresFiltrados = instructores.filter(inst => {
+    if (fichaCentroId && inst.centroFormacionId !== fichaCentroId) return false;
+    return true;
   });
-  const uniqueHours = Array.from(uniqueHoursSet).sort();
 
-  // Generate columns for the month
-  let datesInMonth: Date[] = [];
-  if (currentMonthStr) {
-    const [y, m] = currentMonthStr.split('-');
-    const year = parseInt(y);
-    const month = parseInt(m) - 1; // 0-indexed
-    const d = new Date(year, month, 1);
-    while (d.getMonth() === month) {
+  useEffect(() => {
+    if (!fichaId) { setSavedEvents([]); return; }
+    fetch(`/api/programacion-eventos/ficha/${fichaId}`)
+      .then(r => r.json())
+      .then(grouped => {
+        const flat: Evento[] = [];
+        Object.values(grouped).forEach((hours: any) => {
+          Object.values(hours).forEach((ev: any) => flat.push(ev));
+        });
+        setSavedEvents(flat);
+      })
+      .catch(() => setSavedEvents([]));
+  }, [fichaId, currentMonth]);
+
+  const uniqueHoursSet = new Set<number>();
+  Object.values(fichaHorario).forEach((hours: any) => {
+    hours.forEach((h: string) => uniqueHoursSet.add(parseInt(h.split('-')[0], 10)));
+  });
+  const uniqueHours = Array.from(uniqueHoursSet).sort((a, b) => a - b);
+
+  const datesInMonth: Date[] = [];
+  if (currentMonth && Object.keys(fichaHorario).length > 0) {
+    const [y, m] = currentMonth.split('-').map(Number);
+    const d = new Date(y, m - 1, 1);
+    while (d.getMonth() === m - 1) {
       const dayName = DIAS_EN_ESP[d.getDay()];
-      if (fichaHorario[dayName] && fichaHorario[dayName].length > 0) {
-        datesInMonth.push(new Date(d));
-      }
+      if (fichaHorario[dayName]?.length > 0) datesInMonth.push(new Date(d));
       d.setDate(d.getDate() + 1);
     }
   }
 
-  // Next / Prev month
-  const moveMonth = (delta: number) => {
-    const [y, m] = currentMonthStr.split('-');
-    let date = new Date(parseInt(y), parseInt(m) - 1 + delta, 1);
-    setCurrentMonthStr(`${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`);
-  };
+  const dateToKey = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+  const cellKey = (fecha: string, hora: number) => `${fecha}-${hora}`;
 
-  const handleClearCell = async (dateStr: string, hr: string) => {
-    try {
-      setLoading(true);
-      const resp = await fetch("/api/programacion-instructores/limpiar-celda", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fichaId: Number(fichaId), dateStr, hr })
-      });
-      if (!resp.ok) throw new Error("Error en servidor");
-      const data = await resp.json();
-      console.log("Limpiar result:", data);
-      await fetchData();
-         setCalendario(prev => {
-            const copy = { ...prev };
-            if (copy[dateStr]) {
-              delete copy[dateStr][hr];
-            }
-            return copy;
-         });
-         alert(`Se eliminó la programación guardada (${data.count} registro/s) de la fecha ${dateStr} ${hr}`);
-    } catch(e) {
-      alert("Error al limpiar la celda");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const getEventAtCell = (fecha: string, hora: number): Evento | undefined =>
+    savedEvents.find(e => e.fecha === fecha && e.horaInicio === hora);
 
-  const handleClearCalendar = async () => {
-    if (!fichaId) return;
-    try {
-      setLoading(true);
-      const resp = await fetch(`/api/programacion-instructores/ficha/${fichaId}`, {
-        method: "DELETE"
-      });
-      if (!resp.ok) throw new Error("Error");
-      setCalendario({});
-      await fetchData();
-      alert("Calendario limpiado exitosamente.");
-    } catch(e) {
-      alert("Error al limpiar el calendario");
-    } finally {
-      setLoading(false);
-    }
-  };
+  const getDraftAtCell = (fecha: string, hora: number): DraftCell | undefined =>
+    draftCells.get(cellKey(fecha, hora));
 
-  const handleSave = async () => {
-    if (selectedResultados.length === 0) {
-      alert("Seleccione al menos un resultado de aprendizaje.");
-      return;
-    }
-    if (!fichaId || !instructorId || !programaId || !competenciaId) {
-      alert("Por favor complete todos los parámetros.");
-      return;
-    }
-    
-    setSaving(true);
-    try {
-      const resp = await fetch("/api/programacion-instructores", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          programaId: Number(programaId),
-          fichaId: Number(fichaId),
-          competenciaId: Number(competenciaId),
-          instructorId: Number(instructorId),
-          resultadosIds: selectedResultados,
-          eventos: calendario
-        })
-      });
-      if (!resp.ok) throw new Error("Error saving");
-      
-      // Update global list just in case we need it later
-      fetchData(); 
-      alert("Programación guardada exitosamente.");
-    } catch (e) {
-      console.error(e);
-      alert("Error al guardar programación.");
-    } finally {
-      setSaving(false);
-    }
-  };
+  const isConflict = (fecha: string, hora: number) => conflictCells.has(cellKey(fecha, hora));
 
-
-  const countHours = (resId: number) => {
+  const countHoursForRA = (raId: number) => {
     let count = 0;
-    Object.values(calendario).forEach(day => {
-      Object.values(day).forEach(id => {
-        if (id === resId) count++;
-      });
-    });
-    // Count from global saves too
-    programaciones.forEach(prog => {
-       if (prog.eventos) {
-          const ev = typeof prog.eventos === 'string' ? JSON.parse(prog.eventos) : prog.eventos;
-          Object.values(ev).forEach((day: any) => {
-             Object.values(day).forEach(id => {
-               if (id === resId) count++;
-             });
-          });
-       }
-    });
-
+    savedEvents.forEach(e => { if (e.resultadoId === raId) count++; });
+    draftCells.forEach((v) => { if (v.resultadoId === raId) count++; });
     return count;
   };
 
-  const perfilNames = perfiles.map(p => p.nombre);
-  const perfilIds = perfiles.map(p => p.perfilAcademicoId).filter(Boolean);
-  const instructoresFiltrados = instructores.filter(inst => {
-    if (perfilNames.length === 0) return true;
-    // Intentar match por IDs (nuevo sistema)
-    if (perfilIds.length > 0 && Array.isArray(inst.perfiles)) {
-      return inst.perfiles.some((p: any) => perfilIds.includes(p.id));
-    }
-    // Fallback: match por nombre textual (sistema legacy)
-    if (!inst.requisitosAcademicos || !Array.isArray(inst.requisitosAcademicos)) return false;
-    return inst.requisitosAcademicos.some((req: string) => perfilNames.includes(req));
-  });
-
-  const selectedResultadosInfo = resultados.filter(r => selectedResultados.includes(r.id));
   const selectedComp = competencias.find(c => c.id === Number(competenciaId));
 
+  function handleMouseDown(colIdx: number, rowIdx: number) {
+    if (!mayCrear || !fichaId || !instructorId || !activeRAId) return;
+    isDragging.current = true;
+    dragStart.current = { colIdx, rowIdx };
+    dragEnd.current = { colIdx, rowIdx };
+    setDragPreview({ minCol: colIdx, maxCol: colIdx, minRow: rowIdx, maxRow: rowIdx });
+  }
+
+  function handleMouseEnter(colIdx: number, rowIdx: number) {
+    if (!isDragging.current || !dragStart.current) return;
+    dragEnd.current = { colIdx, rowIdx };
+    setDragPreview({
+      minCol: Math.min(dragStart.current.colIdx, colIdx),
+      maxCol: Math.max(dragStart.current.colIdx, colIdx),
+      minRow: Math.min(dragStart.current.rowIdx, rowIdx),
+      maxRow: Math.max(dragStart.current.rowIdx, rowIdx),
+    });
+  }
+
+  function handleMouseUp() {
+    if (!isDragging.current) return;
+    isDragging.current = false;
+    const preview = dragPreview;
+    setDragPreview(null);
+    dragStart.current = null;
+    dragEnd.current = null;
+    if (!preview || !activeRAId || !instructorId || !fichaAmbienteId) return;
+
+    const newDraft = new Map(draftCells);
+    const newConflicts = new Set(conflictCells);
+
+    for (let c = preview.minCol; c <= preview.maxCol; c++) {
+      for (let r = preview.minRow; r <= preview.maxRow; r++) {
+        const date = datesInMonth[c];
+        if (!date) continue;
+        const hora = uniqueHours[r];
+        if (hora === undefined) continue;
+        const fecha = dateToKey(date);
+        const key = cellKey(fecha, hora);
+        if (getEventAtCell(fecha, hora)) continue;
+        const dayName = DIAS_EN_ESP[date.getDay()];
+        const slotStr = fichaHorario[dayName]?.find((s: string) => parseInt(s.split('-')[0], 10) === hora);
+        if (!slotStr) continue;
+
+        const instructorConflict = savedEvents.some(e => e.instructorId === Number(instructorId) && e.fecha === fecha && e.horaInicio === hora);
+        const ambienteConflict = savedEvents.some(e => e.ambienteId === fichaAmbienteId && e.fecha === fecha && e.horaInicio === hora);
+        if (instructorConflict || ambienteConflict) {
+          newConflicts.add(key);
+        } else {
+          newDraft.set(key, { resultadoId: activeRAId, instructorId: Number(instructorId), ambienteId: fichaAmbienteId });
+        }
+      }
+    }
+    setDraftCells(newDraft);
+    setConflictCells(newConflicts);
+  }
+
+  const handleSave = async () => {
+    if (draftCells.size === 0) return;
+    if (!fichaId || !competenciaId || !instructorId) return;
+    setSaving(true);
+    try {
+      const progResp = await fetch("/api/programacion-instructores", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          programaId: fichaProgramaId, fichaId: Number(fichaId),
+          competenciaId: Number(competenciaId), instructorId: Number(instructorId),
+          resultadosIds: selectedRAs,
+        }),
+      });
+      if (!progResp.ok) throw new Error("Error creando programación");
+      const prog = await progResp.json();
+
+      const eventos = Array.from(draftCells.entries()).map(([key, val]) => {
+        const [fecha, horaStr] = key.split('-');
+        const horaParts = fecha.split('-');
+        return {
+          fecha: `${horaParts[0]}-${horaParts[1]}-${horaParts[2]}`,
+          horaInicio: val.resultadoId ? parseInt(horaStr) : 0,
+          resultadoId: val.resultadoId,
+          instructorId: val.instructorId,
+          ambienteId: val.ambienteId,
+        };
+      });
+
+      const eventosFormatted = Array.from(draftCells.entries()).map(([key, val]) => {
+        const parts = key.split('-');
+        return {
+          fecha: `${parts[0]}-${parts[1]}-${parts[2]}`,
+          horaInicio: Number(parts[3]),
+          resultadoId: val.resultadoId,
+          instructorId: val.instructorId,
+          ambienteId: val.ambienteId,
+        };
+      });
+
+      const evResp = await fetch("/api/programacion-eventos", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ programacionId: prog.id, eventos: eventosFormatted }),
+      });
+      if (!evResp.ok) {
+        const err = await evResp.json();
+        throw new Error(err.conflictos?.join("; ") || err.error || "Error guardando eventos");
+      }
+      setDraftCells(new Map());
+      setConflictCells(new Set());
+      showMessage("Programación guardada correctamente", "success");
+      const grouped = await fetch(`/api/programacion-eventos/ficha/${fichaId}`).then(r => r.json());
+      const flat: Evento[] = [];
+      Object.values(grouped).forEach((hours: any) => { Object.values(hours).forEach((ev: any) => flat.push(ev)); });
+      setSavedEvents(flat);
+    } catch (e: any) {
+      showMessage(e.message || "Error al guardar", "error");
+    } finally { setSaving(false); }
+  };
+
+  const handleDeleteEvent = async (eventId: number) => {
+    try {
+      const resp = await fetch(`/api/programacion-eventos/${eventId}`, { method: "DELETE" });
+      if (!resp.ok) throw new Error("Error eliminando");
+      setSavedEvents(prev => prev.filter(e => e.id !== eventId));
+      setSelectedEvent(null);
+      showMessage("Evento eliminado", "success");
+    } catch (e: any) { showMessage(e.message || "Error", "error"); }
+  };
+
+  const handleUpdateEventEstado = async (eventId: number, estado: string) => {
+    try {
+      const resp = await fetch(`/api/programacion-eventos/${eventId}`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ estado }),
+      });
+      if (!resp.ok) throw new Error("Error actualizando");
+      setSavedEvents(prev => prev.map(e => e.id === eventId ? { ...e, estado } : e));
+      if (selectedEvent?.id === eventId) setSelectedEvent({ ...selectedEvent, estado });
+      showMessage("Estado actualizado", "success");
+    } catch (e: any) { showMessage(e.message || "Error", "error"); }
+  };
+
+  const handleClearAll = async () => {
+    if (!fichaId) return;
+    try {
+      const resp = await fetch(`/api/programacion-instructores/ficha/${fichaId}`, { method: "DELETE" });
+      if (!resp.ok) throw new Error("Error");
+      setSavedEvents([]);
+      setDraftCells(new Map());
+      setConflictCells(new Set());
+      showMessage("Calendario limpiado", "success");
+    } catch { showMessage("Error al limpiar", "error"); }
+  };
+
+  const moveMonth = (delta: number) => {
+    const [y, m] = currentMonth.split('-').map(Number);
+    const d = new Date(y, m - 1 + delta, 1);
+    setCurrentMonth(`${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}`);
+  };
+
+  const estadoColor = (estado: string) => {
+    switch (estado) {
+      case 'EJECUTADO': return 'border-green-300 bg-green-50 text-green-800';
+      case 'CANCELADO': return 'border-red-200 bg-red-50/50 text-red-400 line-through';
+      default: return 'border-blue-300 bg-blue-50 text-blue-800';
+    }
+  };
+
+  const centrosFiltrados = centros.filter(c => !regionalId || c.regionalId === Number(regionalId));
+
+  const toggleRA = (id: number) => {
+    setSelectedRAs(prev => prev.includes(id) ? prev.filter(r => r !== id) : [...prev, id]);
+  };
+
   return (
-    <div className="max-w-screen-xl mx-auto space-y-6 pb-20">
+    <div className="max-w-screen-xl mx-auto space-y-4 pb-20">
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900 tracking-tight">Programación de Instructores</h1>
-          <p className="text-gray-500 mt-1">Coordina el calendario mensual asociando instructores, fechas, horas y resultados de aprendizaje.</p>
+          <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Programación de Instructores</h1>
+          <p className="text-gray-500 text-sm mt-0.5">Asigna instructores y resultados de aprendizaje al calendario de fichas.</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 items-start">
-        
-        {/* Left Column: Form & Selection */}
-        <div className="lg:col-span-1 space-y-4 sticky top-6">
-          <div className="bg-white border rounded-xl overflow-hidden shadow-sm">
-            <div className="border-b bg-gray-50/80 px-4 py-3">
-              <h2 className="font-semibold text-gray-800 flex items-center gap-2">
-                <Layers className="w-5 h-5 text-indigo-600" />
-                Parámetros
-              </h2>
-            </div>
-            
-            <div className="p-4 space-y-4">
-              <div>
-                <label className="block text-xs font-semibold text-gray-700 mb-1">1. Programa</label>
-                <select required value={programaId} onChange={e => setProgramaId(e.target.value)} className="w-full px-2 py-1.5 border rounded bg-white text-sm">
-                  <option value="">Seleccione programa...</option>
-                  {programas.map(p => (
-                    <option key={p.id} value={p.id}>{p.codigo} - {p.denominacion}</option>
-                  ))}
-                </select>
+      {notification && (
+        <div className={`p-3 rounded-lg text-sm border font-medium flex items-center justify-between ${notification.type === 'error' ? 'bg-red-50 text-red-700 border-red-200' : 'bg-green-50 text-green-700 border-green-200'}`}>
+          <span>{notification.text}</span>
+          <button onClick={() => setNotification(null)} className="opacity-70 hover:opacity-100"><X className="w-4 h-4" /></button>
+        </div>
+      )}
+
+      <div className="flex flex-wrap gap-2 items-end bg-white border rounded-xl p-4 shadow-sm">
+        <SearchableSelect label="Regional" value={regionalId} onChange={v => { setRegionalId(v); setCentroId(""); setFichaId(""); }}
+          options={[{ value: "", label: "Todas" }, ...regionales.map((r: any) => ({ value: String(r.id), label: r.nombre }))]} placeholder="Todas" />
+        <SearchableSelect label="Centro" value={centroId} onChange={v => { setCentroId(v); setFichaId(""); }}
+          options={[{ value: "", label: "Todos" }, ...centrosFiltrados.map((c: any) => ({ value: String(c.id), label: c.nombre }))]} placeholder="Todos" />
+        <SearchableSelect label="Ficha" value={fichaId} onChange={v => { setFichaId(v); setCompetenciaId(""); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); }}
+          options={fichasFiltradas.map((f: any) => {
+            const prog = programas.find(p => p.id === f.programaId);
+            return { value: String(f.id), label: `${f.numeroFicha} ${prog ? '- ' + prog.denominacion.substring(0, 25) : ''}` };
+          })} placeholder="Seleccione ficha" />
+        {fichaId && (
+          <SearchableSelect label="Competencia" value={competenciaId} onChange={v => { setCompetenciaId(v); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); }}
+            options={competencias.map((c: any) => ({ value: String(c.id), label: `${c.codigo} - ${c.nombre.substring(0, 30)}` }))} placeholder="Seleccione" />
+        )}
+        {competenciaId && (
+          <SearchableSelect label="Instructor" value={instructorId} onChange={v => setInstructorId(v)}
+            options={instructoresFiltrados.map((i: any) => ({ value: String(i.id), label: `${i.nombres} ${i.apellidos}` }))} placeholder="Seleccione" />
+        )}
+      </div>
+
+      {fichaId && (
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
+          <div className="lg:col-span-1 space-y-4">
+            {resultados.length > 0 && (
+              <div className="bg-white border rounded-xl shadow-sm overflow-hidden">
+                <div className="border-b bg-gray-50/80 px-3 py-2">
+                  <h3 className="font-semibold text-gray-700 text-xs flex items-center gap-1.5"><Layers className="w-3.5 h-3.5 text-indigo-500" /> Resultados de Aprendizaje</h3>
+                </div>
+                <div className="p-2 space-y-1.5 max-h-[400px] overflow-y-auto">
+                  {resultados.map((r: any) => {
+                    const maxH = Math.floor(r.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100));
+                    const used = countHoursForRA(r.id);
+                    const pct = maxH > 0 ? Math.min((used / maxH) * 100, 100) : 0;
+                    const isActive = activeRAId === r.id;
+                    return (
+                      <div key={r.id} className={`rounded-lg border p-2 cursor-pointer transition ${isActive ? 'border-indigo-400 bg-indigo-50 ring-1 ring-indigo-200' : 'border-gray-100 hover:border-gray-200 bg-gray-50/50'}`}
+                        onClick={() => { toggleRA(r.id); if (!selectedRAs.includes(r.id)) setActiveRAId(r.id); }}>
+                        <div className="flex items-start gap-1.5">
+                          <input type="checkbox" className="mt-0.5 rounded text-indigo-600" checked={selectedRAs.includes(r.id)} onChange={() => toggleRA(r.id)} onClick={e => e.stopPropagation()} />
+                          <div className="flex-1 min-w-0">
+                            <div className="text-[10px] font-semibold text-gray-500">{r.fase} — {r.codigo}</div>
+                            <div className="text-xs text-gray-700 leading-tight line-clamp-2" title={r.nombre}>{r.nombre}</div>
+                            <div className="mt-1 flex items-center gap-1.5">
+                              <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                                <div className={`h-full rounded-full transition-all ${pct >= 100 ? 'bg-green-500' : pct >= 70 ? 'bg-amber-400' : 'bg-indigo-400'}`} style={{ width: `${pct}%` }} />
+                              </div>
+                              <span className="text-[9px] text-gray-400 font-mono shrink-0">{used}/{maxH}h</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
+            )}
+          </div>
 
-              {programaId && (
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">2. Ficha</label>
-                  <select required value={fichaId} onChange={e => setFichaId(e.target.value)} className="w-full px-2 py-1.5 border rounded bg-white text-sm">
-                    <option value="">Seleccione ficha...</option>
-                    {fichas.filter(f => f.programaId === Number(programaId)).map(f => (
-                      <option key={f.id} value={f.id}>Ficha: {f.numeroFicha}</option>
-                    ))}
-                  </select>
-                </div>
-              )}
-
-              {fichaId && (
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">3. Competencia</label>
-                  <select required value={competenciaId} onChange={e => setCompetenciaId(e.target.value)} className="w-full px-2 py-1.5 border rounded bg-white text-sm">
-                    <option value="">Seleccione competencia...</option>
-                    {competencias.map(c => (
-                      <option key={c.id} value={c.id}>{c.codigo} - {c.nombre}</option>
-                    ))}
-                  </select>
-                </div>
-              )}
-
-              {competenciaId && (
-                <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1">4. Instructor Sugerido</label>
-                  <select required value={instructorId} onChange={e => setInstructorId(e.target.value)} className="w-full px-2 py-1.5 border rounded bg-white text-sm">
-                    <option value="">Seleccione instructor...</option>
-                    {instructoresFiltrados.map(i => (
-                      <option key={i.id} value={i.id}>{i.nombres} {i.apellidos} ({i.documento})</option>
-                    ))}
-                  </select>
-                  {instructoresFiltrados.length === 0 && (
-                     <p className="text-[10px] text-red-500 leading-tight mt-1">Requiere perfil: {perfilNames.join(", ")}</p>
+          <div className="lg:col-span-4">
+            <div className="bg-white border rounded-xl shadow-sm overflow-hidden">
+              <div className="border-b bg-gray-50/80 px-4 py-2.5 flex items-center justify-between flex-wrap gap-2">
+                <h2 className="font-semibold text-gray-800 text-sm flex items-center gap-1.5">
+                  <Calendar className="w-4 h-4 text-indigo-500" /> Calendario
+                  {currentFicha && <span className="text-gray-400 font-normal">— Ficha {currentFicha.numeroFicha}</span>}
+                </h2>
+                <div className="flex items-center gap-2">
+                  {mayEliminar && fichaId && (
+                    <button onClick={() => setClearingAll(true)} className="px-2.5 py-1 bg-white border border-red-200 text-red-600 hover:bg-red-50 rounded text-xs font-medium">Limpiar Todo</button>
+                  )}
+                  <div className="h-5 w-px bg-gray-200" />
+                  <button onClick={() => moveMonth(-1)} className="p-1 hover:bg-gray-200 rounded"><ChevronLeft className="w-4 h-4" /></button>
+                  <input type="month" value={currentMonth} onChange={e => setCurrentMonth(e.target.value)} className="border rounded px-2 py-1 text-xs font-semibold bg-white" />
+                  <button onClick={() => moveMonth(1)} className="p-1 hover:bg-gray-200 rounded"><ChevronRight className="w-4 h-4" /></button>
+                  {mayCrear && draftCells.size > 0 && (
+                    <>
+                      <div className="h-5 w-px bg-gray-200" />
+                      <button onClick={handleSave} disabled={saving} className="bg-indigo-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-indigo-700 disabled:opacity-50 flex items-center gap-1">
+                        <Save className="w-3 h-3" /> {saving ? 'Guardando...' : `Guardar (${draftCells.size})`}
+                      </button>
+                    </>
                   )}
                 </div>
-              )}
-
-              {instructorId && resultados.length > 0 && (
-                <div className="pt-2 border-t mt-2">
-                  <label className="block text-xs font-semibold text-gray-700 mb-2">5. Resultados a Impartir</label>
-                  <div className="space-y-2 max-h-[300px] overflow-y-auto">
-                    {resultados.map(r => {
-                      const maxHr = Math.floor(r.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100));
-                      const used = countHours(r.id);
-                      return (
-                        <label key={r.id} className="flex items-start gap-2 cursor-pointer bg-gray-50 border p-2 rounded">
-                          <input 
-                            type="checkbox" 
-                            className="mt-0.5 rounded text-indigo-600 focus:ring-indigo-500"
-                            checked={selectedResultados.includes(r.id)}
-                            onChange={() => toggleResultado(r.id)}
-                          />
-                          <div className="text-xs text-gray-700 leading-tight">
-                            <span className="font-semibold block">{r.fase} ({used}/{maxHr}h dir.)</span>
-                            {r.nombre.substring(0,60)}...
-                          </div>
-                        </label>
-                      );
-                    })}
-                  </div>
-                </div>
-              )}
-
-            </div>
-          </div>
-        </div>
-
-        {/* Right Column: Calendar Grid */}
-        <div className="lg:col-span-3 space-y-4">
-          <div className="bg-white border rounded-xl overflow-hidden shadow-sm flex flex-col h-full min-h-[600px]">
-            <div className="border-b bg-gray-50/80 px-5 py-3 flex items-center justify-between">
-              <h2 className="font-semibold text-gray-800 flex items-center gap-2">
-                <Calendar className="w-5 h-5 text-indigo-600" />
-                Calendario Programación
-              </h2>
-               <div className="flex items-center gap-2">
-                 {mayEditar && (
-                   <button 
-                     onClick={() => setEditMode(!editMode)} 
-                     className={`px-3 py-1.5 rounded-md text-sm font-medium transition border ${editMode ? 'bg-indigo-100 border-indigo-300 text-indigo-700' : 'bg-white border-gray-300 text-gray-700 hover:bg-gray-50'}`}>
-                     {editMode ? 'Modo Edición: Activo' : 'Habilitar Edición'}
-                   </button>
-                 )}
-                 {mayEliminar && fichaId && (
-                   <button 
-                     onClick={() => setClearingCalendar(true)}
-                     className="px-3 py-1.5 bg-white border border-red-200 text-red-600 hover:bg-red-50 rounded-md text-sm font-medium transition"
-                     title="Limpiar Todo el Calendario"
-                   >
-                     Limpiar Todo
-                   </button>
-                 )}
-                 <div className="h-6 w-px bg-gray-300 mx-1"></div>
-                 <button onClick={() => moveMonth(-1)} className="p-1.5 hover:bg-gray-200 rounded text-gray-600"><ChevronLeft className="w-5 h-5" /></button>
-                 <input type="month" value={currentMonthStr} onChange={e => setCurrentMonthStr(e.target.value)} className="border rounded px-2 py-1.5 font-semibold text-sm bg-white text-gray-800"/>
-                 <button onClick={() => moveMonth(1)} className="p-1.5 hover:bg-gray-200 rounded text-gray-600"><ChevronRight className="w-5 h-5" /></button>
-                 
-                 {mayCrear && (
-                   <button 
-                    onClick={handleSave}
-                    disabled={saving || Object.keys(calendario).length === 0}
-                    className="bg-indigo-600 text-white px-4 py-1.5 rounded-md text-sm font-medium hover:bg-indigo-700 transition disabled:opacity-50 ml-2">
-                    Guardar Mes
-                   </button>
-                 )}
               </div>
-            </div>
-            
-            <div className="p-0 overflow-x-auto relative">
-               {!fichaId ? (
-                 <div className="flex flex-col items-center justify-center py-24 text-gray-400">
-                    <Calendar className="w-16 h-16 mb-4 text-gray-300" />
-                    <p className="text-lg">Seleccione una ficha a la izquierda para cargar la malla horaria.</p>
-                 </div>
-               ) : datesInMonth.length === 0 ? (
-                 <div className="flex flex-col items-center justify-center py-24 text-gray-400">
-                    <p>No hay clases programadas para este mes en la ficha {currentFicha?.numeroFicha}.</p>
-                 </div>
-               ) : (
-                  <table className="w-full text-left border-collapse text-sm">
+
+              <div className="overflow-x-auto" onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
+                {!fichaId ? (
+                  <div className="flex flex-col items-center justify-center py-20 text-gray-400">
+                    <Calendar className="w-12 h-12 mb-3 text-gray-300" />
+                    <p className="text-sm">Seleccione una ficha para ver el calendario.</p>
+                  </div>
+                ) : datesInMonth.length === 0 ? (
+                  <div className="flex flex-col items-center justify-center py-20 text-gray-400">
+                    <p className="text-sm">No hay días de clase para este mes según el horario de la ficha.</p>
+                  </div>
+                ) : (
+                  <table className="w-full text-left border-collapse text-xs select-none">
                     <thead>
                       <tr>
-                        <th className="border-b border-r bg-gray-100 p-2 font-semibold text-gray-700 text-center min-w-[100px] sticky left-0 z-20">
-                          Horas \ Días
-                        </th>
+                        <th className="border-b border-r bg-gray-100 p-1.5 font-semibold text-gray-600 text-center min-w-[70px] sticky left-0 z-20">Hora</th>
                         {datesInMonth.map((d, i) => (
-                          <th key={i} className="border-b bg-gray-50 border-r border-gray-100 p-2 font-medium text-gray-700 text-center min-w-[150px]">
-                            <div className="text-[10px] font-bold tracking-wider uppercase text-gray-500">{DIAS_EN_ESP[d.getDay()]}</div>
-                            <div className="text-xl font-black text-gray-800 my-0.5">{d.getDate()}</div>
+                          <th key={i} className="border-b bg-gray-50 border-r border-gray-100 p-1 font-medium text-gray-600 text-center min-w-[80px]">
+                            <div className="text-[9px] font-bold tracking-wider uppercase text-gray-400">{DIAS_EN_ESP[d.getDay()].substring(0, 3)}</div>
+                            <div className="text-base font-black text-gray-800">{d.getDate()}</div>
                           </th>
                         ))}
                       </tr>
                     </thead>
                     <tbody>
-                      {uniqueHours.map((hr, i) => (
-                        <tr key={i} className="hover:bg-gray-50/50">
-                          <td className="border-b border-r bg-gray-50 p-2 text-center font-bold text-gray-600 sticky left-0 z-10 whitespace-nowrap shadow-[2px_0_4px_rgba(0,0,0,0.02)]">
-                            {hr}
+                      {uniqueHours.map((hora, rowIdx) => (
+                        <tr key={rowIdx}>
+                          <td className="border-b border-r bg-gray-50 p-1.5 text-center font-bold text-gray-500 sticky left-0 z-10 whitespace-nowrap shadow-[2px_0_4px_rgba(0,0,0,0.02)]">
+                            {String(hora).padStart(2, '0')}:00
                           </td>
-                          {datesInMonth.map((d, j) => {
-                            const dateStr = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+                          {datesInMonth.map((d, colIdx) => {
+                            const fecha = dateToKey(d);
                             const dayName = DIAS_EN_ESP[d.getDay()];
-                            const isHourActiveForDay = fichaHorario[dayName]?.includes(hr);
-                            const currentVal = calendario[dateStr]?.[hr] || "";
-                            
-                            // Check if globally configured by someone else
-                            let externallyConfiguredId: number | null = null;
-                            let externoPId: number | null = null; // para saber de quÃ© id de programacion vino (y quizas instructor)
-                            programaciones.forEach(prog => {
-                               if (prog.fichaId === Number(fichaId) && prog.eventos) {
-                                  const ev = typeof prog.eventos === 'string' ? JSON.parse(prog.eventos) : prog.eventos;
-                                  if (ev[dateStr]?.[hr]) {
-                                     externallyConfiguredId = ev[dateStr][hr];
-                                  }
-                               }
-                            });
-
-                            let externoResInfo = null;
-                            if (externallyConfiguredId) {
-                               externoResInfo = allResultados.find(r => r.id === externallyConfiguredId);
-                            }
-
-                            let selectedResInfo = null;
-                            if (currentVal) {
-                               selectedResInfo = allResultados.find(r => r.id === Number(currentVal));
-                            }
+                            const slotExists = fichaHorario[dayName]?.some((s: string) => parseInt(s.split('-')[0], 10) === hora);
+                            const saved = getEventAtCell(fecha, hora);
+                            const draft = getDraftAtCell(fecha, hora);
+                            const conflict = isConflict(fecha, hora);
+                            const inPreview = dragPreview && colIdx >= dragPreview.minCol && colIdx <= dragPreview.maxCol && rowIdx >= dragPreview.minRow && rowIdx <= dragPreview.maxRow;
+                            const resInfo = saved ? allResultados.find(r => r.id === saved.resultadoId) : draft ? allResultados.find(r => r.id === draft.resultadoId) : null;
 
                             return (
-                              <td key={j} className={isHourActiveForDay ? "border-b border-r border-gray-100 p-1.5" : "border-b border-r border-gray-100 p-1.5 bg-gray-100/50"}>
-                                {externallyConfiguredId ? (
-                                   <div className="w-full text-xs font-medium border border-emerald-200 bg-emerald-50 rounded p-1 text-emerald-800 text-center relative group min-h-[46px] flex flex-col justify-center">
-                                      <div className="text-[10px] font-bold text-emerald-900 border-b border-emerald-200/50 mb-0.5 pb-0.5">
-                                        {externoResInfo?.codigo || 'S/C'}
-                                      </div>
-                                      <div className="text-[9px] leading-tight line-clamp-2" title={externoResInfo?.nombre}>
-                                        {externoResInfo?.nombre || `Res: ${externallyConfiguredId}`}
-                                      </div>
-                                       {mayEliminar && (
-                                         <button 
-                                           title="Eliminar celda guardada"
-                                           onClick={() => setClearingCell({dateStr, hr})}
-                                           className="absolute -top-1.5 -right-1.5 bg-red-500 text-white rounded-full w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-sm hover:scale-110 z-10"
-                                         >
-                                           ✕
-                                         </button>
-                                       )}
-                                   </div>
-                                ) : currentVal ? (
-                                   <div className="w-full text-xs font-medium border border-indigo-200 bg-indigo-50 rounded p-1 text-indigo-800 text-center relative group min-h-[46px] flex flex-col justify-center">
-                                       <div className="text-[10px] font-bold text-indigo-900 border-b border-indigo-200/50 mb-0.5 pb-0.5">
-                                         {selectedResInfo?.codigo || 'S/C'}
-                                       </div>
-                                       <div className="text-[9px] leading-tight line-clamp-2" title={selectedResInfo?.nombre}>
-                                         {selectedResInfo?.nombre || `Res: ${currentVal}`}
-                                       </div>
-                                       {mayEliminar && (
-                                         <button 
-                                           title="Quitar"
-                                           onClick={() => handleCellChange(dateStr, hr, "")}
-                                           className="absolute -top-1.5 -right-1.5 bg-gray-600 text-white rounded-full w-4 h-4 flex items-center justify-center opacity-0 group-hover:opacity-100 transition shadow-sm hover:scale-110 z-10"
-                                         >
-                                           ✕
-                                         </button>
-                                       )}
-                                   </div>
-                                 ) : isHourActiveForDay && mayCrear ? (
-                                   <select 
-                                     className="w-full text-xs box-border resize-none border border-gray-200 rounded p-1 focus:border-indigo-500 outline-none text-gray-700 bg-white min-h-[36px]"
-                                     value=""
-
-                                     onChange={e => handleCellChange(dateStr, hr, e.target.value)}
-                                   >
-                                     <option value="" className="text-gray-400">--- Vacío ---</option>
-                                     {selectedResultadosInfo.map(r => (
-                                       <option key={r.id} value={r.id}>{r.fase} - {r.nombre.substring(0, 30)}...</option>
-                                     ))}
-                                   </select>
+                              <td key={colIdx}
+                                className={`border-b border-r border-gray-100 p-0.5 ${!slotExists ? 'bg-gray-100/60' : 'cursor-pointer'}`}
+                                onMouseDown={() => slotExists && handleMouseDown(colIdx, rowIdx)}
+                                onMouseEnter={() => slotExists && handleMouseEnter(colIdx, rowIdx)}>
+                                {saved ? (
+                                  <div className={`rounded p-1 text-center relative group min-h-[32px] flex flex-col justify-center border ${estadoColor(saved.estado)}`}
+                                    onClick={() => setSelectedEvent(saved)}>
+                                    <div className="text-[9px] font-bold">{resInfo?.codigo || 'RA'}</div>
+                                    <div className="text-[8px] leading-tight line-clamp-1" title={resInfo?.nombre}>{resInfo?.nombre?.substring(0, 20)}</div>
+                                    <div className="text-[8px] opacity-60">{saved.instructorNombre?.[0]}.{saved.instructorApellido?.[0]}</div>
+                                    {mayEliminar && (
+                                      <button onClick={e => { e.stopPropagation(); setDeletingEventId(saved.id); }}
+                                        className="absolute -top-1 -right-1 bg-red-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-[8px]">✕</button>
+                                    )}
+                                  </div>
+                                ) : draft ? (
+                                  <div className="rounded p-1 text-center border border-indigo-300 bg-indigo-100 text-indigo-700 min-h-[32px] flex flex-col justify-center relative group">
+                                    <div className="text-[9px] font-bold">{resInfo?.codigo || 'RA'}</div>
+                                    <div className="text-[8px] leading-tight line-clamp-1">{resInfo?.nombre?.substring(0, 20)}</div>
+                                    <button onClick={() => setDraftCells(prev => { const n = new Map(prev); n.delete(cellKey(fecha, hora)); return n; })}
+                                      className="absolute -top-1 -right-1 bg-gray-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-[8px]">✕</button>
+                                  </div>
+                                ) : conflict ? (
+                                  <div className="rounded p-1 text-center border border-amber-300 bg-amber-50 text-amber-600 min-h-[32px] flex items-center justify-center">
+                                    <AlertTriangle className="w-3 h-3" />
+                                  </div>
+                                ) : inPreview && slotExists && activeRAId ? (
+                                  <div className="rounded p-1 text-center border border-indigo-200 bg-indigo-50/60 text-indigo-400 min-h-[32px] flex items-center justify-center">
+                                    <div className="text-[9px]">{allResultados.find(r => r.id === activeRAId)?.codigo}</div>
+                                  </div>
+                                ) : slotExists ? (
+                                  <div className="min-h-[32px] flex items-center justify-center text-gray-200 hover:bg-indigo-50/30 rounded transition">
+                                    <span className="text-[10px]">+</span>
+                                  </div>
                                 ) : (
-                                  <div className="text-center text-gray-300 text-xl font-light">-</div>
+                                  <div className="min-h-[32px]" />
                                 )}
                               </td>
                             );
@@ -557,27 +542,64 @@ export default function ProgramacionInstructoresView() {
                       ))}
                     </tbody>
                   </table>
-               )}
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
+
+      {selectedEvent && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-black/20 flex items-center justify-center z-50" onClick={() => setSelectedEvent(null)}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b">
+              <h3 className="font-semibold text-gray-800">Detalle del Evento</h3>
+              <button onClick={() => setSelectedEvent(null)} className="text-gray-400 hover:text-gray-600"><X className="w-4 h-4" /></button>
+            </div>
+            <div className="p-4 space-y-3">
+              <div className="grid grid-cols-2 gap-2 text-xs">
+                <div><span className="text-gray-400">Fecha:</span> <span className="font-medium">{selectedEvent.fecha}</span></div>
+                <div><span className="text-gray-400">Hora:</span> <span className="font-medium">{String(selectedEvent.horaInicio).padStart(2, '0')}:00</span></div>
+                <div><span className="text-gray-400">RA:</span> <span className="font-medium">{selectedEvent.resultadoCodigo} — {selectedEvent.resultadoNombre?.substring(0, 30)}</span></div>
+                <div><span className="text-gray-400">Instructor:</span> <span className="font-medium">{selectedEvent.instructorNombre} {selectedEvent.instructorApellido}</span></div>
+              </div>
+              <div>
+                <label className="block text-xs font-medium text-gray-500 mb-1">Estado</label>
+                <div className="flex gap-2">
+                  {['PLANIFICADO', 'EJECUTADO', 'CANCELADO'].map(est => (
+                    <button key={est} onClick={() => mayEditar && handleUpdateEventEstado(selectedEvent.id, est)}
+                      className={`px-3 py-1.5 rounded-lg text-xs font-medium border transition ${selectedEvent.estado === est ? estadoColor(est) + ' ring-2 ring-offset-1 ring-current' : 'border-gray-200 text-gray-500 hover:bg-gray-50'}`}>
+                      {est === 'PLANIFICADO' && <Clock className="w-3 h-3 inline mr-1" />}
+                      {est === 'EJECUTADO' && <CheckCircle2 className="w-3 h-3 inline mr-1" />}
+                      {est === 'CANCELADO' && <X className="w-3 h-3 inline mr-1" />}
+                      {est}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 p-4 border-t">
+              <button onClick={() => setSelectedEvent(null)} className="px-3 py-1.5 text-xs text-gray-600 bg-gray-100 hover:bg-gray-200 rounded-lg">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      )}
 
       <ConfirmDialog
-        isOpen={clearingCell !== null}
-        onClose={() => setClearingCell(null)}
-        onConfirm={() => { if (clearingCell) { handleClearCell(clearingCell.dateStr, clearingCell.hr); setClearingCell(null); } }}
-        title="Eliminar Celda"
-        message={`¿Estás seguro de que deseas eliminar la programación guardada del ${clearingCell?.dateStr} ${clearingCell?.hr}?`}
+        isOpen={deletingEventId !== null}
+        onClose={() => setDeletingEventId(null)}
+        onConfirm={() => { if (deletingEventId !== null) handleDeleteEvent(deletingEventId); setDeletingEventId(null); }}
+        title="Eliminar Evento"
+        message="¿Eliminar este evento de programación?"
         confirmText="Eliminar"
         danger
       />
       <ConfirmDialog
-        isOpen={clearingCalendar}
-        onClose={() => setClearingCalendar(false)}
-        onConfirm={() => { handleClearCalendar(); setClearingCalendar(false); }}
-        title="Limpiar Todo el Calendario"
-        message="¿ATENCIÓN: Estás seguro de borrar TODA la programación guardada para esta Ficha? Esta acción no se puede deshacer."
+        isOpen={clearingAll}
+        onClose={() => setClearingAll(false)}
+        onConfirm={() => { handleClearAll(); setClearingAll(false); }}
+        title="Limpiar Todo"
+        message="¿Eliminar TODA la programación de esta ficha? Esta acción no se puede deshacer."
         confirmText="Limpiar Todo"
         danger
       />

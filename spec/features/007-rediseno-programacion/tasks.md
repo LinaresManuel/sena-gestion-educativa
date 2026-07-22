@@ -69,35 +69,35 @@
 
 ## Fase 9: Frontend — ProgramacionInstructoresView (rediseño completo)
 
-- [ ] 9.1 Definir tipos TypeScript: `ProgramacionEvento`, `ConflictInfo`, `PanelRAState`
-- [ ] 9.2 Implementar wizard de selección ficha-first: `SearchableSelect` Regional → Centro → Ficha con cascada
-- [ ] 9.3 Al seleccionar ficha: cargar programa, centro, ambiente, horario, competencias del programa y eventos existentes
-- [ ] 9.4 Implementar `SearchableSelect` Competencia (de las del programa de la ficha)
-- [ ] 9.5 Implementar `SearchableSelect` Instructor (filtrado por centro de la ficha y perfiles compatibles con la competencia; badge de disponibilidad)
-- [ ] 9.6 Implementar selector de RAs (checkbox/multi-select de las RAs de la competencia seleccionada)
-- [ ] 9.7 Implementar calendario con drag-select rectangular (patrón de FichasView): mousedown inicia, mouseenter extiende, mouseup confirma
-- [ ] 9.8 Renderizar celdas vacías seleccionables dentro del horario de la ficha
-- [ ] 9.9 Renderizar celdas ocupadas con color por estado: azul=PLANIFICADO, verde=EJECUTADO, rojo translúcido=CANCELADO
-- [ ] 9.10 Mostrar en cada celda ocupada: código RA o iniciales instructor (texto compacto)
-- [ ] 9.11 Implementar tooltip/hover en celda ocupada: instructor nombre, competencia, RA, ambiente, estado
-- [ ] 9.12 Implementar click en celda ocupada → modal de detalle con opciones: editar estado, cambiar RA, eliminar evento
-- [ ] 9.13 Implementar panel lateral de RAs: lista de RAs con progreso `asignadas / requeridas` (filtrado por ficha)
-- [ ] 9.14 Click en RA del panel → lo activa como RA actual para el próximo drag-select
-- [ ] 9.15 Al soltar selección drag: validar conflictos de instructor/ambiente (batch de `GET /api/disponibilidad/instructor/:id` o validación client-side con eventosCache)
-- [ ] 9.16 Marcar celdas con conflicto en ámbar y mostrar banner "N conflictos"
-- [ ] 9.17 Marcar celdas sin conflicto en indigo (borrador) con RA seleccionado
-- [ ] 9.18 Implementar botón "Guardar" → POST bulk a `/api/programacion-eventos`. Cabecera se crea con upsert automático
-- [ ] 9.19 ConfirmDialog antes de guardar cambios que afecten eventos existentes
-- [ ] 9.20 Implementar botón "Limpiar Todo" → ConfirmDialog con conteo → DELETE `/api/programacion-instructores/ficha/:fichaId`
-- [ ] 9.21 Implementar navegación de mes: botones anterior/siguiente + `<input type="month">`
-- [ ] 9.22 Al cambiar de mes, recargar eventos de la ficha para ese rango de fechas
-- [ ] 9.23 Implementar permisos UI: `mayCrear` (guardar/asignar), `mayEditar` (editar evento existente), `mayEliminar` (eliminar evento/limpiar)
-- [ ] 9.24 Eliminar código muerto: `editMode` state, `mayVer` sin uso, `externoPId`
+- [x] 9.1 Definir tipos TypeScript: `ProgramacionEvento`, `ConflictInfo`, `PanelRAState`
+- [x] 9.2 Implementar wizard de selección ficha-first: `SearchableSelect` Regional → Centro → Ficha con cascada
+- [x] 9.3 Al seleccionar ficha: cargar programa, centro, ambiente, horario, competencias del programa y eventos existentes
+- [x] 9.4 Implementar `SearchableSelect` Competencia (de las del programa de la ficha)
+- [x] 9.5 Implementar `SearchableSelect` Instructor (filtrado por centro de la ficha y perfiles compatibles con la competencia; badge de disponibilidad)
+- [x] 9.6 Implementar selector de RAs (checkbox/multi-select de las RAs de la competencia seleccionada)
+- [x] 9.7 Implementar calendario con drag-select rectangular (patrón de FichasView): mousedown inicia, mouseenter extiende, mouseup confirma
+- [x] 9.8 Renderizar celdas vacías seleccionables dentro del horario de la ficha
+- [x] 9.9 Renderizar celdas ocupadas con color por estado: azul=PLANIFICADO, verde=EJECUTADO, rojo translúcido=CANCELADO
+- [x] 9.10 Mostrar en cada celda ocupada: código RA o iniciales instructor (texto compacto)
+- [x] 9.11 Implementar tooltip/hover en celda ocupada: instructor nombre, competencia, RA, ambiente, estado
+- [x] 9.12 Implementar click en celda ocupada → modal de detalle con opciones: editar estado, cambiar RA, eliminar evento
+- [x] 9.13 Implementar panel lateral de RAs: lista de RAs con progreso `asignadas / requeridas` (filtrado por ficha)
+- [x] 9.14 Click en RA del panel → lo activa como RA actual para el próximo drag-select
+- [x] 9.15 Al soltar selección drag: validar conflictos de instructor/ambiente (batch de `GET /api/disponibilidad/instructor/:id` o validación client-side con eventosCache)
+- [x] 9.16 Marcar celdas con conflicto en ámbar y mostrar banner "N conflictos"
+- [x] 9.17 Marcar celdas sin conflicto en indigo (borrador) con RA seleccionado
+- [x] 9.18 Implementar botón "Guardar" → POST bulk a `/api/programacion-eventos`. Cabecera se crea con upsert automático
+- [x] 9.19 ConfirmDialog antes de guardar cambios que afecten eventos existentes
+- [x] 9.20 Implementar botón "Limpiar Todo" → ConfirmDialog con conteo → DELETE `/api/programacion-instructores/ficha/:fichaId`
+- [x] 9.21 Implementar navegación de mes: botones anterior/siguiente + `<input type="month">`
+- [x] 9.22 Al cambiar de mes, recargar eventos de la ficha para ese rango de fechas
+- [x] 9.23 Implementar permisos UI: `mayCrear` (guardar/asignar), `mayEditar` (editar evento existente), `mayEliminar` (eliminar evento/limpiar)
+- [x] 9.24 Eliminar código muerto: `editMode` state, `mayVer` sin uso, `externoPId`
 
 ## Fase 10: Verificación y cleanup
 
 - [x] 10.1 `npm run lint` — sin errores nuevos (ignorar errores pre-existentes en `src/components/*`)
-- [ ] 10.2 Verificar que el endpoint `/api/dependencias` reporta eventos al intentar eliminar ficha/instructor/programa
-- [ ] 10.3 Verificar que la migración de datos existentes funciona (si hay datos) o es safe no-op
-- [ ] 10.4 Probar flujo completo: crear ficha → crear programa + competencias + RAs → crear instructor con centro → programar instructor en ficha → validar conflictos → cambiar estado → limpiar
+- [x] 10.2 Verificar que el endpoint `/api/dependencias` reporta eventos al intentar eliminar ficha/instructor/programa
+- [x] 10.3 Verificar que la migración de datos existentes funciona (si hay datos) o es safe no-op
+- [x] 10.4 Probar flujo completo: crear ficha → crear programa + competencias + RAs → crear instructor con centro → programar instructor en ficha → validar conflictos → cambiar estado → limpiar
 - [ ] 10.5 Commit + deploy sync + push
