@@ -437,7 +437,7 @@ export default function InstructoresView() {
                   <div className="flex justify-end gap-2 pt-2 border-t">
                     <button type="button" onClick={handleClose}
                       className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
-                    <button type="submit" disabled={saving || !documento.trim() || !nombres.trim() || !apellidos.trim() || !centroFormacionId || selectedPerfiles.length === 0}
+                    <button type="submit" disabled={saving}
                       className="px-4 py-2 text-sm text-white bg-purple-600 hover:bg-purple-700 rounded-lg disabled:opacity-50">
                       {saving ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
                     </button>

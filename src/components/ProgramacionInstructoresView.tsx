@@ -463,7 +463,7 @@ export default function ProgramacionInstructoresView() {
                 </div>
               </div>
 
-              <div className="overflow-x-auto max-h-[calc(100vh-260px)] overflow-y-auto" onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
+              <div className="overflow-x-auto" onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
                 {!fichaId ? (
                   <div className="flex flex-col items-center justify-center py-20 text-gray-400">
                     <Calendar className="w-12 h-12 mb-3 text-gray-300" />
@@ -511,7 +511,7 @@ export default function ProgramacionInstructoresView() {
                                 onMouseDown={() => slotExists && handleMouseDown(colIdx, rowIdx)}
                                 onMouseEnter={() => slotExists && handleMouseEnter(colIdx, rowIdx)}>
                                 {saved ? (
-                                  <div className={`rounded p-1 text-center relative group min-h-[40px] flex flex-col justify-center border ${estadoColor(saved.estado)}`}
+                                  <div className={`rounded p-1 text-center relative group min-h-[32px] flex flex-col justify-center border ${estadoColor(saved.estado)}`}
                                     onClick={() => setSelectedEvent(saved)}>
                                     <div className="text-[9px] font-bold">{resInfo?.codigo || 'RA'}</div>
                                     <div className="text-[8px] leading-tight line-clamp-1" title={resInfo?.nombre}>{resInfo?.nombre?.substring(0, 20)}</div>
@@ -522,26 +522,26 @@ export default function ProgramacionInstructoresView() {
                                     )}
                                   </div>
                                 ) : draft ? (
-                                  <div className="rounded p-1 text-center border border-indigo-300 bg-indigo-100 text-indigo-700 min-h-[40px] flex flex-col justify-center relative group">
+                                  <div className="rounded p-1 text-center border border-indigo-300 bg-indigo-100 text-indigo-700 min-h-[32px] flex flex-col justify-center relative group">
                                     <div className="text-[9px] font-bold">{resInfo?.codigo || 'RA'}</div>
                                     <div className="text-[8px] leading-tight line-clamp-1">{resInfo?.nombre?.substring(0, 20)}</div>
                                     <button onClick={() => setDraftCells(prev => { const n = new Map(prev); n.delete(cellKey(fecha, hora)); return n; })}
                                       className="absolute -top-1 -right-1 bg-gray-500 text-white rounded-full w-3.5 h-3.5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition text-[8px]">✕</button>
                                   </div>
                                 ) : conflict ? (
-                                  <div className="rounded p-1 text-center border border-amber-300 bg-amber-50 text-amber-600 min-h-[40px] flex items-center justify-center">
+                                  <div className="rounded p-1 text-center border border-amber-300 bg-amber-50 text-amber-600 min-h-[32px] flex items-center justify-center">
                                     <AlertTriangle className="w-3 h-3" />
                                   </div>
                                 ) : inPreview && slotExists && activeRAId ? (
-                                  <div className="rounded p-1 text-center border border-indigo-200 bg-indigo-50/60 text-indigo-400 min-h-[40px] flex items-center justify-center">
+                                  <div className="rounded p-1 text-center border border-indigo-200 bg-indigo-50/60 text-indigo-400 min-h-[32px] flex items-center justify-center">
                                     <div className="text-[9px]">{allResultados.find(r => r.id === activeRAId)?.codigo}</div>
                                   </div>
                                 ) : slotExists ? (
-                                  <div className="min-h-[40px] flex items-center justify-center text-gray-200 hover:bg-indigo-50/30 rounded transition">
+                                  <div className="min-h-[32px] flex items-center justify-center text-gray-200 hover:bg-indigo-50/30 rounded transition">
                                     <span className="text-[10px]">+</span>
                                   </div>
                                 ) : (
-                                  <div className="min-h-[40px]" />
+                                  <div className="min-h-[32px]" />
                                 )}
                               </td>
                             );
