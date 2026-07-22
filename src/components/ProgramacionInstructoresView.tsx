@@ -53,7 +53,6 @@ export default function ProgramacionInstructoresView() {
   const [fichaId, setFichaId] = useState("");
   const [competenciaId, setCompetenciaId] = useState("");
   const [instructorId, setInstructorId] = useState("");
-  const [selectedRAs, setSelectedRAs] = useState<number[]>([]);
   const [activeRAId, setActiveRAId] = useState<number | null>(null);
 
   const [currentWeekStart, setCurrentWeekStart] = useState(() => {
@@ -122,10 +121,10 @@ export default function ProgramacionInstructoresView() {
   }, [fichaProgramaId]);
 
   useEffect(() => {
-    if (!competenciaId) { setResultados([]); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); return; }
+    if (!competenciaId) { setResultados([]); setInstructorId(""); setActiveRAId(null); return; }
     Promise.all([
       fetch(`/api/competencias/${competenciaId}/resultados`).then(r => r.json()),
-    ]).then(([ras]) => { setResultados(ras); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); });
+    ]).then(([ras]) => { setResultados(ras); setInstructorId(""); setActiveRAId(null); });
   }, [competenciaId]);
 
   const perfilesCompatibles = (() => {
@@ -257,7 +256,7 @@ export default function ProgramacionInstructoresView() {
         body: JSON.stringify({
           programaId: fichaProgramaId, fichaId: Number(fichaId),
           competenciaId: Number(competenciaId), instructorId: Number(instructorId),
-          resultadosIds: selectedRAs,
+          resultadosIds: activeRAId ? [activeRAId] : [],
         }),
       });
       if (!progResp.ok) throw new Error("Error creando programación");
@@ -367,12 +366,8 @@ export default function ProgramacionInstructoresView() {
 
   const centrosFiltrados = centros.filter(c => !regionalId || c.regionalId === Number(regionalId));
 
-  const toggleRA = (id: number) => {
-    setSelectedRAs(prev => prev.includes(id) ? prev.filter(r => r !== id) : [...prev, id]);
-  };
-
   return (
-    <div className="max-w-screen-xl mx-auto space-y-4 pb-20">
+    <div className="max-w-full mx-auto space-y-4 px-4 pb-20">
       <div className="flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold text-gray-900 tracking-tight">Programación de Instructores</h1>
@@ -392,13 +387,13 @@ export default function ProgramacionInstructoresView() {
           options={[{ value: "", label: "Todas" }, ...regionales.map((r: any) => ({ value: String(r.id), label: r.nombre }))]} placeholder="Todas" />
         <SearchableSelect label="Centro" value={centroId} onChange={v => { setCentroId(v); setFichaId(""); }}
           options={[{ value: "", label: "Todos" }, ...centrosFiltrados.map((c: any) => ({ value: String(c.id), label: c.nombre }))]} placeholder="Todos" />
-        <SearchableSelect label="Ficha" value={fichaId} onChange={v => { setFichaId(v); setCompetenciaId(""); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); }}
+        <SearchableSelect label="Ficha" value={fichaId} onChange={v => { setFichaId(v); setCompetenciaId(""); setInstructorId(""); setActiveRAId(null); }}
           options={fichasFiltradas.map((f: any) => {
             const prog = programas.find(p => p.id === f.programaId);
             return { value: String(f.id), label: `${f.numeroFicha} ${prog ? '- ' + prog.denominacion.substring(0, 25) : ''}` };
           })} placeholder="Seleccione ficha" />
         {fichaId && (
-          <SearchableSelect label="Competencia" value={competenciaId} onChange={v => { setCompetenciaId(v); setInstructorId(""); setSelectedRAs([]); setActiveRAId(null); }}
+          <SearchableSelect label="Competencia" value={competenciaId} onChange={v => { setCompetenciaId(v); setInstructorId(""); setActiveRAId(null); }}
             options={competencias.map((c: any) => ({ value: String(c.id), label: `${c.codigo} - ${c.nombre.substring(0, 30)}` }))} placeholder="Seleccione" />
         )}
         {competenciaId && (
@@ -424,17 +419,14 @@ export default function ProgramacionInstructoresView() {
                     return (
                       <div key={r.id} className={`rounded-lg border p-2 cursor-pointer transition ${isActive ? 'border-indigo-400 bg-indigo-50 ring-1 ring-indigo-200' : 'border-gray-100 hover:border-gray-200 bg-gray-50/50'}`}
                         onClick={() => setActiveRAId(r.id)}>
-                        <div className="flex items-start gap-1.5">
-                          <input type="checkbox" className="mt-0.5 rounded text-indigo-600" checked={selectedRAs.includes(r.id)} onChange={() => toggleRA(r.id)} onClick={e => e.stopPropagation()} />
-                          <div className="flex-1 min-w-0">
-                            <div className="text-[10px] font-semibold text-gray-500">{r.fase} — {r.codigo}</div>
-                            <div className="text-xs text-gray-700 leading-tight line-clamp-2" title={r.nombre}>{r.nombre}</div>
-                            <div className="mt-1 flex items-center gap-1.5">
-                              <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
-                                <div className={`h-full rounded-full transition-all ${pct >= 100 ? 'bg-green-500' : pct >= 70 ? 'bg-amber-400' : 'bg-indigo-400'}`} style={{ width: `${pct}%` }} />
-                              </div>
-                              <span className="text-[9px] text-gray-400 font-mono shrink-0">{used}/{maxH}h</span>
+                        <div className="flex-1 min-w-0">
+                          <div className="text-[10px] font-semibold text-gray-500">{r.fase} — {r.codigo}</div>
+                          <div className="text-xs text-gray-700 leading-tight line-clamp-2" title={r.nombre}>{r.nombre}</div>
+                          <div className="mt-1 flex items-center gap-1.5">
+                            <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
+                              <div className={`h-full rounded-full transition-all ${pct >= 100 ? 'bg-green-500' : pct >= 70 ? 'bg-amber-400' : 'bg-indigo-400'}`} style={{ width: `${pct}%` }} />
                             </div>
+                            <span className="text-[9px] text-gray-400 font-mono shrink-0">{used}/{maxH}h</span>
                           </div>
                         </div>
                       </div>
@@ -471,7 +463,7 @@ export default function ProgramacionInstructoresView() {
                 </div>
               </div>
 
-              <div className="overflow-x-auto" onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
+              <div className="overflow-x-auto max-h-[calc(100vh-260px)] overflow-y-auto" onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
                 {!fichaId ? (
                   <div className="flex flex-col items-center justify-center py-20 text-gray-400">
                     <Calendar className="w-12 h-12 mb-3 text-gray-300" />

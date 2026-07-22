@@ -417,8 +417,18 @@ async function startServer() {
   app.put('/api/instructores/:id', requirePermission('instructores.editar'), async (req, res) => {
     try {
       const { perfilIds, ...instructorData } = req.body;
+      const allowed: Record<string, any> = {};
+      for (const key of ['documento', 'nombres', 'apellidos', 'tipoVinculacion', 'estado', 'centroFormacionId', 'requisitosAcademicos']) {
+        if (instructorData[key] !== undefined) allowed[key] = instructorData[key];
+      }
+      if (instructorData.horario !== undefined) {
+        allowed.horario = instructorData.horario;
+      }
+      if (Object.keys(allowed).length === 0) {
+        return res.status(400).json({ error: 'No hay campos para actualizar' });
+      }
       const result = await db.update(instructores)
-        .set(instructorData)
+        .set(allowed)
         .where(eq(instructores.id, Number(req.params.id)))
         .returning();
       if (result.length === 0) return res.status(404).json({ error: 'Instructor no encontrado' });

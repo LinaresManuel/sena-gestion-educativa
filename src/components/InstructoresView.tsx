@@ -233,16 +233,16 @@ export default function InstructoresView() {
     setSaving(true);
     setError(null);
 
-    const body = {
+    const body: any = {
       documento, nombres, apellidos, tipoVinculacion, estado,
       centroFormacionId: Number(centroFormacionId),
-      horario: Object.keys(horario).length > 0 ? horario : null,
       perfilIds: selectedPerfiles,
       requisitosAcademicos: selectedPerfiles.map(id => {
         const p = availablePerfiles.find(ap => ap.id === id);
         return p ? p.nombre : '';
       }).filter(Boolean)
     };
+    if (Object.keys(horario).length > 0) body.horario = horario;
 
     try {
       let resp;
@@ -285,7 +285,7 @@ export default function InstructoresView() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto space-y-6">
+    <div className="max-w-full mx-auto space-y-6 px-4">
       <div className="flex items-center justify-between">
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">Instructores</h1>
         {mayCrear && (
@@ -367,7 +367,7 @@ export default function InstructoresView() {
       {showForm && (
         <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center z-50"
           onClick={handleClose}>
-          <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-y-auto"
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-y-auto"
             onClick={e => e.stopPropagation()}>
             <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white z-10">
               <h3 className="text-lg font-semibold">{editingId ? 'Editar Instructor' : 'Nuevo Instructor'}</h3>
@@ -375,109 +375,114 @@ export default function InstructoresView() {
                 <X className="w-5 h-5" />
               </button>
             </div>
-            <form onSubmit={handleSubmit} className="p-4 space-y-4">
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Documento</label>
-                <input type="text" value={documento} onChange={e => setDocumento(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Nombres</label>
-                  <input type="text" value={nombres} onChange={e => setNombres(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required />
-                </div>
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">Apellidos</label>
-                  <input type="text" value={apellidos} onChange={e => setApellidos(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required />
-                </div>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Tipo de Vinculación</label>
-                <select value={tipoVinculacion} onChange={e => setTipoVinculacion(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-                  <option value="PLANTA">PLANTA</option>
-                  <option value="CONTRATISTA">CONTRATISTA</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
-                <select value={centroFormacionId} onChange={e => setCentroFormacionId(Number(e.target.value))} className="w-full border rounded-lg px-3 py-2 text-sm" required>
-                  <option value="">Seleccione un centro...</option>
-                  {centros.map(c => (
-                    <option key={c.id} value={c.id}>{c.nombre}</option>
-                  ))}
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Perfiles Académicos</label>
-                {availablePerfiles.length === 0 ? (
-                  <div className="text-sm text-gray-500 py-2">No hay perfiles registrados. Cree perfiles desde la sección "Perfiles Académicos" primero.</div>
-                ) : (
-                  <div className="max-h-48 overflow-y-auto border rounded-lg p-3 space-y-2 bg-gray-50">
-                    {availablePerfiles.map(p => (
-                      <label key={p.id} className="flex items-start gap-2 cursor-pointer">
-                        <input type="checkbox" className="mt-1"
-                          checked={selectedPerfiles.includes(p.id)}
-                          onChange={() => togglePerfil(p.id)}
-                        />
-                        <span className="text-sm text-gray-700">{p.nombre} <span className="text-gray-400 text-xs text-nowrap">({p.codigo})</span></span>
-                      </label>
-                    ))}
+            <form onSubmit={handleSubmit} className="p-4">
+              <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+                <div className="lg:col-span-2 space-y-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Documento</label>
+                    <input type="text" value={documento} onChange={e => setDocumento(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required />
                   </div>
-                )}
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
-                <select value={estado} onChange={e => setEstado(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
-                  <option value="ACTIVO">ACTIVO</option>
-                  <option value="INACTIVO">INACTIVO</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  <Clock className="w-3.5 h-3.5 inline mr-1" /> Disponibilidad Semanal
-                </label>
-                <div className="overflow-x-auto border rounded-lg bg-gray-50/50 select-none"
-                  onMouseUp={handleCellMouseUp} onMouseLeave={handleCellMouseUp}>
-                  <table className="w-full text-center border-collapse text-[10px]">
-                    <thead>
-                      <tr>
-                        <th className="border p-1 bg-gray-100 text-gray-500 font-semibold min-w-[50px]">Hr</th>
-                        {DIAS_VISIBLES.map(d => (
-                          <th key={d} className="border p-1 bg-gray-100 text-gray-500 font-semibold min-w-[64px] uppercase">{d.substring(0, 3)}</th>
-                        ))}
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {HORAS.map((hora, rowIdx) => (
-                        <tr key={rowIdx}>
-                          <td className="border p-0.5 bg-gray-100 text-gray-400 font-mono text-[9px]">{hora.split('-')[0]}</td>
-                          {DIAS_VISIBLES.map((dia, colIdx) => {
-                            const isActive = horario[dia]?.includes(hora) ?? false;
-                            const inPreview = dragPreview && colIdx >= dragPreview.minDay && colIdx <= dragPreview.maxDay && rowIdx >= dragPreview.minHour && rowIdx <= dragPreview.maxHour;
-                            return (
-                              <td key={dia + hora}
-                                className={`border p-0.5 cursor-pointer transition-colors ${isActive ? 'bg-indigo-200 border-indigo-300' : inPreview ? 'bg-indigo-100/50 border-dashed border-indigo-200' : 'hover:bg-indigo-50 bg-white'}`}
-                                onMouseDown={() => handleCellMouseDown(dia, hora)}
-                                onMouseEnter={() => handleCellMouseEnter(dia, hora)}
-                              >
-                                {isActive && <div className="w-2 h-2 rounded-full bg-indigo-500 mx-auto" />}
-                              </td>
-                            );
-                          })}
-                        </tr>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Nombres</label>
+                      <input type="text" value={nombres} onChange={e => setNombres(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                    </div>
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1">Apellidos</label>
+                      <input type="text" value={apellidos} onChange={e => setApellidos(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm" required />
+                    </div>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Tipo de Vinculación</label>
+                    <select value={tipoVinculacion} onChange={e => setTipoVinculacion(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
+                      <option value="PLANTA">PLANTA</option>
+                      <option value="CONTRATISTA">CONTRATISTA</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Centro de Formación</label>
+                    <select value={centroFormacionId} onChange={e => setCentroFormacionId(Number(e.target.value))} className="w-full border rounded-lg px-3 py-2 text-sm" required>
+                      <option value="">Seleccione un centro...</option>
+                      {centros.map(c => (
+                        <option key={c.id} value={c.id}>{c.nombre}</option>
                       ))}
-                    </tbody>
-                  </table>
+                    </select>
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Perfiles Académicos</label>
+                    {availablePerfiles.length === 0 ? (
+                      <div className="text-sm text-gray-500 py-2">No hay perfiles registrados. Cree perfiles desde la sección "Perfiles Académicos" primero.</div>
+                    ) : (
+                      <div className="max-h-48 overflow-y-auto border rounded-lg p-3 space-y-2 bg-gray-50">
+                        {availablePerfiles.map(p => (
+                          <label key={p.id} className="flex items-start gap-2 cursor-pointer">
+                            <input type="checkbox" className="mt-1"
+                              checked={selectedPerfiles.includes(p.id)}
+                              onChange={() => togglePerfil(p.id)}
+                            />
+                            <span className="text-sm text-gray-700">{p.nombre} <span className="text-gray-400 text-xs text-nowrap">({p.codigo})</span></span>
+                          </label>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+                    <select value={estado} onChange={e => setEstado(e.target.value)} className="w-full border rounded-lg px-3 py-2 text-sm">
+                      <option value="ACTIVO">ACTIVO</option>
+                      <option value="INACTIVO">INACTIVO</option>
+                    </select>
+                  </div>
+                  {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
+                  <div className="flex justify-end gap-2 pt-2 border-t">
+                    <button type="button" onClick={handleClose}
+                      className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
+                    <button type="submit" disabled={saving || !documento.trim() || !nombres.trim() || !apellidos.trim() || !centroFormacionId || selectedPerfiles.length === 0}
+                      className="px-4 py-2 text-sm text-white bg-purple-600 hover:bg-purple-700 rounded-lg disabled:opacity-50">
+                      {saving ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
+                    </button>
+                  </div>
                 </div>
-                <p className="text-[10px] text-gray-400 mt-0.5">Arrastre para seleccionar horas disponibles. Vacío = sin disponibilidad.</p>
-              </div>
-              {error && <div className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg p-3">{error}</div>}
-              <div className="flex justify-end gap-2 pt-2 border-t">
-                <button type="button" onClick={handleClose}
-                  className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg">Cancelar</button>
-                <button type="submit" disabled={saving || !documento.trim() || !nombres.trim() || !apellidos.trim() || !centroFormacionId || selectedPerfiles.length === 0}
-                  className="px-4 py-2 text-sm text-white bg-purple-600 hover:bg-purple-700 rounded-lg disabled:opacity-50">
-                  {saving ? 'Guardando...' : editingId ? 'Actualizar' : 'Crear'}
-                </button>
+
+                <div className="lg:col-span-3">
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    <Clock className="w-3.5 h-3.5 inline mr-1" /> Disponibilidad Semanal
+                  </label>
+                  <p className="text-xs text-gray-400 mb-2">Configure la disponibilidad horaria del instructor para definir cuándo puede ser programado en competencias y fichas mediante el módulo de programación.</p>
+                  <div className="overflow-x-auto border rounded-lg bg-gray-50/50 select-none"
+                    onMouseUp={handleCellMouseUp} onMouseLeave={handleCellMouseUp}>
+                    <table className="w-full text-center border-collapse text-[10px]">
+                      <thead>
+                        <tr>
+                          <th className="border p-1 bg-gray-100 text-gray-500 font-semibold min-w-[50px]">Hr</th>
+                          {DIAS_VISIBLES.map(d => (
+                            <th key={d} className="border p-1 bg-gray-100 text-gray-500 font-semibold min-w-[64px] uppercase">{d.substring(0, 3)}</th>
+                          ))}
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {HORAS.map((hora, rowIdx) => (
+                          <tr key={rowIdx}>
+                            <td className="border p-0.5 bg-gray-100 text-gray-400 font-mono text-[9px]">{hora.split('-')[0]}</td>
+                            {DIAS_VISIBLES.map((dia, colIdx) => {
+                              const isActive = horario[dia]?.includes(hora) ?? false;
+                              const inPreview = dragPreview && colIdx >= dragPreview.minDay && colIdx <= dragPreview.maxDay && rowIdx >= dragPreview.minHour && rowIdx <= dragPreview.maxHour;
+                              return (
+                                <td key={dia + hora}
+                                  className={`border p-0.5 cursor-pointer transition-colors ${isActive ? 'bg-indigo-200 border-indigo-300' : inPreview ? 'bg-indigo-100/50 border-dashed border-indigo-200' : 'hover:bg-indigo-50 bg-white'}`}
+                                  onMouseDown={() => handleCellMouseDown(dia, hora)}
+                                  onMouseEnter={() => handleCellMouseEnter(dia, hora)}
+                                >
+                                  {isActive && <div className="w-2 h-2 rounded-full bg-indigo-500 mx-auto" />}
+                                </td>
+                              );
+                            })}
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
               </div>
             </form>
           </div>
