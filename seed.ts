@@ -1,11 +1,12 @@
 import { db } from './src/db/index.ts';
-import { eq, inArray } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
+import { createHash } from 'node:crypto';
 import {
   regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente,
   instructores, programas, competencias, resultadosAprendizaje,
   perfilesAcademicos, competenciasPerfiles, instructoresPerfiles,
   perfilesInstructor, fichas, programacionInstructores, programacionEventos,
-  permisos, rolesPermisos, usuariosRoles,
+  permisos, rolesPermisos, usuariosRoles, usuarios,
 } from './src/db/schema.ts';
 import { ALL_MODULE_PERMISSIONS } from './src/modules/index.ts';
 import adsoJson from './docs/competencias-extraidas/competencias_ADSO.json' with { type: 'json' };
@@ -231,7 +232,16 @@ async function seed() {
 
   // 14. NO se crea programacionInstructores ni programacionEventos (vacío para pruebas)
 
-  // 15. PERMISOS, ROLES Y ASIGNACIONES
+  // 15. USUARIO ADMIN
+  console.log('  Usuario admin...');
+  const bcrypt = await import('bcryptjs');
+  const adminPass = await bcrypt.hash('Admin123!', 10);
+  await db.insert(usuarios).values({
+    id: 1, username: 'admin', passwordHash: adminPass, nombre: 'Administrador',
+    rol: 'admin', debeCambiarPassword: false, activo: true,
+  }).onConflictDoNothing();
+
+  // 16. PERMISOS, ROLES Y ASIGNACIONES
   console.log('  Permisos y roles...');
   const ROLE_PERMISSIONS: Record<string, string[]> = {
     admin: ALL_MODULE_PERMISSIONS.map(p => p.codigo),
