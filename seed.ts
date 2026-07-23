@@ -4,8 +4,10 @@ import {
   regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente,
   instructores, programas, competencias, resultadosAprendizaje,
   perfilesAcademicos, competenciasPerfiles, instructoresPerfiles,
-  perfilesInstructor, fichas, programacionInstructores, programacionEventos
+  perfilesInstructor, fichas, programacionInstructores, programacionEventos,
+  permisos, rolesPermisos, usuariosRoles,
 } from './src/db/schema.ts';
+import { ALL_MODULE_PERMISSIONS } from './src/modules/index.ts';
 import adsoJson from './docs/competencias-extraidas/competencias_ADSO.json' with { type: 'json' };
 import gcJson from './docs/competencias-extraidas/competencias_gestion_comercial.json' with { type: 'json' };
 import aaJson from './docs/competencias-extraidas/competencias_asistencia_admin.json' with { type: 'json' };
@@ -228,6 +230,61 @@ async function seed() {
   ]);
 
   // 14. NO se crea programacionInstructores ni programacionEventos (vacío para pruebas)
+
+  // 15. PERMISOS, ROLES Y ASIGNACIONES
+  console.log('  Permisos y roles...');
+  const ROLE_PERMISSIONS: Record<string, string[]> = {
+    admin: ALL_MODULE_PERMISSIONS.map(p => p.codigo),
+    editor: [
+      'inicio.ver',
+      'regionales.ver', 'regionales.crear', 'regionales.editar',
+      'centros.ver', 'centros.crear', 'centros.editar',
+      'ambientes.ver', 'ambientes.crear', 'ambientes.editar',
+      'tipos_ambiente.ver', 'tipos_ambiente.crear', 'tipos_ambiente.editar',
+      'programas.ver', 'programas.crear', 'programas.editar',
+      'instructores.ver', 'instructores.crear', 'instructores.editar',
+      'fichas.ver', 'fichas.crear', 'fichas.editar',
+      'programacion.ver', 'programacion.crear', 'programacion.editar',
+    ],
+    instructor: [
+      'inicio.ver', 'regionales.ver', 'centros.ver', 'ambientes.ver',
+      'tipos_ambiente.ver', 'programas.ver', 'instructores.ver',
+      'fichas.ver', 'programacion.ver',
+    ],
+    lector: [
+      'inicio.ver', 'regionales.ver', 'centros.ver', 'ambientes.ver',
+      'tipos_ambiente.ver', 'programas.ver', 'instructores.ver',
+      'fichas.ver', 'programacion.ver',
+    ],
+    aprendiz: ['inicio.ver', 'programas.ver', 'fichas.ver'],
+  };
+
+  let permisosInsertados = 0;
+  for (const p of ALL_MODULE_PERMISSIONS) {
+    await db.insert(permisos).values({
+      codigo: p.codigo, nombre: p.nombre, modulo: p.modulo,
+      accion: p.accion, descripcion: p.descripcion,
+    }).onConflictDoNothing();
+    permisosInsertados++;
+  }
+  console.log(`  → ${permisosInsertados} permisos`);
+
+  const todosPermisos = await db.select().from(permisos);
+  const permisoMap = new Map(todosPermisos.map(p => [p.codigo, p.id]));
+  let rolesInsertados = 0;
+  for (const [rol, codigos] of Object.entries(ROLE_PERMISSIONS)) {
+    for (const codigo of codigos) {
+      const permisoId = permisoMap.get(codigo);
+      if (permisoId) {
+        await db.insert(rolesPermisos).values({ rol, permisoId }).onConflictDoNothing();
+        rolesInsertados++;
+      }
+    }
+  }
+  console.log(`  → ${rolesInsertados} asignaciones rol-permiso`);
+
+  await db.insert(usuariosRoles).values({ usuarioId: 1, rol: 'admin' }).onConflictDoNothing();
+  console.log('  → admin asignado al rol admin');
 
   console.log('=== Seed completado exitosamente ===');
 }
