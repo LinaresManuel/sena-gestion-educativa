@@ -70,6 +70,7 @@ export default function ProgramacionInstructoresView() {
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
   const [notification, setNotification] = useState<{ type: 'error' | 'success' | 'warning'; text: string } | null>(null);
+  const [notifProgress, setNotifProgress] = useState(100);
   const [clearingAll, setClearingAll] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Evento | null>(null);
   const [deletingEventId, setDeletingEventId] = useState<number | null>(null);
@@ -79,9 +80,21 @@ export default function ProgramacionInstructoresView() {
   const dragEnd = useRef<{ colIdx: number; rowIdx: number } | null>(null);
   const [dragPreview, setDragPreview] = useState<{ minCol: number; maxCol: number; minRow: number; maxRow: number } | null>(null);
 
-  const showMessage = useCallback((text: string, type: 'error' | 'success' = 'error') => {
+  const showNotification = useCallback((type: 'error' | 'success' | 'warning', text: string, duration = 4000) => {
     setNotification({ type, text });
-    setTimeout(() => setNotification(null), 4000);
+    setNotifProgress(100);
+    const start = Date.now();
+    const interval = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const remaining = Math.max(0, 100 - (elapsed / duration) * 100);
+      setNotifProgress(remaining);
+      if (remaining <= 0) clearInterval(interval);
+    }, 50);
+    setTimeout(() => {
+      setNotification(null);
+      setNotifProgress(100);
+      clearInterval(interval);
+    }, duration);
   }, []);
 
   useEffect(() => {
@@ -199,15 +212,13 @@ export default function ProgramacionInstructoresView() {
     const raInfo = allResultados.find(r => r.id === activeRAId);
     if (raInfo) {
       if (raInfo.duracionHoras === 0) {
-        setNotification({ type: 'warning', text: 'Este resultado de aprendizaje no tiene horas asignadas. Ajústelas desde el módulo de competencias.' });
-        setTimeout(() => setNotification(null), 4000);
+        showNotification('warning', 'Este resultado de aprendizaje no tiene horas asignadas. Ajústelas desde el módulo de competencias.');
         return;
       }
       const maxH = Math.floor(raInfo.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100));
       const used = countHoursForRA(raInfo.id);
       if (used >= maxH) {
-        setNotification({ type: 'warning', text: `Límite alcanzado: ${used}/${maxH}h para este RA.` });
-        setTimeout(() => setNotification(null), 4000);
+        showNotification('warning', `Límite alcanzado: ${used}/${maxH}h para este RA.`);
         return;
       }
     }
@@ -275,8 +286,7 @@ export default function ProgramacionInstructoresView() {
     setDraftCells(newDraft);
     setConflictCells(newConflicts);
     if (remainingSlots > 0 && addedCount >= remainingSlots) {
-      setNotification({ type: 'warning', text: `Límite alcanzado: ${raUsed + addedCount}/${raMaxH}h para este RA.` });
-      setTimeout(() => setNotification(null), 4000);
+      showNotification('warning', `Límite alcanzado: ${raUsed + addedCount}/${raMaxH}h para este RA.`);
     }
   }
 
@@ -331,13 +341,13 @@ export default function ProgramacionInstructoresView() {
       }
       setDraftCells(new Map());
       setConflictCells(new Set());
-      showMessage("Programación guardada correctamente", "success");
+      showNotification("success", "Programación guardada correctamente");
       const grouped = await fetch(`/api/programacion-eventos/ficha/${fichaId}`).then(r => r.json());
       const flat: Evento[] = [];
       Object.values(grouped).forEach((hours: any) => { Object.values(hours).forEach((ev: any) => flat.push(ev)); });
       setSavedEvents(flat);
     } catch (e: any) {
-      showMessage(e.message || "Error al guardar", "error");
+      showNotification("error", e.message || "Error al guardar");
     } finally { setSaving(false); }
   };
 
@@ -347,8 +357,8 @@ export default function ProgramacionInstructoresView() {
       if (!resp.ok) throw new Error("Error eliminando");
       setSavedEvents(prev => prev.filter(e => e.id !== eventId));
       setSelectedEvent(null);
-      showMessage("Evento eliminado", "success");
-    } catch (e: any) { showMessage(e.message || "Error", "error"); }
+      showNotification("success", "Evento eliminado");
+    } catch (e: any) { showNotification("error", e.message || "Error"); }
   };
 
   const handleUpdateEventEstado = async (eventId: number, estado: string) => {
@@ -361,8 +371,8 @@ export default function ProgramacionInstructoresView() {
       if (!resp.ok) throw new Error("Error actualizando");
       setSavedEvents(prev => prev.map(e => e.id === eventId ? { ...e, estado } : e));
       if (selectedEvent?.id === eventId) setSelectedEvent({ ...selectedEvent, estado });
-      showMessage("Estado actualizado", "success");
-    } catch (e: any) { showMessage(e.message || "Error", "error"); }
+      showNotification("success", "Estado actualizado");
+    } catch (e: any) { showNotification("error", e.message || "Error"); }
   };
 
   const handleClearAll = async () => {
@@ -373,8 +383,8 @@ export default function ProgramacionInstructoresView() {
       setSavedEvents([]);
       setDraftCells(new Map());
       setConflictCells(new Set());
-      showMessage("Calendario limpiado", "success");
-    } catch { showMessage("Error al limpiar", "error"); }
+      showNotification("success", "Calendario limpiado");
+    } catch { showNotification("error", "Error al limpiar"); }
   };
 
   const moveWeek = (delta: number) => {
@@ -411,9 +421,21 @@ export default function ProgramacionInstructoresView() {
       </div>
 
       {notification && (
-        <div className={`p-3 rounded-lg text-sm border font-medium flex items-center justify-between ${notification.type === 'error' ? 'bg-red-50 text-red-700 border-red-200' : notification.type === 'warning' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-green-50 text-green-700 border-green-200'}`}>
-          <span>{notification.text}</span>
-          <button onClick={() => setNotification(null)} className="opacity-70 hover:opacity-100"><X className="w-4 h-4" /></button>
+        <div className={`fixed top-4 right-4 z-50 p-3 rounded-lg shadow-lg text-sm border font-medium flex items-center justify-between min-w-[300px] max-w-[400px] overflow-hidden
+          ${notification.type === 'error' ? 'bg-red-50 text-red-700 border-red-200'
+            : notification.type === 'warning' ? 'bg-amber-50 text-amber-700 border-amber-200'
+            : 'bg-green-50 text-green-700 border-green-200'}`}>
+          <span className="flex-1">{notification.text}</span>
+          <button onClick={() => { setNotification(null); setNotifProgress(100); }} className="ml-2 opacity-60 hover:opacity-100 shrink-0 transition">
+            <X className="w-4 h-4" />
+          </button>
+          <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-black/10">
+            <div className={`h-full transition-all duration-100 ease-linear
+              ${notification.type === 'error' ? 'bg-red-400'
+                : notification.type === 'warning' ? 'bg-amber-400'
+                : 'bg-green-400'}`}
+              style={{ width: `${notifProgress}%` }} />
+          </div>
         </div>
       )}
 
