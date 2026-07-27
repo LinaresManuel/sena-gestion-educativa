@@ -123,13 +123,16 @@ async function seed() {
         duracionHoras: duracionH, normaUnidadCompetencia: nuc, porcentajeHorasDirectas: 80,
       });
 
-      for (let ri = 0; ri < c.resultados_aprendizaje.length; ri++) {
+      const raCount = c.resultados_aprendizaje.length;
+      const baseHours = raCount > 0 ? Math.floor(duracionH / raCount) : 0;
+      const extraCount = raCount > 0 ? duracionH - baseHours * raCount : 0;
+      for (let ri = 0; ri < raCount; ri++) {
         const raTexto = c.resultados_aprendizaje[ri];
         const limpio = raTexto.replace(/^(RA\d+[\.\s]*\s*|0?\d+[\s-]+)/, '').trim();
         const codigoRA = String(ri + 1).padStart(2, '0');
         raEntries.push({
           id: raId, competenciaId: compId, codigo: codigoRA,
-          nombre: limpio, duracionHoras: 0, fase: '',
+          nombre: limpio, duracionHoras: Math.max(1, baseHours + (ri < extraCount ? 1 : 0)), fase: '',
         });
         raId++;
       }
@@ -202,28 +205,28 @@ async function seed() {
   await db.insert(fichas).values([
     {
       id: 1, numeroFicha: '93939', centroFormacionId: 1,
-      fechaInicio: '2025-01-01', fechaFinLectiva: '2025-12-31', fechaFin: '2026-01-01',
+      fechaInicio: '2026-01-15', fechaFinLectiva: '2026-10-30', fechaFin: '2026-12-15',
       modalidad: 'PRESENCIAL',
       horario: { LUNES: ['06:00-07:00', '07:00-08:00', '08:00-09:00'], MARTES: ['09:00-10:00', '10:00-11:00', '11:00-12:00'], SABADO: ['06:00-07:00', '09:00-10:00', '11:00-12:00'] },
       programaId: 1, ambienteId: 1,
     },
     {
       id: 2, numeroFicha: '2754321', centroFormacionId: 1,
-      fechaInicio: '2025-02-01', fechaFinLectiva: '2025-11-30', fechaFin: '2026-01-31',
+      fechaInicio: '2026-02-01', fechaFinLectiva: '2026-11-30', fechaFin: '2026-12-31',
       modalidad: 'PRESENCIAL',
       horario: { LUNES: ['06:00-07:00', '07:00-08:00', '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00'], MARTES: ['06:00-07:00', '07:00-08:00', '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00'], MIERCOLES: ['06:00-07:00', '07:00-08:00', '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00'], JUEVES: ['06:00-07:00', '07:00-08:00', '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00'], VIERNES: ['06:00-07:00', '07:00-08:00', '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00'], SABADO: ['06:00-07:00', '07:00-08:00', '08:00-09:00', '09:00-10:00', '10:00-11:00', '11:00-12:00'] },
       programaId: 2, ambienteId: 3,
     },
     {
       id: 3, numeroFicha: '2898765', centroFormacionId: 1,
-      fechaInicio: '2025-03-01', fechaFinLectiva: '2025-12-20', fechaFin: '2026-02-28',
+      fechaInicio: '2026-03-01', fechaFinLectiva: '2026-12-20', fechaFin: '2027-02-28',
       modalidad: 'VIRTUAL',
       horario: { LUNES: ['14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'], MARTES: ['14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'], MIERCOLES: ['14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'], JUEVES: ['14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'], VIERNES: ['14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'], SABADO: ['14:00-15:00', '15:00-16:00', '16:00-17:00', '17:00-18:00'] },
       programaId: 2, ambienteId: 3,
     },
     {
       id: 4, numeroFicha: '2988001', centroFormacionId: 2,
-      fechaInicio: '2025-04-01', fechaFinLectiva: '2025-10-31', fechaFin: '2025-12-31',
+      fechaInicio: '2026-01-20', fechaFinLectiva: '2026-10-31', fechaFin: '2026-12-31',
       modalidad: 'MIXTA',
       horario: { LUNES: ['18:00-19:00', '19:00-20:00', '20:00-21:00', '21:00-22:00'], MARTES: ['18:00-19:00', '19:00-20:00', '20:00-21:00', '21:00-22:00'], MIERCOLES: ['18:00-19:00', '19:00-20:00', '20:00-21:00', '21:00-22:00'], JUEVES: ['18:00-19:00', '19:00-20:00', '20:00-21:00', '21:00-22:00'], VIERNES: ['18:00-19:00', '19:00-20:00', '20:00-21:00', '21:00-22:00'] },
       programaId: 3, ambienteId: 4,

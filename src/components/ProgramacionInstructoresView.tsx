@@ -69,7 +69,7 @@ export default function ProgramacionInstructoresView() {
 
   const [loading, setLoading] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [notification, setNotification] = useState<{ type: 'error' | 'success'; text: string } | null>(null);
+  const [notification, setNotification] = useState<{ type: 'error' | 'success' | 'warning'; text: string } | null>(null);
   const [clearingAll, setClearingAll] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState<Evento | null>(null);
   const [deletingEventId, setDeletingEventId] = useState<number | null>(null);
@@ -195,6 +195,21 @@ export default function ProgramacionInstructoresView() {
 
   function handleMouseDown(colIdx: number, rowIdx: number) {
     if (!mayCrear || !fichaId || !instructorId || !activeRAId) return;
+    const raInfo = allResultados.find(r => r.id === activeRAId);
+    if (raInfo) {
+      if (raInfo.duracionHoras === 0) {
+        setNotification({ type: 'warning', text: 'Este resultado de aprendizaje no tiene horas asignadas. Ajústelas desde el módulo de competencias.' });
+        setTimeout(() => setNotification(null), 4000);
+        return;
+      }
+      const maxH = Math.floor(raInfo.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100));
+      const used = countHoursForRA(raInfo.id);
+      if (used >= maxH) {
+        setNotification({ type: 'warning', text: `Límite alcanzado: ${used}/${maxH}h para este RA.` });
+        setTimeout(() => setNotification(null), 4000);
+        return;
+      }
+    }
     isDragging.current = true;
     dragStart.current = { colIdx, rowIdx };
     dragEnd.current = { colIdx, rowIdx };
@@ -221,9 +236,15 @@ export default function ProgramacionInstructoresView() {
     dragEnd.current = null;
     if (!preview || !activeRAId || !instructorId || !fichaAmbienteId) return;
 
+    const raInfo = allResultados.find(r => r.id === activeRAId);
+    const raMaxH = raInfo ? Math.floor(raInfo.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100)) : 0;
+    const raUsed = raInfo ? countHoursForRA(raInfo.id) : 0;
+    const remainingSlots = Math.max(0, raMaxH - raUsed);
+
     const newDraft = new Map(draftCells);
     const newConflicts = new Set(conflictCells);
 
+    let addedCount = 0;
     for (let c = preview.minCol; c <= preview.maxCol; c++) {
       for (let r = preview.minRow; r <= preview.maxRow; r++) {
         const date = weekDates[c];
@@ -241,13 +262,21 @@ export default function ProgramacionInstructoresView() {
         const ambienteConflict = savedEvents.some(e => e.ambienteId === fichaAmbienteId && e.fecha === fecha && e.horaInicio === hora);
         if (instructorConflict || ambienteConflict) {
           newConflicts.add(key);
+        } else if (remainingSlots > 0 && addedCount >= remainingSlots) {
+          // Exceeds RA hour limit — break outer loop
+          newConflicts.add(key);
         } else {
           newDraft.set(key, { resultadoId: activeRAId, instructorId: Number(instructorId), ambienteId: fichaAmbienteId });
+          addedCount++;
         }
       }
     }
     setDraftCells(newDraft);
     setConflictCells(newConflicts);
+    if (remainingSlots > 0 && addedCount >= remainingSlots) {
+      setNotification({ type: 'warning', text: `Límite alcanzado: ${raUsed + addedCount}/${raMaxH}h para este RA.` });
+      setTimeout(() => setNotification(null), 4000);
+    }
   }
 
   const handleSave = async () => {
@@ -381,7 +410,7 @@ export default function ProgramacionInstructoresView() {
       </div>
 
       {notification && (
-        <div className={`p-3 rounded-lg text-sm border font-medium flex items-center justify-between ${notification.type === 'error' ? 'bg-red-50 text-red-700 border-red-200' : 'bg-green-50 text-green-700 border-green-200'}`}>
+        <div className={`p-3 rounded-lg text-sm border font-medium flex items-center justify-between ${notification.type === 'error' ? 'bg-red-50 text-red-700 border-red-200' : notification.type === 'warning' ? 'bg-amber-50 text-amber-700 border-amber-200' : 'bg-green-50 text-green-700 border-green-200'}`}>
           <span>{notification.text}</span>
           <button onClick={() => setNotification(null)} className="opacity-70 hover:opacity-100"><X className="w-4 h-4" /></button>
         </div>
@@ -421,11 +450,30 @@ export default function ProgramacionInstructoresView() {
                     const used = countHoursForRA(r.id);
                     const pct = maxH > 0 ? Math.min((used / maxH) * 100, 100) : 0;
                     const isActive = activeRAId === r.id;
+                    const noHoras = r.duracionHoras === 0;
+                    const completado = maxH > 0 && used >= maxH;
                     return (
-                      <div key={r.id} className={`rounded-lg border p-2 cursor-pointer transition ${isActive ? 'border-indigo-400 bg-indigo-50 ring-1 ring-indigo-200' : 'border-gray-100 hover:border-gray-200 bg-gray-50/50'}`}
-                        onClick={() => setActiveRAId(r.id)}>
+                      <div key={r.id}
+                        className={`rounded-lg border p-2 cursor-pointer transition ${completado ? 'border-green-200 bg-green-50/50 opacity-70' : isActive ? 'border-indigo-400 bg-indigo-50 ring-1 ring-indigo-200' : 'border-gray-100 hover:border-gray-200 bg-gray-50/50'}`}
+                        onClick={() => {
+                          if (noHoras) {
+                            setNotification({ type: 'warning', text: 'Este resultado de aprendizaje no tiene horas asignadas. Ajústelas desde el módulo de competencias.' });
+                            setTimeout(() => setNotification(null), 4000);
+                            return;
+                          }
+                          if (completado) {
+                            setNotification({ type: 'warning', text: `Límite alcanzado: ${used}/${maxH}h para este RA.` });
+                            setTimeout(() => setNotification(null), 4000);
+                            return;
+                          }
+                          setActiveRAId(r.id);
+                        }}>
                         <div className="flex-1 min-w-0">
-                          <div className="text-[10px] font-semibold text-gray-500">{r.fase} — {r.codigo}</div>
+                          <div className="flex items-center gap-1.5">
+                            <span className="text-[10px] font-semibold text-gray-500">{r.fase} — {r.codigo}</span>
+                            {noHoras && <span className="text-[9px] text-amber-600 font-medium">⚠️ Sin horas</span>}
+                            {completado && <span className="text-[9px] text-green-600 font-medium">✅ Completado</span>}
+                          </div>
                           <div className="text-xs text-gray-700 leading-tight line-clamp-2" title={r.nombre}>{r.nombre}</div>
                           <div className="mt-1 flex items-center gap-1.5">
                             <div className="flex-1 h-1.5 bg-gray-200 rounded-full overflow-hidden">
