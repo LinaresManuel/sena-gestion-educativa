@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { Plus, Trash2, X, Pencil, Clock } from "lucide-react";
+import { Plus, Trash2, X, Pencil, Clock, Calendar, ChevronLeft, ChevronRight } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 import ConfirmDialog from "./ConfirmDialog";
 
@@ -51,6 +51,17 @@ export default function InstructoresView() {
   const [pasoDialogo, setPasoDialogo] = useState<'ninguno' | 'dependencias' | 'confirmar'>('ninguno');
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+
+  // Agenda modal state
+  const [showAgendaModal, setShowAgendaModal] = useState(false);
+  const [agendaInstructor, setAgendaInstructor] = useState<Instructor | null>(null);
+  const [agendaEvents, setAgendaEvents] = useState<any[]>([]);
+  const [agendaWeekStart, setAgendaWeekStart] = useState(() => {
+    const now = new Date();
+    const day = now.getDay();
+    const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+    return new Date(now.getFullYear(), now.getMonth(), diff);
+  });
 
   const showMessage = (text: string, type: 'error' | 'success' = 'error') => {
     setNotification({ type, text });
@@ -140,6 +151,50 @@ export default function InstructoresView() {
     setHorario({});
     setError(null);
   }
+
+  function formatDate(d: Date) {
+    return d.toISOString().split('T')[0];
+  }
+
+  function getWeekDates(start: Date): Date[] {
+    return Array.from({ length: 6 }, (_, i) => {
+      const d = new Date(start);
+      d.setDate(d.getDate() + i);
+      return d;
+    });
+  }
+
+  function handleVerAgenda(inst: Instructor) {
+    setAgendaInstructor(inst);
+    const now = new Date();
+    const day = now.getDay();
+    const diff = now.getDate() - day + (day === 0 ? -6 : 1);
+    setAgendaWeekStart(new Date(now.getFullYear(), now.getMonth(), diff));
+    setAgendaEvents([]);
+    setShowAgendaModal(true);
+  }
+
+  function handleCloseAgenda() {
+    setShowAgendaModal(false);
+    setAgendaInstructor(null);
+    setAgendaEvents([]);
+  }
+
+  function moveAgendaWeek(delta: number) {
+    setAgendaWeekStart(prev => {
+      const d = new Date(prev);
+      d.setDate(d.getDate() + delta * 7);
+      return d;
+    });
+  }
+
+  useEffect(() => {
+    if (!showAgendaModal || !agendaInstructor) return;
+    fetch(`/api/programacion-eventos?instructorId=${agendaInstructor.id}`)
+      .then(r => r.json())
+      .then(data => setAgendaEvents(Array.isArray(data) ? data : []))
+      .catch(() => setAgendaEvents([]));
+  }, [showAgendaModal, agendaInstructor]);
 
   const toggleHour = (day: string, hour: string) => {
     setHorario(prev => {
@@ -354,6 +409,9 @@ export default function InstructoresView() {
                             <Trash2 className="w-4 h-4" />
                           </button>
                         )}
+                        <button onClick={() => handleVerAgenda(a)} className="text-gray-400 hover:text-purple-600 transition p-1" title="Ver Agenda">
+                          <Calendar className="w-4 h-4" />
+                        </button>
                       </div>
                     </td>
                   )}
@@ -485,6 +543,101 @@ export default function InstructoresView() {
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {showAgendaModal && agendaInstructor && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-start justify-center z-50 pt-12 overflow-y-auto"
+          onClick={handleCloseAgenda}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-5xl my-4" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b sticky top-0 bg-white z-10 rounded-t-xl">
+              <div className="flex items-center gap-3">
+                <h3 className="text-base font-semibold text-gray-900">Agenda — {agendaInstructor.nombres} {agendaInstructor.apellidos}</h3>
+                <div className="flex items-center gap-1">
+                  <button onClick={() => moveAgendaWeek(-1)} className="p-1 text-gray-400 hover:text-gray-600 transition">
+                    <ChevronLeft className="w-4 h-4" />
+                  </button>
+                  <span className="text-xs text-gray-500 font-medium min-w-[120px] text-center">
+                    {getWeekDates(agendaWeekStart)[0].toLocaleDateString('es-CO', { day: 'numeric', month: 'short' })} - {getWeekDates(agendaWeekStart)[5].toLocaleDateString('es-CO', { day: 'numeric', month: 'short', year: 'numeric' })}
+                  </span>
+                  <button onClick={() => moveAgendaWeek(1)} className="p-1 text-gray-400 hover:text-gray-600 transition">
+                    <ChevronRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              <button onClick={handleCloseAgenda} className="text-gray-400 hover:text-gray-600 transition">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="p-4">
+              <div className="flex items-center gap-2 mb-2">
+                <Clock className="w-3.5 h-3.5 text-gray-400" />
+                <span className="text-xs text-gray-500">Disponibilidad configurada: {agendaInstructor.horario ? 'Sí' : 'No configurada'}</span>
+                {agendaEvents.length === 0 && (
+                  <span className="text-xs text-gray-400 ml-auto">Sin eventos programados para esta semana</span>
+                )}
+              </div>
+
+              <div className="grid gap-0.5 select-none border rounded-lg p-1.5 bg-gray-50/50"
+                style={{ gridTemplateColumns: `32px repeat(6, 1fr)` }}>
+                <div />
+                {DIAS_VISIBLES.map((d, idx) => {
+                  const date = getWeekDates(agendaWeekStart)[idx];
+                  return (
+                    <div key={d} className="text-center text-[9px] font-semibold text-gray-600 leading-none pb-0.5">
+                      {d.slice(0, 3)} {date.getDate()}
+                    </div>
+                  );
+                })}
+                {HORAS.map(hora => {
+                  const hourStr = hora.split('-')[0];
+                  const hourNum = parseInt(hourStr);
+                  return (
+                    <div key={hora} className="contents">
+                      <div className="text-[8px] text-gray-500 font-mono text-right flex items-center justify-end pr-1 leading-none">
+                        {hourStr}
+                      </div>
+                      {DIAS_VISIBLES.map((_dia, dayIdx) => {
+                        const date = getWeekDates(agendaWeekStart)[dayIdx];
+                        const dateStr = formatDate(date);
+                        const events = agendaEvents.filter(e => e.fecha === dateStr && e.horaInicio === hourNum);
+                        const hasEvent = events.length > 0;
+                        const evento = events[0];
+                        const estadoColor = evento?.estado === 'EJECUTADO' ? 'bg-green-500/20 border-green-400'
+                          : evento?.estado === 'CANCELADO' ? 'bg-red-500/20 border-red-400'
+                          : 'bg-blue-500/20 border-blue-400';
+                        return (
+                          <div key={`${dateStr}-${hourNum}`}
+                            className={`rounded-sm border h-5 ${hasEvent ? estadoColor : 'bg-white border-gray-200'}`}
+                            title={hasEvent ? `${evento.resultadoNombre || ''} | Ficha: ${evento.fichaNumero || ''} | ${evento.estado || ''}` : undefined}
+                          >
+                            {hasEvent && (
+                              <div className="flex items-center gap-0.5 px-0.5 h-full overflow-hidden">
+                                <span className="text-[6px] font-semibold text-gray-700 truncate">
+                                  {evento.fichaNumero || ''}
+                                </span>
+                                <span className="text-[6px] text-gray-500 truncate">
+                                  {evento.resultadoCodigo || ''}
+                                </span>
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="flex justify-end p-4 border-t">
+              <button onClick={handleCloseAgenda}
+                className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+                Cerrar
+              </button>
+            </div>
           </div>
         </div>
       )}

@@ -113,6 +113,8 @@ export default function ProgramacionInstructoresView() {
   const fichaProgramaId = currentFicha?.programaId;
   const fichaCentroId = currentFicha?.centroFormacionId;
   const fichaAmbienteId = currentFicha?.ambienteId;
+  const instructorSeleccionado = instructores.find(i => i.id === Number(instructorId));
+  const instructorHorario: Record<string, string[]> = instructorSeleccionado?.horario ?? {};
 
   useEffect(() => {
     if (!fichaProgramaId) { setCompetencias([]); setCompetenciaId(""); return; }
@@ -121,23 +123,26 @@ export default function ProgramacionInstructoresView() {
   }, [fichaProgramaId]);
 
   useEffect(() => {
-    if (!competenciaId) { setResultados([]); setInstructorId(""); setActiveRAId(null); return; }
+    if (!competenciaId) { setResultados([]); setInstructorId(""); setActiveRAId(null); setPerfilesCompatibles([]); return; }
     Promise.all([
       fetch(`/api/competencias/${competenciaId}/resultados`).then(r => r.json()),
-    ]).then(([ras]) => { setResultados(ras); setInstructorId(""); setActiveRAId(null); });
+      fetch(`/api/competencias/${competenciaId}/perfiles`).then(r => r.json().catch(() => [])),
+    ]).then(([ras, perfiles]) => {
+      setResultados(ras);
+      setPerfilesCompatibles(Array.isArray(perfiles) ? perfiles.map((p: any) => p.perfilAcademicoId) : []);
+      setInstructorId("");
+      setActiveRAId(null);
+    });
   }, [competenciaId]);
 
-  const perfilesCompatibles = (() => {
-    if (!competenciaId) return [];
-    const perfIds = new Set<number>();
-    instructores.forEach(inst => {
-      if (Array.isArray(inst.perfiles)) inst.perfiles.forEach((p: any) => perfIds.add(p.id));
-    });
-    return Array.from(perfIds);
-  })();
+  const [perfilesCompatibles, setPerfilesCompatibles] = useState<number[]>([]);
 
   const instructoresFiltrados = instructores.filter(inst => {
     if (fichaCentroId && inst.centroFormacionId !== fichaCentroId) return false;
+    if (competenciaId && perfilesCompatibles.length > 0) {
+      const perfilesInstructor = Array.isArray(inst.perfiles) ? inst.perfiles.map((p: any) => p.id) : [];
+      if (!perfilesCompatibles.some((pc: number) => perfilesInstructor.includes(pc))) return false;
+    }
     return true;
   });
 
@@ -504,12 +509,13 @@ export default function ProgramacionInstructoresView() {
                             const conflict = isConflict(fecha, hora);
                             const inPreview = dragPreview && colIdx >= dragPreview.minCol && colIdx <= dragPreview.maxCol && rowIdx >= dragPreview.minRow && rowIdx <= dragPreview.maxRow;
                             const resInfo = saved ? allResultados.find(r => r.id === saved.resultadoId) : draft ? allResultados.find(r => r.id === draft.resultadoId) : null;
+                            const isInstructorAvailable = !instructorId || !instructorHorario[dayName] || instructorHorario[dayName].some((s: string) => parseInt(s.split('-')[0], 10) === hora);
 
                             return (
                               <td key={colIdx}
-                                className={`border-b border-r border-gray-100 p-0.5 ${!slotExists ? 'bg-gray-100/60' : 'cursor-pointer'}`}
-                                onMouseDown={() => slotExists && handleMouseDown(colIdx, rowIdx)}
-                                onMouseEnter={() => slotExists && handleMouseEnter(colIdx, rowIdx)}>
+                                className={`border-b border-r border-gray-100 p-0.5 ${!slotExists ? 'bg-gray-100/60' : instructorId && !isInstructorAvailable ? 'bg-gray-200/40' : 'cursor-pointer'}`}
+                                onMouseDown={() => slotExists && isInstructorAvailable && handleMouseDown(colIdx, rowIdx)}
+                                onMouseEnter={() => slotExists && isInstructorAvailable && handleMouseEnter(colIdx, rowIdx)}>
                                 {saved ? (
                                   <div className={`rounded p-1 text-center relative group min-h-[32px] flex flex-col justify-center border ${estadoColor(saved.estado)}`}
                                     onClick={() => setSelectedEvent(saved)}>
@@ -532,13 +538,17 @@ export default function ProgramacionInstructoresView() {
                                   <div className="rounded p-1 text-center border border-amber-300 bg-amber-50 text-amber-600 min-h-[32px] flex items-center justify-center">
                                     <AlertTriangle className="w-3 h-3" />
                                   </div>
-                                ) : inPreview && slotExists && activeRAId ? (
+                                ) : inPreview && slotExists && activeRAId && isInstructorAvailable ? (
                                   <div className="rounded p-1 text-center border border-indigo-200 bg-indigo-50/60 text-indigo-400 min-h-[32px] flex items-center justify-center">
                                     <div className="text-[9px]">{allResultados.find(r => r.id === activeRAId)?.codigo}</div>
                                   </div>
-                                ) : slotExists ? (
+                                ) : slotExists && isInstructorAvailable ? (
                                   <div className="min-h-[32px] flex items-center justify-center text-gray-200 hover:bg-indigo-50/30 rounded transition">
                                     <span className="text-[10px]">+</span>
+                                  </div>
+                                ) : slotExists && !isInstructorAvailable ? (
+                                  <div className="min-h-[32px] flex items-center justify-center rounded bg-[repeating-linear-gradient(45deg,transparent,transparent_3px,rgba(0,0,0,0.03)_3px,rgba(0,0,0,0.03)_6px)]">
+                                    <span className="text-[7px] text-gray-300 font-medium">N/D</span>
                                   </div>
                                 ) : (
                                   <div className="min-h-[32px]" />
