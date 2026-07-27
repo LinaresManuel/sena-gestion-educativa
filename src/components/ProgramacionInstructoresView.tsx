@@ -195,6 +195,7 @@ export default function ProgramacionInstructoresView() {
 
   function handleMouseDown(colIdx: number, rowIdx: number) {
     if (!mayCrear || !fichaId || !instructorId || !activeRAId) return;
+    setConflictCells(new Set());
     const raInfo = allResultados.find(r => r.id === activeRAId);
     if (raInfo) {
       if (raInfo.duracionHoras === 0) {
@@ -455,19 +456,7 @@ export default function ProgramacionInstructoresView() {
                     return (
                       <div key={r.id}
                         className={`rounded-lg border p-2 cursor-pointer transition ${completado ? 'border-green-200 bg-green-50/50 opacity-70' : isActive ? 'border-indigo-400 bg-indigo-50 ring-1 ring-indigo-200' : 'border-gray-100 hover:border-gray-200 bg-gray-50/50'}`}
-                        onClick={() => {
-                          if (noHoras) {
-                            setNotification({ type: 'warning', text: 'Este resultado de aprendizaje no tiene horas asignadas. Ajústelas desde el módulo de competencias.' });
-                            setTimeout(() => setNotification(null), 4000);
-                            return;
-                          }
-                          if (completado) {
-                            setNotification({ type: 'warning', text: `Límite alcanzado: ${used}/${maxH}h para este RA.` });
-                            setTimeout(() => setNotification(null), 4000);
-                            return;
-                          }
-                          setActiveRAId(r.id);
-                        }}>
+                        onClick={() => setActiveRAId(activeRAId === r.id ? null : r.id)}>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-1.5">
                             <span className="text-[10px] font-semibold text-gray-500">{r.fase} — {r.codigo}</span>
