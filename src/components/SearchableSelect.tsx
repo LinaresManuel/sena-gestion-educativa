@@ -17,6 +17,7 @@ interface Props {
 export default function SearchableSelect({ value, onChange, options, label, placeholder = "Todos" }: Props) {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const [alignRight, setAlignRight] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -41,6 +42,11 @@ export default function SearchableSelect({ value, onChange, options, label, plac
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
+    }
+    if (isOpen && containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const spaceRight = window.innerWidth - rect.right;
+      setAlignRight(spaceRight < 288);
     }
   }, [isOpen]);
 
@@ -85,7 +91,7 @@ className={`flex items-center gap-1.5 border rounded-lg px-2.5 py-1.5 text-xs cu
       </div>
 
       {isOpen && (
-        <div className="absolute top-full right-0 mt-1 w-72 bg-white border border-gray-200 rounded-lg shadow-lg z-20 overflow-hidden origin-top transition">
+        <div className={`absolute top-full mt-1 w-72 bg-white border border-gray-200 rounded-lg shadow-lg z-20 overflow-hidden origin-top transition ${alignRight ? 'right-0' : 'left-0'}`}>
           <div className="relative border-b border-gray-100">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" />
             <input
