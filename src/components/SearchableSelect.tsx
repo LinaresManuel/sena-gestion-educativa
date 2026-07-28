@@ -43,11 +43,6 @@ export default function SearchableSelect({ value, onChange, options, label, plac
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
-    if (isOpen && containerRef.current) {
-      const rect = containerRef.current.getBoundingClientRect();
-      const spaceRight = window.innerWidth - rect.right;
-      setAlignRight(spaceRight < 288);
-    }
   }, [isOpen]);
 
   function handleSelect(opt: Option) {
@@ -71,7 +66,13 @@ className={`flex items-center gap-1.5 border rounded-lg px-2.5 py-1.5 text-xs cu
     ? 'border-purple-300 bg-purple-50/30'
     : 'border-gray-300 bg-gray-50 hover:border-gray-400 hover:shadow-sm'
 }`}
-        onClick={() => setIsOpen(!isOpen)}
+        onClick={() => {
+          if (!isOpen && containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            setAlignRight(window.innerWidth - rect.right < 288);
+          }
+          setIsOpen(!isOpen);
+        }}
       >
         {label && (
           <span className="text-[10px] font-semibold text-gray-400 uppercase tracking-wider shrink-0">
