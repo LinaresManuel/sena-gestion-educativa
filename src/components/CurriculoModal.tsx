@@ -402,15 +402,11 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
         {/* Content */}
         <div className="flex-1 overflow-y-auto p-4 space-y-6">
           
-          {/* Add/Edit Competencia Form */}
-          {(mayCrear || editingComp !== null) && (
+          {/* Nueva Competencia Form (solo crear, siempre en la parte superior) */}
+          {mayCrear && (
           <div className="bg-white border text-sm rounded-lg p-4 shadow-sm">
             <h3 className="font-semibold mb-3 flex items-center gap-2 text-gray-800">
-              {editingComp ? (
-                <><Pencil className="w-4 h-4 text-blue-600" /> Editando Competencia</>
-              ) : (
-                <><Plus className="w-4 h-4 text-green-600" /> Nueva Competencia</>
-              )}
+              <Plus className="w-4 h-4 text-green-600" /> Nueva Competencia
             </h3>
             <form onSubmit={handleSaveCompetencia} className="flex gap-3 items-end flex-wrap sm:flex-nowrap">
               <div className="flex-1 min-w-[120px]">
@@ -418,12 +414,10 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                 <input required type="text" list="comp-codigos" value={compCodigo} onChange={e => {
                   const val = e.target.value;
                   setCompCodigo(val);
-                  if (!editingComp) {
-                    const found = uniqueCompetencias.find(c => c.codigo === val);
-                    if (found) {
-                      setCompNombre(found.nombre);
-                      setCompDuracion(found.duracionHoras.toString());
-                    }
+                  const found = uniqueCompetencias.find(c => c.codigo === val);
+                  if (found) {
+                    setCompNombre(found.nombre);
+                    setCompDuracion(found.duracionHoras.toString());
                   }
                 }} className="w-full border rounded px-2 py-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition" />
                 <datalist id="comp-codigos">
@@ -445,12 +439,9 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                   <option value="80">80%</option>
                 </select>
               </div>
-              <div className="flex items-center gap-2">
-                {editingComp && <button type="button" onClick={cancelEditComp} className="text-gray-500 px-3 py-1.5 hover:bg-gray-100 rounded text-xs">Cancelar</button>}
-                <button type="submit" className={`${editingComp ? 'bg-blue-600 hover:bg-blue-700' : 'bg-green-600 hover:bg-green-700'} text-white px-4 py-1.5 rounded transition`}>
-                  {editingComp ? 'Guardar' : 'Añadir'}
-                </button>
-              </div>
+              <button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 rounded transition whitespace-nowrap">
+                Añadir
+              </button>
             </form>
           </div>
           )}
@@ -525,8 +516,50 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                       </div>
                     </div>
 
+                    {/* Inline Edit Form */}
+                    {editingComp?.id === comp.id && (
+                      <div className="bg-blue-50 border-t p-4">
+                        <h4 className="text-xs font-semibold text-blue-700 mb-3 flex items-center gap-1.5">
+                          <Pencil className="w-3.5 h-3.5" /> Editando Competencia
+                        </h4>
+                        <form onSubmit={(e) => { e.preventDefault(); handleSaveCompetencia(e); }} className="flex gap-3 items-end flex-wrap sm:flex-nowrap">
+                          <div className="flex-1 min-w-[120px]">
+                            <label className="block text-xs text-gray-500 mb-1">Código</label>
+                            <input required type="text" value={compCodigo} onChange={e => setCompCodigo(e.target.value)}
+                              className="w-full border rounded px-2 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white" />
+                          </div>
+                          <div className="flex-[3] min-w-[200px]">
+                            <label className="block text-xs text-gray-500 mb-1">Nombre de la Competencia</label>
+                            <input required type="text" value={compNombre} onChange={e => setCompNombre(e.target.value)}
+                              className="w-full border rounded px-2 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white" />
+                          </div>
+                          <div className="flex-1 min-w-[100px]">
+                            <label className="block text-xs text-gray-500 mb-1">Duración (H)</label>
+                            <input required type="number" min="1" value={compDuracion} onChange={e => setCompDuracion(e.target.value)}
+                              className="w-full border rounded px-2 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white" />
+                          </div>
+                          <div className="flex-1 min-w-[120px]">
+                            <label className="block text-xs text-gray-500 mb-1">% Ejecución Directas</label>
+                            <select value={compPorcentajeDirectas} onChange={e => setCompPorcentajeDirectas(e.target.value)}
+                              className="w-full border rounded px-2 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
+                              <option value="70">70%</option>
+                              <option value="80">80%</option>
+                            </select>
+                          </div>
+                          <div className="flex items-center gap-2 shrink-0">
+                            <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded text-xs transition">
+                              Guardar
+                            </button>
+                            <button type="button" onClick={cancelEditComp} className="text-gray-500 px-3 py-1.5 hover:bg-gray-200 rounded text-xs transition">
+                              Cancelar
+                            </button>
+                          </div>
+                        </form>
+                      </div>
+                    )}
+
                     {/* Expandable Sections */}
-                    {isExpanded && (
+                    {isExpanded && editingComp?.id !== comp.id && (
                       <div className="bg-gray-50 border-t p-4 flex flex-col lg:flex-row gap-6">
                         
                         {/* Section: Resultados */}
