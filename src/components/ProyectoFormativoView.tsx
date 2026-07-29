@@ -182,7 +182,7 @@ export default function ProyectoFormativoView() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50">
+    <div className="h-screen flex flex-col bg-gray-50 overflow-hidden">
       {/* Fixed header row: title left, % right */}
       <div className="shrink-0 bg-white border-b px-4 py-3">
         <div className="flex items-center justify-between gap-4">
