@@ -182,7 +182,7 @@ export default function ProyectoFormativoView() {
   }
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50 overflow-hidden">
+    <div className="h-screen flex flex-col bg-gray-50">
       {/* Fixed header row: title left, % right */}
       <div className="shrink-0 bg-white border-b px-4 py-3">
         <div className="flex items-center justify-between gap-4">
@@ -215,7 +215,7 @@ export default function ProyectoFormativoView() {
       </div>
 
       {/* Tabs + Matrix – fills remaining height */}
-      <div className="flex-1 flex flex-col overflow-hidden px-4 min-h-0">
+      <div className="flex-1 flex flex-col overflow-hidden px-4 pb-4 min-h-0">
         {/* Etapas Tabs */}
         <div className="flex gap-1 border-b pb-0.5 shrink-0 mt-3">
           {ETAPAS.map(et => (
