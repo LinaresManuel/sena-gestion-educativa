@@ -199,7 +199,7 @@ function PrivateLayout({ user, onLogout, children }: { user: AuthUser; onLogout:
           </button>
         </div>
       </aside>
-      <main className="flex-1 overflow-y-auto p-8">{children}</main>
+      <main className="flex-1 overflow-y-auto px-8 pt-8">{children}</main>
     </div>
   );
 }

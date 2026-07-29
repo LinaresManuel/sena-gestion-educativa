@@ -215,7 +215,7 @@ export default function ProyectoFormativoView() {
       </div>
 
       {/* Tabs + Matrix – fills remaining height */}
-      <div className="flex-1 flex flex-col overflow-hidden px-4 pb-4 min-h-0">
+      <div className="flex-1 flex flex-col overflow-hidden px-4 pb-2 min-h-0">
         {/* Etapas Tabs */}
         <div className="flex gap-1 border-b pb-0.5 shrink-0 mt-3">
           {ETAPAS.map(et => (
@@ -240,7 +240,7 @@ export default function ProyectoFormativoView() {
               <Save className="w-3.5 h-3.5" /> {savingRaps ? 'Guardando...' : 'Guardar Asignación'}
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
+          <div className="flex-1 overflow-y-auto px-4 pt-4 pb-2 space-y-4 min-h-0">
             {competenciasFiltradas.length === 0 ? (
               <p className="text-sm text-gray-400 text-center py-8">
                 {search ? 'Sin resultados para tu búsqueda.' : 'No hay competencias registradas para este programa.'}
