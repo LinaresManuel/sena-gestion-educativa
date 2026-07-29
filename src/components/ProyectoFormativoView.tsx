@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft, Save, Search } from "lucide-react";
+import { ArrowLeft, Save, Search, AlertCircle } from "lucide-react";
 
 const ETAPAS = ["Analisis", "Planeacion", "Ejecucion", "Evaluacion", "Complementario"];
 
@@ -20,9 +20,39 @@ export default function ProyectoFormativoView() {
   const [savingPct, setSavingPct] = useState(false);
   const [savingRaps, setSavingRaps] = useState(false);
   const [search, setSearch] = useState("");
+  const [moveRapConfirm, setMoveRapConfirm] = useState<{ rapId: number; fromEtapa: string } | null>(null);
 
   function normalize(s: string) {
     return s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  }
+
+  function handleRapToggle(rapId: number) {
+    // Check if RAP is in another etapa
+    const otrasEtapas = ETAPAS.filter(et => et !== etapaActiva && (asignaciones[et] || []).includes(rapId));
+    if (otrasEtapas.length > 0) {
+      setMoveRapConfirm({ rapId, fromEtapa: otrasEtapas[0] });
+      return;
+    }
+    // Simple toggle in the current etapa
+    setAsignaciones(prev => {
+      const current = prev[etapaActiva] || [];
+      if (current.includes(rapId)) {
+        return { ...prev, [etapaActiva]: current.filter(id => id !== rapId) };
+      }
+      return { ...prev, [etapaActiva]: [...current, rapId] };
+    });
+  }
+
+  function confirmMoveRap() {
+    if (!moveRapConfirm) return;
+    const { rapId, fromEtapa } = moveRapConfirm;
+    setAsignaciones(prev => {
+      const next = { ...prev };
+      next[fromEtapa] = (next[fromEtapa] || []).filter(id => id !== rapId);
+      next[etapaActiva] = [...(next[etapaActiva] || []), rapId];
+      return next;
+    });
+    setMoveRapConfirm(null);
   }
 
   useEffect(() => {
@@ -185,7 +215,7 @@ export default function ProyectoFormativoView() {
       </div>
 
       {/* Tabs + Matrix – fills remaining height */}
-      <div className="flex-1 flex flex-col overflow-hidden px-4">
+      <div className="flex-1 flex flex-col overflow-hidden px-4 min-h-0">
         {/* Etapas Tabs */}
         <div className="flex gap-1 border-b pb-0.5 shrink-0 mt-3">
           {ETAPAS.map(et => (
@@ -197,7 +227,7 @@ export default function ProyectoFormativoView() {
         </div>
 
         {/* RAPs Matrix */}
-        <div className="flex-1 flex flex-col bg-white border border-t-0 rounded-b-xl shadow-sm overflow-hidden">
+        <div className="flex-1 flex flex-col bg-white border border-t-0 rounded-b-xl shadow-sm overflow-hidden min-h-0">
           <div className="shrink-0 px-4 py-2 border-b bg-gray-50/50 flex items-center justify-between gap-3">
             <div className="relative flex-1 max-w-xs">
               <Search className="absolute left-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-gray-400 pointer-events-none" />
@@ -210,7 +240,7 @@ export default function ProyectoFormativoView() {
               <Save className="w-3.5 h-3.5" /> {savingRaps ? 'Guardando...' : 'Guardar Asignación'}
             </button>
           </div>
-          <div className="flex-1 overflow-y-auto p-4 space-y-4">
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
             {competenciasFiltradas.length === 0 ? (
               <p className="text-sm text-gray-400 text-center py-8">
                 {search ? 'Sin resultados para tu búsqueda.' : 'No hay competencias registradas para este programa.'}
@@ -234,7 +264,7 @@ export default function ProyectoFormativoView() {
                         const otrasEtapas = ETAPAS.filter(et => et !== etapaActiva && (asignaciones[et] || []).includes(ra.id));
                         return (
                           <label key={ra.id} className={`flex items-center gap-3 px-3 py-2 text-sm cursor-pointer transition ${checked ? 'bg-emerald-50' : 'hover:bg-gray-50'}`}>
-                            <input type="checkbox" checked={checked} onChange={() => toggleRap(ra.id)}
+                            <input type="checkbox" checked={checked} onChange={() => handleRapToggle(ra.id)}
                               className="rounded border-gray-300 text-emerald-600 focus:ring-emerald-500 shrink-0" />
                             <div className="flex-1 min-w-0">
                               <span className="text-gray-700">{ra.codigo && <span className="font-mono text-xs bg-slate-100 px-1 rounded mr-1">{ra.codigo}</span>}{ra.nombre}</span>
@@ -256,6 +286,34 @@ export default function ProyectoFormativoView() {
           </div>
         </div>
       </div>
+      {/* Confirm move RAP dialog */}
+      {moveRapConfirm && (
+        <div className="fixed inset-0 backdrop-blur-sm bg-white/30 flex items-center justify-center z-50"
+          onClick={() => setMoveRapConfirm(null)}>
+          <div className="bg-white rounded-xl shadow-2xl w-full max-w-sm p-6" onClick={e => e.stopPropagation()}>
+            <div className="flex items-start gap-3">
+              <AlertCircle className="w-6 h-6 text-amber-500 shrink-0 mt-0.5" />
+              <div>
+                <h3 className="text-base font-semibold text-gray-900">¿Mover RA de etapa?</h3>
+                <p className="text-sm text-gray-600 mt-1">
+                  Este RA ya está asignado a la etapa <strong>{moveRapConfirm.fromEtapa}</strong>.
+                  ¿Desea moverlo a <strong>{etapaActiva}</strong>?
+                </p>
+              </div>
+            </div>
+            <div className="flex justify-end gap-2 mt-6">
+              <button onClick={() => setMoveRapConfirm(null)}
+                className="px-4 py-2 text-sm text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-lg transition">
+                Cancelar
+              </button>
+              <button onClick={confirmMoveRap}
+                className="px-4 py-2 text-sm text-white bg-emerald-600 hover:bg-emerald-700 rounded-lg transition">
+                Mover a {etapaActiva}
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
