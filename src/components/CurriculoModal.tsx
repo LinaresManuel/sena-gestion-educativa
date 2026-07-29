@@ -10,7 +10,6 @@ interface Competencia {
   codigo: string;
   nombre: string;
   duracionHoras: number;
-  porcentajeHorasDirectas: number;
 }
 
 interface ResultadoAprendizaje {
@@ -60,8 +59,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
   const [compCodigo, setCompCodigo] = useState("");
   const [compNombre, setCompNombre] = useState("");
   const [compDuracion, setCompDuracion] = useState("");
-  const [compPorcentajeDirectas, setCompPorcentajeDirectas] = useState("80");
-
   // Form states for additions within expanded section
   const [expandedComp, setExpandedComp] = useState<number | null>(null);
   const [activeTab, setActiveTab] = useState<"RA" | "Perfil" | null>(null);
@@ -166,7 +163,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
             codigo: compCodigo,
             nombre: compNombre,
             duracionHoras: Number(compDuracion),
-            porcentajeHorasDirectas: Number(compPorcentajeDirectas)
           })
         });
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al actualizar");
@@ -179,7 +175,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
             codigo: compCodigo,
             nombre: compNombre,
             duracionHoras: Number(compDuracion),
-            porcentajeHorasDirectas: Number(compPorcentajeDirectas)
           })
         });
         if (!resp.ok) throw new Error((await resp.json()).error || "Error al crear");
@@ -187,7 +182,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
       setCompCodigo("");
       setCompNombre("");
       setCompDuracion("");
-      setCompPorcentajeDirectas("80");
       fetchCompetencias();
       showMessage("Competencia guardada correctamente", "success");
     } catch (e: any) {
@@ -347,7 +341,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
     setCompCodigo(comp.codigo);
     setCompNombre(comp.nombre);
     setCompDuracion(comp.duracionHoras.toString());
-    setCompPorcentajeDirectas(comp.porcentajeHorasDirectas?.toString() || "80");
   };
 
   const cancelEditComp = () => {
@@ -355,7 +348,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
     setCompCodigo("");
     setCompNombre("");
     setCompDuracion("");
-    setCompPorcentajeDirectas("80");
   };
 
   const editResultado = (res: ResultadoAprendizaje, compId: number) => {
@@ -431,13 +423,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
               <div className="flex-1 min-w-[100px]">
                 <label className="block text-xs text-gray-500 mb-1">Duración (H)</label>
                 <input required type="number" min="1" value={compDuracion} onChange={e => setCompDuracion(e.target.value)} className="w-full border rounded px-2 py-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition" />
-              </div>
-              <div className="flex-1 min-w-[120px]">
-                <label className="block text-xs text-gray-500 mb-1">% Ejecución Horas Directas</label>
-                <select value={compPorcentajeDirectas} onChange={e => setCompPorcentajeDirectas(e.target.value)} className="w-full border rounded px-2 py-1.5 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
-                  <option value="70">70%</option>
-                  <option value="80">80%</option>
-                </select>
               </div>
               <button type="submit" className="bg-green-600 hover:bg-green-700 text-white px-4 py-1.5 rounded transition whitespace-nowrap">
                 Añadir
@@ -538,14 +523,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                             <input required type="number" min="1" value={compDuracion} onChange={e => setCompDuracion(e.target.value)}
                               className="w-full border rounded px-2 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white" />
                           </div>
-                          <div className="flex-1 min-w-[120px]">
-                            <label className="block text-xs text-gray-500 mb-1">% Ejecución Directas</label>
-                            <select value={compPorcentajeDirectas} onChange={e => setCompPorcentajeDirectas(e.target.value)}
-                              className="w-full border rounded px-2 py-1.5 text-xs focus:border-blue-500 focus:ring-1 focus:ring-blue-500 outline-none transition bg-white">
-                              <option value="70">70%</option>
-                              <option value="80">80%</option>
-                            </select>
-                          </div>
                           <div className="flex items-center gap-2 shrink-0">
                             <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-1.5 rounded text-xs transition">
                               Guardar
@@ -578,7 +555,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                                      <div className="flex items-center gap-2 flex-shrink-0">
                                      <span className="font-medium text-purple-600 bg-purple-50 px-1.5 py-0.5 rounded whitespace-nowrap">{res.fase || 'Analisis'}</span>
                                      <span className="font-medium text-gray-500 bg-gray-100 px-1.5 py-0.5 rounded whitespace-nowrap">{res.duracionHoras} hrs</span>
-                                     <span className={`font-medium text-blue-500 bg-blue-50 px-1.5 py-0.5 rounded whitespace-nowrap`} title={`Horas Directas (${comp.porcentajeHorasDirectas}%)`}>{Math.floor(res.duracionHoras * ((comp.porcentajeHorasDirectas || 80) / 100))} hrs Dir.</span>
                                      {mayEditar && (
                                        <button onClick={() => editResultado(res, comp.id)} className="text-blue-400 hover:text-blue-600 ml-2">
                                          <Pencil className="w-3.5 h-3.5" />
@@ -602,7 +578,6 @@ export default function CurriculoModal({ programa, onClose }: CurriculoModalProp
                                 <input type="text" placeholder="Código (Opcional)" value={resCodigo} onChange={e => setResCodigo(e.target.value)} className="w-24 border rounded text-xs px-2 py-1.5 focus:border-blue-500 outline-none" />
                                 <input required type="text" placeholder="Nombre del resultado..." value={resNombre} onChange={e => setResNombre(e.target.value)} className="flex-[3] border rounded text-xs px-2 py-1.5 focus:border-blue-500 outline-none" />
                                 <input required type="number" min="1" placeholder="Horas" value={resDuracion} onChange={e => setResDuracion(e.target.value)} className="w-20 border rounded text-xs px-2 py-1.5 focus:border-blue-500 outline-none" />
-                                <input type="number" placeholder={`Dir. (${comp.porcentajeHorasDirectas}%)`} value={resDuracion ? Math.floor(Number(resDuracion) * ((comp.porcentajeHorasDirectas || 80) / 100)) : ""} disabled className="w-20 border rounded text-xs px-2 py-1.5 bg-gray-100 text-gray-500 outline-none cursor-not-allowed" title={`Horas directas ${comp.porcentajeHorasDirectas}%`} />
                                 <select value={resFase} onChange={e => setResFase(e.target.value)} className="w-[120px] border rounded text-xs px-2 py-1.5 focus:border-blue-500 outline-none bg-white font-medium text-gray-700">
                                   <option value="Analisis">Analisis</option>
                                   <option value="Planeación">Planeación</option>

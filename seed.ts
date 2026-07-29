@@ -6,6 +6,7 @@ import {
   instructores, programas, competencias, resultadosAprendizaje,
   perfilesAcademicos, competenciasPerfiles, instructoresPerfiles,
   perfilesInstructor, fichas, programacionInstructores, programacionEventos,
+  proyectosFormativos, proyectoEtapasRaps,
   permisos, rolesPermisos, usuariosRoles, usuarios,
 } from './src/db/schema.ts';
 import { ALL_MODULE_PERMISSIONS } from './src/modules/index.ts';
@@ -23,7 +24,7 @@ async function seed() {
   console.log('=== Limpiando datos (excepto usuarios/permisos) ===');
 
   const ordenDelete = [
-    programacionEventos, programacionInstructores, fichas, instructoresPerfiles,
+    proyectoEtapasRaps, proyectosFormativos, programacionEventos, programacionInstructores, fichas, instructoresPerfiles,
     competenciasPerfiles, perfilesAcademicos, resultadosAprendizaje, competencias,
     programas, perfilesInstructor, elementosAmbiente, ambientes, tiposAmbiente,
     instructores, centrosFormacion, regionales,
@@ -120,7 +121,7 @@ async function seed() {
       const nuc = c.norma_unidad_competencia || '';
       await db.insert(competencias).values({
         id: compId, programaId, codigo: c.codigo, nombre: c.nombre,
-        duracionHoras: duracionH, normaUnidadCompetencia: nuc, porcentajeHorasDirectas: 80,
+        duracionHoras: duracionH, normaUnidadCompetencia: nuc,
       });
 
       const raCount = c.resultados_aprendizaje.length;
@@ -233,9 +234,42 @@ async function seed() {
     },
   ]);
 
-  // 14. NO se crea programacionInstructores ni programacionEventos (vacío para pruebas)
+  // 14. PROYECTOS FORMATIVOS
+  console.log('  Proyectos Formativos...');
+  const pf1 = await db.insert(proyectosFormativos).values({ id: 1, fichaId: 1, porcentajeEjecucionDirecta: 80 }).returning().then(r => r[0]);
+  const pf2 = await db.insert(proyectosFormativos).values({ id: 2, fichaId: 2, porcentajeEjecucionDirecta: 80 }).returning().then(r => r[0]);
+  const pf3 = await db.insert(proyectosFormativos).values({ id: 3, fichaId: 3, porcentajeEjecucionDirecta: 70 }).returning().then(r => r[0]);
+  const pf4 = await db.insert(proyectosFormativos).values({ id: 4, fichaId: 4, porcentajeEjecucionDirecta: 80 }).returning().then(r => r[0]);
 
-  // 15. USUARIO ADMIN
+  // Assign RAPs to etapas based on their fase field
+  console.log('  Etapas-RAPs...');
+  const allRaps = await db.select().from(resultadosAprendizaje);
+  const etapasRapsValues: { proyectoFormativoId: number; etapa: string; resultadoId: number }[] = [];
+  // Map: fichaId -> proyectoFormativoId
+  const fichaProyectoMap: Record<number, number> = { 1: pf1.id, 2: pf2.id, 3: pf3.id, 4: pf4.id };
+  // Get ficha -> programa mapping
+  const fichasList = await db.select().from(fichas);
+  for (const f of fichasList) {
+    const pfId = fichaProyectoMap[f.id];
+    if (!pfId) continue;
+    // Get competencias for this ficha's program
+    const comps = await db.select().from(competencias).where(eq(competencias.programaId, f.programaId));
+    const compIds = comps.map(c => c.id);
+    const rapsForFicha = allRaps.filter(r => compIds.includes(r.competenciaId));
+    // Distribute RAPs by their fase
+    for (const ra of rapsForFicha) {
+      const etapa = ra.fase || 'Analisis';
+      etapasRapsValues.push({ proyectoFormativoId: pfId, etapa, resultadoId: ra.id });
+    }
+  }
+  for (let i = 0; i < etapasRapsValues.length; i += 50) {
+    await db.insert(proyectoEtapasRaps).values(etapasRapsValues.slice(i, i + 50));
+  }
+  console.log(`  → ${etapasRapsValues.length} asignaciones etapa-RA`);
+
+  // 15. NO se crea programacionInstructores ni programacionEventos (vacío para pruebas)
+
+  // 16. USUARIO ADMIN
   console.log('  Usuario admin...');
   const bcrypt = await import('bcryptjs');
   const adminPass = await bcrypt.hash('Admin123!', 10);

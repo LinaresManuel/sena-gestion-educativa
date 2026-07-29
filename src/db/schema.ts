@@ -77,7 +77,6 @@ export const competencias = sqliteTable('competencias', {
   nombre: text('nombre').notNull(),
   duracionHoras: integer('duracion_horas').notNull(),
   normaUnidadCompetencia: text('norma_unidad_competencia'),
-  porcentajeHorasDirectas: integer('porcentaje_horas_directas').notNull().default(80),
 });
 
 export const resultadosAprendizaje = sqliteTable('resultados_aprendizaje', {
@@ -165,6 +164,27 @@ export const programacionEventos = sqliteTable('programacion_eventos', {
 }, (t) => ({
   unqInstructor: unique().on(t.fecha, t.horaInicio, t.instructorId), // Evita doble asignación de instructor
   unqAmbiente: unique().on(t.fecha, t.horaInicio, t.ambienteId), // Evita doble reserva de ambiente
+}));
+
+// ==========================================
+// PROYECTO FORMATIVO POR FICHA (FEATURE 009)
+// ==========================================
+
+export const proyectosFormativos = sqliteTable('proyectos_formativos', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  fichaId: integer('ficha_id').notNull().unique().references(() => fichas.id, { onDelete: 'cascade' }),
+  porcentajeEjecucionDirecta: integer('porcentaje_ejecucion_directa').notNull().default(80),
+  createdAt: text('created_at').notNull().default("datetime('now')"),
+  updatedAt: text('updated_at').notNull().default("datetime('now')"),
+});
+
+export const proyectoEtapasRaps = sqliteTable('proyecto_etapas_raps', {
+  id: integer('id').primaryKey({ autoIncrement: true }),
+  proyectoFormativoId: integer('proyecto_formativo_id').notNull().references(() => proyectosFormativos.id, { onDelete: 'cascade' }),
+  etapa: text('etapa').notNull(),
+  resultadoId: integer('resultado_id').notNull().references(() => resultadosAprendizaje.id),
+}, (t) => ({
+  unq: unique().on(t.proyectoFormativoId, t.etapa, t.resultadoId),
 }));
 
 export const usuarios = sqliteTable('usuarios', {

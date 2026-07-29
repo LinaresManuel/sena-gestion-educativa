@@ -2,7 +2,7 @@ import express from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { db } from './src/db/index.ts';
-import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, perfilesAcademicos, competenciasPerfiles, instructoresPerfiles, fichas, programacionInstructores, programacionEventos } from './src/db/schema.ts';
+import { regionales, centrosFormacion, tiposAmbiente, ambientes, elementosAmbiente, instructores, programas, competencias, resultadosAprendizaje, perfilesInstructor, perfilesAcademicos, competenciasPerfiles, instructoresPerfiles, fichas, programacionInstructores, programacionEventos, proyectosFormativos, proyectoEtapasRaps } from './src/db/schema.ts';
 import { eq, and, ne, sql, inArray } from 'drizzle-orm';
 import { config } from './src/config.ts';
 import cookieParser from 'cookie-parser';
@@ -881,6 +881,60 @@ async function startServer() {
     } catch (e: any) {
       handleDbError(e, res);
     }
+  });
+
+  // API Routes for Proyecto Formativo (Feature 009)
+  app.get('/api/fichas/:id/proyecto-formativo', requirePermission('fichas.ver'), async (req, res) => {
+    try {
+      const fichaId = Number(req.params.id);
+      let proyecto = await db.select().from(proyectosFormativos).where(eq(proyectosFormativos.fichaId, fichaId)).limit(1).then(r => r[0]);
+      if (!proyecto) {
+        proyecto = await db.insert(proyectosFormativos).values({ fichaId, porcentajeEjecucionDirecta: 80 }).returning().then(r => r[0]);
+      }
+      const etapas = await db.select().from(proyectoEtapasRaps).where(eq(proyectoEtapasRaps.proyectoFormativoId, proyecto.id));
+      res.json({ ...proyecto, etapas });
+    } catch (e: any) { handleDbError(e, res); }
+  });
+
+  app.post('/api/fichas/:id/proyecto-formativo', requirePermission('fichas.editar'), async (req, res) => {
+    try {
+      const fichaId = Number(req.params.id);
+      const existing = await db.select().from(proyectosFormativos).where(eq(proyectosFormativos.fichaId, fichaId)).limit(1).then(r => r[0]);
+      if (existing) {
+        const result = await db.update(proyectosFormativos).set({ porcentajeEjecucionDirecta: req.body.porcentajeEjecucionDirecta, updatedAt: sql`datetime('now')` }).where(eq(proyectosFormativos.fichaId, fichaId)).returning();
+        res.json(result[0]);
+      } else {
+        const result = await db.insert(proyectosFormativos).values({ fichaId, porcentajeEjecucionDirecta: req.body.porcentajeEjecucionDirecta || 80 }).returning();
+        res.json(result[0]);
+      }
+    } catch (e: any) { handleDbError(e, res); }
+  });
+
+  app.put('/api/proyectos-formativos/:id/porcentaje', requirePermission('fichas.editar'), async (req, res) => {
+    try {
+      const result = await db.update(proyectosFormativos).set({ porcentajeEjecucionDirecta: req.body.porcentajeEjecucionDirecta, updatedAt: sql`datetime('now')` }).where(eq(proyectosFormativos.id, Number(req.params.id))).returning();
+      res.json(result[0]);
+    } catch (e: any) { handleDbError(e, res); }
+  });
+
+  app.get('/api/proyectos-formativos/:id/etapas', requirePermission('fichas.ver'), async (req, res) => {
+    try {
+      const etapas = await db.select().from(proyectoEtapasRaps).where(eq(proyectoEtapasRaps.proyectoFormativoId, Number(req.params.id)));
+      res.json(etapas);
+    } catch (e: any) { handleDbError(e, res); }
+  });
+
+  app.post('/api/proyectos-formativos/:id/etapas', requirePermission('fichas.editar'), async (req, res) => {
+    try {
+      const proyectoId = Number(req.params.id);
+      const { etapa, resultadoIds } = req.body; // resultadoIds = array de IDs de RAPs a asignar
+      await db.delete(proyectoEtapasRaps).where(and(eq(proyectoEtapasRaps.proyectoFormativoId, proyectoId), eq(proyectoEtapasRaps.etapa, etapa)));
+      if (Array.isArray(resultadoIds) && resultadoIds.length > 0) {
+        await db.insert(proyectoEtapasRaps).values(resultadoIds.map((rid: number) => ({ proyectoFormativoId: proyectoId, etapa, resultadoId: rid })));
+      }
+      const etapas = await db.select().from(proyectoEtapasRaps).where(eq(proyectoEtapasRaps.proyectoFormativoId, proyectoId));
+      res.json(etapas);
+    } catch (e: any) { handleDbError(e, res); }
   });
 
   // API Routes for Programacion Instructores (cabecera)

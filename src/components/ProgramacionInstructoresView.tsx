@@ -65,6 +65,7 @@ export default function ProgramacionInstructoresView() {
 
   const [savedEvents, setSavedEvents] = useState<Evento[]>([]);
   const [draftCells, setDraftCells] = useState<Map<string, DraftCell>>(new Map());
+  const [proyectoFormativo, setProyectoFormativo] = useState<any>(null);
   const [conflictCells, setConflictCells] = useState<Set<string>>(new Set());
 
   const [loading, setLoading] = useState(false);
@@ -126,6 +127,7 @@ export default function ProgramacionInstructoresView() {
   const fichaProgramaId = currentFicha?.programaId;
   const fichaCentroId = currentFicha?.centroFormacionId;
   const fichaAmbienteId = currentFicha?.ambienteId;
+  const pctEjecucion = proyectoFormativo?.porcentajeEjecucionDirecta ?? 80;
   const instructorSeleccionado = instructores.find(i => i.id === Number(instructorId));
   const instructorHorario: Record<string, string[]> = instructorSeleccionado?.horario ?? {};
 
@@ -160,7 +162,8 @@ export default function ProgramacionInstructoresView() {
   });
 
   useEffect(() => {
-    if (!fichaId) { setSavedEvents([]); return; }
+    if (!fichaId) { setSavedEvents([]); setProyectoFormativo(null); return; }
+    fetch(`/api/fichas/${fichaId}/proyecto-formativo`).then(r => r.json().then(pf => setProyectoFormativo(pf)).catch(() => setProyectoFormativo(null))).catch(() => {});
     fetch(`/api/programacion-eventos/ficha/${fichaId}`)
       .then(r => r.json())
       .then(grouped => {
@@ -215,7 +218,7 @@ export default function ProgramacionInstructoresView() {
         showNotification('warning', 'Este resultado de aprendizaje no tiene horas asignadas. Ajústelas desde el módulo de competencias.');
         return;
       }
-      const maxH = Math.floor(raInfo.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100));
+      const maxH = Math.floor(raInfo.duracionHoras * ((pctEjecucion) / 100));
       const used = countHoursForRA(raInfo.id);
       if (used >= maxH) {
         showNotification('warning', `Límite alcanzado: ${used}/${maxH}h para este RA.`);
@@ -249,7 +252,7 @@ export default function ProgramacionInstructoresView() {
     if (!preview || !activeRAId || !instructorId || !fichaAmbienteId) return;
 
     const raInfo = allResultados.find(r => r.id === activeRAId);
-    const raMaxH = raInfo ? Math.floor(raInfo.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100)) : 0;
+    const raMaxH = raInfo ? Math.floor(raInfo.duracionHoras * ((pctEjecucion) / 100)) : 0;
     const raUsed = raInfo ? countHoursForRA(raInfo.id) : 0;
     const remainingSlots = Math.max(0, raMaxH - raUsed);
 
@@ -469,7 +472,7 @@ export default function ProgramacionInstructoresView() {
                 </div>
                 <div className="p-2 space-y-1.5 max-h-[400px] overflow-y-auto">
                   {resultados.map((r: any) => {
-                    const maxH = Math.floor(r.duracionHoras * ((selectedComp?.porcentajeHorasDirectas || 80) / 100));
+                    const maxH = Math.floor(r.duracionHoras * ((pctEjecucion) / 100));
                     const used = countHoursForRA(r.id);
                     const pct = maxH > 0 ? Math.min((used / maxH) * 100, 100) : 0;
                     const isActive = activeRAId === r.id;

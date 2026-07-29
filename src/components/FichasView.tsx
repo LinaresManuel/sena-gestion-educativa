@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Plus, Trash2, X, Calendar, Clock, MapPin, Search, Pencil, Eye } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { Plus, Trash2, X, Calendar, Clock, MapPin, Search, Pencil, Eye, FileText } from "lucide-react";
 import { useHasPermission, useHasAnyPermission } from "../lib/auth-context";
 import ConfirmDialog from "./ConfirmDialog";
 import SearchableSelect from "./SearchableSelect";
@@ -56,6 +57,7 @@ export default function FichasView() {
   const [showHorarioModal, setShowHorarioModal] = useState(false);
   const [horarioFichaSeleccionada, setHorarioFichaSeleccionada] = useState<Ficha | null>(null);
 
+  const navigate = useNavigate();
   const isDragging = useRef(false);
   const dragStart = useRef<{ dia: string; hora: string } | null>(null);
   const dragEnd = useRef<{ dia: string; hora: string } | null>(null);
@@ -551,6 +553,10 @@ export default function FichasView() {
                             <Eye className="w-3.5 h-3.5" /> Ver Horario
                           </button>
                         )}
+                        <button onClick={() => navigate(`/fichas/${ficha.id}/proyecto-formativo`)}
+                          className="flex items-center gap-1 text-xs font-medium text-emerald-700 hover:text-emerald-800 transition">
+                          <FileText className="w-3.5 h-3.5" /> Proyecto
+                        </button>
                         {hayAcciones && (
                           <div className="flex items-center gap-1 ml-auto">
                             {mayEditar && (
@@ -626,6 +632,10 @@ export default function FichasView() {
                             <button onClick={() => handleVerDetalles(ficha)}
                               className="text-gray-400 hover:text-purple-600 p-1.5 bg-white rounded-full shadow-sm border transition">
                               <Eye className="w-3.5 h-3.5" />
+                            </button>
+                            <button onClick={() => navigate(`/fichas/${ficha.id}/proyecto-formativo`)}
+                              className="text-gray-400 hover:text-emerald-600 p-1.5 bg-white rounded-full shadow-sm border transition">
+                              <FileText className="w-3.5 h-3.5" />
                             </button>
                           </div>
                         </td>

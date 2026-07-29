@@ -10,6 +10,7 @@ import ProgramasView from "./components/ProgramasView";
 import InstructoresView from "./components/InstructoresView";
 import FichasView from "./components/FichasView";
 import ProgramacionInstructoresView from "./components/ProgramacionInstructoresView";
+import ProyectoFormativoView from "./components/ProyectoFormativoView";
 import PerfilesAcademicosView from "./components/PerfilesAcademicosView";
 import AdminPanel from "./components/AdminPanel";
 import Login from "./Login";
@@ -300,6 +301,7 @@ function AppRoutes({ user, setUser, onLogout, permisoNotification, setPermisoNot
           } />
           <Route path="/instructores" element={<InstructoresView />} />
           <Route path="/fichas" element={<FichasView />} />
+          <Route path="/fichas/:fichaId/proyecto-formativo" element={<ProyectoFormativoView />} />
           <Route path="/perfiles-academicos" element={
             <RequirePermission user={user} permission="perfiles_academicos.ver">
               <PerfilesAcademicosView />
