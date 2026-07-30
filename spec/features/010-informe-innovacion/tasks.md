@@ -24,4 +24,4 @@
 - [x] 3.1 Revisión de tono formal e institucional
 - [x] 3.2 Verificar que todos los datos son del código real del repositorio
 - [x] 3.3 `npm run lint` sin errores nuevos (errores pre-existentes en `src/components/*`)
-- [ ] 3.4 Commit + deploy sync + push
+- [x] 3.4 Commit + deploy sync + push
