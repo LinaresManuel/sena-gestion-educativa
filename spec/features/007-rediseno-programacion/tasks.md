@@ -94,7 +94,11 @@
 - [x] 9.23 Implementar permisos UI: `mayCrear` (guardar/asignar), `mayEditar` (editar evento existente), `mayEliminar` (eliminar evento/limpiar)
 - [x] 9.24 Eliminar código muerto: `editMode` state, `mayVer` sin uso, `externoPId`
 
-## Fase 10: Verificación y cleanup
+## Fase 11: Correcciones post-implementación
+
+- [x] 11.1 Botón crear/actualizar instructor: eliminar condiciones `disabled` restrictivas, validar solo con `saving`, errores vía mensaje en formulario
+- [x] 11.2 Programación: eliminar `max-h + overflow-y-auto` que causaba scroll lateral no deseado
+- [x] 11.3 Programación: reducir altura filas a `min-h-[32px]` para visualización completa del calendario semanal sin scroll interno
 
 - [x] 10.1 `npm run lint` — sin errores nuevos (ignorar errores pre-existentes en `src/components/*`)
 - [x] 10.2 Verificar que el endpoint `/api/dependencias` reporta eventos al intentar eliminar ficha/instructor/programa
